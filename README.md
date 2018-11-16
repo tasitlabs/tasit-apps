@@ -20,7 +20,9 @@ In the long run, Tasit will stitch together components from multiple dapps into 
 
 ### Developers
 
-This is a monorepo for all of the open source Tasit 3rd party mobile apps for Ethereum dapps
+This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps
+
+These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 For more info, please visit our website:
 

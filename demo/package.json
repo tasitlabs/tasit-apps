@@ -1,0 +1,46 @@
+{
+  "name": "tasit-demo",
+  "version": "0.0.1",
+  "description": "A demo app showing proper usage of the Tasit SDK",
+  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "scripts": {
+    "start": "npx expo start",
+    "android": "npx expo start --android",
+    "ios": "npx expo start --ios",
+    "eject": "npx expo eject",
+    "test": "npx jest"
+  },
+  "dependencies": {
+    "expo": "^31.0.2",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-navigation": "^2.18.2"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0",
+    "expo-cli": "^2.4.0",
+    "jest": "^23.6.0",
+    "jest-expo": "^31.0.0",
+    "prettier": "^1.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tasitlabs/tasit.git"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "keywords": [
+    "dapp",
+    "ethereum",
+    "react",
+    "native"
+  ],
+  "author": "Tasit Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tasitlabs/tasit/issues"
+  },
+  "homepage": "https://tasit.io"
+}
