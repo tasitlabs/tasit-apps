@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import demoApp from "./reducers";
 
-const store = createStore(demoApp);
+//import Account from "tasit-sdk";
 
 export default class App extends React.Component {
   state = {
@@ -16,8 +16,9 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    const { ConfigLoader } = Action;
-    ConfigLoader.setConfig(tasitSdkConfig);
+    //Account.create().then((w) => {
+    //	console.log(w);
+    //})
   }
 
   render() {
