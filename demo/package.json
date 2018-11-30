@@ -15,7 +15,8 @@
     "expo": "^31.0.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-navigation": "^2.18.2"
+    "react-navigation": "^2.18.2",
+    "tasit-sdk": "file:../../TasitSDK/packages/tasit-sdk"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
