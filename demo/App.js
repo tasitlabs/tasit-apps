@@ -21,7 +21,7 @@ export default class App extends React.Component {
 		let mainnetProvider = ethers.getDefaultProvider();
 		let utils = ethers.utils;
 
-		let privateKey = "0x3141592653589793238462643383279502884197169399375105820974944592";
+		const privateKey = "0x3141592653589793238462643383279502884197169399375105820974944592";
 		let address = "0x7357589f8e367c2C31F51242fB77B350A11830F3";
 		let wallet = new ethers.Wallet(privateKey);
 		let fundedWallet = new ethers.Wallet("0x18bfdd05c1e63e4a27081352e2910c164a4d34588f8d7eecfdfcb654742934c2", ropstenProvider); //addr:0xa9adeF68CEF4EA3C9d0717126e14fDfebFDFB4d7
