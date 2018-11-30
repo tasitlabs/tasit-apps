@@ -4,6 +4,10 @@ import { AppLoading, Asset, Font } from "expo";
 import "ethers/dist/shims.js";
 import { ethers } from "ethers";
 
+// Note: In the future, we'll be importing the Tasit SDK
+// which has ethers.js as a dependency rather than importing
+// it directly
+
 
 export default class App extends React.Component {
   state = {
