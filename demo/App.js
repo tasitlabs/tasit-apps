@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
 	componentDidMount() {
 
-		let ropstenProvider = ethers.getDefaultProvider('ropsten');
+		const ropstenProvider = ethers.getDefaultProvider('ropsten');
 		let mainnetProvider = ethers.getDefaultProvider();
 		let utils = ethers.utils;
 
