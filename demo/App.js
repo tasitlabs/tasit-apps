@@ -1,25 +1,17 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import PropTypes from "prop-types";
-import AppNavigator from "./AppNavigator";
-import { Action } from "tasit-sdk";
-import tasitSdkConfig from "./config/default.js";
-import { Provider } from "react-redux";
-import { createStore } from "redux";
-import demoApp from "./reducers";
-
-//import Account from "tasit-sdk";
+import { Account } from "tasit-sdk";
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   };
 
-  componentDidMount() {
-    //Account.create().then((w) => {
-    //	console.log(w);
-    //})
-  }
+	componentDidMount() {
+		Account.create().then((w) => {
+			console.log(w.address);
+		});
+	}
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
