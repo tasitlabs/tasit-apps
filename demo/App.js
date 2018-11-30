@@ -8,11 +8,11 @@ export default class App extends React.Component {
     isLoadingComplete: false
   };
 
-	componentDidMount() {
-		Account.create().then((w) => {
-			console.log(w.address);
-		});
-	}
+  componentDidMount() {
+    Account.create().then(w => {
+      console.log(w.address);
+    });
+  }
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
