@@ -1,11 +1,6 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import "ethers/dist/shims.js";
-import { ethers } from "ethers";
-
-// Note: In the future, we'll be importing the Tasit SDK
-// which has ethers.js as a dependency rather than importing
-// it directly
+//import { Account } from "tasit-sdk";
 
 export default class App extends React.Component {
   state = {
@@ -162,43 +157,10 @@ export default class App extends React.Component {
         );
       });
 
-    let abi = [
-      "event ValueChanged(address indexed author, string oldValue, string newValue)",
-      "constructor(string value)",
-      "function getValue() view returns (string value)",
-      "function setValue(string value)",
-    ];
-    let contractAddress = "0x2bD9aAa2953F988153c8629926D22A6a5F69b14E";
-    let contract = new ethers.Contract(contractAddress, abi, fundedWallet);
-    let newValue = "I like dogs";
-
-    contract.on("ValueChanged", (author, oldValue, newValue, event) => {
-      console.assert(
-        author === fundedWallet.address,
-        "ValueChanged event should have fundedWallet.address as author"
-      );
-      console.log(oldValue);
-      console.log(newValue);
-      console.log(event.blockNumber);
-    });
-
-    contract
-      .setValue(newValue)
-      .then(tx => {
-        console.log("ropsten contract write tx: ", tx.hash);
-        return tx.wait();
-      })
-      .then(() => {
-        contract.getValue().then(currentValue => {
-          console.assert(
-            currentValue === newValue,
-            "contract value should changed"
-          );
-        });
-      })
-      .catch(e => {
-        console.log(e);
-      });
+  componentDidMount() {
+    // Account.create().then(w => {
+    //   console.log(w.address);
+    // });
   }
 
   render() {
