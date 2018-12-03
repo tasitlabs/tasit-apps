@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-//import { Account } from "tasit-sdk";
+import { Account } from "tasit-sdk";
 
 export default class App extends React.Component {
   state = {
@@ -158,10 +158,13 @@ export default class App extends React.Component {
       });
 
   componentDidMount() {
-    // Account.create().then(w => {
-    //   console.log(w.address);
-    // });
+    this.createAccount();
   }
+
+  createAccount = async () => {
+    let wallet = await Account.create();
+    console.log(wallet.address);
+  };
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
