@@ -1,18 +1,17 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
-//import { Account } from "tasit-sdk";
+import { Account } from "tasit-sdk";
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false
   };
 
-  componentDidMount() {
-    // Account.create().then(w => {
-    //   console.log(w.address);
-    // });
-  }
+  componentDidMount = async () => {
+    let wallet = await Account.create();
+    console.log(wallet.address);
+  };
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
