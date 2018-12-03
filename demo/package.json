@@ -9,7 +9,8 @@
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
-    "test": "npx jest"
+    "test": "npx jest",
+		"lint": "npx prettier --write App.js && npx eslint App.js"
   },
   "dependencies": {
     "ethers": "^4.0.14",
@@ -20,7 +21,13 @@
     "tasit-sdk": "0.0.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
+    "eslint": "^5.9.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.5.0",
     "expo-cli": "^2.4.0",
     "jest": "^23.6.0",
     "jest-expo": "^31.0.0",
