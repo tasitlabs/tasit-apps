@@ -13,11 +13,6 @@ export default class App extends React.Component {
     console.log(wallet.address);
   };
 
-  createAccount = async () => {
-    let wallet = await Account.create();
-    console.log(wallet.address);
-  };
-
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
