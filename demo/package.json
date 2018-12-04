@@ -10,7 +10,7 @@
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
     "test": "npx jest",
-		"lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx}'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx}'"
   },
   "dependencies": {
     "ethers": "^4.0.14",
