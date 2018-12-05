@@ -5,7 +5,7 @@ import { Account } from "tasit-sdk";
 
 export default class App extends React.Component {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
   };
 
   componentDidMount = async () => {
@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
