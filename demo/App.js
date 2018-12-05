@@ -1,20 +1,10 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import { Account } from "tasit-sdk";
+import HomeScreen from "./src/HomeScreen";
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
-  };
-
-  componentDidMount = async () => {
-    let wallet = await Account.create();
-    console.log(wallet.address);
-  };
-
-  createAccount = async () => {
-    let wallet = await Account.create();
-    console.log(wallet.address);
   };
 
   render() {
@@ -27,11 +17,7 @@ export default class App extends React.Component {
         />
       );
     } else {
-      return (
-        <Provider store={store}>
-          <AppNavigator />
-        </Provider>
-      );
+      return <HomeScreen />;
     }
   }
 
@@ -49,7 +35,10 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
+<<<<<<< HEAD
 
 App.propTypes = {
   skipLoadingScreen: PropTypes.bool,
 };
+=======
+>>>>>>> Tasit Welcome moved to HomeScreen
