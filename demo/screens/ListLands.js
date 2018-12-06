@@ -1,5 +1,13 @@
 import React from "react";
-import { ListView, Image, StyleSheet, View, Text } from "react-native";
+import {
+	ListView,
+	Image,
+	StyleSheet,
+	View,
+	Text,
+	Button,
+	TouchableHighlight,
+} from "react-native";
 import Land from "../presentational/Land";
 
 const rows = [
@@ -45,9 +53,15 @@ export default class ListLands extends React.Component {
 	renderRow = rowData => {
 		const { id, name, img, priceMana, priceUsd } = rowData;
 		return (
-			<View style={styles.row}>
-				<Land land={rowData} />
-			</View>
+			<TouchableHighlight
+				onPress={() =>
+					this.props.navigation.navigate("LandClaim", { land: rowData })
+				}
+			>
+				<View style={styles.row}>
+					<Land land={rowData} />
+				</View>
+			</TouchableHighlight>
 		);
 	};
 

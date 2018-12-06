@@ -3,6 +3,7 @@ import { Image, Button, StyleSheet, View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Account } from "tasit-sdk";
 import ListLands from "./ListLands";
+import LandClaim from "./LandClaim";
 
 class Home extends React.Component {
 	componentDidMount = async () => {
@@ -27,25 +28,6 @@ class Home extends React.Component {
 	}
 }
 
-const AppNavigator = createStackNavigator(
-	{
-		Home: Home,
-		ListLands: ListLands,
-	},
-	{
-		initialRouteName: "Home",
-		defaultNavigationOptions: {
-			headerStyle: {
-				backgroundColor: "#f4511e",
-			},
-			headerTintColor: "#fff",
-			headerTitleStyle: {
-				fontWeight: "bold",
-			},
-		},
-	}
-);
-
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -60,5 +42,25 @@ const styles = StyleSheet.create({
 		color: "gray",
 	},
 });
+
+const AppNavigator = createStackNavigator(
+	{
+		Home: Home,
+		ListLands: ListLands,
+		LandClaim: LandClaim,
+	},
+	{
+		initialRouteName: "Home",
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: "#f4511e",
+			},
+			headerTintColor: "#fff",
+			headerTitleStyle: {
+				fontWeight: "bold",
+			},
+		},
+	}
+);
 
 export default createAppContainer(AppNavigator);
