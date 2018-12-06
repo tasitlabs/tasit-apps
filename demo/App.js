@@ -3,35 +3,35 @@ import { AppLoading, Asset, Font } from "expo";
 import Home from "./screens/Home";
 
 export default class App extends React.Component {
-	state = {
-		isLoadingComplete: false,
-	};
+  state = {
+    isLoadingComplete: false,
+  };
 
-	render() {
-		if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-			return (
-				<AppLoading
-					startAsync={this._loadResourcesAsync}
-					onError={this._handleLoadingError}
-					onFinish={this._handleFinishLoading}
-				/>
-			);
-		} else {
-			return <Home />;
-		}
-	}
+  render() {
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this._loadResourcesAsync}
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
+        />
+      );
+    } else {
+      return <Home />;
+    }
+  }
 
-	_loadResourcesAsync = async () => {
-		return Promise.all([Asset.loadAsync([]), Font.loadAsync({})]);
-	};
+  _loadResourcesAsync = async () => {
+    return Promise.all([Asset.loadAsync([]), Font.loadAsync({})]);
+  };
 
-	_handleLoadingError = error => {
-		// In this case, you might want to report the error to your error
-		// reporting service, for example Sentry
-		console.warn(error);
-	};
+  _handleLoadingError = error => {
+    // In this case, you might want to report the error to your error
+    // reporting service, for example Sentry
+    console.warn(error);
+  };
 
-	_handleFinishLoading = () => {
-		this.setState({ isLoadingComplete: true });
-	};
+  _handleFinishLoading = () => {
+    this.setState({ isLoadingComplete: true });
+  };
 }

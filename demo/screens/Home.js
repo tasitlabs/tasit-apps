@@ -10,65 +10,65 @@ import EthereumSignUp from "./EthereumSignUp";
 import EthereumSignIn from "./EthereumSignIn";
 
 class Home extends React.Component {
-	componentDidMount = async () => {
-		let wallet = await Account.create();
-		console.log(wallet.address);
-	};
+  componentDidMount = async () => {
+    let wallet = await Account.create();
+    console.log(wallet.address);
+  };
 
-	render() {
-		return (
-			<View style={styles.container}>
-				<Image source={require("../assets/images/icon.png")} />
-				<Text style={styles.tasitText}>
-					{`Tasit
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image source={require("../assets/images/icon.png")} />
+        <Text style={styles.tasitText}>
+          {`Tasit
           `}
-				</Text>
-				<Button
-					title="Decentraland"
-					onPress={() => this.props.navigation.navigate("ListLands")}
-				/>
-			</View>
-		);
-	}
+        </Text>
+        <Button
+          title="Decentraland"
+          onPress={() => this.props.navigation.navigate("ListLands")}
+        />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	tasitText: {
-		fontSize: 20,
-		textAlign: "center",
-		fontWeight: "bold",
-		color: "gray",
-	},
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  tasitText: {
+    fontSize: 20,
+    textAlign: "center",
+    fontWeight: "bold",
+    color: "gray",
+  },
 });
 
 const AppNavigator = createStackNavigator(
-	{
-		Home,
-		ListLands,
-		LandClaim,
-		OnboardingHome,
-		EthereumQuestion,
-		EthereumSignUp,
-		EthereumSignIn,
-	},
-	{
-		initialRouteName: "Home",
-		defaultNavigationOptions: {
-			headerStyle: {
-				backgroundColor: "#f4511e",
-			},
-			headerTintColor: "#fff",
-			headerTitleStyle: {
-				fontWeight: "bold",
-			},
-		},
-	}
+  {
+    Home,
+    ListLands,
+    LandClaim,
+    OnboardingHome,
+    EthereumQuestion,
+    EthereumSignUp,
+    EthereumSignIn,
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: "#f4511e",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    },
+  }
 );
 
 export default createAppContainer(AppNavigator);
