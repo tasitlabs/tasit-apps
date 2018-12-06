@@ -20,7 +20,11 @@ export default class Lands extends React.Component {
             
           `}
 				</Text>
-				<Button style={styles.claimButton} title="Claim" onPress={() => {}} />
+				<Button
+					style={styles.claimButton}
+					title="Claim"
+					onPress={() => this.props.navigation.navigate("OnboardingHome")}
+				/>
 			</View>
 		);
 	}

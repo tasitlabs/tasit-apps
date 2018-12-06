@@ -4,6 +4,9 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Account } from "tasit-sdk";
 import ListLands from "./ListLands";
 import LandClaim from "./LandClaim";
+import OnboardingHome from "./OnboardingHome";
+import EthereumQuestion from "./EthereumQuestion";
+import EthereumSignUp from "./EthereumSignUp";
 
 class Home extends React.Component {
 	componentDidMount = async () => {
@@ -45,9 +48,12 @@ const styles = StyleSheet.create({
 
 const AppNavigator = createStackNavigator(
 	{
-		Home: Home,
-		ListLands: ListLands,
-		LandClaim: LandClaim,
+		Home,
+		ListLands,
+		LandClaim,
+		OnboardingHome,
+		EthereumQuestion,
+		EthereumSignUp,
 	},
 	{
 		initialRouteName: "Home",
