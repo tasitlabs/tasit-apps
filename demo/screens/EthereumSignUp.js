@@ -1,6 +1,18 @@
 import React from "react";
-import { Image, Button, StyleSheet, View, Text, TextInput } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import {
+  Image,
+  Button,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  KeyboardAvoidingView,
+} from "react-native";
+import {
+  createStackNavigator,
+  createAppContainer,
+  Header,
+} from "react-navigation";
 
 export default class EthereumSignUp extends React.Component {
   state = {
@@ -9,7 +21,11 @@ export default class EthereumSignUp extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={Header.HEIGHT + 20}
+        style={styles.container}
+        behavior="padding"
+      >
         <Text style={styles.text}>
           {`Cool. Let's start by picking your Tasit username.`}
         </Text>
@@ -26,10 +42,11 @@ export default class EthereumSignUp extends React.Component {
             <Text style={styles.ensText}>{`.tasitid.eth`}</Text>
           </View>
         </View>
+
         <View style={styles.buttonView}>
           <Button title="Continue" onPress={() => {}} />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
