@@ -1,5 +1,6 @@
 import React from "react";
 import { ListView, Image, StyleSheet, View, Text } from "react-native";
+import Land from "../presentational/Land";
 
 const rows = [
 	{
@@ -45,13 +46,7 @@ export default class ListLands extends React.Component {
 		const { id, name, img, priceMana, priceUsd } = rowData;
 		return (
 			<View style={styles.row}>
-				<View style={styles.landContainer}>
-					<Image source={img} />
-					<Text>{name}</Text>
-					<Text>
-						⏣ {priceMana} (~ ${priceUsd})
-					</Text>
-				</View>
+				<Land land={rowData} />
 			</View>
 		);
 	};
