@@ -10,7 +10,7 @@ export default class EthereumSignUp extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.questionText}>
+				<Text style={styles.text}>
 					{`Cool. Let's start by picking your Tasit username.
           `}
 				</Text>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
-	questionText: {
+	text: {
 		padding: 10,
 		fontSize: 30,
 		textAlign: "center",

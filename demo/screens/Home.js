@@ -7,6 +7,7 @@ import LandClaim from "./LandClaim";
 import OnboardingHome from "./OnboardingHome";
 import EthereumQuestion from "./EthereumQuestion";
 import EthereumSignUp from "./EthereumSignUp";
+import EthereumSignIn from "./EthereumSignIn";
 
 class Home extends React.Component {
 	componentDidMount = async () => {
@@ -54,6 +55,7 @@ const AppNavigator = createStackNavigator(
 		OnboardingHome,
 		EthereumQuestion,
 		EthereumSignUp,
+		EthereumSignIn,
 	},
 	{
 		initialRouteName: "Home",

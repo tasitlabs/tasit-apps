@@ -19,7 +19,10 @@ export default class EthereumQuestion extends React.Component {
 					{`
           `}
 				</Text>
-				<Button title="Nope" onPress={() => {}} />
+				<Button
+					title="Nope"
+					onPress={() => this.props.navigation.navigate("EthereumSignIn")}
+				/>
 			</View>
 		);
 	}
