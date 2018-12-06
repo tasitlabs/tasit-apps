@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import HomeScreen from "./src/HomeScreen";
+import Home from "./screens/Home";
 
 export default class App extends React.Component {
 	state = {
@@ -17,7 +17,7 @@ export default class App extends React.Component {
 				/>
 			);
 		} else {
-			return <HomeScreen />;
+			return <Home />;
 		}
 	}
 
