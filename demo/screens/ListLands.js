@@ -8,7 +8,7 @@ import {
   Button,
   TouchableHighlight,
 } from "react-native";
-import Land from "../presentational/Land";
+import Land from "../components/presentational/Land";
 
 const rows = [
   {

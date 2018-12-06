@@ -1,6 +1,6 @@
 import React from "react";
 import { ListView, Image, StyleSheet, View, Text, Button } from "react-native";
-import Land from "../presentational/Land";
+import Land from "../components/presentational/Land";
 
 export default class Lands extends React.Component {
   render() {
