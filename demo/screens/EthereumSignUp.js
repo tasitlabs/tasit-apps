@@ -11,26 +11,22 @@ export default class EthereumSignUp extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.text}>
-					{`Cool. Let's start by picking your Tasit username.
-          `}
+					{`Cool. Let's start by picking your Tasit username.`}
 				</Text>
-				<View style={{ flexDirection: "row" }}>
-					<View style={{ flex: 1, alignItems: "flex-end" }}>
+				<View style={styles.userRow}>
+					<View style={styles.userInputView}>
 						<TextInput
-							style={{ justifyContent: "flex-start", width: 90, fontSize: 20 }}
+							style={styles.userInput}
 							onChangeText={text => this.setState({ text })}
 							value={this.state.text}
 							placeholder="username"
 						/>
 					</View>
-					<View style={{ flex: 1 }}>
-						<Text
-							style={{ justifyContent: "flex-end", fontSize: 20 }}
-						>{`.tasitid.eth`}</Text>
+					<View style={styles.ensView}>
+						<Text style={styles.ensText}>{`.tasitid.eth`}</Text>
 					</View>
 				</View>
-
-				<View style={{ flexDirection: "row", marginTop: 30 }}>
+				<View style={styles.buttonView}>
 					<Button title="Continue" onPress={() => {}} />
 				</View>
 			</View>
@@ -51,5 +47,14 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontWeight: "bold",
 		color: "gray",
+	},
+	userRow: { flexDirection: "row" },
+	userInputView: { flex: 1, alignItems: "flex-end" },
+	userInput: { justifyContent: "flex-start", width: 90, fontSize: 20 },
+	ensView: { flex: 1 },
+	ensText: { justifyContent: "flex-end", fontSize: 20 },
+	buttonView: {
+		flexDirection: "row",
+		marginTop: 30,
 	},
 });

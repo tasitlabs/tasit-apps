@@ -6,23 +6,19 @@ export default class EthereumQuestion extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.questionText}>
-					{`Are you new to Ethereum?
-
-          `}
-				</Text>
-				<Button
-					title="Yep"
-					onPress={() => this.props.navigation.navigate("EthereumSignUp")}
-				/>
-				<Text>
-					{`
-          `}
-				</Text>
-				<Button
-					title="Nope"
-					onPress={() => this.props.navigation.navigate("EthereumSignIn")}
-				/>
+				<Text style={styles.questionText}>{`Are you new to Ethereum?`}</Text>
+				<View style={styles.buttonView}>
+					<Button
+						title="Yep"
+						onPress={() => this.props.navigation.navigate("EthereumSignUp")}
+					/>
+				</View>
+				<View style={styles.buttonView}>
+					<Button
+						title="Nope"
+						onPress={() => this.props.navigation.navigate("EthereumSignIn")}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -41,5 +37,9 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontWeight: "bold",
 		color: "gray",
+	},
+	buttonView: {
+		flexDirection: "row",
+		marginTop: 20,
 	},
 });

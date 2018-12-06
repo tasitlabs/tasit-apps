@@ -15,16 +15,13 @@ export default class Lands extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Land land={land} />
-				<Text>
-					{`
-            
-          `}
-				</Text>
-				<Button
-					style={styles.claimButton}
-					title="Claim"
-					onPress={() => this.props.navigation.navigate("OnboardingHome")}
-				/>
+				<View style={styles.buttonView}>
+					<Button
+						style={styles.claimButton}
+						title="Claim"
+						onPress={() => this.props.navigation.navigate("OnboardingHome")}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -36,5 +33,9 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
+	},
+	buttonView: {
+		flexDirection: "row",
+		marginTop: 30,
 	},
 });

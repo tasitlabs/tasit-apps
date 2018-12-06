@@ -8,13 +8,14 @@ export default class OnboardingHome extends React.Component {
 			<View style={styles.container}>
 				<Image source={require("../assets/images/icon.png")} />
 				<Text style={styles.text}>
-					{`Let's get you set up with a secure way to store this land!
-          `}
+					{`Let's get you set up with a secure way to store this land!`}
 				</Text>
-				<Button
-					title="Get started"
-					onPress={() => this.props.navigation.navigate("EthereumQuestion")}
-				/>
+				<View style={styles.buttonView}>
+					<Button
+						title="Get started"
+						onPress={() => this.props.navigation.navigate("EthereumQuestion")}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -32,5 +33,9 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontWeight: "bold",
 		color: "gray",
+	},
+	buttonView: {
+		flexDirection: "row",
+		marginTop: 30,
 	},
 });

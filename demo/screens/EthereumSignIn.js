@@ -7,10 +7,9 @@ export default class EthereumSignIn extends React.Component {
 		return (
 			<View style={styles.container}>
 				<Text style={styles.text}>
-					{`Cool. Let's start by hooking this app with your wallet.
-          `}
+					{`Cool. Let's start by hooking this app with your wallet.`}
 				</Text>
-				<View style={{ flexDirection: "row", marginTop: 30 }}>
+				<View style={styles.buttonView}>
 					<Button title="Connect with WalletConnect" onPress={() => {}} />
 				</View>
 			</View>
@@ -31,5 +30,9 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontWeight: "bold",
 		color: "gray",
+	},
+	buttonView: {
+		flexDirection: "row",
+		marginTop: 30,
 	},
 });
