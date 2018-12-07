@@ -5,7 +5,8 @@ import Colors from "../constants/Colors";
 
 export default class Home extends React.Component {
   componentDidMount = async () => {
-    let wallet = await Account.create();
+    // TODO: Remove await when SDK 0.0.3 is out
+    const wallet = await Account.create();
     console.log(wallet.address);
   };
 
