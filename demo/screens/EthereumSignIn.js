@@ -1,6 +1,6 @@
 import React from "react";
-import { Image, Button, StyleSheet, View, Text, TextInput } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { Button, StyleSheet, View, Text } from "react-native";
+import Colors from "../constants/Colors";
 
 export default class EthereumSignIn extends React.Component {
   render() {
@@ -20,7 +20,7 @@ export default class EthereumSignIn extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: "center",
     fontWeight: "bold",
-    color: "gray",
+    color: Colors.textColor,
   },
   buttonView: {
     flexDirection: "row",

@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  ListView,
-  Image,
-  StyleSheet,
-  View,
-  Text,
-  Button,
-  TouchableHighlight,
-} from "react-native";
+import { ListView, StyleSheet, View, TouchableHighlight } from "react-native";
 import Land from "../components/presentational/Land";
+import Colors from "../constants/Colors";
 
 const rows = [
   {
@@ -51,7 +44,6 @@ export default class ListLands extends React.Component {
   };
 
   renderRow = rowData => {
-    const { id, name, img, priceMana, priceUsd } = rowData;
     return (
       <TouchableHighlight
         onPress={() =>
@@ -79,15 +71,12 @@ export default class ListLands extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.backgroundColor,
   },
   row: {
     padding: 15,
     marginBottom: 5,
     alignItems: "center",
     justifyContent: "center",
-  },
-  landContainer: {
-    width: 224,
   },
 });

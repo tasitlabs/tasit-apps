@@ -1,17 +1,15 @@
 import React from "react";
-import { ListView, Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, View, Text } from "react-native";
 
-export default class ListLands extends React.Component {
-  renderRow = rowData => {};
-
+export default class Land extends React.Component {
   render() {
-    const { id, name, img, priceMana, priceUsd } = this.props.land;
+    const { name, img, priceMana, priceUsd } = this.props.land;
     return (
       <View style={styles.landContainer}>
         <Image source={img} />
         <Text>{name}</Text>
         <Text>
-          ⏣ {priceMana} (~ ${priceUsd})
+          MANA {priceMana} (~ ${priceUsd})
         </Text>
       </View>
     );

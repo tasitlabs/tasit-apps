@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import Home from "./screens/Home";
+import AppNavigator from "./screens/AppNavigator";
 
 export default class App extends React.Component {
   state = {
@@ -17,7 +17,7 @@ export default class App extends React.Component {
         />
       );
     } else {
-      return <Home />;
+      return <AppNavigator />;
     }
   }
 

@@ -1,6 +1,7 @@
 import React from "react";
-import { ListView, Image, StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import Land from "../components/presentational/Land";
+import Colors from "../constants/Colors";
 
 export default class Lands extends React.Component {
   render() {
@@ -30,7 +31,7 @@ export default class Lands extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },

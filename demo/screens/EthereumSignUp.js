@@ -1,51 +1,21 @@
 import React from "react";
-import {
-  Image,
-  Button,
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  KeyboardAvoidingView,
-} from "react-native";
-import {
-  createStackNavigator,
-  createAppContainer,
-  Header,
-} from "react-navigation";
-
+import { StyleSheet, Text, KeyboardAvoidingView } from "react-native";
+import { Header } from "react-navigation";
+import Colors from "../constants/Colors";
+import EthereumSignUpForm from "../components/presentational/EthereumSignUpForm";
 export default class EthereumSignUp extends React.Component {
-  state = {
-    text: "",
-  };
-
   render() {
+    const OFFSET = 20;
     return (
       <KeyboardAvoidingView
-        keyboardVerticalOffset={Header.HEIGHT + 20}
+        keyboardVerticalOffset={Header.HEIGHT + OFFSET}
         style={styles.container}
         behavior="padding"
       >
         <Text style={styles.text}>
           {`Cool. Let's start by picking your Tasit username.`}
         </Text>
-        <View style={styles.userRow}>
-          <View style={styles.userInputView}>
-            <TextInput
-              style={styles.userInput}
-              onChangeText={text => this.setState({ text })}
-              value={this.state.text}
-              placeholder="username"
-            />
-          </View>
-          <View style={styles.ensView}>
-            <Text style={styles.ensText}>{`.tasitid.eth`}</Text>
-          </View>
-        </View>
-
-        <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => {}} />
-        </View>
+        <EthereumSignUpForm />
       </KeyboardAvoidingView>
     );
   }
@@ -54,7 +24,7 @@ export default class EthereumSignUp extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -63,15 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: "center",
     fontWeight: "bold",
-    color: "gray",
-  },
-  userRow: { flexDirection: "row" },
-  userInputView: { flex: 1, alignItems: "flex-end" },
-  userInput: { justifyContent: "flex-start", width: 90, fontSize: 20 },
-  ensView: { flex: 1 },
-  ensText: { justifyContent: "flex-end", fontSize: 20 },
-  buttonView: {
-    flexDirection: "row",
-    marginTop: 30,
+    color: Colors.textColor,
   },
 });

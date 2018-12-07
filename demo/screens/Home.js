@@ -1,15 +1,9 @@
 import React from "react";
 import { Image, Button, StyleSheet, View, Text } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
 import { Account } from "tasit-sdk";
-import ListLands from "./ListLands";
-import LandClaim from "./LandClaim";
-import OnboardingHome from "./OnboardingHome";
-import EthereumQuestion from "./EthereumQuestion";
-import EthereumSignUp from "./EthereumSignUp";
-import EthereumSignIn from "./EthereumSignIn";
+import Colors from "../constants/Colors";
 
-class Home extends React.Component {
+export default class Home extends React.Component {
   componentDidMount = async () => {
     let wallet = await Account.create();
     console.log(wallet.address);
@@ -35,7 +29,7 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -43,32 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
-    color: "gray",
+    color: Colors.textColor,
   },
 });
-
-const AppNavigator = createStackNavigator(
-  {
-    Home,
-    ListLands,
-    LandClaim,
-    OnboardingHome,
-    EthereumQuestion,
-    EthereumSignUp,
-    EthereumSignIn,
-  },
-  {
-    initialRouteName: "Home",
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: "#f4511e",
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        fontWeight: "bold",
-      },
-    },
-  }
-);
-
-export default createAppContainer(AppNavigator);
