@@ -38,23 +38,27 @@ const rowHasChanged = (r1, r2) => r1.id !== r2.id;
 
 const ds = new ListView.DataSource({ rowHasChanged });
 
+function LandRow(props) {
+  const { onPress, rowData } = props;
+  return (
+    <TouchableHighlight onPress={onPress}>
+      <View style={styles.row}>
+        <Land land={rowData} />
+      </View>
+    </TouchableHighlight>
+  );
+}
+
 export default class ListLands extends React.Component {
   state = {
     dataSource: ds.cloneWithRows(rows),
   };
 
   renderRow = rowData => {
-    return (
-      <TouchableHighlight
-        onPress={() =>
-          this.props.navigation.navigate("LandClaim", { land: rowData })
-        }
-      >
-        <View style={styles.row}>
-          <Land land={rowData} />
-        </View>
-      </TouchableHighlight>
-    );
+    const handlePress = () =>
+      this.props.navigation.navigate("LandClaim", { land: rowData });
+
+    return <LandRow rowData={rowData} onPress={handlePress} />;
   };
 
   render() {

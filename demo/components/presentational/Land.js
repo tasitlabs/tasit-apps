@@ -9,7 +9,7 @@ export default class Land extends React.Component {
         <Image source={img} />
         <Text>{name}</Text>
         <Text>
-          MANA {priceMana} (~ ${priceUsd})
+          {priceMana} MANA (~${priceUsd})
         </Text>
       </View>
     );

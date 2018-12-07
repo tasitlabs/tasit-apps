@@ -13,4 +13,6 @@ export default {
   noticeText: "#fff",
   backgroundColor: "#fff",
   textColor: "gray",
+  headerBackgroundColor: "#f4511e",
+  headerTintColor: "#fff",
 };

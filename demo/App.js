@@ -1,6 +1,6 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import AppNavigator from "./screens/AppNavigator";
+import AppNavigator from "./AppNavigator";
 
 export default class App extends React.Component {
   state = {
