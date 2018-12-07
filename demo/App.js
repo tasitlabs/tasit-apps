@@ -1,16 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
-import { Account } from "tasit-sdk";
+import AppNavigator from "./AppNavigator";
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
-  };
-
-  componentDidMount = async () => {
-    let wallet = await Account.create();
-    console.log(wallet.address);
   };
 
   render() {
@@ -23,11 +17,7 @@ export default class App extends React.Component {
         />
       );
     } else {
-      return (
-        <View style={styles.container}>
-          <Text>Welcome to the Tasit demo app</Text>
-        </View>
-      );
+      return <AppNavigator />;
     }
   }
 
@@ -45,12 +35,3 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
