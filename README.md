@@ -6,15 +6,29 @@ In the short run, the focus for the Tasit products is providing simple, third-pa
 
 We have a separate app for each major class of dapp.
 
-- Tasit One ([NFTs](http://erc721.org/))
+### Tasit One
+Our first app is called Tasit One.
 
-- Tasit List ([TCRs](https://medium.com/@simondlr/city-walls-bo-taoshi-exploring-the-power-of-token-curated-registries-588f208c17d5) / FCRs)
+Tasit One ([NFTs](http://erc721.org/))
 
-- Tasit Org ([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
+Here's an [interactive wireframe video](https://youtu.be/iJQtDPQrRsE) showing how this app will look for an example ERC721 NFT like [Decentraland](https://decentraland.org/).
 
-- Tasit Market (Two-sided marketplaces like Gitcoin, CryptoCribs, Ethlance, etc.)
+This app shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+
+### Coming soon
+
+##### Tasit List
+([TCRs](https://medium.com/@simondlr/city-walls-bo-taoshi-exploring-the-power-of-token-curated-registries-588f208c17d5) / FCRs)
+
+##### Tasit Org
+([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
+
+##### Tasit Market
+(Two-sided marketplaces like Gitcoin, CryptoCribs, OpenSea, etc.)
 
 - ...with more to come
+
+### The road ahead
 
 In the long run, Tasit will stitch together components from multiple dapps into novel experiences, like delegating your vote for a particular TCR to a preexisting Aragon organization, or decorating your Dharma loans with the same hats you use for your CryptoKitties because...reasons?
 
