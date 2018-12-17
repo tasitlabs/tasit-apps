@@ -14,8 +14,9 @@ module.exports = {
     "prettier/react",
   ],
   rules: {
-    "no-console": 0,
-    "react/prop-types": 0,
+    "no-console": "off",
+    "react-native/no-raw-text": "off",
+    "react/prop-types": "off",
     "prettier/prettier": "error",
   },
   settings: {
