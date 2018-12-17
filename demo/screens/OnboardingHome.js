@@ -1,5 +1,6 @@
 import React from "react";
-import { Image, Button, StyleSheet, View, Text } from "react-native";
+import { Image, Button, StyleSheet, View } from "react-native";
+import LargeText from "../components/presentational/LargeText";
 import Colors from "../constants/Colors";
 
 export default class OnboardingHome extends React.Component {
@@ -7,9 +8,7 @@ export default class OnboardingHome extends React.Component {
     return (
       <View style={styles.container}>
         <Image source={require("../assets/images/icon.png")} />
-        <Text style={styles.text}>
-          {`Let's get you set up with a secure way to store this land!`}
-        </Text>
+        <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
         <View style={styles.buttonView}>
           <Button
             title="Get started"
@@ -27,12 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    fontSize: 20,
-    textAlign: "center",
-    fontWeight: "bold",
-    color: Colors.textColor,
   },
   buttonView: {
     flexDirection: "row",
