@@ -1,7 +1,7 @@
 import React from "react";
 import { ListView, StyleSheet, View, TouchableHighlight } from "react-native";
-import Land from "../components/presentational/Land";
-import Colors from "../constants/Colors";
+import Land from "@presentational/Land";
+import Colors from "@constants/Colors";
 
 const rows = [
   {

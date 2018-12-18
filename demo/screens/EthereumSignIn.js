@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, StyleSheet, View } from "react-native";
-import LargeText from "../components/presentational/LargeText";
-import Colors from "../constants/Colors";
+import LargeText from "@presentational/LargeText";
+import Colors from "@constants/Colors";
 
 export default class EthereumSignIn extends React.Component {
   render() {

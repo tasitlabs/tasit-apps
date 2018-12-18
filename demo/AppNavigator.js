@@ -6,7 +6,7 @@ import OnboardingHome from "./screens/OnboardingHome";
 import EthereumQuestion from "./screens/EthereumQuestion";
 import EthereumSignUp from "./screens/EthereumSignUp";
 import EthereumSignIn from "./screens/EthereumSignIn";
-import Colors from "./constants/Colors.js";
+import Colors from "@constants/Colors";
 
 const AppNavigator = createStackNavigator(
   {
