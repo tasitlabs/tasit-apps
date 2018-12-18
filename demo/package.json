@@ -44,7 +44,13 @@
     "preset": "jest-expo",
     "transform": {
       "\\.js$": "<rootDir>/jest.preprocessor.js"
-    }
+    },
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|.*react-navigation|expo-react-native-adapter)"
+    ]
   },
   "keywords": [
     "dapp",
