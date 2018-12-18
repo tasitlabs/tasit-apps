@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LargeText renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "color": "gray",
+      "fontSize": 30,
+      "fontWeight": "bold",
+      "padding": 26.68,
+      "textAlign": "center",
+    }
+  }
+/>
+`;

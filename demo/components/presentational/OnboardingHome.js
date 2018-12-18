@@ -6,7 +6,7 @@ import Colors from "../../constants/Colors";
 export default function OnboardingHome(props) {
   return (
     <View style={styles.container}>
-      <Image source={require("../assets/images/icon.png")} />
+      <Image source={require("../../assets/images/icon.png")} />
       <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
       <View style={styles.buttonView}>
         <Button title="Get started" onPress={props.onPress} />

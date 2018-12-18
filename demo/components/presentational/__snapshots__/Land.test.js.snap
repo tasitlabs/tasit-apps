@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Land renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "width": 224,
+    }
+  }
+>
+  <Component
+    source={1}
+  />
+  <Component>
+    Not found
+  </Component>
+  <Component>
+    0
+     MANA (~$
+    0
+    )
+  </Component>
+</Component>
+`;

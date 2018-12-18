@@ -6,7 +6,7 @@ import Colors from "../../constants/Colors";
 export default function Home(props) {
   return (
     <View style={styles.container}>
-      <Image source={require("../assets/images/icon.png")} />
+      <Image source={require("../../assets/images/icon.png")} />
       <LargeText>{`Tasit`}</LargeText>
       <Button title="Decentraland" onPress={props.onPress} />
     </View>

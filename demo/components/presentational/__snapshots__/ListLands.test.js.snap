@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListLands renders the component 1`] = `
+<ListViewMock
+  renderScrollComponent={[MockFunction]}
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+/>
+`;
