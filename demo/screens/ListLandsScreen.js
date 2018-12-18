@@ -1,7 +1,7 @@
 import React from "react";
 import { ListView } from "react-native";
-import ListLands from "../components/presentational/ListLands";
-import LandRow from "../components/presentational/LandRow";
+import ListLands from "@presentational/ListLands";
+import LandRow from "@presentational/LandRow";
 
 const rows = [
   {
