@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EthereumQuestion renders the component 1`] = `
+<ListViewMock
+  renderRow={[Function]}
+  renderScrollComponent={[MockFunction]}
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+    }
+  }
+/>
+`;
