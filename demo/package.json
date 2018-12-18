@@ -10,7 +10,7 @@
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
     "test": "npx jest",
-    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx}'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
   },
   "dependencies": {
     "expo": "^31.0.3",
@@ -25,8 +25,10 @@
     "babel-preset-expo": "^5.0.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
@@ -50,6 +52,9 @@
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|.*react-navigation|expo-react-native-adapter)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
     ]
   },
   "keywords": [

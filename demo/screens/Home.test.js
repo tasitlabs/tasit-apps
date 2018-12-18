@@ -1,7 +1,5 @@
-import NavigationTestUtils from "react-navigation/NavigationTestUtils";
-//import { StyleSheet, Text, View } from "react-native";
-import renderer from "react-test-renderer";
 import React from "react";
+import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
 import Home from "./Home";
 
@@ -11,12 +9,11 @@ describe("Home", () => {
     NavigationTestUtils.resetInternalState();
   });
 
-  it("renders the loading screen", async () => {
-    const tree = renderer.create(<Home />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it("renders the Home screen", async () => {
+    expect(shallow(<Home />)).toMatchSnapshot();
   });
 
-  xit("renders the root without loading screen", async () => {
+  it("renders the root without loading screen", async () => {
     const wrapper = shallow(<Home />);
 
     await wrapper.instance().componentDidMount();
