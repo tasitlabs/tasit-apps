@@ -1,10 +1,16 @@
 import React from "react";
+<<<<<<< HEAD
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "./LargeText";
 import Button from "./Button";
 import Colors from "@constants/Colors";
+=======
+import { Button, StyleSheet, View } from "react-native";
+import LargeText from "./LargeText";
+import Colors from "../../constants/Colors";
+>>>>>>> Screen/Presentational components refactoring
 
 export default function EthereumQuestion(props) {
   return (
@@ -20,11 +26,14 @@ export default function EthereumQuestion(props) {
   );
 }
 
+<<<<<<< HEAD
 EthereumQuestion.propTypes = {
   onSignUp: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,
 };
 
+=======
+>>>>>>> Screen/Presentational components refactoring
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -34,6 +43,10 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     flexDirection: "row",
+<<<<<<< HEAD
     marginTop: responsiveHeight(4),
+=======
+    marginTop: 20,
+>>>>>>> Screen/Presentational components refactoring
   },
 });

@@ -1,15 +1,15 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import EthereumSignUpScreen from "./EthereumSignUpScreen";
+import ListLands from "./ListLands";
 
-describe("EthereumSignUpScreen", () => {
+describe("EthereumQuestion", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
 
   it("renders the component", async () => {
-    expect(shallow(<EthereumSignUpScreen />)).toMatchSnapshot();
+    expect(shallow(<ListLands />)).toMatchSnapshot();
   });
 });
