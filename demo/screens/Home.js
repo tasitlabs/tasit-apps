@@ -1,6 +1,7 @@
 import React from "react";
-import { Image, Button, StyleSheet, View, Text } from "react-native";
+import { Image, Button, StyleSheet, View } from "react-native";
 import { Account } from "tasit-sdk";
+import LargeText from "../components/presentational/LargeText";
 import Colors from "../constants/Colors";
 
 export default class Home extends React.Component {
@@ -14,10 +15,7 @@ export default class Home extends React.Component {
     return (
       <View style={styles.container}>
         <Image source={require("../assets/images/icon.png")} />
-        <Text style={styles.tasitText}>
-          {`Tasit
-          `}
-        </Text>
+        <LargeText>{`Tasit`}</LargeText>
         <Button
           title="Decentraland"
           onPress={() => this.props.navigation.navigate("ListLands")}
@@ -33,11 +31,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
-  },
-  tasitText: {
-    fontSize: 20,
-    textAlign: "center",
-    fontWeight: "bold",
-    color: Colors.textColor,
   },
 });

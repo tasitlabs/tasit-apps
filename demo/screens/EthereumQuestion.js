@@ -1,13 +1,13 @@
 import React from "react";
-import { Button, StyleSheet, View, Text } from "react-native";
-import { responsiveHeight } from "react-native-responsive-dimensions";
+import { Button, StyleSheet, View } from "react-native";
+import LargeText from "../components/presentational/LargeText";
 import Colors from "../constants/Colors";
 
 export default class EthereumQuestion extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.questionText}>Are you new to Ethereum?</Text>
+        <LargeText>{`Are you new to Ethereum?`}</LargeText>
         <View style={styles.buttonView}>
           <Button
             title="Yep"
@@ -31,13 +31,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "center",
-  },
-  questionText: {
-    padding: responsiveHeight(2),
-    fontSize: 30,
-    textAlign: "center",
-    fontWeight: "bold",
-    color: Colors.textColor,
   },
   buttonView: {
     flexDirection: "row",
