@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Button, StyleSheet, View } from "react-native";
-import LargeText from "../components/presentational/LargeText";
-import Colors from "../constants/Colors";
+import LargeText from "@presentational/LargeText";
+import Colors from "@constants/Colors";
 
 export default class OnboardingHome extends React.Component {
   render() {

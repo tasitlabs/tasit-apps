@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
-import Land from "../components/presentational/Land";
-import Colors from "../constants/Colors";
+import Land from "@presentational/Land";
+import Colors from "@constants/Colors";
 
 export default class Lands extends React.Component {
   render() {
