@@ -1,9 +1,17 @@
 import React from "react";
 import { Button, StyleSheet, View, Text, TextInput } from "react-native";
+import { Account } from "tasit-sdk";
 
 export default class EthereumSignUpForm extends React.Component {
   state = {
     text: "",
+    address: "",
+  };
+
+  createAccount = async () => {
+    // TODO: Remove await when SDK 0.0.3 is out
+    const wallet = await Account.create();
+    this.setState({ address: wallet.address });
   };
 
   render() {
@@ -25,7 +33,7 @@ export default class EthereumSignUpForm extends React.Component {
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => {}} />
+          <Button title="Continue" onPress={() => this.createAccount()} />
         </View>
       </React.Fragment>
     );
