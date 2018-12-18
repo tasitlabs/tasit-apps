@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import EthereumSignIn from "./EthereumSignIn";
+import EthereumSignInScreen from "./EthereumSignInScreen";
 
 describe("EthereumSignIn", () => {
   jest.useFakeTimers();
@@ -10,6 +10,6 @@ describe("EthereumSignIn", () => {
   });
 
   it("renders the component", async () => {
-    expect(shallow(<EthereumSignIn />)).toMatchSnapshot();
+    expect(shallow(<EthereumSignInScreen />)).toMatchSnapshot();
   });
 });

@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet, KeyboardAvoidingView } from "react-native";
 import { Header } from "react-navigation";
 import Colors from "../constants/Colors";
-import LargeText from "../components/presentational/LargeText";
-import EthereumSignUpForm from "../components/presentational/EthereumSignUpForm";
+import LargeText from "./LargeText";
+import EthereumSignUpForm from "./EthereumSignUpForm";
 
 export default class EthereumSignUp extends React.Component {
   render() {
