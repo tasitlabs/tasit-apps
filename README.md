@@ -8,11 +8,9 @@ We have a separate app for each major class of dapp.
 
 ### Tasit Decentraland
 
-Our first app is called Tasit Decentraland.
+Our first app is called `Tasit Decentraland`.
 
-Tasit Decentraland
-
-Decentraland is a dapp using [unique tokens / NFTs](http://erc721.org/).
+Decentraland is a dapp using [unique tokens / NFTs](http://erc721.org/). `Tasit Decentraland` lets you use that dapp on mobile.
 
 This is the first Tasit NFT app - we plan to release other similar 3rd-party apps for other popular NFT projects.
 
@@ -37,7 +35,7 @@ Exact org project T.B.D.
 Exact market project T.B.D.
 (Two-sided marketplaces like Gitcoin, CryptoCribs, OpenSea, etc.)
 
-- ...with more to come
+##### ...with more to come
 
 ### The road ahead
 
@@ -52,3 +50,19 @@ These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 For more info, please visit our website:
 
 [tasit.io](https://tasit.io/)
+
+### Contact us
+
+We love getting feedback from people, so please feel free to reach out.
+
+- [Website](https://tasit.io/)
+
+- [Twitter](https://twitter.com/tasitlabs)
+
+- [Telegram](https://t.me/tasitlabs)
+
+- [Email](mailto:founders@tasit.io)
+
+- [Feature requests](https://tasit.canny.io/feature-requests)
+
+- [Project Kanban board](https://github.com/orgs/tasitlabs/projects/1)
