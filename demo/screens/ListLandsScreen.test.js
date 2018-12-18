@@ -1,15 +1,15 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import ListLands from "./ListLands";
+import ListLandsScreen from "./ListLandsScreen";
 
-describe("EthereumQuestion", () => {
+describe("ListLandsScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
 
   it("renders the component", async () => {
-    expect(shallow(<ListLands />)).toMatchSnapshot();
+    expect(shallow(<ListLandsScreen />)).toMatchSnapshot();
   });
 });

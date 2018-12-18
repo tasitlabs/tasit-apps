@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import OnboardingHome from "./OnboardingHome";
+import OnboardingHomeScreen from "./OnboardingHomeScreen";
 
 describe("OnboardingHome", () => {
   jest.useFakeTimers();
@@ -10,6 +10,6 @@ describe("OnboardingHome", () => {
   });
 
   it("renders the component", async () => {
-    expect(shallow(<OnboardingHome />)).toMatchSnapshot();
+    expect(shallow(<OnboardingHomeScreen />)).toMatchSnapshot();
   });
 });
