@@ -44,14 +44,9 @@ export default class ListLandsScreen extends React.Component {
   };
 
   renderRow = land => {
-    return (
-      <LandRow
-        land={land}
-        onPress={this.props.navigation.navigate("LandClaimScreen", {
-          land,
-        })}
-      />
-    );
+    const handlePress = () =>
+      this.props.navigation.navigate("LandClaimScreen", { land: land });
+    return <LandRow land={land} onPress={handlePress} />;
   };
 
   render() {

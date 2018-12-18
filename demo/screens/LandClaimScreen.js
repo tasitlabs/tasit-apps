@@ -1,6 +1,7 @@
 import React from "react";
+import LandClaim from "../components/presentational/LandClaim";
 
-export default class LandClaim extends React.Component {
+export default class LandClaimScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const land = navigation.getParam("land", {

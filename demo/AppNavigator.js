@@ -19,7 +19,7 @@ const AppNavigator = createStackNavigator(
     EthereumSignInScreen,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "HomeScreen",
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Colors.headerBackgroundColor,
