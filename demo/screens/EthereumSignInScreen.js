@@ -1,5 +1,5 @@
 import React from "react";
-import EthereumSignIn from "../components/presentational/EthereumSignIn";
+import EthereumSignIn from "@presentational/EthereumSignIn";
 
 export default class EthereumSignInScreen extends React.Component {
   render() {
