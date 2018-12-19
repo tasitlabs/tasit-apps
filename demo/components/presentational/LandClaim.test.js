@@ -4,6 +4,8 @@ import LandClaim from "./LandClaim";
 
 describe("LandClaim", () => {
   it("renders the component", async () => {
-    expect(shallow(<LandClaim onClaim={() => {}} />)).toMatchSnapshot();
+    expect(
+      shallow(<LandClaim land={{}} onClaim={() => {}} />)
+    ).toMatchSnapshot();
   });
 });

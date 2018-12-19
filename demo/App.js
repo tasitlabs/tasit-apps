@@ -1,5 +1,6 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
+import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 
 export default class App extends React.Component {
@@ -35,3 +36,7 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
+
+App.propTypes = {
+  skipLoadingScreen: PropTypes.bool,
+};

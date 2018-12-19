@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
+import PropTypes from "prop-types";
 import Land from "./Land";
 import Colors from "@constants/Colors";
 
@@ -18,6 +19,11 @@ export default function LandClaim(props) {
     </View>
   );
 }
+
+LandClaim.propTypes = {
+  land: PropTypes.object.isRequired,
+  onClaim: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -2,6 +2,8 @@
 
 exports[`ListLands renders the component 1`] = `
 <ListViewMock
+  dataSource={Object {}}
+  renderRow={[Function]}
   renderScrollComponent={[MockFunction]}
   style={
     Object {
