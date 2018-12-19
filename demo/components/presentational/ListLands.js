@@ -1,6 +1,6 @@
 import React from "react";
 import { ListView, StyleSheet } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "@constants/Colors";
 
 export default function ListLands(props) {
   return (
