@@ -15,11 +15,11 @@ module.exports = {
     "plugin:jest/recommended",
   ],
   rules: {
-    "no-console": "off",
-    "react-native/no-raw-text": "off",
+    "no-console": ["error", { allow: ["warn", "error"] }],
+    "react-native/no-raw-text": ["error", { skip: ["LargeText"] }],
     "react/prop-types": "off",
     "prettier/prettier": "error",
-    "jest/no-large-snapshots": ["warn", { maxSize: 20 }],
+    "jest/no-large-snapshots": ["warn", { maxSize: 50 }],
   },
   settings: {
     react: {
