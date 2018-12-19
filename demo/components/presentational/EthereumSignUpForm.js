@@ -13,10 +13,15 @@ export default class EthereumSignUpForm extends React.Component {
     address: "",
   };
 
-  createAccount = async () => {
-    // TODO: Remove await when SDK 0.0.3 is out
+  handleAsync = async () => {
     const wallet = await Account.create();
     this.setState({ address: wallet.address });
+    console.log("Async button clicked");
+  };
+
+  handleSync = () => {
+    this.setState({ address: "0x" });
+    console.log("Sync button clicked");
   };
 
   render() {
@@ -38,7 +43,8 @@ export default class EthereumSignUpForm extends React.Component {
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => this.createAccount()} />
+          <Button title="Aync" onPress={() => this.handleAsync()} />
+          <Button title="Sync" onPress={() => this.handleSync()} />
         </View>
       </React.Fragment>
     );

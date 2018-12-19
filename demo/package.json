@@ -10,6 +10,7 @@
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
     "test": "npx jest",
+    "test:bug": "npx jest components/presentational/EthereumSignUpForm.test.js",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
   },
   "dependencies": {
