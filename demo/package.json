@@ -10,7 +10,7 @@
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
     "test": "npx jest",
-    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx}'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
   },
   "dependencies": {
     "expo": "^31.0.3",
@@ -23,22 +23,39 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
     "expo-cli": "^2.4.0",
     "jest": "^23.6.0",
     "jest-expo": "^31.0.0",
-    "prettier": "^1.15.2"
+    "prettier": "^1.15.2",
+    "react-dom": "^16.6.3"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tasitlabs/tasit.git"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transform": {
+      "\\.js$": "<rootDir>/jest.preprocessor.js"
+    },
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|.*react-navigation|expo-react-native-adapter)"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "keywords": [
     "dapp",

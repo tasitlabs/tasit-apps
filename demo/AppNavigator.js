@@ -1,25 +1,26 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import Home from "./screens/Home";
-import ListLands from "./screens/ListLands";
-import LandClaim from "./screens/LandClaim";
-import OnboardingHome from "./screens/OnboardingHome";
-import EthereumQuestion from "./screens/EthereumQuestion";
-import EthereumSignUp from "./screens/EthereumSignUp";
-import EthereumSignIn from "./screens/EthereumSignIn";
-import Colors from "./constants/Colors.js";
+
+import HomeScreen from "./screens/HomeScreen";
+import ListLandsScreen from "./screens/ListLandsScreen";
+import LandClaimScreen from "./screens/LandClaimScreen";
+import OnboardingHomeScreen from "./screens/OnboardingHomeScreen";
+import EthereumQuestionScreen from "./screens/EthereumQuestionScreen";
+import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
+import EthereumSignInScreen from "./screens/EthereumSignInScreen";
+import Colors from "@constants/Colors.js";
 
 const AppNavigator = createStackNavigator(
   {
-    Home,
-    ListLands,
-    LandClaim,
-    OnboardingHome,
-    EthereumQuestion,
-    EthereumSignUp,
-    EthereumSignIn,
+    HomeScreen,
+    ListLandsScreen,
+    LandClaimScreen,
+    OnboardingHomeScreen,
+    EthereumQuestionScreen,
+    EthereumSignUpScreen,
+    EthereumSignInScreen,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "HomeScreen",
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Colors.headerBackgroundColor,

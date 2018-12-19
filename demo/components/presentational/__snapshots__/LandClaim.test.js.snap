@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandClaim renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Land />
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "marginTop": 66.7,
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      title="Claim"
+    />
+  </Component>
+</Component>
+`;

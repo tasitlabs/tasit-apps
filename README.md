@@ -6,10 +6,13 @@ In the short run, the focus for the Tasit products is providing simple, third-pa
 
 We have a separate app for each major class of dapp.
 
-### Tasit One
-Our first app is called Tasit One.
+### Tasit Decentraland
 
-Tasit One ([NFTs](http://erc721.org/))
+Our first app is called `Tasit Decentraland`.
+
+Decentraland is a dapp using [unique tokens / NFTs](http://erc721.org/). `Tasit Decentraland` lets you use that dapp on mobile.
+
+This is the first Tasit NFT app - we plan to release other similar 3rd-party apps for other popular NFT projects.
 
 Here's an [interactive wireframe video](https://youtu.be/iJQtDPQrRsE) showing how this app will look for an example ERC721 NFT like [Decentraland](https://decentraland.org/).
 
@@ -17,16 +20,22 @@ This app shows off the major functionality of the [Tasit SDK](https://github.com
 
 ### Coming soon
 
-##### Tasit List
+##### A Tasit list app
+
+Exact list project T.B.D.
 ([TCRs](https://medium.com/@simondlr/city-walls-bo-taoshi-exploring-the-power-of-token-curated-registries-588f208c17d5) / FCRs)
 
-##### Tasit Org
+##### A Tasit org app
+
+Exact org project T.B.D.
 ([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
 
-##### Tasit Market
+##### A Tasit market app
+
+Exact market project T.B.D.
 (Two-sided marketplaces like Gitcoin, CryptoCribs, OpenSea, etc.)
 
-- ...with more to come
+##### ...with more to come
 
 ### The road ahead
 
@@ -41,3 +50,19 @@ These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 For more info, please visit our website:
 
 [tasit.io](https://tasit.io/)
+
+### Contact us
+
+We love getting feedback from people, so please feel free to reach out.
+
+- [Website](https://tasit.io/)
+
+- [Twitter](https://twitter.com/tasitlabs)
+
+- [Telegram](https://t.me/tasitlabs)
+
+- [Email](mailto:founders@tasit.io)
+
+- [Feature requests](https://tasit.canny.io/feature-requests)
+
+- [Project Kanban board](https://github.com/orgs/tasitlabs/projects/1)

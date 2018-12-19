@@ -1,9 +1,22 @@
 import React from "react";
 import { Button, StyleSheet, View, Text, TextInput } from "react-native";
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveFontSize,
+} from "react-native-responsive-dimensions";
+import { Account } from "tasit-sdk";
 
 export default class EthereumSignUpForm extends React.Component {
   state = {
     text: "",
+    address: "",
+  };
+
+  createAccount = async () => {
+    // TODO: Remove await when SDK 0.0.3 is out
+    const wallet = await Account.create();
+    this.setState({ address: wallet.address });
   };
 
   render() {
@@ -25,7 +38,7 @@ export default class EthereumSignUpForm extends React.Component {
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => {}} />
+          <Button title="Continue" onPress={() => this.createAccount()} />
         </View>
       </React.Fragment>
     );
@@ -35,11 +48,15 @@ export default class EthereumSignUpForm extends React.Component {
 const styles = StyleSheet.create({
   userRow: { flexDirection: "row" },
   userInputView: { flex: 1, alignItems: "flex-end" },
-  userInput: { justifyContent: "flex-start", width: 90, fontSize: 20 },
+  userInput: {
+    justifyContent: "flex-start",
+    width: responsiveWidth(28),
+    fontSize: responsiveFontSize(3),
+  },
   ensView: { flex: 1 },
-  ensText: { justifyContent: "flex-end", fontSize: 20 },
+  ensText: { justifyContent: "flex-end", fontSize: responsiveFontSize(3) },
   buttonView: {
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: responsiveHeight(5),
   },
 });
