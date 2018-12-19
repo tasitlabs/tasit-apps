@@ -60,6 +60,7 @@ describe("EthereumSignUpForm", () => {
       .find({ title: "Aync" })
       .simulate("press");
 
+    // Note: Bad practice
     await sleep(200);
 
     wrapper.update();
@@ -78,6 +79,7 @@ describe("EthereumSignUpForm", () => {
       .find({ title: "Aync" })
       .simulate("press");
 
+    // Note: Bad practice
     await sleep(200);
 
     wrapper.update();
@@ -90,12 +92,12 @@ describe("EthereumSignUpForm", () => {
 
     expect(wrapper.state("address")).toEqual("");
 
-    wrapper
+    // Note: Has an PR to improve API with invoke() function that will work same as code below
+    // https://github.com/airbnb/enzyme/pull/1856
+    await wrapper
       .find("Button")
       .find({ title: "Aync" })
-      .simulate("press");
-
-    await Promise.resolve();
+      .prop("onPress")();
 
     wrapper.update();
 
