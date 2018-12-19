@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Button, StyleSheet, View } from "react-native";
+import PropTypes from "prop-types";
 import LargeText from "./LargeText";
 import Colors from "@constants/Colors";
 
@@ -12,6 +13,10 @@ export default function Home(props) {
     </View>
   );
 }
+
+Home.propTypes = {
+  onPress: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

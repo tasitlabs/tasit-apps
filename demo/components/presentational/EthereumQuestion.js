@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, StyleSheet, View } from "react-native";
+import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "./LargeText";
 import Colors from "@constants/Colors";
@@ -17,6 +18,11 @@ export default function EthereumQuestion(props) {
     </View>
   );
 }
+
+EthereumQuestion.propTypes = {
+  onSignUp: PropTypes.func.isRequired,
+  onSignIn: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Button, StyleSheet, View } from "react-native";
+import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "./LargeText";
 import Colors from "@constants/Colors";
@@ -15,6 +16,10 @@ export default function OnboardingHome(props) {
     </View>
   );
 }
+
+OnboardingHome.propTypes = {
+  onPress: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -17,7 +17,7 @@ module.exports = {
   rules: {
     "no-console": ["error", { allow: ["warn", "error"] }],
     "react-native/no-raw-text": ["error", { skip: ["LargeText"] }],
-    "react/prop-types": "off",
+    "react/prop-types": ["error", { ignore: ["navigation"] }],
     "prettier/prettier": "error",
     "jest/no-large-snapshots": ["warn", { maxSize: 50 }],
   },
