@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
+import { responsiveHeight } from "react-native-responsive-dimensions";
 import Land from "./Land";
 import Colors from "@constants/Colors";
 
@@ -27,6 +28,6 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: responsiveHeight(5),
   },
 });

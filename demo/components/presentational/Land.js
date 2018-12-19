@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, View, Text } from "react-native";
+import { responsiveWidth } from "react-native-responsive-dimensions";
 
 export default function Land({ land }) {
   return (
@@ -15,6 +16,6 @@ export default function Land({ land }) {
 
 const styles = StyleSheet.create({
   landContainer: {
-    width: 224,
+    width: responsiveWidth(60),
   },
 });

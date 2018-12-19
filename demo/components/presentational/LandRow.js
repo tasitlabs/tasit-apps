@@ -1,5 +1,9 @@
 import React from "react";
 import { StyleSheet, View, TouchableHighlight } from "react-native";
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from "react-native-responsive-dimensions";
 import Land from "./Land";
 
 export default function LandRow(props) {
@@ -14,8 +18,11 @@ export default function LandRow(props) {
 
 const styles = StyleSheet.create({
   row: {
-    padding: 15,
-    marginBottom: 5,
+    paddingTop: responsiveHeight(3),
+    paddingBottom: responsiveHeight(3),
+    paddingLeft: responsiveWidth(3),
+    paddingRight: responsiveWidth(3),
+    marginBottom: responsiveHeight(1),
     alignItems: "center",
     justifyContent: "center",
   },
