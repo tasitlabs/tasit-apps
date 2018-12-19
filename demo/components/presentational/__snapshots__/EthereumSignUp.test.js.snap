@@ -4,7 +4,7 @@ exports[`EthereumSignUp renders the component 1`] = `
 <KeyboardAvoidingView
   behavior="padding"
   enabled={true}
-  keyboardVerticalOffset={84}
+  keyboardVerticalOffset={104.02}
   style={
     Object {
       "alignItems": "center",

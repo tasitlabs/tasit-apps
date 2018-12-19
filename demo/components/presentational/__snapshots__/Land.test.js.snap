@@ -4,7 +4,7 @@ exports[`Land renders the component 1`] = `
 <Component
   style={
     Object {
-      "width": 224,
+      "width": 450,
     }
   }
 >

@@ -21,7 +21,7 @@ exports[`OnboardingHome renders the component 1`] = `
     style={
       Object {
         "flexDirection": "row",
-        "marginTop": 30,
+        "marginTop": 66.7,
       }
     }
   >

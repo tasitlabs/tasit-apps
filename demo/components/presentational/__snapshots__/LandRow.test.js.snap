@@ -11,8 +11,11 @@ exports[`LandRow renders the component 1`] = `
       Object {
         "alignItems": "center",
         "justifyContent": "center",
-        "marginBottom": 5,
-        "padding": 15,
+        "marginBottom": 13.34,
+        "paddingBottom": 40.019999999999996,
+        "paddingLeft": 22.5,
+        "paddingRight": 22.5,
+        "paddingTop": 40.019999999999996,
       }
     }
   >
