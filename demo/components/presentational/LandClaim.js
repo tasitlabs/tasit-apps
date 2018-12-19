@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
 import Land from "./Land";
-import Colors from "../../constants/Colors";
+import Colors from "@constants/Colors";
 
 export default function LandClaim(props) {
   return (
