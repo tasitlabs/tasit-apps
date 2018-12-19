@@ -1,5 +1,5 @@
 import React from "react";
-import LandClaim from "../components/presentational/LandClaim";
+import LandClaim from "@presentational/LandClaim";
 
 export default class LandClaimScreen extends React.Component {
   render() {
