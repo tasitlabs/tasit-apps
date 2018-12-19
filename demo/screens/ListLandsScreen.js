@@ -1,7 +1,7 @@
 import React from "react";
-import { ListView, StyleSheet, View, TouchableHighlight } from "react-native";
-import Land from "@presentational/Land";
-import Colors from "@constants/Colors";
+import { ListView } from "react-native";
+import ListLands from "@presentational/ListLands";
+import LandRow from "@presentational/LandRow";
 
 const rows = [
   {
@@ -38,49 +38,23 @@ const rowHasChanged = (r1, r2) => r1.id !== r2.id;
 
 const ds = new ListView.DataSource({ rowHasChanged });
 
-function LandRow(props) {
-  const { onPress, rowData } = props;
-  return (
-    <TouchableHighlight onPress={onPress}>
-      <View style={styles.row}>
-        <Land land={rowData} />
-      </View>
-    </TouchableHighlight>
-  );
-}
-
-export default class ListLands extends React.Component {
+export default class ListLandsScreen extends React.Component {
   state = {
     dataSource: ds.cloneWithRows(rows),
   };
 
-  renderRow = rowData => {
+  renderRow = land => {
     const handlePress = () =>
-      this.props.navigation.navigate("LandClaim", { land: rowData });
-
-    return <LandRow rowData={rowData} onPress={handlePress} />;
+      this.props.navigation.navigate("LandClaimScreen", { land: land });
+    return <LandRow land={land} onPress={handlePress} />;
   };
 
   render() {
     return (
-      <ListView
-        style={styles.container}
+      <ListLands
         dataSource={this.state.dataSource}
         renderRow={this.renderRow}
       />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.backgroundColor,
-  },
-  row: {
-    padding: 15,
-    marginBottom: 5,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

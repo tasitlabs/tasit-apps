@@ -25,9 +25,9 @@ exports[`EthereumSignUpForm renders the component 1`] = `
         placeholder="username"
         style={
           Object {
-            "fontSize": 20,
+            "fontSize": 45.89389937671454,
             "justifyContent": "flex-start",
-            "width": 90,
+            "width": 210.00000000000003,
           }
         }
         underlineColorAndroid="transparent"
@@ -44,7 +44,7 @@ exports[`EthereumSignUpForm renders the component 1`] = `
       <Component
         style={
           Object {
-            "fontSize": 20,
+            "fontSize": 45.89389937671454,
             "justifyContent": "flex-end",
           }
         }
@@ -57,7 +57,7 @@ exports[`EthereumSignUpForm renders the component 1`] = `
     style={
       Object {
         "flexDirection": "row",
-        "marginTop": 30,
+        "marginTop": 66.7,
       }
     }
   >

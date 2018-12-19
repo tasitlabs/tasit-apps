@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EthereumQuestionScreen renders the component 1`] = `
+<EthereumQuestion
+  onSignIn={[Function]}
+  onSignUp={[Function]}
+/>
+`;
