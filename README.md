@@ -10,9 +10,9 @@ Tasit is a suite of mobile apps for mainstream users that lets them use popular 
 
 Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers, you can use the dapp via a standalone native mobile app.
 
-_Disclaimer:_ The alpha version of these apps are under active development. We encourage you to try them out today for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the Releases only setting and/or sign up to be notified about our releases on the tasit.io website.
+_Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out today for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
 
-The focus for the Tasit products is providing simple, third-party clients for popular dapps. The Tasit apps will provide more delightful UX and simpler onboarding for the dapp and in some cases extra features too.
+The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide more delightful UX and simpler onboarding for the dapp and in some cases extra features too.
 
 The apps are all built using the [Tasit SDK](https://github.com/tasitlabs/tasitsdk) and React Native.
 
@@ -93,7 +93,7 @@ For more info, please visit our website:
 
 ### Contact us
 
-We love getting feedback from people, so please feel free to reach out.
+We love getting feedback, so please feel free to reach out.
 
 - [Website](https://tasit.io/)
 
@@ -106,3 +106,5 @@ We love getting feedback from people, so please feel free to reach out.
 - [Feature requests](https://tasit.canny.io/feature-requests)
 
 - [Project Kanban board](https://github.com/orgs/tasitlabs/projects/1)
+
+- [Medium](https://medium.com/tasit)
