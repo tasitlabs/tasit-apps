@@ -4,6 +4,6 @@ import LandRow from "./LandRow";
 
 describe("LandRow", () => {
   it("renders the component", async () => {
-    expect(shallow(<LandRow />)).toMatchSnapshot();
+    expect(shallow(<LandRow land={{}} onPress={() => {}} />)).toMatchSnapshot();
   });
 });

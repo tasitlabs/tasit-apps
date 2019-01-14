@@ -4,6 +4,6 @@ import LargeText from "./LargeText";
 
 describe("LargeText", () => {
   it("renders the component", async () => {
-    expect(shallow(<LargeText />)).toMatchSnapshot();
+    expect(shallow(<LargeText>{""}</LargeText>)).toMatchSnapshot();
   });
 });

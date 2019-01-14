@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableHighlight } from "react-native";
+import PropTypes from "prop-types";
 import {
   responsiveHeight,
   responsiveWidth,
@@ -15,6 +16,11 @@ export default function LandRow(props) {
     </TouchableHighlight>
   );
 }
+
+LandRow.propTypes = {
+  onPress: PropTypes.func.isRequired,
+  land: PropTypes.object.isRequired,
+};
 
 const styles = StyleSheet.create({
   row: {

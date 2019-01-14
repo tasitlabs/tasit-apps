@@ -4,6 +4,8 @@ import ListLands from "./ListLands";
 
 describe("ListLands", () => {
   it("renders the component", async () => {
-    expect(shallow(<ListLands />)).toMatchSnapshot();
+    expect(
+      shallow(<ListLands dataSource={{}} renderRow={() => {}} />)
+    ).toMatchSnapshot();
   });
 });
