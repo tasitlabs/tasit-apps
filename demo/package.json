@@ -13,12 +13,12 @@
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
   },
   "dependencies": {
-    "expo": "^31.0.3",
+    "expo": "^32.0.0",
     "prop-types": "^15.6.2",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-responsive-dimensions": "^2.0.1",
-    "react-navigation": "^3.0.5",
+    "react-navigation": "^3.0.9",
     "tasit-sdk": "0.0.2"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "eslint-plugin-react-native": "^3.5.0",
     "expo-cli": "^2.4.0",
     "jest": "^23.6.0",
-    "jest-expo": "^31.0.0",
+    "jest-expo": "^32.0.0",
     "prettier": "^1.15.2",
     "react-dom": "^16.6.3"
   },
