@@ -32,11 +32,7 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 > - A working demo of onboarding for users new to Ethereum
 > - Minimal proof-of-concept app ready to ship to TestFlight for iOS using a testnet
 
-##### Try it out
-
-[Here's the code](./demo) for the demo app.
-
-Clone this repo.
+##### Getting started
 
 ```
 git clone https://github.com/tasitlabs/tasit.git
@@ -45,6 +41,11 @@ cd demo
 npm i
 npm start
 ```
+
+##### Review the code
+
+[Here's the code](./demo) for the demo app.
+
 
 ### Tasit Decentraland
 
@@ -95,9 +96,9 @@ For more info, please visit our website:
 
 We love getting feedback, so please feel free to reach out.
 
-- [Website](https://tasit.io/)
+- [tasit.io](https://tasit.io/)
 
-- [Twitter](https://twitter.com/tasitlabs)
+- [@TasitLabs](https://twitter.com/tasitlabs) on Twitter
 
 - [Telegram](https://t.me/tasitlabs)
 
