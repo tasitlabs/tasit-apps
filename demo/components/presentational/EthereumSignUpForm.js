@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import {
   responsiveHeight,
   responsiveWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 import { Account } from "tasit-sdk";
+import Button from "./Button";
 
 export default class EthereumSignUpForm extends React.Component {
   state = {

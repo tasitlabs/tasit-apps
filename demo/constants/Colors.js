@@ -15,4 +15,6 @@ export default {
   textColor: "gray",
   headerBackgroundColor: "#f4511e",
   headerTintColor: "#fff",
+  buttonColor: "white",
+  buttonBackground: "#2196f3",
 };

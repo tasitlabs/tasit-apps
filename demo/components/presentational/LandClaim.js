@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import PropTypes from "prop-types";
 import Land from "./Land";
+import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function LandClaim(props) {

@@ -1,7 +1,8 @@
 import React from "react";
-import { Image, Button, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import LargeText from "./LargeText";
+import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function Home(props) {
@@ -9,7 +10,7 @@ export default function Home(props) {
     <View style={styles.container}>
       <Image source={require("../../assets/images/icon.png")} />
       <LargeText>{`Tasit`}</LargeText>
-      <Button title="Decentraland" onPress={props.onPress} />
+      <Button title={`Decentraland`} onPress={props.onPress} />
     </View>
   );
 }
