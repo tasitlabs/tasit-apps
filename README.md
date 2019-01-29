@@ -46,7 +46,6 @@ npm start
 
 [Here's the code](./demo) for the demo app.
 
-
 ### Tasit Decentraland
 
 Our first production app is called `Tasit Decentraland`.
@@ -58,6 +57,28 @@ This is the first production Tasit NFT app - we plan to release other similar 3r
 Here's an [interactive wireframe video](https://youtu.be/iJQtDPQrRsE) showing how this app will look for an example ERC721 NFT like [Decentraland](https://decentraland.org/).
 
 This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+
+### Automatic scaffolding using the Tasit CLI
+
+Are you starting a project from scratch? Let the Tasit CLI scaffold out your project for you.
+
+Just run:
+
+```
+npx tasit-cli init
+```
+
+...to automatically generate the scaffolding for a mobile dapp project.
+
+Alternatively, for popular ERC standards like ERC-721 for NFTs, you can even run:
+
+```
+npx tasit-cli init --nft
+```
+
+...to instantly create a standalone mobile dapp for CryptoKitties, Decentraland, etc.
+
+This app scaffold comes ready to submit for beta testing on iOS with Testflight and on Android with Google Play Beta track, so you can focus on the core features of your dapp like you would do on the web.
 
 ### Coming soon
 
