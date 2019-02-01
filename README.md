@@ -38,7 +38,7 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 git clone https://github.com/tasitlabs/tasit.git
 cd tasit
 cd demo
-npm i
+npm install
 npm start
 ```
 
@@ -65,7 +65,10 @@ Are you starting a project from scratch? Let the Tasit CLI scaffold out your pro
 Just run:
 
 ```
-npx tasit-cli init
+npm install tasit-cli
+npx tasit-cli init my-app
+cd my-app
+npm start
 ```
 
 ...to automatically generate the scaffolding for a mobile dapp project.
@@ -73,7 +76,7 @@ npx tasit-cli init
 Alternatively, for popular ERC standards like ERC-721 for NFTs, you can even run:
 
 ```
-npx tasit-cli init --nft
+npx tasit-cli init my-app --nft
 ```
 
 ...to instantly create a standalone mobile dapp for CryptoKitties, Decentraland, etc.
