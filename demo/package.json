@@ -20,7 +20,7 @@
     "react-native-button": "^2.3.0",
     "react-native-responsive-dimensions": "^2.0.1",
     "react-navigation": "^3.0.9",
-    "tasit-sdk": "0.0.2"
+    "tasit-sdk": "0.0.8"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
