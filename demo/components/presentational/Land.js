@@ -1,12 +1,15 @@
 import React from "react";
 import { Image, StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
-import { responsiveWidth } from "react-native-responsive-dimensions";
+import {
+  responsiveWidth,
+  responsiveHeight,
+} from "react-native-responsive-dimensions";
 
 export default function Land({ land }) {
   return (
     <View style={styles.landContainer}>
-      <Image source={land.img} />
+      <Image style={styles.landImage} source={{ uri: land.img }} />
       <Text>{land.name}</Text>
       <Text>
         {land.priceMana} MANA (~${land.priceUsd})
@@ -22,5 +25,9 @@ Land.propTypes = {
 const styles = StyleSheet.create({
   landContainer: {
     width: responsiveWidth(60),
+  },
+  landImage: {
+    width: responsiveWidth(60),
+    height: responsiveHeight(20),
   },
 });
