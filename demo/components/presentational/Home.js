@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/images/icon.png")} />
-      <LargeText>{`Decentraland`}</LargeText>
+      <LargeText>{`Tasit Decentraland`}</LargeText>
       <ActivityIndicator size="large" color={Colors.loadingColor} />
     </View>
   );
