@@ -7,14 +7,22 @@ import {
 } from "react-native-responsive-dimensions";
 import Land from "./Land";
 
-export default function LandRow(props) {
-  return (
-    <TouchableHighlight onPress={props.onPress}>
-      <View style={styles.row}>
-        <Land land={props.land} />
-      </View>
-    </TouchableHighlight>
-  );
+// Note: Changing to PureComponent for performance boost
+// It is possible to still using function component with React.memo HoC
+// See more:
+// https://reactjs.org/docs/react-api.html#reactpurecomponent
+// https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
+export default class LandRow extends React.PureComponent {
+  render() {
+    const { onPress, land } = this.props;
+    return (
+      <TouchableHighlight onPress={onPress}>
+        <View style={styles.row}>
+          <Land land={land} />
+        </View>
+      </TouchableHighlight>
+    );
+  }
 }
 
 LandRow.propTypes = {
