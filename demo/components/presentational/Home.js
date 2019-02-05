@@ -1,23 +1,17 @@
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import PropTypes from "prop-types";
+import { Image, StyleSheet, View, ActivityIndicator } from "react-native";
 import LargeText from "./LargeText";
-import Button from "./Button";
 import Colors from "@constants/Colors";
 
-export default function Home(props) {
+export default function Home() {
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/images/icon.png")} />
-      <LargeText>{`Tasit`}</LargeText>
-      <Button title={`Decentraland`} onPress={props.onPress} />
+      <LargeText>{`Tasit Decentraland`}</LargeText>
+      <ActivityIndicator size="large" color={Colors.loadingColor} />
     </View>
   );
 }
-
-Home.propTypes = {
-  onPress: PropTypes.func.isRequired,
-};
 
 const styles = StyleSheet.create({
   container: {
