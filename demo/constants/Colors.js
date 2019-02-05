@@ -13,8 +13,9 @@ export default {
   noticeText: "#fff",
   backgroundColor: "#fff",
   textColor: "gray",
-  headerBackgroundColor: "#f4511e",
+  headerBackgroundColor: "#ff7d59",
   headerTintColor: "#fff",
   buttonColor: "white",
   buttonBackground: "#2196f3",
+  loadingColor: "#2196f3",
 };

@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomeScreen renders the component 1`] = `
-<Home
-  onPress={[Function]}
-/>
+<Fragment>
+  <withNavigation(NavigationEvents)
+    onDidFocus={[Function]}
+  />
+  <Home />
+</Fragment>
 `;

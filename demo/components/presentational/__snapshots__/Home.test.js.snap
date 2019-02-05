@@ -15,11 +15,13 @@ exports[`Home renders the component 1`] = `
     source={1}
   />
   <LargeText>
-    Tasit
+    Tasit Decentraland
   </LargeText>
-  <Button
-    onPress={[Function]}
-    title="Decentraland"
+  <Component
+    animating={true}
+    color="#2196f3"
+    hidesWhenStopped={true}
+    size="large"
   />
 </Component>
 `;
