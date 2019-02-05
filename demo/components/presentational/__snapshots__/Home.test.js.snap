@@ -15,7 +15,7 @@ exports[`Home renders the component 1`] = `
     source={1}
   />
   <LargeText>
-    Decentraland
+    Tasit Decentraland
   </LargeText>
   <Component
     animating={true}
