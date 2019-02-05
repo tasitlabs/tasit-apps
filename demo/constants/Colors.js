@@ -17,4 +17,5 @@ export default {
   headerTintColor: "#fff",
   buttonColor: "white",
   buttonBackground: "#2196f3",
+  loadingColor: "#2196f3",
 };
