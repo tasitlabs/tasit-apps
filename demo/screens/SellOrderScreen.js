@@ -1,5 +1,5 @@
 import React from "react";
-import SellOrder from "@presentational/SellOrder";
+import SellOrderClaim from "@presentational/SellOrderClaim";
 
 export default class SellOrderScreen extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class SellOrderScreen extends React.Component {
       priceUsd: 0,
     });
     return (
-      <SellOrder
+      <SellOrderClaim
         sellOrder={sellOrder}
         onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
       />

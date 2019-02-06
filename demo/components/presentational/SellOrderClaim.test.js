@@ -1,11 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SellOrder from "./SellOrder";
+import SellOrderClaim from "./SellOrderClaim";
 
-describe("SellOrder", () => {
+describe("SellOrderClaim", () => {
   it("renders the component", async () => {
     expect(
-      shallow(<SellOrder land={{}} onClaim={() => {}} />)
+      shallow(<SellOrderClaim land={{}} onClaim={() => {}} />)
     ).toMatchSnapshot();
   });
 });

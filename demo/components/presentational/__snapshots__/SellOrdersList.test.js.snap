@@ -9,7 +9,6 @@ exports[`SellOrdersList renders the component 1`] = `
   maxToRenderPerBatch={10}
   numColumns={1}
   onEndReachedThreshold={2}
-  renderItem={[Function]}
   scrollEventThrottle={50}
   style={
     Object {

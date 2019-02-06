@@ -12,7 +12,7 @@ export default function SellOrder(props) {
     <View style={styles.container}>
       <Land land={sellOrder} />
       <View style={styles.buttonView}>
-        <Button style={styles.claimButton} title="Claim" onPress={onClaim} />
+        <Button title="Claim" onPress={onClaim} />
       </View>
     </View>
   );

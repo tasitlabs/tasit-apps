@@ -20,9 +20,7 @@ exports[`SellOrdersListItem renders the component 1`] = `
       }
     }
   >
-    <Land
-      land={Object {}}
-    />
+    <Land />
   </Component>
 </TouchableHighlight>
 `;
