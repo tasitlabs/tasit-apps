@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LandClaimScreen renders the component 1`] = `
+exports[`SellOrderScreen renders the component 1`] = `
 <LandClaim
   onClaim={[Function]}
 />

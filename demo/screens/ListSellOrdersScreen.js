@@ -8,7 +8,7 @@ const { estateABI, marketplaceABI } = ContractsABIs;
 const { estateAddress, marketplaceAddress } = ContractsAddresses;
 const { Contract } = Action;
 
-export default class ListLandsScreen extends React.Component {
+export default class ListSellOrdersScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);

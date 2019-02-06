@@ -1,15 +1,15 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import ListLandsScreen from "./ListSellOrdersScreen";
+import ListSellOrdersScreen from "./ListSellOrdersScreen";
 
-describe("ListLandsScreen", () => {
+describe("ListSellOrdersScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
 
   it("renders the component", async () => {
-    expect(shallow(<ListLandsScreen />)).toMatchSnapshot();
+    expect(shallow(<ListSellOrdersScreen />)).toMatchSnapshot();
   });
 });

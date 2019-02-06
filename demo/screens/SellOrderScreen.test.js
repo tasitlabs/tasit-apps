@@ -1,9 +1,9 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import LandClaimScreen from "./SellOrderScreen";
+import SellOrderScreen from "./SellOrderScreen";
 
-describe("LandClaimScreen", () => {
+describe("SellOrderScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
@@ -12,7 +12,7 @@ describe("LandClaimScreen", () => {
   it("renders the component", async () => {
     const navigation = { getParam: jest.fn() };
     expect(
-      shallow(<LandClaimScreen navigation={navigation} />)
+      shallow(<SellOrderScreen navigation={navigation} />)
     ).toMatchSnapshot();
   });
 });
