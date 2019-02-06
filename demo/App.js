@@ -1,11 +1,19 @@
 import React from "react";
 import { AppLoading, Asset, Font } from "expo";
-import HomeScreen from "./src/HomeScreen";
+import PropTypes from "prop-types";
+import AppNavigator from "./AppNavigator";
+import { Action } from "tasit-sdk";
+import tasitSdkConfig from "./config/default.js";
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
   };
+
+  componentDidMount() {
+    const { ConfigLoader } = Action;
+    ConfigLoader.setConfig(tasitSdkConfig);
+  }
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
@@ -35,10 +43,3 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-<<<<<<< HEAD
-
-App.propTypes = {
-  skipLoadingScreen: PropTypes.bool,
-};
-=======
->>>>>>> Tasit Welcome moved to HomeScreen
