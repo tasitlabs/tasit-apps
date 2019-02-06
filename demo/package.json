@@ -38,6 +38,7 @@
     "expo-cli": "^2.6.14",
     "jest": "^23.6.0",
     "jest-expo": "^32.0.0",
+    "jest-prop-type-error": "^1.1.0",
     "prettier": "^1.15.2",
     "react-dom": "^16.6.3"
   },
