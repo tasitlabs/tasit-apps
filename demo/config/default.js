@@ -1,4 +1,4 @@
-const development = {
+module.exports = {
   provider: {
     network: "other",
     provider: "jsonrpc",
@@ -12,5 +12,3 @@ const development = {
     timeout: 2000,
   },
 };
-
-module.exports = development;

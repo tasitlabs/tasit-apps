@@ -1,15 +1,17 @@
 import React from "react";
 import ListLands from "@presentational/ListLands";
 import LandRow from "@presentational/LandRow";
+import ContractsABIs from "@constants/ContractsABIs";
+import ContractsAddresses from "@constants/ContractsAddresses";
 import { Action } from "tasit-sdk";
-import { abi as estateABI } from "../abi/EstateRegistry.json";
-import { abi as markplaceABI } from "../abi/Marketplace.json";
+const { estateABI, marketplaceABI } = ContractsABIs;
+const { estateAddress, marketplaceAddress } = ContractsAddresses;
 const { Contract } = Action;
 
-const estateAddress = "0x41b598a2c618b59b74540ac3afffb32f7971b37a";
-const marketplaceAddress = "0x07c0e972064e5c05f7b3596d81de1afd35457eae";
-
 export default class ListLandsScreen extends React.Component {
+  // TODO: Switch to new DecentralandEstate() once the SDK includes that
+  estateContract = new Contract(estateAddress, estateABI);
+  marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
   state = {
     rows: [],
   };
@@ -19,10 +21,13 @@ export default class ListLandsScreen extends React.Component {
     this.setState({ rows });
   }
 
+  // Note: This function is assuing that:
+  // - All estates have a sell order
+  // - The total supply of estates is small
+  // TODO: Rewrite this function when we move to testnet
   async getSellOrders() {
     const orders = [];
-    const estateContract = new Contract(estateAddress, estateABI);
-    const totalSupply = await estateContract.totalSupply();
+    const totalSupply = await this.estateContract.totalSupply();
 
     for (let estateId = 1; estateId <= Number(totalSupply); estateId++) {
       const order = this.getSellOrder(estateId);
@@ -33,28 +38,28 @@ export default class ListLandsScreen extends React.Component {
   }
 
   async getSellOrder(estateId) {
-    // TODO: Switch to new DecentralandEstate() once the SDK includes that
-    const estateContract = new Contract(estateAddress, estateABI);
-    const marketplaceContract = new Contract(marketplaceAddress, markplaceABI);
-
-    const estateName = await estateContract.getMetadata(estateId);
+    const estateName = await this.estateContract.getMetadata(estateId);
     const [
       orderId,
       seller,
       price,
       expiresAt,
-    ] = await marketplaceContract.auctionByAssetId(estateId);
+    ] = await this.marketplaceContract.auctionByAssetId(estateId);
+
+    const hasOrder = parseInt(orderId, 16) !== 0;
+    if (!hasOrder) throw Error(`Estate (id:${estateId}) has no sell order.`);
 
     const priceMana = Number(price.toString()) / 1e18;
-    const manaUsdRate = 30;
-    const priceUsd = priceMana * manaUsdRate;
+    const manaPerUsd = 30;
+    const priceUsd = priceMana * manaPerUsd;
+    const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
     return {
       id: estateId,
       name: estateName,
       priceMana,
       priceUsd,
-      img: `https://api.decentraland.org/v1/estates/${estateId}/map.png`,
+      img: imgUrl,
       orderId,
       seller,
       expiresAt,
