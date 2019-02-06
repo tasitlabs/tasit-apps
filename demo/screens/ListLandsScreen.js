@@ -32,6 +32,7 @@ export default class ListLandsScreen extends React.Component {
   }
 
   async getSellOrder(estateId) {
+    // TODO: Switch to new DecentralandEstate() once the SDK includes that
     const estateContract = new Contract(estateAddress, estateABI);
     const marketplaceContract = new Contract(marketplaceAddress, markplaceABI);
 
