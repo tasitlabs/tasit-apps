@@ -9,6 +9,8 @@ export default class HomeScreen extends React.Component {
     }, 1500);
   }
 
+  // This screen should shows something nice-looking
+  // if the connection to the blockchain can't be estabilished.
   render() {
     return (
       <React.Fragment>
