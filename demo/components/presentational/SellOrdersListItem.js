@@ -14,11 +14,11 @@ import Land from "./Land";
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
 export default class SellOrdersListItem extends React.PureComponent {
   render() {
-    const { onPress, land } = this.props;
+    const { onPress, sellOrder } = this.props;
     return (
       <TouchableHighlight onPress={onPress}>
         <View style={styles.row}>
-          <Land land={land} />
+          <Land land={sellOrder} />
         </View>
       </TouchableHighlight>
     );
@@ -27,7 +27,7 @@ export default class SellOrdersListItem extends React.PureComponent {
 
 SellOrdersListItem.propTypes = {
   onPress: PropTypes.func.isRequired,
-  land: PropTypes.object.isRequired,
+  sellOrder: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

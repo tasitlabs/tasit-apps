@@ -7,22 +7,19 @@ import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function SellOrder(props) {
+  const { sellOrder, onClaim } = props;
   return (
     <View style={styles.container}>
-      <Land land={props.land} />
+      <Land land={sellOrder} />
       <View style={styles.buttonView}>
-        <Button
-          style={styles.claimButton}
-          title="Claim"
-          onPress={props.onClaim}
-        />
+        <Button style={styles.claimButton} title="Claim" onPress={onClaim} />
       </View>
     </View>
   );
 }
 
 SellOrder.propTypes = {
-  land: PropTypes.object.isRequired,
+  sellOrder: PropTypes.object.isRequired,
   onClaim: PropTypes.func.isRequired,
 };
 

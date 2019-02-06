@@ -4,16 +4,16 @@ import SellOrder from "@presentational/SellOrder";
 export default class SellOrderScreen extends React.Component {
   render() {
     const { navigation } = this.props;
-    const land = navigation.getParam("land", {
+    const sellOrder = navigation.getParam("sellOrder", {
       id: -1,
       name: "Not found",
-      img: require("../assets/images/icon.png"),
+      img: "https://decentraland.org/images/logo-65f7b27caf.png",
       priceMana: 0,
       priceUsd: 0,
     });
     return (
       <SellOrder
-        land={land}
+        sellOrder={sellOrder}
         onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
       />
     );

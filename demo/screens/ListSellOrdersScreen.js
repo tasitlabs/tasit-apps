@@ -12,13 +12,14 @@ export default class ListSellOrdersScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
+
   state = {
-    rows: [],
+    sellOrders: [],
   };
 
   async componentDidMount() {
-    const rows = await this.getSellOrders();
-    this.setState({ rows });
+    const sellOrders = await this.getSellOrders();
+    this.setState({ sellOrders });
   }
 
   // Note: This function is assuming that:
@@ -54,6 +55,7 @@ export default class ListSellOrdersScreen extends React.Component {
     const priceUsd = Number(priceMana / manaPerUsd).toFixed(2);
     const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
+    // Move to { sellOrder, asset } ?
     return {
       id: estateId,
       name: estateName,
@@ -66,19 +68,22 @@ export default class ListSellOrdersScreen extends React.Component {
     };
   }
 
-  renderRow = row => {
-    const { item: land } = row;
+  renderItem = ({ item: sellOrder }) => {
     const handlePress = () =>
-      this.props.navigation.navigate("LandClaimScreen", { land });
-
+      this.props.navigation.navigate("SellOrderScreen", { sellOrder });
     return (
-      <SellOrdersListItem id={land.id} land={land} onPress={handlePress} />
+      <SellOrdersListItem
+        id={sellOrder.id}
+        sellOrder={sellOrder}
+        onPress={handlePress}
+      />
     );
   };
 
   render() {
+    const { sellOrders } = this.state;
     return (
-      <SellOrdersList lands={this.state.rows} renderRow={this.renderRow} />
+      <SellOrdersList sellOrders={sellOrders} renderItem={this.renderItem} />
     );
   }
 }
