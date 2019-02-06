@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SellOrderScreen renders the component 1`] = `
-<SellOrder
+<SellOrderClaim
   onClaim={[Function]}
 />
 `;

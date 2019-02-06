@@ -11,7 +11,7 @@ exports[`SellOrderClaim renders the component 1`] = `
     }
   }
 >
-  <Land />
+  <SellOrder />
   <Component
     style={
       Object {

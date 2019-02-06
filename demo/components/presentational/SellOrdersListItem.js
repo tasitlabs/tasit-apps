@@ -5,7 +5,7 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import Land from "./Land";
+import SellOrder from "./SellOrder";
 
 // Note: Changing to PureComponent for performance boost
 // It is possible to still using function component with React.memo HoC
@@ -18,7 +18,7 @@ export default class SellOrdersListItem extends React.PureComponent {
     return (
       <TouchableHighlight onPress={onPress}>
         <View style={styles.row}>
-          <Land land={sellOrder} />
+          <SellOrder land={sellOrder} />
         </View>
       </TouchableHighlight>
     );
