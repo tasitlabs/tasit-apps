@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import LandClaimScreen from "./LandClaimScreen";
+import LandClaimScreen from "./SellOrderScreen";
 
 describe("LandClaimScreen", () => {
   jest.useFakeTimers();

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListLandsScreen renders the component 1`] = `
+<ListLands
+  lands={Array []}
+  renderRow={[Function]}
+/>
+`;
