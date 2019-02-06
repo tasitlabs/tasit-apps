@@ -21,7 +21,7 @@ export default class ListLandsScreen extends React.Component {
     this.setState({ rows });
   }
 
-  // Note: This function is assuing that:
+  // Note: This function is assuming that:
   // - All estates have a sell order
   // - The total supply of estates is small
   // TODO: Rewrite this function when we move to testnet
@@ -51,7 +51,7 @@ export default class ListLandsScreen extends React.Component {
 
     const priceMana = Number(price.toString()) / 1e18;
     const manaPerUsd = 30;
-    const priceUsd = priceMana * manaPerUsd;
+    const priceUsd = Number(priceMana / manaPerUsd).toFixed(2);
     const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
     return {
