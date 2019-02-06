@@ -25,7 +25,8 @@ export default class ListLandsScreen extends React.Component {
     const totalSupply = await estateContract.totalSupply();
 
     for (let estateId = 1; estateId <= Number(totalSupply); estateId++)
-      orders.push(this.getSellOrder(estateId));
+      const order = this.getSellOrder(estateId);
+      orders.push(order);
 
     return await Promise.all(orders);
   }
