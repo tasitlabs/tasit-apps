@@ -19,9 +19,7 @@ exports[`SellOrder renders the component 1`] = `
   />
   <Component>
     0
-     MANA (~$
-    0
-    )
+     MANA
   </Component>
 </Component>
 `;

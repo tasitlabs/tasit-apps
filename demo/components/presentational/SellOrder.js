@@ -5,12 +5,14 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 import EstateForSale from "./EstateForSale";
 
 export default function SellOrder({ sellOrder }) {
+  const { asset: estate, priceMana } = sellOrder;
+
+  // Note: Conversion to USD will be implemented on v0.2.0
+  // <Text>{priceMana} MANA (~${sellOrder.priceUsd})</Text>
   return (
     <View style={styles.landContainer}>
-      <EstateForSale estate={sellOrder.asset} />
-      <Text>
-        {sellOrder.priceMana} MANA (~${sellOrder.priceUsd})
-      </Text>
+      <EstateForSale estate={estate} />
+      <Text>{priceMana} MANA</Text>
     </View>
   );
 }
