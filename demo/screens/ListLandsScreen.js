@@ -1,60 +1,80 @@
 import React from "react";
-import { ListView } from "react-native";
 import ListLands from "@presentational/ListLands";
 import LandRow from "@presentational/LandRow";
-
-const rows = [
-  {
-    id: 1,
-    name: "DRAGON KINGDOM",
-    img: require("../assets/images/lands/land1.png"),
-    priceMana: 13999,
-    priceUsd: 699,
-  },
-  {
-    id: 2,
-    name: "Parcel",
-    img: require("../assets/images/lands/land2.png"),
-    priceMana: 27985,
-    priceUsd: 1399,
-  },
-  {
-    id: 3,
-    name: "Golden Area",
-    img: require("../assets/images/lands/land3.png"),
-    priceMana: 19000,
-    priceUsd: 950,
-  },
-  {
-    id: 4,
-    name: "2 parcels away from Main Road to Genesis Plaza",
-    img: require("../assets/images/lands/land4.png"),
-    priceMana: 150000,
-    priceUsd: 7500,
-  },
-];
-
-const rowHasChanged = (r1, r2) => r1.id !== r2.id;
-
-const ds = new ListView.DataSource({ rowHasChanged });
+import ContractsABIs from "@constants/ContractsABIs";
+import ContractsAddresses from "@constants/ContractsAddresses";
+import { Action } from "tasit-sdk";
+const { estateABI, marketplaceABI } = ContractsABIs;
+const { estateAddress, marketplaceAddress } = ContractsAddresses;
+const { Contract } = Action;
 
 export default class ListLandsScreen extends React.Component {
+  // TODO: Switch to new DecentralandEstate() once the SDK includes that
+  estateContract = new Contract(estateAddress, estateABI);
+  marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
   state = {
-    dataSource: ds.cloneWithRows(rows),
+    rows: [],
   };
 
-  renderRow = land => {
+  async componentDidMount() {
+    const rows = await this.getSellOrders();
+    this.setState({ rows });
+  }
+
+  // Note: This function is assuming that:
+  // - All estates have a sell order
+  // - The total supply of estates is small
+  // TODO: Rewrite this function when we move to testnet
+  async getSellOrders() {
+    const orders = [];
+    const totalSupply = await this.estateContract.totalSupply();
+
+    for (let estateId = 1; estateId <= Number(totalSupply); estateId++) {
+      const order = this.getSellOrder(estateId);
+      orders.push(order);
+    }
+
+    return await Promise.all(orders);
+  }
+
+  async getSellOrder(estateId) {
+    const estateName = await this.estateContract.getMetadata(estateId);
+    const [
+      orderId,
+      seller,
+      price,
+      expiresAt,
+    ] = await this.marketplaceContract.auctionByAssetId(estateId);
+
+    const hasOrder = parseInt(orderId, 16) !== 0;
+    if (!hasOrder) throw Error(`Estate (id:${estateId}) has no sell order.`);
+
+    const priceMana = Number(price.toString()) / 1e18;
+    const manaPerUsd = 30;
+    const priceUsd = Number(priceMana / manaPerUsd).toFixed(2);
+    const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
+
+    return {
+      id: estateId,
+      name: estateName,
+      priceMana,
+      priceUsd,
+      img: imgUrl,
+      orderId,
+      seller,
+      expiresAt,
+    };
+  }
+
+  renderRow = row => {
+    const { item: land } = row;
     const handlePress = () =>
-      this.props.navigation.navigate("LandClaimScreen", { land: land });
-    return <LandRow land={land} onPress={handlePress} />;
+      this.props.navigation.navigate("LandClaimScreen", { land });
+
+    return <LandRow id={land.id} land={land} onPress={handlePress} />;
   };
 
   render() {
-    return (
-      <ListLands
-        dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
-      />
-    );
+    return <ListLands lands={this.state.rows} renderRow={this.renderRow} />;
   }
 }

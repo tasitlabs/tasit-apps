@@ -2,6 +2,7 @@
 
 exports[`ListLandsScreen renders the component 1`] = `
 <ListLands
+  lands={Array []}
   renderRow={[Function]}
 />
 `;
