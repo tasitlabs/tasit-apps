@@ -12,7 +12,7 @@ import Land from "./Land";
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class LandRow extends React.PureComponent {
+export default class SellOrdersListItem extends React.PureComponent {
   render() {
     const { onPress, land } = this.props;
     return (
@@ -25,7 +25,7 @@ export default class LandRow extends React.PureComponent {
   }
 }
 
-LandRow.propTypes = {
+SellOrdersListItem.propTypes = {
   onPress: PropTypes.func.isRequired,
   land: PropTypes.object.isRequired,
 };

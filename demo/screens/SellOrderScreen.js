@@ -1,5 +1,5 @@
 import React from "react";
-import LandClaim from "@presentational/LandClaim";
+import SellOrder from "@presentational/SellOrder";
 
 export default class SellOrderScreen extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class SellOrderScreen extends React.Component {
       priceUsd: 0,
     });
     return (
-      <LandClaim
+      <SellOrder
         land={land}
         onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
       />

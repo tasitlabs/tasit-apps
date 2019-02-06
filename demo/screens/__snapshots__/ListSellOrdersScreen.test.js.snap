@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListSellOrdersScreen renders the component 1`] = `
-<ListLands
+<SellOrdersList
   lands={Array []}
   renderRow={[Function]}
 />

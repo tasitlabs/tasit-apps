@@ -1,11 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
-import ListLands from "./ListLands";
+import SellOrdersList from "./SellOrdersList";
 
-describe("ListLands", () => {
+describe("SellOrdersList", () => {
   it("renders the component", async () => {
     expect(
-      shallow(<ListLands dataSource={{}} renderRow={() => {}} />)
+      shallow(<SellOrdersList dataSource={{}} renderRow={() => {}} />)
     ).toMatchSnapshot();
   });
 });

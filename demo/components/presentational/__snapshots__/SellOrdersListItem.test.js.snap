@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LandRow renders the component 1`] = `
+exports[`SellOrdersListItem renders the component 1`] = `
 <TouchableHighlight
   activeOpacity={0.85}
   delayPressOut={100}

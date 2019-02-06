@@ -6,6 +6,7 @@ import {
   responsiveHeight,
 } from "react-native-responsive-dimensions";
 
+// Split this component into SellOrder and EstateForSale
 export default function Land({ land }) {
   return (
     <View style={styles.landContainer}>

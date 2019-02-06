@@ -6,7 +6,7 @@ import Land from "./Land";
 import Button from "./Button";
 import Colors from "@constants/Colors";
 
-export default function LandClaim(props) {
+export default function SellOrder(props) {
   return (
     <View style={styles.container}>
       <Land land={props.land} />
@@ -21,7 +21,7 @@ export default function LandClaim(props) {
   );
 }
 
-LandClaim.propTypes = {
+SellOrder.propTypes = {
   land: PropTypes.object.isRequired,
   onClaim: PropTypes.func.isRequired,
 };

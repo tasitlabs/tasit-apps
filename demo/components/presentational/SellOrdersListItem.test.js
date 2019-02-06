@@ -1,9 +1,11 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LandRow from "./LandRow";
+import SellOrdersListItem from "./SellOrdersListItem";
 
-describe("LandRow", () => {
+describe("SellOrdersListItem", () => {
   it("renders the component", async () => {
-    expect(shallow(<LandRow land={{}} onPress={() => {}} />)).toMatchSnapshot();
+    expect(
+      shallow(<SellOrdersListItem land={{}} onPress={() => {}} />)
+    ).toMatchSnapshot();
   });
 });

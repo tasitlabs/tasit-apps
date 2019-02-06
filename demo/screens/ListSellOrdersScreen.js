@@ -1,6 +1,6 @@
 import React from "react";
-import ListLands from "@presentational/ListLands";
-import LandRow from "@presentational/LandRow";
+import SellOrdersList from "@presentational/SellOrdersList";
+import SellOrdersListItem from "@presentational/SellOrdersListItem";
 import ContractsABIs from "@constants/ContractsABIs";
 import ContractsAddresses from "@constants/ContractsAddresses";
 import { Action } from "tasit-sdk";
@@ -71,10 +71,14 @@ export default class ListSellOrdersScreen extends React.Component {
     const handlePress = () =>
       this.props.navigation.navigate("LandClaimScreen", { land });
 
-    return <LandRow id={land.id} land={land} onPress={handlePress} />;
+    return (
+      <SellOrdersListItem id={land.id} land={land} onPress={handlePress} />
+    );
   };
 
   render() {
-    return <ListLands lands={this.state.rows} renderRow={this.renderRow} />;
+    return (
+      <SellOrdersList lands={this.state.rows} renderRow={this.renderRow} />
+    );
   }
 }
