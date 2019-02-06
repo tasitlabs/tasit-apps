@@ -18,7 +18,7 @@ export default class SellOrdersListItem extends React.PureComponent {
     return (
       <TouchableHighlight onPress={onPress}>
         <View style={styles.row}>
-          <SellOrder land={sellOrder} />
+          <SellOrder sellOrder={sellOrder} />
         </View>
       </TouchableHighlight>
     );

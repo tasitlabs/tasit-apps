@@ -1,34 +1,26 @@
 import React from "react";
-import { Image, StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
-import {
-  responsiveWidth,
-  responsiveHeight,
-} from "react-native-responsive-dimensions";
+import { responsiveWidth } from "react-native-responsive-dimensions";
+import EstateForSale from "./EstateForSale";
 
-// Split this component into SellOrder and EstateForSale
-export default function SellOrder({ land }) {
+export default function SellOrder({ sellOrder }) {
   return (
     <View style={styles.landContainer}>
-      <Image style={styles.landImage} source={{ uri: land.img }} />
-      <Text>{land.name}</Text>
+      <EstateForSale estate={sellOrder.asset} />
       <Text>
-        {land.priceMana} MANA (~${land.priceUsd})
+        {sellOrder.priceMana} MANA (~${sellOrder.priceUsd})
       </Text>
     </View>
   );
 }
 
 SellOrder.propTypes = {
-  land: PropTypes.object.isRequired,
+  sellOrder: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
   landContainer: {
     width: responsiveWidth(60),
-  },
-  landImage: {
-    width: responsiveWidth(60),
-    height: responsiveHeight(20),
   },
 });

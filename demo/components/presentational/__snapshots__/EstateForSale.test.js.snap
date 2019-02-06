@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EstateForSale renders the component 1`] = `
+<Fragment>
+  <Component
+    source={
+      Object {
+        "uri": "https://decentraland.org/images/logo-65f7b27caf.png",
+      }
+    }
+    style={
+      Object {
+        "height": 266.8,
+        "width": 450,
+      }
+    }
+  />
+  <Component>
+    Not found
+  </Component>
+</Fragment>
+`;

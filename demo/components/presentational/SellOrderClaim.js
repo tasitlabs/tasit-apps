@@ -10,7 +10,7 @@ export default function SellOrderClaim(props) {
   const { sellOrder, onClaim } = props;
   return (
     <View style={styles.container}>
-      <SellOrder land={sellOrder} />
+      <SellOrder sellOrder={sellOrder} />
       <View style={styles.buttonView}>
         <Button title="Claim" onPress={onClaim} />
       </View>

@@ -55,16 +55,17 @@ export default class ListSellOrdersScreen extends React.Component {
     const priceUsd = Number(priceMana / manaPerUsd).toFixed(2);
     const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
-    // Move to { sellOrder, asset } ?
     return {
-      id: estateId,
-      name: estateName,
+      id: orderId,
       priceMana,
       priceUsd,
-      img: imgUrl,
-      orderId,
       seller,
       expiresAt,
+      asset: {
+        id: estateId,
+        name: estateName,
+        img: imgUrl,
+      },
     };
   }
 

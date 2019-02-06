@@ -4,13 +4,16 @@ import SellOrder from "./SellOrder";
 
 describe("SellOrder", () => {
   it("renders the component", async () => {
-    const land = {
+    const sellOrder = {
       id: -1,
-      name: "Not found",
-      img: require("../../assets/images/icon.png"),
       priceMana: 0,
       priceUsd: 0,
+      asset: {
+        id: -1,
+        name: "Not found",
+        img: "https://decentraland.org/images/logo-65f7b27caf.png",
+      },
     };
-    expect(shallow(<SellOrder land={land} />)).toMatchSnapshot();
+    expect(shallow(<SellOrder sellOrder={sellOrder} />)).toMatchSnapshot();
   });
 });

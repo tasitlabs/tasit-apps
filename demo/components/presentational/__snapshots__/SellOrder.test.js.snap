@@ -8,22 +8,15 @@ exports[`SellOrder renders the component 1`] = `
     }
   }
 >
-  <Component
-    source={
+  <EstateForSale
+    estate={
       Object {
-        "uri": 1,
-      }
-    }
-    style={
-      Object {
-        "height": 266.8,
-        "width": 450,
+        "id": -1,
+        "img": "https://decentraland.org/images/logo-65f7b27caf.png",
+        "name": "Not found",
       }
     }
   />
-  <Component>
-    Not found
-  </Component>
   <Component>
     0
      MANA (~$
