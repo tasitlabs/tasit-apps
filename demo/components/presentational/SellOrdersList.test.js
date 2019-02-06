@@ -5,7 +5,7 @@ import SellOrdersList from "./SellOrdersList";
 describe("SellOrdersList", () => {
   it("renders the component", async () => {
     expect(
-      shallow(<SellOrdersList dataSource={{}} renderRow={() => {}} />)
+      shallow(<SellOrdersList sellOrders={[]} renderItem={() => {}} />)
     ).toMatchSnapshot();
   });
 });

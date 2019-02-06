@@ -51,7 +51,8 @@
       "\\.js$": "<rootDir>/jest.preprocessor.js"
     },
     "setupFiles": [
-      "<rootDir>/jest.setup.js"
+      "<rootDir>/jest.setup.js",
+      "jest-prop-type-error"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|.*react-navigation|expo-react-native-adapter)"

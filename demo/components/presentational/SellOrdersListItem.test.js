@@ -5,7 +5,7 @@ import SellOrdersListItem from "./SellOrdersListItem";
 describe("SellOrdersListItem", () => {
   it("renders the component", async () => {
     expect(
-      shallow(<SellOrdersListItem land={{}} onPress={() => {}} />)
+      shallow(<SellOrdersListItem sellOrder={{}} onPress={() => {}} />)
     ).toMatchSnapshot();
   });
 });

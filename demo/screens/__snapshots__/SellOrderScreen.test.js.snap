@@ -3,5 +3,17 @@
 exports[`SellOrderScreen renders the component 1`] = `
 <SellOrderClaim
   onClaim={[Function]}
+  sellOrder={
+    Object {
+      "asset": Object {
+        "id": -1,
+        "img": "https://decentraland.org/images/logo-65f7b27caf.png",
+        "name": "Not found",
+      },
+      "id": -1,
+      "priceMana": 0,
+      "priceUsd": 0,
+    }
+  }
 />
 `;

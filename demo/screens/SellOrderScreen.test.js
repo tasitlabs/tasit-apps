@@ -10,7 +10,17 @@ describe("SellOrderScreen", () => {
   });
 
   it("renders the component", async () => {
-    const navigation = { getParam: jest.fn() };
+    const sellOrder = {
+      id: -1,
+      priceMana: 0,
+      priceUsd: 0,
+      asset: {
+        id: -1,
+        name: "Not found",
+        img: "https://decentraland.org/images/logo-65f7b27caf.png",
+      },
+    };
+    const navigation = { getParam: () => sellOrder };
     expect(
       shallow(<SellOrderScreen navigation={navigation} />)
     ).toMatchSnapshot();
