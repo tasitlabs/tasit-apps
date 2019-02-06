@@ -7,7 +7,7 @@ import {
 } from "react-native-responsive-dimensions";
 
 // Split this component into SellOrder and EstateForSale
-export default function Land({ land }) {
+export default function SellOrder({ land }) {
   return (
     <View style={styles.landContainer}>
       <Image style={styles.landImage} source={{ uri: land.img }} />
@@ -19,7 +19,7 @@ export default function Land({ land }) {
   );
 }
 
-Land.propTypes = {
+SellOrder.propTypes = {
   land: PropTypes.object.isRequired,
 };
 

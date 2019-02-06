@@ -6,7 +6,7 @@ import Land from "./Land";
 import Button from "./Button";
 import Colors from "@constants/Colors";
 
-export default function SellOrder(props) {
+export default function SellOrderClaim(props) {
   const { sellOrder, onClaim } = props;
   return (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ export default function SellOrder(props) {
   );
 }
 
-SellOrder.propTypes = {
+SellOrderClaim.propTypes = {
   sellOrder: PropTypes.object.isRequired,
   onClaim: PropTypes.func.isRequired,
 };

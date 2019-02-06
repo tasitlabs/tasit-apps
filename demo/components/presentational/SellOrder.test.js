@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Land from "./Land";
+import SellOrder from "./SellOrder";
 
-describe("Land", () => {
+describe("SellOrder", () => {
   it("renders the component", async () => {
     const land = {
       id: -1,
@@ -11,6 +11,6 @@ describe("Land", () => {
       priceMana: 0,
       priceUsd: 0,
     };
-    expect(shallow(<Land land={land} />)).toMatchSnapshot();
+    expect(shallow(<SellOrder land={land} />)).toMatchSnapshot();
   });
 });
