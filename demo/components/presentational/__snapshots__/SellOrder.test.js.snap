@@ -8,7 +8,7 @@ exports[`SellOrder renders the component 1`] = `
     }
   }
 >
-  <EstateForSale
+  <Estate
     estate={
       Object {
         "id": -1,

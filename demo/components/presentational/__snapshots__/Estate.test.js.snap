@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EstateForSale renders the component 1`] = `
+exports[`Estate renders the component 1`] = `
 <Fragment>
   <Component
     source={
