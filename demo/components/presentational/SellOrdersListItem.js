@@ -5,29 +5,29 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import Land from "./Land";
+import SellOrder from "./SellOrder";
 
 // Note: Changing to PureComponent for performance boost
 // It is possible to still using function component with React.memo HoC
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class LandRow extends React.PureComponent {
+export default class SellOrdersListItem extends React.PureComponent {
   render() {
-    const { onPress, land } = this.props;
+    const { onPress, sellOrder } = this.props;
     return (
       <TouchableHighlight onPress={onPress}>
         <View style={styles.row}>
-          <Land land={land} />
+          <SellOrder sellOrder={sellOrder} />
         </View>
       </TouchableHighlight>
     );
   }
 }
 
-LandRow.propTypes = {
+SellOrdersListItem.propTypes = {
   onPress: PropTypes.func.isRequired,
-  land: PropTypes.object.isRequired,
+  sellOrder: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

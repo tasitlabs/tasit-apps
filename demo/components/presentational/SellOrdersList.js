@@ -8,18 +8,22 @@ import Colors from "@constants/Colors";
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class ListLands extends React.PureComponent {
+export default class SellOrdersList extends React.PureComponent {
   render() {
-    const { lands, renderRow } = this.props;
+    const { sellOrders, renderItem } = this.props;
     return (
-      <FlatList data={lands} style={styles.container} renderItem={renderRow} />
+      <FlatList
+        data={sellOrders}
+        style={styles.container}
+        renderItem={renderItem}
+      />
     );
   }
 }
 
-ListLands.propTypes = {
-  renderRow: PropTypes.func.isRequired,
-  lands: PropTypes.any.isRequired,
+SellOrdersList.propTypes = {
+  renderItem: PropTypes.func.isRequired,
+  sellOrders: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({

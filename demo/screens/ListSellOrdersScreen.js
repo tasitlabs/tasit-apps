@@ -1,6 +1,6 @@
 import React from "react";
-import ListLands from "@presentational/ListLands";
-import LandRow from "@presentational/LandRow";
+import SellOrdersList from "@presentational/SellOrdersList";
+import SellOrdersListItem from "@presentational/SellOrdersListItem";
 import ContractsABIs from "@constants/ContractsABIs";
 import ContractsAddresses from "@constants/ContractsAddresses";
 import { Action } from "tasit-sdk";
@@ -8,17 +8,18 @@ const { estateABI, marketplaceABI } = ContractsABIs;
 const { estateAddress, marketplaceAddress } = ContractsAddresses;
 const { Contract } = Action;
 
-export default class ListLandsScreen extends React.Component {
+export default class ListSellOrdersScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
+
   state = {
-    rows: [],
+    sellOrders: [],
   };
 
   async componentDidMount() {
-    const rows = await this.getSellOrders();
-    this.setState({ rows });
+    const sellOrders = await this.getSellOrders();
+    this.setState({ sellOrders });
   }
 
   // Note: This function is assuming that:
@@ -49,32 +50,37 @@ export default class ListLandsScreen extends React.Component {
     const hasOrder = parseInt(orderId, 16) !== 0;
     if (!hasOrder) throw Error(`Estate (id:${estateId}) has no sell order.`);
 
-    const priceMana = Number(price.toString()) / 1e18;
+    // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
-    const priceUsd = Number(priceMana / manaPerUsd).toFixed(2);
+    const priceMana = Number(price.toString()) / 1e18;
+    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
     const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
     return {
-      id: estateId,
-      name: estateName,
+      id: orderId,
       priceMana,
-      priceUsd,
-      img: imgUrl,
-      orderId,
+      priceUSD,
       seller,
       expiresAt,
+      // TODO: Create an enum type for identify asset
+      asset: {
+        id: estateId,
+        name: estateName,
+        img: imgUrl,
+      },
     };
   }
 
-  renderRow = row => {
-    const { item: land } = row;
+  renderItem = ({ item: sellOrder }) => {
     const handlePress = () =>
-      this.props.navigation.navigate("LandClaimScreen", { land });
-
-    return <LandRow id={land.id} land={land} onPress={handlePress} />;
+      this.props.navigation.navigate("SellOrderScreen", { sellOrder });
+    return <SellOrdersListItem sellOrder={sellOrder} onPress={handlePress} />;
   };
 
   render() {
-    return <ListLands lands={this.state.rows} renderRow={this.renderRow} />;
+    const { sellOrders } = this.state;
+    return (
+      <SellOrdersList sellOrders={sellOrders} renderItem={this.renderItem} />
+    );
   }
 }

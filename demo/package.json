@@ -38,6 +38,7 @@
     "expo-cli": "^2.6.14",
     "jest": "^23.6.0",
     "jest-expo": "^32.0.0",
+    "jest-prop-type-error": "^1.1.0",
     "prettier": "^1.15.2",
     "react-dom": "^16.6.3"
   },
@@ -51,7 +52,8 @@
       "\\.js$": "<rootDir>/jest.preprocessor.js"
     },
     "setupFiles": [
-      "<rootDir>/jest.setup.js"
+      "<rootDir>/jest.setup.js",
+      "jest-prop-type-error"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|.*react-navigation|expo-react-native-adapter)"

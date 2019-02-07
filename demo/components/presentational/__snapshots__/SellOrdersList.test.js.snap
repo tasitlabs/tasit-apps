@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListLands renders the component 1`] = `
+exports[`SellOrdersList renders the component 1`] = `
 <FlatList
+  data={Array []}
   disableVirtualization={false}
   horizontal={false}
   initialNumToRender={10}

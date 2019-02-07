@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LandClaim renders the component 1`] = `
+exports[`SellOrderClaim renders the component 1`] = `
 <Component
   style={
     Object {
@@ -11,8 +11,8 @@ exports[`LandClaim renders the component 1`] = `
     }
   }
 >
-  <Land
-    land={Object {}}
+  <SellOrder
+    sellOrder={Object {}}
   />
   <Component
     style={
