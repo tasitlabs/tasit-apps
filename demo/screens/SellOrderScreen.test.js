@@ -13,7 +13,7 @@ describe("SellOrderScreen", () => {
     const sellOrder = {
       id: 123,
       priceMana: 0,
-      priceUsd: 0,
+      priceUSD: 0,
       asset: {
         id: -1,
         name: "Not found",

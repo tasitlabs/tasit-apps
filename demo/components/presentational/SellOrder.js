@@ -8,7 +8,7 @@ export default function SellOrder({ sellOrder }) {
   const { asset: estate, priceMana } = sellOrder;
 
   // Note: Conversion to USD will be implemented on v0.2.0
-  // <Text>{priceMana} MANA (~${sellOrder.priceUsd})</Text>
+  // <Text>{priceMana} MANA (~${sellOrder.priceUSD})</Text>
   return (
     <View style={styles.landContainer}>
       <Estate estate={estate} />

@@ -12,7 +12,7 @@ exports[`SellOrderScreen renders the component 1`] = `
       },
       "id": 123,
       "priceMana": 0,
-      "priceUsd": 0,
+      "priceUSD": 0,
     }
   }
 />

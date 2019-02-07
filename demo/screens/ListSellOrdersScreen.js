@@ -53,13 +53,13 @@ export default class ListSellOrdersScreen extends React.Component {
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
     const priceMana = Number(price.toString()) / 1e18;
-    const priceUsd = Number(priceMana / manaPerUsd).toFixed(2);
+    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
     const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
     return {
       id: orderId,
       priceMana,
-      priceUsd,
+      priceUSD,
       seller,
       expiresAt,
       asset: {
