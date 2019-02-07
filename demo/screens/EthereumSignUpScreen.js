@@ -3,6 +3,10 @@ import EthereumSignUp from "@presentational/EthereumSignUp";
 
 export default class EthereumSignUpScreen extends React.Component {
   render() {
-    return <EthereumSignUp />;
+    return (
+      <EthereumSignUp
+        afterSignUp={() => this.props.navigation.navigate("SellOrderScreen")}
+      />
+    );
   }
 }

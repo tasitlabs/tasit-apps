@@ -1,5 +1,6 @@
 import React from "react";
 import SellOrderClaim from "@presentational/SellOrderClaim";
+import SellOrderExecute from "@presentational/SellOrderExecute";
 
 export default class SellOrderScreen extends React.Component {
   render() {
@@ -14,11 +15,27 @@ export default class SellOrderScreen extends React.Component {
         img: "https://decentraland.org/images/logo-65f7b27caf.png",
       },
     });
-    return (
-      <SellOrderClaim
-        sellOrder={sellOrder}
-        onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
-      />
-    );
+
+    // TODO
+    // Has Tasit Account assigned?
+    const hasAccount = true;
+
+    if (hasAccount) {
+      return (
+        <SellOrderExecute
+          sellOrder={sellOrder}
+          onOrderExecution={() =>
+            this.props.navigation.navigate("ListSellOrdersScreen")
+          }
+        />
+      );
+    } else {
+      return (
+        <SellOrderClaim
+          sellOrder={sellOrder}
+          onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
+        />
+      );
+    }
   }
 }

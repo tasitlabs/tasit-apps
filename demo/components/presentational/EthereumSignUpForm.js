@@ -6,6 +6,7 @@ import {
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 import { Account } from "tasit-sdk";
+import PropTypes from "prop-types";
 import Button from "./Button";
 
 export default class EthereumSignUpForm extends React.Component {
@@ -17,6 +18,11 @@ export default class EthereumSignUpForm extends React.Component {
   createAccount = () => {
     const wallet = Account.create();
     this.setState({ address: wallet.address });
+  };
+
+  onContinue = () => {
+    this.createAccount();
+    this.props.afterSignUp();
   };
 
   render() {
@@ -38,12 +44,16 @@ export default class EthereumSignUpForm extends React.Component {
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => this.createAccount()} />
+          <Button title="Continue" onPress={() => this.onContinue()} />
         </View>
       </React.Fragment>
     );
   }
 }
+
+EthereumSignUpForm.propTypes = {
+  afterSignUp: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   userRow: { flexDirection: "row" },

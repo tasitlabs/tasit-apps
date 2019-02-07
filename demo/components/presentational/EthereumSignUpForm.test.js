@@ -9,14 +9,22 @@ describe("EthereumSignUpForm", () => {
     NavigationTestUtils.resetInternalState();
   });
 
-  it("renders the component", async () => {
-    expect(shallow(<EthereumSignUpForm />)).toMatchSnapshot();
+  it("renders the component", () => {
+    expect(
+      shallow(<EthereumSignUpForm afterSignUp={() => {}} />)
+    ).toMatchSnapshot();
   });
 
-  it("creates a wallet - calling function", async () => {
-    const wrapper = shallow(<EthereumSignUpForm />);
+  it("creates a wallet - calling function", () => {
+    const afterSignUp = jest.fn();
+    const wrapper = shallow(<EthereumSignUpForm afterSignUp={afterSignUp} />);
     expect(wrapper.state("address")).toEqual("");
-    await wrapper.instance().createAccount();
+    wrapper
+      .find("Button")
+      .find({ title: "Continue" })
+      .simulate("press");
+
     expect(wrapper.state("address")).not.toEqual("");
+    expect(afterSignUp.mock.calls.length).toBe(1);
   });
 });
