@@ -11,7 +11,7 @@ describe("SellOrderScreen", () => {
 
   it("renders the component", async () => {
     const sellOrder = {
-      id: -1,
+      id: 123,
       priceMana: 0,
       priceUsd: 0,
       asset: {

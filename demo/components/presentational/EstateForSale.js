@@ -7,10 +7,11 @@ import {
 } from "react-native-responsive-dimensions";
 
 export default function EstateForSale({ estate }) {
+  const { img, name } = estate;
   return (
     <React.Fragment>
-      <Image style={styles.landImage} source={{ uri: estate.img }} />
-      <Text>{estate.name}</Text>
+      <Image style={styles.landImage} source={{ uri: img }} />
+      <Text>{name}</Text>
     </React.Fragment>
   );
 }

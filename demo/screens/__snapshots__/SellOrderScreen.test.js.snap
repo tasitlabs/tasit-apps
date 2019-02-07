@@ -10,7 +10,7 @@ exports[`SellOrderScreen renders the component 1`] = `
         "img": "https://decentraland.org/images/logo-65f7b27caf.png",
         "name": "Not found",
       },
-      "id": -1,
+      "id": 123,
       "priceMana": 0,
       "priceUsd": 0,
     }
