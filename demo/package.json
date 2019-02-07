@@ -5,7 +5,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "start": "npx expo start",
+    "start": "npx expo start -c",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",

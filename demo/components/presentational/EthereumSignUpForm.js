@@ -14,9 +14,8 @@ export default class EthereumSignUpForm extends React.Component {
     address: "",
   };
 
-  createAccount = async () => {
-    // TODO: Remove await when SDK 0.0.3 is out
-    const wallet = await Account.create();
+  createAccount = () => {
+    const wallet = Account.create();
     this.setState({ address: wallet.address });
   };
 
