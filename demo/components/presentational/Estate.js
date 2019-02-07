@@ -6,7 +6,7 @@ import {
   responsiveHeight,
 } from "react-native-responsive-dimensions";
 
-export default function EstateForSale({ estate }) {
+export default function Estate({ estate }) {
   const { img, name } = estate;
   return (
     <React.Fragment>
@@ -16,7 +16,7 @@ export default function EstateForSale({ estate }) {
   );
 }
 
-EstateForSale.propTypes = {
+Estate.propTypes = {
   estate: PropTypes.object.isRequired,
 };
 

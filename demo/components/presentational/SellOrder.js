@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import EstateForSale from "./EstateForSale";
+import Estate from "./Estate";
 
 export default function SellOrder({ sellOrder }) {
   const { asset: estate, priceMana } = sellOrder;
@@ -11,7 +11,7 @@ export default function SellOrder({ sellOrder }) {
   // <Text>{priceMana} MANA (~${sellOrder.priceUsd})</Text>
   return (
     <View style={styles.landContainer}>
-      <EstateForSale estate={estate} />
+      <Estate estate={estate} />
       <Text>{priceMana} MANA</Text>
     </View>
   );
