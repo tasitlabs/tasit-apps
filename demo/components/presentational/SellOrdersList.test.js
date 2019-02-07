@@ -4,11 +4,14 @@ import SellOrdersList from "./SellOrdersList";
 
 describe("SellOrdersList", () => {
   it("renders the component", async () => {
-    const renderItem = () => {};
+    const sellOrderRenderer = () => {};
     const sellOrders = [];
     expect(
       shallow(
-        <SellOrdersList sellOrders={sellOrders} renderItem={renderItem} />
+        <SellOrdersList
+          sellOrders={sellOrders}
+          renderItem={sellOrderRenderer}
+        />
       )
     ).toMatchSnapshot();
   });
