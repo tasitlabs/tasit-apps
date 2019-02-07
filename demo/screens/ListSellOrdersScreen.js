@@ -73,13 +73,7 @@ export default class ListSellOrdersScreen extends React.Component {
   renderItem = ({ item: sellOrder }) => {
     const handlePress = () =>
       this.props.navigation.navigate("SellOrderScreen", { sellOrder });
-    return (
-      <SellOrdersListItem
-        id={sellOrder.id}
-        sellOrder={sellOrder}
-        onPress={handlePress}
-      />
-    );
+    return <SellOrdersListItem sellOrder={sellOrder} onPress={handlePress} />;
   };
 
   render() {
