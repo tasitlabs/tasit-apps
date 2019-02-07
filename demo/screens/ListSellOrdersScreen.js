@@ -62,6 +62,7 @@ export default class ListSellOrdersScreen extends React.Component {
       priceUSD,
       seller,
       expiresAt,
+      // TODO: Create an enum type for identify asset
       asset: {
         id: estateId,
         name: estateName,
