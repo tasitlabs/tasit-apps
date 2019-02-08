@@ -5,9 +5,11 @@ import {
   responsiveWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import { Account } from "tasit-sdk";
 import PropTypes from "prop-types";
 import Button from "./Button";
+import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
+const buyerPrivKey =
+  "0x4f09311114f0ff4dfad0edaa932a3e01a4ee9f34da2cbd087aa0e6ffcb9eb322";
 
 export default class EthereumSignUpForm extends React.Component {
   state = {
@@ -15,13 +17,16 @@ export default class EthereumSignUpForm extends React.Component {
     address: "",
   };
 
-  createAccount = () => {
-    const wallet = Account.create();
-    this.setState({ address: wallet.address });
+  // Note: As same as Account.create(), this functions isn't running as async.
+  // Timeout Between button click and screen change (afterSignUp()) is abount 5 secs.
+  // See more: https://github.com/tasitlabs/tasit/issues/42
+  createAccount = async () => {
+    const buyerWallet = createFromPrivateKey(buyerPrivKey);
+    this.setState({ address: buyerWallet.address });
   };
 
   onContinue = () => {
-    this.createAccount();
+    this.createAccount(); // Should run async but isn't when calling Account.create() or createFromPrivateKey()
     this.props.afterSignUp();
   };
 

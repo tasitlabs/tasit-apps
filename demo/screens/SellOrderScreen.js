@@ -18,7 +18,7 @@ export default class SellOrderScreen extends React.Component {
 
     // TODO
     // Has Tasit Account assigned?
-    const hasAccount = true;
+    const hasAccount = false;
 
     if (hasAccount) {
       return (
