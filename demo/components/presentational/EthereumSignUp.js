@@ -10,6 +10,7 @@ import EthereumSignUpForm from "@presentational/EthereumSignUpForm";
 export default class EthereumSignUp extends React.Component {
   render() {
     const OFFSET = responsiveHeight(3);
+    const { onSignUp } = this.props;
     return (
       <KeyboardAvoidingView
         keyboardVerticalOffset={Header.HEIGHT + OFFSET}
@@ -17,14 +18,14 @@ export default class EthereumSignUp extends React.Component {
         behavior="padding"
       >
         <LargeText>{`Cool. Let's start by picking your Tasit username.`}</LargeText>
-        <EthereumSignUpForm afterSignUp={this.props.afterSignUp} />
+        <EthereumSignUpForm onSignUp={onSignUp} />
       </KeyboardAvoidingView>
     );
   }
 }
 
 EthereumSignUp.propTypes = {
-  afterSignUp: PropTypes.func.isRequired,
+  onSignUp: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

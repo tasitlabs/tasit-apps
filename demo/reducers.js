@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { SET_ACCOUNT, CLAIM_ASSET } from "./actions";
+import { SET_ACCOUNT, CLAIM_SELL_ORDER } from "./actions";
 
 function account(state = null, action) {
   const { type, account } = action;
@@ -11,11 +11,11 @@ function account(state = null, action) {
   }
 }
 
-function claimedAsset(state = null, action) {
-  const { type, sellOrderId } = action;
+function claimedSellOrder(state = null, action) {
+  const { type, sellOrder } = action;
   switch (type) {
-    case CLAIM_ASSET:
-      return sellOrderId;
+    case CLAIM_SELL_ORDER:
+      return sellOrder;
     default:
       return state;
   }
@@ -23,7 +23,7 @@ function claimedAsset(state = null, action) {
 
 const demoApp = combineReducers({
   account,
-  claimedAsset,
+  claimedSellOrder,
 });
 
 export default demoApp;

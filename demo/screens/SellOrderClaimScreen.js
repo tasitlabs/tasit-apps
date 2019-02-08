@@ -1,7 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { claimSellOrder } from "../actions";
 import SellOrderClaim from "@presentational/SellOrderClaim";
 
-export default class SellOrderClaimScreen extends React.Component {
+export class SellOrderClaimScreen extends React.Component {
+  _onClaim = sellOrder => {
+    const { claimSellOrder } = this.props;
+
+    claimSellOrder(sellOrder);
+    this.props.navigation.navigate("OnboardingHomeScreen");
+  };
+
   render() {
     const { navigation } = this.props;
 
@@ -19,8 +29,23 @@ export default class SellOrderClaimScreen extends React.Component {
     return (
       <SellOrderClaim
         sellOrder={sellOrder}
-        onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
+        onClaim={() => {
+          this._onClaim(sellOrder);
+        }}
       />
     );
   }
 }
+
+SellOrderClaimScreen.propTypes = {
+  claimSellOrder: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  claimSellOrder,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SellOrderClaimScreen);
