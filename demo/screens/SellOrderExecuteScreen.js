@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import SellOrderExecute from "@presentational/SellOrderExecute";
 import PropTypes from "prop-types";
 
-class SellOrderScreen extends React.Component {
+export class SellOrderExecuteScreen extends React.Component {
   render() {
     const { navigation } = this.props;
 
@@ -29,7 +29,7 @@ class SellOrderScreen extends React.Component {
   }
 }
 
-SellOrderScreen.propTypes = {
+SellOrderExecuteScreen.propTypes = {
   account: PropTypes.object,
 };
 
@@ -38,4 +38,4 @@ const mapStateToProps = state => {
   return { account };
 };
 
-export default connect(mapStateToProps)(SellOrderScreen);
+export default connect(mapStateToProps)(SellOrderExecuteScreen);

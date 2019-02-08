@@ -1,7 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SellOrderExecuteScreen renders the component 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
+<SellOrderExecute
+  afterOrderExecution={[Function]}
+  sellOrder={
+    Object {
+      "asset": Object {
+        "id": -1,
+        "img": "https://decentraland.org/images/logo-65f7b27caf.png",
+        "name": "Not found",
+      },
+      "id": 123,
+      "priceMana": 0,
+      "priceUSD": 0,
+    }
+  }
+/>
 `;

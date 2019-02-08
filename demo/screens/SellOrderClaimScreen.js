@@ -1,12 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
 import SellOrderClaim from "@presentational/SellOrderClaim";
-import SellOrderExecute from "@presentational/SellOrderExecute";
-import PropTypes from "prop-types";
 
-class SellOrderScreen extends React.Component {
+export default class SellOrderClaimScreen extends React.Component {
   render() {
-    const { navigation, account } = this.props;
+    const { navigation } = this.props;
 
     const sellOrder = navigation.getParam("sellOrder", {
       id: -1,
@@ -19,35 +16,11 @@ class SellOrderScreen extends React.Component {
       },
     });
 
-    const hasAccount = account !== null;
-
-    if (hasAccount) {
-      return (
-        <SellOrderExecute
-          sellOrder={sellOrder}
-          onOrderExecution={() =>
-            this.props.navigation.navigate("ListSellOrdersScreen")
-          }
-        />
-      );
-    } else {
-      return (
-        <SellOrderClaim
-          sellOrder={sellOrder}
-          onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
-        />
-      );
-    }
+    return (
+      <SellOrderClaim
+        sellOrder={sellOrder}
+        onClaim={() => this.props.navigation.navigate("OnboardingHomeScreen")}
+      />
+    );
   }
 }
-
-SellOrderScreen.propTypes = {
-  account: PropTypes.object,
-};
-
-const mapStateToProps = state => {
-  const { account } = state;
-  return { account };
-};
-
-export default connect(mapStateToProps)(SellOrderScreen);

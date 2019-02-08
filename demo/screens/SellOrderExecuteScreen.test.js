@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import SellOrderExecuteScreen from "./SellOrderExecuteScreen";
+import { SellOrderExecuteScreen } from "./SellOrderExecuteScreen";
 
 describe("SellOrderExecuteScreen", () => {
   jest.useFakeTimers();
