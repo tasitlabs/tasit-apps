@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SellOrderScreen renders the component 1`] = `
+exports[`SellOrderClaimScreen renders the component 1`] = `
 <ContextConsumer>
   <Component />
 </ContextConsumer>
