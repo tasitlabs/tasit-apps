@@ -17,7 +17,7 @@ exports[`EthereumSignUp renders the component 1`] = `
   <LargeText>
     Cool. Let's start by picking your Tasit username.
   </LargeText>
-  <EthereumSignUpForm
+  <Connect(EthereumSignUpForm)
     afterSignUp={[Function]}
   />
 </KeyboardAvoidingView>

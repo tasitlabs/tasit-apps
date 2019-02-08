@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
+import { connect } from "react-redux";
+import { setAccount } from "../../actions";
 import {
   responsiveHeight,
   responsiveWidth,
@@ -8,26 +10,26 @@ import {
 import PropTypes from "prop-types";
 import Button from "./Button";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
-const buyerPrivKey =
+const accountPrivateKey =
   "0x4f09311114f0ff4dfad0edaa932a3e01a4ee9f34da2cbd087aa0e6ffcb9eb322";
 
-export default class EthereumSignUpForm extends React.Component {
-  state = {
-    text: "",
-    address: "",
-  };
-
+export class EthereumSignUpForm extends React.Component {
   // Note: As same as Account.create(), this functions isn't running as async.
   // Timeout Between button click and screen change (afterSignUp()) is abount 5 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
-  createAccount = async () => {
-    const buyerWallet = createFromPrivateKey(buyerPrivKey);
-    this.setState({ address: buyerWallet.address });
+  _createAccount = async () => {
+    const { setAccount } = this.props;
+    const account = createFromPrivateKey(accountPrivateKey);
+    setAccount(account);
   };
 
-  onContinue = () => {
-    this.createAccount(); // Should run async but isn't when calling Account.create() or createFromPrivateKey()
-    this.props.afterSignUp();
+  _onContinue = () => {
+    const { afterSignUp } = this.props;
+
+    // Should run async but isn't when calling Account.create() or createFromPrivateKey()
+    this._createAccount();
+
+    afterSignUp();
   };
 
   render() {
@@ -39,8 +41,8 @@ export default class EthereumSignUpForm extends React.Component {
               autoCorrect={false}
               autoCapitalize="none"
               style={styles.userInput}
-              onChangeText={text => this.setState({ text })}
-              value={this.state.text}
+              onChangeText={() => {}}
+              value={""}
               placeholder="username"
             />
           </View>
@@ -49,7 +51,7 @@ export default class EthereumSignUpForm extends React.Component {
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => this.onContinue()} />
+          <Button title="Continue" onPress={() => this._onContinue()} />
         </View>
       </React.Fragment>
     );
@@ -58,7 +60,17 @@ export default class EthereumSignUpForm extends React.Component {
 
 EthereumSignUpForm.propTypes = {
   afterSignUp: PropTypes.func.isRequired,
+  setAccount: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = {
+  setAccount,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(EthereumSignUpForm);
 
 const styles = StyleSheet.create({
   userRow: { flexDirection: "row" },

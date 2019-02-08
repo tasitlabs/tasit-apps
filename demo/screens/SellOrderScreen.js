@@ -1,10 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import SellOrderClaim from "@presentational/SellOrderClaim";
 import SellOrderExecute from "@presentational/SellOrderExecute";
+import PropTypes from "prop-types";
 
-export default class SellOrderScreen extends React.Component {
+class SellOrderScreen extends React.Component {
   render() {
-    const { navigation } = this.props;
+    const { navigation, account } = this.props;
+
     const sellOrder = navigation.getParam("sellOrder", {
       id: -1,
       priceMana: 0,
@@ -16,9 +19,7 @@ export default class SellOrderScreen extends React.Component {
       },
     });
 
-    // TODO
-    // Has Tasit Account assigned?
-    const hasAccount = false;
+    const hasAccount = account !== null;
 
     if (hasAccount) {
       return (
@@ -39,3 +40,14 @@ export default class SellOrderScreen extends React.Component {
     }
   }
 }
+
+SellOrderScreen.propTypes = {
+  account: PropTypes.object,
+};
+
+const mapStateToProps = state => {
+  const { account } = state;
+  return { account };
+};
+
+export default connect(mapStateToProps)(SellOrderScreen);
