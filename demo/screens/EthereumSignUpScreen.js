@@ -5,7 +5,9 @@ export default class EthereumSignUpScreen extends React.Component {
   render() {
     return (
       <EthereumSignUp
-        afterSignUp={() => this.props.navigation.navigate("SellOrderScreen")}
+        afterSignUp={() =>
+          this.props.navigation.navigate("SellOrderExecuteScreen")
+        }
       />
     );
   }

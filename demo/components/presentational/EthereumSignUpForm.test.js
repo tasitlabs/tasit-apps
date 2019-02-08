@@ -1,7 +1,6 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import { connect } from "react-redux";
 import { EthereumSignUpForm } from "./EthereumSignUpForm";
 
 describe("EthereumSignUpForm", () => {

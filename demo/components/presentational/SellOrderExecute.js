@@ -7,12 +7,12 @@ import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function SellOrderExecute(props) {
-  const { sellOrder, onOrderExecution } = props;
+  const { sellOrder, afterOrderExecution } = props;
   return (
     <View style={styles.container}>
       <SellOrder sellOrder={sellOrder} />
       <View style={styles.buttonView}>
-        <Button title="Buy" onPress={onOrderExecution} />
+        <Button title="Buy" onPress={afterOrderExecution} />
       </View>
     </View>
   );
@@ -20,7 +20,7 @@ export default function SellOrderExecute(props) {
 
 SellOrderExecute.propTypes = {
   sellOrder: PropTypes.object.isRequired,
-  onOrderExecution: PropTypes.func.isRequired,
+  afterOrderExecution: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

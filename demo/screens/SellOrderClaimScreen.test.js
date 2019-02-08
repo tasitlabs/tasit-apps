@@ -1,9 +1,9 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import SellOrderScreen from "./SellOrderScreen";
+import SellOrderClaimScreen from "./SellOrderClaimScreen";
 
-describe("SellOrderScreen", () => {
+describe("SellOrderClaimScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
@@ -22,7 +22,7 @@ describe("SellOrderScreen", () => {
     };
     const navigation = { getParam: () => sellOrder };
     expect(
-      shallow(<SellOrderScreen navigation={navigation} />)
+      shallow(<SellOrderClaimScreen navigation={navigation} />)
     ).toMatchSnapshot();
   });
 });
