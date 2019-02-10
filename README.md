@@ -21,11 +21,11 @@ The apps are all built using the [Tasit SDK](https://github.com/tasitlabs/tasits
 
 One major bottleneck and obstacle in the mainstream adoption of dapps is the clunky and confusing UX of today's dapps - typically served within a mobile browser (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-the-users-perspective)). 
 
-The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide  delightful UX and simpler onboarding for the dapp and in some cases extra features too. 
+The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide delightful UX and simpler onboarding for the dapp and in some cases extra features too. 
 
 From a developer's perspective, a lack of tooling means a great deal of grunt setup work is required with every project, slowing down product development and taking valuable time and focus way from business logic. (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-a-developers--ethereum-enthusiasts-perspective)).
 
-With the two pronged approach of the Tasit native apps and the Tasit SDK, we hope to achieve the aim of mainstream Ethereum dapp adoption by making the experience significantly smoother and more enjoyable for both users and builders. 
+Through the two-pronged approach with the Tasit native apps and the Tasit SDK, we hope to achieve the aim of mainstream Ethereum dapp adoption by making the experience significantly smoother and more enjoyable for both users and builders. 
 
 ## Tasit Apps
 
