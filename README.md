@@ -4,17 +4,30 @@
   <img src="/images/TasitLogoGrayscale.png" width="200" />
 </div>
 
-### Introduction
+## What is Tasit?
 
-Tasit is a suite of mobile apps for mainstream users that lets them use popular Ethereum dapps.
+Tasit is 2 things: 
 
-Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers, you can use the dapp via a standalone native mobile app.
+- 1 ) a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps in the same manner as their other favorite apps (e.g. Instagram, Facebook, Gmail, etc.) 
+- 2 ) a [Javascript SDK](https://github.com/tasitlabs/TasitSDK) that empowers developers to create even more native Ethereum dapps. 
+
+Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers, you can use these dapps via a standalone native mobile app.
 
 _Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out today for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
 
-The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide more delightful UX and simpler onboarding for the dapp and in some cases extra features too.
-
 The apps are all built using the [Tasit SDK](https://github.com/tasitlabs/tasitsdk) and React Native.
+
+## Why are native dapps important?
+
+One major bottleneck and obstacle in the mainstream adoption of dapps is the clunky and confusing UX of today's dapps - typically served within a mobile browser (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-the-users-perspective)). 
+
+The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide delightful UX and simpler onboarding for the dapp and in some cases extra features too. 
+
+From a developer's perspective, a lack of tooling means a great deal of grunt setup work is required with every project, slowing down product development and taking valuable time and focus way from business logic. (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-a-developers--ethereum-enthusiasts-perspective)).
+
+Through the two-pronged approach with the Tasit native apps and the Tasit SDK, we hope to achieve the aim of mainstream Ethereum dapp adoption by making the experience significantly smoother and more enjoyable for both users and builders. 
+
+## Tasit Apps
 
 ### Tasit Demo
 
@@ -31,20 +44,6 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 > - A working demo of onboarding with a few things still hardcoded for users who already have funds stored
 > - A working demo of onboarding for users new to Ethereum
 > - Minimal proof-of-concept app ready to ship to TestFlight for iOS using a testnet
-
-##### Getting started
-
-```
-git clone https://github.com/tasitlabs/tasit.git
-cd tasit
-cd demo
-npm install
-npm start
-```
-
-##### Review the code
-
-[Here's the code](./demo) for the demo app.
 
 ### Tasit Decentraland
 
@@ -83,7 +82,21 @@ npx tasit-cli init my-app --nft
 
 This app scaffold comes ready to submit for beta testing on iOS with Testflight and on Android with Google Play Beta track, so you can focus on the core features of your dapp like you would do on the web.
 
-### Coming soon
+## Getting started
+
+```
+git clone https://github.com/tasitlabs/tasit.git
+cd tasit
+cd demo
+npm install
+npm start
+```
+
+### Review the code
+
+[Here's the code](./demo) for the demo app.
+
+## Coming soon
 
 ##### A Tasit list app
 
