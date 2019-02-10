@@ -9,7 +9,7 @@
 Tasit is 2 things: 
 
 - 1 ) a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps in the same manner as their other favorite apps (e.g. Instagram, Facebook, Gmail, etc.) 
-- 2 ) a [Javascript SDK](https://github.com/tasitlabs/TasitSDK) that empowers the creation of even more native Ethereum dapps. 
+- 2 ) a [Javascript SDK](https://github.com/tasitlabs/TasitSDK) that empowers developers to create even more native Ethereum dapps. 
 
 Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers, you can use these dapps via a standalone native mobile app.
 
@@ -44,20 +44,6 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 > - A working demo of onboarding with a few things still hardcoded for users who already have funds stored
 > - A working demo of onboarding for users new to Ethereum
 > - Minimal proof-of-concept app ready to ship to TestFlight for iOS using a testnet
-
-##### Getting started
-
-```
-git clone https://github.com/tasitlabs/tasit.git
-cd tasit
-cd demo
-npm install
-npm start
-```
-
-##### Review the code
-
-[Here's the code](./demo) for the demo app.
 
 ### Tasit Decentraland
 
@@ -96,19 +82,33 @@ npx tasit-cli init my-app --nft
 
 This app scaffold comes ready to submit for beta testing on iOS with Testflight and on Android with Google Play Beta track, so you can focus on the core features of your dapp like you would do on the web.
 
-### Coming soon
+## Getting started
 
-##### Tasit list app
+```
+git clone https://github.com/tasitlabs/tasit.git
+cd tasit
+cd demo
+npm install
+npm start
+```
+
+### Review the code
+
+[Here's the code](./demo) for the demo app.
+
+## Coming soon
+
+##### A Tasit list app
 
 Exact list project T.B.D.
 ([TCRs](https://medium.com/@simondlr/city-walls-bo-taoshi-exploring-the-power-of-token-curated-registries-588f208c17d5) / FCRs)
 
-##### Tasit org app
+##### A Tasit org app
 
 Exact org project T.B.D.
 ([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
 
-##### Tasit market app
+##### A Tasit market app
 
 Exact market project T.B.D.
 (Two-sided marketplaces like Gitcoin, CryptoCribs, OpenSea, etc.)
