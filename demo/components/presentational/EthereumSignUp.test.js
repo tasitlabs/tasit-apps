@@ -4,8 +4,6 @@ import EthereumSignUp from "./EthereumSignUp";
 
 describe("EthereumSignUp", () => {
   it("renders the component", async () => {
-    expect(
-      shallow(<EthereumSignUp afterSignUp={() => {}} />)
-    ).toMatchSnapshot();
+    expect(shallow(<EthereumSignUp onSignUp={() => {}} />)).toMatchSnapshot();
   });
 });

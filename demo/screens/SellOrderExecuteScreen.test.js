@@ -20,9 +20,20 @@ describe("SellOrderExecuteScreen", () => {
         img: "https://decentraland.org/images/logo-65f7b27caf.png",
       },
     };
-    const navigation = { getParam: () => sellOrder };
+
+    const account = {};
+    const navigation = () => {};
+    const removeSellOrder = () => {};
+
     expect(
-      shallow(<SellOrderExecuteScreen navigation={navigation} />)
+      shallow(
+        <SellOrderExecuteScreen
+          navigation={navigation}
+          account={account}
+          claimedSellOrder={sellOrder}
+          removeSellOrder={removeSellOrder}
+        />
+      )
     ).toMatchSnapshot();
   });
 });

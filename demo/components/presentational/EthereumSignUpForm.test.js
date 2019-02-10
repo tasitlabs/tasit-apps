@@ -1,24 +1,17 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import { EthereumSignUpForm } from "./EthereumSignUpForm";
+import EthereumSignUpForm from "./EthereumSignUpForm";
 
 describe("EthereumSignUpForm", () => {
-  let wrapper;
-  let afterSignUp;
-  let setAccount;
-
   jest.useFakeTimers();
+  let wrapper;
+  let onSignUp;
 
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
-
-    afterSignUp = jest.fn();
-    setAccount = jest.fn();
-
-    wrapper = shallow(
-      <EthereumSignUpForm afterSignUp={afterSignUp} setAccount={setAccount} />
-    );
+    onSignUp = jest.fn();
+    wrapper = shallow(<EthereumSignUpForm onSignUp={onSignUp} />);
   });
 
   it("renders the component", () => {
@@ -31,10 +24,6 @@ describe("EthereumSignUpForm", () => {
       .find({ title: "Continue" })
       .simulate("press");
 
-    const account = setAccount.mock.calls[0][0];
-
-    expect(account.address).not.toEqual("");
-    expect(afterSignUp.mock.calls.length).toBe(1);
-    expect(setAccount.mock.calls.length).toBe(1);
+    expect(onSignUp.mock.calls.length).toBe(1);
   });
 });

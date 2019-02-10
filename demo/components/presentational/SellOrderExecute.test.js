@@ -5,9 +5,7 @@ import SellOrderExecute from "./SellOrderExecute";
 describe("SellOrderExecute", () => {
   it("renders the component", async () => {
     expect(
-      shallow(
-        <SellOrderExecute sellOrder={{}} afterOrderExecution={() => {}} />
-      )
+      shallow(<SellOrderExecute sellOrder={{}} onOrderExecution={() => {}} />)
     ).toMatchSnapshot();
   });
 });

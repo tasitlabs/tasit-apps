@@ -1,26 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { removeSellOrder } from "../actions";
 import SellOrderExecute from "@presentational/SellOrderExecute";
 import PropTypes from "prop-types";
-import ContractsAddresses from "@constants/ContractsAddresses";
 import ContractsABIs from "@constants/ContractsABIs";
-
 const { manaABI, estateABI, marketplaceABI } = ContractsABIs;
+import ContractsAddresses from "@constants/ContractsAddresses";
 const { manaAddress, estateAddress, marketplaceAddress } = ContractsAddresses;
 import { Action } from "tasit-sdk";
 const { Contract } = Action;
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
-
-const ONE = 1e18;
-const TEN = 10e18;
-
-// TODO: Go deep on gas handling.
-// Without that, VM returns a revert error instead of out of gas error.
-// See: https://github.com/tasitlabs/TasitSDK/issues/173
-const gasParams = {
-  gasLimit: 7e6,
-  gasPrice: 1e9,
-};
 
 export class SellOrderExecuteScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
@@ -28,52 +17,62 @@ export class SellOrderExecuteScreen extends React.Component {
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
   manaContract = new Contract(manaAddress, manaABI);
 
-  // Async here is working
   _onOrderExecution = sellOrder => {
-    console.log("clicked");
     const { navigation } = this.props;
     navigation.navigate("ListSellOrdersScreen");
     this._executeOrder(sellOrder);
   };
 
-  // Handler function is called imediattly after button click
-  // Detailed log:
-  //[22:48:20] clicked
-  //[22:48:29] after _manaFaucetTo
-  //[22:48:40] after marketplaceApproval
-  //[22:48:42] after fingerprint
-  //[22:48:51] after executeOrder
   _executeOrder = async sellOrder => {
-    console.log("start");
-    const { account } = this.props;
+    const { account, removeSellOrder } = this.props;
     const { asset } = sellOrder;
     const { priceMana } = sellOrder;
     const priceInWei = Number(priceMana) * 1e18;
 
-    await this._manaFaucetTo(account, TEN);
-    console.log("after _manaFaucetTo");
+    const ONE = 1e18;
+    const TEN = 10e18;
 
-    this.manaContract.setWallet(account);
-    const marketplaceApproval = this.manaContract.approve(
-      this.marketplaceContract.getAddress(),
-      ONE.toString()
-    );
-    await marketplaceApproval.waitForNonceToUpdate();
-    console.log("after marketplaceApproval");
+    // TODO: Go deep on gas handling.
+    // Without that, VM returns a revert error instead of out of gas error.
+    // See: https://github.com/tasitlabs/TasitSDK/issues/173
+    const gasParams = {
+      gasLimit: 7e6,
+      gasPrice: 1e9,
+    };
+
+    const marketplaceAddress = this.marketplaceContract.getAddress();
+    const estateAddress = this.estateContract.getAddress();
+
+    await this._manaFaucetTo(account, TEN);
+
+    await this._approveManaSpendingFrom(account, marketplaceAddress, ONE);
 
     this.marketplaceContract.setWallet(account);
+
     const fingerprint = await this.estateContract.getFingerprint(asset.id);
-    console.log("after fingerprint");
 
     const executeOrder = this.marketplaceContract.safeExecuteOrder(
-      this.estateContract.getAddress(),
+      estateAddress,
       asset.id,
       priceInWei.toString(),
       fingerprint.toString(),
       gasParams
     );
+
     await executeOrder.waitForNonceToUpdate();
-    console.log("after executeOrder");
+
+    // TODO: This function should be called inside of the eventLister
+    // that catch the safeExecuteOrder successfull event.
+    removeSellOrder(sellOrder);
+  };
+
+  _approveManaSpending = async (fromAccount, toAddress, value) => {
+    this.manaContract.setWallet(fromAccount);
+    const marketplaceApproval = this.manaContract.approve(
+      toAddress,
+      value.toString()
+    );
+    await marketplaceApproval.waitForNonceToUpdate();
   };
 
   _manaFaucetTo = async (beneficiary, amountInWei) => {
@@ -104,6 +103,7 @@ export class SellOrderExecuteScreen extends React.Component {
 SellOrderExecuteScreen.propTypes = {
   account: PropTypes.object.isRequired,
   claimedSellOrder: PropTypes.object.isRequired,
+  removeSellOrder: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -111,4 +111,11 @@ const mapStateToProps = state => {
   return { account, claimedSellOrder };
 };
 
-export default connect(mapStateToProps)(SellOrderExecuteScreen);
+const mapDispatchToProps = {
+  removeSellOrder,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SellOrderExecuteScreen);

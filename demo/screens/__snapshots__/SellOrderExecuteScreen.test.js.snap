@@ -2,7 +2,7 @@
 
 exports[`SellOrderExecuteScreen renders the component 1`] = `
 <SellOrderExecute
-  afterOrderExecution={[Function]}
+  onOrderExecution={[Function]}
   sellOrder={
     Object {
       "asset": Object {

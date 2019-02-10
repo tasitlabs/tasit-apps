@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setSellOrders } from "../actions";
+import PropTypes from "prop-types";
 import SellOrdersList from "@presentational/SellOrdersList";
 import SellOrdersListItem from "@presentational/SellOrdersListItem";
 import ContractsABIs from "@constants/ContractsABIs";
@@ -8,37 +11,34 @@ const { estateABI, marketplaceABI } = ContractsABIs;
 const { estateAddress, marketplaceAddress } = ContractsAddresses;
 const { Contract } = Action;
 
-export default class ListSellOrdersScreen extends React.Component {
+export class ListSellOrdersScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
 
-  state = {
-    sellOrders: [],
-  };
-
   async componentDidMount() {
-    const sellOrders = await this.getSellOrders();
-    this.setState({ sellOrders });
+    const { setSellOrders } = this.props;
+    const sellOrders = await this._getSellOrders();
+    setSellOrders(sellOrders);
   }
 
   // Note: This function is assuming that:
   // - All estates have a sell order
   // - The total supply of estates is small
   // TODO: Rewrite this function when we move to testnet
-  async getSellOrders() {
+  async _getSellOrders() {
     const orders = [];
     const totalSupply = await this.estateContract.totalSupply();
 
     for (let estateId = 1; estateId <= Number(totalSupply); estateId++) {
-      const order = this.getSellOrder(estateId);
+      const order = this._getSellOrder(estateId);
       orders.push(order);
     }
 
     return await Promise.all(orders);
   }
 
-  async getSellOrder(estateId) {
+  async _getSellOrder(estateId) {
     const estateName = await this.estateContract.getMetadata(estateId);
     const [
       orderId,
@@ -71,16 +71,35 @@ export default class ListSellOrdersScreen extends React.Component {
     };
   }
 
-  renderItem = ({ item: sellOrder }) => {
+  _renderItem = ({ item: sellOrder }) => {
     const handlePress = () =>
       this.props.navigation.navigate("SellOrderClaimScreen", { sellOrder });
     return <SellOrdersListItem sellOrder={sellOrder} onPress={handlePress} />;
   };
 
   render() {
-    const { sellOrders } = this.state;
+    const { sellOrders } = this.props;
     return (
-      <SellOrdersList sellOrders={sellOrders} renderItem={this.renderItem} />
+      <SellOrdersList sellOrders={sellOrders} renderItem={this._renderItem} />
     );
   }
 }
+
+ListSellOrdersScreen.propTypes = {
+  sellOrders: PropTypes.array.isRequired,
+  setSellOrders: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => {
+  const { sellOrders } = state;
+  return { sellOrders };
+};
+
+const mapDispatchToProps = {
+  setSellOrders,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListSellOrdersScreen);
