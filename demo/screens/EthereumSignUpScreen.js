@@ -11,6 +11,8 @@ export class EthereumSignUpScreen extends React.Component {
   // See more: https://github.com/tasitlabs/tasit/issues/42
   _createAccount = async () => {
     const { setAccount } = this.props;
+    // Note: A real app wouldn't be using a preset private key and hardcoding it!
+    // We're only doing this temporarily while using a hardcoded account with ETH and tokens
     const accountPrivateKey =
       "0x4f09311114f0ff4dfad0edaa932a3e01a4ee9f34da2cbd087aa0e6ffcb9eb322";
     const account = createFromPrivateKey(accountPrivateKey);
