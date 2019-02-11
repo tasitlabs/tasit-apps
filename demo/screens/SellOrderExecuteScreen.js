@@ -47,6 +47,7 @@ export class SellOrderExecuteScreen extends React.Component {
 
     await this._manaFaucetTo(account, TEN);
 
+    // TODO: Move this out to an explicit approval flow?
     await this._approveManaSpending(account, marketplaceAddress, ONE);
 
     this.marketplaceContract.setWallet(account);
