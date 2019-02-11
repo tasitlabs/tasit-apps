@@ -6,26 +6,23 @@
 
 ## What is Tasit?
 
-Tasit is 2 things: 
+Tasit is a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps in the same manner as their other favorite apps (e.g. Instagram, Facebook, Gmail, etc.).
 
-- 1 ) a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps in the same manner as their other favorite apps (e.g. Instagram, Facebook, Gmail, etc.) 
-- 2 ) a [Javascript SDK](https://github.com/tasitlabs/TasitSDK) that empowers developers to create even more native Ethereum dapps. 
+Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers where you use lots of dapps from within one app, you can use each of the Tasit dapps via its own standalone native mobile app.
 
-Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers, you can use these dapps via a standalone native mobile app.
+The Tasit apps are built with [the Tasit SDK](https://github.com/tasitlabs/TasitSDK), a JavaScript SDK that empowers developers to create even more native Ethereum dapps.
 
 _Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out today for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
 
-The apps are all built using the [Tasit SDK](https://github.com/tasitlabs/tasitsdk) and React Native.
-
 ## Why are native dapps important?
 
-One major bottleneck and obstacle in the mainstream adoption of dapps is the clunky and confusing UX of today's dapps - typically served within a mobile browser (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-the-users-perspective)). 
+A major obstacle preventing the mainstream adoption of dapps is the clunky and confusing UX of today's dapps - typically happening within a mobile dapp browser (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-the-users-perspective)).
 
-The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide delightful UX and simpler onboarding for the dapp and in some cases extra features too. 
+The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide delightful UX and simpler onboarding for the dapp and in some cases extra features too.
 
-From a developer's perspective, a lack of tooling means a great deal of grunt setup work is required with every project, slowing down product development and taking valuable time and focus way from business logic. (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-a-developers--ethereum-enthusiasts-perspective)).
+From a developer's perspective, a lack of tooling means a great deal of grunt setup work is required with every project, slowing down product development and taking valuable time and focus way from business logic (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-a-developers--ethereum-enthusiasts-perspective)).
 
-Through the two-pronged approach with the Tasit native apps and the Tasit SDK, we hope to achieve the aim of mainstream Ethereum dapp adoption by making the experience significantly smoother and more enjoyable for both users and builders. 
+Through the two-pronged approach with the Tasit native apps and the Tasit SDK, we hope to achieve the aim of mainstream Ethereum dapp adoption by making the experience significantly smoother and more enjoyable for both users and builders.
 
 ## Tasit Apps
 
@@ -36,6 +33,10 @@ Our first demo app is called `Tasit Demo`.
 It's an app that shows off how easy it is to build a standalone native mobile app for Ethereum NFTs using the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, Babel, and the Tasit SDK.
+
+### Review the code
+
+[Here's the code](./demo) for the demo app. For now this is where we're building the Tasit Decentraland app. Soon we'll move the Decentraland-specific parts over [here](./decentraland) and just keep a more minimalist demo app in the `demo` folder.
 
 ##### Features
 
@@ -51,11 +52,46 @@ Our first production app is called `Tasit Decentraland`.
 
 Decentraland is a dapp using [unique tokens / NFTs](http://erc721.org/). `Tasit Decentraland` lets you use that dapp on mobile.
 
-This is the first production Tasit NFT app - we plan to release other similar 3rd-party apps for other popular NFT projects.
+This is the first production Tasit NFT app - we plan to release one or two other similar 3rd-party apps for other popular NFT projects.
 
 Here's an [interactive wireframe video](https://youtu.be/iJQtDPQrRsE) showing how this app will look for an example ERC721 NFT like [Decentraland](https://decentraland.org/).
 
+### Review the code
+
+For now this is where we're building the Tasit Decentraland app over in the [demo dir](./demo). Soon we'll move the Decentraland-specific parts over [here](./decentraland) and just keep a more minimalist demo app in the `demo` folder.
+
 This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+
+## Other Tasit apps coming soon
+
+### Tasit Aragon
+
+Exact org project T.B.D.
+([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
+
+### The road ahead
+
+In the long run, Tasit will stitch together components from multiple dapps into novel experiences, like delegating your vote for a particular TCR to a preexisting Aragon organization, or decorating your Dharma loans with the same hats you use for your CryptoKitties because...reasons? We'll likely build apps in the future for lists (TCRs) and marketplaces.
+
+## Developers
+
+This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps
+
+These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+
+For more info, please visit our website:
+
+[tasit.io](https://tasit.io/)
+
+### Getting started
+
+```
+git clone https://github.com/tasitlabs/tasit.git
+cd tasit
+cd demo
+npm install
+npm start
+```
 
 ### Automatic scaffolding using the Tasit CLI
 
@@ -82,53 +118,6 @@ npx tasit-cli init my-app --nft
 
 This app scaffold comes ready to submit for beta testing on iOS with Testflight and on Android with Google Play Beta track, so you can focus on the core features of your dapp like you would do on the web.
 
-## Getting started
-
-```
-git clone https://github.com/tasitlabs/tasit.git
-cd tasit
-cd demo
-npm install
-npm start
-```
-
-### Review the code
-
-[Here's the code](./demo) for the demo app.
-
-## Coming soon
-
-##### A Tasit list app
-
-Exact list project T.B.D.
-([TCRs](https://medium.com/@simondlr/city-walls-bo-taoshi-exploring-the-power-of-token-curated-registries-588f208c17d5) / FCRs)
-
-##### A Tasit org app
-
-Exact org project T.B.D.
-([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
-
-##### A Tasit market app
-
-Exact market project T.B.D.
-(Two-sided marketplaces like Gitcoin, CryptoCribs, OpenSea, etc.)
-
-##### ...with more to come
-
-### The road ahead
-
-In the long run, Tasit will stitch together components from multiple dapps into novel experiences, like delegating your vote for a particular TCR to a preexisting Aragon organization, or decorating your Dharma loans with the same hats you use for your CryptoKitties because...reasons?
-
-### Developers
-
-This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps
-
-These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
-
-For more info, please visit our website:
-
-[tasit.io](https://tasit.io/)
-
 ### Contact us
 
 We love getting feedback, so please feel free to reach out.
@@ -141,8 +130,8 @@ We love getting feedback, so please feel free to reach out.
 
 - [Email](mailto:founders@tasit.io)
 
-- [Feature requests](https://tasit.canny.io/feature-requests)
-
 - [Project Kanban board](https://github.com/orgs/tasitlabs/projects/1)
+
+- [Feature requests](https://tasit.canny.io/feature-requests)
 
 - [Medium](https://medium.com/tasit)
