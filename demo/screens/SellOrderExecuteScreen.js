@@ -62,7 +62,7 @@ export class SellOrderExecuteScreen extends React.Component {
 
     await executeOrder.waitForNonceToUpdate();
 
-    // TODO: This function should be called inside of the eventLister
+    // TODO: This function should be called inside of the eventListener
     // that catches the safeExecuteOrder successful event.
     removeSellOrder(sellOrder);
   };
