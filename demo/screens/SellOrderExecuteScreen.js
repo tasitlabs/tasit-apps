@@ -8,6 +8,7 @@ import ContractsABIs from "@constants/ContractsABIs";
 const { manaABI, estateABI, marketplaceABI } = ContractsABIs;
 import ContractsAddresses from "@constants/ContractsAddresses";
 const { manaAddress, estateAddress, marketplaceAddress } = ContractsAddresses;
+
 import { Action } from "tasit-sdk";
 const { Contract } = Action;
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
