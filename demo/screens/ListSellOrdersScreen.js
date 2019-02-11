@@ -16,17 +16,17 @@ export class ListSellOrdersScreen extends React.Component {
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
 
-  async componentDidMount() {
+  componentDidMount = async () => {
     const { setSellOrders } = this.props;
     const sellOrders = await this._getSellOrders();
     setSellOrders(sellOrders);
-  }
+  };
 
   // Note: This function is assuming that:
   // - All estates have a sell order
   // - The total supply of estates is small
   // TODO: Rewrite this function when we move to testnet
-  async _getSellOrders() {
+  _getSellOrders = async () => {
     const orders = [];
     const totalSupply = await this.estateContract.totalSupply();
 
@@ -36,9 +36,9 @@ export class ListSellOrdersScreen extends React.Component {
     }
 
     return await Promise.all(orders);
-  }
+  };
 
-  async _getSellOrder(estateId) {
+  _getSellOrder = async estateId => {
     const estateName = await this.estateContract.getMetadata(estateId);
     const [
       orderId,
@@ -69,7 +69,7 @@ export class ListSellOrdersScreen extends React.Component {
         img: imgUrl,
       },
     };
-  }
+  };
 
   _renderItem = ({ item: sellOrder }) => {
     const handlePress = () =>

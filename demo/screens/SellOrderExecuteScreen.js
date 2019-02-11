@@ -45,7 +45,7 @@ export class SellOrderExecuteScreen extends React.Component {
 
     await this._manaFaucetTo(account, TEN);
 
-    await this._approveManaSpendingFrom(account, marketplaceAddress, ONE);
+    await this._approveManaSpending(account, marketplaceAddress, ONE);
 
     this.marketplaceContract.setWallet(account);
 
@@ -68,11 +68,12 @@ export class SellOrderExecuteScreen extends React.Component {
 
   _approveManaSpending = async (fromAccount, toAddress, value) => {
     this.manaContract.setWallet(fromAccount);
-    const marketplaceApproval = this.manaContract.approve(
+    const approvalAction = this.manaContract.approve(
       toAddress,
       value.toString()
     );
-    await marketplaceApproval.waitForNonceToUpdate();
+
+    await approvalAction.waitForNonceToUpdate();
   };
 
   _manaFaucetTo = async (beneficiary, amountInWei) => {
