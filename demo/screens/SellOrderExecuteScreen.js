@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { removeSellOrder } from "../actions";
 import SellOrderExecute from "@presentational/SellOrderExecute";
 import PropTypes from "prop-types";
+
 import ContractsABIs from "@constants/ContractsABIs";
 const { manaABI, estateABI, marketplaceABI } = ContractsABIs;
 import ContractsAddresses from "@constants/ContractsAddresses";
