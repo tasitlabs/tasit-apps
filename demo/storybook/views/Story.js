@@ -5,7 +5,13 @@ import PropTypes from "prop-types";
 export function Story(props) {
   return (
     <View style={style}>
-      <ScrollView>{props.children}</ScrollView>
+      <ScrollView
+        removeClippedSubviews
+        canCancelContentTouches
+        nestedScrollEnabled={false}
+      >
+        {props.children}
+      </ScrollView>
     </View>
   );
 }

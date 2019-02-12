@@ -9,7 +9,6 @@ import { StoryScreen } from "./views/StoryScreen";
 import "./rn-addons";
 
 addDecorator(StoryScreen);
-
 configure(() => {
   loadStories();
 }, module);
