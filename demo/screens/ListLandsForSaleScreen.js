@@ -4,17 +4,18 @@ import { setLandsForSale, selectLandToBuy } from "../actions";
 import PropTypes from "prop-types";
 import LandsForSaleList from "@presentational/LandsForSaleList";
 import LandsForSaleListItem from "@presentational/LandsForSaleListItem";
-import ContractsABIs from "@constants/ContractsABIs";
+
 import ContractsAddresses from "@constants/ContractsAddresses";
+const { ESTATE_ADDRESS, MARKETPLACE_ADDRESS } = ContractsAddresses;
+
 import { Action } from "tasit-sdk";
-const { estateABI, marketplaceABI } = ContractsABIs;
-const { estateAddress, marketplaceAddress } = ContractsAddresses;
-const { Contract } = Action;
+const { ERC721, Marketplace } = Action;
+const { Estate } = ERC721;
+const { Decentraland } = Marketplace;
 
 export class ListLandsForSaleScreen extends React.Component {
-  // TODO: Switch to new DecentralandEstate() once the SDK includes that
-  estateContract = new Contract(estateAddress, estateABI);
-  marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
+  estateContract = new Estate(ESTATE_ADDRESS);
+  marketplaceContract = new Decentraland(MARKETPLACE_ADDRESS);
 
   componentDidMount = async () => {
     const { setLandsForSale } = this.props;
