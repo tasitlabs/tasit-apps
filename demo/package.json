@@ -11,7 +11,9 @@
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
     "test": "npx jest",
-    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'",
+    "storybook": "concurrently --kill-others \"storybook start -p 9001 --skip-packager\" \"npx expo start\"",
+    "prestorybook": "rnstl"
   },
   "dependencies": {
     "ethers": "^4.0.14",
@@ -22,9 +24,15 @@
     "tasit-sdk": "0.0.2"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "4.0.0-alpha.24",
+    "@storybook/addon-links": "4.0.0-alpha.24",
+    "@storybook/addons": "4.0.0-alpha.24",
+    "@storybook/react-native": "4.0.0-alpha.24",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-expo": "^5.0.0",
+    "babel-runtime": "^6.26.0",
+    "concurrently": "^4.1.0",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
@@ -39,7 +47,8 @@
     "jest-expo": "^32.0.0",
     "jest-prop-type-error": "^1.1.0",
     "prettier": "^1.15.2",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-native-storybook-loader": "^1.8.0"
   },
   "repository": {
     "type": "git",
@@ -60,6 +69,15 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./components"
+      ],
+      "pattern": "**/*.story.js",
+      "outputFile": "./storybook/storyLoader.js"
+    }
   },
   "keywords": [
     "dapp",
