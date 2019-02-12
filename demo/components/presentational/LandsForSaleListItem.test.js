@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SellOrdersListItem from "./SellOrdersListItem";
+import LandsForSaleListItem from "./LandsForSaleListItem";
 
 describe("SellOrdersListItem", () => {
   it("renders the component", async () => {
@@ -16,7 +16,7 @@ describe("SellOrdersListItem", () => {
     };
     const onPress = () => {};
     expect(
-      shallow(<SellOrdersListItem sellOrder={sellOrder} onPress={onPress} />)
+      shallow(<LandsForSaleListItem sellOrder={sellOrder} onPress={onPress} />)
     ).toMatchSnapshot();
   });
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { removeSellOrder } from "../actions";
-import SellOrderExecute from "@presentational/SellOrderExecute";
+import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 
 import ContractsABIs from "@constants/ContractsABIs";
@@ -13,7 +13,7 @@ import { Action } from "tasit-sdk";
 const { Contract } = Action;
 import { approveManaSpending, manaFaucetTo } from "./helpers";
 
-export class SellOrderExecuteScreen extends React.Component {
+export class BuyLandScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
@@ -29,7 +29,7 @@ export class SellOrderExecuteScreen extends React.Component {
         removeSellOrder(sellOrder);
       };
       this._executeOrder(sellOrder, account, afterSuccessfulExecution);
-      navigation.navigate("ListSellOrdersScreen");
+      navigation.navigate("ListLandsForSaleScreen");
     }
   };
 
@@ -80,7 +80,7 @@ export class SellOrderExecuteScreen extends React.Component {
     const { claimedSellOrder: sellOrder } = this.props;
 
     return (
-      <SellOrderExecute
+      <BuyLand
         sellOrder={sellOrder}
         onOrderExecution={() => this._onOrderExecution(sellOrder)}
       />
@@ -88,7 +88,7 @@ export class SellOrderExecuteScreen extends React.Component {
   }
 }
 
-SellOrderExecuteScreen.propTypes = {
+BuyLandScreen.propTypes = {
   account: PropTypes.object,
   claimedSellOrder: PropTypes.object.isRequired,
   removeSellOrder: PropTypes.func.isRequired,
@@ -106,4 +106,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SellOrderExecuteScreen);
+)(BuyLandScreen);

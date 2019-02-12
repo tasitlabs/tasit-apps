@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SellOrder from "./SellOrder";
+import LandForSale from "./LandForSale";
 
-describe("SellOrder", () => {
+describe("LandForSale", () => {
   it("renders the component", async () => {
     const sellOrder = {
       id: -1,
@@ -14,6 +14,6 @@ describe("SellOrder", () => {
         img: "https://decentraland.org/images/logo-65f7b27caf.png",
       },
     };
-    expect(shallow(<SellOrder sellOrder={sellOrder} />)).toMatchSnapshot();
+    expect(shallow(<LandForSale sellOrder={sellOrder} />)).toMatchSnapshot();
   });
 });

@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { setSellOrders, claimSellOrder } from "../actions";
 import PropTypes from "prop-types";
-import SellOrdersList from "@presentational/SellOrdersList";
-import SellOrdersListItem from "@presentational/SellOrdersListItem";
+import LandsForSaleList from "@presentational/LandsForSaleList";
+import LandsForSaleListItem from "@presentational/LandsForSaleListItem";
 import ContractsABIs from "@constants/ContractsABIs";
 import ContractsAddresses from "@constants/ContractsAddresses";
 import { Action } from "tasit-sdk";
@@ -11,7 +11,7 @@ const { estateABI, marketplaceABI } = ContractsABIs;
 const { estateAddress, marketplaceAddress } = ContractsAddresses;
 const { Contract } = Action;
 
-export class ListSellOrdersScreen extends React.Component {
+export class ListLandsForSaleScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
@@ -75,21 +75,21 @@ export class ListSellOrdersScreen extends React.Component {
     const { navigation, claimSellOrder } = this.props;
     const handlePress = () => {
       claimSellOrder(sellOrder);
-      navigation.navigate("SellOrderExecuteScreen");
+      navigation.navigate("BuyLandScreen");
     };
 
-    return <SellOrdersListItem sellOrder={sellOrder} onPress={handlePress} />;
+    return <LandsForSaleListItem sellOrder={sellOrder} onPress={handlePress} />;
   };
 
   render() {
     const { sellOrders } = this.props;
     return (
-      <SellOrdersList sellOrders={sellOrders} renderItem={this._renderItem} />
+      <LandsForSaleList sellOrders={sellOrders} renderItem={this._renderItem} />
     );
   }
 }
 
-ListSellOrdersScreen.propTypes = {
+ListLandsForSaleScreen.propTypes = {
   sellOrders: PropTypes.array.isRequired,
   setSellOrders: PropTypes.func.isRequired,
   claimSellOrder: PropTypes.func.isRequired,
@@ -108,4 +108,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListSellOrdersScreen);
+)(ListLandsForSaleScreen);

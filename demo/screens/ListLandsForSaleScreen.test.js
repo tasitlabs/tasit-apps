@@ -1,9 +1,9 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import { ListSellOrdersScreen } from "./ListSellOrdersScreen";
+import { ListLandsForSaleScreen } from "./ListLandsForSaleScreen";
 
-describe("ListSellOrdersScreen", () => {
+describe("ListLandsForSaleScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
@@ -15,7 +15,7 @@ describe("ListSellOrdersScreen", () => {
     const claimSellOrder = () => {};
     expect(
       shallow(
-        <ListSellOrdersScreen
+        <ListLandsForSaleScreen
           sellOrders={sellOrders}
           setSellOrders={setSellOrders}
           claimSellOrder={claimSellOrder}

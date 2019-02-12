@@ -1,9 +1,9 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import { SellOrderExecuteScreen } from "./SellOrderExecuteScreen";
+import { BuyLandScreen } from "./BuyLandScreen";
 
-describe("SellOrderExecuteScreen", () => {
+describe("BuyLandScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
@@ -27,7 +27,7 @@ describe("SellOrderExecuteScreen", () => {
 
     expect(
       shallow(
-        <SellOrderExecuteScreen
+        <BuyLandScreen
           navigation={navigation}
           account={account}
           claimedSellOrder={sellOrder}

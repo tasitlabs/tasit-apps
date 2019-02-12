@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import SellOrderExecute from "./SellOrderExecute";
+import BuyLand from "./BuyLand";
 
-describe("SellOrderExecute", () => {
+describe("BuyLand", () => {
   it("renders the component", async () => {
     const sellOrder = {
       id: 123,
@@ -18,10 +18,7 @@ describe("SellOrderExecute", () => {
 
     expect(
       shallow(
-        <SellOrderExecute
-          sellOrder={sellOrder}
-          onOrderExecution={onOrderExecution}
-        />
+        <BuyLand sellOrder={sellOrder} onOrderExecution={onOrderExecution} />
       )
     ).toMatchSnapshot();
   });

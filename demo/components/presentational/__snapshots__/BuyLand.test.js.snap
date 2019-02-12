@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SellOrderClaim renders the component 1`] = `
+exports[`BuyLand renders the component 1`] = `
 <Component
   style={
     Object {
@@ -11,7 +11,7 @@ exports[`SellOrderClaim renders the component 1`] = `
     }
   }
 >
-  <SellOrder
+  <LandForSale
     sellOrder={
       Object {
         "asset": Object {
@@ -35,7 +35,7 @@ exports[`SellOrderClaim renders the component 1`] = `
   >
     <Button
       onPress={[Function]}
-      title="Claim"
+      title="Buy"
     />
   </Component>
 </Component>

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "./Estate";
 
-export default function SellOrder({ sellOrder }) {
+export default function LandForSale({ sellOrder }) {
   const { asset: estate, priceMana } = sellOrder;
 
   // Note: Conversion to USD will be implemented on v0.2.0
@@ -17,7 +17,7 @@ export default function SellOrder({ sellOrder }) {
   );
 }
 
-SellOrder.propTypes = {
+LandForSale.propTypes = {
   sellOrder: PropTypes.object.isRequired,
 };
 

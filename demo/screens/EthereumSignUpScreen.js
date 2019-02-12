@@ -23,7 +23,7 @@ export class EthereumSignUpScreen extends React.Component {
     // Should run async but isn't when calling Account.create() or createFromPrivateKey()
     this._createAccount();
 
-    this.props.navigation.navigate("SellOrderExecuteScreen");
+    this.props.navigation.navigate("BuyLandScreen");
   };
 
   render() {
