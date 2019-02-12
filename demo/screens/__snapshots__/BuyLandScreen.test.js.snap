@@ -2,8 +2,7 @@
 
 exports[`BuyLandScreen renders the component 1`] = `
 <BuyLand
-  onOrderExecution={[Function]}
-  sellOrder={
+  landForSale={
     Object {
       "asset": Object {
         "id": -1,
@@ -15,5 +14,6 @@ exports[`BuyLandScreen renders the component 1`] = `
       "priceUSD": 0,
     }
   }
+  onBuy={[Function]}
 />
 `;

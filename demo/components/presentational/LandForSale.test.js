@@ -4,7 +4,7 @@ import LandForSale from "./LandForSale";
 
 describe("LandForSale", () => {
   it("renders the component", async () => {
-    const sellOrder = {
+    const landForSale = {
       id: -1,
       priceMana: 0,
       priceUSD: 0,
@@ -14,6 +14,8 @@ describe("LandForSale", () => {
         img: "https://decentraland.org/images/logo-65f7b27caf.png",
       },
     };
-    expect(shallow(<LandForSale sellOrder={sellOrder} />)).toMatchSnapshot();
+    expect(
+      shallow(<LandForSale landForSale={landForSale} />)
+    ).toMatchSnapshot();
   });
 });

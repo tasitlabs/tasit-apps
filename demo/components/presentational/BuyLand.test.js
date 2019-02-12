@@ -4,7 +4,7 @@ import BuyLand from "./BuyLand";
 
 describe("BuyLand", () => {
   it("renders the component", async () => {
-    const sellOrder = {
+    const landForSale = {
       id: 123,
       priceMana: 0,
       priceUSD: 0,
@@ -14,12 +14,10 @@ describe("BuyLand", () => {
         img: "https://decentraland.org/images/logo-65f7b27caf.png",
       },
     };
-    const onOrderExecution = () => {};
+    const onBuy = () => {};
 
     expect(
-      shallow(
-        <BuyLand sellOrder={sellOrder} onOrderExecution={onOrderExecution} />
-      )
+      shallow(<BuyLand landForSale={landForSale} onBuy={onBuy} />)
     ).toMatchSnapshot();
   });
 });

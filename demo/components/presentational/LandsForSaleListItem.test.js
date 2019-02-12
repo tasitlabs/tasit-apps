@@ -4,7 +4,7 @@ import LandsForSaleListItem from "./LandsForSaleListItem";
 
 describe("SellOrdersListItem", () => {
   it("renders the component", async () => {
-    const sellOrder = {
+    const landForSale = {
       id: 123,
       priceMana: 0,
       priceUSD: 0,
@@ -16,7 +16,9 @@ describe("SellOrdersListItem", () => {
     };
     const onPress = () => {};
     expect(
-      shallow(<LandsForSaleListItem sellOrder={sellOrder} onPress={onPress} />)
+      shallow(
+        <LandsForSaleListItem landForSale={landForSale} onPress={onPress} />
+      )
     ).toMatchSnapshot();
   });
 });

@@ -81,8 +81,8 @@ export class BuyLandScreen extends React.Component {
 
     return (
       <BuyLand
-        sellOrder={sellOrder}
-        onOrderExecution={() => this._onOrderExecution(sellOrder)}
+        landForSale={sellOrder}
+        onBuy={() => this._onOrderExecution(sellOrder)}
       />
     );
   }

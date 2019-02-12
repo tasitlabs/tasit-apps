@@ -21,7 +21,7 @@ exports[`SellOrdersListItem renders the component 1`] = `
     }
   >
     <LandForSale
-      sellOrder={
+      landForSale={
         Object {
           "asset": Object {
             "id": -1,

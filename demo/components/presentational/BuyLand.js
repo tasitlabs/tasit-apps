@@ -7,20 +7,20 @@ import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function BuyLand(props) {
-  const { sellOrder, onOrderExecution } = props;
+  const { landForSale, onBuy } = props;
   return (
     <View style={styles.container}>
-      <LandForSale sellOrder={sellOrder} />
+      <LandForSale landForSale={landForSale} />
       <View style={styles.buttonView}>
-        <Button title="Buy" onPress={onOrderExecution} />
+        <Button title="Buy" onPress={onBuy} />
       </View>
     </View>
   );
 }
 
 BuyLand.propTypes = {
-  sellOrder: PropTypes.object.isRequired,
-  onOrderExecution: PropTypes.func.isRequired,
+  landForSale: PropTypes.object.isRequired,
+  onBuy: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
