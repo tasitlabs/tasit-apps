@@ -20,13 +20,15 @@ export class SellOrderExecuteScreen extends React.Component {
   manaContract = new Contract(manaAddress, manaABI);
 
   _onOrderExecution = sellOrder => {
-    const { navigation } = this.props;
+    const { navigation, account, removeSellOrder } = this.props;
+    const afterSuccessfulExecution = () => {
+      removeSellOrder(sellOrder);
+    };
+    this._executeOrder(sellOrder, account, afterSuccessfulExecution);
     navigation.navigate("ListSellOrdersScreen");
-    this._executeOrder(sellOrder);
   };
 
-  _executeOrder = async sellOrder => {
-    const { account, removeSellOrder } = this.props;
+  _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
     const { asset } = sellOrder;
     const { priceMana } = sellOrder;
     const priceInWei = Number(priceMana) * 1e18;
@@ -66,7 +68,7 @@ export class SellOrderExecuteScreen extends React.Component {
 
     // TODO: This function should be called inside of the eventListener
     // that catches the safeExecuteOrder successful event.
-    removeSellOrder(sellOrder);
+    afterSuccessfulExecution();
   };
 
   _approveManaSpending = async (fromAccount, toAddress, value) => {
