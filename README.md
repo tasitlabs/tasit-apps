@@ -34,7 +34,7 @@ It's an app that shows off how easy it is to build a standalone native mobile ap
 
 The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, Babel, and the Tasit SDK.
 
-### Review the code
+##### Review the code
 
 [Here's the code](./demo) for the demo app. For now this is where we're building the Tasit Decentraland app. Soon we'll move the Decentraland-specific parts over [here](./decentraland) and just keep a more minimalist demo app in the `demo` folder.
 
@@ -56,11 +56,11 @@ This is the first production Tasit NFT app - we plan to release one or two other
 
 Here's an [interactive wireframe video](https://youtu.be/iJQtDPQrRsE) showing how this app will look for an example ERC721 NFT like [Decentraland](https://decentraland.org/).
 
-### Review the code
+This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+
+##### Review the code
 
 For now this is where we're building the Tasit Decentraland app over in the [demo dir](./demo). Soon we'll move the Decentraland-specific parts over [here](./decentraland) and just keep a more minimalist demo app in the `demo` folder.
-
-This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 ## Other Tasit apps coming soon
 
@@ -118,7 +118,7 @@ npx tasit-cli init my-app --nft
 
 This app scaffold comes ready to submit for beta testing on iOS with Testflight and on Android with Google Play Beta track, so you can focus on the core features of your dapp like you would do on the web.
 
-### Contact us
+## Contact us
 
 We love getting feedback, so please feel free to reach out.
 
@@ -130,7 +130,7 @@ We love getting feedback, so please feel free to reach out.
 
 - [Email](mailto:founders@tasit.io)
 
-- [Project Kanban board](https://github.com/orgs/tasitlabs/projects/1)
+- [Track the status of the project](https://github.com/orgs/tasitlabs/projects/1)
 
 - [Feature requests](https://tasit.canny.io/feature-requests)
 
