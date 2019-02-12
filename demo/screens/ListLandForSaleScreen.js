@@ -11,11 +11,11 @@ const { ESTATE_ADDRESS, MARKETPLACE_ADDRESS } = ContractsAddresses;
 import { Action } from "tasit-sdk";
 const { ERC721, Marketplace } = Action;
 const { Estate } = ERC721;
-const { Decentraland } = Marketplace;
+const { Decentraland: DecentralandMarketplace } = Marketplace;
 
 export class ListLandForSaleScreen extends React.Component {
   estateContract = new Estate(ESTATE_ADDRESS);
-  marketplaceContract = new Decentraland(MARKETPLACE_ADDRESS);
+  marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
 
   componentDidMount = async () => {
     const { setLandForSaleList } = this.props;
