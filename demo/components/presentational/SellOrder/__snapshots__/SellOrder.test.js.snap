@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SellOrder renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "width": 450,
+    }
+  }
+>
+  <Estate
+    estate={
+      Object {
+        "id": -1,
+        "img": "https://decentraland.org/images/logo-65f7b27caf.png",
+        "name": "Not found",
+      }
+    }
+  />
+  <Component>
+    0
+     MANA
+  </Component>
+</Component>
+`;

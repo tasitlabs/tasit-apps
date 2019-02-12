@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SellOrdersListItem renders the component 1`] = `
+<TouchableHighlight
+  activeOpacity={0.85}
+  delayPressOut={100}
+  onPress={[Function]}
+  underlayColor="black"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "marginBottom": 13.34,
+        "paddingBottom": 40.019999999999996,
+        "paddingLeft": 22.5,
+        "paddingRight": 22.5,
+        "paddingTop": 40.019999999999996,
+      }
+    }
+  >
+    <SellOrder
+      sellOrder={Object {}}
+    />
+  </Component>
+</TouchableHighlight>
+`;

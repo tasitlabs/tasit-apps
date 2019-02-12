@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Home from "./Home";
+import Home from ".";
 
 describe("Home", () => {
   it("renders the component", async () => {

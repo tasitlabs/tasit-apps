@@ -1,1 +1,2 @@
-export { SellOrder } from "./SellOrder";
+import SellOrder from "./SellOrder";
+export default SellOrder;
