@@ -4,8 +4,11 @@ import EthereumQuestion from "./EthereumQuestion";
 
 describe("EthereumQuestion", () => {
   it("renders the component", async () => {
+    const onSignUp = () => {};
+    const onSignIn = () => {};
+
     expect(
-      shallow(<EthereumQuestion onSignUp={() => {}} onSignIn={() => {}} />)
+      shallow(<EthereumQuestion onSignUp={onSignUp} onSignIn={onSignIn} />)
     ).toMatchSnapshot();
   });
 });

@@ -4,6 +4,7 @@ import EthereumSignIn from "./EthereumSignIn";
 
 describe("EthereumSignIn", () => {
   it("renders the component", async () => {
-    expect(shallow(<EthereumSignIn onConnect={() => {}} />)).toMatchSnapshot();
+    const onConnect = () => {};
+    expect(shallow(<EthereumSignIn onConnect={onConnect} />)).toMatchSnapshot();
   });
 });

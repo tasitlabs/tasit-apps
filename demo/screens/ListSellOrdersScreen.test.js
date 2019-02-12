@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import ListSellOrdersScreen from "./ListSellOrdersScreen";
+import { ListSellOrdersScreen } from "./ListSellOrdersScreen";
 
 describe("ListSellOrdersScreen", () => {
   jest.useFakeTimers();
@@ -10,6 +10,15 @@ describe("ListSellOrdersScreen", () => {
   });
 
   it("renders the component", async () => {
-    expect(shallow(<ListSellOrdersScreen />)).toMatchSnapshot();
+    const sellOrders = [];
+    const setSellOrders = () => {};
+    expect(
+      shallow(
+        <ListSellOrdersScreen
+          sellOrders={sellOrders}
+          setSellOrders={setSellOrders}
+        />
+      )
+    ).toMatchSnapshot();
   });
 });

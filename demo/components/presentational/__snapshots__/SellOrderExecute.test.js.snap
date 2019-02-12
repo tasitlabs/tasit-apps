@@ -12,7 +12,18 @@ exports[`SellOrderExecute renders the component 1`] = `
   }
 >
   <SellOrder
-    sellOrder={Object {}}
+    sellOrder={
+      Object {
+        "asset": Object {
+          "id": -1,
+          "img": "https://decentraland.org/images/logo-65f7b27caf.png",
+          "name": "Not found",
+        },
+        "id": 123,
+        "priceMana": 0,
+        "priceUSD": 0,
+      }
+    }
   />
   <Component
     style={
