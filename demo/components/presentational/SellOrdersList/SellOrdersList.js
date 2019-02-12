@@ -16,6 +16,7 @@ export default class SellOrdersList extends React.PureComponent {
         data={sellOrders}
         style={styles.container}
         renderItem={renderItem}
+        keyExtractor={sellOrder => `${sellOrder.id}`}
       />
     );
   }

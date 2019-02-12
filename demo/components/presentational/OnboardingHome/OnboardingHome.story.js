@@ -3,12 +3,12 @@ import { storiesOf } from "@storybook/react-native";
 import { Story } from "../../../storybook/views/Story";
 import { UseCase } from "../../../storybook/views/UseCase";
 import { action } from "@storybook/addon-actions";
-import Button from "@presentational/Button";
+import OnboardingHome from "./OnboardingHome";
 
-storiesOf("Button", module).add("Style", () => (
+storiesOf("OnboardingHome", module).add("Default", () => (
   <Story>
-    <UseCase text="Primary Button">
-      <Button title="Button" onPress={action("button-tap")} />
+    <UseCase text="Onboarding Home">
+      <OnboardingHome onPress={action("get-started-tapped")} />
     </UseCase>
   </Story>
 ));

@@ -3,12 +3,12 @@ import { storiesOf } from "@storybook/react-native";
 import { Story } from "../../../storybook/views/Story";
 import { UseCase } from "../../../storybook/views/UseCase";
 import { action } from "@storybook/addon-actions";
-import Button from "@presentational/Button";
+import EthereumSignIn from "./EthereumSignIn";
 
-storiesOf("Button", module).add("Style", () => (
+storiesOf("EthereumSignIn", module).add("Default", () => (
   <Story>
-    <UseCase text="Primary Button">
-      <Button title="Button" onPress={action("button-tap")} />
+    <UseCase text="Ethereum Sign In" usage="Used in onboarding flows">
+      <EthereumSignIn onConnect={action("connect-tapped")} />
     </UseCase>
   </Story>
 ));
