@@ -20,12 +20,17 @@ export class SellOrderExecuteScreen extends React.Component {
 
   _onOrderExecution = sellOrder => {
     const { navigation, account, removeSellOrder } = this.props;
-    const afterSuccessfulExecution = () => {
-      // Should rename that to remove___FromUI or is it obvious?
-      removeSellOrder(sellOrder);
-    };
-    this._executeOrder(sellOrder, account, afterSuccessfulExecution);
-    navigation.navigate("ListSellOrdersScreen");
+
+    if (!account) {
+      navigation.navigate("OnboardingHomeScreen");
+    } else {
+      const afterSuccessfulExecution = () => {
+        // Should rename that to remove___FromUI or is it obvious?
+        removeSellOrder(sellOrder);
+      };
+      this._executeOrder(sellOrder, account, afterSuccessfulExecution);
+      navigation.navigate("ListSellOrdersScreen");
+    }
   };
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
@@ -84,7 +89,7 @@ export class SellOrderExecuteScreen extends React.Component {
 }
 
 SellOrderExecuteScreen.propTypes = {
-  account: PropTypes.object.isRequired,
+  account: PropTypes.object,
   claimedSellOrder: PropTypes.object.isRequired,
   removeSellOrder: PropTypes.func.isRequired,
 };

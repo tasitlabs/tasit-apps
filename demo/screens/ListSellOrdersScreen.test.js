@@ -12,11 +12,13 @@ describe("ListSellOrdersScreen", () => {
   it("renders the component", async () => {
     const sellOrders = [];
     const setSellOrders = () => {};
+    const claimSellOrder = () => {};
     expect(
       shallow(
         <ListSellOrdersScreen
           sellOrders={sellOrders}
           setSellOrders={setSellOrders}
+          claimSellOrder={claimSellOrder}
         />
       )
     ).toMatchSnapshot();

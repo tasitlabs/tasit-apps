@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setSellOrders } from "../actions";
+import { setSellOrders, claimSellOrder } from "../actions";
 import PropTypes from "prop-types";
 import SellOrdersList from "@presentational/SellOrdersList";
 import SellOrdersListItem from "@presentational/SellOrdersListItem";
@@ -72,8 +72,12 @@ export class ListSellOrdersScreen extends React.Component {
   };
 
   _renderItem = ({ item: sellOrder }) => {
-    const handlePress = () =>
-      this.props.navigation.navigate("SellOrderClaimScreen", { sellOrder });
+    const { navigation, claimSellOrder } = this.props;
+    const handlePress = () => {
+      claimSellOrder(sellOrder);
+      navigation.navigate("SellOrderExecuteScreen");
+    };
+
     return <SellOrdersListItem sellOrder={sellOrder} onPress={handlePress} />;
   };
 
@@ -88,6 +92,7 @@ export class ListSellOrdersScreen extends React.Component {
 ListSellOrdersScreen.propTypes = {
   sellOrders: PropTypes.array.isRequired,
   setSellOrders: PropTypes.func.isRequired,
+  claimSellOrder: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -97,6 +102,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   setSellOrders,
+  claimSellOrder,
 };
 
 export default connect(
