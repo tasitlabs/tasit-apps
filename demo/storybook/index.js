@@ -1,7 +1,14 @@
-import { getStorybookUI, configure } from "@storybook/react-native";
+import {
+  getStorybookUI,
+  configure,
+  addDecorator,
+} from "@storybook/react-native";
 import { loadStories } from "./storyLoader";
+import { StoryScreen } from "./views/StoryScreen";
 
 import "./rn-addons";
+
+addDecorator(StoryScreen);
 
 configure(() => {
   loadStories();
