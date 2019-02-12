@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setSellOrders, claimSellOrder } from "../actions";
+import { setLandsForSale, selectLandToBuy } from "../actions";
 import PropTypes from "prop-types";
 import LandsForSaleList from "@presentational/LandsForSaleList";
 import LandsForSaleListItem from "@presentational/LandsForSaleListItem";
@@ -17,28 +17,28 @@ export class ListLandsForSaleScreen extends React.Component {
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
 
   componentDidMount = async () => {
-    const { setSellOrders } = this.props;
-    const sellOrders = await this._getSellOrders();
-    setSellOrders(sellOrders);
+    const { setLandsForSale } = this.props;
+    const landsForSale = await this._getLandsForSale();
+    setLandsForSale(landsForSale);
   };
 
   // Note: This function is assuming that:
   // - All estates have a sell order
   // - The total supply of estates is small
   // TODO: Rewrite this function when we move to testnet
-  _getSellOrders = async () => {
+  _getLandsForSale = async () => {
     const orders = [];
     const totalSupply = await this.estateContract.totalSupply();
 
     for (let estateId = 1; estateId <= Number(totalSupply); estateId++) {
-      const order = this._getSellOrder(estateId);
+      const order = this._getLandForSale(estateId);
       orders.push(order);
     }
 
     return await Promise.all(orders);
   };
 
-  _getSellOrder = async estateId => {
+  _getLandForSale = async estateId => {
     const estateName = await this.estateContract.getMetadata(estateId);
     const [
       orderId,
@@ -71,38 +71,43 @@ export class ListLandsForSaleScreen extends React.Component {
     };
   };
 
-  _renderItem = ({ item: sellOrder }) => {
-    const { navigation, claimSellOrder } = this.props;
+  _renderItem = ({ item: landForSale }) => {
+    const { navigation, selectLandToBuy } = this.props;
     const handlePress = () => {
-      claimSellOrder(sellOrder);
+      selectLandToBuy(landForSale);
       navigation.navigate("BuyLandScreen");
     };
 
-    return <LandsForSaleListItem sellOrder={sellOrder} onPress={handlePress} />;
+    return (
+      <LandsForSaleListItem landForSale={landForSale} onPress={handlePress} />
+    );
   };
 
   render() {
-    const { sellOrders } = this.props;
+    const { landsForSale } = this.props;
     return (
-      <LandsForSaleList sellOrders={sellOrders} renderItem={this._renderItem} />
+      <LandsForSaleList
+        landsForSale={landsForSale}
+        renderItem={this._renderItem}
+      />
     );
   }
 }
 
 ListLandsForSaleScreen.propTypes = {
-  sellOrders: PropTypes.array.isRequired,
-  setSellOrders: PropTypes.func.isRequired,
-  claimSellOrder: PropTypes.func.isRequired,
+  landsForSale: PropTypes.array.isRequired,
+  setLandsForSale: PropTypes.func.isRequired,
+  selectLandToBuy: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { sellOrders } = state;
-  return { sellOrders };
+  const { landsForSale } = state;
+  return { landsForSale };
 };
 
 const mapDispatchToProps = {
-  setSellOrders,
-  claimSellOrder,
+  setLandsForSale,
+  selectLandToBuy,
 };
 
 export default connect(

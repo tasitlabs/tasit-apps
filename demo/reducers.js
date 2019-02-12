@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import {
   SET_ACCOUNT,
-  CLAIM_SELL_ORDER,
-  SET_SELL_ORDERS,
-  REMOVE_SELL_ORDER,
+  SELECT_LAND_TO_BUY,
+  SET_LANDS_FOR_SALE,
+  REMOVE_LAND_FOR_SALE,
 } from "./actions";
 
 function account(state = null, action) {
@@ -16,23 +16,23 @@ function account(state = null, action) {
   }
 }
 
-function claimedSellOrder(state = null, action) {
-  const { type, sellOrder } = action;
+function selectedLandToBuy(state = null, action) {
+  const { type, landForSale } = action;
   switch (type) {
-    case CLAIM_SELL_ORDER:
-      return sellOrder;
+    case SELECT_LAND_TO_BUY:
+      return landForSale;
     default:
       return state;
   }
 }
 
-function sellOrders(state = [], action) {
-  const { type, sellOrders, sellOrder } = action;
+function landsForSale(state = [], action) {
+  const { type, landsForSale, landForSale } = action;
   switch (type) {
-    case SET_SELL_ORDERS:
-      return sellOrders;
-    case REMOVE_SELL_ORDER:
-      return state.filter(val => val !== sellOrder);
+    case SET_LANDS_FOR_SALE:
+      return landsForSale;
+    case REMOVE_LAND_FOR_SALE:
+      return state.filter(val => val !== landForSale);
     default:
       return state;
   }
@@ -40,8 +40,8 @@ function sellOrders(state = [], action) {
 
 const demoApp = combineReducers({
   account,
-  claimedSellOrder,
-  sellOrders,
+  selectedLandToBuy,
+  landsForSale,
 });
 
 export default demoApp;

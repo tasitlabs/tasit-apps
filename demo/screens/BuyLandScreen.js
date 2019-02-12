@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeSellOrder } from "../actions";
+import { removeLandForSale } from "../actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 
@@ -18,19 +18,24 @@ export class BuyLandScreen extends React.Component {
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
 
-  _onOrderExecution = sellOrder => {
-    const { navigation, account, removeSellOrder } = this.props;
+  _onBuy = landForSale => {
+    const { account } = this.props;
+    if (!account) this._setupAccount();
+    else this._buy(landForSale);
+  };
 
-    if (!account) {
-      navigation.navigate("OnboardingHomeScreen");
-    } else {
-      const afterSuccessfulExecution = () => {
-        // Should rename that to remove___FromUI or is it obvious?
-        removeSellOrder(sellOrder);
-      };
-      this._executeOrder(sellOrder, account, afterSuccessfulExecution);
-      navigation.navigate("ListLandsForSaleScreen");
-    }
+  _setupAccount = () => {
+    const { navigation } = this.props;
+    navigation.navigate("OnboardingHomeScreen");
+  };
+
+  _buy = landForSale => {
+    const { navigation, account, removeLandForSale } = this.props;
+    const onSuccess = () => {
+      removeLandForSale(landForSale);
+    };
+    this._executeOrder(landForSale, account, onSuccess);
+    navigation.navigate("ListLandsForSaleScreen");
   };
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
@@ -77,12 +82,12 @@ export class BuyLandScreen extends React.Component {
   };
 
   render() {
-    const { claimedSellOrder: sellOrder } = this.props;
+    const { selectedLandToBuy: landForSale } = this.props;
 
     return (
       <BuyLand
-        landForSale={sellOrder}
-        onBuy={() => this._onOrderExecution(sellOrder)}
+        landForSale={landForSale}
+        onBuy={() => this._onBuy(landForSale)}
       />
     );
   }
@@ -90,17 +95,17 @@ export class BuyLandScreen extends React.Component {
 
 BuyLandScreen.propTypes = {
   account: PropTypes.object,
-  claimedSellOrder: PropTypes.object.isRequired,
-  removeSellOrder: PropTypes.func.isRequired,
+  selectedLandToBuy: PropTypes.object.isRequired,
+  removeLandForSale: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { account, claimedSellOrder } = state;
-  return { account, claimedSellOrder };
+  const { account, selectedLandToBuy } = state;
+  return { account, selectedLandToBuy };
 };
 
 const mapDispatchToProps = {
-  removeSellOrder,
+  removeLandForSale,
 };
 
 export default connect(

@@ -10,15 +10,15 @@ describe("ListLandsForSaleScreen", () => {
   });
 
   it("renders the component", async () => {
-    const sellOrders = [];
-    const setSellOrders = () => {};
-    const claimSellOrder = () => {};
+    const landsForSale = [];
+    const setLandsForSale = () => {};
+    const selectLandToBuy = () => {};
     expect(
       shallow(
         <ListLandsForSaleScreen
-          sellOrders={sellOrders}
-          setSellOrders={setSellOrders}
-          claimSellOrder={claimSellOrder}
+          landsForSale={landsForSale}
+          setLandsForSale={setLandsForSale}
+          selectLandToBuy={selectLandToBuy}
         />
       )
     ).toMatchSnapshot();

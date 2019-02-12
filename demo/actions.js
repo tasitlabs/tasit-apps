@@ -1,20 +1,21 @@
 export const SET_ACCOUNT = "SET_ACCOUNT";
-export const CLAIM_SELL_ORDER = "CLAIM_SELL_ORDER";
-export const SET_SELL_ORDERS = "SET_SELL_ORDERS";
-export const REMOVE_SELL_ORDER = "REMOVE_SELL_ORDER";
+export const SELECT_LAND_TO_BUY = "SELECT_LAND_TO_BUY";
+export const SET_LANDS_FOR_SALE = "SET_LANDS_FOR_SALE";
+export const REMOVE_LAND_FOR_SALE = "REMOVE_LAND_FOR_SALE";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
 }
 
-export function claimSellOrder(sellOrder) {
-  return { type: CLAIM_SELL_ORDER, sellOrder };
+export function selectLandToBuy(landForSale) {
+  return { type: SELECT_LAND_TO_BUY, landForSale };
 }
 
-export function setSellOrders(sellOrders) {
-  return { type: SET_SELL_ORDERS, sellOrders };
+export function setLandsForSale(landsForSale) {
+  return { type: SET_LANDS_FOR_SALE, landsForSale };
 }
 
-export function removeSellOrder(sellOrder) {
-  return { type: REMOVE_SELL_ORDER, sellOrder };
+// Should rename that to removeLandForSaleFromUI or is it obvious?
+export function removeLandForSale(landForSale) {
+  return { type: REMOVE_LAND_FOR_SALE, landForSale };
 }

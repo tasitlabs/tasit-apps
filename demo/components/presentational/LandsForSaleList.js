@@ -10,10 +10,10 @@ import Colors from "@constants/Colors";
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
 export default class LandsForSaleList extends React.PureComponent {
   render() {
-    const { sellOrders, renderItem } = this.props;
+    const { landsForSale, renderItem } = this.props;
     return (
       <FlatList
-        data={sellOrders}
+        data={landsForSale}
         style={styles.container}
         renderItem={renderItem}
         keyExtractor={item => item.id}
@@ -24,7 +24,7 @@ export default class LandsForSaleList extends React.PureComponent {
 
 LandsForSaleList.propTypes = {
   renderItem: PropTypes.func.isRequired,
-  sellOrders: PropTypes.array.isRequired,
+  landsForSale: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({

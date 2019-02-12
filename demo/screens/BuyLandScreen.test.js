@@ -10,7 +10,7 @@ describe("BuyLandScreen", () => {
   });
 
   it("renders the component", async () => {
-    const sellOrder = {
+    const selectedLandToBuy = {
       id: 123,
       priceMana: 0,
       priceUSD: 0,
@@ -23,15 +23,15 @@ describe("BuyLandScreen", () => {
 
     const account = {};
     const navigation = () => {};
-    const removeSellOrder = () => {};
+    const removeLandForSale = () => {};
 
     expect(
       shallow(
         <BuyLandScreen
           navigation={navigation}
           account={account}
-          claimedSellOrder={sellOrder}
-          removeSellOrder={removeSellOrder}
+          selectedLandToBuy={selectedLandToBuy}
+          removeLandForSale={removeLandForSale}
         />
       )
     ).toMatchSnapshot();

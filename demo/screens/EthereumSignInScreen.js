@@ -3,6 +3,7 @@ import EthereumSignIn from "@presentational/EthereumSignIn";
 
 export default class EthereumSignInScreen extends React.Component {
   render() {
-    return <EthereumSignIn onConnect={() => {}} />;
+    const onConnect = () => {};
+    return <EthereumSignIn onConnect={onConnect} />;
   }
 }

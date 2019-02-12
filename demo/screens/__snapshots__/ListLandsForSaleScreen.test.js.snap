@@ -2,7 +2,7 @@
 
 exports[`ListLandsForSaleScreen renders the component 1`] = `
 <LandsForSaleList
+  landsForSale={Array []}
   renderItem={[Function]}
-  sellOrders={Array []}
 />
 `;
