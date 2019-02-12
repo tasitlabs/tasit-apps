@@ -1,26 +1,18 @@
 import React from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
+
 import {
   responsiveHeight,
   responsiveWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import { Account } from "tasit-sdk";
+import PropTypes from "prop-types";
 import Button from "./Button";
 
 export default class EthereumSignUpForm extends React.Component {
-  state = {
-    text: "",
-    address: "",
-  };
-
-  createAccount = async () => {
-    // TODO: Remove await when SDK 0.0.3 is out
-    const wallet = await Account.create();
-    this.setState({ address: wallet.address });
-  };
-
   render() {
+    const { onSignUp } = this.props;
+
     return (
       <React.Fragment>
         <View style={styles.userRow}>
@@ -29,8 +21,8 @@ export default class EthereumSignUpForm extends React.Component {
               autoCorrect={false}
               autoCapitalize="none"
               style={styles.userInput}
-              onChangeText={text => this.setState({ text })}
-              value={this.state.text}
+              onChangeText={() => {}}
+              value={""}
               placeholder="username"
             />
           </View>
@@ -39,12 +31,16 @@ export default class EthereumSignUpForm extends React.Component {
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={() => this.createAccount()} />
+          <Button title="Continue" onPress={onSignUp} />
         </View>
       </React.Fragment>
     );
   }
 }
+
+EthereumSignUpForm.propTypes = {
+  onSignUp: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   userRow: { flexDirection: "row" },

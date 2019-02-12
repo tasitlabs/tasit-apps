@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SellOrderScreen renders the component 1`] = `
-<SellOrderClaim
-  onClaim={[Function]}
-  sellOrder={
+exports[`BuyLandScreen renders the component 1`] = `
+<BuyLand
+  landForSale={
     Object {
       "asset": Object {
         "id": -1,
@@ -15,5 +14,6 @@ exports[`SellOrderScreen renders the component 1`] = `
       "priceUSD": 0,
     }
   }
+  onBuy={[Function]}
 />
 `;

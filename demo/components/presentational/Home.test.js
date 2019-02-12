@@ -4,6 +4,7 @@ import Home from "./Home";
 
 describe("Home", () => {
   it("renders the component", async () => {
-    expect(shallow(<Home onPress={() => {}} />)).toMatchSnapshot();
+    const onPress = () => {};
+    expect(shallow(<Home onPress={onPress} />)).toMatchSnapshot();
   });
 });

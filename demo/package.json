@@ -5,7 +5,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "start": "npx expo start",
+    "start": "npx expo start -c",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
@@ -20,6 +20,8 @@
     "react-native-button": "^2.3.0",
     "react-native-responsive-dimensions": "^2.0.1",
     "react-navigation": "^3.0.9",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
     "tasit-sdk": "0.0.8"
   },
   "devDependencies": {

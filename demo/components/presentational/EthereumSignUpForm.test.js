@@ -5,18 +5,25 @@ import EthereumSignUpForm from "./EthereumSignUpForm";
 
 describe("EthereumSignUpForm", () => {
   jest.useFakeTimers();
+  let wrapper;
+  let onSignUp;
+
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
+    onSignUp = jest.fn();
+    wrapper = shallow(<EthereumSignUpForm onSignUp={onSignUp} />);
   });
 
-  it("renders the component", async () => {
-    expect(shallow(<EthereumSignUpForm />)).toMatchSnapshot();
+  it("renders the component", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
-  it("creates a wallet - calling function", async () => {
-    const wrapper = shallow(<EthereumSignUpForm />);
-    expect(wrapper.state("address")).toEqual("");
-    await wrapper.instance().createAccount();
-    expect(wrapper.state("address")).not.toEqual("");
+  it("creates a wallet - calling function", () => {
+    wrapper
+      .find("Button")
+      .find({ title: "Continue" })
+      .simulate("press");
+
+    expect(onSignUp.mock.calls.length).toBe(1);
   });
 });

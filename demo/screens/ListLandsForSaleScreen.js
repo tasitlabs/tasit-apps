@@ -1,6 +1,9 @@
 import React from "react";
-import SellOrdersList from "@presentational/SellOrdersList";
-import SellOrdersListItem from "@presentational/SellOrdersListItem";
+import { connect } from "react-redux";
+import { setLandsForSale, selectLandToBuy } from "../actions";
+import PropTypes from "prop-types";
+import LandsForSaleList from "@presentational/LandsForSaleList";
+import LandsForSaleListItem from "@presentational/LandsForSaleListItem";
 import ContractsABIs from "@constants/ContractsABIs";
 import ContractsAddresses from "@constants/ContractsAddresses";
 import { Action } from "tasit-sdk";
@@ -8,37 +11,34 @@ const { estateABI, marketplaceABI } = ContractsABIs;
 const { estateAddress, marketplaceAddress } = ContractsAddresses;
 const { Contract } = Action;
 
-export default class ListSellOrdersScreen extends React.Component {
+export class ListLandsForSaleScreen extends React.Component {
   // TODO: Switch to new DecentralandEstate() once the SDK includes that
   estateContract = new Contract(estateAddress, estateABI);
   marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
 
-  state = {
-    sellOrders: [],
+  componentDidMount = async () => {
+    const { setLandsForSale } = this.props;
+    const landsForSale = await this._getLandsForSale();
+    setLandsForSale(landsForSale);
   };
-
-  async componentDidMount() {
-    const sellOrders = await this.getSellOrders();
-    this.setState({ sellOrders });
-  }
 
   // Note: This function is assuming that:
   // - All estates have a sell order
   // - The total supply of estates is small
   // TODO: Rewrite this function when we move to testnet
-  async getSellOrders() {
+  _getLandsForSale = async () => {
     const orders = [];
     const totalSupply = await this.estateContract.totalSupply();
 
     for (let estateId = 1; estateId <= Number(totalSupply); estateId++) {
-      const order = this.getSellOrder(estateId);
+      const order = this._getLandForSale(estateId);
       orders.push(order);
     }
 
     return await Promise.all(orders);
-  }
+  };
 
-  async getSellOrder(estateId) {
+  _getLandForSale = async estateId => {
     const estateName = await this.estateContract.getMetadata(estateId);
     const [
       orderId,
@@ -69,18 +69,48 @@ export default class ListSellOrdersScreen extends React.Component {
         img: imgUrl,
       },
     };
-  }
+  };
 
-  renderItem = ({ item: sellOrder }) => {
-    const handlePress = () =>
-      this.props.navigation.navigate("SellOrderScreen", { sellOrder });
-    return <SellOrdersListItem sellOrder={sellOrder} onPress={handlePress} />;
+  _renderItem = ({ item: landForSale }) => {
+    const { navigation, selectLandToBuy } = this.props;
+    const handlePress = () => {
+      selectLandToBuy(landForSale);
+      navigation.navigate("BuyLandScreen");
+    };
+
+    return (
+      <LandsForSaleListItem landForSale={landForSale} onPress={handlePress} />
+    );
   };
 
   render() {
-    const { sellOrders } = this.state;
+    const { landsForSale } = this.props;
     return (
-      <SellOrdersList sellOrders={sellOrders} renderItem={this.renderItem} />
+      <LandsForSaleList
+        landsForSale={landsForSale}
+        renderItem={this._renderItem}
+      />
     );
   }
 }
+
+ListLandsForSaleScreen.propTypes = {
+  landsForSale: PropTypes.array.isRequired,
+  setLandsForSale: PropTypes.func.isRequired,
+  selectLandToBuy: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => {
+  const { landsForSale } = state;
+  return { landsForSale };
+};
+
+const mapDispatchToProps = {
+  setLandsForSale,
+  selectLandToBuy,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListLandsForSaleScreen);

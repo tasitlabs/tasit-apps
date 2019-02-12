@@ -2,25 +2,25 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import PropTypes from "prop-types";
-import SellOrder from "./SellOrder";
+import LandForSale from "./LandForSale";
 import Button from "./Button";
 import Colors from "@constants/Colors";
 
-export default function SellOrderClaim(props) {
-  const { sellOrder, onClaim } = props;
+export default function BuyLand(props) {
+  const { landForSale, onBuy } = props;
   return (
     <View style={styles.container}>
-      <SellOrder sellOrder={sellOrder} />
+      <LandForSale landForSale={landForSale} />
       <View style={styles.buttonView}>
-        <Button title="Claim" onPress={onClaim} />
+        <Button title="Buy" onPress={onBuy} />
       </View>
     </View>
   );
 }
 
-SellOrderClaim.propTypes = {
-  sellOrder: PropTypes.object.isRequired,
-  onClaim: PropTypes.func.isRequired,
+BuyLand.propTypes = {
+  landForSale: PropTypes.object.isRequired,
+  onBuy: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

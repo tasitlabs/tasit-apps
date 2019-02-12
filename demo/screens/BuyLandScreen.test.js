@@ -1,16 +1,16 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import SellOrderScreen from "./SellOrderScreen";
+import { BuyLandScreen } from "./BuyLandScreen";
 
-describe("SellOrderScreen", () => {
+describe("BuyLandScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
 
   it("renders the component", async () => {
-    const sellOrder = {
+    const selectedLandToBuy = {
       id: 123,
       priceMana: 0,
       priceUSD: 0,
@@ -20,9 +20,20 @@ describe("SellOrderScreen", () => {
         img: "https://decentraland.org/images/logo-65f7b27caf.png",
       },
     };
-    const navigation = { getParam: () => sellOrder };
+
+    const account = {};
+    const navigation = () => {};
+    const removeLandForSale = () => {};
+
     expect(
-      shallow(<SellOrderScreen navigation={navigation} />)
+      shallow(
+        <BuyLandScreen
+          navigation={navigation}
+          account={account}
+          selectedLandToBuy={selectedLandToBuy}
+          removeLandForSale={removeLandForSale}
+        />
+      )
     ).toMatchSnapshot();
   });
 });

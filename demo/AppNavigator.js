@@ -1,8 +1,8 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import HomeScreen from "./screens/HomeScreen";
-import ListSellOrdersScreen from "./screens/ListSellOrdersScreen";
-import SellOrderScreen from "./screens/SellOrderScreen";
+import ListLandsForSaleScreen from "./screens/ListLandsForSaleScreen";
+import BuyLandScreen from "./screens/BuyLandScreen";
 import OnboardingHomeScreen from "./screens/OnboardingHomeScreen";
 import EthereumQuestionScreen from "./screens/EthereumQuestionScreen";
 import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
@@ -12,8 +12,8 @@ import Colors from "@constants/Colors.js";
 const AppNavigator = createStackNavigator(
   {
     HomeScreen,
-    ListSellOrdersScreen,
-    SellOrderScreen,
+    ListLandsForSaleScreen,
+    BuyLandScreen,
     OnboardingHomeScreen,
     EthereumQuestionScreen,
     EthereumSignUpScreen,

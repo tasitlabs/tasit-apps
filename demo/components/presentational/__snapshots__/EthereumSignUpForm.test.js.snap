@@ -62,7 +62,7 @@ exports[`EthereumSignUpForm renders the component 1`] = `
     }
   >
     <Button
-      onPress={[Function]}
+      onPress={[MockFunction]}
       title="Continue"
     />
   </Component>

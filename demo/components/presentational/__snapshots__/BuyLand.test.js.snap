@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SellOrderClaim renders the component 1`] = `
+exports[`BuyLand renders the component 1`] = `
 <Component
   style={
     Object {
@@ -11,8 +11,19 @@ exports[`SellOrderClaim renders the component 1`] = `
     }
   }
 >
-  <SellOrder
-    sellOrder={Object {}}
+  <LandForSale
+    landForSale={
+      Object {
+        "asset": Object {
+          "id": -1,
+          "img": "https://decentraland.org/images/logo-65f7b27caf.png",
+          "name": "Not found",
+        },
+        "id": 123,
+        "priceMana": 0,
+        "priceUSD": 0,
+      }
+    }
   />
   <Component
     style={
@@ -24,7 +35,7 @@ exports[`SellOrderClaim renders the component 1`] = `
   >
     <Button
       onPress={[Function]}
-      title="Claim"
+      title="Buy"
     />
   </Component>
 </Component>
