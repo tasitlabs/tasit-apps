@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react-native";
-import Button from "./Button";
+import Button from "@presentational/Button";
 
-storiesOf("Button").add("Default", () => (
+storiesOf("Button", module).add("Default", () => (
   <Button title="Test" onPress={() => {}} />
 ));

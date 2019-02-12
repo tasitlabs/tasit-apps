@@ -3,8 +3,8 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import LargeText from "./LargeText";
-import Button from "./Button";
+import LargeText from "@presentational/LargeText";
+import Button from "@presentational/Button";
 import Colors from "@constants/Colors";
 =======
 import { Button, StyleSheet, View } from "react-native";

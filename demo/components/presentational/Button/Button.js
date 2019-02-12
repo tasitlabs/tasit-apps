@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: responsiveHeight(1.5),
-
     overflow: "hidden",
     borderRadius: 3,
     backgroundColor: Colors.buttonBackground,

@@ -7,8 +7,10 @@ configure(() => {
   loadStories();
 }, module);
 
-export const StorybookUI = getStorybookUI({
+const StorybookUI = getStorybookUI({
   port: 9001,
   host: "localhost",
   onDeviceUI: true,
 });
+
+export default StorybookUI;

@@ -1,6 +1,6 @@
 import { registerRootComponent } from "expo";
 import App from "./App";
-import { StorybookUI } from "./storybook/index";
+import StorybookUI from "./storybook/index";
 
 // Should we show storybook instead of our app?
 // ⚠️ Leave this as `false` when checking into git.

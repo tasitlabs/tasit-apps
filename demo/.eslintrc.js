@@ -20,6 +20,7 @@ module.exports = {
     "react/prop-types": ["error", { ignore: ["navigation"] }],
     "prettier/prettier": "error",
     "jest/no-large-snapshots": ["warn", { maxSize: 50 }],
+    "react-native/sort-styles": "off",
   },
   settings: {
     react: {
