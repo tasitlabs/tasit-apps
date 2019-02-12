@@ -5,7 +5,7 @@ import { NavigationEvents } from "react-navigation";
 export default class HomeScreen extends React.Component {
   waitAndNavigate() {
     setTimeout(() => {
-      this.props.navigation.navigate("ListLandsForSaleScreen");
+      this.props.navigation.navigate("ListLandForSaleScreen");
     }, 1500);
   }
 

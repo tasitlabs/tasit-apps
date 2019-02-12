@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LandsForSaleListItem from "./LandsForSaleListItem";
+import LandForSaleListItem from "./LandForSaleListItem";
 
-describe("SellOrdersListItem", () => {
+describe("LandForSaleListItem", () => {
   it("renders the component", async () => {
     const landForSale = {
       id: 123,
@@ -17,7 +17,7 @@ describe("SellOrdersListItem", () => {
     const onPress = () => {};
     expect(
       shallow(
-        <LandsForSaleListItem landForSale={landForSale} onPress={onPress} />
+        <LandForSaleListItem landForSale={landForSale} onPress={onPress} />
       )
     ).toMatchSnapshot();
   });

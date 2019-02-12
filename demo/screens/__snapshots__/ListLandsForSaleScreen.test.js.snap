@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ListLandsForSaleScreen renders the component 1`] = `
-<LandsForSaleList
-  landsForSale={Array []}
-  renderItem={[Function]}
-/>
-`;

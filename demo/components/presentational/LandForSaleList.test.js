@@ -1,15 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LandsForSaleList from "./LandsForSaleList";
+import LandForSaleList from "./LandForSaleList";
 
-describe("LandsForSaleList", () => {
+describe("LandForSaleList", () => {
   it("renders the component", async () => {
     const landForSaleRenderer = () => {};
-    const landsForSale = [];
+    const landForSaleList = [];
     expect(
       shallow(
-        <LandsForSaleList
-          landsForSale={landsForSale}
+        <LandForSaleList
+          landForSaleList={landForSaleList}
           renderItem={landForSaleRenderer}
         />
       )

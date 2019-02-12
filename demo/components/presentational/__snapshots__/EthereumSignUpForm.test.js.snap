@@ -12,7 +12,7 @@ exports[`EthereumSignUpForm renders the component 1`] = `
     <Component
       style={
         Object {
-          "alignItems": "flex-end",
+          "alignItems": "center",
           "flex": 1,
         }
       }
@@ -33,24 +33,6 @@ exports[`EthereumSignUpForm renders the component 1`] = `
         underlineColorAndroid="transparent"
         value=""
       />
-    </Component>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
-    >
-      <Component
-        style={
-          Object {
-            "fontSize": 45.89389937671454,
-            "justifyContent": "flex-end",
-          }
-        }
-      >
-        .tasitid.eth
-      </Component>
     </Component>
   </Component>
   <Component

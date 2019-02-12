@@ -1,15 +1,14 @@
-import ContractsABIs from "@constants/ContractsABIs";
-const { manaABI } = ContractsABIs;
 import ContractsAddresses from "@constants/ContractsAddresses";
-const { manaAddress } = ContractsAddresses;
+const { MANA_ADDRESS } = ContractsAddresses;
 
 import { Action } from "tasit-sdk";
-const { Contract } = Action;
+const { ERC20 } = Action;
+const { Mana } = ERC20;
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
 export const approveManaSpending = async (fromAccount, toAddress, value) => {
   // Note: Config doesn't work if contract is instantiated outside of a function or a class
-  const mana = new Contract(manaAddress, manaABI);
+  const mana = new Mana(MANA_ADDRESS);
 
   mana.setWallet(fromAccount);
   const approvalAction = mana.approve(toAddress, value.toString());
@@ -19,7 +18,7 @@ export const approveManaSpending = async (fromAccount, toAddress, value) => {
 
 export const manaFaucetTo = async (beneficiaryWallet, amountInWei) => {
   // Note: Config doesn't work if contract is instantiated outside of a function or a class
-  const mana = new Contract(manaAddress, manaABI);
+  const mana = new Mana(MANA_ADDRESS);
 
   // Note: A real app wouldn't be using a preset private key and hardcoding it!
   // We're only doing this temporarily while using a hardcoded account with ETH and tokens

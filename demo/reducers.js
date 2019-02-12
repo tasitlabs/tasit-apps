@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import {
   SET_ACCOUNT,
   SELECT_LAND_TO_BUY,
-  SET_LANDS_FOR_SALE,
+  SET_LAND_FOR_SALE_LIST,
   REMOVE_LAND_FOR_SALE,
 } from "./actions";
 
@@ -26,11 +26,11 @@ function selectedLandToBuy(state = null, action) {
   }
 }
 
-function landsForSale(state = [], action) {
-  const { type, landsForSale, landForSale } = action;
+function landForSaleList(state = [], action) {
+  const { type, landForSaleList, landForSale } = action;
   switch (type) {
-    case SET_LANDS_FOR_SALE:
-      return landsForSale;
+    case SET_LAND_FOR_SALE_LIST:
+      return landForSaleList;
     case REMOVE_LAND_FOR_SALE:
       return state.filter(val => val !== landForSale);
     default:
@@ -41,7 +41,7 @@ function landsForSale(state = [], action) {
 const demoApp = combineReducers({
   account,
   selectedLandToBuy,
-  landsForSale,
+  landForSaleList,
 });
 
 export default demoApp;

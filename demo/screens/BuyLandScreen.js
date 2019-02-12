@@ -4,19 +4,18 @@ import { removeLandForSale } from "../actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 
-import ContractsABIs from "@constants/ContractsABIs";
-const { estateABI, marketplaceABI } = ContractsABIs;
 import ContractsAddresses from "@constants/ContractsAddresses";
-const { estateAddress, marketplaceAddress } = ContractsAddresses;
+const { ESTATE_ADDRESS, MARKETPLACE_ADDRESS } = ContractsAddresses;
 
 import { Action } from "tasit-sdk";
-const { Contract } = Action;
+const { ERC721, Marketplace } = Action;
+const { Estate } = ERC721;
+const { Decentraland: DecentralandMarketplace } = Marketplace;
 import { approveManaSpending, manaFaucetTo } from "./helpers";
 
 export class BuyLandScreen extends React.Component {
-  // TODO: Switch to new DecentralandEstate() once the SDK includes that
-  estateContract = new Contract(estateAddress, estateABI);
-  marketplaceContract = new Contract(marketplaceAddress, marketplaceABI);
+  estateContract = new Estate(ESTATE_ADDRESS);
+  marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
 
   _onBuy = landForSale => {
     const { account } = this.props;
@@ -35,7 +34,7 @@ export class BuyLandScreen extends React.Component {
       removeLandForSale(landForSale);
     };
     this._executeOrder(landForSale, account, onSuccess);
-    navigation.navigate("ListLandsForSaleScreen");
+    navigation.navigate("ListLandForSaleScreen");
   };
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
