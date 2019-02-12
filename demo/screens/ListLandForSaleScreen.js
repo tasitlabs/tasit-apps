@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLandsForSale, selectLandToBuy } from "../actions";
+import { setLandForSaleList, selectLandToBuy } from "../actions";
 import PropTypes from "prop-types";
-import LandsForSaleList from "@presentational/LandsForSaleList";
-import LandsForSaleListItem from "@presentational/LandsForSaleListItem";
+import LandForSaleList from "@presentational/LandForSaleList";
+import LandForSaleListItem from "@presentational/LandForSaleListItem";
 
 import ContractsAddresses from "@constants/ContractsAddresses";
 const { ESTATE_ADDRESS, MARKETPLACE_ADDRESS } = ContractsAddresses;
@@ -13,21 +13,21 @@ const { ERC721, Marketplace } = Action;
 const { Estate } = ERC721;
 const { Decentraland } = Marketplace;
 
-export class ListLandsForSaleScreen extends React.Component {
+export class ListLandForSaleScreen extends React.Component {
   estateContract = new Estate(ESTATE_ADDRESS);
   marketplaceContract = new Decentraland(MARKETPLACE_ADDRESS);
 
   componentDidMount = async () => {
-    const { setLandsForSale } = this.props;
-    const landsForSale = await this._getLandsForSale();
-    setLandsForSale(landsForSale);
+    const { setLandForSaleList } = this.props;
+    const landForSaleList = await this._getLandForSaleList();
+    setLandForSaleList(landForSaleList);
   };
 
   // Note: This function is assuming that:
   // - All estates have a sell order
   // - The total supply of estates is small
   // TODO: Rewrite this function when we move to testnet
-  _getLandsForSale = async () => {
+  _getLandForSaleList = async () => {
     const orders = [];
     const totalSupply = await this.estateContract.totalSupply();
 
@@ -80,38 +80,38 @@ export class ListLandsForSaleScreen extends React.Component {
     };
 
     return (
-      <LandsForSaleListItem landForSale={landForSale} onPress={handlePress} />
+      <LandForSaleListItem landForSale={landForSale} onPress={handlePress} />
     );
   };
 
   render() {
-    const { landsForSale } = this.props;
+    const { landForSaleList } = this.props;
     return (
-      <LandsForSaleList
-        landsForSale={landsForSale}
+      <LandForSaleList
+        landForSaleList={landForSaleList}
         renderItem={this._renderItem}
       />
     );
   }
 }
 
-ListLandsForSaleScreen.propTypes = {
-  landsForSale: PropTypes.array.isRequired,
-  setLandsForSale: PropTypes.func.isRequired,
+ListLandForSaleScreen.propTypes = {
+  landForSaleList: PropTypes.array.isRequired,
+  setLandForSaleList: PropTypes.func.isRequired,
   selectLandToBuy: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { landsForSale } = state;
-  return { landsForSale };
+  const { landForSaleList } = state;
+  return { landForSaleList };
 };
 
 const mapDispatchToProps = {
-  setLandsForSale,
+  setLandForSaleList,
   selectLandToBuy,
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListLandsForSaleScreen);
+)(ListLandForSaleScreen);

@@ -34,7 +34,7 @@ export class BuyLandScreen extends React.Component {
       removeLandForSale(landForSale);
     };
     this._executeOrder(landForSale, account, onSuccess);
-    navigation.navigate("ListLandsForSaleScreen");
+    navigation.navigate("ListLandForSaleScreen");
   };
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {

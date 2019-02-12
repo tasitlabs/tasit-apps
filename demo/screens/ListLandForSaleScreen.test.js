@@ -1,23 +1,23 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import { ListLandsForSaleScreen } from "./ListLandsForSaleScreen";
+import { ListLandForSaleScreen } from "./ListLandForSaleScreen";
 
-describe("ListLandsForSaleScreen", () => {
+describe("ListLandForSaleScreen", () => {
   jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
 
   it("renders the component", async () => {
-    const landsForSale = [];
-    const setLandsForSale = () => {};
+    const landForSaleList = [];
+    const setLandForSaleList = () => {};
     const selectLandToBuy = () => {};
     expect(
       shallow(
-        <ListLandsForSaleScreen
-          landsForSale={landsForSale}
-          setLandsForSale={setLandsForSale}
+        <ListLandForSaleScreen
+          landForSaleList={landForSaleList}
+          setLandForSaleList={setLandForSaleList}
           selectLandToBuy={selectLandToBuy}
         />
       )

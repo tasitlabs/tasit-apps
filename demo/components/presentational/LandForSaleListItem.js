@@ -12,7 +12,7 @@ import LandForSale from "./LandForSale";
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class LandsForSaleListItem extends React.PureComponent {
+export default class LandForSaleListItem extends React.PureComponent {
   render() {
     const { onPress, landForSale } = this.props;
     return (
@@ -25,7 +25,7 @@ export default class LandsForSaleListItem extends React.PureComponent {
   }
 }
 
-LandsForSaleListItem.propTypes = {
+LandForSaleListItem.propTypes = {
   onPress: PropTypes.func.isRequired,
   landForSale: PropTypes.object.isRequired,
 };
