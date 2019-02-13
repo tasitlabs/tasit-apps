@@ -19,7 +19,8 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "io.tasit.app.demo"
     },
     "android": {
       "package": "io.tasit.app.demo"
