@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 import { Action } from "tasit-sdk";
 import tasitSdkConfig from "./config/default.js";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import demoApp from "./reducers";
+
+const store = createStore(demoApp);
 
 export default class App extends React.Component {
   state = {
@@ -25,7 +30,11 @@ export default class App extends React.Component {
         />
       );
     } else {
-      return <HomeScreen />;
+      return (
+        <Provider store={store}>
+          <AppNavigator />
+        </Provider>
+      );
     }
   }
 
@@ -43,3 +52,7 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
+
+App.propTypes = {
+  skipLoadingScreen: PropTypes.bool,
+};

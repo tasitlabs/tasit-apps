@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
-import EthereumSignUpForm from ".";
+import EthereumSignUpForm from "./EthereumSignUpForm";
 
 describe("EthereumSignUpForm", () => {
   jest.useFakeTimers();

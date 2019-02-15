@@ -1,7 +1,10 @@
 import React from "react";
-import { Image, Button, StyleSheet, View } from "react-native";
-import LargeText from "./LargeText";
-import Colors from "../../constants/Colors";
+import { Image, StyleSheet, View } from "react-native";
+import PropTypes from "prop-types";
+import { responsiveHeight } from "react-native-responsive-dimensions";
+import LargeText from "@presentational/LargeText";
+import Button from "@presentational/Button";
+import Colors from "@constants/Colors";
 
 export default function OnboardingHome(props) {
   return (
@@ -15,6 +18,10 @@ export default function OnboardingHome(props) {
   );
 }
 
+OnboardingHome.propTypes = {
+  onPress: PropTypes.func.isRequired,
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -24,6 +31,6 @@ const styles = StyleSheet.create({
   },
   buttonView: {
     flexDirection: "row",
-    marginTop: 30,
+    marginTop: responsiveHeight(5),
   },
 });

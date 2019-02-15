@@ -6,7 +6,7 @@ import {
   responsiveWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import { Account } from "tasit-sdk";
+import PropTypes from "prop-types";
 import Button from "@presentational/Button";
 
 export default class EthereumSignUpForm extends React.Component {

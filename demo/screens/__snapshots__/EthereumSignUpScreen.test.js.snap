@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-<<<<<<< HEAD
 exports[`EthereumSignUpScreen renders the component 1`] = `
 <EthereumSignUp
   onSignUp={[Function]}
 />
 `;
-=======
-exports[`EthereumSignUpScreen renders the component 1`] = `<EthereumSignUp />`;
->>>>>>> Screens components snapshot update

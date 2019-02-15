@@ -1,5 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setAccount } from "../actions";
@@ -44,12 +43,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(EthereumSignUpScreen);
-=======
-import EthereumSignUp from "../components/presentational/EthereumSignUp";
-
-export default class EthereumSignUpScreen extends React.Component {
-  render() {
-    return <EthereumSignUp />;
-  }
-}
->>>>>>> Screen/Presentational components refactoring
