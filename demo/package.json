@@ -45,14 +45,6 @@
     "prettier": "^1.15.2",
     "react-dom": "^16.6.3"
   },
-  "greenkeeper": {
-    "ignore": [
-      "react",
-      "react-native",
-      "react-navigation",
-      "jest-expo"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tasitlabs/tasit.git"
