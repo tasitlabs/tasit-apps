@@ -2,8 +2,6 @@
   "groups": {
     "default": {
       "packages": [
-        "demo/components/presentational/package.json",
-        "demo/constants/package.json",
         "demo/package.json"
       ]
     }
