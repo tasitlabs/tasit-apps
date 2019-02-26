@@ -33,17 +33,25 @@
     "enzyme-adapter-react-16": "^1.7.1",
     "enzyme-to-json": "^3.3.5",
     "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
     "expo-cli": "^2.10.1",
-    "jest": "^23.6.0",
+    "jest": "^24.1.0",
     "jest-expo": "^32.0.0",
     "jest-prop-type-error": "^1.1.0",
     "prettier": "^1.15.2",
     "react-dom": "^16.6.3"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "react",
+      "react-native",
+      "react-navigation",
+      "jest-expo"
+    ]
   },
   "repository": {
     "type": "git",
