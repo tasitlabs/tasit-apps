@@ -47,7 +47,10 @@
   },
   "greenkeeper": {
     "ignore": [
-      "react"
+      "react",
+      "react-native",
+      "react-navigation",
+      "jest-expo"
     ]
   },
   "repository": {
