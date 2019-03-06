@@ -20,7 +20,7 @@ The "middleware" code for interacting with the Ethereum blockchain that you can 
 ### How to set up the local environment
 You'll need to install the npm packages for one of the apps in this project before you can test it out. The code for those npm packages isn't in this repo - just the name and version of the packages that we use. Those are specified in the `package.json` file for each app. `cd` into `demo` or `decentraland` to see what we mean.
 
-Unlike in the TasitSDK repo, as of right now there's no single command you can run from the root directory to bootstrap all the projects. `cd` into the demo directory than then run `npm install` (or `npm i` for short). This will code any code needed to run the app as well as any code you'll need during development on your local machine to work on the app.
+Unlike in the TasitSDK repo, as of right now there's no single command you can run from the root directory to bootstrap all the projects. `cd` into the demo directory than then run `npm install` (or `npm i` for short). This will install any code needed to run the app as well as any code you'll need during development on your local machine to work on the app.
 
 Note: If you've already used node and npm before and plan to work on multiple projects, we recommend using [nvm](https://github.com/creationix/nvm) to keep multiple versions on your machine. If you're just getting started with node and npm, that is probably overkill.
 
