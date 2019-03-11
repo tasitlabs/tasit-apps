@@ -11,7 +11,7 @@
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
-    "test": "npx jest --forceExit",
+    "test": "npx jest --runInBand",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
   },
   "dependencies": {
