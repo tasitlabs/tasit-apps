@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "build:android": "npx expo build:android",
+    "start": "FORCE_COLOR=1 node starter.js",
     "build:ios": "npx expo build:ios",
-    "start": "npx expo start -c",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
