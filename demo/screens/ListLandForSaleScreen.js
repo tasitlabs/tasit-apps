@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLandForSaleList, selectLandToBuy } from "../actions";
+import { setLandForSaleList, selectLandToBuy } from "../redux/actions";
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
