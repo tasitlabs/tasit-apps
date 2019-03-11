@@ -7,6 +7,7 @@
   "scripts": {
     "build:android": "npx expo build:android",
     "start": "FORCE_COLOR=1 node starter.js",
+    "build:ios": "npx expo build:ios",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
