@@ -2,26 +2,15 @@ import React from "react";
 import { AppLoading, Asset, Font } from "expo";
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
-import { Action } from "tasit-sdk";
-const { ConfigLoader } = Action;
-import tasitSdkConfig from "./config/default.js";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import demoApp from "./reducers";
+import { Action } from "tasit-sdk";
+const { ConfigLoader } = Action;
+import tasitSdkConfig from "./config/default.js";
+import { checkBlockchain } from "./helpers.js";
 
 const store = createStore(demoApp);
-
-const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
-const checkBlockchain = async () => {
-  ConfigLoader.setConfig(tasitSdkConfig);
-  const provider = ProviderFactory.getProvider();
-  try {
-    await provider.getBlockNumber();
-  } catch (err) {
-    return false;
-  }
-  return true;
-};
 
 export default class App extends React.Component {
   state = {
