@@ -1,9 +1,6 @@
 /* eslint no-console: "off" */
 const { exec } = require("child_process");
-const { Action } = require("tasit-sdk");
-const { ConfigLoader } = Action;
-const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
-const tasitSdkConfig = require("./config/default.js");
+const { checkBlockchain } = require("./helpers.js");
 
 const CONSOLE_FG_RED = "\x1b[31m";
 const CONSOLE_RESET = "\x1b[0m";
@@ -12,17 +9,6 @@ const startExpo = () => {
   const process = exec("npx expo start -c");
   process.stdout.on("data", console.log);
   process.stderr.on("data", console.log);
-};
-
-const checkBlockchain = async () => {
-  ConfigLoader.setConfig(tasitSdkConfig);
-  const provider = ProviderFactory.getProvider();
-  try {
-    await provider.getBlockNumber();
-  } catch (err) {
-    return false;
-  }
-  return true;
 };
 
 const start = async () => {
