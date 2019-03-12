@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import demoApp from "./reducers";
+import demoApp from "./redux/reducers";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default.js";

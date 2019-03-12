@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setAccount } from "../actions";
+import { setAccount } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 

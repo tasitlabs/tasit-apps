@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeLandForSale } from "../actions";
+import { removeLandForSale } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 
