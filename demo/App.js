@@ -6,7 +6,7 @@ import { Action } from "tasit-sdk";
 import tasitSdkConfig from "./config/default.js";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import demoApp from "./reducers";
+import demoApp from "./redux/reducers";
 
 const store = createStore(demoApp);
 
