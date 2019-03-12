@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLandForSaleList, selectLandToBuy } from "../actions";
+import { setLandForSaleList, selectLandToBuy } from "../redux/actions";
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
@@ -18,9 +18,13 @@ export class ListLandForSaleScreen extends React.Component {
   marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
 
   componentDidMount = async () => {
-    const { setLandForSaleList } = this.props;
-    const landForSaleList = await this._getLandForSaleList();
-    setLandForSaleList(landForSaleList);
+    try {
+      const { setLandForSaleList } = this.props;
+      const landForSaleList = await this._getLandForSaleList();
+      setLandForSaleList(landForSaleList);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   // Note: This function is assuming that:
@@ -35,6 +39,8 @@ export class ListLandForSaleScreen extends React.Component {
       const order = this._getLandForSale(estateId);
       orders.push(order);
     }
+
+    if (orders.length == 0) console.warn("There isn't any land for sale right now.");
 
     return await Promise.all(orders);
   };

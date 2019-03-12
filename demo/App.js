@@ -2,11 +2,13 @@ import React from "react";
 import { AppLoading, Asset, Font } from "expo";
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
-import { Action } from "tasit-sdk";
-import tasitSdkConfig from "./config/default.js";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import demoApp from "./reducers";
+import demoApp from "./redux/reducers";
+import { Action } from "tasit-sdk";
+const { ConfigLoader } = Action;
+import tasitSdkConfig from "./config/default";
+import { checkBlockchain } from "./helpers";
 
 const store = createStore(demoApp);
 
@@ -15,9 +17,13 @@ export default class App extends React.Component {
     isLoadingComplete: false,
   };
 
-  componentDidMount() {
-    const { ConfigLoader } = Action;
+  async componentDidMount() {
     ConfigLoader.setConfig(tasitSdkConfig);
+    const connectionOK = await checkBlockchain();
+    if (!connectionOK) {
+      console.error("Failed to establish the connection to the blockchain.");
+      console.error(`Is the 'config/default.js' file correct?`);
+    }
   }
 
   render() {
