@@ -7,8 +7,8 @@ import { createStore } from "redux";
 import demoApp from "./redux/reducers";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
-import tasitSdkConfig from "./config/default.js";
-import { checkBlockchain } from "./helpers.js";
+import tasitSdkConfig from "./config/default";
+import { checkBlockchain } from "./helpers";
 
 const store = createStore(demoApp);
 
