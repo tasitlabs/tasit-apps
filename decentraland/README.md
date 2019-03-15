@@ -1,8 +1,10 @@
-### Tasit Demo
+# Tasit Decentraland
 
-Our first demo app is called Tasit Demo.
+This folder is the home for the Tasit Decentraland app.
 
-It's an app that shows off how easy it is to build a standalone native mobile app for Ethereum NFTs using the Tasit SDK.
+You can use this app to buy parcels of Decentraland land from a standalone native mobile app.
+
+The Decentraland app is also serving as our first demo app for using the Tasit SDK. It shows off how easy it is to build a standalone native mobile app for Ethereum NFTs using the Tasit SDK.
 
 The app is built using React Native, Expo, React Navigation, Prettier, Babel, and the Tasit SDK.
 
@@ -11,10 +13,11 @@ The app is built using React Native, Expo, React Navigation, Prettier, Babel, an
 ```
 git clone https://github.com/tasitlabs/tasit.git
 cd tasit
-cd demo
+cd decentraland
 npm i
 npm start
 ```
 
 ##### More info
+
 [More info here!](https://github.com/tasitlabs/tasit)
