@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "tasit-demo",
+    "name": "Tasit Decentraland",
     "description": "A demo app showing proper usage of the Tasit SDK",
-    "slug": "tasit-demo",
+    "slug": "tasit-decentraland",
     "privacy": "unlisted",
     "sdkVersion": "32.0.0",
     "platforms": ["ios", "android"],
