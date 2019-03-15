@@ -38,7 +38,7 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 
 ##### Review the code
 
-[Here's the code](./demo) for the demo app. For now this is where we're building the Tasit Decentraland app. Soon we'll move the Decentraland-specific parts over [here](./decentraland) and just keep a more minimalist demo app in the `demo` folder.
+[Here's the code](./demo) for the demo app. For now the Tasit Decentraland app is serving as the "demo" app. Soon we'll move the generic, minimalist parts over to the `demo` dir.
 
 ##### Features
 
@@ -62,7 +62,7 @@ This app also shows off the major functionality of the [Tasit SDK](https://githu
 
 ##### Review the code
 
-For now this is where we're building the Tasit Decentraland app over in the [demo dir](./demo). Soon we'll move the Decentraland-specific parts over [here](./decentraland) and just keep a more minimalist demo app in the `demo` folder.
+We're building the Tasit Decentraland app in the [`decentraland` dir](./decentraland). Soon we'll move the generic parts over [to the `demo` folder](./demo).
 
 ## Other Tasit apps coming soon
 

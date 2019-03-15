@@ -1,15 +1,8 @@
 {
   "groups": {
     "default": {
-      "packages": [
-        "demo/package.json"
-      ]
+      "packages": ["decentraland/package.json"]
     }
   },
-  "ignore": [
-    "react",
-    "react-native",
-    "react-navigation",
-    "jest-expo"
-  ]
+  "ignore": ["react", "react-native", "react-navigation", "jest-expo"]
 }
