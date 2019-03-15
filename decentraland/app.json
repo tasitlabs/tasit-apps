@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tasit Decentraland",
-    "description": "A demo app showing proper usage of the Tasit SDK",
+    "description": "An app for buying Decentraland land using the Tasit SDK",
     "slug": "tasit-decentraland",
     "privacy": "unlisted",
     "sdkVersion": "32.0.0",
@@ -20,10 +20,10 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.tasit.demo"
+      "bundleIdentifier": "io.tasit.decentraland"
     },
     "android": {
-      "package": "io.tasit.demo"
+      "package": "io.tasit.decentraland"
     }
   }
 }

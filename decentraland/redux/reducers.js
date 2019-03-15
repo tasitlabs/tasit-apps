@@ -38,10 +38,10 @@ function landForSaleList(state = [], action) {
   }
 }
 
-const demoApp = combineReducers({
+const decentralandApp = combineReducers({
   account,
   selectedLandToBuy,
   landForSaleList,
 });
 
-export default demoApp;
+export default decentralandApp;
