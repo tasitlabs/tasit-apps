@@ -9,7 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:10.13
 
-    working_directory: ~/tasit/demo
+    working_directory: ~/tasit/decentraland
 
     steps:
       - checkout:

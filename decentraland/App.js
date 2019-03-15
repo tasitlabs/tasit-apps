@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import demoApp from "./redux/reducers";
+import decentralandApp from "./redux/reducers";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
 import { checkBlockchain } from "./helpers";
 
-const store = createStore(demoApp);
+const store = createStore(decentralandApp);
 
 export default class App extends React.Component {
   state = {
