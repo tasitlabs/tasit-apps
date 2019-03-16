@@ -40,7 +40,8 @@ export class ListLandForSaleScreen extends React.Component {
       orders.push(order);
     }
 
-    if (orders.length == 0) console.warn("There isn't any land for sale right now.");
+    if (orders.length == 0)
+      console.warn("There isn't any land for sale right now.");
 
     return await Promise.all(orders);
   };
