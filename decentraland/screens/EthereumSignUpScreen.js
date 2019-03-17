@@ -4,13 +4,15 @@ import { connect } from "react-redux";
 import { setAccount } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
-import {
-  approveManaSpending,
-  manaFaucetTo,
-  showInfo,
-  showError,
-} from "./helpers";
+import { approveManaSpending, showInfo, showError } from "./helpers";
 import ContractsAddresses from "@constants/ContractsAddresses";
+const {
+  MANA_ADDRESS,
+  MARKETPLACE_ADDRESS,
+  GNOSIS_SAFE_ADDRESS,
+} = ContractsAddresses;
+import { ContractBasedAccount } from "tasit-sdk";
+const { GnosisSafe } = ContractBasedAccount;
 
 export class EthereumSignUpScreen extends React.Component {
   // Note: As same as Account.create(), this functions isn't running as async.
@@ -25,15 +27,32 @@ export class EthereumSignUpScreen extends React.Component {
     return account;
   };
 
-  // TODO: Use Gnosis Safe
-  // Note: The currenct account is funded with ethers by ganache (Gnosis should fund with ethers too)
   _fundAccount = async accountAddress => {
-    const TEN = 10e18;
-    await manaFaucetTo(accountAddress, TEN);
+    const SMALL_AMOUNT = `${1e17}`; // 0.1
+    const TEN = `${10e18}`;
+
+    const gnosisSafeOwnerPrivKey =
+      "0xee0c6b1a7adea9f87b1a422eb06b245fc714b8eca4c8c0578d6cf946beba86f1";
+    const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
+
+    const gnosisSafe = new GnosisSafe(GNOSIS_SAFE_ADDRESS, gnosisSafeOwner);
+    gnosisSafe.setSigners([gnosisSafeOwner]);
+
+    const transferEthersAction = gnosisSafe.transferEther(
+      accountAddress,
+      SMALL_AMOUNT
+    );
+    await transferEthersAction.waitForNonceToUpdate();
+
+    const transferManaAction = gnosisSafe.transferERC20(
+      MANA_ADDRESS,
+      accountAddress,
+      TEN
+    );
+    await transferManaAction.waitForNonceToUpdate();
   };
 
   _approveAccount = async account => {
-    const { MARKETPLACE_ADDRESS } = ContractsAddresses;
     const ONE = 1e18;
     await approveManaSpending(account, MARKETPLACE_ADDRESS, ONE);
   };
