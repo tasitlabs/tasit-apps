@@ -3,24 +3,44 @@ import { connect } from "react-redux";
 import { removeLandForSale } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
+import { showError, showInfo } from "./helpers";
 
 import ContractsAddresses from "@constants/ContractsAddresses";
-const { ESTATE_ADDRESS, MARKETPLACE_ADDRESS } = ContractsAddresses;
+const {
+  ESTATE_ADDRESS,
+  MARKETPLACE_ADDRESS,
+  LAND_ADDRESS,
+} = ContractsAddresses;
 
 import { Action } from "tasit-sdk";
 const { ERC721, Marketplace } = Action;
-const { Estate } = ERC721;
+const { Estate, Land } = ERC721;
 const { Decentraland: DecentralandMarketplace } = Marketplace;
-import { approveManaSpending, manaFaucetTo } from "./helpers";
+
+import AssetTypes from "@constants/AssetTypes";
+const { ESTATE, PARCEL } = AssetTypes;
+
+// TODO: Go deep on gas handling.
+// Without that, VM returns a revert error instead of out of gas error.
+// See: https://github.com/tasitlabs/TasitSDK/issues/173
+const gasParams = {
+  gasLimit: 7e6,
+  gasPrice: 1e9,
+};
 
 export class BuyLandScreen extends React.Component {
   estateContract = new Estate(ESTATE_ADDRESS);
+  landContract = new Land(LAND_ADDRESS);
   marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
 
   _onBuy = landForSale => {
-    const { account } = this.props;
-    if (!account) this._setupAccount();
-    else this._buy(landForSale);
+    try {
+      const { account } = this.props;
+      if (!account) this._setupAccount();
+      else this._buy(landForSale);
+    } catch (err) {
+      showError(err);
+    }
   };
 
   _setupAccount = () => {
@@ -29,55 +49,51 @@ export class BuyLandScreen extends React.Component {
   };
 
   _buy = landForSale => {
-    const { navigation, account, removeLandForSale } = this.props;
+    const { props, _executeOrder } = this;
+    const { navigation, account, removeLandForSale } = props;
     const onSuccess = () => {
       removeLandForSale(landForSale);
     };
-    this._executeOrder(landForSale, account, onSuccess);
+
+    _executeOrder(landForSale, account, onSuccess);
     navigation.navigate("ListLandForSaleScreen");
   };
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
-    const { asset } = sellOrder;
-    const { priceMana } = sellOrder;
-    const priceInWei = Number(priceMana) * 1e18;
+    try {
+      const { priceMana, asset, type } = sellOrder;
+      const { id: assetId } = asset;
+      const priceInWei = Number(priceMana) * 1e18;
+      const { marketplaceContract, estateContract } = this;
 
-    const ONE = 1e18;
-    const TEN = 10e18;
+      let nftAddress;
+      let fingerprint;
+      if (type == ESTATE) {
+        nftAddress = ESTATE_ADDRESS;
+        fingerprint = await estateContract.getFingerprint(assetId);
+      } else if (type == PARCEL) {
+        nftAddress = LAND_ADDRESS;
+        // LANDRegistry contract doesn't implement getFingerprint function
+        fingerprint = "0x";
+      }
 
-    // TODO: Go deep on gas handling.
-    // Without that, VM returns a revert error instead of out of gas error.
-    // See: https://github.com/tasitlabs/TasitSDK/issues/173
-    const gasParams = {
-      gasLimit: 7e6,
-      gasPrice: 1e9,
-    };
+      marketplaceContract.setWallet(account);
+      const action = marketplaceContract.safeExecuteOrder(
+        nftAddress,
+        `${assetId}`,
+        `${priceInWei}`,
+        `${fingerprint}`,
+        gasParams
+      );
 
-    const marketplaceAddress = this.marketplaceContract.getAddress();
-    const estateAddress = this.estateContract.getAddress();
-
-    await manaFaucetTo(account, TEN);
-
-    // TODO: Move this out to an explicit approval flow?
-    await approveManaSpending(account, marketplaceAddress, ONE);
-
-    this.marketplaceContract.setWallet(account);
-
-    const fingerprint = await this.estateContract.getFingerprint(asset.id);
-
-    const executeOrder = this.marketplaceContract.safeExecuteOrder(
-      estateAddress,
-      asset.id,
-      priceInWei.toString(),
-      fingerprint.toString(),
-      gasParams
-    );
-
-    await executeOrder.waitForNonceToUpdate();
-
-    // TODO: This function should be called inside of the eventListener
-    // that catches the safeExecuteOrder successful event.
-    afterSuccessfulExecution();
+      // TODO: This function should be called inside of the eventListener
+      // that catches the safeExecuteOrder successful event.
+      await action.waitForNonceToUpdate();
+      showInfo(`Order executed.`);
+      afterSuccessfulExecution();
+    } catch (err) {
+      showError(err);
+    }
   };
 
   render() {

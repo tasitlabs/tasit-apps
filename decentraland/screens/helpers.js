@@ -8,29 +8,37 @@ import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
 export const approveManaSpending = async (fromAccount, toAddress, value) => {
   // Note: Config doesn't work if contract is instantiated outside of a function or a class
-  const mana = new Mana(MANA_ADDRESS);
-
-  mana.setWallet(fromAccount);
-  const approvalAction = mana.approve(toAddress, value.toString());
-
-  await approvalAction.waitForNonceToUpdate();
+  const mana = new Mana(MANA_ADDRESS, fromAccount);
+  const action = mana.approve(toAddress, `${value}`);
+  await action.waitForNonceToUpdate();
 };
 
-export const manaFaucetTo = async (beneficiaryWallet, amountInWei) => {
-  // Note: Config doesn't work if contract is instantiated outside of a function or a class
-  const mana = new Mana(MANA_ADDRESS);
-
+export const manaFaucetTo = async (toAddress, amountInWei) => {
   // Note: A real app wouldn't be using a preset private key and hardcoding it!
   // We're only doing this temporarily while using a hardcoded account with ETH and tokens
   const ownerPrivKey =
     "0x11d943d7649fbdeb146dc57bd9cfc80b086bfab2330c7b25651dbaf382392f60";
   const ownerWallet = createFromPrivateKey(ownerPrivKey);
-  const { address } = beneficiaryWallet;
-  const amountToMint = amountInWei.toString();
 
-  mana.setWallet(ownerWallet);
-  const mintManaAction = mana.mint(address, amountToMint);
-  await mintManaAction.waitForNonceToUpdate();
+  // Note: Config doesn't work if contract is instantiated outside of a function or a class
+  const mana = new Mana(MANA_ADDRESS, ownerWallet);
+  const action = mana.mint(toAddress, `${amountInWei}`);
+  await action.waitForNonceToUpdate();
 };
 
-export default { approveManaSpending, manaFaucetTo };
+// TODO: Use properly functions/components
+export const showFatalError = msg => console.error(msg);
+export const showError = msg => console.log(`ERROR: ${msg}`);
+export const showWarn = msg => console.log(`WARN: ${msg}`);
+export const showInfo = msg => console.log(`INFO: ${msg}`);
+export const showSuccess = msg => console.log(`SUCCESS: ${msg}`);
+
+export default {
+  approveManaSpending,
+  manaFaucetTo,
+  showFatalError,
+  showError,
+  showWarn,
+  showInfo,
+  showSuccess,
+};

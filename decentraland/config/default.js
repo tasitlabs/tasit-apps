@@ -4,7 +4,7 @@ module.exports = {
     provider: "jsonrpc",
     pollingInterval: 50,
     jsonRpc: {
-      url: "http://localhost",
+      url: "http://192.168.1.69",
       port: 8545,
     },
   },

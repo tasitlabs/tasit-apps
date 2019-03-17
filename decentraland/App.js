@@ -8,7 +8,7 @@ import decentralandApp from "./redux/reducers";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
-import { checkBlockchain } from "./helpers";
+import { checkBlockchain, showFatalError } from "./helpers";
 
 const store = createStore(decentralandApp);
 
@@ -21,8 +21,9 @@ export default class App extends React.Component {
     ConfigLoader.setConfig(tasitSdkConfig);
     const connectionOK = await checkBlockchain();
     if (!connectionOK) {
-      console.error("Failed to establish the connection to the blockchain.");
-      console.error(`Is the 'config/default.js' file correct?`);
+      const errorMessage = `Failed to establish the connection to the blockchain.
+Is the 'config/default.js' file correct?`;
+      showFatalError(errorMessage);
     }
   }
 
