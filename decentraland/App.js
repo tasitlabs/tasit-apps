@@ -1,4 +1,5 @@
 import React from "react";
+import { YellowBox } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
@@ -18,6 +19,9 @@ export default class App extends React.Component {
   };
 
   async componentDidMount() {
+    // Ignoring setting timer warnings on the app UI
+    YellowBox.ignoreWarnings(["Setting a timer"]);
+
     ConfigLoader.setConfig(tasitSdkConfig);
     const connectionOK = await checkBlockchain();
     if (!connectionOK) {

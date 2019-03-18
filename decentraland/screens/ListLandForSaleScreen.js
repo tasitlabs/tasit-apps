@@ -9,6 +9,7 @@ import {
   prepareEstateForSale,
   addressesAreEqual,
   showError,
+  showInfo,
 } from "./helpers";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
@@ -33,6 +34,7 @@ export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
     try {
       const { setLandForSaleList } = this.props;
+      showInfo("Loading assets for sale...");
       const landForSaleList = await this._getAssetsForSale();
       setLandForSaleList(landForSaleList);
     } catch (err) {

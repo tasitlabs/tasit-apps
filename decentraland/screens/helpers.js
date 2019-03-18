@@ -1,14 +1,18 @@
 import ContractsAddresses from "@constants/ContractsAddresses";
-const { MANA_ADDRESS } = ContractsAddresses;
+const { MANA_ADDRESS, GNOSIS_SAFE_ADDRESS } = ContractsAddresses;
 
-import { Action } from "tasit-sdk";
+import { Action, ContractBasedAccount } from "tasit-sdk";
 const { ERC20 } = Action;
 const { Mana } = ERC20;
+const { GnosisSafe } = ContractBasedAccount;
 
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
-export const approveManaSpending = async (fromAccount, toAddress, value) => {
+import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
+
+export const approveManaSpending = async (fromAccount, toAddress) => {
+  const value = 1e18; // one
   // Note: Config doesn't work if contract is instantiated outside of a function or a class
   const mana = new Mana(MANA_ADDRESS, fromAccount);
   const action = mana.approve(toAddress, `${value}`);
@@ -80,6 +84,31 @@ export const prepareParcelForSale = async (landContract, parcelForSale) => {
   };
 };
 
+export const fundAccount = async accountAddress => {
+  const SMALL_AMOUNT = `${1e17}`; // 0.1
+  const TEN = `${10e18}`;
+
+  const gnosisSafeOwnerPrivKey =
+    "0xee0c6b1a7adea9f87b1a422eb06b245fc714b8eca4c8c0578d6cf946beba86f1";
+  const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
+
+  const gnosisSafe = new GnosisSafe(GNOSIS_SAFE_ADDRESS, gnosisSafeOwner);
+  gnosisSafe.setSigners([gnosisSafeOwner]);
+
+  const transferEthersAction = gnosisSafe.transferEther(
+    accountAddress,
+    SMALL_AMOUNT
+  );
+  await transferEthersAction.waitForNonceToUpdate();
+
+  const transferManaAction = gnosisSafe.transferERC20(
+    MANA_ADDRESS,
+    accountAddress,
+    TEN
+  );
+  await transferManaAction.waitForNonceToUpdate();
+};
+
 // TODO: Use properly functions/components
 export const showFatalError = msg => console.error(msg);
 export const showError = msg => console.warn(`ERROR: ${msg}`);
@@ -97,4 +126,5 @@ export default {
   showWarn,
   showInfo,
   showSuccess,
+  fundAccount,
 };
