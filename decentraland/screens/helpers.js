@@ -12,6 +12,10 @@ export const approveManaSpending = async (fromAccount, toAddress, value) => {
   await action.waitForNonceToUpdate();
 };
 
+export const addressesAreEqual = (address1, address2) => {
+  return address1.toUpperCase() === address2.toUpperCase();
+};
+
 // TODO: Use properly functions/components
 export const showFatalError = msg => console.error(msg);
 export const showError = msg => console.log(`ERROR: ${msg}`);
@@ -21,6 +25,7 @@ export const showSuccess = msg => console.log(`SUCCESS: ${msg}`);
 
 export default {
   approveManaSpending,
+  addressesAreEqual,
   showFatalError,
   showError,
   showWarn,

@@ -4,7 +4,7 @@ import { setLandForSaleList, selectLandToBuy } from "../redux/actions";
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
-import { showError } from "./helpers";
+import { addressesAreEqual, showError } from "./helpers";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
@@ -31,19 +31,14 @@ export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
     try {
       const { setLandForSaleList } = this.props;
-      const landForSaleList = await this._getLandForSaleList();
+      const landForSaleList = await this._getAssetsForSale();
       setLandForSaleList(landForSaleList);
     } catch (err) {
       showError(err);
     }
   };
 
-  _getLandForSaleList = async () => {
-    const openSellOrders = await this._getOpenSellOrders();
-    return openSellOrders;
-  };
-
-  _getOpenSellOrders = async () => {
+  _getAssetsForSale = async () => {
     const decentralandUtils = new DecentralandUtils();
     const { getOpenSellOrders } = decentralandUtils;
 
@@ -60,45 +55,30 @@ export class ListLandForSaleScreen extends React.Component {
   };
 
   _prepareLandForSale = async assetForSale => {
-    const {
-      id,
-      assetId,
-      nftAddress,
-      seller,
-      priceInWei,
-      expiresAt,
-    } = assetForSale;
-    const { estateContract, landContract } = this;
-
-    const isParcel = nftAddress.toUpperCase() == LAND_ADDRESS.toUpperCase();
-    const isEstate = nftAddress.toUpperCase() == ESTATE_ADDRESS.toUpperCase();
-
-    let type;
-    let name;
-    let imgUrl;
+    const { nftAddress } = assetForSale;
+    const isParcel = addressesAreEqual(nftAddress, LAND_ADDRESS);
+    const isEstate = addressesAreEqual(nftAddress, ESTATE_ADDRESS);
 
     if (isEstate) {
-      type = ESTATE;
-      name = await estateContract.getMetadata(assetId);
-      imgUrl = `https://api.decentraland.org/v1/estates/${Number(
-        assetId
-      )}/map.png`;
+      return await this._prepareEstateForSale(assetForSale);
     } else if (isParcel) {
-      type = PARCEL;
-      const namePromise = landContract.tokenMetadata(assetId);
-      const coordsPromise = landContract.decodeTokenId(assetId);
-      let coords;
-      [name, coords] = await Promise.all([namePromise, coordsPromise]);
-      const [x, y] = coords;
-      imgUrl = `https://api.decentraland.org/v1/parcels/${x}/${y}/map.png`;
+      return await this._prepareParcelForSale(assetForSale);
     } else {
       throw new Error(`The asset should be a Parcel or an Estate.`);
     }
+  };
+
+  _prepareEstateForSale = async estateForSale => {
+    const { id, assetId, seller, priceInWei, expiresAt } = estateForSale;
+    const { estateContract } = this;
+    const estateId = Number(assetId);
 
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
     const priceMana = Number(`${priceInWei}`) / 1e18;
     const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
+    const name = await estateContract.getMetadata(assetId);
+    const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
     return {
       id,
@@ -106,9 +86,44 @@ export class ListLandForSaleScreen extends React.Component {
       priceUSD,
       seller,
       expiresAt,
-      type,
+      type: ESTATE,
       asset: {
-        id: assetId,
+        id: estateId,
+        name,
+        img: imgUrl,
+      },
+    };
+  };
+
+  _prepareParcelForSale = async parcelForSale => {
+    const {
+      id,
+      assetId: parcelId,
+      seller,
+      priceInWei,
+      expiresAt,
+    } = parcelForSale;
+    const { landContract } = this;
+
+    // Note: Conversion to USD will be implemented on v0.2.0
+    const manaPerUsd = 30;
+    const priceMana = Number(`${priceInWei}`) / 1e18;
+    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
+    const namePromise = landContract.tokenMetadata(parcelId);
+    const coordsPromise = landContract.decodeTokenId(parcelId);
+    const [name, coords] = await Promise.all([namePromise, coordsPromise]);
+    const [x, y] = coords;
+    const imgUrl = `https://api.decentraland.org/v1/parcels/${x}/${y}/map.png`;
+
+    return {
+      id,
+      priceMana,
+      priceUSD,
+      seller,
+      expiresAt,
+      type: PARCEL,
+      asset: {
+        id: parcelId,
         name,
         img: imgUrl,
       },
