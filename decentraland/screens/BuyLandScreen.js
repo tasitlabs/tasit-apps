@@ -3,18 +3,7 @@ import { connect } from "react-redux";
 import { removeLandForSale } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
-import { showError, showInfo } from "./helpers";
-
-import TasitContracts from "tasit-contracts";
-const { LANDProxy, EstateRegistry, Marketplace } = TasitContracts["local"];
-const { address: LAND_ADDRESS } = LANDProxy;
-const { address: ESTATE_ADDRESS } = EstateRegistry;
-const { address: MARKETPLACE_ADDRESS } = Marketplace;
-
-import { Action } from "tasit-sdk";
-const { ERC721, Marketplace: MarketplaceContracts } = Action;
-const { Estate, Land } = ERC721;
-const { Decentraland: DecentralandMarketplace } = MarketplaceContracts;
+import { showError, showInfo, getContracts } from "./helpers";
 
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
@@ -28,10 +17,6 @@ const gasParams = {
 };
 
 export class BuyLandScreen extends React.Component {
-  estateContract = new Estate(ESTATE_ADDRESS);
-  landContract = new Land(LAND_ADDRESS);
-  marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
-
   _onBuy = landForSale => {
     try {
       const { account } = this.props;
@@ -63,15 +48,16 @@ export class BuyLandScreen extends React.Component {
       const { priceMana, asset, type } = sellOrder;
       const { id: assetId } = asset;
       const priceInWei = Number(priceMana) * 1e18;
-      const { marketplaceContract, estateContract } = this;
+      const contracts = getContracts();
+      const { marketplaceContract, estateContract, landContract } = contracts;
 
       let nftAddress;
       let fingerprint;
       if (type == ESTATE) {
-        nftAddress = ESTATE_ADDRESS;
+        nftAddress = estateContract.getAddress();
         fingerprint = await estateContract.getFingerprint(assetId);
       } else if (type == PARCEL) {
-        nftAddress = LAND_ADDRESS;
+        nftAddress = landContract.getAddress();
         // LANDRegistry contract doesn't implement getFingerprint function
         fingerprint = "0x";
       }
@@ -88,7 +74,7 @@ export class BuyLandScreen extends React.Component {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForNonceToUpdate();
-      showInfo(`Order executed.`);
+      showInfo(`Asset bought successfully.`);
       afterSuccessfulExecution();
     } catch (err) {
       showError(err);

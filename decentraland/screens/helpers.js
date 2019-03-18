@@ -1,23 +1,62 @@
 import TasitContracts from "tasit-contracts";
-const { MANAToken, GnosisSafe: GnosisSafeInfo } = TasitContracts["local"];
-const { address: MANA_ADDRESS } = MANAToken;
-const { address: GNOSIS_SAFE_ADDRESS } = GnosisSafeInfo;
-
 import { Action, ContractBasedAccount } from "tasit-sdk";
-const { ERC20 } = Action;
-const { Mana } = ERC20;
-const { GnosisSafe } = ContractBasedAccount;
 
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
+import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
-export const approveManaSpending = async (fromAccount, toAddress) => {
+export const getContracts = () => {
+  let contracts;
+
+  const provider = ProviderFactory.getProvider();
+
+  const { _network: network } = provider;
+  const networkName = !network ? "local" : network.name;
+
+  const {
+    MANAToken,
+    LANDProxy,
+    EstateRegistry,
+    Marketplace,
+    GnosisSafe: GnosisSafeInfo,
+  } = TasitContracts[networkName];
+  const { address: MANA_ADDRESS } = MANAToken;
+  const { address: LAND_ADDRESS } = LANDProxy;
+  const { address: ESTATE_ADDRESS } = EstateRegistry;
+  const { address: MARKETPLACE_ADDRESS } = Marketplace;
+  const { address: GNOSIS_SAFE_ADDRESS } = GnosisSafeInfo;
+
+  const { ERC20, ERC721, Marketplace: MarketplaceContracts } = Action;
+  const { Mana } = ERC20;
+  const { Estate, Land } = ERC721;
+  const { Decentraland: DecentralandMarketplace } = MarketplaceContracts;
+  const { GnosisSafe } = ContractBasedAccount;
+
+  const estateContract = new Estate(ESTATE_ADDRESS);
+  const landContract = new Land(LAND_ADDRESS);
+  const marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
+  const manaContract = new Mana(MANA_ADDRESS);
+  const gnosisSafeContract = new GnosisSafe(GNOSIS_SAFE_ADDRESS);
+
+  contracts = {
+    estateContract,
+    landContract,
+    marketplaceContract,
+    manaContract,
+    gnosisSafeContract,
+  };
+
+  return contracts;
+};
+
+export const approveManaSpending = async fromAccount => {
   const value = 1e18; // one
-  // Note: Config doesn't work if contract is instantiated outside of a function or a class
-  const mana = new Mana(MANA_ADDRESS, fromAccount);
-  const action = mana.approve(toAddress, `${value}`);
+  const contracts = getContracts();
+  const { manaContract, marketplaceContract: toAddress } = contracts;
+  manaContract.setWallet(fromAccount);
+  const action = manaContract.approve(toAddress, `${value}`);
   await action.waitForNonceToUpdate();
 };
 
@@ -94,17 +133,19 @@ export const fundAccount = async accountAddress => {
     "0xee0c6b1a7adea9f87b1a422eb06b245fc714b8eca4c8c0578d6cf946beba86f1";
   const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 
-  const gnosisSafe = new GnosisSafe(GNOSIS_SAFE_ADDRESS, gnosisSafeOwner);
-  gnosisSafe.setSigners([gnosisSafeOwner]);
+  const contracts = getContracts();
+  const { manaContract, gnosisSafeContract } = contracts;
+  gnosisSafeContract.setWallet(gnosisSafeOwner);
+  gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
-  const transferEthersAction = gnosisSafe.transferEther(
+  const transferEthersAction = gnosisSafeContract.transferEther(
     accountAddress,
     SMALL_AMOUNT
   );
   await transferEthersAction.waitForNonceToUpdate();
 
-  const transferManaAction = gnosisSafe.transferERC20(
-    MANA_ADDRESS,
+  const transferManaAction = gnosisSafeContract.transferERC20(
+    manaContract.getAddress(),
     accountAddress,
     TEN
   );
@@ -129,4 +170,5 @@ export default {
   showInfo,
   showSuccess,
   fundAccount,
+  getContracts,
 };

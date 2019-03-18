@@ -3,18 +3,12 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setAccount } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
-
 import {
   approveManaSpending,
   showInfo,
   showError,
   fundAccount,
 } from "./helpers";
-
-import TasitContracts from "tasit-contracts";
-const { Marketplace } = TasitContracts["local"];
-
-const { address: MARKETPLACE_ADDRESS } = Marketplace;
 
 import { Account } from "tasit-sdk";
 
@@ -32,7 +26,7 @@ export class EthereumSignUpScreen extends React.Component {
       const { address: accountAddress } = account;
       await fundAccount(accountAddress);
 
-      await approveManaSpending(account, MARKETPLACE_ADDRESS);
+      await approveManaSpending(account);
       showInfo(`Account created and funded!`);
     } catch (error) {
       showError(error);

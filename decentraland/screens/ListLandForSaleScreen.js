@@ -10,27 +10,12 @@ import {
   addressesAreEqual,
   showError,
   showInfo,
+  getContracts,
 } from "./helpers";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
-import TasitContracts from "tasit-contracts";
-const { LANDProxy, EstateRegistry, Marketplace } = TasitContracts["local"];
-
-const { address: LAND_ADDRESS } = LANDProxy;
-const { address: ESTATE_ADDRESS } = EstateRegistry;
-const { address: MARKETPLACE_ADDRESS } = Marketplace;
-
-import { Action } from "tasit-sdk";
-const { ERC721, Marketplace: MarketplaceContracts } = Action;
-const { Estate, Land } = ERC721;
-const { Decentraland: DecentralandMarketplace } = MarketplaceContracts;
-
 export class ListLandForSaleScreen extends React.Component {
-  estateContract = new Estate(ESTATE_ADDRESS);
-  landContract = new Land(LAND_ADDRESS);
-  marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
-
   componentDidMount = async () => {
     try {
       const { setLandForSaleList } = this.props;
@@ -60,14 +45,15 @@ export class ListLandForSaleScreen extends React.Component {
 
   _prepareAssetForSale = async assetForSale => {
     const { nftAddress } = assetForSale;
-    const isParcel = addressesAreEqual(nftAddress, LAND_ADDRESS);
-    const isEstate = addressesAreEqual(nftAddress, ESTATE_ADDRESS);
+    let contracts = getContracts();
+    const { estateContract, landContract } = contracts;
+
+    const isParcel = addressesAreEqual(nftAddress, landContract.getAddress());
+    const isEstate = addressesAreEqual(nftAddress, estateContract.getAddress());
 
     if (isEstate) {
-      const { estateContract } = this;
       return await prepareEstateForSale(estateContract, assetForSale);
     } else if (isParcel) {
-      const { landContract } = this;
       return await prepareParcelForSale(landContract, assetForSale);
     } else {
       throw new Error(`The asset should be a Parcel or an Estate.`);
