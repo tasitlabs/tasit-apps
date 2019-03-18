@@ -6,6 +6,8 @@ import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
 import { showError } from "./helpers";
 
+import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+
 import ContractsAddresses from "@constants/ContractsAddresses";
 const {
   ESTATE_ADDRESS,
@@ -41,30 +43,16 @@ export class ListLandForSaleScreen extends React.Component {
     return openSellOrders;
   };
 
-  // TODO: Use DecentralandUtils
   _getOpenSellOrders = async () => {
-    const parcelForSale = {
-      id: "0x3ab9bf0080d368f3dd14b65e7372688d81e3471893688b4a54bc8b386c8cd04f",
-      assetId:
-        "0xffffffffffffffffffffffffffffffec00000000000000000000000000000024",
-      seller: "0x8a5D5298dcceA526754064b8094e663162E1dBEa",
-      nftAddress: "0x332BfB4d705d3Ce37c4Bf06141c7104984e91E79",
-      priceInWei: "0x0de0b6b3a7640000",
-      expiresAt: "0x016994e06125",
-    };
-    const estateForSale = {
-      id: "0xe9d19d19ac9dcbbf24371b10b23d8dc1355963eb8b5b9ac59e192e3d6cd92de2",
-      assetId: "0x05",
-      seller: "0x8a5D5298dcceA526754064b8094e663162E1dBEa",
-      nftAddress: "0xCa4A5347C1E0460567b299a69135100fb98ebdA7",
-      priceInWei: "0x0de0b6b3a7640000",
-      expiresAt: "0x016994e06125",
-    };
+    const decentralandUtils = new DecentralandUtils();
+    const { getOpenSellOrders } = decentralandUtils;
 
-    const openSellOrders = [parcelForSale, estateForSale];
+    const fromBlock = 0;
+    const openSellOrdersEvents = await getOpenSellOrders(fromBlock);
     const assetsForSale = [];
 
-    for (let order of openSellOrders) {
+    for (let event of openSellOrdersEvents) {
+      let { values: order } = event;
       let assetForSale = await this._prepareLandForSale(order);
       assetsForSale.push(assetForSale);
     }
