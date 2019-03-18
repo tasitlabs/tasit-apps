@@ -1,5 +1,7 @@
-import ContractsAddresses from "@constants/ContractsAddresses";
-const { MANA_ADDRESS, GNOSIS_SAFE_ADDRESS } = ContractsAddresses;
+import TasitContracts from "tasit-contracts";
+const { MANAToken, GnosisSafe: GnosisSafeInfo } = TasitContracts["local"];
+const { address: MANA_ADDRESS } = MANAToken;
+const { address: GNOSIS_SAFE_ADDRESS } = GnosisSafeInfo;
 
 import { Action, ContractBasedAccount } from "tasit-sdk";
 const { ERC20 } = Action;

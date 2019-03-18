@@ -10,8 +10,12 @@ import {
   showError,
   fundAccount,
 } from "./helpers";
-import ContractsAddresses from "@constants/ContractsAddresses";
-const { MARKETPLACE_ADDRESS } = ContractsAddresses;
+
+import TasitContracts from "tasit-contracts";
+const { Marketplace } = TasitContracts["local"];
+
+const { address: MARKETPLACE_ADDRESS } = Marketplace;
+
 import { Account } from "tasit-sdk";
 
 export class EthereumSignUpScreen extends React.Component {

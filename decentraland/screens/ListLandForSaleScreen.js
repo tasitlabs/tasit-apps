@@ -14,17 +14,17 @@ import {
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
-import ContractsAddresses from "@constants/ContractsAddresses";
-const {
-  ESTATE_ADDRESS,
-  LAND_ADDRESS,
-  MARKETPLACE_ADDRESS,
-} = ContractsAddresses;
+import TasitContracts from "tasit-contracts";
+const { LANDProxy, EstateRegistry, Marketplace } = TasitContracts["local"];
+
+const { address: LAND_ADDRESS } = LANDProxy;
+const { address: ESTATE_ADDRESS } = EstateRegistry;
+const { address: MARKETPLACE_ADDRESS } = Marketplace;
 
 import { Action } from "tasit-sdk";
-const { ERC721, Marketplace } = Action;
+const { ERC721, Marketplace: MarketplaceContracts } = Action;
 const { Estate, Land } = ERC721;
-const { Decentraland: DecentralandMarketplace } = Marketplace;
+const { Decentraland: DecentralandMarketplace } = MarketplaceContracts;
 
 export class ListLandForSaleScreen extends React.Component {
   estateContract = new Estate(ESTATE_ADDRESS);
