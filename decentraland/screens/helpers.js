@@ -54,7 +54,8 @@ export const getContracts = () => {
 export const approveManaSpending = async fromAccount => {
   const value = 1e18; // one
   const contracts = getContracts();
-  const { manaContract, marketplaceContract: toAddress } = contracts;
+  const { manaContract, marketplaceContract } = contracts;
+  const toAddress = marketplaceContract.getAddress();
   manaContract.setWallet(fromAccount);
   const action = manaContract.approve(toAddress, `${value}`);
   await action.waitForNonceToUpdate();
