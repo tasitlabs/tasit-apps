@@ -21,7 +21,9 @@ export class BuyLandScreen extends React.Component {
     try {
       const { account } = this.props;
       if (!account) this._setupAccount();
-      else this._buy(landForSale);
+     // The _buy function assumes that the account is created, funded and allowed
+     // The user will get back to this else case after going through an account setup flow
+     else this._buy(landForSale);
     } catch (err) {
       showError(err);
     }
