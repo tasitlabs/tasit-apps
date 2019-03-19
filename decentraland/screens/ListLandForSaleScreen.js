@@ -56,7 +56,7 @@ export class ListLandForSaleScreen extends React.Component {
     } else if (isParcel) {
       return await prepareParcelForSale(landContract, assetForSale);
     } else {
-      throw new Error(`The asset should be a Parcel or an Estate.`);
+      throw new Error(`The asset should be a parcel of land or an estate.`);
     }
   };
 
