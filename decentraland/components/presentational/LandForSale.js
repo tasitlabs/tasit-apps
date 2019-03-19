@@ -34,6 +34,6 @@ LandForSale.propTypes = {
 
 const styles = StyleSheet.create({
   landContainer: {
-    width: responsiveWidth(60),
+    width: responsiveWidth(95),
   },
 });
