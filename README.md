@@ -12,6 +12,8 @@ Tasit is a suite of native mobile apps for mainstream users that lets them use p
 
 Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers where you use lots of dapps from within one app, you can use each of the Tasit dapps via its own standalone native mobile app.
 
+Development of the Tasit apps are supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative.
+
 The Tasit apps are built with [the Tasit SDK](https://github.com/tasitlabs/TasitSDK), a JavaScript SDK that empowers developers to create even more native Ethereum dapps.
 
 _Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out today for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
