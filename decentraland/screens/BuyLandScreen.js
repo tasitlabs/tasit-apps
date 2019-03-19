@@ -21,9 +21,9 @@ export class BuyLandScreen extends React.Component {
     try {
       const { account } = this.props;
       if (!account) this._setupAccount();
-     // The _buy function assumes that the account is created, funded and allowed
-     // The user will get back to this else case after going through an account setup flow
-     else this._buy(landForSale);
+      // The _buy function assumes that the account is created, funded and allowed
+      // The user will get back to this else case after going through an account setup flow
+      else this._buy(landForSale);
     } catch (err) {
       showError(err);
     }
@@ -76,7 +76,10 @@ export class BuyLandScreen extends React.Component {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForNonceToUpdate();
-      showInfo(`Asset bought successfully.`);
+
+      if (type == ESTATE) showInfo(`Estate bought successfully.`);
+      else if (type == PARCEL) showInfo(`Parcel bought successfully.`);
+
       afterSuccessfulExecution();
     } catch (err) {
       showError(err);
