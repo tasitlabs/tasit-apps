@@ -1,5 +1,4 @@
-import TasitContracts from "tasit-contracts";
-import { Action, ContractBasedAccount } from "tasit-sdk";
+import { Action, ContractBasedAccount, TasitContracts } from "tasit-sdk";
 
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
@@ -131,7 +130,7 @@ export const fundAccount = async accountAddress => {
   const TEN = `${10e18}`;
 
   const gnosisSafeOwnerPrivKey =
-    "0xee0c6b1a7adea9f87b1a422eb06b245fc714b8eca4c8c0578d6cf946beba86f1";
+    "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
   const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 
   const contracts = getContracts();
