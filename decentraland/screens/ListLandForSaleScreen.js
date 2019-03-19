@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
 import {
-  prepareParcelForSale,
-  prepareEstateForSale,
   addressesAreEqual,
   showError,
   showInfo,
@@ -14,6 +12,9 @@ import {
 } from "./helpers";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+
+import AssetTypes from "@constants/AssetTypes";
+const { ESTATE, PARCEL } = AssetTypes;
 
 export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
@@ -52,12 +53,73 @@ export class ListLandForSaleScreen extends React.Component {
     const isEstate = addressesAreEqual(nftAddress, estateContract.getAddress());
 
     if (isEstate) {
-      return await prepareEstateForSale(estateContract, assetForSale);
+      return await this._prepareEstateForSale(estateContract, assetForSale);
     } else if (isParcel) {
-      return await prepareParcelForSale(landContract, assetForSale);
+      return await this._prepareParcelForSale(landContract, assetForSale);
     } else {
       throw new Error(`The asset should be a parcel of land or an estate.`);
     }
+  };
+
+  _prepareEstateForSale = async (estateContract, estateForSale) => {
+    const { id, assetId, seller, priceInWei, expiresAt } = estateForSale;
+
+    const estateId = Number(assetId);
+
+    // Note: Conversion to USD will be implemented on v0.2.0
+    const manaPerUsd = 30;
+    const priceMana = Number(`${priceInWei}`) / 1e18;
+    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
+    const name = await estateContract.getMetadata(assetId);
+    const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
+
+    return {
+      id,
+      priceMana,
+      priceUSD,
+      seller,
+      expiresAt,
+      type: ESTATE,
+      asset: {
+        id: estateId,
+        name,
+        img: imgUrl,
+      },
+    };
+  };
+
+  _prepareParcelForSale = async (landContract, parcelForSale) => {
+    const {
+      id,
+      assetId: parcelId,
+      seller,
+      priceInWei,
+      expiresAt,
+    } = parcelForSale;
+
+    // Note: Conversion to USD will be implemented on v0.2.0
+    const manaPerUsd = 30;
+    const priceMana = Number(`${priceInWei}`) / 1e18;
+    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
+    const namePromise = landContract.tokenMetadata(parcelId);
+    const coordsPromise = landContract.decodeTokenId(parcelId);
+    const [name, coords] = await Promise.all([namePromise, coordsPromise]);
+    const [x, y] = coords;
+    const imgUrl = `https://api.decentraland.org/v1/parcels/${x}/${y}/map.png`;
+
+    return {
+      id,
+      priceMana,
+      priceUSD,
+      seller,
+      expiresAt,
+      type: PARCEL,
+      asset: {
+        id: parcelId,
+        name,
+        img: imgUrl,
+      },
+    };
   };
 
   _renderItem = ({ item: landForSale }) => {
