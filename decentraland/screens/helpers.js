@@ -153,7 +153,7 @@ export const fundAccount = async accountAddress => {
   await transferManaAction.waitForNonceToUpdate();
 };
 
-// TODO: Use properly functions/components
+// TODO: Use functions/components properly
 export const showFatalError = msg => console.error(msg);
 export const showError = msg => console.warn(`ERROR: ${msg}`);
 export const showWarn = msg => console.warn(`WARN: ${msg}`);
