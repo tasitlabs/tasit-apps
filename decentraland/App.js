@@ -1,4 +1,5 @@
 import React from "react";
+import { YellowBox } from "react-native";
 import { AppLoading, Asset, Font } from "expo";
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
@@ -8,7 +9,7 @@ import decentralandApp from "./redux/reducers";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
-import { checkBlockchain } from "./helpers";
+import { checkBlockchain, showFatalError } from "./helpers";
 
 const store = createStore(decentralandApp);
 
@@ -18,11 +19,15 @@ export default class App extends React.Component {
   };
 
   async componentDidMount() {
+    // Ignoring setting timer warnings on the app UI
+    YellowBox.ignoreWarnings(["Setting a timer"]);
+
     ConfigLoader.setConfig(tasitSdkConfig);
     const connectionOK = await checkBlockchain();
     if (!connectionOK) {
-      console.error("Failed to establish the connection to the blockchain.");
-      console.error(`Is the 'config/default.js' file correct?`);
+      const errorMessage = `Failed to establish the connection to the blockchain.
+Is the 'config/default.js' file correct?`;
+      showFatalError(errorMessage);
     }
   }
 

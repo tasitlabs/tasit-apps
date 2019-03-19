@@ -4,78 +4,60 @@ import { setLandForSaleList, selectLandToBuy } from "../redux/actions";
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
+import {
+  prepareParcelForSale,
+  prepareEstateForSale,
+  addressesAreEqual,
+  showError,
+  showInfo,
+  getContracts,
+} from "./helpers";
 
-import ContractsAddresses from "@constants/ContractsAddresses";
-const { ESTATE_ADDRESS, MARKETPLACE_ADDRESS } = ContractsAddresses;
-
-import { Action } from "tasit-sdk";
-const { ERC721, Marketplace } = Action;
-const { Estate } = ERC721;
-const { Decentraland: DecentralandMarketplace } = Marketplace;
+import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
 export class ListLandForSaleScreen extends React.Component {
-  estateContract = new Estate(ESTATE_ADDRESS);
-  marketplaceContract = new DecentralandMarketplace(MARKETPLACE_ADDRESS);
-
   componentDidMount = async () => {
     try {
       const { setLandForSaleList } = this.props;
-      const landForSaleList = await this._getLandForSaleList();
+      showInfo("Loading assets for sale...");
+      const landForSaleList = await this._getAssetsForSale();
       setLandForSaleList(landForSaleList);
     } catch (err) {
-      console.error(err);
+      showError(err);
     }
   };
 
-  // Note: This function is assuming that:
-  // - All estates have a sell order
-  // - The total supply of estates is small
-  // TODO: Rewrite this function when we move to testnet
-  _getLandForSaleList = async () => {
-    const orders = [];
-    const totalSupply = await this.estateContract.totalSupply();
+  _getAssetsForSale = async () => {
+    const decentralandUtils = new DecentralandUtils();
+    const { getOpenSellOrders } = decentralandUtils;
 
-    for (let estateId = 1; estateId <= Number(totalSupply); estateId++) {
-      const order = this._getLandForSale(estateId);
-      orders.push(order);
+    const fromBlock = 0;
+    const openSellOrdersEvents = await getOpenSellOrders(fromBlock);
+    const assetsForSale = [];
+
+    for (let event of openSellOrdersEvents) {
+      let { values: order } = event;
+      let assetForSale = await this._prepareAssetForSale(order);
+      assetsForSale.push(assetForSale);
     }
-
-    if (orders.length == 0) console.warn("There isn't any land for sale right now.");
-
-    return await Promise.all(orders);
+    return assetsForSale;
   };
 
-  _getLandForSale = async estateId => {
-    const estateName = await this.estateContract.getMetadata(estateId);
-    const [
-      orderId,
-      seller,
-      price,
-      expiresAt,
-    ] = await this.marketplaceContract.auctionByAssetId(estateId);
+  _prepareAssetForSale = async assetForSale => {
+    const { nftAddress } = assetForSale;
+    let contracts = getContracts();
+    const { estateContract, landContract } = contracts;
 
-    const hasOrder = parseInt(orderId, 16) !== 0;
-    if (!hasOrder) throw Error(`Estate (id:${estateId}) has no sell order.`);
+    const isParcel = addressesAreEqual(nftAddress, landContract.getAddress());
+    const isEstate = addressesAreEqual(nftAddress, estateContract.getAddress());
 
-    // Note: Conversion to USD will be implemented on v0.2.0
-    const manaPerUsd = 30;
-    const priceMana = Number(price.toString()) / 1e18;
-    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
-    const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
-
-    return {
-      id: orderId,
-      priceMana,
-      priceUSD,
-      seller,
-      expiresAt,
-      // TODO: Create an enum type for identify asset
-      asset: {
-        id: estateId,
-        name: estateName,
-        img: imgUrl,
-      },
-    };
+    if (isEstate) {
+      return await prepareEstateForSale(estateContract, assetForSale);
+    } else if (isParcel) {
+      return await prepareParcelForSale(landContract, assetForSale);
+    } else {
+      throw new Error(`The asset should be a parcel of land or an estate.`);
+    }
   };
 
   _renderItem = ({ item: landForSale }) => {

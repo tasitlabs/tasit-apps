@@ -1,14 +1,10 @@
 module.exports = {
   provider: {
-    network: "other",
-    provider: "jsonrpc",
-    pollingInterval: 50,
-    jsonRpc: {
-      url: "http://localhost",
-      port: 8545,
-    },
+    network: "ropsten",
+    provider: "fallback",
+    pollingInterval: 4000,
   },
   events: {
-    timeout: 2000,
+    timeout: 10000,
   },
 };
