@@ -11,7 +11,7 @@ exports[`Estate renders the component 1`] = `
     style={
       Object {
         "height": 266.8,
-        "width": 450,
+        "width": 712.5,
       }
     }
   />
