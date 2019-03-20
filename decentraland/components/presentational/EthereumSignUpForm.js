@@ -10,6 +10,11 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 
 export default class EthereumSignUpForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: "" };
+  }
+
   render() {
     const { onSignUp } = this.props;
 
@@ -21,8 +26,8 @@ export default class EthereumSignUpForm extends React.Component {
               autoCorrect={false}
               autoCapitalize="none"
               style={styles.userInput}
-              onChangeText={() => {}}
-              value={""}
+              onChangeText={username => this.setState({ username })}
+              value={this.state.username}
               placeholder="username"
             />
           </View>
