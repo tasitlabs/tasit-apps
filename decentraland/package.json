@@ -13,7 +13,7 @@
     "eject": "npx expo eject",
     "pretest": "npm run lint",
     "test": "npx jest --maxWorkers=2",
-    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' --ignore-pattern '/native-base-theme/*' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --ignore-pattern '/native-base-theme/*'"
   },
   "dependencies": {
     "expo": "^32.0.0",
