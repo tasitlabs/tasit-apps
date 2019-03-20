@@ -39,10 +39,18 @@ export class BuyLandScreen extends React.Component {
     const { props, _executeOrder } = this;
     const { navigation, accountInfo, removeLandForSale } = props;
     const { account } = accountInfo;
+    const { type } = landForSale;
+
+    if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
+
+    const typeDescription = type == ESTATE ? "Estate" : "Parcel";
+
     const onSuccess = () => {
+      showInfo(`${typeDescription} bought successfully.`);
       removeLandForSale(landForSale);
     };
 
+    showInfo(`Buying the ${typeDescription.toLowerCase()} asset...`);
     _executeOrder(landForSale, account, onSuccess);
     navigation.navigate("ListLandForSaleScreen");
   };
@@ -78,10 +86,6 @@ export class BuyLandScreen extends React.Component {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForNonceToUpdate();
-
-      if (type == ESTATE) showInfo(`Estate bought successfully.`);
-      else if (type == PARCEL) showInfo(`Parcel bought successfully.`);
-      else showError(`Unknown asset bought successfully.`);
 
       afterSuccessfulExecution();
     } catch (err) {
