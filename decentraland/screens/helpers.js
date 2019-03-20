@@ -3,6 +3,9 @@ import { Action, ContractBasedAccount, TasitContracts } from "tasit-sdk";
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
+const SMALL_AMOUNT = `${5e16}`; // 0.05
+const TEN = `${10e18}`;
+
 export const getContracts = () => {
   let contracts;
 
@@ -48,12 +51,11 @@ export const getContracts = () => {
 };
 
 export const approveManaSpending = async fromAccount => {
-  const value = 1e18; // one
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
   manaContract.setWallet(fromAccount);
-  const action = manaContract.approve(toAddress, `${value}`);
+  const action = manaContract.approve(toAddress, TEN);
   await action.waitForNonceToUpdate();
 };
 
@@ -62,9 +64,6 @@ export const addressesAreEqual = (address1, address2) => {
 };
 
 export const fundAccount = async accountAddress => {
-  const SMALL_AMOUNT = `${5e16}`; // 0.1
-  const TEN = `${10e18}`;
-
   const gnosisSafeOwnerPrivKey =
     "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
   const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
