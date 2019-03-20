@@ -13,7 +13,6 @@ import {
 import { Account } from "tasit-sdk";
 
 export class EthereumSignUpScreen extends React.Component {
-  // TODO: Use Gnosis Safe
   _onboarding = async () => {
     try {
       const { setAccount } = this.props;
@@ -34,10 +33,12 @@ export class EthereumSignUpScreen extends React.Component {
   };
 
   _onSignUp = () => {
-    showInfo(`Creating and funding account...`);
-
-    // Should run async but isn't when calling Account.create() or createFromPrivateKey()
-    this._onboarding();
+    // Note: A trick to force `_onboarding()` function to running async
+    (async () => {})().then(() => {
+      // Should run async but isn't when calling Account.create() or createFromPrivateKey()
+      // See more: https://github.com/tasitlabs/tasit/issues/42#issuecomment-462534793
+      this._onboarding();
+    });
 
     this.props.navigation.navigate("BuyLandScreen");
   };
