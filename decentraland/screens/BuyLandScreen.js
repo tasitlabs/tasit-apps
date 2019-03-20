@@ -79,6 +79,7 @@ export class BuyLandScreen extends React.Component {
 
       if (type == ESTATE) showInfo(`Estate bought successfully.`);
       else if (type == PARCEL) showInfo(`Parcel bought successfully.`);
+      else showError(`Unknown asset bought successfully.`);
 
       afterSuccessfulExecution();
     } catch (err) {
