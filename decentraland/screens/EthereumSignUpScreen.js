@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setAccount } from "../redux/actions";
+import { setAccount, setSetupInProgress } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 import {
   approveManaSpending,
@@ -15,7 +15,7 @@ import { Account } from "tasit-sdk";
 export class EthereumSignUpScreen extends React.Component {
   _onboarding = async () => {
     try {
-      const { setAccount } = this.props;
+      const { setAccount, setSetupInProgress } = this.props;
 
       // Note: The timeout for account creation is about ~10 secs.
       // See more: https://github.com/tasitlabs/tasit/issues/42
@@ -26,6 +26,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const onFundSuccess = async () => {
         const onApprovalSuccess = () => {
+          setSetupInProgress(false);
           showInfo(`Account created and funded!`);
         };
 
@@ -39,6 +40,8 @@ export class EthereumSignUpScreen extends React.Component {
   };
 
   _onSignUp = () => {
+    const { setSetupInProgress } = this.props;
+    setSetupInProgress(true);
     // Note: A trick to force `_onboarding()` function to running async
     (async () => {})().then(() => {
       // Should run async but isn't when calling Account.create() or createFromPrivateKey()
@@ -56,10 +59,12 @@ export class EthereumSignUpScreen extends React.Component {
 
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
+  setSetupInProgress: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
+  setSetupInProgress,
 };
 
 export default connect(
