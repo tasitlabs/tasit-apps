@@ -22,7 +22,7 @@ Estate.propTypes = {
 
 const styles = StyleSheet.create({
   landImage: {
-    width: responsiveWidth(60),
+    width: responsiveWidth(95),
     height: responsiveHeight(20),
   },
 });

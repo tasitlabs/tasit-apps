@@ -11,13 +11,13 @@ describe("ListLandForSaleScreen", () => {
 
   it("renders the component", async () => {
     const landForSaleList = [];
-    const setLandForSaleList = () => {};
+    const addLandForSaleToList = () => {};
     const selectLandToBuy = () => {};
     expect(
       shallow(
         <ListLandForSaleScreen
           landForSaleList={landForSaleList}
-          setLandForSaleList={setLandForSaleList}
+          addLandForSaleToList={addLandForSaleToList}
           selectLandToBuy={selectLandToBuy}
         />
       )
