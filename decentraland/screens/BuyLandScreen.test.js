@@ -21,7 +21,7 @@ describe("BuyLandScreen", () => {
       },
     };
 
-    const account = {};
+    const accountInfo = { account: null, setupInProgress: false };
     const navigation = () => {};
     const removeLandForSale = () => {};
 
@@ -29,7 +29,7 @@ describe("BuyLandScreen", () => {
       shallow(
         <BuyLandScreen
           navigation={navigation}
-          account={account}
+          accountInfo={accountInfo}
           selectedLandToBuy={selectedLandToBuy}
           removeLandForSale={removeLandForSale}
         />
