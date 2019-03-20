@@ -5,16 +5,27 @@ import {
   SET_LAND_FOR_SALE_LIST,
   REMOVE_LAND_FOR_SALE,
   ADD_LAND_FOR_SALE_TO_LIST,
+  SET_ACCOUNT_FUNDED,
+  SET_MARKETPLACE_APPROVED,
 } from "./actions";
 
 function accountInfo(
   state = { account: null, funded: false, marketplaceApproved: false },
   action
 ) {
-  const { type, account } = action;
+  const {
+    type,
+    account,
+    isFunded: funded,
+    isApproved: marketplaceApproved,
+  } = action;
   switch (type) {
     case SET_ACCOUNT:
       return { ...state, account };
+    case SET_ACCOUNT_FUNDED:
+      return { ...state, funded };
+    case SET_MARKETPLACE_APPROVED:
+      return { ...state, marketplaceApproved };
     default:
       return state;
   }

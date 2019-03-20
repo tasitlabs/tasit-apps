@@ -52,20 +52,21 @@ export const getContracts = () => {
   return contracts;
 };
 
-export const approveManaSpending = async fromAccount => {
+export const addressesAreEqual = (address1, address2) => {
+  return address1.toUpperCase() === address2.toUpperCase();
+};
+
+export const approveManaSpending = async (fromAccount, onSuccess) => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
   manaContract.setWallet(fromAccount);
   const action = manaContract.approve(toAddress, TEN);
   await action.waitForNonceToUpdate();
+  onSuccess();
 };
 
-export const addressesAreEqual = (address1, address2) => {
-  return address1.toUpperCase() === address2.toUpperCase();
-};
-
-export const fundAccount = async accountAddress => {
+export const fundAccount = async (accountAddress, onSuccess) => {
   const gnosisSafeOwnerPrivKey =
     "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
   const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
@@ -87,6 +88,7 @@ export const fundAccount = async accountAddress => {
     TEN
   );
   await transferManaAction.waitForNonceToUpdate();
+  onSuccess();
 };
 
 // More about Toast component: https://docs.nativebase.io/Components.html#toast-def-headref
