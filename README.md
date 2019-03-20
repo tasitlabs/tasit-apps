@@ -8,7 +8,7 @@
 
 ## What is Tasit?
 
-Tasit is a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps as easily as their other favorite apps (e.g. Instagram, Facebook, Gmail, etc.) without needing to know the technical detail that Ethereum is involved.
+Tasit is a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps as easily as their other favorite apps (e.g. Instagram, Facebook, Gmail, etc.) - without needing to know the technical detail that Ethereum is involved.
 
 Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers where you use multiple dapps as mobile web apps from within one app, you can use each of the Tasit dapps via its own standalone native mobile app.
 
