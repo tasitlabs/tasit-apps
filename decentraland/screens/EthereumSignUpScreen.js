@@ -24,16 +24,12 @@ export class EthereumSignUpScreen extends React.Component {
 
       const { address: accountAddress } = account;
 
-      const onFundSuccess = async () => {
-        const onApprovalSuccess = () => {
-          setSetupInProgress(false);
-          showInfo(`Account created and funded!`);
-        };
+      const fund = fundAccount(accountAddress);
+      const approve = approveManaSpending(account);
+      await Promise.all([fund, approve]);
+      showInfo(`Account created and funded!`);
 
-        approveManaSpending(account, onApprovalSuccess);
-      };
-
-      fundAccount(accountAddress, onFundSuccess);
+      setSetupInProgress(false);
     } catch (error) {
       showError(error);
     }
