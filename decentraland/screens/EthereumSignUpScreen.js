@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setAccount } from "../redux/actions";
+import { setAccount, setSetupInProgress } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 import {
   approveManaSpending,
@@ -13,10 +13,9 @@ import {
 import { Account } from "tasit-sdk";
 
 export class EthereumSignUpScreen extends React.Component {
-  // TODO: Use Gnosis Safe
   _onboarding = async () => {
     try {
-      const { setAccount } = this.props;
+      const { setAccount, setSetupInProgress } = this.props;
 
       // Note: The timeout for account creation is about ~10 secs.
       // See more: https://github.com/tasitlabs/tasit/issues/42
@@ -24,20 +23,27 @@ export class EthereumSignUpScreen extends React.Component {
       setAccount(account);
 
       const { address: accountAddress } = account;
-      await fundAccount(accountAddress);
 
-      await approveManaSpending(account);
+      const fund = fundAccount(accountAddress);
+      const approve = approveManaSpending(account);
+      await Promise.all([fund, approve]);
       showInfo(`Account created and funded!`);
+
+      setSetupInProgress(false);
     } catch (error) {
       showError(error);
     }
   };
 
   _onSignUp = () => {
-    showInfo(`Creating and funding account...`);
-
-    // Should run async but isn't when calling Account.create() or createFromPrivateKey()
-    this._onboarding();
+    const { setSetupInProgress } = this.props;
+    setSetupInProgress(true);
+    // Note: A trick to force `_onboarding()` function to running async
+    (async () => {})().then(() => {
+      // Should run async but isn't when calling Account.create() or createFromPrivateKey()
+      // See more: https://github.com/tasitlabs/tasit/issues/42#issuecomment-462534793
+      this._onboarding();
+    });
 
     this.props.navigation.navigate("BuyLandScreen");
   };
@@ -49,10 +55,12 @@ export class EthereumSignUpScreen extends React.Component {
 
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
+  setSetupInProgress: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
+  setSetupInProgress,
 };
 
 export default connect(

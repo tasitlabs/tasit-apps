@@ -6,6 +6,8 @@ import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const TEN = `${10e18}`;
 
+import { Toast } from "native-base";
+
 export const getContracts = () => {
   let contracts;
 
@@ -50,6 +52,10 @@ export const getContracts = () => {
   return contracts;
 };
 
+export const addressesAreEqual = (address1, address2) => {
+  return address1.toUpperCase() === address2.toUpperCase();
+};
+
 export const approveManaSpending = async fromAccount => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
@@ -57,10 +63,6 @@ export const approveManaSpending = async fromAccount => {
   manaContract.setWallet(fromAccount);
   const action = manaContract.approve(toAddress, TEN);
   await action.waitForNonceToUpdate();
-};
-
-export const addressesAreEqual = (address1, address2) => {
-  return address1.toUpperCase() === address2.toUpperCase();
 };
 
 export const fundAccount = async accountAddress => {
@@ -87,12 +89,14 @@ export const fundAccount = async accountAddress => {
   await transferManaAction.waitForNonceToUpdate();
 };
 
-// TODO: Use functions/components properly
+// More about Toast component: https://docs.nativebase.io/Components.html#toast-def-headref
+const showToast = msg =>
+  Toast.show({ text: msg, duration: 3000, buttonText: "Okay" });
 export const showFatalError = msg => console.error(msg);
-export const showError = msg => console.warn(`ERROR: ${msg}`);
-export const showWarn = msg => console.warn(`WARN: ${msg}`);
-export const showInfo = msg => console.warn(`INFO: ${msg}`);
-export const showSuccess = msg => console.warn(`SUCCESS: ${msg}`);
+export const showError = msg => showToast(`ERROR: ${msg}`);
+export const showWarn = msg => showToast(`WARN: ${msg}`);
+export const showInfo = msg => showToast(`INFO: ${msg}`);
+export const showSuccess = msg => showToast(`SUCCESS: ${msg}`);
 
 export default {
   approveManaSpending,

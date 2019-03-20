@@ -15,5 +15,6 @@ exports[`BuyLandScreen renders the component 1`] = `
     }
   }
   onBuy={[Function]}
+  waitingForAccountSetup={false}
 />
 `;

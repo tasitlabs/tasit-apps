@@ -15,9 +15,16 @@ describe("BuyLand", () => {
       },
     };
     const onBuy = () => {};
+    const waitingForAccountSetup = false;
 
     expect(
-      shallow(<BuyLand landForSale={landForSale} onBuy={onBuy} />)
+      shallow(
+        <BuyLand
+          landForSale={landForSale}
+          onBuy={onBuy}
+          waitingForAccountSetup={waitingForAccountSetup}
+        />
+      )
     ).toMatchSnapshot();
   });
 });

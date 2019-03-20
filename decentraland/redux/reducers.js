@@ -5,13 +5,19 @@ import {
   SET_LAND_FOR_SALE_LIST,
   REMOVE_LAND_FOR_SALE,
   ADD_LAND_FOR_SALE_TO_LIST,
+  SET_SETUP_IN_PROGRESS,
 } from "./actions";
 
-function account(state = null, action) {
-  const { type, account } = action;
+function accountInfo(
+  state = { account: null, setupInProgress: false },
+  action
+) {
+  const { type, account, inProgress: setupInProgress } = action;
   switch (type) {
     case SET_ACCOUNT:
-      return account;
+      return { ...state, account };
+    case SET_SETUP_IN_PROGRESS:
+      return { ...state, setupInProgress };
     default:
       return state;
   }
@@ -42,7 +48,7 @@ function landForSaleList(state = [], action) {
 }
 
 const decentralandApp = combineReducers({
-  account,
+  accountInfo,
   selectedLandToBuy,
   landForSaleList,
 });

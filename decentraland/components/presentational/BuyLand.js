@@ -7,12 +7,16 @@ import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function BuyLand(props) {
-  const { landForSale, onBuy } = props;
+  const { landForSale, onBuy, waitingForAccountSetup } = props;
   return (
     <View style={styles.container}>
       <LandForSale landForSale={landForSale} />
       <View style={styles.buttonView}>
-        <Button title="Buy" onPress={onBuy} />
+        {waitingForAccountSetup ? (
+          <Button title="Waiting for account..." onPress={() => {}} />
+        ) : (
+          <Button title="Buy" onPress={onBuy} />
+        )}
       </View>
     </View>
   );
@@ -21,6 +25,7 @@ export default function BuyLand(props) {
 BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,
+  waitingForAccountSetup: PropTypes.bool.isRequired,
 };
 
 const styles = StyleSheet.create({

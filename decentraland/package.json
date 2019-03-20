@@ -13,10 +13,12 @@
     "eject": "npx expo eject",
     "pretest": "npm run lint",
     "test": "npx jest --maxWorkers=2",
-    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --ignore-pattern '/native-base-theme/*'"
   },
   "dependencies": {
     "expo": "^32.0.0",
+    "@expo/vector-icons": "^10.0.1",
+    "native-base": "^2.12.1",
     "prop-types": "^15.6.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
@@ -58,7 +60,7 @@
       "jest-prop-type-error"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|.*react-navigation|expo-react-native-adapter)"
+      "node_modules/(?!(jest-)?react-native|.*react-navigation|native-base.*|.*expo.*)"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

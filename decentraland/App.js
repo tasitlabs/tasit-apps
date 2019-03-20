@@ -10,6 +10,8 @@ import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
 import { checkBlockchain, showFatalError } from "./helpers";
+import { Root } from "native-base";
+import { Ionicons } from "@expo/vector-icons";
 
 const store = createStore(decentralandApp);
 
@@ -22,6 +24,20 @@ export default class App extends React.Component {
     // Ignoring setting timer warnings on the app UI
     YellowBox.ignoreWarnings(["Setting a timer"]);
 
+    await this._setupTasitSDK();
+    await this._setupFonts();
+  }
+
+  // Refs: https://docs.nativebase.io/docs/GetStarted.html
+  async _setupFonts() {
+    await Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      ...Ionicons.font,
+    });
+  }
+
+  async _setupTasitSDK() {
     ConfigLoader.setConfig(tasitSdkConfig);
     const connectionOK = await checkBlockchain();
     if (!connectionOK) {
@@ -43,7 +59,9 @@ Is the 'config/default.js' file correct?`;
     } else {
       return (
         <Provider store={store}>
-          <AppNavigator />
+          <Root>
+            <AppNavigator />
+          </Root>
         </Provider>
       );
     }
