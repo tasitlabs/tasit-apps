@@ -7,11 +7,14 @@ import {
   ADD_LAND_FOR_SALE_TO_LIST,
 } from "./actions";
 
-function account(state = null, action) {
+function accountInfo(
+  state = { account: null, funded: false, marketplaceApproved: false },
+  action
+) {
   const { type, account } = action;
   switch (type) {
     case SET_ACCOUNT:
-      return account;
+      return { ...state, account };
     default:
       return state;
   }
@@ -42,7 +45,7 @@ function landForSaleList(state = [], action) {
 }
 
 const decentralandApp = combineReducers({
-  account,
+  accountInfo,
   selectedLandToBuy,
   landForSaleList,
 });

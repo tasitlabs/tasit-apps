@@ -19,7 +19,8 @@ const gasParams = {
 export class BuyLandScreen extends React.Component {
   _onBuy = landForSale => {
     try {
-      const { account } = this.props;
+      const { accountInfo } = this.props;
+      const { account } = accountInfo;
       if (!account) this._setupAccount();
       // The _buy function assumes that the account is created, funded and allowed
       // The user will get back to this else case after going through an account setup flow
@@ -36,7 +37,8 @@ export class BuyLandScreen extends React.Component {
 
   _buy = landForSale => {
     const { props, _executeOrder } = this;
-    const { navigation, account, removeLandForSale } = props;
+    const { navigation, accountInfo, removeLandForSale } = props;
+    const { account } = accountInfo;
     const onSuccess = () => {
       removeLandForSale(landForSale);
     };
@@ -100,14 +102,14 @@ export class BuyLandScreen extends React.Component {
 }
 
 BuyLandScreen.propTypes = {
-  account: PropTypes.object,
+  accountInfo: PropTypes.object,
   selectedLandToBuy: PropTypes.object.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { account, selectedLandToBuy } = state;
-  return { account, selectedLandToBuy };
+  const { accountInfo, selectedLandToBuy } = state;
+  return { accountInfo, selectedLandToBuy };
 };
 
 const mapDispatchToProps = {
