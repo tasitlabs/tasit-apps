@@ -12,7 +12,7 @@ Tasit is a suite of native mobile apps for mainstream users that lets them use p
 
 Unlike with Status, Coinbase Wallet, Cipher, or other dapp browsers where you use multiple dapps as mobile web apps from within one app, you can use each of the Tasit dapps via its own standalone native mobile app.
 
-This entails a different, simpler onboarding flow in an environment without MetaMask.
+This entails a different, simpler onboarding flow in an environment without MetaMask. The user is in control of their private keys, but much of this happens "automagically" behind the scenes.
 
 Development of the Tasit apps is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative.
 
