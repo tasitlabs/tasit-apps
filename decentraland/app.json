@@ -20,11 +20,13 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.tasit.decentraland"
+      "bundleIdentifier": "io.tasit.decentraland",
+      "buildNumber": "4"
     },
     "android": {
       "package": "io.tasit.decentraland",
-      "permissions": []
+      "permissions": [],
+      "versionCode": 4
     }
   }
 }
