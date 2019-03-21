@@ -23,7 +23,8 @@
       "bundleIdentifier": "io.tasit.decentraland"
     },
     "android": {
-      "package": "io.tasit.decentraland"
+      "package": "io.tasit.decentraland",
+      "permissions": []
     }
   }
 }
