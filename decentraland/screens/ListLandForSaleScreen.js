@@ -68,7 +68,7 @@ export class ListLandForSaleScreen extends React.Component {
 
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
-    // Get mana prince using string to avoid imprecise rounded (i.e.: 57999.99999999999)
+    // Get mana price using string to avoid imprecise rounding (i.e.: 57999.99999999999)
     const priceMana = `${priceInWei}`.substring(0, `${priceInWei}`.length - 18);
     const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
     const name = await estateContract.getMetadata(assetId);
