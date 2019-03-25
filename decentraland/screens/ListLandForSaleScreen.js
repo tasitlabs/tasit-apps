@@ -68,13 +68,19 @@ export class ListLandForSaleScreen extends React.Component {
 
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
-    const priceMana = Number(`${priceInWei}`) / 1e18;
+    // Get mana price using string to avoid imprecise rounding (i.e.: 57999.99999999999)
+    // TODO: Use TasitSDK Utils to dealing with BigNumbers (will be implemented on v0.2.0)
+    const priceManaInWei = `${priceInWei}`;
+    const intPriceManaLength = priceManaInWei.length - 18;
+    const intPriceMana = priceManaInWei.substring(0, intPriceManaLength);
+    const priceMana = intPriceMana;
     const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
     const name = await estateContract.getMetadata(assetId);
     const imgUrl = `https://api.decentraland.org/v1/estates/${estateId}/map.png`;
 
     return {
       id,
+      priceManaInWei,
       priceMana,
       priceUSD,
       seller,
@@ -99,7 +105,12 @@ export class ListLandForSaleScreen extends React.Component {
 
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
-    const priceMana = Number(`${priceInWei}`) / 1e18;
+    // Get mana price using string to avoid imprecise rounding (i.e.: 57999.99999999999)
+    // TODO: Use TasitSDK Utils to dealing with BigNumbers (will be implemented on v0.2.0)
+    const priceManaInWei = `${priceInWei}`;
+    const intPriceManaLength = priceManaInWei.length - 18;
+    const intPriceMana = priceManaInWei.substring(0, intPriceManaLength);
+    const priceMana = intPriceMana;
     const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
     const namePromise = landContract.tokenMetadata(parcelId);
     const coordsPromise = landContract.decodeTokenId(parcelId);
@@ -109,6 +120,7 @@ export class ListLandForSaleScreen extends React.Component {
 
     return {
       id,
+      priceManaInWei,
       priceMana,
       priceUSD,
       seller,

@@ -4,7 +4,7 @@ import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
 const SMALL_AMOUNT = `${5e16}`; // 0.05
-const TEN = `${10e18}`;
+const HALF_MILLION = "500000000000000000000000";
 
 import { Toast } from "native-base";
 
@@ -61,7 +61,7 @@ export const approveManaSpending = async fromAccount => {
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
   manaContract.setWallet(fromAccount);
-  const action = manaContract.approve(toAddress, TEN);
+  const action = manaContract.approve(toAddress, HALF_MILLION);
   await action.waitForNonceToUpdate();
 };
 
@@ -84,7 +84,7 @@ export const fundAccount = async accountAddress => {
   const transferManaAction = gnosisSafeContract.transferERC20(
     manaContract.getAddress(),
     accountAddress,
-    TEN
+    HALF_MILLION
   );
   await transferManaAction.waitForNonceToUpdate();
 };
