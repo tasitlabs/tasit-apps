@@ -10,15 +10,17 @@ describe("ListLandForSaleScreen", () => {
   });
 
   it("renders the component", async () => {
-    const landForSaleList = [];
+    const assetsForSale = { list: [], loadingInProgress: true };
     const addLandForSaleToList = () => {};
     const selectLandToBuy = () => {};
+    const setLoadingAssetsForSaleInProgress = () => {};
     expect(
       shallow(
         <ListLandForSaleScreen
-          landForSaleList={landForSaleList}
+          assetsForSale={assetsForSale}
           addLandForSaleToList={addLandForSaleToList}
           selectLandToBuy={selectLandToBuy}
+          setLoadingAssetsForSaleInProgress={setLoadingAssetsForSaleInProgress}
         />
       )
     ).toMatchSnapshot();
