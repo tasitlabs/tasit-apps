@@ -6,11 +6,13 @@ describe("LandForSaleList", () => {
   it("renders the component", async () => {
     const landForSaleRenderer = () => {};
     const landForSaleList = [];
+    const loadingInProgress = true;
     expect(
       shallow(
         <LandForSaleList
           landForSaleList={landForSaleList}
           renderItem={landForSaleRenderer}
+          loadingInProgress={loadingInProgress}
         />
       )
     ).toMatchSnapshot();
