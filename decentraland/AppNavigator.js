@@ -18,7 +18,24 @@ import EthereumSignInScreen from "./screens/EthereumSignInScreen";
 import MyAssetsScreen from "./screens/MyAssetsScreen";
 import Colors from "@constants/Colors.js";
 
-const StackNavigator = createStackNavigator(
+const defaultNavigationOptions = ({ navigation }) => {
+  return {
+    headerLeft: (
+      <Button transparent onPress={() => navigation.toggleDrawer()}>
+        <Icon name="menu" />
+      </Button>
+    ),
+    headerStyle: {
+      backgroundColor: Colors.headerBackgroundColor,
+    },
+    headerTintColor: Colors.headerTintColor,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+  };
+};
+
+const AssetsForSaleNavigator = createStackNavigator(
   {
     HomeScreen,
     ListLandForSaleScreen,
@@ -27,42 +44,33 @@ const StackNavigator = createStackNavigator(
     EthereumQuestionScreen,
     EthereumSignUpScreen,
     EthereumSignInScreen,
-    MyAssetsScreen,
   },
   {
     initialRouteName: "HomeScreen",
-    defaultNavigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (
-          <Button transparent onPress={() => navigation.toggleDrawer()}>
-            <Icon name="menu" />
-          </Button>
-        ),
-        headerStyle: {
-          backgroundColor: Colors.headerBackgroundColor,
-        },
-        headerTintColor: Colors.headerTintColor,
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-      };
-    },
+    defaultNavigationOptions,
+  }
+);
+
+const MyAssetsNavigator = createStackNavigator(
+  {
+    MyAssetsScreen,
+  },
+  {
+    initialRouteName: "MyAssetsScreen",
+    defaultNavigationOptions,
   }
 );
 
 const MainDrawerNavigator = createDrawerNavigator(
   {
-    Home: {
-      screen: StackNavigator,
-    },
-    ListLandForSaleScreen: {
-      screen: ListLandForSaleScreen,
+    AssetsForSale: {
+      screen: AssetsForSaleNavigator,
       navigationOptions: {
         drawerLabel: "Assets for sale",
       },
     },
-    MyAssetsScreen: {
-      screen: MyAssetsScreen,
+    MyAssets: {
+      screen: MyAssetsNavigator,
       navigationOptions: {
         drawerLabel: "My Assets",
       },
