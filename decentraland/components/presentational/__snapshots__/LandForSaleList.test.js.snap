@@ -6,12 +6,6 @@ exports[`LandForSaleList renders the component after having loaded an empty list
 </LargeText>
 `;
 
-exports[`LandForSaleList renders the component after loaded an empty list 1`] = `
-<LargeText>
-  There are no assets for sale right now.
-</LargeText>
-`;
-
 exports[`LandForSaleList renders the component when list is empty and the loading is in progress 1`] = `
 <FlatList
   data={Array []}
