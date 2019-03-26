@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LandForSaleList renders the component 1`] = `
+exports[`LandForSaleList renders the component after loaded an empty list 1`] = `
+<LargeText>
+  There are no assets for sale right now.
+</LargeText>
+`;
+
+exports[`LandForSaleList renders the component when list is empty and the loading is in progress 1`] = `
 <FlatList
   data={Array []}
   disableVirtualization={false}
