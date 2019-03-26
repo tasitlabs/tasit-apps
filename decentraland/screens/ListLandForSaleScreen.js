@@ -1,6 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addLandForSaleToList, selectLandToBuy } from "../redux/actions";
+import {
+  addLandForSaleToList,
+  selectLandToBuy,
+  setLoadingAssetsForSaleInProgress,
+} from "../redux/actions";
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
@@ -31,7 +35,10 @@ export class ListLandForSaleScreen extends React.Component {
   };
 
   _loadAssetsForSale = async () => {
-    const { addLandForSaleToList } = this.props;
+    const {
+      addLandForSaleToList,
+      setLoadingAssetsForSaleInProgress,
+    } = this.props;
 
     const decentralandUtils = new DecentralandUtils();
     const { getOpenSellOrders } = decentralandUtils;
@@ -46,6 +53,8 @@ export class ListLandForSaleScreen extends React.Component {
       let assetForSale = await this._prepareAssetForSale(order);
       addLandForSaleToList(assetForSale);
     }
+
+    setLoadingAssetsForSaleInProgress(false);
   };
 
   _prepareAssetForSale = async assetForSale => {
@@ -151,29 +160,34 @@ export class ListLandForSaleScreen extends React.Component {
   };
 
   render() {
-    const { landForSaleList } = this.props;
+    const { assetsForSale } = this.props;
+    const { list, loadingInProgress } = assetsForSale;
+
     return (
       <LandForSaleList
-        landForSaleList={landForSaleList}
+        landForSaleList={list}
         renderItem={this._renderItem}
+        loadingInProgress={loadingInProgress}
       />
     );
   }
 }
 
 ListLandForSaleScreen.propTypes = {
-  landForSaleList: PropTypes.array.isRequired,
+  assetsForSale: PropTypes.object.isRequired,
   addLandForSaleToList: PropTypes.func.isRequired,
   selectLandToBuy: PropTypes.func.isRequired,
+  setLoadingAssetsForSaleInProgress: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { landForSaleList } = state;
-  return { landForSaleList };
+  const { assetsForSale } = state;
+  return { assetsForSale };
 };
 
 const mapDispatchToProps = {
   addLandForSaleToList,
+  setLoadingAssetsForSaleInProgress,
   selectLandToBuy,
 };
 
