@@ -5,7 +5,7 @@ exports[`Estate renders the component 1`] = `
   <Component
     source={
       Object {
-        "uri": "https://decentraland.org/images/logo-65f7b27caf.png",
+        "uri": "https://api.decentraland.org/v1/estates/1/map.png",
       }
     }
     style={
@@ -16,7 +16,7 @@ exports[`Estate renders the component 1`] = `
     }
   />
   <Component>
-    Not found
+    Sample Estate
   </Component>
 </Fragment>
 `;
