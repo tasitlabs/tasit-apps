@@ -1,6 +1,6 @@
 import React from "react";
 import { YellowBox } from "react-native";
-import { AppLoading, Asset, Font } from "expo";
+import { AppLoading, Font } from "expo";
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
@@ -23,13 +23,10 @@ export default class App extends React.Component {
   async componentDidMount() {
     // Ignoring setting timer warnings on the app UI
     YellowBox.ignoreWarnings(["Setting a timer"]);
-
-    await this._setupTasitSDK();
-    await this._setupFonts();
   }
 
   // Refs: https://docs.nativebase.io/docs/GetStarted.html
-  async _setupFonts() {
+  async _loadFonts() {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -67,8 +64,12 @@ Is the 'config/default.js' file correct?`;
     }
   }
 
+  // More about AppLoading: https://docs.expo.io/versions/latest/sdk/app-loading/
   _loadResourcesAsync = async () => {
-    return Promise.all([Asset.loadAsync([]), Font.loadAsync({})]);
+    const setupSDK = this._setupTasitSDK();
+    const loadFonts = this._loadFonts();
+
+    return Promise.all([setupSDK, loadFonts]);
   };
 
   _handleLoadingError = error => {
