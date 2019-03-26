@@ -6,7 +6,7 @@ export const ADD_LAND_FOR_SALE_TO_LIST = "ADD_LAND_FOR_SALE_TO_LIST";
 export const SET_SETUP_IN_PROGRESS = "SET_SETUP_IN_PROGRESS";
 export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
   "SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS";
-export const ADD_MY_ASSET_TO_LIST = "ADD_MY_ASSET_TO_LIST";
+export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
@@ -37,5 +37,5 @@ export function removeLandForSale(landForSale) {
 }
 
 export function addToMyAssetsList(myAsset) {
-  return { type: ADD_MY_ASSET_TO_LIST, myAsset };
+  return { type: ADD_TO_MY_ASSETS_LIST, myAsset };
 }

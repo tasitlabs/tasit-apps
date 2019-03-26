@@ -7,7 +7,7 @@ import {
   ADD_LAND_FOR_SALE_TO_LIST,
   SET_SETUP_IN_PROGRESS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
-  ADD_MY_ASSET_TO_LIST,
+  ADD_TO_MY_ASSETS_LIST,
 } from "./actions";
 
 function accountInfo(
@@ -54,7 +54,7 @@ function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
 function myAssets(state = { list: [] }, action) {
   const { type, myAsset } = action;
   switch (type) {
-    case ADD_MY_ASSET_TO_LIST:
+    case ADD_TO_MY_ASSETS_LIST:
       return { ...state, list: [...state.list, myAsset] };
     default:
       return state;
