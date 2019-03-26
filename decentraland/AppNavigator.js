@@ -57,17 +57,21 @@ const MainDrawerNavigator = createDrawerNavigator(
     },
     ListLandForSaleScreen: {
       screen: ListLandForSaleScreen,
+      navigationOptions: {
+        drawerLabel: "Assets for sale",
+      },
     },
     MyAssetsScreen: {
       screen: MyAssetsScreen,
+      navigationOptions: {
+        drawerLabel: "My Assets",
+      },
     },
   },
-
   {
     drawerOpenRoute: "DrawerOpen",
     drawerCloseRoute: "DrawerClose",
     drawerToggleRoute: "DrawerToggle",
-    //contentComponent: SideMenu,
     navigationOptions: {
       drawerLockMode: "locked-closed",
     },
