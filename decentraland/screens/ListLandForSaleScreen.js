@@ -21,10 +21,6 @@ import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
 export class ListLandForSaleScreen extends React.Component {
-  static navigationOptions = {
-    drawerLabel: "Assets for sale",
-  };
-
   componentDidMount = async () => {
     try {
       showInfo("Loading assets for sale...");
