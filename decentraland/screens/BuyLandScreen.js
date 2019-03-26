@@ -64,8 +64,8 @@ export class BuyLandScreen extends React.Component {
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
     try {
-      const { priceManaInWei: priceInWei, asset, type } = sellOrder;
-      const { id: assetId } = asset;
+      const { priceManaInWei: priceInWei, asset } = sellOrder;
+      const { id: assetId, type } = asset;
       const contracts = getContracts();
       const { marketplaceContract, estateContract, landContract } = contracts;
 

@@ -73,7 +73,7 @@ export class ListLandForSaleScreen extends React.Component {
   _prepareEstateForSale = async (estateContract, estateForSale) => {
     const { id, assetId, seller, priceInWei, expiresAt } = estateForSale;
 
-    const estateId = Number(assetId);
+    const estateId = `${assetId}`;
 
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
@@ -96,7 +96,7 @@ export class ListLandForSaleScreen extends React.Component {
       expiresAt,
       asset: {
         type: ESTATE,
-        id: `${estateId}`,
+        id: estateId,
         name,
         img: imgUrl,
       },
@@ -104,13 +104,9 @@ export class ListLandForSaleScreen extends React.Component {
   };
 
   _prepareParcelForSale = async (landContract, parcelForSale) => {
-    const {
-      id,
-      assetId: parcelId,
-      seller,
-      priceInWei,
-      expiresAt,
-    } = parcelForSale;
+    const { id, assetId, seller, priceInWei, expiresAt } = parcelForSale;
+
+    const parcelId = `${assetId}`;
 
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
@@ -136,7 +132,7 @@ export class ListLandForSaleScreen extends React.Component {
       expiresAt,
       asset: {
         type: PARCEL,
-        id: `${parcelId}`,
+        id: parcelId,
         name,
         img: imgUrl,
       },
