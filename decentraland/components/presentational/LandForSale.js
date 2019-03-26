@@ -9,7 +9,8 @@ import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
 export default function LandForSale({ landForSale }) {
-  const { asset, priceMana, type } = landForSale;
+  const { asset, priceMana } = landForSale;
+  const { type } = asset;
 
   // Note: Conversion to USD will be implemented on v0.2.0
   // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>

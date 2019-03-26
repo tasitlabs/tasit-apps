@@ -94,7 +94,6 @@ export class ListLandForSaleScreen extends React.Component {
       priceUSD,
       seller,
       expiresAt,
-      type: ESTATE, // <- deprecated. TODO: remove
       asset: {
         type: ESTATE,
         id: `${estateId}`,
@@ -135,9 +134,8 @@ export class ListLandForSaleScreen extends React.Component {
       priceUSD,
       seller,
       expiresAt,
-      type: PARCEL,
       asset: {
-        type: PARCEL, // <- deprecated. TODO: remove
+        type: PARCEL,
         id: `${parcelId}`,
         name,
         img: imgUrl,

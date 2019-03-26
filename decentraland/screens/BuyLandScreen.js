@@ -44,7 +44,8 @@ export class BuyLandScreen extends React.Component {
       addToMyAssetsList,
     } = props;
     const { account } = accountInfo;
-    const { type } = landForSale;
+    const { asset } = landForSale;
+    const { type } = asset;
 
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
 
@@ -53,7 +54,6 @@ export class BuyLandScreen extends React.Component {
     const onSuccess = () => {
       showInfo(`${typeDescription} bought successfully.`);
       removeLandForSale(landForSale);
-      const { asset } = landForSale;
       addToMyAssetsList(asset);
     };
 
