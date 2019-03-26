@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LandForSaleList renders the component after having loaded an empty list 1`] = `
+<LargeText>
+  There are no assets for sale right now.
+</LargeText>
+`;
+
 exports[`LandForSaleList renders the component after loaded an empty list 1`] = `
 <LargeText>
   There are no assets for sale right now.
