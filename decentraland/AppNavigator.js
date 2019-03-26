@@ -18,8 +18,6 @@ import EthereumSignInScreen from "./screens/EthereumSignInScreen";
 import MyAssetsScreen from "./screens/MyAssetsScreen";
 import Colors from "@constants/Colors.js";
 
-import SideMenu from "@presentational/SideMenu";
-
 const StackNavigator = createStackNavigator(
   {
     HomeScreen,
