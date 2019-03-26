@@ -1,12 +1,29 @@
 import React from "react";
-import LargeText from "@presentational/LargeText";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import MyAssetsList from "@presentational/MyAssetsList";
+import MyAssetsListItem from "@presentational/MyAssetsListItem";
 
-export default class MyAssetsScreen extends React.Component {
+export class MyAssetsScreen extends React.Component {
+  _renderItem = ({ item: asset }) => {
+    return <MyAssetsListItem asset={asset} />;
+  };
+
   render() {
-    return (
-      <React.Fragment>
-        <LargeText>My assets!</LargeText>
-      </React.Fragment>
-    );
+    const { myAssets } = this.props;
+    const { list } = myAssets;
+
+    return <MyAssetsList myAssetsList={list} renderItem={this._renderItem} />;
   }
 }
+
+MyAssetsScreen.propTypes = {
+  myAssets: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => {
+  const { myAssets } = state;
+  return { myAssets };
+};
+
+export default connect(mapStateToProps)(MyAssetsScreen);
