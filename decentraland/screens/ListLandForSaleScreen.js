@@ -172,8 +172,8 @@ export class ListLandForSaleScreen extends React.Component {
 ListLandForSaleScreen.propTypes = {
   assetsForSale: PropTypes.object.isRequired,
   addLandForSaleToList: PropTypes.func.isRequired,
-  setLoadingAssetsForSaleInProgress: PropTypes.func.isRequired,
   selectLandToBuy: PropTypes.func.isRequired,
+  setLoadingAssetsForSaleInProgress: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
