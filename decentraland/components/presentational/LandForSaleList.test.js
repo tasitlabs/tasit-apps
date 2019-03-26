@@ -19,7 +19,7 @@ describe("LandForSaleList", () => {
       ).toMatchSnapshot();
     });
 
-    it("after loaded an empty list", async () => {
+    it("after having loaded an empty list", async () => {
       const landForSaleRenderer = () => {};
       const landForSaleList = [];
       const loadingInProgress = false;
