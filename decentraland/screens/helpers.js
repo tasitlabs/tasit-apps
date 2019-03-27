@@ -1,4 +1,10 @@
-import { Action, ContractBasedAccount, TasitContracts } from "tasit-sdk";
+import { SecureStore } from "expo";
+import {
+  Account,
+  Action,
+  ContractBasedAccount,
+  TasitContracts,
+} from "tasit-sdk";
 
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
@@ -53,6 +59,13 @@ export const getContracts = () => {
   };
 
   return contracts;
+};
+
+export const recoverOrCreateAccount = () => {
+  // Note: The timeout for account creation is about ~20 secs.
+  // See more: https://github.com/tasitlabs/tasit/issues/42
+  const account = Account.create();
+  return account;
 };
 
 export const addressesAreEqual = (address1, address2) => {
@@ -113,4 +126,5 @@ export default {
   fundAccountWithEthers,
   fundAccountWithMana,
   getContracts,
+  recoverOrCreateAccount,
 };

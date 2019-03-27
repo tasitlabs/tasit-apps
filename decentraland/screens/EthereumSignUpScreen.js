@@ -9,18 +9,15 @@ import {
   showError,
   fundAccountWithEthers,
   fundAccountWithMana,
+  recoverOrCreateAccount,
 } from "./helpers";
-
-import { Account } from "tasit-sdk";
 
 export class EthereumSignUpScreen extends React.Component {
   _onboarding = async () => {
     try {
       const { setAccount, setSetupInProgress } = this.props;
 
-      // Note: The timeout for account creation is about ~10 secs.
-      // See more: https://github.com/tasitlabs/tasit/issues/42
-      const account = Account.create();
+      const account = recoverOrCreateAccount();
       setAccount(account);
       showInfo(`Account generated`);
 
