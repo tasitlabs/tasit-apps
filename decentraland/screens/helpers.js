@@ -67,7 +67,7 @@ const _storeData = async (key, value) => {
   try {
     await SecureStore.setItemAsync(key, value);
   } catch (error) {
-    showError("Unable to save data on storage.");
+    showError("Unable to securely store data.");
   }
 };
 
