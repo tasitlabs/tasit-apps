@@ -6,6 +6,7 @@ import { estate } from "./testHelpers";
 describe("MyAssetsList", () => {
   describe("renders the component", () => {
     const myAssetRenderer = () => {};
+
     it("without assets", async () => {
       const myAssetsList = [];
       expect(
