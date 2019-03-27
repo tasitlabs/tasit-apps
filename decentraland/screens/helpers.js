@@ -3,6 +3,9 @@ import { Action, ContractBasedAccount, TasitContracts } from "tasit-sdk";
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
+const gnosisSafeOwnerPrivKey =
+  "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
+const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
 
@@ -65,13 +68,9 @@ export const approveManaSpending = async fromAccount => {
   await action.waitForNonceToUpdate();
 };
 
-export const fundAccount = async accountAddress => {
-  const gnosisSafeOwnerPrivKey =
-    "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
-  const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
-
+export const fundAccountWithEthers = async accountAddress => {
   const contracts = getContracts();
-  const { manaContract, gnosisSafeContract } = contracts;
+  const { gnosisSafeContract } = contracts;
   gnosisSafeContract.setWallet(gnosisSafeOwner);
   gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
@@ -80,6 +79,13 @@ export const fundAccount = async accountAddress => {
     SMALL_AMOUNT
   );
   await transferEthersAction.waitForNonceToUpdate();
+};
+
+export const fundAccountWithMana = async accountAddress => {
+  const contracts = getContracts();
+  const { manaContract, gnosisSafeContract } = contracts;
+  gnosisSafeContract.setWallet(gnosisSafeOwner);
+  gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
   const transferManaAction = gnosisSafeContract.transferERC20(
     manaContract.getAddress(),
@@ -95,8 +101,7 @@ const showToast = msg =>
 export const showFatalError = msg => console.error(msg);
 export const showError = msg => showToast(`ERROR: ${msg}`);
 export const showWarn = msg => showToast(`WARN: ${msg}`);
-export const showInfo = msg => showToast(`INFO: ${msg}`);
-export const showSuccess = msg => showToast(`SUCCESS: ${msg}`);
+export const showInfo = msg => showToast(`${msg}`);
 
 export default {
   approveManaSpending,
@@ -105,7 +110,7 @@ export default {
   showError,
   showWarn,
   showInfo,
-  showSuccess,
-  fundAccount,
+  fundAccountWithEthers,
+  fundAccountWithMana,
   getContracts,
 };
