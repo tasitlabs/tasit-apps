@@ -8,15 +8,30 @@ import {
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 
+// Responsive percents
+const FONT_SIZE = 1.8;
+const BUTTON_HEIGHT = 1.5;
+
+// TODO: Change to NativeBase button component
+// https://github.com/tasitlabs/tasit/issues/204
 export default function Button(props) {
+  let { title, onPress, disabled } = props;
+  if (disabled === undefined) disabled = false;
+
+  const onPressHandler = disabled ? () => {} : onPress;
+
+  title = title.toUpperCase();
+
   return (
     <RNButton
-      containerStyle={styles.container}
-      style={styles.button}
-      onPress={props.onPress}
+      containerStyle={
+        disabled ? containerStyles.disabled : containerStyles.enabled
+      }
+      style={disabled ? buttonStyles.disabled : buttonStyles.enabled}
+      onPress={onPressHandler}
       activeOpacity={1}
     >
-      {props.title.toUpperCase()}
+      {title}
     </RNButton>
   );
 }
@@ -24,18 +39,31 @@ export default function Button(props) {
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
-const styles = StyleSheet.create({
-  button: {
-    fontSize: responsiveFontSize(1.8),
-    color: Colors.buttonColor,
-  },
-  container: {
-    padding: responsiveHeight(1.5),
-
+const containerStyles = StyleSheet.create({
+  enabled: {
+    padding: responsiveHeight(BUTTON_HEIGHT),
     overflow: "hidden",
     borderRadius: 3,
     backgroundColor: Colors.buttonBackground,
+  },
+  disabled: {
+    padding: responsiveHeight(BUTTON_HEIGHT),
+    overflow: "hidden",
+    borderRadius: 3,
+    backgroundColor: Colors.disabledButtonBackground,
+  },
+});
+
+const buttonStyles = StyleSheet.create({
+  disabled: {
+    fontSize: responsiveFontSize(FONT_SIZE),
+    color: Colors.disabledButtonColor,
+  },
+  enabled: {
+    fontSize: responsiveFontSize(FONT_SIZE),
+    color: Colors.buttonColor,
   },
 });
