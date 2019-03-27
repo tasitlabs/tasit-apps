@@ -7,6 +7,7 @@ import {
   ADD_LAND_FOR_SALE_TO_LIST,
   SET_SETUP_IN_PROGRESS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
+  ADD_TO_MY_ASSETS_LIST,
 } from "./actions";
 
 function accountInfo(
@@ -50,10 +51,21 @@ function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
   }
 }
 
+function myAssets(state = { list: [] }, action) {
+  const { type, myAsset } = action;
+  switch (type) {
+    case ADD_TO_MY_ASSETS_LIST:
+      return { ...state, list: [myAsset, ...state.list] };
+    default:
+      return state;
+  }
+}
+
 const decentralandApp = combineReducers({
   accountInfo,
   selectedLandToBuy,
   assetsForSale,
+  myAssets,
 });
 
 export default decentralandApp;

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeLandForSale } from "../redux/actions";
+import { removeLandForSale, addToMyAssetsList } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "./helpers";
@@ -37,9 +37,15 @@ export class BuyLandScreen extends React.Component {
 
   _buy = landForSale => {
     const { props, _executeOrder } = this;
-    const { navigation, accountInfo, removeLandForSale } = props;
+    const {
+      navigation,
+      accountInfo,
+      removeLandForSale,
+      addToMyAssetsList,
+    } = props;
     const { account } = accountInfo;
-    const { type } = landForSale;
+    const { asset } = landForSale;
+    const { type } = asset;
 
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
 
@@ -48,6 +54,7 @@ export class BuyLandScreen extends React.Component {
     const onSuccess = () => {
       showInfo(`${typeDescription} bought successfully.`);
       removeLandForSale(landForSale);
+      addToMyAssetsList(asset);
     };
 
     showInfo(`Buying the ${typeDescription.toLowerCase()} asset...`);
@@ -57,8 +64,8 @@ export class BuyLandScreen extends React.Component {
 
   _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
     try {
-      const { priceManaInWei: priceInWei, asset, type } = sellOrder;
-      const { id: assetId } = asset;
+      const { priceManaInWei: priceInWei, asset } = sellOrder;
+      const { id: assetId, type } = asset;
       const contracts = getContracts();
       const { marketplaceContract, estateContract, landContract } = contracts;
 
@@ -110,6 +117,7 @@ BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
   selectedLandToBuy: PropTypes.object.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
+  addToMyAssetsList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -119,6 +127,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   removeLandForSale,
+  addToMyAssetsList,
 };
 
 export default connect(

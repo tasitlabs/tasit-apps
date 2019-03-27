@@ -5,11 +5,12 @@ exports[`BuyLandScreen renders the component 1`] = `
   landForSale={
     Object {
       "asset": Object {
-        "id": -1,
-        "img": "https://decentraland.org/images/logo-65f7b27caf.png",
-        "name": "Not found",
+        "id": "123",
+        "img": "https://api.decentraland.org/v1/estates/1/map.png",
+        "name": "Sample Estate",
+        "type": "ESTATE",
       },
-      "id": 123,
+      "id": "1",
       "priceMana": 0,
       "priceUSD": 0,
     }

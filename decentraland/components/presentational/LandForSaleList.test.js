@@ -4,8 +4,9 @@ import LandForSaleList from "./LandForSaleList";
 
 describe("LandForSaleList", () => {
   describe("renders the component", () => {
+    const landForSaleRenderer = () => {};
+
     it("when list is empty and the loading is in progress", async () => {
-      const landForSaleRenderer = () => {};
       const landForSaleList = [];
       const loadingInProgress = true;
       expect(
@@ -20,7 +21,6 @@ describe("LandForSaleList", () => {
     });
 
     it("after having loaded an empty list", async () => {
-      const landForSaleRenderer = () => {};
       const landForSaleList = [];
       const loadingInProgress = false;
       expect(

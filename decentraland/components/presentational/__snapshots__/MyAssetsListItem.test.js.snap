@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LandForSaleListItem renders the component 1`] = `
+exports[`MyAssetsListItem renders the component 1`] = `
 <TouchableHighlight
   activeOpacity={0.85}
   delayPressOut={100}
-  onPress={[Function]}
   underlayColor="black"
 >
   <Component
@@ -20,18 +19,13 @@ exports[`LandForSaleListItem renders the component 1`] = `
       }
     }
   >
-    <LandForSale
-      landForSale={
+    <MyAsset
+      asset={
         Object {
-          "asset": Object {
-            "id": "0123456789",
-            "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
-            "name": "Sample Parcel",
-            "type": "PARCEL",
-          },
-          "id": "2",
-          "priceMana": 0,
-          "priceUSD": 0,
+          "id": "0123456789",
+          "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+          "name": "Sample Parcel",
+          "type": "PARCEL",
         }
       }
     />

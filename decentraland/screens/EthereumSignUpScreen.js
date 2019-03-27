@@ -24,11 +24,11 @@ export class EthereumSignUpScreen extends React.Component {
       const { address: accountAddress } = account;
 
       await fundAccountWithEthers(accountAddress);
-      showInfo(`Account funded with ethers`);
+      showInfo(`Account funded with ETH`);
       const fundWithMana = fundAccountWithMana(accountAddress);
       const approveMarketplace = approveManaSpending(account);
       await Promise.all([fundWithMana, approveMarketplace]);
-      showInfo(`The account is ready to buy!`);
+      showInfo(`Now you can buy land!`);
 
       setSetupInProgress(false);
     } catch (error) {
