@@ -20,7 +20,7 @@ exports[`BuyLand renders the component 1`] = `
           "name": "Sample Parcel",
           "type": "PARCEL",
         },
-        "id": "1",
+        "id": "2",
         "priceMana": 0,
         "priceUSD": 0,
       }
