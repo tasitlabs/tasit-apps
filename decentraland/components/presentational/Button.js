@@ -8,6 +8,10 @@ import {
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 
+// Responsive percents
+const FONT_SIZE = 1.8;
+const BUTTON_HEIGHT = 1.5;
+
 // TODO: Change to NativeBase button component
 // https://github.com/tasitlabs/tasit/issues/204
 export default function Button(props) {
@@ -38,11 +42,11 @@ Button.propTypes = {
 
 const enabledStyles = StyleSheet.create({
   button: {
-    fontSize: responsiveFontSize(1.8),
+    fontSize: responsiveFontSize(FONT_SIZE),
     color: Colors.buttonColor,
   },
   container: {
-    padding: responsiveHeight(1.5),
+    padding: responsiveHeight(BUTTON_HEIGHT),
     overflow: "hidden",
     borderRadius: 3,
     backgroundColor: Colors.buttonBackground,
@@ -51,11 +55,11 @@ const enabledStyles = StyleSheet.create({
 
 const disabledStyles = StyleSheet.create({
   button: {
-    fontSize: responsiveFontSize(1.8),
+    fontSize: responsiveFontSize(FONT_SIZE),
     color: Colors.disabledButtonColor,
   },
   container: {
-    padding: responsiveHeight(1.5),
+    padding: responsiveHeight(BUTTON_HEIGHT),
     overflow: "hidden",
     borderRadius: 3,
     backgroundColor: Colors.disabledButtonBackground,
