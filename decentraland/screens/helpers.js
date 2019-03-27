@@ -65,7 +65,10 @@ export const getContracts = () => {
 // Note: the value should be a string
 const _storeData = async (key, value) => {
   try {
-    await SecureStore.setItemAsync(key, value);
+    // More about options:
+    // https://docs.expo.io/versions/latest/sdk/securestore/#securestoresetitemasynckey-value-options
+    const options = { keychainAccessible: SecureStore.WHEN_UNLOCKED };
+    await SecureStore.setItemAsync(key, value, options);
   } catch (error) {
     showError("Unable to securely store data.");
   }
