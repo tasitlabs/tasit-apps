@@ -5,7 +5,7 @@ import {
   ContractBasedAccount,
   TasitContracts,
 } from "tasit-sdk";
-
+import { Toast } from "native-base";
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
@@ -15,7 +15,8 @@ const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
 
-import { Toast } from "native-base";
+// Storage keys
+const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
 
 export const getContracts = () => {
   let contracts;
@@ -61,42 +62,33 @@ export const getContracts = () => {
   return contracts;
 };
 
-// _storeData = async () => {
-//   try {
-//     await AsyncStorage.setItem("@MySuperStore:key", "I like to save it.");
-//   } catch (error) {
-//     // Error saving data
-//   }
-// };
-//
-// _retrieveData = async () => {
-//   try {
-//     const value = await AsyncStorage.getItem("TASKS");
-//     if (value !== null) {
-//       // We have data!!
-//       console.log(value);
-//     }
-//   } catch (error) {
-//     // Error retrieving data
-//   }
-// };
+// Note: the value should be a string
+const _storeData = async (key, value) => {
+  try {
+    await SecureStore.setItemAsync(key, value);
+  } catch (error) {
+    showError("Unable to save data on storage.");
+  }
+};
+
+const _retrieveData = async key => {
+  try {
+    const value = await SecureStore.getItemAsync(key);
+    return value;
+  } catch (error) {
+    showError("Unable to retrieve data from storage.");
+  }
+};
 
 export const recoverOrCreateAccount = async () => {
-  const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
-
-  const recoveredPrivateKey = await SecureStore.getItemAsync(
-    EPHEMERAL_ACCOUNT_PRIV_KEY
-  );
+  const recoveredPrivateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY);
 
   if (recoveredPrivateKey == null) {
     // Note: The timeout for account creation is about ~20 secs.
     // See more: https://github.com/tasitlabs/tasit/issues/42
     const account = Account.create();
     const { privateKey: createdPrivateKey } = account;
-    await SecureStore.setItemAsync(
-      EPHEMERAL_ACCOUNT_PRIV_KEY,
-      createdPrivateKey
-    );
+    await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, createdPrivateKey);
     return account;
   }
 
