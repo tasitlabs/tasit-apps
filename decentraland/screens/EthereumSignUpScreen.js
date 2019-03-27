@@ -7,7 +7,8 @@ import {
   approveManaSpending,
   showInfo,
   showError,
-  fundAccount,
+  fundAccountWithEthers,
+  fundAccountWithMana,
 } from "./helpers";
 
 import { Account } from "tasit-sdk";
@@ -21,12 +22,16 @@ export class EthereumSignUpScreen extends React.Component {
       // See more: https://github.com/tasitlabs/tasit/issues/42
       const account = Account.create();
       setAccount(account);
+      showInfo(`Account generated`);
 
       const { address: accountAddress } = account;
 
-      await fundAccount(accountAddress);
-      await approveManaSpending(account);
-      showInfo(`Account created and funded!`);
+      await fundAccountWithEthers(accountAddress);
+      showInfo(`Account funded with ethers`);
+      const fundWithMana = fundAccountWithMana(accountAddress);
+      const approveMarketplace = approveManaSpending(account);
+      await Promise.all([fundWithMana, approveMarketplace]);
+      showInfo(`The account is ready to buy!`);
 
       setSetupInProgress(false);
     } catch (error) {
@@ -37,6 +42,7 @@ export class EthereumSignUpScreen extends React.Component {
   _onSignUp = () => {
     const { setSetupInProgress } = this.props;
     setSetupInProgress(true);
+    showInfo(`Creating and funding account...`);
     // Note: A trick to force `_onboarding()` function to running async
     (async () => {})().then(() => {
       // Should run async but isn't when calling Account.create() or createFromPrivateKey()
