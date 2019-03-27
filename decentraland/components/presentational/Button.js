@@ -23,9 +23,9 @@ export default function Button(props) {
   return (
     <RNButton
       containerStyle={
-        disabled ? disabledStyles.container : enabledStyles.container
+        disabled ? containerStyles.disabled : containerStyles.enabled
       }
-      style={disabled ? disabledStyles.button : enabledStyles.button}
+      style={disabled ? buttonStyles.disabled : buttonStyles.enabled}
       onPress={onPress}
       activeOpacity={1}
     >
@@ -40,28 +40,28 @@ Button.propTypes = {
   disabled: PropTypes.bool,
 };
 
-const enabledStyles = StyleSheet.create({
-  button: {
-    fontSize: responsiveFontSize(FONT_SIZE),
-    color: Colors.buttonColor,
-  },
-  container: {
+const containerStyles = StyleSheet.create({
+  enabled: {
     padding: responsiveHeight(BUTTON_HEIGHT),
     overflow: "hidden",
     borderRadius: 3,
     backgroundColor: Colors.buttonBackground,
   },
-});
-
-const disabledStyles = StyleSheet.create({
-  button: {
-    fontSize: responsiveFontSize(FONT_SIZE),
-    color: Colors.disabledButtonColor,
-  },
-  container: {
+  disabled: {
     padding: responsiveHeight(BUTTON_HEIGHT),
     overflow: "hidden",
     borderRadius: 3,
     backgroundColor: Colors.disabledButtonBackground,
+  },
+});
+
+const buttonStyles = StyleSheet.create({
+  disabled: {
+    fontSize: responsiveFontSize(FONT_SIZE),
+    color: Colors.disabledButtonColor,
+  },
+  enabled: {
+    fontSize: responsiveFontSize(FONT_SIZE),
+    color: Colors.buttonColor,
   },
 });
