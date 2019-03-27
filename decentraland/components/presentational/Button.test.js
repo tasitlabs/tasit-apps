@@ -3,10 +3,26 @@ import { shallow } from "enzyme";
 import Button from "./Button";
 
 describe("Button", () => {
-  it("renders the component", async () => {
+  describe("renders the component", () => {
     const onPress = () => {};
-    expect(
-      shallow(<Button title="Title" onPress={onPress} />)
-    ).toMatchSnapshot();
+
+    it("default button", async () => {
+      expect(
+        shallow(<Button title="Enabled button" onPress={onPress} />)
+      ).toMatchSnapshot();
+    });
+
+    it("disabled button", async () => {
+      const disabled = true;
+      expect(
+        shallow(
+          <Button
+            title="Disabled button"
+            onPress={onPress}
+            disabled={disabled}
+          />
+        )
+      ).toMatchSnapshot();
+    });
   });
 });
