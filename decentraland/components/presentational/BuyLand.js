@@ -13,7 +13,11 @@ export default function BuyLand(props) {
       <LandForSale landForSale={landForSale} />
       <View style={styles.buttonView}>
         {waitingForAccountSetup ? (
-          <Button title="Waiting for account..." disabled={true} />
+          <Button
+            title="Waiting for account..."
+            disabled={true}
+            onPress={() => {}}
+          />
         ) : (
           <Button title="Buy" onPress={onBuy} />
         )}
