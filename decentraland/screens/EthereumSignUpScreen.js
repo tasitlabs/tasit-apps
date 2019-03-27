@@ -17,7 +17,7 @@ export class EthereumSignUpScreen extends React.Component {
     try {
       const { setAccount, setSetupInProgress } = this.props;
 
-      const account = recoverOrCreateAccount();
+      const account = await recoverOrCreateAccount();
       setAccount(account);
       showInfo(`Account generated`);
 

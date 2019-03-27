@@ -61,10 +61,46 @@ export const getContracts = () => {
   return contracts;
 };
 
-export const recoverOrCreateAccount = () => {
-  // Note: The timeout for account creation is about ~20 secs.
-  // See more: https://github.com/tasitlabs/tasit/issues/42
-  const account = Account.create();
+// _storeData = async () => {
+//   try {
+//     await AsyncStorage.setItem("@MySuperStore:key", "I like to save it.");
+//   } catch (error) {
+//     // Error saving data
+//   }
+// };
+//
+// _retrieveData = async () => {
+//   try {
+//     const value = await AsyncStorage.getItem("TASKS");
+//     if (value !== null) {
+//       // We have data!!
+//       console.log(value);
+//     }
+//   } catch (error) {
+//     // Error retrieving data
+//   }
+// };
+
+export const recoverOrCreateAccount = async () => {
+  const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
+
+  const recoveredPrivateKey = await SecureStore.getItemAsync(
+    EPHEMERAL_ACCOUNT_PRIV_KEY
+  );
+
+  if (recoveredPrivateKey == null) {
+    // Note: The timeout for account creation is about ~20 secs.
+    // See more: https://github.com/tasitlabs/tasit/issues/42
+    const account = Account.create();
+    const { privateKey: createdPrivateKey } = account;
+    await SecureStore.setItemAsync(
+      EPHEMERAL_ACCOUNT_PRIV_KEY,
+      createdPrivateKey
+    );
+    return account;
+  }
+
+  const account = createFromPrivateKey(recoveredPrivateKey);
   return account;
 };
 
