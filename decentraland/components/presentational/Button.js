@@ -16,8 +16,10 @@ const BUTTON_HEIGHT = 1.5;
 // https://github.com/tasitlabs/tasit/issues/204
 export default function Button(props) {
   let { title, onPress, disabled } = props;
-  if (!disabled) disabled = false;
-  if (!onPress) onPress = () => {};
+  if (disabled === undefined) disabled = false;
+
+  const onPressHandler = disabled ? () => {} : onPress;
+
   title = title.toUpperCase();
 
   return (
@@ -26,7 +28,7 @@ export default function Button(props) {
         disabled ? containerStyles.disabled : containerStyles.enabled
       }
       style={disabled ? buttonStyles.disabled : buttonStyles.enabled}
-      onPress={onPress}
+      onPress={onPressHandler}
       activeOpacity={1}
     >
       {title}
@@ -36,7 +38,7 @@ export default function Button(props) {
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
-  onPress: PropTypes.func,
+  onPress: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
 };
 
