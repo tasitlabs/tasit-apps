@@ -55,7 +55,7 @@ function myAssets(state = { list: [] }, action) {
   const { type, myAsset } = action;
   switch (type) {
     case ADD_TO_MY_ASSETS_LIST:
-      return { ...state, list: [...state.list, myAsset] };
+      return { ...state, list: [myAsset, ...state.list] };
     default:
       return state;
   }
