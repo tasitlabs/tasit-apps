@@ -9,7 +9,7 @@ export const estateForSale = {
 };
 
 export const parcelForSale = {
-  id: "1",
+  id: "2",
   priceMana: 0,
   priceUSD: 0,
   asset: parcel,
