@@ -13,7 +13,7 @@ export default class MyAssetsList extends React.PureComponent {
   render() {
     const { myAssetsList, renderItem } = this.props;
     const { length: listAmount } = myAssetsList;
-    const withoutAssets = listAmount == 0;
+    const withoutAssets = listAmount === 0;
     return withoutAssets ? (
       <LargeText>You have no assets yet.</LargeText>
     ) : (

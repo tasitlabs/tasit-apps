@@ -13,7 +13,7 @@ export default class LandForSaleList extends React.PureComponent {
   render() {
     const { landForSaleList, renderItem, loadingInProgress } = this.props;
     const { length: listAmount } = landForSaleList;
-    const withoutAssetsForSale = !loadingInProgress && listAmount == 0;
+    const withoutAssetsForSale = !loadingInProgress && listAmount === 0;
     return withoutAssetsForSale ? (
       <LargeText>There are no assets for sale right now.</LargeText>
     ) : (
