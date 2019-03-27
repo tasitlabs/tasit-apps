@@ -5,20 +5,20 @@ import Colors from "@constants/Colors";
 import LargeText from "@presentational/LargeText";
 
 // Note: Changing to PureComponent for performance boost
-// It is possible to still using function component with React.memo HoC
+// It is possible to still use function component with React.memo HoC
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class LandForSaleList extends React.PureComponent {
+export default class MyAssetsList extends React.PureComponent {
   render() {
-    const { landForSaleList, renderItem, loadingInProgress } = this.props;
-    const { length: listAmount } = landForSaleList;
-    const withoutAssetsForSale = !loadingInProgress && listAmount === 0;
-    return withoutAssetsForSale ? (
-      <LargeText>There are no assets for sale right now.</LargeText>
+    const { myAssetsList, renderItem } = this.props;
+    const { length: listAmount } = myAssetsList;
+    const withoutAssets = listAmount === 0;
+    return withoutAssets ? (
+      <LargeText>You have no assets yet.</LargeText>
     ) : (
       <FlatList
-        data={landForSaleList}
+        data={myAssetsList}
         style={styles.container}
         renderItem={renderItem}
         keyExtractor={item => item.id}
@@ -27,10 +27,9 @@ export default class LandForSaleList extends React.PureComponent {
   }
 }
 
-LandForSaleList.propTypes = {
-  loadingInProgress: PropTypes.bool.isRequired,
+MyAssetsList.propTypes = {
   renderItem: PropTypes.func.isRequired,
-  landForSaleList: PropTypes.array.isRequired,
+  myAssetsList: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({

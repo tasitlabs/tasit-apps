@@ -8,6 +8,16 @@ exports[`LandForSale renders the component 1`] = `
     }
   }
 >
+  <Estate
+    estate={
+      Object {
+        "id": "123",
+        "img": "https://api.decentraland.org/v1/estates/1/map.png",
+        "name": "Sample Estate",
+        "type": "ESTATE",
+      }
+    }
+  />
   <Component>
     0
      MANA
