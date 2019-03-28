@@ -13,7 +13,7 @@ export default {
   noticeText: "#fff",
   backgroundColor: "#fff",
   textColor: "gray",
-  headerBackgroundColor: "gray",
+  headerBackgroundColor: "#fff",
   headerTintColor: "#fff",
   buttonColor: "white",
   buttonBackground: "#2196f3",
