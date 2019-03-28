@@ -42,10 +42,24 @@ export class ListLandForSaleScreen extends React.Component {
     const fromBlock = 0;
     const openSellOrdersEvents = await getOpenSellOrders(fromBlock);
 
+    let contracts = getContracts();
+    const { estateContract } = contracts;
+
+    const estatesForSale = [];
+    for (let event of openSellOrdersEvents) {
+      let { values: order } = event;
+      const { nftAddress } = order;
+      const isEstate = addressesAreEqual(
+        nftAddress,
+        estateContract.getAddress()
+      );
+      if (isEstate) estatesForSale.push(order);
+    }
+
     // Note: Getting only the first 10 assets for now
     // See more: https://github.com/tasitlabs/tasit/issues/155
-    for (let event of openSellOrdersEvents.slice(0, 10)) {
-      let { values: order } = event;
+    const listSize = 10;
+    for (let order of estatesForSale.slice(0, listSize)) {
       let assetForSale = await this._prepareAssetForSale(order);
       addLandForSaleToList(assetForSale);
     }
