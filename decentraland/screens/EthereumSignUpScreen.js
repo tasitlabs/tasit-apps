@@ -9,7 +9,7 @@ import {
   showError,
   fundAccountWithEthers,
   fundAccountWithMana,
-  recoverOrCreateAccount,
+  createAccount,
 } from "./helpers";
 
 export class EthereumSignUpScreen extends React.Component {
@@ -17,8 +17,7 @@ export class EthereumSignUpScreen extends React.Component {
     try {
       const { setAccount, setSetupInProgress } = this.props;
 
-      const account = await recoverOrCreateAccount();
-      setAccount(account);
+      const account = await createAccount();
       showInfo(`Account generated`);
 
       const { address: accountAddress } = account;
@@ -30,6 +29,7 @@ export class EthereumSignUpScreen extends React.Component {
       await Promise.all([fundWithMana, approveMarketplace]);
       showInfo(`Now you can buy land!`);
 
+      setAccount(account);
       setSetupInProgress(false);
     } catch (error) {
       showError(error);

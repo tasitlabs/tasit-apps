@@ -83,21 +83,31 @@ const _retrieveData = async key => {
   }
 };
 
-export const recoverOrCreateAccount = async () => {
-  const recoveredPrivateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY);
+export const recoverAccount = async () => {
+  let account = null;
 
-  if (recoveredPrivateKey == null) {
-    // Note: The timeout for account creation is about ~20 secs.
-    // See more: https://github.com/tasitlabs/tasit/issues/42
-    const account = Account.create();
-    const { privateKey: createdPrivateKey } = account;
-    await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, createdPrivateKey);
-    return account;
-  }
+  const privateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY);
+  if (privateKey != null) account = createFromPrivateKey(privateKey);
 
-  const account = createFromPrivateKey(recoveredPrivateKey);
   return account;
 };
+
+export const createAccount = async () => {
+  // Note: The timeout for account creation is about ~20 secs.
+  // See more: https://github.com/tasitlabs/tasit/issues/42
+  const account = Account.create();
+  const { privateKey } = account;
+  await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, privateKey);
+  return account;
+};
+
+// export const recoverOrCreateAccount = async () => {
+//   let account = await recoverAccount();
+//
+//   if (account == null) account = await createAccount();
+//
+//   return account;
+// };
 
 export const addressesAreEqual = (address1, address2) => {
   return address1.toUpperCase() === address2.toUpperCase();
@@ -157,5 +167,6 @@ export default {
   fundAccountWithEthers,
   fundAccountWithMana,
   getContracts,
-  recoverOrCreateAccount,
+  recoverAccount,
+  createAccount,
 };
