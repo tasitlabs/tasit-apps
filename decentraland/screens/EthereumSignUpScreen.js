@@ -38,23 +38,32 @@ export class EthereumSignUpScreen extends React.Component {
 
       const { address: accountAddress } = account;
 
-      await fundAccountWithEthers(accountAddress);
-      setAccountFundedWithEthers(true);
-      showInfo(`Account funded with ETH`);
+      const fundWithEthers = async () => {
+        await fundAccountWithEthers(accountAddress);
+        setAccountFundedWithEthers(true);
+        showInfo(`Account funded with ETH`);
+      };
 
       const fundWithMana = async () => {
         await fundAccountWithMana(accountAddress);
         setAccountFundedWithMana(true);
+        showInfo(`Account funded with MANA`);
       };
 
       const approveMarketplace = async () => {
         await approveManaSpending(account);
         setAccountApprovedMarketplace(true);
+        showInfo(`Marketplace approved`);
       };
-      await Promise.all([fundWithMana, approveMarketplace]);
 
-      // await fundWithMana();
-      // await approveMarketplace();
+      await fundWithEthers();
+      await fundWithMana();
+      await approveMarketplace();
+
+      // Note: It stopped working after wrapping each step with a function.
+      // It isn't clear why
+      //await Promise.all([fundWithMana, approveMarketplace]);
+
       showInfo(`Now you can buy land!`);
 
       setSetupInProgress(false);
@@ -66,7 +75,7 @@ export class EthereumSignUpScreen extends React.Component {
   _onSignUp = () => {
     const { setSetupInProgress } = this.props;
     setSetupInProgress(true);
-    showInfo(`Creating and funding account...`);
+
     // Note: A trick to force `_onboarding()` function to running async
     (async () => {})().then(() => {
       // Should run async but isn't when calling Account.create() or createFromPrivateKey()
