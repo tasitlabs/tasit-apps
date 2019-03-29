@@ -11,18 +11,13 @@ describe("EthereumSignUpScreen", () => {
 
   it("renders the component", async () => {
     const setAccount = () => {};
-    const setSetupInProgress = () => {};
-    const setAccountFundedWithEthers = () => {};
-    const setAccountFundedWithMana = () => {};
-    const setAccountApprovedMarketplace = () => {};
+    const setAccountCreationStatus = () => {};
+
     expect(
       shallow(
         <EthereumSignUpScreen
           setAccount={setAccount}
-          setSetupInProgress={setSetupInProgress}
-          setAccountFundedWithEthers={setAccountFundedWithEthers}
-          setAccountFundedWithMana={setAccountFundedWithMana}
-          setAccountApprovedMarketplace={setAccountApprovedMarketplace}
+          setAccountCreationStatus={setAccountCreationStatus}
         />
       )
     ).toMatchSnapshot();

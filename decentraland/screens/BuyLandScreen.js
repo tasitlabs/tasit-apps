@@ -101,12 +101,13 @@ export class BuyLandScreen extends React.Component {
 
   render() {
     const { selectedLandToBuy: landForSale, accountInfo } = this.props;
+    const { creationStatus } = accountInfo;
 
     return (
       <BuyLand
         landForSale={landForSale}
         onBuy={() => this._onBuy(landForSale)}
-        accountInfo={accountInfo}
+        accountCreationStatus={creationStatus}
       />
     );
   }

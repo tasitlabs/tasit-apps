@@ -2,15 +2,7 @@
 
 exports[`BuyLandScreen renders the component  1`] = `
 <BuyLand
-  accountInfo={
-    Object {
-      "account": null,
-      "approvedMarketplace": true,
-      "fundedWithEthers": true,
-      "fundedWithMana": true,
-      "setupInProgress": false,
-    }
-  }
+  accountCreationStatus="READY_TO_USE"
   landForSale={
     Object {
       "asset": Object {

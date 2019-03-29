@@ -5,25 +5,41 @@ import PropTypes from "prop-types";
 import LandForSale from "./LandForSale";
 import Button from "./Button";
 import Colors from "@constants/Colors";
+import AccountCreationStatus from "@constants/AccountCreationStatus";
+const {
+  NOT_STARTED,
+  GENERATING_ACCOUNT,
+  FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA,
+  APPROVING_MARKETPLACE,
+  READY_TO_USE,
+} = AccountCreationStatus;
 
 export default function BuyLand(props) {
-  const { landForSale, onBuy, accountInfo } = props;
-  const {
-    account,
-    setupInProgress: waitingForAccountSetup,
-    fundedWithEthers,
-    fundedWithMana,
-    approvedMarketplace,
-  } = accountInfo;
+  const { landForSale, onBuy, accountCreationStatus } = props;
+  const waitingForAccountSetup =
+    accountCreationStatus !== NOT_STARTED &&
+    accountCreationStatus != READY_TO_USE;
 
   let waitingMessage = "";
-  if (waitingForAccountSetup) {
-    if (account == null) waitingMessage = "Generating account...";
-    else if (!fundedWithEthers) waitingMessage = "Funding account with ETH...";
-    else if (!fundedWithMana && !approvedMarketplace)
-      waitingMessage = "Funding account with MANA and approving marketplace...";
-    else if (!approvedMarketplace) waitingMessage = "Approving marketplace...";
-    else if (!fundedWithMana) waitingMessage = "Funding account with MANA...";
+  switch (accountCreationStatus) {
+    case NOT_STARTED:
+      break;
+    case GENERATING_ACCOUNT:
+      waitingMessage = "Generating account...";
+      break;
+    case FUNDING_WITH_ETH:
+      waitingMessage = "Funding account with ETH...";
+      break;
+    case FUNDING_WITH_MANA:
+      waitingMessage = "Funding account with MANA...";
+      break;
+    case APPROVING_MARKETPLACE:
+      waitingMessage = "Approving marketplace...";
+      break;
+    case READY_TO_USE:
+      break;
+    default:
   }
 
   return (
@@ -50,7 +66,7 @@ export default function BuyLand(props) {
 BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,
-  accountInfo: PropTypes.object.isRequired,
+  accountCreationStatus: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({

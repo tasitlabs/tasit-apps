@@ -2,16 +2,14 @@ import React from "react";
 import { shallow } from "enzyme";
 import { BuyLandScreen } from "./BuyLandScreen";
 import { estateForSale } from "@presentational/testHelpers";
+import AccountCreationStatus from "@constants/AccountCreationStatus";
+const { READY_TO_USE } = AccountCreationStatus;
 
 describe("BuyLandScreen", () => {
   describe("renders the component", () => {
     it("", async () => {
       const accountInfo = {
-        account: null,
-        setupInProgress: false,
-        fundedWithEthers: true,
-        fundedWithMana: true,
-        approvedMarketplace: true,
+        creationStatus: READY_TO_USE,
       };
       const navigation = () => {};
       const removeLandForSale = () => {};
