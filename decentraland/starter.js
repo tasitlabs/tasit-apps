@@ -1,6 +1,22 @@
 /* eslint no-console: "off" */
 import { exec } from "child_process";
-import { checkBlockchain } from "./helpers.js";
+
+// Note: Copied from helpers.js because import isn't working
+//import { checkBlockchain } from "./helpers";
+import { Action } from "tasit-sdk";
+const { ConfigLoader } = Action;
+import ProviderFactory from "tasit-action/dist/ProviderFactory";
+import tasitSdkConfig from "./config/default";
+const checkBlockchain = async () => {
+  ConfigLoader.setConfig(tasitSdkConfig);
+  const provider = ProviderFactory.getProvider();
+  try {
+    await provider.getBlockNumber();
+  } catch (err) {
+    return false;
+  }
+  return true;
+};
 
 const CONSOLE_FG_RED = "\x1b[31m";
 const CONSOLE_RESET = "\x1b[0m";
