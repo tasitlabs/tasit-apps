@@ -31,6 +31,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const account = await createAccount();
       showInfo(`Account generated`);
+      setAccount(account);
 
       const { address: accountAddress } = account;
 
@@ -56,7 +57,6 @@ export class EthereumSignUpScreen extends React.Component {
       await Promise.all([fundWithMana(), approveMarketplace()]);
       showInfo(`Now you can buy land!`);
 
-      setAccount(account);
       setSetupInProgress(false);
     } catch (error) {
       showError(error);
