@@ -1,4 +1,5 @@
 export const SET_ACCOUNT = "SET_ACCOUNT";
+export const SET_SETUP_IN_PROGRESS = "SET_SETUP_IN_PROGRESS";
 export const SET_ACCOUNT_FUNDED_WITH_ETHERS = "SET_ACCOUNT_FUNDED_WITH_ETHERS";
 export const SET_ACCOUNT_FUNDED_WITH_MANA = "SET_ACCOUNT_FUNDED_WITH_MANA";
 export const SET_ACCOUNT_APPROVED_MARKETPLACE =
@@ -13,6 +14,10 @@ export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
+}
+
+export function setSetupInProgress(inProgress) {
+  return { type: SET_SETUP_IN_PROGRESS, inProgress };
 }
 
 export function setAccountFundedWithEthers(fundedWithEthers) {
