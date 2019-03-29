@@ -132,7 +132,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for ETH fundi
     }
   >
     <Component>
-      Generating account...
+      Funding account with ETH...
     </Component>
   </Component>
 </Component>
@@ -186,13 +186,67 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
     }
   >
     <Component>
-      Generating account...
+      Funding account with MANA...
     </Component>
   </Component>
 </Component>
 `;
 
 exports[`BuyLand renders the component waiting for setup - waiting for MANA funding and marketplace approval 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <LandForSale
+    landForSale={
+      Object {
+        "asset": Object {
+          "id": "0123456789",
+          "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+          "name": "Sample Parcel",
+          "type": "PARCEL",
+        },
+        "id": "2",
+        "priceMana": 0,
+        "priceUSD": 0,
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "marginTop": 66.7,
+      }
+    }
+  >
+    <Button
+      disabled={true}
+      onPress={[Function]}
+      title="Buy"
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Component>
+      Funding account with MANA and approving Marketplace...
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`BuyLand renders the component waiting for setup - waiting for account generation 1`] = `
 <Component
   style={
     Object {
@@ -294,7 +348,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for marketpla
     }
   >
     <Component>
-      Generating account...
+      Approving Marketplace...
     </Component>
   </Component>
 </Component>
