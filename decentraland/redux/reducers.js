@@ -5,21 +5,38 @@ import {
   SET_LAND_FOR_SALE_LIST,
   REMOVE_LAND_FOR_SALE,
   ADD_LAND_FOR_SALE_TO_LIST,
-  SET_SETUP_IN_PROGRESS,
+  SET_ACCOUNT_FUNDED_WITH_ETHERS,
+  SET_ACCOUNT_FUNDED_WITH_MANA,
+  SET_ACCOUNT_APPROVED_MARKETPLACE,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
 } from "./actions";
 
 function accountInfo(
-  state = { account: null, setupInProgress: false },
+  state = {
+    account: null,
+    fundedWithEthers: false,
+    fundedWithMana: false,
+    marketplaceApproved: false,
+  },
   action
 ) {
-  const { type, account, inProgress: setupInProgress } = action;
+  const {
+    type,
+    account,
+    fundedWithEthers,
+    fundedWithMana,
+    approvedMarketplace,
+  } = action;
   switch (type) {
     case SET_ACCOUNT:
       return { ...state, account };
-    case SET_SETUP_IN_PROGRESS:
-      return { ...state, setupInProgress };
+    case SET_ACCOUNT_FUNDED_WITH_ETHERS:
+      return { ...state, fundedWithEthers };
+    case SET_ACCOUNT_FUNDED_WITH_MANA:
+      return { ...state, fundedWithMana };
+    case SET_ACCOUNT_APPROVED_MARKETPLACE:
+      return { ...state, approvedMarketplace };
     default:
       return state;
   }

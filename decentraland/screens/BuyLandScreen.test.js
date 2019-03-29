@@ -11,7 +11,12 @@ describe("BuyLandScreen", () => {
   });
 
   it("renders the component", async () => {
-    const accountInfo = { account: null, setupInProgress: false };
+    const accountInfo = {
+      account: null,
+      fundedWithEthers: true,
+      fundedWithMana: true,
+      approvedMarketplace: true,
+    };
     const navigation = () => {};
     const removeLandForSale = () => {};
     const addToMyAssetsList = () => {};

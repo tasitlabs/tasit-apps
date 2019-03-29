@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setAccount, setSetupInProgress } from "../redux/actions";
+import {
+  setAccount,
+  setAccountFundedWithEthers,
+  setAccountFundedWithMana,
+  setAccountApprovedMarketplace,
+} from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 import {
   approveManaSpending,
@@ -16,7 +21,12 @@ import { Account } from "tasit-sdk";
 export class EthereumSignUpScreen extends React.Component {
   _onboarding = async () => {
     try {
-      const { setAccount, setSetupInProgress } = this.props;
+      const {
+        setAccount,
+        setAccountFundedWithEthers,
+        setAccountFundedWithMana,
+        setAccountApprovedMarketplace,
+      } = this.props;
 
       // Note: The timeout for account creation is about ~10 secs.
       // See more: https://github.com/tasitlabs/tasit/issues/42
@@ -27,21 +37,25 @@ export class EthereumSignUpScreen extends React.Component {
       const { address: accountAddress } = account;
 
       await fundAccountWithEthers(accountAddress);
+      setAccountFundedWithEthers(true);
       showInfo(`Account funded with ETH`);
-      const fundWithMana = fundAccountWithMana(accountAddress);
-      const approveMarketplace = approveManaSpending(account);
+
+      const fundWithMana = async () => {
+        fundAccountWithMana(accountAddress);
+        setAccountFundedWithMana(true);
+      };
+      const approveMarketplace = async () => {
+        approveManaSpending(account);
+        setAccountApprovedMarketplace(true);
+      };
       await Promise.all([fundWithMana, approveMarketplace]);
       showInfo(`Now you can buy land!`);
-
-      setSetupInProgress(false);
     } catch (error) {
       showError(error);
     }
   };
 
   _onSignUp = () => {
-    const { setSetupInProgress } = this.props;
-    setSetupInProgress(true);
     showInfo(`Creating and funding account...`);
     // Note: A trick to force `_onboarding()` function to running async
     (async () => {})().then(() => {
@@ -60,12 +74,16 @@ export class EthereumSignUpScreen extends React.Component {
 
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
-  setSetupInProgress: PropTypes.func.isRequired,
+  setAccountFundedWithEthers: PropTypes.func.isRequired,
+  setAccountFundedWithMana: PropTypes.func.isRequired,
+  setAccountApprovedMarketplace: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
-  setSetupInProgress,
+  setAccountFundedWithEthers,
+  setAccountFundedWithMana,
+  setAccountApprovedMarketplace,
 };
 
 export default connect(
