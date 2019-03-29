@@ -240,7 +240,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
     }
   >
     <Component>
-      Funding account with MANA and approving Marketplace...
+      Funding account with MANA and approving marketplace...
     </Component>
   </Component>
 </Component>
@@ -348,7 +348,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for marketpla
     }
   >
     <Component>
-      Approving Marketplace...
+      Approving marketplace...
     </Component>
   </Component>
 </Component>
