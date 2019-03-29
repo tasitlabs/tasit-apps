@@ -1,23 +1,15 @@
-const tintColor = "#2f95dc";
+const WHITE = "white";
+const GRAY = "gray";
+const SECONDARY_APP_COLOR = GRAY;
+const APP_BLUE = "#2196f3";
 
 export default {
-  tintColor,
-  tabIconDefault: "#ccc",
-  tabIconSelected: tintColor,
-  tabBar: "#fefefe",
-  errorBackground: "red",
-  errorText: "#fff",
-  warningBackground: "#EAEB5E",
-  warningText: "#666804",
-  noticeBackground: tintColor,
-  noticeText: "#fff",
-  backgroundColor: "#fff",
-  textColor: "gray",
-  headerBackgroundColor: "#fff",
-  headerTintColor: "#fff",
-  buttonColor: "white",
-  buttonBackground: "#2196f3",
-  disabledButtonColor: "white",
-  disabledButtonBackground: "gray",
-  loadingColor: "#2196f3",
+  backgroundColor: WHITE,
+  textColor: SECONDARY_APP_COLOR,
+  headerBackgroundColor: WHITE,
+  buttonColor: WHITE,
+  buttonBackground: APP_BLUE,
+  disabledButtonColor: WHITE,
+  disabledButtonBackground: GRAY,
+  loadingColor: APP_BLUE,
 };
