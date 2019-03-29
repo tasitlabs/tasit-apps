@@ -15,7 +15,7 @@ export default class MyAssetsList extends React.PureComponent {
     const { length: listAmount } = myAssetsList;
     const withoutAssets = listAmount === 0;
     return withoutAssets ? (
-      <LargeText>You have no assets yet.</LargeText>
+      <LargeText>{`You haven't bought any land yet.`}</LargeText>
     ) : (
       <FlatList
         data={myAssetsList}
