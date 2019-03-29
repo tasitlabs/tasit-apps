@@ -18,13 +18,12 @@ export default function BuyLand(props) {
 
   let waitingMessage = "";
   if (waitingForAccountSetup) {
-    if (account == null) waitingMessage = "Waiting for Account generation...";
-    else if (!fundedWithEthers) waitingMessage = "Waiting for ETH funding...";
+    if (account == null) waitingMessage = "Generating account...";
+    else if (!fundedWithEthers) waitingMessage = "Funding account with ETH...";
     else if (!fundedWithMana && !approvedMarketplace)
-      waitingMessage = "Waiting for MANA funding and Marketplace approval...";
-    else if (!approvedMarketplace)
-      waitingMessage = "Waiting for Marketplace approval...";
-    else if (!fundedWithMana) waitingMessage = "Waiting for MANA funding...";
+      waitingMessage = "Funding account with MANA and approving Marketplace...";
+    else if (!approvedMarketplace) waitingMessage = "Approving Marketplace...";
+    else if (!fundedWithMana) waitingMessage = "Funding account with MANA...";
   }
 
   return (

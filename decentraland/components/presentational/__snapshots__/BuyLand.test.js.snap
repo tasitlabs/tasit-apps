@@ -121,10 +121,18 @@ exports[`BuyLand renders the component waiting for setup - waiting for ETH fundi
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Waiting for account..."
+      title="Buy"
     />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
     <Component>
-      Waiting for Account generation...
+      Generating account...
     </Component>
   </Component>
 </Component>
@@ -167,10 +175,18 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Waiting for account..."
+      title="Buy"
     />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
     <Component>
-      Waiting for Account generation...
+      Generating account...
     </Component>
   </Component>
 </Component>
@@ -213,10 +229,18 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Waiting for account..."
+      title="Buy"
     />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
     <Component>
-      Waiting for Account generation...
+      Generating account...
     </Component>
   </Component>
 </Component>
@@ -259,10 +283,18 @@ exports[`BuyLand renders the component waiting for setup - waiting for marketpla
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Waiting for account..."
+      title="Buy"
     />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
     <Component>
-      Waiting for Account generation...
+      Generating account...
     </Component>
   </Component>
 </Component>
