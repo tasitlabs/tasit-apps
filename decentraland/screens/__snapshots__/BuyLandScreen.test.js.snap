@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BuyLandScreen renders the component 1`] = `
+exports[`BuyLandScreen renders the component  1`] = `
 <BuyLand
+  accountCreationStatus="READY_TO_USE"
   landForSale={
     Object {
       "asset": Object {
@@ -16,6 +17,5 @@ exports[`BuyLandScreen renders the component 1`] = `
     }
   }
   onBuy={[Function]}
-  waitingForAccountSetup={false}
 />
 `;

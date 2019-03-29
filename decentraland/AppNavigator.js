@@ -83,7 +83,10 @@ const AssetsForSaleNavigator = createStackNavigator(
 
 const MyAssetsNavigator = createStackNavigator(
   {
-    MyAssetsScreen,
+    MyAssetsScreen: {
+      screen: MyAssetsScreen,
+      navigationOptions: headerWithMenuButton,
+    },
   },
   {
     initialRouteName: "MyAssetsScreen",

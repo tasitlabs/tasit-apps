@@ -1,12 +1,13 @@
 /* eslint no-console: "off" */
-import { exec } from "child_process";
+const { exec } = require("child_process");
 
 // Note: Copied from helpers.js because import isn't working
 //import { checkBlockchain } from "./helpers";
-import { Action } from "tasit-sdk";
+const { Action } = require("tasit-sdk");
 const { ConfigLoader } = Action;
-import ProviderFactory from "tasit-action/dist/ProviderFactory";
-import tasitSdkConfig from "./config/default";
+const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
+const tasitSdkConfig = require("./config/default");
+
 const checkBlockchain = async () => {
   ConfigLoader.setConfig(tasitSdkConfig);
   const provider = ProviderFactory.getProvider();

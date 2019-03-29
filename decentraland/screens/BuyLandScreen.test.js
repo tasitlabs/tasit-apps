@@ -1,31 +1,31 @@
 import React from "react";
-import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
 import { BuyLandScreen } from "./BuyLandScreen";
 import { estateForSale } from "@presentational/testHelpers";
+import AccountCreationStatus from "@constants/AccountCreationStatus";
+const { READY_TO_USE } = AccountCreationStatus;
 
 describe("BuyLandScreen", () => {
-  jest.useFakeTimers();
-  beforeEach(() => {
-    NavigationTestUtils.resetInternalState();
-  });
+  describe("renders the component", () => {
+    it("", async () => {
+      const accountInfo = {
+        creationStatus: READY_TO_USE,
+      };
+      const navigation = () => {};
+      const removeLandForSale = () => {};
+      const addToMyAssetsList = () => {};
 
-  it("renders the component", async () => {
-    const accountInfo = { account: null, setupInProgress: false };
-    const navigation = () => {};
-    const removeLandForSale = () => {};
-    const addToMyAssetsList = () => {};
-
-    expect(
-      shallow(
-        <BuyLandScreen
-          navigation={navigation}
-          accountInfo={accountInfo}
-          selectedLandToBuy={estateForSale}
-          removeLandForSale={removeLandForSale}
-          addToMyAssetsList={addToMyAssetsList}
-        />
-      )
-    ).toMatchSnapshot();
+      expect(
+        shallow(
+          <BuyLandScreen
+            navigation={navigation}
+            accountInfo={accountInfo}
+            selectedLandToBuy={estateForSale}
+            removeLandForSale={removeLandForSale}
+            addToMyAssetsList={addToMyAssetsList}
+          />
+        )
+      ).toMatchSnapshot();
+    });
   });
 });
