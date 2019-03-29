@@ -13,7 +13,7 @@ import {
   showError,
   showInfo,
   getContracts,
-} from "./helpers";
+} from "../helpers";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 

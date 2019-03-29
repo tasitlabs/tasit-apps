@@ -1,6 +1,6 @@
 /* eslint no-console: "off" */
-const { exec } = require("child_process");
-const { checkBlockchain } = require("./helpers.js");
+import { exec } from "child_process";
+import { checkBlockchain } from "./helpers.js";
 
 const CONSOLE_FG_RED = "\x1b[31m";
 const CONSOLE_RESET = "\x1b[0m";

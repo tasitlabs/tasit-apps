@@ -10,7 +10,7 @@ import {
   fundAccountWithEthers,
   fundAccountWithMana,
   createAccount,
-} from "./helpers";
+} from "../helpers";
 
 export class EthereumSignUpScreen extends React.Component {
   _onboarding = async () => {

@@ -5,7 +5,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "start": "FORCE_COLOR=1 node starter.js",
+    "start": "FORCE_COLOR=1 npx babel-node starter.js",
     "build:android": "npx expo build:android",
     "build:ios": "npx expo build:ios",
     "build:dev:android": "npx expo build:android --release-channel dev",
@@ -34,6 +34,7 @@
     "tasit-sdk": "0.0.14"
   },
   "devDependencies": {
+    "@babel/node": "^7.2.2",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-expo": "^5.0.0",

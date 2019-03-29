@@ -7,11 +7,10 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import decentralandApp from "./redux/reducers";
 import { setAccount } from "./redux/actions";
-import { recoverAccount } from "./screens/helpers";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
-import { checkBlockchain, showFatalError } from "./helpers";
+import { checkBlockchain, showFatalError, recoverAccount } from "./helpers";
 import { Root } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
