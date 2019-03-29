@@ -23,7 +23,7 @@ exports[`MyAssetsList renders the component with assets 1`] = `
   scrollEventThrottle={50}
   style={
     Object {
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
     }
   }
