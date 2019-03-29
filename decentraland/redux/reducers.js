@@ -5,10 +5,6 @@ import {
   SET_LAND_FOR_SALE_LIST,
   REMOVE_LAND_FOR_SALE,
   ADD_LAND_FOR_SALE_TO_LIST,
-  SET_SETUP_IN_PROGRESS, // deprecated
-  SET_ACCOUNT_FUNDED_WITH_ETHERS, // deprecated
-  SET_ACCOUNT_FUNDED_WITH_MANA, // deprecated
-  SET_ACCOUNT_APPROVED_MARKETPLACE, // deprecated
   SET_ACCOUNT_CREATION_STATUS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
@@ -28,26 +24,10 @@ function accountInfo(
   },
   action
 ) {
-  const {
-    type,
-    account,
-    inProgress: setupInProgress, // deprecated
-    fundedWithEthers, // deprecated
-    fundedWithMana, // deprecated
-    approvedMarketplace, // deprecated
-    creationStatus,
-  } = action;
+  const { type, account, creationStatus } = action;
   switch (type) {
     case SET_ACCOUNT:
       return { ...state, account };
-    case SET_SETUP_IN_PROGRESS: // deprecated
-      return { ...state, setupInProgress };
-    case SET_ACCOUNT_FUNDED_WITH_ETHERS: // deprecated
-      return { ...state, fundedWithEthers };
-    case SET_ACCOUNT_FUNDED_WITH_MANA: // deprecated
-      return { ...state, fundedWithMana };
-    case SET_ACCOUNT_APPROVED_MARKETPLACE: // deprecated
-      return { ...state, approvedMarketplace };
     case SET_ACCOUNT_CREATION_STATUS:
       return { ...state, creationStatus };
     default:
