@@ -20,7 +20,7 @@ exports[`LandForSaleList renders the component when list is empty and the loadin
   scrollEventThrottle={50}
   style={
     Object {
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
     }
   }
