@@ -21,7 +21,7 @@ export default function BuyLand(props) {
     if (account == null) waitingMessage = "Generating account...";
     else if (!fundedWithEthers) waitingMessage = "Funding account with ETH...";
     else if (!fundedWithMana && !approvedMarketplace)
-      waitingMessage = "Funding account with MANA and approving Marketplace...";
+      waitingMessage = "Funding account with MANA and approving marketplace...";
     else if (!approvedMarketplace) waitingMessage = "Approving Marketplace...";
     else if (!fundedWithMana) waitingMessage = "Funding account with MANA...";
   }
