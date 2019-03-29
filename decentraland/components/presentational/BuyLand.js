@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import PropTypes from "prop-types";
 import LandForSale from "./LandForSale";
@@ -7,17 +7,43 @@ import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function BuyLand(props) {
-  const { landForSale, onBuy, waitingForAccountSetup } = props;
+  const {
+    landForSale,
+    onBuy,
+    waitingForAccountSetup,
+    accountSetupSteps,
+  } = props;
+  const {
+    fundedWithEthers,
+    fundedWithMana,
+    approvedMarketplace,
+  } = accountSetupSteps;
+
+  let waitingMessage = "";
+  if (waitingForAccountSetup) {
+    if (!fundedWithEthers && !fundedWithMana && !approvedMarketplace)
+      waitingMessage = "Waiting for ETH funding...";
+    else if (fundedWithEthers && !fundedWithMana && !approvedMarketplace)
+      waitingMessage = "Waiting for MANA funding and Marketplace approval...";
+    else if (fundedWithEthers && fundedWithMana && !approvedMarketplace)
+      waitingMessage = "Waiting for Marketplace approval...";
+    else if (fundedWithEthers && !fundedWithMana && approvedMarketplace)
+      waitingMessage = "Waiting for MANA funding...";
+  }
+
   return (
     <View style={styles.container}>
       <LandForSale landForSale={landForSale} />
       <View style={styles.buttonView}>
         {waitingForAccountSetup ? (
-          <Button
-            title="Waiting for account..."
-            disabled={true}
-            onPress={() => {}}
-          />
+          <React.Fragment>
+            <Button
+              title="Waiting for account..."
+              disabled={true}
+              onPress={() => {}}
+            />
+            <Text>{waitingMessage}</Text>
+          </React.Fragment>
         ) : (
           <Button title="Buy" onPress={onBuy} />
         )}
@@ -30,6 +56,7 @@ BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,
   waitingForAccountSetup: PropTypes.bool.isRequired,
+  accountSetupSteps: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

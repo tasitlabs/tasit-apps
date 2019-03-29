@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BuyLandScreen renders the component 1`] = `
+exports[`BuyLandScreen renders the component  1`] = `
 <BuyLand
+  accountSetupSteps={
+    Object {
+      "approvedMarketplace": true,
+      "fundedWithEthers": true,
+      "fundedWithMana": true,
+    }
+  }
   landForSale={
     Object {
       "asset": Object {

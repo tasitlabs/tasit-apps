@@ -11,6 +11,7 @@ describe("EthereumSignUpScreen", () => {
 
   it("renders the component", async () => {
     const setAccount = () => {};
+    const setSetupInProgress = () => {};
     const setAccountFundedWithEthers = () => {};
     const setAccountFundedWithMana = () => {};
     const setAccountApprovedMarketplace = () => {};
@@ -18,6 +19,7 @@ describe("EthereumSignUpScreen", () => {
       shallow(
         <EthereumSignUpScreen
           setAccount={setAccount}
+          setSetupInProgress={setSetupInProgress}
           setAccountFundedWithEthers={setAccountFundedWithEthers}
           setAccountFundedWithMana={setAccountFundedWithMana}
           setAccountApprovedMarketplace={setAccountApprovedMarketplace}

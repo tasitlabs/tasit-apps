@@ -8,6 +8,7 @@ describe("BuyLandScreen", () => {
     it("", async () => {
       const accountInfo = {
         account: null,
+        setupInProgress: false,
         fundedWithEthers: true,
         fundedWithMana: true,
         approvedMarketplace: true,
