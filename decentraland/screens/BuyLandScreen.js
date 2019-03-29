@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { removeLandForSale, addToMyAssetsList } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
-import { showError, showInfo, getContracts } from "./helpers";
+import { showError, showInfo, getContracts } from "../helpers";
 
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
