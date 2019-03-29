@@ -57,13 +57,7 @@ export class EthereumSignUpScreen extends React.Component {
       };
 
       await fundWithEthers();
-      await fundWithMana();
-      await approveMarketplace();
-
-      // Note: It stopped working after wrapping each step with a function.
-      // It isn't clear why
-      //await Promise.all([fundWithMana, approveMarketplace]);
-
+      await Promise.all([fundWithMana(), approveMarketplace()]);
       showInfo(`Now you can buy land!`);
 
       setSetupInProgress(false);

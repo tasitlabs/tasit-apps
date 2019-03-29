@@ -47,7 +47,7 @@ exports[`BuyLand renders the component initial state - before start account setu
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
       "justifyContent": "center",
     }
@@ -89,7 +89,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for ETH fundi
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
       "justifyContent": "center",
     }
@@ -143,7 +143,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
       "justifyContent": "center",
     }
@@ -197,7 +197,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
       "justifyContent": "center",
     }
@@ -251,7 +251,7 @@ exports[`BuyLand renders the component waiting for setup - waiting for marketpla
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#fff",
+      "backgroundColor": "white",
       "flex": 1,
       "justifyContent": "center",
     }
