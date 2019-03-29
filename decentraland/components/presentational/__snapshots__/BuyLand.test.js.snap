@@ -121,10 +121,10 @@ exports[`BuyLand renders the component waiting for setup - waiting for ETH fundi
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Buy"
+      title="Waiting for account..."
     />
     <Component>
-      Waiting for ETH funding...
+      Waiting for Account generation...
     </Component>
   </Component>
 </Component>
@@ -167,10 +167,10 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Buy"
+      title="Waiting for account..."
     />
     <Component>
-      Waiting for MANA funding...
+      Waiting for Account generation...
     </Component>
   </Component>
 </Component>
@@ -213,10 +213,10 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Buy"
+      title="Waiting for account..."
     />
     <Component>
-      Waiting for MANA funding and Marketplace approval...
+      Waiting for Account generation...
     </Component>
   </Component>
 </Component>
@@ -259,10 +259,10 @@ exports[`BuyLand renders the component waiting for setup - waiting for marketpla
     <Button
       disabled={true}
       onPress={[Function]}
-      title="Buy"
+      title="Waiting for account..."
     />
     <Component>
-      Waiting for Marketplace approval...
+      Waiting for Account generation...
     </Component>
   </Component>
 </Component>

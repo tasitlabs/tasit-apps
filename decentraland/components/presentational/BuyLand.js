@@ -7,28 +7,24 @@ import Button from "./Button";
 import Colors from "@constants/Colors";
 
 export default function BuyLand(props) {
+  const { landForSale, onBuy, accountInfo } = props;
   const {
-    landForSale,
-    onBuy,
-    waitingForAccountSetup,
-    accountSetupSteps,
-  } = props;
-  const {
+    account,
+    setupInProgress: waitingForAccountSetup,
     fundedWithEthers,
     fundedWithMana,
     approvedMarketplace,
-  } = accountSetupSteps;
+  } = accountInfo;
 
   let waitingMessage = "";
   if (waitingForAccountSetup) {
-    if (!fundedWithEthers && !fundedWithMana && !approvedMarketplace)
-      waitingMessage = "Waiting for ETH funding...";
-    else if (fundedWithEthers && !fundedWithMana && !approvedMarketplace)
+    if (account == null) waitingMessage = "Waiting for Account generation...";
+    else if (!fundedWithEthers) waitingMessage = "Waiting for ETH funding...";
+    else if (!fundedWithMana && !approvedMarketplace)
       waitingMessage = "Waiting for MANA funding and Marketplace approval...";
-    else if (fundedWithEthers && fundedWithMana && !approvedMarketplace)
+    else if (!approvedMarketplace)
       waitingMessage = "Waiting for Marketplace approval...";
-    else if (fundedWithEthers && !fundedWithMana && approvedMarketplace)
-      waitingMessage = "Waiting for MANA funding...";
+    else if (!fundedWithMana) waitingMessage = "Waiting for MANA funding...";
   }
 
   return (
@@ -55,8 +51,7 @@ export default function BuyLand(props) {
 BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,
-  waitingForAccountSetup: PropTypes.bool.isRequired,
-  accountSetupSteps: PropTypes.object.isRequired,
+  accountInfo: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

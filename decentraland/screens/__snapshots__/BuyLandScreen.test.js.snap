@@ -2,11 +2,13 @@
 
 exports[`BuyLandScreen renders the component  1`] = `
 <BuyLand
-  accountSetupSteps={
+  accountInfo={
     Object {
+      "account": null,
       "approvedMarketplace": true,
       "fundedWithEthers": true,
       "fundedWithMana": true,
+      "setupInProgress": false,
     }
   }
   landForSale={
@@ -23,6 +25,5 @@ exports[`BuyLandScreen renders the component  1`] = `
     }
   }
   onBuy={[Function]}
-  waitingForAccountSetup={false}
 />
 `;

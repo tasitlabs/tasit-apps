@@ -8,8 +8,8 @@ describe("BuyLand", () => {
     const onBuy = () => {};
 
     it("initial state - before start account setup", async () => {
-      const waitingForAccountSetup = false;
-      const accountSetupSteps = {
+      const accountInfo = {
+        setupInProgress: false,
         fundedWithEthers: false,
         fundedWithMana: false,
         approvedMarketplace: false,
@@ -19,16 +19,15 @@ describe("BuyLand", () => {
           <BuyLand
             landForSale={parcelForSale}
             onBuy={onBuy}
-            waitingForAccountSetup={waitingForAccountSetup}
-            accountSetupSteps={accountSetupSteps}
+            accountInfo={accountInfo}
           />
         )
       ).toMatchSnapshot();
     });
 
     it("waiting for setup - waiting for ETH funding", async () => {
-      const waitingForAccountSetup = true;
-      const accountSetupSteps = {
+      const accountInfo = {
+        setupInProgress: true,
         fundedWithEthers: false,
         fundedWithMana: false,
         approvedMarketplace: false,
@@ -38,16 +37,15 @@ describe("BuyLand", () => {
           <BuyLand
             landForSale={parcelForSale}
             onBuy={onBuy}
-            waitingForAccountSetup={waitingForAccountSetup}
-            accountSetupSteps={accountSetupSteps}
+            accountInfo={accountInfo}
           />
         )
       ).toMatchSnapshot();
     });
 
     it("waiting for setup - waiting for MANA funding and marketplace approval", async () => {
-      const waitingForAccountSetup = true;
-      const accountSetupSteps = {
+      const accountInfo = {
+        setupInProgress: true,
         fundedWithEthers: true,
         fundedWithMana: false,
         approvedMarketplace: false,
@@ -57,16 +55,15 @@ describe("BuyLand", () => {
           <BuyLand
             landForSale={parcelForSale}
             onBuy={onBuy}
-            waitingForAccountSetup={waitingForAccountSetup}
-            accountSetupSteps={accountSetupSteps}
+            accountInfo={accountInfo}
           />
         )
       ).toMatchSnapshot();
     });
 
     it("waiting for setup - waiting for MANA funding", async () => {
-      const waitingForAccountSetup = true;
-      const accountSetupSteps = {
+      const accountInfo = {
+        setupInProgress: true,
         fundedWithEthers: true,
         fundedWithMana: false,
         approvedMarketplace: true,
@@ -76,16 +73,15 @@ describe("BuyLand", () => {
           <BuyLand
             landForSale={parcelForSale}
             onBuy={onBuy}
-            waitingForAccountSetup={waitingForAccountSetup}
-            accountSetupSteps={accountSetupSteps}
+            accountInfo={accountInfo}
           />
         )
       ).toMatchSnapshot();
     });
 
     it("waiting for setup - waiting for marketplace approval", async () => {
-      const waitingForAccountSetup = true;
-      const accountSetupSteps = {
+      const accountInfo = {
+        setupInProgress: true,
         fundedWithEthers: true,
         fundedWithMana: true,
         approvedMarketplace: false,
@@ -95,16 +91,15 @@ describe("BuyLand", () => {
           <BuyLand
             landForSale={parcelForSale}
             onBuy={onBuy}
-            waitingForAccountSetup={waitingForAccountSetup}
-            accountSetupSteps={accountSetupSteps}
+            accountInfo={accountInfo}
           />
         )
       ).toMatchSnapshot();
     });
 
     it("final state - account ready", async () => {
-      const waitingForAccountSetup = false;
-      const accountSetupSteps = {
+      const accountInfo = {
+        setupInProgress: false,
         fundedWithEthers: true,
         fundedWithMana: true,
         approvedMarketplace: true,
@@ -114,8 +109,7 @@ describe("BuyLand", () => {
           <BuyLand
             landForSale={parcelForSale}
             onBuy={onBuy}
-            waitingForAccountSetup={waitingForAccountSetup}
-            accountSetupSteps={accountSetupSteps}
+            accountInfo={accountInfo}
           />
         )
       ).toMatchSnapshot();
