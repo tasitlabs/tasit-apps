@@ -101,14 +101,6 @@ export const createAccount = async () => {
   return account;
 };
 
-// export const recoverOrCreateAccount = async () => {
-//   let account = await recoverAccount();
-//
-//   if (account == null) account = await createAccount();
-//
-//   return account;
-// };
-
 export const addressesAreEqual = (address1, address2) => {
   return address1.toUpperCase() === address2.toUpperCase();
 };
