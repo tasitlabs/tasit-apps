@@ -19,7 +19,7 @@ export default function BuyLand(props) {
   const { landForSale, onBuy, accountCreationStatus } = props;
   const waitingForAccountSetup =
     accountCreationStatus !== NOT_STARTED &&
-    accountCreationStatus != READY_TO_USE;
+    accountCreationStatus !== READY_TO_USE;
 
   let waitingMessage = "";
   switch (accountCreationStatus) {
