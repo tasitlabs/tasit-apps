@@ -30,20 +30,20 @@ export default function BuyLand(props) {
   return (
     <View style={styles.container}>
       <LandForSale landForSale={landForSale} />
-      <View style={styles.buttonView}>
-        {waitingForAccountSetup ? (
-          <React.Fragment>
-            <Button
-              title="Waiting for account..."
-              disabled={true}
-              onPress={() => {}}
-            />
+      {waitingForAccountSetup ? (
+        <React.Fragment>
+          <View style={styles.buttonView}>
+            <Button title="Buy" disabled={true} onPress={() => {}} />
+          </View>
+          <View style={styles.textRow}>
             <Text>{waitingMessage}</Text>
-          </React.Fragment>
-        ) : (
+          </View>
+        </React.Fragment>
+      ) : (
+        <View style={styles.buttonView}>
           <Button title="Buy" onPress={onBuy} />
-        )}
-      </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -55,6 +55,7 @@ BuyLand.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  textRow: { flexDirection: "row" },
   container: {
     flex: 1,
     backgroundColor: Colors.backgroundColor,
