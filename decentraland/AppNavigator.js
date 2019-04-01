@@ -8,7 +8,6 @@ import {
   createAppContainer,
 } from "react-navigation";
 
-import HomeScreen from "./screens/HomeScreen";
 import ListLandForSaleScreen from "./screens/ListLandForSaleScreen";
 import BuyLandScreen from "./screens/BuyLandScreen";
 import OnboardingHomeScreen from "./screens/OnboardingHomeScreen";
@@ -49,7 +48,6 @@ const headerWithBackButton = ({ navigation }) => {
 
 const AssetsForSaleNavigator = createStackNavigator(
   {
-    HomeScreen,
     ListLandForSaleScreen: {
       screen: ListLandForSaleScreen,
       navigationOptions: headerWithMenuButton,
@@ -76,7 +74,7 @@ const AssetsForSaleNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: "HomeScreen",
+    initialRouteName: "ListLandForSaleScreen",
     defaultNavigationOptions,
   }
 );
