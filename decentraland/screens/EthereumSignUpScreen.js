@@ -41,19 +41,20 @@ export class EthereumSignUpScreen extends React.Component {
         setAccountCreationStatus(FUNDING_WITH_MANA);
         await fundAccountWithMana(accountAddress);
         showInfo(`Account funded with MANA`);
+        setAccountCreationStatus(APPROVING_MARKETPLACE);
       };
 
       const approveMarketplace = async () => {
         setAccountCreationStatus(APPROVING_MARKETPLACE);
         await approveManaSpending(account);
         showInfo(`Marketplace approved`);
+        setAccountCreationStatus(FUNDING_WITH_MANA);
       };
 
       await fundWithEthers();
       await Promise.all([fundWithMana(), approveMarketplace()]);
-      showInfo(`Now you can buy land!`);
-
       setAccountCreationStatus(READY_TO_USE);
+      showInfo(`Now you can buy land!`);
     } catch (error) {
       showError(error);
     }
