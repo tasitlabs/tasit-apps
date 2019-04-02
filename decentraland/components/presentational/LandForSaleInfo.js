@@ -78,6 +78,6 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(4),
     fontWeight: "bold",
     color: Colors.assetInfoText,
-    paddingTop: responsiveHeight(0.2),
+    paddingTop: responsiveHeight(0.4),
   },
 });
