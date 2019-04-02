@@ -12,7 +12,7 @@ import { formatNumber } from "../../helpers";
 const onPriceInfo = () => {
   const title = "";
   const message =
-    "MANA is Decentraland’s fungible, ERC20 cryptocurrency token. MANA is burned, or spent, in exchange for LAND parcels. ";
+    "MANA is Decentraland’s fungible, ERC20 cryptocurrency token. MANA is burned or spent in exchange for LAND parcels. ";
   Alert.alert(title, message, [{ text: "Okay" }]);
 };
 
