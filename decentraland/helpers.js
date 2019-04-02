@@ -164,6 +164,8 @@ export const checkBlockchain = async () => {
   return true;
 };
 
+// Note: `toLocaleString` doesn't work on Android
+// See more: https://github.com/facebook/react-native/issues/19410#issuecomment-434232762
 export const formatNumber = number => {
   if (Platform.OS === "android") {
     // only android needs polyfill

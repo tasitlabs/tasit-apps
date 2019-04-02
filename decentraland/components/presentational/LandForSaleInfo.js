@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Alert } from "react-native";
 import PropTypes from "prop-types";
 import {
   responsiveWidth,
+  responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 import Colors from "@constants/Colors";
@@ -57,9 +58,11 @@ const styles = StyleSheet.create({
   },
   landNameContainer: {
     width: responsiveWidth(50),
+    paddingTop: responsiveHeight(1),
   },
   landName: {
     color: Colors.assetInfoText,
+    fontWeight: "bold",
   },
   landPriceContainer: {
     flexDirection: "row",

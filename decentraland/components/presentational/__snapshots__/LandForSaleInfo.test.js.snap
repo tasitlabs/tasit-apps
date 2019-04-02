@@ -12,6 +12,7 @@ exports[`LandForSaleInfo renders the component 1`] = `
   <Component
     style={
       Object {
+        "paddingTop": 13.34,
         "width": 375,
       }
     }
@@ -20,6 +21,7 @@ exports[`LandForSaleInfo renders the component 1`] = `
       style={
         Object {
           "color": "#2B2B2B",
+          "fontWeight": "bold",
         }
       }
     >
