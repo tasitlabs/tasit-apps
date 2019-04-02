@@ -1,4 +1,5 @@
 import { SecureStore } from "expo";
+import { Platform } from "react-native";
 import { Toast } from "native-base";
 import {
   Account,
@@ -164,6 +165,21 @@ export const checkBlockchain = async () => {
   return true;
 };
 
+// Note: `toLocaleString` doesn't work on Android
+// See more: https://github.com/facebook/react-native/issues/19410#issuecomment-434232762
+export const formatNumber = number => {
+  if (Platform.OS === "android") {
+    // only android needs polyfill
+    require("intl");
+    require("intl/locale-data/jsonp/en-US");
+  }
+
+  // TODO: Handle internationalization for other regions
+  const formatter = new Intl.NumberFormat("en-US");
+  const formattedNumber = formatter.format(number);
+  return formattedNumber;
+};
+
 export default {
   checkBlockchain,
   approveManaSpending,
@@ -177,4 +193,5 @@ export default {
   getContracts,
   recoverAccount,
   createAccount,
+  formatNumber,
 };

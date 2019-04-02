@@ -18,5 +18,8 @@ exports[`MyAsset renders the component 1`] = `
       }
     }
   />
+  <Component>
+    Sample Parcel
+  </Component>
 </Component>
 `;

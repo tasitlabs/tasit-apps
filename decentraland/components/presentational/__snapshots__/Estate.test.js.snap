@@ -15,8 +15,5 @@ exports[`Estate renders the component 1`] = `
       }
     }
   />
-  <Component>
-    Sample Estate
-  </Component>
 </Fragment>
 `;

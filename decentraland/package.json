@@ -20,8 +20,9 @@
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --ignore-pattern '/native-base-theme/*'"
   },
   "dependencies": {
-    "expo": "^32.0.0",
     "@expo/vector-icons": "^10.0.1",
+    "expo": "^32.0.0",
+    "intl": "^1.2.5",
     "native-base": "^2.12.1",
     "prop-types": "^15.6.2",
     "react": "16.5.0",
@@ -46,7 +47,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.5.0",
-    "expo-cli": "^2.13.0",
+    "expo-cli": "^2.14.0",
     "jest": "^24.1.0",
     "jest-expo": "^32.0.0",
     "jest-prop-type-error": "^1.1.0",
