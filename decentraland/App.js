@@ -12,6 +12,7 @@ const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
 import { checkBlockchain, showFatalError, recoverAccount } from "./helpers";
 import { Ionicons } from "@expo/vector-icons";
+import { Root } from "native-base";
 
 const store = createStore(decentralandApp);
 
@@ -61,7 +62,9 @@ Is the 'config/default.js' file correct?`;
     } else {
       return (
         <Provider store={store}>
-          <AppNavigator />
+          <Root>
+            <AppNavigator />
+          </Root>
         </Provider>
       );
     }
