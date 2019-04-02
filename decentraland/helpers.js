@@ -172,6 +172,8 @@ export const formatNumber = number => {
     require("intl");
     require("intl/locale-data/jsonp/en-US");
   }
+
+  // TODO: Handle internationalization for other regions
   const formatter = new Intl.NumberFormat("en-US");
   const formattedNumber = formatter.format(number);
   return formattedNumber;

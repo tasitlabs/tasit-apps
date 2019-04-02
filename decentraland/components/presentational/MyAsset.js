@@ -11,7 +11,7 @@ const { ESTATE, PARCEL } = AssetTypes;
 export default function MyAsset({ asset }) {
   const { type } = asset;
   let { name } = asset;
-  if (!name) name = "Land without name";
+  if (!name) name = "(No name for this one right now)";
 
   return (
     <View style={styles.assetContainer}>
