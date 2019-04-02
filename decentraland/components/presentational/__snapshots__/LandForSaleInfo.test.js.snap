@@ -60,7 +60,7 @@ exports[`LandForSaleInfo renders the component 1`] = `
             "color": "#2B2B2B",
             "fontSize": 61.191865835619396,
             "fontWeight": "bold",
-            "paddingTop": 2.668,
+            "paddingTop": 5.336,
           }
         }
       >
