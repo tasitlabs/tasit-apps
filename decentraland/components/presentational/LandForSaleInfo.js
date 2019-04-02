@@ -12,9 +12,9 @@ import { formatNumber } from "../../helpers";
 
 const onPriceInfo = () => {
   const title = "";
-  const message =
-    `MANA is Decentraland’s cryptocurrency token. You can use MANA to buy LAND parcels.`;
-  Alert.alert(title, message, [{ text: "Okay" }]);
+  const message = `MANA is Decentraland’s cryptocurrency token. You can use MANA to buy LAND parcels.`;
+  const buttons = [{ text: "Okay" }];
+  Alert.alert(title, message, buttons);
 };
 
 export default function LandForSaleInfo({ landForSale }) {
@@ -78,5 +78,6 @@ const styles = StyleSheet.create({
     fontSize: responsiveFontSize(4),
     fontWeight: "bold",
     color: Colors.assetInfoText,
+    paddingTop: responsiveHeight(0.2),
   },
 });
