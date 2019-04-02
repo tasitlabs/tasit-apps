@@ -14,6 +14,7 @@ import {
   showInfo,
   getContracts,
 } from "../helpers";
+import { Root } from "native-base";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
@@ -22,15 +23,23 @@ const { ESTATE, PARCEL } = AssetTypes;
 
 export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
+    // TODO: Remove me before merging
+    console.log("componentDidMount");
     try {
+      // TODO: Remove me before merging
+      console.log("About to call _loadAssetsForSale");
       showInfo("Loading land for sale...");
       await this._loadAssetsForSale();
     } catch (err) {
+      // TODO: Remove me before merging
+      console.log("Error with _loadAssetsForSale", err);
       showError(err);
     }
   };
 
   _loadAssetsForSale = async () => {
+    // TODO: Remove me before merging
+    console.log("Called _loadAssetsForSale");
     const {
       addLandForSaleToList,
       setLoadingAssetsForSaleInProgress,
@@ -40,8 +49,11 @@ export class ListLandForSaleScreen extends React.Component {
     const { getOpenSellOrders } = decentralandUtils;
 
     const fromBlock = 0;
+    // TODO: Remove me before merging
+    console.log("About to getOpenSellOrders");
     const openSellOrdersEvents = await getOpenSellOrders(fromBlock);
-
+    // TODO: Remove me before merging
+    console.log("Done with getOpenSellOrders");
     let contracts = getContracts();
     const { estateContract } = contracts;
 
@@ -168,13 +180,17 @@ export class ListLandForSaleScreen extends React.Component {
   render() {
     const { assetsForSale } = this.props;
     const { list, loadingInProgress } = assetsForSale;
+    // TODO: Remove me before merging
+    console.log("Loading in progress", loadingInProgress);
 
     return (
-      <LandForSaleList
-        landForSaleList={list}
-        renderItem={this._renderItem}
-        loadingInProgress={loadingInProgress}
-      />
+      <Root>
+        <LandForSaleList
+          landForSaleList={list}
+          renderItem={this._renderItem}
+          loadingInProgress={loadingInProgress}
+        />
+      </Root>
     );
   }
 }
