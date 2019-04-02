@@ -17,7 +17,7 @@ const onPriceInfo = () => {
   Alert.alert(title, message, [{ text: "Okay" }]);
 };
 
-export default function LandForSale({ landForSale }) {
+export default function LandForSaleInfo({ landForSale }) {
   const { asset, priceMana } = landForSale;
   let { name } = asset;
   const price = formatNumber(priceMana);
@@ -47,7 +47,7 @@ export default function LandForSale({ landForSale }) {
   );
 }
 
-LandForSale.propTypes = {
+LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };
 
