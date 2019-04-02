@@ -33,7 +33,17 @@ exports[`MyAssetsList renders the component with assets 1`] = `
 `;
 
 exports[`MyAssetsList renders the component without assets 1`] = `
-<LargeText>
-  You haven't bought any land yet.
-</LargeText>
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <LargeText>
+    You haven't bought any land yet.
+  </LargeText>
+</Component>
 `;
