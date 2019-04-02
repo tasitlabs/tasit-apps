@@ -1,19 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "./Estate";
 import Parcel from "./Parcel";
+import LandForSaleInfo from "./LandForSaleInfo";
 import AssetTypes from "@constants/AssetTypes";
 
 const { ESTATE, PARCEL } = AssetTypes;
 
 export default function LandForSale({ landForSale }) {
-  const { asset, priceMana } = landForSale;
+  const { asset } = landForSale;
   const { type } = asset;
 
-  // Note: Conversion to USD will be implemented on v0.2.0
-  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
   return (
     <View style={styles.landContainer}>
       {(() => {
@@ -24,7 +23,7 @@ export default function LandForSale({ landForSale }) {
             return <Parcel parcel={asset} />;
         }
       })()}
-      <Text>{priceMana} MANA</Text>
+      <LandForSaleInfo landForSale={landForSale} />
     </View>
   );
 }

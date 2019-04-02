@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import {
   responsiveWidth,
@@ -7,12 +7,11 @@ import {
 } from "react-native-responsive-dimensions";
 
 export default function Estate({ estate }) {
-  let { img, name } = estate;
-  if (!name) name = "Estate without name";
+  let { img } = estate;
+
   return (
     <React.Fragment>
       <Image style={styles.landImage} source={{ uri: img }} />
-      <Text>{name}</Text>
     </React.Fragment>
   );
 }

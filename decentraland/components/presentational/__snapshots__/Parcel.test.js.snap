@@ -15,8 +15,5 @@ exports[`Parcel renders the component 1`] = `
       }
     }
   />
-  <Component>
-    Not found
-  </Component>
 </Fragment>
 `;
