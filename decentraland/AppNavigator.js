@@ -96,13 +96,13 @@ const MainDrawerNavigator = createDrawerNavigator({
   AssetsForSale: {
     screen: AssetsForSaleNavigator,
     navigationOptions: {
-      drawerLabel: "Assets for sale",
+      drawerLabel: "Land for sale",
     },
   },
   MyAssets: {
     screen: MyAssetsNavigator,
     navigationOptions: {
-      drawerLabel: "My Assets",
+      drawerLabel: "My land",
     },
   },
 });

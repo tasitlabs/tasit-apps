@@ -23,7 +23,7 @@ const { ESTATE, PARCEL } = AssetTypes;
 export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
     try {
-      showInfo("Loading assets for sale...");
+      showInfo("Loading land for sale...");
       await this._loadAssetsForSale();
     } catch (err) {
       showError(err);
