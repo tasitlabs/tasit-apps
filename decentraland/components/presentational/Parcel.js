@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, StyleSheet, Text } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import {
   responsiveWidth,
@@ -12,7 +12,6 @@ export default function Parcel({ parcel }) {
   return (
     <React.Fragment>
       <Image style={styles.landImage} source={{ uri: img }} />
-      <Text>{name}</Text>
     </React.Fragment>
   );
 }

@@ -12,4 +12,6 @@ export default {
   disabledButtonColor: WHITE,
   disabledButtonBackground: GRAY,
   loadingColor: APP_BLUE,
+  assetInfoText: "#2B2B2B",
+  assetInfoIcon: "#868686",
 };

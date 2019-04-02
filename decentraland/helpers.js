@@ -1,4 +1,5 @@
 import { SecureStore } from "expo";
+import { Platform } from "react-native";
 import { Toast } from "native-base";
 import {
   Account,
@@ -163,6 +164,17 @@ export const checkBlockchain = async () => {
   return true;
 };
 
+export const formatNumber = number => {
+  if (Platform.OS === "android") {
+    // only android needs polyfill
+    require("intl");
+    require("intl/locale-data/jsonp/en-US");
+  }
+  const formatter = new Intl.NumberFormat("en-US");
+  const formattedNumber = formatter.format(number);
+  return formattedNumber;
+};
+
 export default {
   checkBlockchain,
   approveManaSpending,
@@ -176,4 +188,5 @@ export default {
   getContracts,
   recoverAccount,
   createAccount,
+  formatNumber,
 };
