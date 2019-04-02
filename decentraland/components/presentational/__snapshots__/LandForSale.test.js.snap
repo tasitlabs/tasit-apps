@@ -18,7 +18,7 @@ exports[`LandForSale renders the component 1`] = `
       }
     }
   />
-  <LandForSale
+  <LandForSaleInfo
     landForSale={
       Object {
         "asset": Object {
