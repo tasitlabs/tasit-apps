@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  // One alternate approach to consider here is if there were two containers
+  // that both flex to fill the size they're in following a 1:1 ratio.
   landNameContainer: {
     width: responsiveWidth(50),
     paddingTop: responsiveHeight(1),
