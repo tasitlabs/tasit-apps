@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListLandForSaleScreen renders the component 1`] = `
-<LandForSaleList
-  landForSaleList={Array []}
-  loadingInProgress={true}
-  renderItem={[Function]}
-/>
+<Styled(Root)>
+  <LandForSaleList
+    landForSaleList={Array []}
+    loadingInProgress={true}
+    renderItem={[Function]}
+  />
+</Styled(Root)>
 `;
