@@ -171,9 +171,10 @@ export class ListLandForSaleScreen extends React.Component {
     const { assetsForSale } = this.props;
     const { list, loadingInProgress } = assetsForSale;
 
-    // Note: The initial route component from react-native-navigation
+    // Note: The initial route component from react-navigation
     // Should add the NativaBase `Root` component.
     // See more: https://github.com/tasitlabs/tasit/pull/237#issuecomment-479124236
+    // Tech debt: Move from here to the App.js component.
     return (
       <Root>
         <LandForSaleList
