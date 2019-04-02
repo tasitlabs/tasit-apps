@@ -16,6 +16,7 @@
     "ios": "npx expo start --ios",
     "eject": "npx expo eject",
     "pretest": "npm run lint",
+    "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --ignore-pattern '/native-base-theme/*'"
   },

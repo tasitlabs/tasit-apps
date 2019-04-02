@@ -10,6 +10,7 @@ const {
   NOT_STARTED,
   GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
   READY_TO_USE,
@@ -30,6 +31,9 @@ export default function BuyLand(props) {
       break;
     case FUNDING_WITH_ETH:
       waitingMessage = "Funding account with ETH...";
+      break;
+    case FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE:
+      waitingMessage = "Funding account with MANA and approving marketplace...";
       break;
     case FUNDING_WITH_MANA:
       waitingMessage = "Funding account with MANA...";

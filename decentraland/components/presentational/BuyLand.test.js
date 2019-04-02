@@ -7,6 +7,7 @@ const {
   NOT_STARTED,
   GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
   READY_TO_USE,
@@ -45,6 +46,19 @@ describe("BuyLand", () => {
 
     it("waiting for setup - waiting for ETH funding", async () => {
       const accountCreationStatus = FUNDING_WITH_ETH;
+      expect(
+        shallow(
+          <BuyLand
+            landForSale={parcelForSale}
+            onBuy={onBuy}
+            accountCreationStatus={accountCreationStatus}
+          />
+        )
+      ).toMatchSnapshot();
+    });
+
+    it("waiting for setup - waiting for MANA funding and marketplace approval", async () => {
+      const accountCreationStatus = FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE;
       expect(
         shallow(
           <BuyLand
