@@ -7,8 +7,8 @@ import {
 } from "react-native-responsive-dimensions";
 
 export default function Parcel({ parcel }) {
-  let { img, name } = parcel;
-  if (!name) name = "Parcel without name";
+  let { img } = parcel;
+
   return (
     <React.Fragment>
       <Image style={styles.landImage} source={{ uri: img }} />

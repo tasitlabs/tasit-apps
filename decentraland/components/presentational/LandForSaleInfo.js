@@ -18,8 +18,9 @@ const onPriceInfo = () => {
 
 export default function LandForSale({ landForSale }) {
   const { asset, priceMana } = landForSale;
-  const { name } = asset;
+  let { name } = asset;
   const price = formatNumber(priceMana);
+  if (!name) name = "Land without name";
 
   // Note: Conversion to USD will be implemented on v0.2.0
   // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>

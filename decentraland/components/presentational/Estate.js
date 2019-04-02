@@ -7,8 +7,8 @@ import {
 } from "react-native-responsive-dimensions";
 
 export default function Estate({ estate }) {
-  let { img, name } = estate;
-  if (!name) name = "Estate without name";
+  let { img } = estate;
+
   return (
     <React.Fragment>
       <Image style={styles.landImage} source={{ uri: img }} />

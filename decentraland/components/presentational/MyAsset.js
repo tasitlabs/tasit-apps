@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "./Estate";
@@ -10,6 +10,8 @@ const { ESTATE, PARCEL } = AssetTypes;
 
 export default function MyAsset({ asset }) {
   const { type } = asset;
+  let { name } = asset;
+  if (!name) name = "Land without name";
 
   return (
     <View style={styles.assetContainer}>
@@ -21,6 +23,7 @@ export default function MyAsset({ asset }) {
             return <Parcel parcel={asset} />;
         }
       })()}
+      <Text>{name}</Text>
     </View>
   );
 }
