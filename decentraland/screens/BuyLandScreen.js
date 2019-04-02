@@ -57,7 +57,7 @@ export class BuyLandScreen extends React.Component {
       addToMyAssetsList(asset);
     };
 
-    showInfo(`Buying the ${typeDescription.toLowerCase()} asset...`);
+    showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
     _executeOrder(landForSale, account, onSuccess);
     navigation.navigate("ListLandForSaleScreen");
   };
