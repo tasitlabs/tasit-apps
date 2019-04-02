@@ -145,11 +145,9 @@ export const fundAccountWithMana = async accountAddress => {
 };
 
 // More about Toast component: https://docs.nativebase.io/Components.html#toast-def-headref
-const showToast = msg => {
-  // TODO: Remove me before merging
-  console.log("Toast", Toast);
+const showToast = msg =>
   Toast.show({ text: msg, duration: 3000, buttonText: "Okay" });
-};
+
 export const showFatalError = msg => console.error(msg);
 export const showError = msg => showToast(`ERROR: ${msg}`);
 export const showWarn = msg => showToast(`WARN: ${msg}`);
