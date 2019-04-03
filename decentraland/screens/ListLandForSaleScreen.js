@@ -38,18 +38,15 @@ export class ListLandForSaleScreen extends React.Component {
     } = this.props;
 
     const decentralandUtils = new DecentralandUtils();
-    const { getOpenSellOrders } = decentralandUtils;
+    const { getAllAssetsForSale } = decentralandUtils;
 
-    const fromBlock = 0;
-
-    const openSellOrdersEvents = await getOpenSellOrders(fromBlock);
+    const openSellOrdersEvents = await getAllAssetsForSale();
 
     let contracts = getContracts();
     const { estateContract } = contracts;
 
     const estatesForSale = [];
-    for (let event of openSellOrdersEvents) {
-      let { values: order } = event;
+    for (let order of openSellOrdersEvents) {
       const { nftAddress } = order;
       const isEstate = addressesAreEqual(
         nftAddress,
