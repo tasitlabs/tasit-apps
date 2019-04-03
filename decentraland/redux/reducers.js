@@ -2,12 +2,12 @@ import { combineReducers } from "redux";
 import {
   SET_ACCOUNT,
   SELECT_LAND_TO_BUY,
-  SET_LAND_FOR_SALE_LIST,
   REMOVE_LAND_FOR_SALE,
   ADD_LAND_FOR_SALE_TO_LIST,
   SET_ACCOUNT_CREATION_STATUS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
+  REMOVE_MY_ASSET_FROM_LIST,
 } from "./actions";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
@@ -46,14 +46,16 @@ function selectedLandToBuy(state = null, action) {
 }
 
 function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
-  const { type, list, landForSale, loadingInProgress } = action;
+  const { type, landForSale, loadingInProgress } = action;
   switch (type) {
-    case SET_LAND_FOR_SALE_LIST:
-      return { ...state, list };
     case ADD_LAND_FOR_SALE_TO_LIST:
-      return { ...state, list: [...state.list, landForSale] };
-    case REMOVE_LAND_FOR_SALE:
-      return { ...state, list: state.list.filter(val => val !== landForSale) };
+      return { ...state, list: [landForSale, ...state.list] };
+    case REMOVE_LAND_FOR_SALE: {
+      let { list: assetsForSale } = state;
+      const toRemove = landForSale;
+      const list = assetsForSale.filter(asset => asset !== toRemove);
+      return { ...state, list };
+    }
     case SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS:
       return { ...state, loadingInProgress };
     default:
@@ -66,6 +68,12 @@ function myAssets(state = { list: [] }, action) {
   switch (type) {
     case ADD_TO_MY_ASSETS_LIST:
       return { ...state, list: [myAsset, ...state.list] };
+    case REMOVE_MY_ASSET_FROM_LIST: {
+      const { list: myAssets } = state;
+      const toRemove = myAsset;
+      const list = myAssets.filter(asset => asset !== toRemove);
+      return { ...state, list };
+    }
     default:
       return state;
   }

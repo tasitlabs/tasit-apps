@@ -1,6 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeLandForSale, addToMyAssetsList } from "../redux/actions";
+import {
+  removeLandForSale,
+  addLandForSaleToList,
+  removeMyAssetFromList,
+  addToMyAssetsList,
+} from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "../helpers";
@@ -41,6 +46,8 @@ export class BuyLandScreen extends React.Component {
       navigation,
       accountInfo,
       removeLandForSale,
+      addLandForSaleToList,
+      removeMyAssetFromList,
       addToMyAssetsList,
     } = props;
     const { account } = accountInfo;
@@ -53,16 +60,31 @@ export class BuyLandScreen extends React.Component {
 
     const onSuccess = () => {
       showInfo(`${typeDescription} bought successfully.`);
-      removeLandForSale(landForSale);
-      addToMyAssetsList(asset);
+    };
+
+    const onError = (assetForSale, message) => {
+      const { asset } = assetForSale;
+      showError(message);
+      removeMyAssetFromList(asset);
+      addLandForSaleToList(assetForSale);
     };
 
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
-    _executeOrder(landForSale, account, onSuccess);
+
+    // Optimistic UI update
+    removeLandForSale(landForSale);
+    addToMyAssetsList(asset);
+
+    _executeOrder(landForSale, account, onSuccess, onError);
     navigation.navigate("ListLandForSaleScreen");
   };
 
-  _executeOrder = async (sellOrder, account, afterSuccessfulExecution) => {
+  _executeOrder = async (
+    sellOrder,
+    account,
+    afterSuccessfulExecution,
+    onError
+  ) => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;
       const { id: assetId, type } = asset;
@@ -94,8 +116,12 @@ export class BuyLandScreen extends React.Component {
       await action.waitForNonceToUpdate();
 
       afterSuccessfulExecution();
-    } catch (err) {
-      showError(err);
+    } catch (error) {
+      // Note: The current version isn't supporting `failing` events
+      // See more:
+      // https://github.com/tasitlabs/tasit/issues/151
+      // https://github.com/tasitlabs/tasit/issues/233
+      onError(sellOrder, error.message);
     }
   };
 
@@ -117,6 +143,8 @@ BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
   selectedLandToBuy: PropTypes.object.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
+  addLandForSaleToList: PropTypes.func.isRequired,
+  removeMyAssetFromList: PropTypes.func.isRequired,
   addToMyAssetsList: PropTypes.func.isRequired,
 };
 
@@ -127,7 +155,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   removeLandForSale,
+  addLandForSaleToList,
   addToMyAssetsList,
+  removeMyAssetFromList,
 };
 
 export default connect(
