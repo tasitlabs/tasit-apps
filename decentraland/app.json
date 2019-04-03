@@ -28,6 +28,9 @@
     },
     "android": {
       "package": "io.tasit.decentraland",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/TasitLogoFromSvgTransparent1024x1024.png"
+      },
       "permissions": [],
       "versionCode": 10
     }
