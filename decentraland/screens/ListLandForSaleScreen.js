@@ -14,6 +14,7 @@ import {
   showInfo,
   getContracts,
 } from "../helpers";
+import { Root } from "native-base";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
@@ -23,7 +24,7 @@ const { ESTATE, PARCEL } = AssetTypes;
 export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
     try {
-      showInfo("Loading assets for sale...");
+      showInfo("Loading land for sale...");
       await this._loadAssetsForSale();
     } catch (err) {
       showError(err);
@@ -40,6 +41,7 @@ export class ListLandForSaleScreen extends React.Component {
     const { getOpenSellOrders } = decentralandUtils;
 
     const fromBlock = 0;
+
     const openSellOrdersEvents = await getOpenSellOrders(fromBlock);
 
     let contracts = getContracts();
@@ -169,12 +171,18 @@ export class ListLandForSaleScreen extends React.Component {
     const { assetsForSale } = this.props;
     const { list, loadingInProgress } = assetsForSale;
 
+    // Note: The initial route component from react-navigation
+    // Should add the NativaBase `Root` component.
+    // See more: https://github.com/tasitlabs/tasit/pull/237#issuecomment-479124236
+    // Tech debt: Move from here to the App.js component.
     return (
-      <LandForSaleList
-        landForSaleList={list}
-        renderItem={this._renderItem}
-        loadingInProgress={loadingInProgress}
-      />
+      <Root>
+        <LandForSaleList
+          landForSaleList={list}
+          renderItem={this._renderItem}
+          loadingInProgress={loadingInProgress}
+        />
+      </Root>
     );
   }
 }

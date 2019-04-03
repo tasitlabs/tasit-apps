@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import Colors from "@constants/Colors";
 import LargeText from "@presentational/LargeText";
@@ -15,7 +15,9 @@ export default class MyAssetsList extends React.PureComponent {
     const { length: listAmount } = myAssetsList;
     const withoutAssets = listAmount === 0;
     return withoutAssets ? (
-      <LargeText>{`You haven't bought any land yet.`}</LargeText>
+      <View style={styles.emptyContainer}>
+        <LargeText>{`You haven't bought any land yet.`}</LargeText>
+      </View>
     ) : (
       <FlatList
         data={myAssetsList}
@@ -36,5 +38,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.backgroundColor,
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

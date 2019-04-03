@@ -11,8 +11,8 @@ import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
 import { checkBlockchain, showFatalError, recoverAccount } from "./helpers";
-import { Root } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { Root } from "native-base";
 
 const store = createStore(decentralandApp);
 

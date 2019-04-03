@@ -15,7 +15,7 @@ export default class LandForSaleList extends React.PureComponent {
     const { length: listAmount } = landForSaleList;
     const withoutAssetsForSale = !loadingInProgress && listAmount === 0;
     return withoutAssetsForSale ? (
-      <LargeText>There are no assets for sale right now.</LargeText>
+      <LargeText>{`There isn't any land for sale right now.`}</LargeText>
     ) : (
       <FlatList
         data={landForSaleList}
