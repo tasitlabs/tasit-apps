@@ -62,7 +62,8 @@ export class BuyLandScreen extends React.Component {
       showInfo(`${typeDescription} bought successfully.`);
     };
 
-    const onError = () => {
+    const onError = message => {
+      showError(message);
       removeMyAssetFromList(asset);
       addLandForSaleToList(landForSale);
     };
@@ -114,13 +115,12 @@ export class BuyLandScreen extends React.Component {
       await action.waitForNonceToUpdate();
 
       afterSuccessfulExecution();
-    } catch (err) {
+    } catch (error) {
       // Note: The current version isn't supporting `failing` events
       // See more:
       // https://github.com/tasitlabs/tasit/issues/151
       // https://github.com/tasitlabs/tasit/issues/233
-      onError();
-      showError(err);
+      onError(error.message);
     }
   };
 

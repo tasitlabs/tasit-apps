@@ -1,7 +1,6 @@
 export const SET_ACCOUNT = "SET_ACCOUNT";
 export const SET_ACCOUNT_CREATION_STATUS = "SET_ACCOUNT_CREATION_STATUS";
 export const SELECT_LAND_TO_BUY = "SELECT_LAND_TO_BUY";
-export const SET_LAND_FOR_SALE_LIST = "SET_LAND_FOR_SALE_LIST";
 export const REMOVE_LAND_FOR_SALE = "REMOVE_LAND_FOR_SALE";
 export const ADD_LAND_FOR_SALE_TO_LIST = "ADD_LAND_FOR_SALE_TO_LIST";
 export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
@@ -19,10 +18,6 @@ export function setAccountCreationStatus(creationStatus) {
 
 export function selectLandToBuy(landForSale) {
   return { type: SELECT_LAND_TO_BUY, landForSale };
-}
-
-export function setLandForSaleList(list) {
-  return { type: SET_LAND_FOR_SALE_LIST, list };
 }
 
 export function addLandForSaleToList(landForSale) {
