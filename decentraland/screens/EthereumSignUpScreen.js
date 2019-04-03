@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { setAccount, setAccountCreationStatus } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
+
 import {
   approveManaSpending,
   showInfo,
@@ -11,10 +12,12 @@ import {
   fundAccountWithMana,
   createAccount,
 } from "../helpers";
+
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const {
   GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
   READY_TO_USE,
@@ -25,36 +28,51 @@ export class EthereumSignUpScreen extends React.Component {
     try {
       const { setAccount, setAccountCreationStatus } = this.props;
 
-      const account = await createAccount();
-      showInfo(`Account generated`);
-      setAccount(account);
+      // The pattern for each step is:
+      // 1. alert with good info as soon as it's true
+      // 2. persist any important side effects we may need
+      //    later if applicable
+      // 3. Change UI progress state on-screen
 
-      const { address: accountAddress } = account;
-
-      const fundWithEthers = async () => {
+      const createAnAccount = async () => {
+        const account = await createAccount();
+        showInfo(`Account generated`);
+        setAccount(account);
         setAccountCreationStatus(FUNDING_WITH_ETH);
-        await fundAccountWithEthers(accountAddress);
-        showInfo(`Account funded with ETH`);
+        return account;
       };
 
-      const fundWithMana = async () => {
-        setAccountCreationStatus(FUNDING_WITH_MANA);
+      const fundWithEthers = async accountAddress => {
+        await fundAccountWithEthers(accountAddress);
+        showInfo(`Account funded with ETH`);
+        setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
+      };
+
+      const fundWithMana = async accountAddress => {
         await fundAccountWithMana(accountAddress);
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
       };
 
-      const approveMarketplace = async () => {
-        setAccountCreationStatus(APPROVING_MARKETPLACE);
+      const approveMarketplace = async account => {
         await approveManaSpending(account);
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
       };
 
-      await fundWithEthers();
-      await Promise.all([fundWithMana(), approveMarketplace()]);
-      setAccountCreationStatus(READY_TO_USE);
+      ///
+      // Main control flow
+      ///
+      const account = await createAnAccount();
+      const { address: accountAddress } = account;
+      await fundWithEthers(accountAddress);
+      await Promise.all([
+        fundWithMana(accountAddress),
+        approveMarketplace(account),
+      ]);
+
       showInfo(`Now you can buy land!`);
+      setAccountCreationStatus(READY_TO_USE);
     } catch (error) {
       showError(error);
     }
