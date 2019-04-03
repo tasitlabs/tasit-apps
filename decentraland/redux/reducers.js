@@ -8,6 +8,7 @@ import {
   SET_ACCOUNT_CREATION_STATUS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
+  REMOVE_MY_ASSET_FROM_LIST,
 } from "./actions";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
@@ -66,6 +67,8 @@ function myAssets(state = { list: [] }, action) {
   switch (type) {
     case ADD_TO_MY_ASSETS_LIST:
       return { ...state, list: [myAsset, ...state.list] };
+    case REMOVE_MY_ASSET_FROM_LIST:
+      return { ...state, list: state.list.filter(val => val !== myAsset) };
     default:
       return state;
   }
