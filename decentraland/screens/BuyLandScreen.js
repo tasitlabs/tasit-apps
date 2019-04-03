@@ -62,10 +62,11 @@ export class BuyLandScreen extends React.Component {
       showInfo(`${typeDescription} bought successfully.`);
     };
 
-    const onError = message => {
+    const onError = (assetForSale, message) => {
+      const { asset } = assetForSale;
       showError(message);
       removeMyAssetFromList(asset);
-      addLandForSaleToList(landForSale);
+      addLandForSaleToList(assetForSale);
     };
 
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
@@ -120,7 +121,7 @@ export class BuyLandScreen extends React.Component {
       // See more:
       // https://github.com/tasitlabs/tasit/issues/151
       // https://github.com/tasitlabs/tasit/issues/233
-      onError(error.message);
+      onError(sellOrder, error.message);
     }
   };
 
