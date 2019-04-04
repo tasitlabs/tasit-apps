@@ -11,19 +11,23 @@ export class MyAssetsScreen extends React.Component {
 
   render() {
     const { myAssets } = this.props;
-    const { list } = myAssets;
 
-    return <MyAssetsList myAssetsList={list} renderItem={this._renderItem} />;
+    return (
+      <MyAssetsList myAssetsList={myAssets} renderItem={this._renderItem} />
+    );
   }
 }
 
 MyAssetsScreen.propTypes = {
-  myAssets: PropTypes.object.isRequired,
+  myAssets: PropTypes.array.isRequired,
+  account: PropTypes.object,
 };
 
 const mapStateToProps = state => {
-  const { myAssets } = state;
-  return { myAssets };
+  const { myAssets, accountInfo } = state;
+  const { account } = accountInfo;
+  const { list: myAssetsList } = myAssets;
+  return { myAssets: myAssetsList, account };
 };
 
 export default connect(mapStateToProps)(MyAssetsScreen);

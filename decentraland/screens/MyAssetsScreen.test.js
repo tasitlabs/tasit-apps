@@ -6,11 +6,11 @@ import { parcel } from "@helpers/testHelpers";
 describe("ListLandForSaleScreen", () => {
   describe("renders the component", () => {
     it("without assets", async () => {
-      const myAssets = { list: [] };
+      const myAssets = [];
       expect(shallow(<MyAssetsScreen myAssets={myAssets} />)).toMatchSnapshot();
     });
     it("with assets", async () => {
-      const myAssets = { list: [parcel] };
+      const myAssets = [parcel];
       expect(shallow(<MyAssetsScreen myAssets={myAssets} />)).toMatchSnapshot();
     });
   });
