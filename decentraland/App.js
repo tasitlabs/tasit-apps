@@ -48,12 +48,12 @@ Is the 'config/default.js' file correct?`;
 
   async _loadAccount() {
     const account = await retrieveEphemeralAccount();
-    store.dispatch(setAccount(account));
+    if (account) store.dispatch(setAccount(account));
   }
 
   async _loadMyAssets() {
     const myAssets = await retrieveMyAssets();
-    store.dispatch(setMyAssetsList(myAssets));
+    if (myAssets) store.dispatch(setMyAssetsList(myAssets));
   }
 
   render() {
