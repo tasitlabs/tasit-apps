@@ -16,12 +16,14 @@ describe("BuyLandScreen", () => {
       const addToMyAssetsList = () => {};
       const removeMyAssetFromList = () => {};
       const addLandForSaleToList = () => {};
+      const myAssets = [];
 
       expect(
         shallow(
           <BuyLandScreen
             navigation={navigation}
             accountInfo={accountInfo}
+            myAssets={myAssets}
             selectedLandToBuy={estateForSale}
             removeLandForSale={removeLandForSale}
             addToMyAssetsList={addToMyAssetsList}
