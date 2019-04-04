@@ -75,8 +75,10 @@ function myAssets(state = { list: [] }, action) {
       const list = myAssets.filter(asset => asset !== toRemove);
       return { ...state, list };
     }
-    case SET_MY_ASSETS_LIST:
-      return { ...state, list: myAssets };
+    case SET_MY_ASSETS_LIST: {
+      const list = myAssets === null ? [] : myAssets;
+      return { ...state, list };
+    }
     default:
       return state;
   }

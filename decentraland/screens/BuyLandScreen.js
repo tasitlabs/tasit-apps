@@ -9,7 +9,7 @@ import {
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "@helpers";
-
+import { storeMyAssets } from "@helpers/storage";
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
@@ -45,11 +45,11 @@ export class BuyLandScreen extends React.Component {
     const {
       navigation,
       accountInfo,
+      myAssets,
       removeLandForSale,
       addLandForSaleToList,
-      removeMyAssetFromList,
-      addToMyAssetsList,
     } = props;
+    let { removeMyAssetFromList, addToMyAssetsList } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
     const { type } = asset;
@@ -66,6 +66,7 @@ export class BuyLandScreen extends React.Component {
       const { asset } = assetForSale;
       showError(message);
       removeMyAssetFromList(asset);
+      storeMyAssets(myAssets);
       addLandForSaleToList(assetForSale);
     };
 
@@ -74,6 +75,7 @@ export class BuyLandScreen extends React.Component {
     // Optimistic UI update
     removeLandForSale(landForSale);
     addToMyAssetsList(asset);
+    storeMyAssets([...myAssets, asset]);
 
     _executeOrder(landForSale, account, onSuccess, onError);
     navigation.navigate("ListLandForSaleScreen");
@@ -142,6 +144,7 @@ export class BuyLandScreen extends React.Component {
 BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
   selectedLandToBuy: PropTypes.object.isRequired,
+  myAssets: PropTypes.array.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
   addLandForSaleToList: PropTypes.func.isRequired,
   removeMyAssetFromList: PropTypes.func.isRequired,
@@ -149,8 +152,9 @@ BuyLandScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { accountInfo, selectedLandToBuy } = state;
-  return { accountInfo, selectedLandToBuy };
+  const { accountInfo, selectedLandToBuy, myAssets } = state;
+  const { list: myAssetsList } = myAssets;
+  return { accountInfo, selectedLandToBuy, myAssets: myAssetsList };
 };
 
 const mapDispatchToProps = {
