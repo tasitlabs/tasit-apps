@@ -51,7 +51,6 @@ export class BuyLandScreen extends React.Component {
       removeMyAssetFromList,
       addToMyAssetsList,
     } = props;
-    let { removeMyAssetFromList, addToMyAssetsList } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
     const { type } = asset;
