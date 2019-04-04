@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { MyAssetsScreen } from "./MyAssetsScreen";
-import { parcel } from "@presentational/testHelpers";
+import { parcel } from "@helpers/testHelpers";
 
 describe("ListLandForSaleScreen", () => {
   describe("renders the component", () => {
