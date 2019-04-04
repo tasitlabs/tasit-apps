@@ -4,11 +4,12 @@ import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
-export const loadAssetsForSale = async appendAssetForSaleToList => {
+// Note: Returns a list of Promises
+export const getAllAssetsForSale = async () => {
   const decentralandUtils = new DecentralandUtils();
-  const { getAllAssetsForSale } = decentralandUtils;
+  const { getAllAssetsForSale: getAllOpenSellOrders } = decentralandUtils;
 
-  const openSellOrders = await getAllAssetsForSale();
+  const openSellOrders = await getAllOpenSellOrders();
 
   let contracts = getContracts();
   const { estateContract } = contracts;
@@ -20,13 +21,16 @@ export const loadAssetsForSale = async appendAssetForSaleToList => {
     if (isEstate) estatesForSale.push(order);
   }
 
+  const assetsForSale = [];
   // Note: Getting only the first 10 assets for now
   // See more: https://github.com/tasitlabs/tasit/issues/155
   const listSize = 10;
   for (let order of estatesForSale.slice(0, listSize)) {
-    let assetForSale = await _toAssetForSale(order);
-    appendAssetForSaleToList(assetForSale);
+    let assetForSalePromise = _toAssetForSale(order);
+    assetsForSale.push(assetForSalePromise);
   }
+
+  return assetsForSale;
 };
 
 const _toAssetForSale = async sellOrder => {
@@ -102,5 +106,5 @@ const _getTypeFromSellOrder = (sellOrder, landContract, estateContract) => {
 };
 
 export default {
-  loadAssetsForSale,
+  getAllAssetsForSale,
 };

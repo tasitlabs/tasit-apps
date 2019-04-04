@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
 import { showError, showInfo } from "@helpers";
-import { loadAssetsForSale } from "@helpers/decentraland";
+import { getAllAssetsForSale } from "@helpers/decentraland";
 import { Root } from "native-base";
 
 export class ListLandForSaleScreen extends React.Component {
@@ -20,7 +20,11 @@ export class ListLandForSaleScreen extends React.Component {
     } = this.props;
     try {
       showInfo("Loading land for sale...");
-      await loadAssetsForSale(appendLandForSaleToList);
+      const assetsForSale = await getAllAssetsForSale();
+      for (let promise of assetsForSale) {
+        const assetForSale = await promise;
+        appendLandForSaleToList(assetForSale);
+      }
       setLoadingAssetsForSaleInProgress(false);
     } catch (err) {
       showError(err);
