@@ -15,7 +15,7 @@ describe("BuyLandScreen", () => {
       const removeLandForSale = () => {};
       const addToMyAssetsList = () => {};
       const removeMyAssetFromList = () => {};
-      const addLandForSaleToList = () => {};
+      const prependLandForSaleToList = () => {};
 
       expect(
         shallow(
@@ -26,7 +26,7 @@ describe("BuyLandScreen", () => {
             removeLandForSale={removeLandForSale}
             addToMyAssetsList={addToMyAssetsList}
             removeMyAssetFromList={removeMyAssetFromList}
-            addLandForSaleToList={addLandForSaleToList}
+            prependLandForSaleToList={prependLandForSaleToList}
           />
         )
       ).toMatchSnapshot();

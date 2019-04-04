@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   removeLandForSale,
-  addLandForSaleToList,
+  prependLandForSaleToList,
   removeMyAssetFromList,
   addToMyAssetsList,
 } from "../redux/actions";
@@ -46,7 +46,7 @@ export class BuyLandScreen extends React.Component {
       navigation,
       accountInfo,
       removeLandForSale,
-      addLandForSaleToList,
+      prependLandForSaleToList,
       removeMyAssetFromList,
       addToMyAssetsList,
     } = props;
@@ -66,7 +66,7 @@ export class BuyLandScreen extends React.Component {
       const { asset } = assetForSale;
       showError(message);
       removeMyAssetFromList(asset);
-      addLandForSaleToList(assetForSale);
+      prependLandForSaleToList(assetForSale);
     };
 
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
@@ -143,7 +143,7 @@ BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
   selectedLandToBuy: PropTypes.object.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
-  addLandForSaleToList: PropTypes.func.isRequired,
+  prependLandForSaleToList: PropTypes.func.isRequired,
   removeMyAssetFromList: PropTypes.func.isRequired,
   addToMyAssetsList: PropTypes.func.isRequired,
 };
@@ -155,7 +155,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   removeLandForSale,
-  addLandForSaleToList,
+  prependLandForSaleToList,
   addToMyAssetsList,
   removeMyAssetFromList,
 };

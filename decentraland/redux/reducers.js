@@ -3,7 +3,8 @@ import {
   SET_ACCOUNT,
   SELECT_LAND_TO_BUY,
   REMOVE_LAND_FOR_SALE,
-  ADD_LAND_FOR_SALE_TO_LIST,
+  APPEND_LAND_FOR_SALE_TO_LIST,
+  PREPEND_LAND_FOR_SALE_TO_LIST,
   SET_ACCOUNT_CREATION_STATUS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
@@ -50,8 +51,10 @@ function selectedLandToBuy(state = null, action) {
 function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
   const { type, landForSale, loadingInProgress } = action;
   switch (type) {
-    case ADD_LAND_FOR_SALE_TO_LIST:
+    case PREPEND_LAND_FOR_SALE_TO_LIST:
       return { ...state, list: [landForSale, ...state.list] };
+    case APPEND_LAND_FOR_SALE_TO_LIST:
+      return { ...state, list: [...state.list, landForSale] };
     case REMOVE_LAND_FOR_SALE: {
       let { list: assetsForSale } = state;
       const list = removeFromList(assetsForSale, landForSale);

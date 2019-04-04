@@ -11,14 +11,14 @@ describe("ListLandForSaleScreen", () => {
 
   it("renders the component", async () => {
     const assetsForSale = { list: [], loadingInProgress: true };
-    const addLandForSaleToList = () => {};
+    const appendLandForSaleToList = () => {};
     const selectLandToBuy = () => {};
     const setLoadingAssetsForSaleInProgress = () => {};
     expect(
       shallow(
         <ListLandForSaleScreen
           assetsForSale={assetsForSale}
-          addLandForSaleToList={addLandForSaleToList}
+          appendLandForSaleToList={appendLandForSaleToList}
           selectLandToBuy={selectLandToBuy}
           setLoadingAssetsForSaleInProgress={setLoadingAssetsForSaleInProgress}
         />
