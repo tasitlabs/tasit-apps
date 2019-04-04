@@ -60,13 +60,13 @@ export class BuyLandScreen extends React.Component {
 
     const onSuccess = () => {
       showInfo(`${typeDescription} bought successfully.`);
+      storeMyAssets([asset, ...myAssets]);
     };
 
     const onError = (assetForSale, message) => {
       const { asset } = assetForSale;
       showError(message);
       removeMyAssetFromList(asset);
-      storeMyAssets(myAssets);
       addLandForSaleToList(assetForSale);
     };
 
@@ -75,7 +75,6 @@ export class BuyLandScreen extends React.Component {
     // Optimistic UI update
     removeLandForSale(landForSale);
     addToMyAssetsList(asset);
-    storeMyAssets([...myAssets, asset]);
 
     _executeOrder(landForSale, account, onSuccess, onError);
     navigation.navigate("ListLandForSaleScreen");

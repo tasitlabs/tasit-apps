@@ -22,13 +22,11 @@ export const retrieveEphemeralAccount = async () => {
 export const storeMyAssets = async myAssets => {
   const strMyAssets = JSON.stringify(myAssets);
   await _storeData(MY_ASSETS_LIST, strMyAssets);
-  console.log(`Stored asstes -> ${strMyAssets}`);
 };
 
 export const retrieveMyAssets = async () => {
   const strMyAssets = await _retrieveData(MY_ASSETS_LIST);
   const myAssets = JSON.parse(strMyAssets);
-  console.log(`Retrieved assets -> ${strMyAssets}`);
   return myAssets;
 };
 
