@@ -27,7 +27,8 @@ export const storeMyAssets = async myAssets => {
 
 export const retrieveMyAssets = async () => {
   const strMyAssets = await _retrieveData(MY_ASSETS_LIST, false);
-  const myAssets = _fromString(strMyAssets);
+  let myAssets = _fromString(strMyAssets);
+  if (!myAssets) myAssets = [];
   return myAssets;
 };
 
