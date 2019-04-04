@@ -13,6 +13,8 @@ import {
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
 
+const removeFromList = (list, toRemove) => list.filter(e => e !== toRemove);
+
 function accountInfo(
   state = {
     account: null,
@@ -52,8 +54,7 @@ function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
       return { ...state, list: [landForSale, ...state.list] };
     case REMOVE_LAND_FOR_SALE: {
       let { list: assetsForSale } = state;
-      const toRemove = landForSale;
-      const list = assetsForSale.filter(asset => asset !== toRemove);
+      const list = removeFromList(assetsForSale, landForSale);
       return { ...state, list };
     }
     case SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS:
@@ -70,8 +71,7 @@ function myAssets(state = { list: [] }, action) {
       return { ...state, list: [myAsset, ...state.list] };
     case REMOVE_MY_ASSET_FROM_LIST: {
       const { list: myAssets } = state;
-      const toRemove = myAsset;
-      const list = myAssets.filter(asset => asset !== toRemove);
+      const list = removeFromList(myAssets, myAsset);
       return { ...state, list };
     }
     default:
