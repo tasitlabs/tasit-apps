@@ -1,24 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
+import { setMyAssetsList } from "../redux/actions";
 import PropTypes from "prop-types";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
-//import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
-//import { listsAreEqual } from "@helpers";
+import { listsAreEqual } from "@helpers";
+import { getAssetsOf } from "@helpers/decentraland";
 
 export class MyAssetsScreen extends React.Component {
-  // componentDidMount = async () => {
-  //   const { account, myAssets: fromState } = this.props;
-  //   const decentralandUtils = new DecentralandUtils();
-  //   const { getAssetsOf } = decentralandUtils;
-  //   if (account) {
-  //     const { acountAddress } = account;
-  //     const fromBlockchain = await getAssetsOf(acountAddress);
-  //     const shouldUpdate = listsAreEqual(fromBlockchain, fromState);
-  //     if (shouldUpdate) {
-  //     }
-  //   }
-  // };
+  componentDidMount = async () => {
+    const { account, myAssets: fromState, setMyAssetsList } = this.props;
+    if (account) {
+      const { address } = account;
+      const fromBlockchain = await this._getAssetsFromBlockchain(address);
+      const shouldUpdate = !listsAreEqual(fromBlockchain, fromState);
+      if (shouldUpdate) setMyAssetsList(fromBlockchain);
+    }
+  };
+
+  _getAssetsFromBlockchain = async address => {
+    const listOfPromises = await getAssetsOf(address);
+    const fromBlockchain = await Promise.all([...listOfPromises]);
+    return fromBlockchain;
+  };
 
   _renderItem = ({ item: asset }) => {
     return <MyAssetsListItem asset={asset} />;
@@ -45,4 +49,11 @@ const mapStateToProps = state => {
   return { myAssets: myAssetsList, account };
 };
 
-export default connect(mapStateToProps)(MyAssetsScreen);
+const mapDispatchToProps = {
+  setMyAssetsList,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyAssetsScreen);

@@ -1,8 +1,36 @@
 // Note: Functions that will deal with fetch and prepare data from Decentraland contracts
 import { addressesAreEqual, getContracts } from ".";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
+
+// Note: Returns a list of Promises
+export const getAssetsOf = async address => {
+  const decentralandUtils = new DecentralandUtils();
+  const { getAssetsOf: getLandOf } = decentralandUtils;
+
+  const contracts = getContracts();
+  const { estateContract, landContract } = contracts;
+
+  const listOfLand = await getLandOf(address);
+  const assets = [];
+
+  for (let land of listOfLand) {
+    const { id: assetId, nftAddress } = land;
+
+    let asset = _generateAssetFromId(
+      estateContract,
+      landContract,
+      assetId,
+      nftAddress
+    );
+
+    assets.push(asset);
+  }
+
+  return assets;
+};
 
 // Note: Returns a list of Promises
 export const getAllAssetsForSale = async () => {
@@ -11,7 +39,7 @@ export const getAllAssetsForSale = async () => {
 
   const openSellOrders = await getAllOpenSellOrders();
 
-  let contracts = getContracts();
+  const contracts = getContracts();
   const { estateContract } = contracts;
 
   const estatesForSale = [];
@@ -34,10 +62,9 @@ export const getAllAssetsForSale = async () => {
 };
 
 const _toAssetForSale = async sellOrder => {
-  let contracts = getContracts();
+  const contracts = getContracts();
   const { estateContract, landContract } = contracts;
-  const type = _getTypeFromSellOrder(sellOrder, landContract, estateContract);
-  const { id, assetId, seller, priceInWei, expiresAt } = sellOrder;
+  const { id, nftAddress, assetId, seller, priceInWei, expiresAt } = sellOrder;
 
   // Note: Conversion to USD will be implemented on v0.2.0
   const manaPerUsd = 30;
@@ -48,12 +75,13 @@ const _toAssetForSale = async sellOrder => {
   const strRoundedPriceMana = priceManaInWei.substring(0, strPriceManaLength);
   const priceMana = strRoundedPriceMana;
   const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
-  let asset;
 
-  if (type === ESTATE)
-    asset = await _generateEstateFromId(estateContract, assetId);
-  else if (type === PARCEL)
-    asset = await _generateParcelFromId(landContract, assetId);
+  const asset = await _generateAssetFromId(
+    estateContract,
+    landContract,
+    assetId,
+    nftAddress
+  );
 
   const assetForSale = {
     id,
@@ -66,6 +94,24 @@ const _toAssetForSale = async sellOrder => {
   };
 
   return assetForSale;
+};
+
+const _generateAssetFromId = async (
+  estateContract,
+  landContract,
+  assetId,
+  nftAddress
+) => {
+  const type = _getType(nftAddress, landContract, estateContract);
+  let asset;
+
+  if (type === ESTATE) {
+    asset = await _generateEstateFromId(estateContract, assetId);
+  } else if (type === PARCEL) {
+    asset = await _generateParcelFromId(landContract, assetId);
+  }
+
+  return asset;
 };
 
 const _generateEstateFromId = async (estateContract, estateId) => {
@@ -91,8 +137,7 @@ const _generateParcelFromId = async (landContract, parcelId) => {
   return parcel;
 };
 
-const _getTypeFromSellOrder = (sellOrder, landContract, estateContract) => {
-  const { nftAddress } = sellOrder;
+const _getType = (nftAddress, landContract, estateContract) => {
   const isParcel = addressesAreEqual(nftAddress, landContract.getAddress());
   const isEstate = addressesAreEqual(nftAddress, estateContract.getAddress());
 
@@ -107,4 +152,5 @@ const _getTypeFromSellOrder = (sellOrder, landContract, estateContract) => {
 
 export default {
   getAllAssetsForSale,
+  getAssetsOf,
 };
