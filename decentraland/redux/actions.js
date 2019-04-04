@@ -7,6 +7,7 @@ export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
   "SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS";
 export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
 export const REMOVE_MY_ASSET_FROM_LIST = "REMOVE_MY_ASSET_FROM_LIST";
+export const SET_MY_ASSETS_LIST = "SET_MY_ASSETS_LIST";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
@@ -38,4 +39,8 @@ export function addToMyAssetsList(myAsset) {
 
 export function removeMyAssetFromList(myAsset) {
   return { type: REMOVE_MY_ASSET_FROM_LIST, myAsset };
+}
+
+export function setMyAssetsList(myAssets) {
+  return { type: SET_MY_ASSETS_LIST, myAssets };
 }

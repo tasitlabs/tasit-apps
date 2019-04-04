@@ -8,6 +8,7 @@ import {
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
   REMOVE_MY_ASSET_FROM_LIST,
+  SET_MY_ASSETS_LIST,
 } from "./actions";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
@@ -64,7 +65,7 @@ function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
 }
 
 function myAssets(state = { list: [] }, action) {
-  const { type, myAsset } = action;
+  const { type, myAsset, myAssets } = action;
   switch (type) {
     case ADD_TO_MY_ASSETS_LIST:
       return { ...state, list: [myAsset, ...state.list] };
@@ -74,6 +75,8 @@ function myAssets(state = { list: [] }, action) {
       const list = myAssets.filter(asset => asset !== toRemove);
       return { ...state, list };
     }
+    case SET_MY_ASSETS_LIST:
+      return { ...state, list: myAssets };
     default:
       return state;
   }
