@@ -15,7 +15,7 @@ describe("BuyLandScreen", () => {
       const removeLandForSale = () => {};
       const addToMyAssetsList = () => {};
       const removeMyAssetFromList = () => {};
-      const addLandForSaleToList = () => {};
+      const prependLandForSaleToList = () => {};
       const myAssets = [];
 
       expect(
@@ -28,7 +28,7 @@ describe("BuyLandScreen", () => {
             removeLandForSale={removeLandForSale}
             addToMyAssetsList={addToMyAssetsList}
             removeMyAssetFromList={removeMyAssetFromList}
-            addLandForSaleToList={addLandForSaleToList}
+            prependLandForSaleToList={prependLandForSaleToList}
           />
         )
       ).toMatchSnapshot();

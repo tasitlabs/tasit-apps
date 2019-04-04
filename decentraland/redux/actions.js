@@ -2,7 +2,8 @@ export const SET_ACCOUNT = "SET_ACCOUNT";
 export const SET_ACCOUNT_CREATION_STATUS = "SET_ACCOUNT_CREATION_STATUS";
 export const SELECT_LAND_TO_BUY = "SELECT_LAND_TO_BUY";
 export const REMOVE_LAND_FOR_SALE = "REMOVE_LAND_FOR_SALE";
-export const ADD_LAND_FOR_SALE_TO_LIST = "ADD_LAND_FOR_SALE_TO_LIST";
+export const APPEND_LAND_FOR_SALE_TO_LIST = "APPEND_LAND_FOR_SALE_TO_LIST";
+export const PREPEND_LAND_FOR_SALE_TO_LIST = "PREPEND_LAND_FOR_SALE_TO_LIST";
 export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
   "SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS";
 export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
@@ -21,8 +22,12 @@ export function selectLandToBuy(landForSale) {
   return { type: SELECT_LAND_TO_BUY, landForSale };
 }
 
-export function addLandForSaleToList(landForSale) {
-  return { type: ADD_LAND_FOR_SALE_TO_LIST, landForSale };
+export function appendLandForSaleToList(landForSale) {
+  return { type: APPEND_LAND_FOR_SALE_TO_LIST, landForSale };
+}
+
+export function prependLandForSaleToList(landForSale) {
+  return { type: PREPEND_LAND_FOR_SALE_TO_LIST, landForSale };
 }
 
 export function setLoadingAssetsForSaleInProgress(loadingInProgress) {

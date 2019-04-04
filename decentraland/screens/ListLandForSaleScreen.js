@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  addLandForSaleToList,
+  appendLandForSaleToList,
   selectLandToBuy,
   setLoadingAssetsForSaleInProgress,
 } from "../redux/actions";
@@ -28,7 +28,7 @@ export class ListLandForSaleScreen extends React.Component {
 
   _loadAssetsForSale = async () => {
     const {
-      addLandForSaleToList,
+      appendLandForSaleToList,
       setLoadingAssetsForSaleInProgress,
     } = this.props;
 
@@ -55,7 +55,7 @@ export class ListLandForSaleScreen extends React.Component {
     const listSize = 10;
     for (let order of estatesForSale.slice(0, listSize)) {
       let assetForSale = await this._prepareAssetForSale(order);
-      addLandForSaleToList(assetForSale);
+      appendLandForSaleToList(assetForSale);
     }
 
     setLoadingAssetsForSaleInProgress(false);
@@ -181,7 +181,7 @@ export class ListLandForSaleScreen extends React.Component {
 
 ListLandForSaleScreen.propTypes = {
   assetsForSale: PropTypes.object.isRequired,
-  addLandForSaleToList: PropTypes.func.isRequired,
+  appendLandForSaleToList: PropTypes.func.isRequired,
   selectLandToBuy: PropTypes.func.isRequired,
   setLoadingAssetsForSaleInProgress: PropTypes.func.isRequired,
 };
@@ -192,7 +192,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  addLandForSaleToList,
+  appendLandForSaleToList,
   setLoadingAssetsForSaleInProgress,
   selectLandToBuy,
 };
