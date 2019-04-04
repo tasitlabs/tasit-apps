@@ -8,7 +8,7 @@ import {
 } from "react-native-responsive-dimensions";
 import Colors from "@constants/Colors";
 import { Button, Icon } from "native-base";
-import { formatNumber } from "../../helpers";
+import { formatNumber } from "@helpers";
 
 const onPriceInfo = () => {
   const title = "";

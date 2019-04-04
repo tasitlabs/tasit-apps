@@ -9,7 +9,7 @@ import {
 } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
-import tasitSdkConfig from "./config/default";
+import tasitSdkConfig from "../config/default";
 
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 

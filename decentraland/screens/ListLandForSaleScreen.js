@@ -8,12 +8,7 @@ import {
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
-import {
-  addressesAreEqual,
-  showError,
-  showInfo,
-  getContracts,
-} from "../helpers";
+import { addressesAreEqual, showError, showInfo, getContracts } from "@helpers";
 import { Root } from "native-base";
 
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";

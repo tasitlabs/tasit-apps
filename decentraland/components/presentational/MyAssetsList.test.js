@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import MyAssetsList from "./MyAssetsList";
-import { estate } from "./testHelpers";
+import { estate } from "@helpers/testHelpers";
 
 describe("MyAssetsList", () => {
   describe("renders the component", () => {

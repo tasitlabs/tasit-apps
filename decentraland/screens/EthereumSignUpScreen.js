@@ -11,7 +11,7 @@ import {
   fundAccountWithEthers,
   fundAccountWithMana,
   createAccount,
-} from "../helpers";
+} from "@helpers";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const {
