@@ -152,6 +152,17 @@ export const formatNumber = number => {
   return formattedNumber;
 };
 
+export const removeFromList = (list, toRemove) =>
+  list.filter(e => e !== toRemove);
+
+export const listsAreEqual = (first, second) => {
+  if (first.length !== second.length) return false;
+
+  return (
+    first.every(e => second.includes(e)) && second.every(e => first.includes(e))
+  );
+};
+
 export default {
   checkBlockchain,
   approveManaSpending,
@@ -166,4 +177,6 @@ export default {
   recoverAccount,
   createAccount,
   formatNumber,
+  removeFromList,
+  listsAreEqual,
 };
