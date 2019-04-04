@@ -6,11 +6,12 @@ import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import decentralandApp from "./redux/reducers";
-import { setAccount } from "./redux/actions";
+import { setAccount, setMyAssetsList } from "./redux/actions";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/default";
-import { checkBlockchain, showFatalError, recoverAccount } from "./helpers";
+import { checkBlockchain, showFatalError } from "@helpers";
+import { retrieveEphemeralAccount, retrieveMyAssets } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
 
@@ -46,8 +47,13 @@ Is the 'config/default.js' file correct?`;
   }
 
   async _loadAccount() {
-    const account = await recoverAccount();
-    if (account != null) store.dispatch(setAccount(account));
+    const account = await retrieveEphemeralAccount();
+    if (account) store.dispatch(setAccount(account));
+  }
+
+  async _loadMyAssets() {
+    const myAssets = await retrieveMyAssets();
+    if (myAssets) store.dispatch(setMyAssetsList(myAssets));
   }
 
   render() {
@@ -75,8 +81,9 @@ Is the 'config/default.js' file correct?`;
     const setupSDK = this._setupTasitSDK();
     const loadFonts = this._loadFonts();
     const loadAccount = this._loadAccount();
+    const loadMyAssets = this._loadMyAssets();
 
-    return Promise.all([setupSDK, loadFonts, loadAccount]);
+    return Promise.all([setupSDK, loadFonts, loadAccount, loadMyAssets]);
   };
 
   _handleLoadingError = error => {

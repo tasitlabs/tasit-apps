@@ -9,7 +9,7 @@ import {
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "@helpers";
-
+import { storeMyAssets } from "@helpers/storage";
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
@@ -45,6 +45,7 @@ export class BuyLandScreen extends React.Component {
     const {
       navigation,
       accountInfo,
+      myAssets,
       removeLandForSale,
       prependLandForSaleToList,
       removeMyAssetFromList,
@@ -60,6 +61,7 @@ export class BuyLandScreen extends React.Component {
 
     const onSuccess = () => {
       showInfo(`${typeDescription} bought successfully.`);
+      storeMyAssets([asset, ...myAssets]);
     };
 
     const onError = (assetForSale, message) => {
@@ -142,6 +144,7 @@ export class BuyLandScreen extends React.Component {
 BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
   selectedLandToBuy: PropTypes.object.isRequired,
+  myAssets: PropTypes.array.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
   prependLandForSaleToList: PropTypes.func.isRequired,
   removeMyAssetFromList: PropTypes.func.isRequired,
@@ -149,8 +152,9 @@ BuyLandScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { accountInfo, selectedLandToBuy } = state;
-  return { accountInfo, selectedLandToBuy };
+  const { accountInfo, selectedLandToBuy, myAssets } = state;
+  const { list: myAssetsList } = myAssets;
+  return { accountInfo, selectedLandToBuy, myAssets: myAssetsList };
 };
 
 const mapDispatchToProps = {
