@@ -1,4 +1,3 @@
-import { SecureStore } from "expo";
 import { Platform } from "react-native";
 import { Toast } from "native-base";
 import {
@@ -11,6 +10,8 @@ const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import tasitSdkConfig from "../config/default";
 
+import { storeEphemeralAccount, retrieveEphemeralAccount } from "./storage";
+
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
 const gnosisSafeOwnerPrivKey =
@@ -18,9 +19,6 @@ const gnosisSafeOwnerPrivKey =
 const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
-
-// Storage keys
-const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
 
 export const getContracts = () => {
   let contracts;
@@ -66,33 +64,8 @@ export const getContracts = () => {
   return contracts;
 };
 
-// Note: the value should be a string
-const _storeData = async (key, value) => {
-  try {
-    // More about options:
-    // https://docs.expo.io/versions/latest/sdk/securestore/#securestoresetitemasynckey-value-options
-    const options = { keychainAccessible: SecureStore.WHEN_UNLOCKED };
-    await SecureStore.setItemAsync(key, value, options);
-  } catch (error) {
-    showError("Unable to securely store data.");
-  }
-};
-
-const _retrieveData = async key => {
-  try {
-    const value = await SecureStore.getItemAsync(key);
-    return value;
-  } catch (error) {
-    showError("Unable to retrieve data from storage.");
-  }
-};
-
 export const recoverAccount = async () => {
-  let account = null;
-
-  const privateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY);
-  if (privateKey != null) account = createFromPrivateKey(privateKey);
-
+  const account = await retrieveEphemeralAccount();
   return account;
 };
 
@@ -100,8 +73,7 @@ export const createAccount = async () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
   const account = Account.create();
-  const { privateKey } = account;
-  await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, privateKey);
+  await storeEphemeralAccount(account);
   return account;
 };
 
