@@ -21,29 +21,30 @@ export const retrieveEphemeralAccount = async () => {
 };
 
 export const storeMyAssets = async myAssets => {
-  const strMyAssets = _fromJson(myAssets);
+  const strMyAssets = _toString(myAssets);
   await _storeData(MY_ASSETS_LIST, strMyAssets, false);
 };
 
 export const retrieveMyAssets = async () => {
   const strMyAssets = await _retrieveData(MY_ASSETS_LIST, false);
-  const myAssets = _toJson(strMyAssets);
+  let myAssets = _fromString(strMyAssets);
+  if (!myAssets) myAssets = [];
   return myAssets;
 };
 
-const _fromJson = json => {
+const _toString = obj => {
   try {
-    return JSON.stringify(json);
+    return JSON.stringify(obj);
   } catch {
-    throw Error(`Unable to parse JSON object to a String.`);
+    throw Error(`Unable to parse object to a JSON string.`);
   }
 };
 
-const _toJson = string => {
+const _fromString = string => {
   try {
     return JSON.parse(string);
   } catch {
-    throw Error(`Unable to parse String to a JSON object.`);
+    throw Error(`Unable to parse JSON string to an object.`);
   }
 };
 
