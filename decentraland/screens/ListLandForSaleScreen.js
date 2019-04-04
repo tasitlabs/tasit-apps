@@ -14,9 +14,14 @@ import { Root } from "native-base";
 
 export class ListLandForSaleScreen extends React.Component {
   componentDidMount = async () => {
+    const {
+      appendLandForSaleToList,
+      setLoadingAssetsForSaleInProgress,
+    } = this.props;
     try {
       showInfo("Loading land for sale...");
-      await loadAssetsForSale();
+      await loadAssetsForSale(appendLandForSaleToList);
+      setLoadingAssetsForSaleInProgress(false);
     } catch (err) {
       showError(err);
     }

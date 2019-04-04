@@ -4,12 +4,7 @@ import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
-export const loadAssetsForSale = async () => {
-  const {
-    appendLandForSaleToList,
-    setLoadingAssetsForSaleInProgress,
-  } = this.props;
-
+export const loadAssetsForSale = async appendLandForSaleToList => {
   const decentralandUtils = new DecentralandUtils();
   const { getAllAssetsForSale } = decentralandUtils;
 
@@ -32,8 +27,6 @@ export const loadAssetsForSale = async () => {
     let assetForSale = await _prepareAssetForSale(order);
     appendLandForSaleToList(assetForSale);
   }
-
-  setLoadingAssetsForSaleInProgress(false);
 };
 
 const _prepareAssetForSale = async assetForSale => {
