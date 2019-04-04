@@ -6,6 +6,7 @@ import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
 import { listsAreEqual } from "@helpers";
 import { getAssetsOf } from "@helpers/decentraland";
+import { storeMyAssets } from "@helpers/storage";
 
 export class MyAssetsScreen extends React.Component {
   componentDidMount = async () => {
@@ -14,7 +15,10 @@ export class MyAssetsScreen extends React.Component {
       const { address } = account;
       const fromBlockchain = await this._getAssetsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(fromBlockchain, fromState);
-      if (shouldUpdate) setMyAssetsList(fromBlockchain);
+      if (shouldUpdate) {
+        setMyAssetsList(fromBlockchain);
+        storeMyAssets(fromBlockchain);
+      }
     }
   };
 
