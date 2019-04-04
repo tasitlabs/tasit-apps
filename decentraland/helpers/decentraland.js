@@ -143,7 +143,7 @@ const _getType = (nftAddress, landContract, estateContract) => {
 
   if (!isParcel && !isEstate)
     throw new Error(
-      `The sell order should have a parcel of land or an estate as NFT.`
+      `The sell order should have a parcel of land or an estate as the NFT.`
     );
 
   if (isEstate) return ESTATE;
