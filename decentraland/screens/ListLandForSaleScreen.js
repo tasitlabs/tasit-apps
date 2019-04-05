@@ -23,37 +23,13 @@ export class ListLandForSaleScreen extends React.Component {
       showInfo("Loading land for sale...");
       const assetsForSale = await this._getAllAssetsForSale();
 
-      // Non-functional style
-      // const loadingAssetsOnScreen = [];
-      // for (let promise of assetsForSale) {
-      //   let loadAssetToScreen = async () => {
-      //     const assetForSale = await promise;
-      //     appendLandForSaleToList(assetForSale);
-      //   };
-      //   loadingAssetsOnScreen.push(loadAssetToScreen());
-      // }
-
-      // Functional style
-      // const loadingAssetsOnScreen = assetsForSale.map(promise => {
-      //   let loadAssetOnScreen = async () => {
-      //     const assetForSale = await promise;
-      //     appendLandForSaleToList(assetForSale);
-      //   };
-      //   return loadAssetOnScreen();
-      // });
-
-      // Functional style with unnamed function
-      // const loadingAssetsOnScreen = assetsForSale.map(promise =>
-      //   (async () => {
-      //     const assetForSale = await promise;
-      //     return appendLandForSaleToList(assetForSale);
-      //   })()
-      // );
-
-      // Functional style with unnamed function - short
-      const loadingAssetsOnScreen = assetsForSale.map(promise =>
-        (async () => appendLandForSaleToList(await promise))()
-      );
+      const loadingAssetsOnScreen = assetsForSale.map(promise => {
+        let loadAssetOnScreen = async () => {
+          const assetForSale = await promise;
+          appendLandForSaleToList(assetForSale);
+        };
+        return loadAssetOnScreen();
+      });
 
       await Promise.all([...loadingAssetsOnScreen]);
       setLoadingAssetsForSaleInProgress(false);
