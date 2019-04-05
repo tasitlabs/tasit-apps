@@ -13,7 +13,7 @@ export class MyAssetsScreen extends React.Component {
     const { account, myAssets: fromState, setMyAssetsList } = this.props;
     if (account) {
       const { address } = account;
-      const fromBlockchain = await this._getAssetsFromBlockchain(address);
+      const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(fromBlockchain, fromState);
       if (shouldUpdate) {
         setMyAssetsList(fromBlockchain);
