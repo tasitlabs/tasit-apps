@@ -1,5 +1,5 @@
 // Note: Functions that will deal with fetch and prepare data from Decentraland contracts
-import { addressesAreEqual } from ".";
+import { addressesAreEqual } from "@helpers";
 
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
