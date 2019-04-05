@@ -1,5 +1,7 @@
 export const SET_ACCOUNT = "SET_ACCOUNT";
 export const SET_ACCOUNT_CREATION_STATUS = "SET_ACCOUNT_CREATION_STATUS";
+export const SET_ACCOUNT_CREATION_CURRENT_ACTION =
+  "SET_ACCOUNT_CREATION_CURRENT_ACTION";
 export const SELECT_LAND_TO_BUY = "SELECT_LAND_TO_BUY";
 export const REMOVE_LAND_FOR_SALE = "REMOVE_LAND_FOR_SALE";
 export const APPEND_LAND_FOR_SALE_TO_LIST = "APPEND_LAND_FOR_SALE_TO_LIST";
@@ -16,6 +18,10 @@ export function setAccount(account) {
 
 export function setAccountCreationStatus(creationStatus) {
   return { type: SET_ACCOUNT_CREATION_STATUS, creationStatus };
+}
+
+export function setAccountCreationCurrentAction(creationCurrentAction) {
+  return { type: SET_ACCOUNT_CREATION_CURRENT_ACTION, creationCurrentAction };
 }
 
 export function selectLandToBuy(landForSale) {

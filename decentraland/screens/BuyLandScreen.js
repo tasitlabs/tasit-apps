@@ -78,7 +78,7 @@ export class BuyLandScreen extends React.Component {
     addToMyAssetsList(asset);
 
     _executeOrder(landForSale, account, onSuccess, onError);
-    navigation.navigate("ListLandForSaleScreen");
+    navigation.navigate("MyAssetsScreen");
   };
 
   _executeOrder = async (
@@ -129,13 +129,14 @@ export class BuyLandScreen extends React.Component {
 
   render() {
     const { selectedLandToBuy: landForSale, accountInfo } = this.props;
-    const { creationStatus } = accountInfo;
+    const { creationStatus, creationCurrentAction } = accountInfo;
 
     return (
       <BuyLand
         landForSale={landForSale}
         onBuy={() => this._onBuy(landForSale)}
         accountCreationStatus={creationStatus}
+        creationCurrentAction={creationCurrentAction}
       />
     );
   }

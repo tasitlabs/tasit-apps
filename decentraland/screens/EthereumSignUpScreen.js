@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setAccount, setAccountCreationStatus } from "../redux/actions";
+import {
+  setAccount,
+  setAccountCreationStatus,
+  setAccountCreationCurrentAction,
+} from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 
 import {
@@ -26,7 +30,11 @@ const {
 export class EthereumSignUpScreen extends React.Component {
   _onboarding = async () => {
     try {
-      const { setAccount, setAccountCreationStatus } = this.props;
+      const {
+        setAccount,
+        setAccountCreationStatus,
+        setAccountCreationCurrentAction,
+      } = this.props;
 
       // The pattern for each step is:
       // 1. alert with good info as soon as it's true
@@ -43,19 +51,25 @@ export class EthereumSignUpScreen extends React.Component {
       };
 
       const fundWithEthers = async accountAddress => {
-        await fundAccountWithEthers(accountAddress);
+        const action = fundAccountWithEthers(accountAddress);
+        setAccountCreationCurrentAction(action);
+        await action.waitForNonceToUpdate();
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
       };
 
       const fundWithMana = async accountAddress => {
-        await fundAccountWithMana(accountAddress);
+        const action = fundAccountWithMana(accountAddress);
+        setAccountCreationCurrentAction(action);
+        await action.waitForNonceToUpdate();
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
       };
 
       const approveMarketplace = async account => {
-        await approveManaSpending(account);
+        const action = approveManaSpending(account);
+        setAccountCreationCurrentAction(action);
+        await action.waitForNonceToUpdate();
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
       };
@@ -100,11 +114,13 @@ export class EthereumSignUpScreen extends React.Component {
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
   setAccountCreationStatus: PropTypes.func.isRequired,
+  setAccountCreationCurrentAction: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
+  setAccountCreationCurrentAction,
 };
 
 export default connect(

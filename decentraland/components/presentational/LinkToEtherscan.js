@@ -1,34 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "native-base";
-import { showError, openURL } from "@helpers";
+import {
+  showError,
+  openURL,
+  getNetworkName,
+  getTransactionHashFromAction,
+} from "@helpers";
 
-const _openEtherscanOf = async address => {
-  const url = `https://etherscan.io/address/${address}`;
+const supportedNetworks = ["ropsten"];
+
+const _openEtherscanOf = async action => {
+  const networkName = getNetworkName();
+  const transactionHash = await getTransactionHashFromAction(action);
+  const url = `https://${networkName}.etherscan.io/tx/${transactionHash}`;
 
   try {
     await openURL(url);
   } catch (err) {
-    showError(`Unable to open Etherscan for ${address}`);
+    showError(`Unable to open Etherscan for ${transactionHash}`);
   }
 };
 
 export default function LinkToEtherscan(props) {
-  const { account } = props;
+  const { action } = props;
 
-  if (account) {
-    const { address } = account;
-    const openEtherscan = () => _openEtherscanOf(address);
-    return (
-      <Button transparent onPress={openEtherscan}>
-        <Icon name="eye" />
-      </Button>
-    );
-  }
+  //const networkName = getNetworkName();
+  const networkName = "ropsten";
+  const isNetworkSupported = supportedNetworks.includes(networkName);
 
-  return null;
+  if (!isNetworkSupported || !action) return null;
+
+  const openEtherscan = () => _openEtherscanOf(action);
+  return (
+    <Button transparent onPress={openEtherscan}>
+      <Icon name="eye" />
+    </Button>
+  );
 }
 
 LinkToEtherscan.propTypes = {
-  account: PropTypes.object,
+  action: PropTypes.object,
 };
