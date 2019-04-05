@@ -1,5 +1,4 @@
 import React from "react";
-import { Linking } from "react-native";
 import { connect } from "react-redux";
 import { setMyAssetsList } from "../redux/actions";
 import PropTypes from "prop-types";
