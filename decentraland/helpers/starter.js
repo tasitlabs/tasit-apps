@@ -12,8 +12,6 @@ const { Action } = require("tasit-sdk");
 const { ConfigLoader } = Action;
 const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
 const checkBlockchain = async () => {
-  const tasitSdkConfig = require("../config/default.js");
-  ConfigLoader.setConfig(tasitSdkConfig);
   const provider = ProviderFactory.getProvider();
   try {
     await provider.getBlockNumber();
@@ -21,6 +19,11 @@ const checkBlockchain = async () => {
     return false;
   }
   return true;
+};
+
+const loadConfig = async () => {
+  const tasitSdkConfig = require("../config/default.js");
+  ConfigLoader.setConfig(tasitSdkConfig);
 };
 
 const fileExists = async path => {
@@ -43,9 +46,34 @@ const showErrorMessage = message => {
   console.log(CONSOLE_RESET);
 };
 
+const prepareConfig = async config => {
+  const source = `./config/${config}.js`;
+  const destination = "./config/default.js";
+
+  const sourceExists = await fileExists(source);
+  if (!sourceExists) {
+    showErrorMessage(`Config file not found: ${source}`);
+  }
+
+  try {
+    await copyFile(source, destination);
+  } catch (error) {
+    showErrorMessage([
+      `Unable to generate ${destination} config file.`,
+      `${error.message}`,
+    ]);
+  }
+};
+
+const prepareAndLoadConfig = async config => {
+  await prepareConfig(config);
+  await loadConfig();
+};
+
 module.exports = {
   checkBlockchain,
   fileExists,
   showErrorMessage,
   copyFile,
+  prepareAndLoadConfig,
 };

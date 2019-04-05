@@ -2,30 +2,9 @@
 const { exec } = require("child_process");
 const {
   checkBlockchain,
-  copyFile,
   showErrorMessage,
-  fileExists,
+  prepareAndLoadConfig,
 } = require("./helpers/starter");
-
-const setupConfig = async () => {
-  const config = process.env.CONFIG;
-  const source = `./config/${config}.js`;
-  const destination = "./config/default.js";
-
-  const sourceExists = await fileExists(source);
-  if (!sourceExists) {
-    showErrorMessage(`Config file not found: ${source}`);
-  }
-
-  try {
-    await copyFile(source, destination);
-  } catch (error) {
-    showErrorMessage([
-      `Unable to generate ${destination} config file.`,
-      `${error.message}`,
-    ]);
-  }
-};
 
 const startExpo = () => {
   const process = exec("npx expo start -c");
@@ -34,6 +13,8 @@ const startExpo = () => {
 };
 
 const start = async () => {
+  const config = process.env.CONFIG;
+  await prepareAndLoadConfig(config);
   console.log("Checking the connection to the blockchain...");
   const connectionOK = await checkBlockchain();
   if (connectionOK) {
@@ -50,7 +31,4 @@ const start = async () => {
   }
 };
 
-(async () => {
-  await setupConfig();
-  await start();
-})();
+(async () => await start())();
