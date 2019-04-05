@@ -1,26 +1,31 @@
 /* eslint no-console: "off" */
 const { exec } = require("child_process");
+const {
+  checkBlockchain,
+  copyFile,
+  showErrorMessage,
+  fileExists,
+} = require("./helpers/starter");
 
-// Note: Copied from helpers.js because import isn't working
-//import { checkBlockchain } from "./helpers";
-const { Action } = require("tasit-sdk");
-const { ConfigLoader } = Action;
-const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
-const tasitSdkConfig = require("./config/default");
+const setupConfig = async () => {
+  const config = process.env.CONFIG;
+  const source = `./config/${config}.js`;
+  const destination = "./config/default.js";
 
-const checkBlockchain = async () => {
-  ConfigLoader.setConfig(tasitSdkConfig);
-  const provider = ProviderFactory.getProvider();
-  try {
-    await provider.getBlockNumber();
-  } catch (err) {
-    return false;
+  const sourceExists = await fileExists(source);
+  if (!sourceExists) {
+    showErrorMessage(`Config file not found: ${source}`);
   }
-  return true;
-};
 
-const CONSOLE_FG_RED = "\x1b[31m";
-const CONSOLE_RESET = "\x1b[0m";
+  try {
+    await copyFile(source, destination);
+  } catch (error) {
+    showErrorMessage([
+      `Unable to generate ${destination} config file.`,
+      `${error.message}`,
+    ]);
+  }
+};
 
 const startExpo = () => {
   const process = exec("npx expo start -c");
@@ -35,16 +40,17 @@ const start = async () => {
     console.log("OK!");
     startExpo();
   } else {
-    console.log(CONSOLE_FG_RED);
-    console.log(`Failed to establish the connection to the blockchain.`);
-    console.log(`Is the 'config/default.js' file correct?\n`);
-    console.log(`If you are starting one of Tasit apps in dev environment, `);
-    console.log("Use: 'npm run prepare:blockchain' from TasitSDK project.");
-    console.log(
-      "That script will start local blockchain and will deploy the smart contracts."
-    );
-    console.log(CONSOLE_RESET);
+    showErrorMessage([
+      `Failed to establish the connection to the blockchain.`,
+      `Is the 'config/default.js' file correct?\n`,
+      `If you are starting one of Tasit apps in dev environment, `,
+      "Use: 'npm run prepare:blockchain' from TasitSDK project.",
+      "That script will start local blockchain and will deploy the smart contracts.",
+    ]);
   }
 };
 
-(async () => await start())();
+(async () => {
+  await setupConfig();
+  await start();
+})();
