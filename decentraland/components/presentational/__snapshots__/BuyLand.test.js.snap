@@ -124,17 +124,9 @@ exports[`BuyLand renders the component waiting for setup - waiting for ETH fundi
       title="Buy"
     />
   </Component>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Component>
-      Funding account with ETH...
-    </Component>
-  </Component>
+  <AccountCreationProgress
+    status="FUNDING_WITH_ETH"
+  />
 </Component>
 `;
 
@@ -178,17 +170,9 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
       title="Buy"
     />
   </Component>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Component>
-      Funding account with MANA...
-    </Component>
-  </Component>
+  <AccountCreationProgress
+    status="FUNDING_WITH_MANA"
+  />
 </Component>
 `;
 
@@ -232,17 +216,9 @@ exports[`BuyLand renders the component waiting for setup - waiting for MANA fund
       title="Buy"
     />
   </Component>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Component>
-      Funding account with MANA and approving marketplace...
-    </Component>
-  </Component>
+  <AccountCreationProgress
+    status="FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE"
+  />
 </Component>
 `;
 
@@ -286,17 +262,9 @@ exports[`BuyLand renders the component waiting for setup - waiting for account g
       title="Buy"
     />
   </Component>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Component>
-      Generating account...
-    </Component>
-  </Component>
+  <AccountCreationProgress
+    status="GENERATING_ACCOUNT"
+  />
 </Component>
 `;
 
@@ -340,16 +308,8 @@ exports[`BuyLand renders the component waiting for setup - waiting for marketpla
       title="Buy"
     />
   </Component>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Component>
-      Approving marketplace...
-    </Component>
-  </Component>
+  <AccountCreationProgress
+    status="APPROVING_MARKETPLACE"
+  />
 </Component>
 `;

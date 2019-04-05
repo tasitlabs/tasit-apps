@@ -118,7 +118,7 @@ export const fundAccountWithMana = accountAddress => {
 
 export const getTransactionHashFromAction = async action => {
   const tx = await action.getTransaction();
-  const { transactionHash } = tx;
+  const { hash: transactionHash } = tx;
   return transactionHash;
 };
 

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountCreationProgress renders the component 1`] = `
+<Fragment>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Component>
+      Funding account with ETH...
+    </Component>
+    <LinkToEtherscan
+      action={
+        Object {
+          "getTransaction": [Function],
+        }
+      }
+    />
+  </Component>
+</Fragment>
+`;
