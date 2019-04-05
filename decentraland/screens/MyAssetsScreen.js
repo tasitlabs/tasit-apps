@@ -1,10 +1,12 @@
 import React from "react";
+import { Linking } from "react-native";
 import { connect } from "react-redux";
 import { setMyAssetsList } from "../redux/actions";
 import PropTypes from "prop-types";
+import { Button, Icon } from "native-base";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
-import { listsAreEqual, getContracts } from "@helpers";
+import { showError, listsAreEqual, getContracts, openURL } from "@helpers";
 import { generateAssetFromId } from "@helpers/decentraland";
 import { storeMyAssets } from "@helpers/storage";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
@@ -63,11 +65,31 @@ export class MyAssetsScreen extends React.Component {
     return <MyAssetsListItem asset={asset} />;
   };
 
+  _openEtherscanOf = async address => {
+    const url = `https://etherscan.io/address/${address}`;
+
+    try {
+      await openURL(url);
+    } catch (err) {
+      showError(`Unable to open etherscan of ${address}`);
+    }
+  };
+
   render() {
-    const { myAssets } = this.props;
+    const { myAssets, account } = this.props;
 
     return (
-      <MyAssetsList myAssetsList={myAssets} renderItem={this._renderItem} />
+      <React.Fragment>
+        {account ? (
+          <Button
+            transparent
+            onPress={() => this._openEtherscanOf(account.address)}
+          >
+            <Icon name="eye" />
+          </Button>
+        ) : null}
+        <MyAssetsList myAssetsList={myAssets} renderItem={this._renderItem} />
+      </React.Fragment>
     );
   }
 }

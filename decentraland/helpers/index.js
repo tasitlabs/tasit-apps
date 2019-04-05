@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { Platform, Linking } from "react-native";
 import { Toast } from "native-base";
 import {
   Account,
@@ -163,6 +163,18 @@ export const listsAreEqual = (first, second) => {
   );
 };
 
+export const openURL = async url => {
+  const supported = await Linking.canOpenURL(url);
+
+  if (!supported) throw Error(`Can't handle url: ${url}`);
+
+  try {
+    await Linking.openURL(url);
+  } catch (err) {
+    throw Error(`Unable to open url: ${url}`);
+  }
+};
+
 export default {
   checkBlockchain,
   approveManaSpending,
@@ -179,4 +191,5 @@ export default {
   formatNumber,
   removeFromList,
   listsAreEqual,
+  openURL,
 };
