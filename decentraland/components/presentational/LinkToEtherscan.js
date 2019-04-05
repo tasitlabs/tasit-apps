@@ -9,7 +9,7 @@ const _openEtherscanOf = async address => {
   try {
     await openURL(url);
   } catch (err) {
-    showError(`Unable to open etherscan of ${address}`);
+    showError(`Unable to open Etherscan for ${address}`);
   }
 };
 
