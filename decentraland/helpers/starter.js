@@ -21,7 +21,7 @@ const checkBlockchain = async () => {
   return true;
 };
 
-const loadConfig = async () => {
+const loadConfig = () => {
   const tasitSdkConfig = require("../config/default.js");
   ConfigLoader.setConfig(tasitSdkConfig);
 };
@@ -67,7 +67,7 @@ const prepareConfig = async config => {
 
 const prepareAndLoadConfig = async config => {
   await prepareConfig(config);
-  await loadConfig();
+  loadConfig();
 };
 
 module.exports = {
