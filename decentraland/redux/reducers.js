@@ -11,11 +11,10 @@ import {
   REMOVE_MY_ASSET_FROM_LIST,
   SET_MY_ASSETS_LIST,
 } from "./actions";
+import { removeFromList } from "@helpers";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
-
-const removeFromList = (list, toRemove) => list.filter(e => e !== toRemove);
 
 function accountInfo(
   state = {
