@@ -10,11 +10,14 @@ import { storeMyAssets } from "@helpers/storage";
 
 export class MyAssetsScreen extends React.Component {
   componentDidMount = async () => {
-    const { account, myAssets: fromState, setMyAssetsList } = this.props;
+    const { account, myAssets: assetsFromState, setMyAssetsList } = this.props;
     if (account) {
       const { address } = account;
       const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
-      const shouldUpdate = !listsAreEqual(assetsFromBlockchain, fromState);
+      const shouldUpdate = !listsAreEqual(
+        assetsFromBlockchain,
+        assetsFromState
+      );
       if (shouldUpdate) {
         setMyAssetsList(assetsFromBlockchain);
         storeMyAssets(assetsFromBlockchain);
