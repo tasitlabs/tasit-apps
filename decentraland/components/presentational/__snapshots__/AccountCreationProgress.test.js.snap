@@ -8,14 +8,29 @@ exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`]
 <Component
   style={
     Object {
+      "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "center",
     }
   }
 >
-  <Component>
-    Funding account with ETH...
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      Funding account with ETH...
+    </Component>
   </Component>
-  <LinkToEtherscan />
+  <Component>
+    <LinkToBlockchain />
+  </Component>
 </Component>
 `;
 
@@ -23,14 +38,29 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`
 <Component
   style={
     Object {
+      "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "center",
     }
   }
 >
-  <Component>
-    Funding account with MANA...
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      Funding account with MANA...
+    </Component>
   </Component>
-  <LinkToEtherscan />
+  <Component>
+    <LinkToBlockchain />
+  </Component>
 </Component>
 `;
 
@@ -38,14 +68,29 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding an
 <Component
   style={
     Object {
+      "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "center",
     }
   }
 >
-  <Component>
-    Funding account with MANA and approving marketplace...
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      Funding account with MANA and approving marketplace...
+    </Component>
   </Component>
-  <LinkToEtherscan />
+  <Component>
+    <LinkToBlockchain />
+  </Component>
 </Component>
 `;
 
@@ -53,14 +98,29 @@ exports[`AccountCreationProgress waiting for setup - waiting for account generat
 <Component
   style={
     Object {
+      "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "center",
     }
   }
 >
-  <Component>
-    Generating account...
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      Generating account...
+    </Component>
   </Component>
-  <LinkToEtherscan />
+  <Component>
+    <LinkToBlockchain />
+  </Component>
 </Component>
 `;
 
@@ -68,13 +128,28 @@ exports[`AccountCreationProgress waiting for setup - waiting for marketplace app
 <Component
   style={
     Object {
+      "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "center",
     }
   }
 >
-  <Component>
-    Approving marketplace...
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      Approving marketplace...
+    </Component>
   </Component>
-  <LinkToEtherscan />
+  <Component>
+    <LinkToBlockchain />
+  </Component>
 </Component>
 `;

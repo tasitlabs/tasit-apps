@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinkToEtherscan renders the component null action 1`] = `""`;
+exports[`LinkToBlockchain renders the component null action 1`] = `""`;
 
-exports[`LinkToEtherscan renders the component valid action 1`] = `
+exports[`LinkToBlockchain renders the component valid action 1`] = `
 <Styled(Button)
   onPress={[Function]}
   transparent={true}
