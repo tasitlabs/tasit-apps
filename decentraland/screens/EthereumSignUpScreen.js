@@ -38,9 +38,10 @@ export class EthereumSignUpScreen extends React.Component {
 
       // The pattern for each step is:
       // 1. alert with good info as soon as it's true
-      // 2. persist any important side effects we may need
+      // 2. update app state with action in progress if applicable
+      // 3. persist any important side effects we may need
       //    later if applicable
-      // 3. Change UI progress state on-screen
+      // 4. Change UI progress state on-screen
 
       const createAnAccount = async () => {
         const account = await createAccount();
