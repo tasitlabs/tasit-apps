@@ -43,15 +43,13 @@ export default function AccountCreationProgress(props) {
     default:
   }
 
+  if (!waitingForAccountSetup) return null;
+
   return (
-    <React.Fragment>
-      {waitingForAccountSetup ? (
-        <View style={styles.textRow}>
-          <Text>{waitingMessage}</Text>
-          <LinkToEtherscan action={currentAction} />
-        </View>
-      ) : null}
-    </React.Fragment>
+    <View style={styles.textRow}>
+      <Text>{waitingMessage}</Text>
+      <LinkToEtherscan action={currentAction} />
+    </View>
   );
 }
 
