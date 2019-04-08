@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
-import LinkToEtherscan from "./LinkToEtherscan";
+import LinkToBlockchain from "./LinkToBlockchain";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const {
@@ -60,7 +60,7 @@ export default function AccountCreationProgress(props) {
         </Text>
       </View>
       <View>
-        <LinkToEtherscan action={action} />
+        <LinkToBlockchain action={action} />
       </View>
     </View>
   );
