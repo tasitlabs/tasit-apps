@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   setAccount,
   setAccountCreationStatus,
-  updateAccountCreationCurrentStatusAction,
+  updateActionForAccountCreationStatus,
 } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 
