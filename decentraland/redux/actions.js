@@ -20,7 +20,7 @@ export function setAccountCreationStatus(creationStatus) {
   return { type: SET_ACCOUNT_CREATION_STATUS, creationStatus };
 }
 
-export function updateAccountCreationCurrentStatusAction(creationAction) {
+export function updateActionForAccountCreationStatus(creationAction) {
   return {
     type: UPDATE_ACCOUNT_CREATION_CURRENT_STATUS_ACTION,
     creationAction,
