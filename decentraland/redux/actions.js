@@ -1,7 +1,10 @@
 export const SET_ACCOUNT = "SET_ACCOUNT";
 export const SET_ACCOUNT_CREATION_STATUS = "SET_ACCOUNT_CREATION_STATUS";
+// deprecated
 export const SET_ACCOUNT_CREATION_CURRENT_ACTION =
   "SET_ACCOUNT_CREATION_CURRENT_ACTION";
+export const ADD_ACCOUNT_CREATION_STEP_ACTION_ID =
+  "ADD_ACCOUNT_CREATION_STEP_ACTION_ID";
 export const SELECT_LAND_TO_BUY = "SELECT_LAND_TO_BUY";
 export const REMOVE_LAND_FOR_SALE = "REMOVE_LAND_FOR_SALE";
 export const APPEND_LAND_FOR_SALE_TO_LIST = "APPEND_LAND_FOR_SALE_TO_LIST";
@@ -20,8 +23,17 @@ export function setAccountCreationStatus(creationStatus) {
   return { type: SET_ACCOUNT_CREATION_STATUS, creationStatus };
 }
 
+// deprecated
 export function setAccountCreationCurrentAction(creationCurrentAction) {
   return { type: SET_ACCOUNT_CREATION_CURRENT_ACTION, creationCurrentAction };
+}
+
+export function updateAccountCreationStepActionId(status, actionId) {
+  const creationStatusAction = { status, actionId };
+  return {
+    type: ADD_ACCOUNT_CREATION_STEP_ACTION_ID,
+    creationStatusAction,
+  };
 }
 
 export function selectLandToBuy(landForSale) {
