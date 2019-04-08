@@ -10,7 +10,7 @@ describe("BuyLand", () => {
     const landForSale = parcelForSale;
     const onBuy = () => {};
     const accountCreationStatus = NOT_STARTED;
-    const creationCurrentAction = null;
+    const accountCreationAction = null;
 
     expect(
       shallow(
@@ -18,7 +18,7 @@ describe("BuyLand", () => {
           landForSale={landForSale}
           onBuy={onBuy}
           accountCreationStatus={accountCreationStatus}
-          creationCurrentAction={creationCurrentAction}
+          accountCreationAction={accountCreationAction}
         />
       )
     ).toMatchSnapshot();

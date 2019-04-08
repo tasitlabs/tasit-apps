@@ -14,7 +14,7 @@ export default function BuyLand(props) {
     landForSale,
     onBuy,
     accountCreationStatus,
-    creationCurrentAction,
+    accountCreationAction,
   } = props;
 
   const waitingForAccountSetup =
@@ -31,7 +31,7 @@ export default function BuyLand(props) {
           </View>
           <AccountCreationProgress
             status={accountCreationStatus}
-            currentAction={creationCurrentAction}
+            action={accountCreationAction}
           />
         </React.Fragment>
       ) : (
@@ -47,7 +47,7 @@ BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,
   accountCreationStatus: PropTypes.string.isRequired,
-  creationCurrentAction: PropTypes.object,
+  accountCreationAction: PropTypes.object,
 };
 
 const styles = StyleSheet.create({

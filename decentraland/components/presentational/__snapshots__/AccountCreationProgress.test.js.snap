@@ -15,13 +15,7 @@ exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`]
   <Component>
     Funding account with ETH...
   </Component>
-  <LinkToEtherscan
-    action={
-      Object {
-        "getTransaction": [Function],
-      }
-    }
-  />
+  <LinkToEtherscan />
 </Component>
 `;
 
@@ -36,13 +30,7 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`
   <Component>
     Funding account with MANA...
   </Component>
-  <LinkToEtherscan
-    action={
-      Object {
-        "getTransaction": [Function],
-      }
-    }
-  />
+  <LinkToEtherscan />
 </Component>
 `;
 
@@ -57,13 +45,7 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding an
   <Component>
     Funding account with MANA and approving marketplace...
   </Component>
-  <LinkToEtherscan
-    action={
-      Object {
-        "getTransaction": [Function],
-      }
-    }
-  />
+  <LinkToEtherscan />
 </Component>
 `;
 
@@ -78,9 +60,7 @@ exports[`AccountCreationProgress waiting for setup - waiting for account generat
   <Component>
     Generating account...
   </Component>
-  <LinkToEtherscan
-    action={null}
-  />
+  <LinkToEtherscan />
 </Component>
 `;
 
@@ -95,12 +75,6 @@ exports[`AccountCreationProgress waiting for setup - waiting for marketplace app
   <Component>
     Approving marketplace...
   </Component>
-  <LinkToEtherscan
-    action={
-      Object {
-        "getTransaction": [Function],
-      }
-    }
-  />
+  <LinkToEtherscan />
 </Component>
 `;

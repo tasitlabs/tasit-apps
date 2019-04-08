@@ -12,14 +12,16 @@ describe("EthereumSignUpScreen", () => {
   it("renders the component", async () => {
     const setAccount = () => {};
     const setAccountCreationStatus = () => {};
-    const setAccountCreationCurrentAction = () => {};
+    const updateAccountCreationCurrentStatusAction = () => {};
 
     expect(
       shallow(
         <EthereumSignUpScreen
           setAccount={setAccount}
           setAccountCreationStatus={setAccountCreationStatus}
-          setAccountCreationCurrentAction={setAccountCreationCurrentAction}
+          updateAccountCreationCurrentStatusAction={
+            updateAccountCreationCurrentStatusAction
+          }
         />
       )
     ).toMatchSnapshot();

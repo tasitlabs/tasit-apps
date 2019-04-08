@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   setAccount,
   setAccountCreationStatus,
-  setAccountCreationCurrentAction,
+  updateAccountCreationCurrentStatusAction,
 } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 
@@ -33,7 +33,7 @@ export class EthereumSignUpScreen extends React.Component {
       const {
         setAccount,
         setAccountCreationStatus,
-        setAccountCreationCurrentAction,
+        updateAccountCreationCurrentStatusAction,
       } = this.props;
 
       // The pattern for each step is:
@@ -52,7 +52,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithEthers = async accountAddress => {
         const action = fundAccountWithEthers(accountAddress);
-        setAccountCreationCurrentAction(action);
+        updateAccountCreationCurrentStatusAction(action);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
@@ -60,7 +60,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithMana = async accountAddress => {
         const action = fundAccountWithMana(accountAddress);
-        setAccountCreationCurrentAction(action);
+        updateAccountCreationCurrentStatusAction(action);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
@@ -68,7 +68,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const approveMarketplace = async account => {
         const action = approveManaSpending(account);
-        setAccountCreationCurrentAction(action);
+        updateAccountCreationCurrentStatusAction(action);
         await action.waitForNonceToUpdate();
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
@@ -114,13 +114,13 @@ export class EthereumSignUpScreen extends React.Component {
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
   setAccountCreationStatus: PropTypes.func.isRequired,
-  setAccountCreationCurrentAction: PropTypes.func.isRequired,
+  updateAccountCreationCurrentStatusAction: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
-  setAccountCreationCurrentAction,
+  updateAccountCreationCurrentStatusAction,
 };
 
 export default connect(

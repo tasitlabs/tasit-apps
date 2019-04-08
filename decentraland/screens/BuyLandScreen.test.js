@@ -10,6 +10,7 @@ describe("BuyLandScreen", () => {
     it("", async () => {
       const accountInfo = {
         creationStatus: READY_TO_USE,
+        creationActions: {},
       };
       const navigation = () => {};
       const removeLandForSale = () => {};

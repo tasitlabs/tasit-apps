@@ -6,8 +6,7 @@ import {
   APPEND_LAND_FOR_SALE_TO_LIST,
   PREPEND_LAND_FOR_SALE_TO_LIST,
   SET_ACCOUNT_CREATION_STATUS,
-  SET_ACCOUNT_CREATION_CURRENT_ACTION, // deprecated
-  ADD_ACCOUNT_CREATION_STEP_ACTION_ID,
+  UPDATE_ACCOUNT_CREATION_CURRENT_STATUS_ACTION,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
   REMOVE_MY_ASSET_FROM_LIST,
@@ -22,29 +21,23 @@ function accountInfo(
   state = {
     account: null,
     creationStatus: NOT_STARTED,
-    creationCurrentAction: null, // deprecated
-    creationActionIds: {},
+    creationActions: {},
   },
   action
 ) {
-  const {
-    type,
-    account,
-    creationStatus,
-    creationCurrentAction, // deprecated
-    creationStatusAction,
-  } = action;
+  const { type, account, creationStatus, creationAction } = action;
   switch (type) {
     case SET_ACCOUNT:
       return { ...state, account };
     case SET_ACCOUNT_CREATION_STATUS:
       return { ...state, creationStatus };
-    case SET_ACCOUNT_CREATION_CURRENT_ACTION: // deprecated
-      return { ...state, creationCurrentAction };
-    case ADD_ACCOUNT_CREATION_STEP_ACTION_ID: {
-      const { status, actionId } = creationStatusAction;
-      const creationActionIds = { ...creationActionIds, [status]: actionId };
-      return { ...state, creationActionIds };
+    case UPDATE_ACCOUNT_CREATION_CURRENT_STATUS_ACTION: {
+      const { creationStatus } = state;
+      const creationActions = {
+        ...creationActions,
+        [creationStatus]: creationAction,
+      };
+      return { ...state, creationActions };
     }
     default:
       return state;

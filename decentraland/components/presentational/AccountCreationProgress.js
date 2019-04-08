@@ -13,12 +13,7 @@ const {
   READY_TO_USE,
 } = AccountCreationStatus;
 
-export default function AccountCreationProgress(props) {
-  const { status, currentAction } = props;
-
-  const waitingForAccountSetup =
-    status !== NOT_STARTED && status !== READY_TO_USE;
-
+const generateWaitingMessage = status => {
   let waitingMessage = "";
   switch (status) {
     case NOT_STARTED:
@@ -43,19 +38,29 @@ export default function AccountCreationProgress(props) {
     default:
   }
 
+  return waitingMessage;
+};
+
+export default function AccountCreationProgress(props) {
+  const { status, action } = props;
+
+  const waitingForAccountSetup =
+    status !== NOT_STARTED && status !== READY_TO_USE;
+
   if (!waitingForAccountSetup) return null;
 
+  const waitingMessage = generateWaitingMessage(status);
   return (
     <View style={styles.textRow}>
       <Text>{waitingMessage}</Text>
-      <LinkToEtherscan action={currentAction} />
+      <LinkToEtherscan action={action} />
     </View>
   );
 }
 
 AccountCreationProgress.propTypes = {
   status: PropTypes.string.isRequired,
-  currentAction: PropTypes.object,
+  action: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
