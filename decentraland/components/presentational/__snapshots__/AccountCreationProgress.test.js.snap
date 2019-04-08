@@ -1,24 +1,106 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccountCreationProgress renders the component 1`] = `
-<Fragment>
-  <Component
-    style={
+exports[`AccountCreationProgress final state - account ready 1`] = `""`;
+
+exports[`AccountCreationProgress initial state - before start account setup 1`] = `""`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component>
+    Funding account with ETH...
+  </Component>
+  <LinkToEtherscan
+    action={
       Object {
-        "flexDirection": "row",
+        "getTransaction": [Function],
       }
     }
-  >
-    <Component>
-      Funding account with ETH...
-    </Component>
-    <LinkToEtherscan
-      action={
-        Object {
-          "getTransaction": [Function],
-        }
-      }
-    />
+  />
+</Component>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component>
+    Funding account with MANA...
   </Component>
-</Fragment>
+  <LinkToEtherscan
+    action={
+      Object {
+        "getTransaction": [Function],
+      }
+    }
+  />
+</Component>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for MANA funding and marketplace approval 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component>
+    Funding account with MANA and approving marketplace...
+  </Component>
+  <LinkToEtherscan
+    action={
+      Object {
+        "getTransaction": [Function],
+      }
+    }
+  />
+</Component>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for account generation 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component>
+    Generating account...
+  </Component>
+  <LinkToEtherscan
+    action={null}
+  />
+</Component>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for marketplace approval 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component>
+    Approving marketplace...
+  </Component>
+  <LinkToEtherscan
+    action={
+      Object {
+        "getTransaction": [Function],
+      }
+    }
+  />
+</Component>
 `;
