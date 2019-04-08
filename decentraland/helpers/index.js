@@ -122,7 +122,7 @@ const getTransactionHashFromAction = async action => {
   return transactionHash;
 };
 
-// Note: That could be live inside for the Action class as `buildLink()` function
+// Note: This could live inside of the Action class as `buildLink()` function
 export const buildEtherscanUrlFromAction = async action => {
   const networkName = getNetworkName();
   const transactionHash = await getTransactionHashFromAction(action);
