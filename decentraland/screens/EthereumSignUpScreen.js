@@ -33,7 +33,7 @@ export class EthereumSignUpScreen extends React.Component {
       const {
         setAccount,
         setAccountCreationStatus,
-        updateAccountCreationCurrentStatusAction,
+        updateActionForAccountCreationStatus,
       } = this.props;
 
       // The pattern for each step is:
