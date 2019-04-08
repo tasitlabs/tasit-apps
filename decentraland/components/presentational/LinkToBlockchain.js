@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "native-base";
-import { showError, openURL, buildEtherscanUrlFromAction } from "@helpers";
+import { showError, openURL, buildBlockchainUrlFromAction } from "@helpers";
 
 const supportedNetworks = ["ropsten"];
 
-const _openEtherscanOf = async action => {
-  const url = await buildEtherscanUrlFromAction(action);
+const _openLinkOf = async action => {
+  const url = await buildBlockchainUrlFromAction(action);
   try {
     await openURL(url);
   } catch (err) {
@@ -14,7 +14,7 @@ const _openEtherscanOf = async action => {
   }
 };
 
-export default function LinkToEtherscan(props) {
+export default function LinkToBlockchain(props) {
   const { action } = props;
 
   //const networkName = getNetworkName();
@@ -23,14 +23,14 @@ export default function LinkToEtherscan(props) {
 
   if (!isNetworkSupported || !action) return null;
 
-  const openEtherscan = () => _openEtherscanOf(action);
+  const openLink = () => _openLinkOf(action);
   return (
-    <Button transparent onPress={openEtherscan}>
+    <Button transparent onPress={openLink}>
       <Icon name="eye" />
     </Button>
   );
 }
 
-LinkToEtherscan.propTypes = {
+LinkToBlockchain.propTypes = {
   action: PropTypes.object,
 };

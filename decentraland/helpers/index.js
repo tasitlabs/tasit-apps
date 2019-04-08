@@ -123,7 +123,7 @@ const getTransactionHashFromAction = async action => {
 };
 
 // Note: This could live inside of the Action class as `buildLink()` function
-export const buildEtherscanUrlFromAction = async action => {
+export const buildBlockchainUrlFromAction = async action => {
   const networkName = getNetworkName();
   const transactionHash = await getTransactionHashFromAction(action);
   const url = `https://${networkName}.etherscan.io/tx/${transactionHash}`;
@@ -206,5 +206,5 @@ export default {
   listsAreEqual,
   openURL,
   getNetworkName,
-  buildEtherscanUrlFromAction,
+  buildBlockchainUrlFromAction,
 };
