@@ -69,7 +69,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const approveMarketplace = async account => {
         const action = approveManaSpending(account);
-        updateAccountCreationCurrentStatusAction(action);
+        updateActionForAccountCreationStatus(action);
         await action.waitForNonceToUpdate();
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
