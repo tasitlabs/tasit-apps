@@ -20,7 +20,7 @@ describe("EthereumSignUpScreen", () => {
           setAccount={setAccount}
           setAccountCreationStatus={setAccountCreationStatus}
           updateAccountCreationCurrentStatusAction={
-            updateAccountCreationCurrentStatusAction
+            updateActionForAccountCreationStatus
           }
         />
       )
