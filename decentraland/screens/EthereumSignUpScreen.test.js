@@ -12,7 +12,7 @@ describe("EthereumSignUpScreen", () => {
   it("renders the component", async () => {
     const setAccount = () => {};
     const setAccountCreationStatus = () => {};
-    const updateAccountCreationCurrentStatusAction = () => {};
+    const updateActionForAccountCreationStatus = () => {};
 
     expect(
       shallow(
