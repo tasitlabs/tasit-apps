@@ -121,7 +121,7 @@ EthereumSignUpScreen.propTypes = {
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
-  updateAccountCreationCurrentStatusAction,
+  updateActionForAccountCreationStatus,
 };
 
 export default connect(
