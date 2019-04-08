@@ -115,7 +115,7 @@ export class EthereumSignUpScreen extends React.Component {
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
   setAccountCreationStatus: PropTypes.func.isRequired,
-  updateAccountCreationCurrentStatusAction: PropTypes.func.isRequired,
+  updateActionForAccountCreationStatus: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
