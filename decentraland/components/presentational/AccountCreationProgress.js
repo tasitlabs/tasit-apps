@@ -3,6 +3,8 @@ import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 import LinkToEtherscan from "./LinkToEtherscan";
+import { responsiveWidth } from "react-native-responsive-dimensions";
+
 const {
   NOT_STARTED,
   GENERATING_ACCOUNT,
@@ -51,9 +53,15 @@ export default function AccountCreationProgress(props) {
 
   const waitingMessage = generateWaitingMessage(status);
   return (
-    <View style={styles.textRow}>
-      <Text>{waitingMessage}</Text>
-      <LinkToEtherscan action={action} />
+    <View style={styles.container}>
+      <View style={styles.text}>
+        <Text adjustsFontSizeToFit={true} numberOfLines={2}>
+          {waitingMessage}
+        </Text>
+      </View>
+      <View>
+        <LinkToEtherscan action={action} />
+      </View>
     </View>
   );
 }
@@ -64,5 +72,12 @@ AccountCreationProgress.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  textRow: { flexDirection: "row" },
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    maxWidth: responsiveWidth(80),
+  },
 });
