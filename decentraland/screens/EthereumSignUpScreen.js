@@ -53,7 +53,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithEthers = async accountAddress => {
         const action = fundAccountWithEthers(accountAddress);
-        updateAccountCreationCurrentStatusAction(action);
+        updateActionForAccountCreationStatus(action);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
