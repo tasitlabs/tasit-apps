@@ -116,10 +116,18 @@ export const fundAccountWithMana = accountAddress => {
   return action;
 };
 
-export const getTransactionHashFromAction = async action => {
+const getTransactionHashFromAction = async action => {
   const tx = await action.getTransaction();
   const { hash: transactionHash } = tx;
   return transactionHash;
+};
+
+// Note: That could be live inside for the Action class as `buildLink()` function
+export const buildEtherscanUrlFromAction = async action => {
+  const networkName = getNetworkName();
+  const transactionHash = await getTransactionHashFromAction(action);
+  const url = `https://${networkName}.etherscan.io/tx/${transactionHash}`;
+  return url;
 };
 
 // More about Toast component: https://docs.nativebase.io/Components.html#toast-def-headref
@@ -198,5 +206,5 @@ export default {
   listsAreEqual,
   openURL,
   getNetworkName,
-  getTransactionHashFromAction,
+  buildEtherscanUrlFromAction,
 };
