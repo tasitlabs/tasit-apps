@@ -2,6 +2,7 @@
 
 exports[`BuyLandScreen renders the component  1`] = `
 <BuyLand
+  accountCreationActions={Object {}}
   accountCreationStatus="READY_TO_USE"
   landForSale={
     Object {
