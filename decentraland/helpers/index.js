@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { Platform, Linking } from "react-native";
 import { Toast } from "native-base";
 import {
   Account,
@@ -20,14 +20,15 @@ const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
 
-export const getContracts = () => {
-  let contracts;
-
+export const getNetworkName = () => {
   const provider = ProviderFactory.getProvider();
-
   const { _network: network } = provider;
   const networkName = !network ? "local" : network.name;
+  return networkName;
+};
 
+export const getContracts = () => {
+  const networkName = getNetworkName();
   const {
     MANAToken,
     LANDProxy,
@@ -53,7 +54,7 @@ export const getContracts = () => {
   const manaContract = new Mana(MANA_ADDRESS);
   const gnosisSafeContract = new GnosisSafe(GNOSIS_SAFE_ADDRESS);
 
-  contracts = {
+  const contracts = {
     estateContract,
     landContract,
     marketplaceContract,
@@ -81,40 +82,52 @@ export const addressesAreEqual = (address1, address2) => {
   return address1.toUpperCase() === address2.toUpperCase();
 };
 
-export const approveManaSpending = async fromAccount => {
+export const approveManaSpending = fromAccount => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
   manaContract.setWallet(fromAccount);
+
   const action = manaContract.approve(toAddress, HALF_MILLION);
-  await action.waitForNonceToUpdate();
+  return action;
 };
 
-export const fundAccountWithEthers = async accountAddress => {
+export const fundAccountWithEthers = accountAddress => {
   const contracts = getContracts();
   const { gnosisSafeContract } = contracts;
   gnosisSafeContract.setWallet(gnosisSafeOwner);
   gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
-  const transferEthersAction = gnosisSafeContract.transferEther(
-    accountAddress,
-    SMALL_AMOUNT
-  );
-  await transferEthersAction.waitForNonceToUpdate();
+  const action = gnosisSafeContract.transferEther(accountAddress, SMALL_AMOUNT);
+  return action;
 };
 
-export const fundAccountWithMana = async accountAddress => {
+export const fundAccountWithMana = accountAddress => {
   const contracts = getContracts();
   const { manaContract, gnosisSafeContract } = contracts;
   gnosisSafeContract.setWallet(gnosisSafeOwner);
   gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
-  const transferManaAction = gnosisSafeContract.transferERC20(
+  const action = gnosisSafeContract.transferERC20(
     manaContract.getAddress(),
     accountAddress,
     HALF_MILLION
   );
-  await transferManaAction.waitForNonceToUpdate();
+  return action;
+};
+
+const getTransactionHashFromAction = async action => {
+  const tx = await action.getTransaction();
+  const { hash: transactionHash } = tx;
+  return transactionHash;
+};
+
+// Note: This could live inside of the Action class as `buildLink()` function
+export const buildBlockchainUrlFromAction = async action => {
+  const networkName = getNetworkName();
+  const transactionHash = await getTransactionHashFromAction(action);
+  const url = `https://${networkName}.etherscan.io/tx/${transactionHash}`;
+  return url;
 };
 
 // More about Toast component: https://docs.nativebase.io/Components.html#toast-def-headref
@@ -163,6 +176,18 @@ export const listsAreEqual = (first, second) => {
   );
 };
 
+export const openURL = async url => {
+  const supported = await Linking.canOpenURL(url);
+
+  if (!supported) throw Error(`Can't handle url: ${url}`);
+
+  try {
+    await Linking.openURL(url);
+  } catch (err) {
+    throw Error(`Unable to open url: ${url}`);
+  }
+};
+
 export default {
   checkBlockchain,
   approveManaSpending,
@@ -179,4 +204,7 @@ export default {
   formatNumber,
   removeFromList,
   listsAreEqual,
+  openURL,
+  getNetworkName,
+  buildBlockchainUrlFromAction,
 };

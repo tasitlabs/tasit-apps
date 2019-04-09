@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { setAccount, setAccountCreationStatus } from "../redux/actions";
+import {
+  setAccount,
+  setAccountCreationStatus,
+  updateActionForAccountCreationStatus,
+} from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 
 import {
@@ -26,13 +30,18 @@ const {
 export class EthereumSignUpScreen extends React.Component {
   _onboarding = async () => {
     try {
-      const { setAccount, setAccountCreationStatus } = this.props;
+      const {
+        setAccount,
+        setAccountCreationStatus,
+        updateActionForAccountCreationStatus,
+      } = this.props;
 
       // The pattern for each step is:
       // 1. alert with good info as soon as it's true
-      // 2. persist any important side effects we may need
+      // 2. update app state with action in progress if applicable
+      // 3. persist any important side effects we may need
       //    later if applicable
-      // 3. Change UI progress state on-screen
+      // 4. Change UI progress state on-screen
 
       const createAnAccount = async () => {
         const account = await createAccount();
@@ -43,19 +52,25 @@ export class EthereumSignUpScreen extends React.Component {
       };
 
       const fundWithEthers = async accountAddress => {
-        await fundAccountWithEthers(accountAddress);
+        const action = fundAccountWithEthers(accountAddress);
+        updateActionForAccountCreationStatus(FUNDING_WITH_ETH, action);
+        await action.waitForNonceToUpdate();
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
       };
 
       const fundWithMana = async accountAddress => {
-        await fundAccountWithMana(accountAddress);
+        const action = fundAccountWithMana(accountAddress);
+        updateActionForAccountCreationStatus(FUNDING_WITH_MANA, action);
+        await action.waitForNonceToUpdate();
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
       };
 
       const approveMarketplace = async account => {
-        await approveManaSpending(account);
+        const action = approveManaSpending(account);
+        updateActionForAccountCreationStatus(APPROVING_MARKETPLACE, action);
+        await action.waitForNonceToUpdate();
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
       };
@@ -100,11 +115,13 @@ export class EthereumSignUpScreen extends React.Component {
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
   setAccountCreationStatus: PropTypes.func.isRequired,
+  updateActionForAccountCreationStatus: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
+  updateActionForAccountCreationStatus,
 };
 
 export default connect(

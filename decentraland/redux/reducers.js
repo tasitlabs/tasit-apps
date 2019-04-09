@@ -6,6 +6,7 @@ import {
   APPEND_LAND_FOR_SALE_TO_LIST,
   PREPEND_LAND_FOR_SALE_TO_LIST,
   SET_ACCOUNT_CREATION_STATUS,
+  UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
   REMOVE_MY_ASSET_FROM_LIST,
@@ -19,20 +20,23 @@ const { NOT_STARTED } = AccountCreationStatus;
 function accountInfo(
   state = {
     account: null,
-    setupInProgress: false,
-    fundedWithEthers: false,
-    fundedWithMana: false,
-    marketplaceApproved: false,
     creationStatus: NOT_STARTED,
+    creationActions: {},
   },
   action
 ) {
-  const { type, account, creationStatus } = action;
+  const { type, account, creationStatus, creationStatusAction } = action;
   switch (type) {
     case SET_ACCOUNT:
       return { ...state, account };
     case SET_ACCOUNT_CREATION_STATUS:
       return { ...state, creationStatus };
+    case UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS: {
+      const { status, action } = creationStatusAction;
+      let { creationActions } = state;
+      creationActions = { ...creationActions, [status]: action };
+      return { ...state, creationActions };
+    }
     default:
       return state;
   }
