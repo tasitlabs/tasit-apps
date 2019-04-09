@@ -38,7 +38,6 @@
     "tasit-sdk": "0.0.15"
   },
   "devDependencies": {
-    "argv": "0.0.2",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-expo": "^5.0.0",
@@ -56,7 +55,8 @@
     "jest-expo": "^32.0.0",
     "jest-prop-type-error": "^1.1.0",
     "prettier": "^1.15.2",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "yargs": "^13.2.2"
   },
   "repository": {
     "type": "git",
