@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkToBlockchain renders the component null action 1`] = `""`;
+
+exports[`LinkToBlockchain renders the component valid action 1`] = `
+<Styled(Button)
+  onPress={[Function]}
+  transparent={true}
+>
+  <Styled(Icon)
+    name="eye"
+  />
+</Styled(Button)>
+`;

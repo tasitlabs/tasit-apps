@@ -29,9 +29,16 @@ export const parcelForSale = {
   asset: parcel,
 };
 
+export const anAction = {
+  getTransaction: () => ({
+    hash: "0x1234567890123456789012345678901234567890",
+  }),
+};
+
 export default {
   estateForSale,
   parcelForSale,
   parcel,
   estate,
+  anAction,
 };

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountCreationProgress final state - account ready 1`] = `""`;
+
+exports[`AccountCreationProgress initial state - before start account setup 1`] = `""`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`] = `
+<ProgressMessageAndLink
+  action={
+    Object {
+      "getTransaction": [Function],
+    }
+  }
+  key="FUNDING_WITH_ETH"
+  waitingMessage="Funding account with ETH..."
+/>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`] = `
+<ProgressMessageAndLink
+  action={
+    Object {
+      "getTransaction": [Function],
+    }
+  }
+  key="FUNDING_WITH_MANA"
+  waitingMessage="Funding account with MANA..."
+/>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for MANA funding and marketplace approval 1`] = `
+Array [
+  <ProgressMessageAndLink
+    action={
+      Object {
+        "getTransaction": [Function],
+      }
+    }
+    key="FUNDING_WITH_MANA"
+    waitingMessage="Funding account with MANA..."
+  />,
+  <ProgressMessageAndLink
+    action={
+      Object {
+        "getTransaction": [Function],
+      }
+    }
+    key="APPROVING_MARKETPLACE"
+    waitingMessage="Approving marketplace..."
+  />,
+]
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for account generation 1`] = `
+<ProgressMessageAndLink
+  key="GENERATING_ACCOUNT"
+  waitingMessage="Generating account..."
+/>
+`;
+
+exports[`AccountCreationProgress waiting for setup - waiting for marketplace approval 1`] = `
+<ProgressMessageAndLink
+  action={
+    Object {
+      "getTransaction": [Function],
+    }
+  }
+  key="APPROVING_MARKETPLACE"
+  waitingMessage="Approving marketplace..."
+/>
+`;
