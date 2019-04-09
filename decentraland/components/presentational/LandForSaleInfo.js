@@ -17,37 +17,49 @@ const onPriceInfo = () => {
   Alert.alert(title, message, buttons);
 };
 
-export default function LandForSaleInfo({ landForSale }) {
-  const { asset, priceMana } = landForSale;
+export function LandForSaleInfo({ landForSale }) {
+  const { asset } = landForSale;
   let { name } = asset;
-  const price = formatNumber(priceMana);
   if (!name) name = "(No name for this one right now)";
 
-  // Note: Conversion to USD will be implemented on v0.2.0
-  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
   return (
     <View style={styles.landInfoContainer}>
       <View style={styles.landNameContainer}>
         <Text style={styles.landName}>{name}</Text>
       </View>
-      <View style={styles.landPriceContainer}>
-        <View>
-          <Button small transparent onPress={onPriceInfo}>
-            <Icon
-              name="information-circle-outline"
-              style={styles.landPriceIcon}
-            />
-          </Button>
-        </View>
-        <View>
-          <Text style={styles.landPrice}>{price}</Text>
-        </View>
-      </View>
+      <LandForSalePrice landForSale={landForSale} />
     </View>
   );
 }
 
 LandForSaleInfo.propTypes = {
+  landForSale: PropTypes.object.isRequired,
+};
+
+export function LandForSalePrice({ landForSale }) {
+  const { priceMana } = landForSale;
+  const price = formatNumber(priceMana);
+
+  // Note: Conversion to USD will be implemented on v0.2.0
+  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
+  return (
+    <View style={styles.landPriceContainer}>
+      <View>
+        <Button small transparent onPress={onPriceInfo}>
+          <Icon
+            name="information-circle-outline"
+            style={styles.landPriceIcon}
+          />
+        </Button>
+      </View>
+      <View>
+        <Text style={styles.landPrice}>{price}</Text>
+      </View>
+    </View>
+  );
+}
+
+LandForSalePrice.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };
 
@@ -81,3 +93,5 @@ const styles = StyleSheet.create({
     paddingTop: responsiveHeight(0.4),
   },
 });
+
+export default LandForSaleInfo;

@@ -35,9 +35,7 @@ const generateWaitingMessage = status => {
   return "";
 };
 
-export default function AccountCreationProgress(props) {
-  const { status, actions } = props;
-
+export function AccountCreationProgress({ status, actions }) {
   const waitingForAccountSetup =
     status !== NOT_STARTED && status !== READY_TO_USE;
 
@@ -66,9 +64,7 @@ AccountCreationProgress.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
-function ProgressMessageAndLink(props) {
-  const { waitingMessage, action } = props;
-
+export function ProgressMessageAndLink({ waitingMessage, action }) {
   return (
     <View style={styles.container}>
       <View style={styles.text}>
@@ -98,3 +94,5 @@ const styles = StyleSheet.create({
     maxWidth: responsiveWidth(80),
   },
 });
+
+export default AccountCreationProgress;

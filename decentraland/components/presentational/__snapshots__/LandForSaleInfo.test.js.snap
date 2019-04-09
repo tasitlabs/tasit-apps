@@ -1,5 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LandForSaleInfo LandForSalePrice renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component>
+    <Styled(Button)
+      onPress={[Function]}
+      small={true}
+      transparent={true}
+    >
+      <Styled(Icon)
+        name="information-circle-outline"
+        style={
+          Object {
+            "marginLeft": 11.25,
+            "marginRight": 11.25,
+          }
+        }
+      />
+    </Styled(Button)>
+  </Component>
+  <Component>
+    <Component
+      style={
+        Object {
+          "color": "#2B2B2B",
+          "fontSize": 61.191865835619396,
+          "fontWeight": "bold",
+          "paddingTop": 5.336,
+        }
+      }
+    >
+      0
+    </Component>
+  </Component>
+</Component>
+`;
+
 exports[`LandForSaleInfo renders the component 1`] = `
 <Component
   style={
@@ -28,45 +71,20 @@ exports[`LandForSaleInfo renders the component 1`] = `
       Sample Estate
     </Component>
   </Component>
-  <Component
-    style={
+  <LandForSalePrice
+    landForSale={
       Object {
-        "alignItems": "center",
-        "flexDirection": "row",
+        "asset": Object {
+          "id": "123",
+          "img": "https://api.decentraland.org/v1/estates/1/map.png",
+          "name": "Sample Estate",
+          "type": "ESTATE",
+        },
+        "id": "1",
+        "priceMana": 0,
+        "priceUSD": 0,
       }
     }
-  >
-    <Component>
-      <Styled(Button)
-        onPress={[Function]}
-        small={true}
-        transparent={true}
-      >
-        <Styled(Icon)
-          name="information-circle-outline"
-          style={
-            Object {
-              "marginLeft": 11.25,
-              "marginRight": 11.25,
-            }
-          }
-        />
-      </Styled(Button)>
-    </Component>
-    <Component>
-      <Component
-        style={
-          Object {
-            "color": "#2B2B2B",
-            "fontSize": 61.191865835619396,
-            "fontWeight": "bold",
-            "paddingTop": 5.336,
-          }
-        }
-      >
-        0
-      </Component>
-    </Component>
-  </Component>
+  />
 </Component>
 `;
