@@ -15,7 +15,8 @@ const startExpo = () => {
 const start = async () => {
   const config = process.env.CONFIG;
   await prepareAndLoadConfig(config);
-  console.log("Checking the connection to the blockchain...");
+  console.log(`Checking the connection to the blockchain...`);
+  console.log(`Using 'config/${config}.js' file...`);
   const connectionOK = await checkBlockchain();
   if (connectionOK) {
     console.log("OK!");
@@ -23,9 +24,9 @@ const start = async () => {
   } else {
     showErrorMessage([
       `Failed to establish the connection to the blockchain.`,
-      `Is the 'config/default.js' file correct?\n`,
+      `Is the 'config/${config}.js' file correct?\n`,
       `If you are starting one of Tasit apps in dev environment, `,
-      "Use: 'npm run prepare:blockchain' from TasitSDK project.",
+      "Use: 'npm run start' from TasitSDK project.",
       "That script will start local blockchain and will deploy the smart contracts.",
     ]);
   }
