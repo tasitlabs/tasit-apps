@@ -64,8 +64,10 @@
   "jest": {
     "preset": "jest-expo",
     "setupFiles": [
-      "<rootDir>/jest.setup.js",
       "jest-prop-type-error"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|.*react-navigation|native-base.*|.*expo.*)"

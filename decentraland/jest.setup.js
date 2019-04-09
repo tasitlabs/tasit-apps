@@ -4,6 +4,6 @@ import { prepareAndLoadConfig } from "./helpers/starter";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-(async function() {
+beforeAll(async () => {
   await prepareAndLoadConfig("development");
-})();
+});
