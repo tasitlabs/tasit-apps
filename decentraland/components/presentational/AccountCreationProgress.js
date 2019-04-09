@@ -16,62 +16,49 @@ const {
 } = AccountCreationStatus;
 
 const generateWaitingMessage = status => {
-  let waitingMessage = "";
   switch (status) {
     case NOT_STARTED:
       break;
     case GENERATING_ACCOUNT:
-      waitingMessage = "Generating account...";
-      break;
+      return "Generating account...";
     case FUNDING_WITH_ETH:
-      waitingMessage = "Funding account with ETH...";
-      break;
+      return "Funding account with ETH...";
     case FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE:
-      waitingMessage = "Funding account with MANA and approving marketplace...";
-      break;
+      return "Funding account with MANA and approving marketplace...";
     case FUNDING_WITH_MANA:
-      waitingMessage = "Funding account with MANA...";
-      break;
+      return "Funding account with MANA...";
     case APPROVING_MARKETPLACE:
-      waitingMessage = "Approving marketplace...";
-      break;
+      return "Approving marketplace...";
     case READY_TO_USE:
       break;
-    default:
   }
-
-  return waitingMessage;
+  return "";
 };
 
 export default function AccountCreationProgress(props) {
   const { status, actions } = props;
-  const { [status]: action } = actions;
 
   const waitingForAccountSetup =
     status !== NOT_STARTED && status !== READY_TO_USE;
 
   if (!waitingForAccountSetup) return null;
 
-  if (status === FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE) {
+  let statusToShow = [status];
+
+  if (status === FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE)
+    statusToShow = [FUNDING_WITH_MANA, APPROVING_MARKETPLACE];
+
+  return statusToShow.map(status => {
+    const waitingMessage = generateWaitingMessage(status);
+    const { [status]: action } = actions;
     return (
-      <React.Fragment>
-        <ProgressMessageAndLink
-          waitingMessage={generateWaitingMessage(FUNDING_WITH_MANA)}
-          action={actions[FUNDING_WITH_MANA]}
-        />
-        <ProgressMessageAndLink
-          waitingMessage={generateWaitingMessage(APPROVING_MARKETPLACE)}
-          action={actions[APPROVING_MARKETPLACE]}
-        />
-      </React.Fragment>
+      <ProgressMessageAndLink
+        key={status}
+        waitingMessage={waitingMessage}
+        action={action}
+      />
     );
-  }
-
-  const waitingMessage = generateWaitingMessage(status);
-
-  return (
-    <ProgressMessageAndLink waitingMessage={waitingMessage} action={action} />
-  );
+  });
 }
 
 AccountCreationProgress.propTypes = {
