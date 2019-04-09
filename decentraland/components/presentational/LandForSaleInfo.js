@@ -17,20 +17,17 @@ const onPriceInfo = () => {
   Alert.alert(title, message, buttons);
 };
 
-export default function LandForSaleInfo({ landForSale }) {
-  const { asset, priceMana } = landForSale;
+export function LandForSaleInfo({ landForSale }) {
+  const { asset } = landForSale;
   let { name } = asset;
-  const price = formatNumber(priceMana);
   if (!name) name = "(No name for this one right now)";
 
-  // Note: Conversion to USD will be implemented on v0.2.0
-  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
   return (
     <View style={styles.landInfoContainer}>
       <View style={styles.landNameContainer}>
         <Text style={styles.landName}>{name}</Text>
       </View>
-      <LandForSalePrice price={price} />
+      <LandForSalePrice landForSale={landForSale} />
     </View>
   );
 }
@@ -39,7 +36,12 @@ LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };
 
-function LandForSalePrice({ price }) {
+export function LandForSalePrice({ landForSale }) {
+  const { priceMana } = landForSale;
+  const price = formatNumber(priceMana);
+
+  // Note: Conversion to USD will be implemented on v0.2.0
+  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
   return (
     <View style={styles.landPriceContainer}>
       <View>
@@ -58,7 +60,7 @@ function LandForSalePrice({ price }) {
 }
 
 LandForSalePrice.propTypes = {
-  price: PropTypes.string.isRequired,
+  landForSale: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -91,3 +93,5 @@ const styles = StyleSheet.create({
     paddingTop: responsiveHeight(0.4),
   },
 });
+
+export default LandForSaleInfo;
