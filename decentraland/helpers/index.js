@@ -8,7 +8,7 @@ import {
 } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
-
+import tasitSdkConfig from "../config/default";
 import { storeEphemeralAccount, retrieveEphemeralAccount } from "./storage";
 
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
@@ -126,7 +126,7 @@ export const showWarn = msg => showToast(`WARN: ${msg}`);
 export const showInfo = msg => showToast(`${msg}`);
 
 export const checkBlockchain = async () => {
-  ConfigLoader.setConfig("../config/default");
+  ConfigLoader.setConfig(tasitSdkConfig);
   const provider = ProviderFactory.getProvider();
   try {
     await provider.getBlockNumber();
