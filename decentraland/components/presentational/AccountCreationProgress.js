@@ -66,7 +66,6 @@ AccountCreationProgress.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
-// Should we extract this component from here?
 function ProgressMessageAndLink(props) {
   const { waitingMessage, action } = props;
 

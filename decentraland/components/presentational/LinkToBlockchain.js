@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Icon } from "native-base";
-import { showError, openURL, buildBlockchainUrlFromAction } from "@helpers";
+import {
+  showError,
+  openURL,
+  buildBlockchainUrlFromAction,
+  getNetworkName,
+} from "@helpers";
 
 const supportedNetworks = ["ropsten"];
 
@@ -17,8 +22,8 @@ const _openLinkOf = async action => {
 export default function LinkToBlockchain(props) {
   const { action } = props;
 
-  //const networkName = getNetworkName();
-  const networkName = "ropsten";
+  // Note: Use 'ropsten' network for tests on development env
+  const networkName = getNetworkName();
   const isNetworkSupported = supportedNetworks.includes(networkName);
 
   if (!isNetworkSupported || !action) return null;

@@ -33,10 +33,8 @@ function accountInfo(
       return { ...state, creationStatus };
     case UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS: {
       const { status, action } = creationStatusAction;
-      const creationActions = {
-        ...creationActions,
-        [status]: action,
-      };
+      let { creationActions } = state;
+      creationActions = { ...creationActions, [status]: action };
       return { ...state, creationActions };
     }
     default:
