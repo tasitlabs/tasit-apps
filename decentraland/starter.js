@@ -26,7 +26,7 @@ const start = async () => {
       `Failed to establish the connection to the blockchain.`,
       `Is the 'config/${config}.js' file correct?\n`,
       `If you are starting one of Tasit apps in dev environment, `,
-      "Use: 'npm run start' from TasitSDK project.",
+      "Use: 'npm start' from TasitSDK project.",
       "That script will start local blockchain and will deploy the smart contracts.",
     ]);
   }
