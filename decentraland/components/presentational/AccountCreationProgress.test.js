@@ -44,7 +44,6 @@ describe("AccountCreationProgress", () => {
   it("waiting for setup - waiting for MANA funding and marketplace approval", async () => {
     const status = FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE;
     const actions = {
-      FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE: null,
       FUNDING_WITH_MANA: anAction,
       APPROVING_MARKETPLACE: anAction,
     };
