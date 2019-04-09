@@ -61,7 +61,7 @@ export default function AccountCreationProgress(props) {
 
 AccountCreationProgress.propTypes = {
   status: PropTypes.string.isRequired,
-  actions: PropTypes.object,
+  actions: PropTypes.object.isRequired,
 };
 
 function ProgressMessageAndLink(props) {

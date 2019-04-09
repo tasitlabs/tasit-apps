@@ -16,64 +16,64 @@ import { anAction } from "@helpers/testHelpers";
 describe("AccountCreationProgress", () => {
   it("initial state - before start account setup", async () => {
     const status = NOT_STARTED;
-    const action = null;
+    const actions = {};
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 
   it("waiting for setup - waiting for account generation", async () => {
     const status = GENERATING_ACCOUNT;
-    const action = null;
+    const actions = {};
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 
   it("waiting for setup - waiting for ETH funding", async () => {
     const status = FUNDING_WITH_ETH;
-    const action = anAction;
+    const actions = { FUNDING_WITH_ETH: anAction };
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 
   it("waiting for setup - waiting for MANA funding and marketplace approval", async () => {
     const status = FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE;
-    const action = anAction;
+    const actions = { FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE: anAction };
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 
   it("waiting for setup - waiting for MANA funding", async () => {
     const status = FUNDING_WITH_MANA;
-    const action = anAction;
+    const actions = { FUNDING_WITH_MANA: anAction };
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 
   it("waiting for setup - waiting for marketplace approval", async () => {
     const status = APPROVING_MARKETPLACE;
-    const action = anAction;
+    const actions = { APPROVING_MARKETPLACE: anAction };
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 
   it("final state - account ready", async () => {
     const status = READY_TO_USE;
-    const action = null;
+    const actions = {};
 
     expect(
-      shallow(<AccountCreationProgress status={status} action={action} />)
+      shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
   });
 });

@@ -5,177 +5,51 @@ exports[`AccountCreationProgress final state - account ready 1`] = `""`;
 exports[`AccountCreationProgress initial state - before start account setup 1`] = `""`;
 
 exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`] = `
-<Component
-  style={
+<ProgressMessageAndLink
+  action={
     Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
+      "getTransaction": [Function],
     }
   }
->
-  <Component
-    style={
-      Object {
-        "maxWidth": 600,
-      }
-    }
-  >
-    <Component
-      adjustsFontSizeToFit={true}
-      numberOfLines={2}
-    >
-      Funding account with ETH...
-    </Component>
-  </Component>
-  <Component>
-    <LinkToBlockchain
-      action={
-        Object {
-          "getTransaction": [Function],
-        }
-      }
-    />
-  </Component>
-</Component>
+  waitingMessage="Funding account with ETH..."
+/>
 `;
 
 exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`] = `
-<Component
-  style={
+<ProgressMessageAndLink
+  action={
     Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
+      "getTransaction": [Function],
     }
   }
->
-  <Component
-    style={
-      Object {
-        "maxWidth": 600,
-      }
-    }
-  >
-    <Component
-      adjustsFontSizeToFit={true}
-      numberOfLines={2}
-    >
-      Funding account with MANA...
-    </Component>
-  </Component>
-  <Component>
-    <LinkToBlockchain
-      action={
-        Object {
-          "getTransaction": [Function],
-        }
-      }
-    />
-  </Component>
-</Component>
+  waitingMessage="Funding account with MANA..."
+/>
 `;
 
 exports[`AccountCreationProgress waiting for setup - waiting for MANA funding and marketplace approval 1`] = `
-<Component
-  style={
+<ProgressMessageAndLink
+  action={
     Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
+      "getTransaction": [Function],
     }
   }
->
-  <Component
-    style={
-      Object {
-        "maxWidth": 600,
-      }
-    }
-  >
-    <Component
-      adjustsFontSizeToFit={true}
-      numberOfLines={2}
-    >
-      Funding account with MANA and approving marketplace...
-    </Component>
-  </Component>
-  <Component>
-    <LinkToBlockchain
-      action={
-        Object {
-          "getTransaction": [Function],
-        }
-      }
-    />
-  </Component>
-</Component>
+  waitingMessage="Funding account with MANA and approving marketplace..."
+/>
 `;
 
 exports[`AccountCreationProgress waiting for setup - waiting for account generation 1`] = `
-<Component
-  style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
-    }
-  }
->
-  <Component
-    style={
-      Object {
-        "maxWidth": 600,
-      }
-    }
-  >
-    <Component
-      adjustsFontSizeToFit={true}
-      numberOfLines={2}
-    >
-      Generating account...
-    </Component>
-  </Component>
-  <Component>
-    <LinkToBlockchain
-      action={null}
-    />
-  </Component>
-</Component>
+<ProgressMessageAndLink
+  waitingMessage="Generating account..."
+/>
 `;
 
 exports[`AccountCreationProgress waiting for setup - waiting for marketplace approval 1`] = `
-<Component
-  style={
+<ProgressMessageAndLink
+  action={
     Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "justifyContent": "center",
+      "getTransaction": [Function],
     }
   }
->
-  <Component
-    style={
-      Object {
-        "maxWidth": 600,
-      }
-    }
-  >
-    <Component
-      adjustsFontSizeToFit={true}
-      numberOfLines={2}
-    >
-      Approving marketplace...
-    </Component>
-  </Component>
-  <Component>
-    <LinkToBlockchain
-      action={
-        Object {
-          "getTransaction": [Function],
-        }
-      }
-    />
-  </Component>
-</Component>
+  waitingMessage="Approving marketplace..."
+/>
 `;

@@ -41,6 +41,7 @@ exports[`BuyLand initial state - before start account setup 1`] = `
     />
   </Component>
   <AccountCreationProgress
+    actions={Object {}}
     status="NOT_STARTED"
   />
 </Component>
