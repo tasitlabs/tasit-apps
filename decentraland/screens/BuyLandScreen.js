@@ -78,7 +78,7 @@ export class BuyLandScreen extends React.Component {
     addToMyAssetsList(asset);
 
     _executeOrder(landForSale, account, onSuccess, onError);
-    navigation.navigate("MyAssetsScreen");
+    navigation.navigate("ListLandForSaleScreen");
   };
 
   _executeOrder = async (
