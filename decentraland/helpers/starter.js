@@ -22,7 +22,7 @@ const checkBlockchain = async () => {
 };
 
 const loadConfig = () => {
-  const tasitSdkConfig = require("../config/default.js");
+  const tasitSdkConfig = require("../config/.current.js");
   ConfigLoader.setConfig(tasitSdkConfig);
 };
 
@@ -48,7 +48,7 @@ const showErrorMessage = message => {
 
 const prepareConfig = async config => {
   const source = `./config/${config}.js`;
-  const destination = "./config/default.js";
+  const destination = "./config/.current.js";
 
   const sourceExists = await fileExists(source);
   if (!sourceExists) {
