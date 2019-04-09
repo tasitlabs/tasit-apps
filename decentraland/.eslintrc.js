@@ -19,7 +19,7 @@ module.exports = {
     "react-native/no-raw-text": ["error", { skip: ["LargeText"] }],
     "react/prop-types": ["error", { ignore: ["navigation"] }],
     "prettier/prettier": "error",
-    "jest/no-large-snapshots": ["warn", { maxSize: 50 }],
+    "jest/no-large-snapshots": ["error", { maxSize: 50 }],
   },
   settings: {
     react: {
