@@ -1,5 +1,6 @@
 /* eslint no-console: "off" */
 const { exec } = require("child_process");
+const { argv } = require("yargs");
 const {
   checkBlockchain,
   showErrorMessage,
@@ -13,7 +14,7 @@ const startExpo = () => {
 };
 
 const start = async () => {
-  const config = process.env.CONFIG;
+  const { config } = argv;
   await prepareAndLoadConfig(config);
   console.log(`Checking the connection to the blockchain...`);
   console.log(`Using 'config/${config}.js' file...`);
