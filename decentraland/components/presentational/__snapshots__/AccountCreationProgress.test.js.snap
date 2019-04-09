@@ -29,7 +29,13 @@ exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`]
     </Component>
   </Component>
   <Component>
-    <LinkToBlockchain />
+    <LinkToBlockchain
+      action={
+        Object {
+          "getTransaction": [Function],
+        }
+      }
+    />
   </Component>
 </Component>
 `;
@@ -59,7 +65,13 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`
     </Component>
   </Component>
   <Component>
-    <LinkToBlockchain />
+    <LinkToBlockchain
+      action={
+        Object {
+          "getTransaction": [Function],
+        }
+      }
+    />
   </Component>
 </Component>
 `;
@@ -89,7 +101,13 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding an
     </Component>
   </Component>
   <Component>
-    <LinkToBlockchain />
+    <LinkToBlockchain
+      action={
+        Object {
+          "getTransaction": [Function],
+        }
+      }
+    />
   </Component>
 </Component>
 `;
@@ -119,7 +137,9 @@ exports[`AccountCreationProgress waiting for setup - waiting for account generat
     </Component>
   </Component>
   <Component>
-    <LinkToBlockchain />
+    <LinkToBlockchain
+      action={null}
+    />
   </Component>
 </Component>
 `;
@@ -149,7 +169,13 @@ exports[`AccountCreationProgress waiting for setup - waiting for marketplace app
     </Component>
   </Component>
   <Component>
-    <LinkToBlockchain />
+    <LinkToBlockchain
+      action={
+        Object {
+          "getTransaction": [Function],
+        }
+      }
+    />
   </Component>
 </Component>
 `;
