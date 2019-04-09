@@ -17,8 +17,6 @@ export default function BuyLand(props) {
     accountCreationActions,
   } = props;
 
-  const accountCreationAction = accountCreationActions[accountCreationStatus];
-
   const waitingForAccountSetup =
     accountCreationStatus !== NOT_STARTED &&
     accountCreationStatus !== READY_TO_USE;
@@ -34,7 +32,7 @@ export default function BuyLand(props) {
       </View>
       <AccountCreationProgress
         status={accountCreationStatus}
-        action={accountCreationAction}
+        actions={accountCreationActions}
       />
     </View>
   );

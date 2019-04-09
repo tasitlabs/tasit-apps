@@ -44,7 +44,8 @@ const generateWaitingMessage = status => {
 };
 
 export default function AccountCreationProgress(props) {
-  const { status, action } = props;
+  const { status, actions } = props;
+  const { [status]: action } = actions;
 
   const waitingForAccountSetup =
     status !== NOT_STARTED && status !== READY_TO_USE;
@@ -52,6 +53,20 @@ export default function AccountCreationProgress(props) {
   if (!waitingForAccountSetup) return null;
 
   const waitingMessage = generateWaitingMessage(status);
+
+  return (
+    <ProgressMessageAndLink waitingMessage={waitingMessage} action={action} />
+  );
+}
+
+AccountCreationProgress.propTypes = {
+  status: PropTypes.string.isRequired,
+  actions: PropTypes.object,
+};
+
+function ProgressMessageAndLink(props) {
+  const { waitingMessage, action } = props;
+
   return (
     <View style={styles.container}>
       <View style={styles.text}>
@@ -66,8 +81,8 @@ export default function AccountCreationProgress(props) {
   );
 }
 
-AccountCreationProgress.propTypes = {
-  status: PropTypes.string.isRequired,
+ProgressMessageAndLink.propTypes = {
+  waitingMessage: PropTypes.string,
   action: PropTypes.object,
 };
 
