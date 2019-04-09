@@ -30,7 +30,8 @@ export class MyAssetsScreen extends React.Component {
   _getAssetsFromBlockchain = async address => {
     const listOfPromises = await this._getAssetsOf(address);
     const fromBlockchain = await Promise.all([...listOfPromises]);
-    return fromBlockchain;
+    // Note: The UI shows land the user bought ordered by purchase date (desc)
+    return fromBlockchain.reverse();
   };
 
   // Note: Returns a list of Promises
