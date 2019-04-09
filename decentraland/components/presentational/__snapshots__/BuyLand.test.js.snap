@@ -35,9 +35,13 @@ exports[`BuyLand initial state - before start account setup 1`] = `
     }
   >
     <Button
+      disabled={false}
       onPress={[Function]}
       title="Buy"
     />
   </Component>
+  <AccountCreationProgress
+    status="NOT_STARTED"
+  />
 </Component>
 `;

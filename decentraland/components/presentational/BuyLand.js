@@ -14,31 +14,28 @@ export default function BuyLand(props) {
     landForSale,
     onBuy,
     accountCreationStatus,
-    accountCreationAction,
+    accountCreationActions,
   } = props;
+
+  const accountCreationAction = accountCreationActions[accountCreationStatus];
 
   const waitingForAccountSetup =
     accountCreationStatus !== NOT_STARTED &&
     accountCreationStatus !== READY_TO_USE;
 
+  const onPress = waitingForAccountSetup ? () => {} : onBuy;
+  const buttonDisabled = waitingForAccountSetup ? true : false;
+
   return (
     <View style={styles.container}>
       <LandForSale landForSale={landForSale} />
-      {waitingForAccountSetup ? (
-        <React.Fragment>
-          <View style={styles.buttonView}>
-            <Button title="Buy" disabled={true} onPress={() => {}} />
-          </View>
-          <AccountCreationProgress
-            status={accountCreationStatus}
-            action={accountCreationAction}
-          />
-        </React.Fragment>
-      ) : (
-        <View style={styles.buttonView}>
-          <Button title="Buy" onPress={onBuy} />
-        </View>
-      )}
+      <View style={styles.buttonView}>
+        <Button title="Buy" disabled={buttonDisabled} onPress={onPress} />
+      </View>
+      <AccountCreationProgress
+        status={accountCreationStatus}
+        action={accountCreationAction}
+      />
     </View>
   );
 }
@@ -47,7 +44,7 @@ BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,
   accountCreationStatus: PropTypes.string.isRequired,
-  accountCreationAction: PropTypes.object,
+  accountCreationActions: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
