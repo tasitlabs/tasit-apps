@@ -136,7 +136,7 @@ export class BuyLandScreen extends React.Component {
         landForSale={landForSale}
         onBuy={() => this._onBuy(landForSale)}
         accountCreationStatus={creationStatus}
-        accountCreationAction={creationActions}
+        accountCreationActions={creationActions}
       />
     );
   }
