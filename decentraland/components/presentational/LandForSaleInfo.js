@@ -30,25 +30,35 @@ export default function LandForSaleInfo({ landForSale }) {
       <View style={styles.landNameContainer}>
         <Text style={styles.landName}>{name}</Text>
       </View>
-      <View style={styles.landPriceContainer}>
-        <View>
-          <Button small transparent onPress={onPriceInfo}>
-            <Icon
-              name="information-circle-outline"
-              style={styles.landPriceIcon}
-            />
-          </Button>
-        </View>
-        <View>
-          <Text style={styles.landPrice}>{price}</Text>
-        </View>
-      </View>
+      <LandForSalePrice price={price} />
     </View>
   );
 }
 
 LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
+};
+
+function LandForSalePrice({ price }) {
+  return (
+    <View style={styles.landPriceContainer}>
+      <View>
+        <Button small transparent onPress={onPriceInfo}>
+          <Icon
+            name="information-circle-outline"
+            style={styles.landPriceIcon}
+          />
+        </Button>
+      </View>
+      <View>
+        <Text style={styles.landPrice}>{price}</Text>
+      </View>
+    </View>
+  );
+}
+
+LandForSalePrice.propTypes = {
+  price: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
