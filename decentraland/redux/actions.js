@@ -20,10 +20,10 @@ export function setAccountCreationStatus(creationStatus) {
   return { type: SET_ACCOUNT_CREATION_STATUS, creationStatus };
 }
 
-export function updateActionForAccountCreationStatus(creationAction) {
+export function updateActionForAccountCreationStatus(status, action) {
   return {
     type: UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
-    creationAction,
+    creationStatusAction: { status, action },
   };
 }
 

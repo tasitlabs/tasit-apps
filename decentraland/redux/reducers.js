@@ -25,17 +25,17 @@ function accountInfo(
   },
   action
 ) {
-  const { type, account, creationStatus, creationAction } = action;
+  const { type, account, creationStatus, creationStatusAction } = action;
   switch (type) {
     case SET_ACCOUNT:
       return { ...state, account };
     case SET_ACCOUNT_CREATION_STATUS:
       return { ...state, creationStatus };
     case UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS: {
-      const { creationStatus } = state;
+      const { status, action } = creationStatusAction;
       const creationActions = {
         ...creationActions,
-        [creationStatus]: creationAction,
+        [status]: action,
       };
       return { ...state, creationActions };
     }

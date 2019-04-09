@@ -52,6 +52,21 @@ export default function AccountCreationProgress(props) {
 
   if (!waitingForAccountSetup) return null;
 
+  if (status === FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE) {
+    return (
+      <React.Fragment>
+        <ProgressMessageAndLink
+          waitingMessage={generateWaitingMessage(FUNDING_WITH_MANA)}
+          action={actions[FUNDING_WITH_MANA]}
+        />
+        <ProgressMessageAndLink
+          waitingMessage={generateWaitingMessage(APPROVING_MARKETPLACE)}
+          action={actions[APPROVING_MARKETPLACE]}
+        />
+      </React.Fragment>
+    );
+  }
+
   const waitingMessage = generateWaitingMessage(status);
 
   return (
@@ -64,6 +79,7 @@ AccountCreationProgress.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
+// Should we extract this component from here?
 function ProgressMessageAndLink(props) {
   const { waitingMessage, action } = props;
 

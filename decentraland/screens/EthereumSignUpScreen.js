@@ -53,7 +53,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithEthers = async accountAddress => {
         const action = fundAccountWithEthers(accountAddress);
-        updateActionForAccountCreationStatus(action);
+        updateActionForAccountCreationStatus(FUNDING_WITH_ETH, action);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
@@ -61,7 +61,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithMana = async accountAddress => {
         const action = fundAccountWithMana(accountAddress);
-        updateActionForAccountCreationStatus(action);
+        updateActionForAccountCreationStatus(FUNDING_WITH_MANA, action);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
@@ -69,7 +69,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const approveMarketplace = async account => {
         const action = approveManaSpending(account);
-        updateActionForAccountCreationStatus(action);
+        updateActionForAccountCreationStatus(APPROVING_MARKETPLACE, action);
         await action.waitForNonceToUpdate();
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
