@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TinyLink renders the component 1`] = `
+<Styled(Button)
+  onPress={[Function]}
+  transparent={true}
+>
+  <Component
+    style={
+      Object {
+        "color": "#2196f3",
+        "fontSize": 30.595932917809698,
+        "padding": 26.68,
+        "textAlign": "center",
+      }
+    }
+  >
+    Tasit privacy policy
+  </Component>
+</Styled(Button)>
+`;
