@@ -9,7 +9,7 @@ import decentralandApp from "./redux/reducers";
 import { setAccount, setMyAssetsList } from "./redux/actions";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
-import tasitSdkConfig from "./config/.current";
+import tasitSdkConfig from "./config/current";
 import { checkBlockchain, showFatalError } from "@helpers";
 import { retrieveEphemeralAccount, retrieveMyAssets } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
