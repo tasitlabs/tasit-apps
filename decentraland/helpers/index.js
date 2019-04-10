@@ -176,7 +176,7 @@ export const listsAreEqual = (first, second) => {
 };
 
 const loadConfig = () => {
-  const tasitSdkConfig = require("../config/.current.js");
+  const tasitSdkConfig = require("../config/current.js");
   ConfigLoader.setConfig(tasitSdkConfig);
 };
 
