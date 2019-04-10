@@ -8,8 +8,6 @@ import {
 } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
-import tasitSdkConfig from "../config/default";
-
 import { storeEphemeralAccount, retrieveEphemeralAccount } from "./storage";
 
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
@@ -21,6 +19,7 @@ const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
 
 export const getNetworkName = () => {
+  loadConfig();
   const provider = ProviderFactory.getProvider();
   const { _network: network } = provider;
   const networkName = !network ? "local" : network.name;
@@ -140,7 +139,7 @@ export const showWarn = msg => showToast(`WARN: ${msg}`);
 export const showInfo = msg => showToast(`${msg}`);
 
 export const checkBlockchain = async () => {
-  ConfigLoader.setConfig(tasitSdkConfig);
+  loadConfig();
   const provider = ProviderFactory.getProvider();
   try {
     await provider.getBlockNumber();
@@ -174,6 +173,11 @@ export const listsAreEqual = (first, second) => {
   return (
     first.every(e => second.includes(e)) && second.every(e => first.includes(e))
   );
+};
+
+const loadConfig = () => {
+  const tasitSdkConfig = require("../config/.current.js");
+  ConfigLoader.setConfig(tasitSdkConfig);
 };
 
 export const openURL = async url => {

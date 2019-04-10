@@ -9,7 +9,7 @@ import decentralandApp from "./redux/reducers";
 import { setAccount, setMyAssetsList } from "./redux/actions";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
-import tasitSdkConfig from "./config/default";
+import tasitSdkConfig from "./config/.current";
 import { checkBlockchain, showFatalError } from "@helpers";
 import { retrieveEphemeralAccount, retrieveMyAssets } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
@@ -41,7 +41,7 @@ export default class App extends React.Component {
     const connectionOK = await checkBlockchain();
     if (!connectionOK) {
       const errorMessage = `Failed to establish the connection to the blockchain.
-Is the 'config/default.js' file correct?`;
+Is the config file correct?`;
       showFatalError(errorMessage);
     }
   }
