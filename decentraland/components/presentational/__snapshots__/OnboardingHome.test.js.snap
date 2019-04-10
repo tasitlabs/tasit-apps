@@ -30,5 +30,19 @@ exports[`OnboardingHome renders the component 1`] = `
       title="Get started"
     />
   </Component>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginTop": 66.7,
+      }
+    }
+  >
+    <TinyLink
+      text="Tasit privacy policy"
+      url="https://privacy.tasit.io/"
+    />
+  </Component>
 </Component>
 `;

@@ -14,4 +14,5 @@ export default {
   loadingColor: APP_BLUE,
   assetInfoText: "#2B2B2B",
   assetInfoIcon: "#868686",
+  linkColor: APP_BLUE,
 };
