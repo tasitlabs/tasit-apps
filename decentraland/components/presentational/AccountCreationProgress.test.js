@@ -1,6 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AccountCreationProgress from "./AccountCreationProgress";
+import {
+  AccountCreationProgress,
+  ProgressMessageAndLink,
+} from "./AccountCreationProgress";
 import status from "@constants/AccountCreationStatus";
 const {
   NOT_STARTED,
@@ -78,5 +81,49 @@ describe("AccountCreationProgress", () => {
     expect(
       shallow(<AccountCreationProgress status={status} actions={actions} />)
     ).toMatchSnapshot();
+  });
+
+  describe("ProgressMessageAndLink", () => {
+    it("with a message and without an action", async () => {
+      const waitingMessage = "A waiting message.";
+      const action = null;
+
+      expect(
+        shallow(
+          <ProgressMessageAndLink
+            waitingMessage={waitingMessage}
+            action={action}
+          />
+        )
+      ).toMatchSnapshot();
+    });
+
+    it("with a message and with an action", async () => {
+      const waitingMessage = "A waiting message.";
+      const action = anAction;
+
+      expect(
+        shallow(
+          <ProgressMessageAndLink
+            waitingMessage={waitingMessage}
+            action={action}
+          />
+        )
+      ).toMatchSnapshot();
+    });
+
+    it("without a message nor action", async () => {
+      const waitingMessage = null;
+      const action = null;
+
+      expect(
+        shallow(
+          <ProgressMessageAndLink
+            waitingMessage={waitingMessage}
+            action={action}
+          />
+        )
+      ).toMatchSnapshot();
+    });
   });
 });

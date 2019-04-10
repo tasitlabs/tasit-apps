@@ -1,5 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AccountCreationProgress ProgressMessageAndLink with a message and with an action 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      A waiting message.
+    </Component>
+  </Component>
+  <Component>
+    <LinkToBlockchain
+      action={
+        Object {
+          "getTransaction": [Function],
+        }
+      }
+    />
+  </Component>
+</Component>
+`;
+
+exports[`AccountCreationProgress ProgressMessageAndLink with a message and without an action 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    >
+      A waiting message.
+    </Component>
+  </Component>
+  <Component>
+    <LinkToBlockchain
+      action={null}
+    />
+  </Component>
+</Component>
+`;
+
+exports[`AccountCreationProgress ProgressMessageAndLink without a message nor action 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "maxWidth": 600,
+      }
+    }
+  >
+    <Component
+      adjustsFontSizeToFit={true}
+      numberOfLines={2}
+    />
+  </Component>
+  <Component>
+    <LinkToBlockchain
+      action={null}
+    />
+  </Component>
+</Component>
+`;
+
 exports[`AccountCreationProgress final state - account ready 1`] = `""`;
 
 exports[`AccountCreationProgress initial state - before start account setup 1`] = `""`;
