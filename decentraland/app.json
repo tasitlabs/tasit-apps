@@ -6,7 +6,7 @@
     "privacy": "unlisted",
     "sdkVersion": "32.0.0",
     "platforms": ["ios", "android"],
-    "version": "0.0.15",
+    "version": "0.0.16",
     "orientation": "portrait",
     "icon": "./assets/images/TasitLogoFromSvgNoAlpha1024x1024.png",
     "splash": {
@@ -21,7 +21,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "io.tasit.decentraland",
-      "buildNumber": "15",
+      "buildNumber": "16",
       "config": {
         "usesNonExemptEncryption": false
       }
@@ -33,7 +33,7 @@
       },
       "icon": "./assets/images/TasitLogoFromSvgTransparentAndOpaque1024x1024.png",
       "permissions": [],
-      "versionCode": 15
+      "versionCode": 16
     }
   }
 }
