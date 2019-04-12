@@ -33,7 +33,7 @@
     "react-native-button": "^2.3.0",
     "react-native-responsive-dimensions": "^2.0.1",
     "react-navigation": "^3.0.9",
-    "react-redux": "^6.0.0",
+    "react-redux": "^7.0.2",
     "redux": "^4.0.1",
     "tasit-sdk": "0.0.16"
   },
