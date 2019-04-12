@@ -1,5 +1,6 @@
 # Tasit
 
+[![CircleCI](https://circleci.com/gh/tasitlabs/tasit.svg?style=svg)](https://circleci.com/gh/tasitlabs/tasit)
 [![Greenkeeper badge](https://badges.greenkeeper.io/tasitlabs/tasit.svg)](https://greenkeeper.io/)
 
 <div align="left">
