@@ -122,7 +122,7 @@ const MainDrawerNavigator = createDrawerNavigator({
   MyAccount: {
     screen: MyAccountNavigator,
     navigationOptions: {
-      drawerLabel: "My Account",
+      drawerLabel: "My account",
     },
   },
 });
