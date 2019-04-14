@@ -21,7 +21,7 @@ export default function MyAccountProgress({ progress }) {
         style={styles.progress}
       />
       <View style={styles.progressTextContainer}>
-        <Text style={styles.progressText}>{progress * 100}% completed</Text>
+        <Text style={styles.progressText}>{progress * 100}% complete</Text>
       </View>
     </View>
   );
