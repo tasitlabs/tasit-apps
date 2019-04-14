@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyAccountCreationStatusItem renders the component with done status 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "backgroundColor": "white",
+      "flexDirection": "row",
+      "height": 133.4,
+      "justifyContent": "flex-start",
+      "marginTop": 13.34,
+    }
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    name="md-checkmark"
+    size={20}
+    style={
+      Object {
+        "fontWeight": "800",
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "fontSize": 16,
+        "fontWeight": "800",
+        "marginLeft": 37.5,
+      }
+    }
+  >
+    test
+  </Component>
+</Component>
+`;
+
+exports[`MyAccountCreationStatusItem renders the component with missing status 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "backgroundColor": "white",
+      "flexDirection": "row",
+      "height": 133.4,
+      "justifyContent": "flex-start",
+      "marginTop": 13.34,
+    }
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    name="ios-close"
+    size={20}
+    style={
+      Object {
+        "fontWeight": "800",
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "fontSize": 16,
+        "fontWeight": "800",
+        "marginLeft": 37.5,
+      }
+    }
+  >
+    test
+  </Component>
+</Component>
+`;
+
+exports[`MyAccountCreationStatusItem renders the component with pending status 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "backgroundColor": "white",
+      "flexDirection": "row",
+      "height": 133.4,
+      "justifyContent": "flex-start",
+      "marginTop": 13.34,
+    }
+  }
+>
+  <Icon
+    allowFontScaling={false}
+    name="md-clock"
+    size={20}
+    style={
+      Object {
+        "fontWeight": "800",
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "fontSize": 16,
+        "fontWeight": "800",
+        "marginLeft": 37.5,
+      }
+    }
+  >
+    test
+  </Component>
+</Component>
+`;

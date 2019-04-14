@@ -124,7 +124,7 @@ const MainDrawerNavigator = createDrawerNavigator({
     navigationOptions: {
       drawerLabel: "My Account",
     },
-  }
+  },
 });
 
 export default createAppContainer(MainDrawerNavigator);

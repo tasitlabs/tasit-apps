@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyAccountProgress renders the component 1`] = `
+<Component>
+  <ProgressBar
+    animated={true}
+    animationConfig={
+      Object {
+        "bounciness": 0,
+      }
+    }
+    animationType="spring"
+    borderRadius={4}
+    borderWidth={0}
+    color="#2196f3"
+    height={13.34}
+    indeterminate={false}
+    indeterminateAnimationDuration={1000}
+    progress={0.5}
+    style={
+      Object {
+        "marginTop": 133.4,
+      }
+    }
+    unfilledColor="gray"
+    useNativeDriver={false}
+    width={825.0000000000001}
+  />
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "fontWeight": "800",
+        }
+      }
+    >
+      50
+      % completed
+    </Component>
+  </Component>
+</Component>
+`;
