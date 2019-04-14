@@ -1,44 +1,57 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import Colors from '@constants/Colors'
-import ProgressBar from 'react-native-progress/Bar'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Colors from '@constants/Colors';
+import PropTypes from 'prop-types';
+import ProgressBar from 'react-native-progress/Bar';
 import {
   responsiveHeight,
-  responsiveWidth
-} from 'react-native-responsive-dimensions'
-import MyAccountCreationStatusItem from './MyAccountCreationStatusItem'
-import ActionStatus from '@constants/ActionStatus'
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
+import MyAccountCreationStatusItem from './MyAccountCreationStatusItem';
+import ActionStatus from '@constants/ActionStatus';
 
-export default class MyAccount extends React.Component {
+export default function MyAccount ({progress, creationActions}) {
 
-  render () {
-    return (
-      <View style={styles.container}>
-        <ProgressBar
-          progress={0.4}
-          color={Colors.loadingColor}
-          borderWidth={0}
-          unfilledColor={Colors.textColor}
-          height={responsiveHeight(1)}
-          width={responsiveWidth(110)}
-          style={styles.progress}
-        />
-        <View style={styles.progressTextContainer}>
-          <Text style={{fontWeight: '800'}}>40% completed</Text>
-        </View>
-        <View style={styles.actionItemsContainer}>
-          <MyAccountCreationStatusItem name="Account created" status={ActionStatus.DONE}/>
-          <MyAccountCreationStatusItem name="Funded with ETH" status={ActionStatus.DONE}/>
-          <MyAccountCreationStatusItem name="Funded with MANA tokens" status={ActionStatus.PENDING}/>
-          <MyAccountCreationStatusItem name="Linked with marketplace" status={ActionStatus.MISSING}/>
-        </View>
+  return (
+    <View style={styles.container}>
+      <ProgressBar
+        progress={progress}
+        color={Colors.loadingColor}
+        borderWidth={0}
+        unfilledColor={Colors.textColor}
+        height={responsiveHeight(1)}
+        width={responsiveWidth(110)}
+        style={styles.progress}
+      />
+      <View style={styles.progressTextContainer}>
+        <Text style={styles.progressText}>{progress * 100}% completed</Text>
       </View>
-    )
-  }
-
+      <View style={styles.actionItemsContainer}>
+        {
+          creationActions.map((action) => {
+            return (
+              <MyAccountCreationStatusItem
+                key={action.name}
+                name={action.name}
+                status={action.status}
+              />
+            );
+          })
+        }
+      </View>
+    </View>
+  );
 }
 
-MyAccount.propTypes = {}
+MyAccount.propTypes = {
+  accountInfo: PropTypes.object,
+  creationActions: PropTypes.arrayOf(
+    PropTypes.shape({
+      status: PropTypes.oneOf(Object.values(ActionStatus)),
+      name: PropTypes.string
+    })
+  )
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -49,16 +62,23 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   progress: {
-    marginTop: responsiveHeight(10)
+    marginTop: responsiveHeight(10),
+  },
+  buttonView: {
+    flexDirection: 'row',
+    marginTop: responsiveHeight(10),
   },
   progressTextContainer: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  progressText: {
+    fontWeight: '800',
   },
   actionItemsContainer: {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    marginTop: responsiveHeight(10)
-  }
-})
+    marginTop: responsiveHeight(10),
+  },
+});

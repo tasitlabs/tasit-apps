@@ -1,15 +1,58 @@
-import React from "react";
-import MyAccount from '@presentational/MyAccount'
+import React from 'react';
+import MyAccount from '@presentational/MyAccount';
+import { connect } from 'react-redux';
+import AccountCreationActions from '@constants/AccountCreationActions';
+import ActionStatus from '../constants/ActionStatus';
 
-export default class MyAccountScreen extends React.Component {
-
+class MyAccountScreen extends React.Component {
   static navigationOptions = {
     title: 'My Account',
   };
 
-  render() {
+  render () {
+    const {accountInfo} = this.props;
+    const creationActions = [];
+    creationActions.push({
+      name: 'Account created',
+      action: null,
+      status: !accountInfo.account ? ActionStatus.MISSING : ActionStatus.DONE
+    });
+    Object
+      .keys(AccountCreationActions)
+      .forEach((action) => {
+        const creationAction = {
+          name: AccountCreationActions[action].name,
+          action
+        };
+        if (accountInfo.creationActions.hasOwnProperty(action)) {
+          creationAction.status = ActionStatus.DONE;
+        } else {
+          creationAction.status = ActionStatus.MISSING;
+        }
+        creationActions.push(creationAction);
+      });
     return (
-      <MyAccount/>
+      <MyAccount
+        progress={this._getPercentage(!!accountInfo.account, creationActions)}
+        creationActions={creationActions}
+      />
     );
   }
+
+  _getPercentage (isAccountCreated, accountActions) {
+    let percentage = isAccountCreated ? 0.2 : 0;
+    accountActions.forEach((accountAction) => {
+      if(accountAction.status === ActionStatus.DONE && AccountCreationActions.hasOwnProperty(accountAction.action)) {
+        percentage += AccountCreationActions[accountAction.action].percentage;
+      }
+    });
+    return Math.round(percentage);
+  }
 }
+
+const mapStateToProps = state => {
+  const {accountInfo} = state;
+  return {accountInfo};
+};
+
+export default connect(mapStateToProps)(MyAccountScreen);

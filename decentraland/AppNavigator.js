@@ -33,7 +33,7 @@ const headerWithMenuButton = ({ navigation }) => {
       <Button transparent onPress={() => navigation.toggleDrawer()}>
         <Icon name="menu" />
       </Button>
-    )
+    ),
   };
 };
 
@@ -107,12 +107,6 @@ const MyAccountNavigator = createStackNavigator(
 );
 
 const MainDrawerNavigator = createDrawerNavigator({
-  MyAccount: {
-    screen: MyAccountNavigator,
-    navigationOptions: {
-      drawerLabel: "My Account",
-    },
-  },
   AssetsForSale: {
     screen: AssetsForSaleNavigator,
     navigationOptions: {
@@ -125,7 +119,12 @@ const MainDrawerNavigator = createDrawerNavigator({
       drawerLabel: "My land",
     },
   },
-
+  MyAccount: {
+    screen: MyAccountNavigator,
+    navigationOptions: {
+      drawerLabel: "My Account",
+    },
+  }
 });
 
 export default createAppContainer(MainDrawerNavigator);
