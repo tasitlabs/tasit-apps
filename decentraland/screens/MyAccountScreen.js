@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 export class MyAccountScreen extends React.Component {
   static navigationOptions = {
-    title: "My Account",
+    title: "My account",
   };
 
   render() {
@@ -32,25 +32,27 @@ export class MyAccountScreen extends React.Component {
       }
       creationActions.push(creationAction);
     });
+    const isAccountCreated = !!accountInfo.account;
     return (
       <MyAccount
-        progress={this._getPercentage(!!accountInfo.account, creationActions)}
+        progress={this._getPercentage(isAccountCreated, creationActions)}
         creationActions={creationActions}
       />
     );
   }
 
   _getPercentage(isAccountCreated, accountActions) {
-    let percentage = isAccountCreated ? 0.2 : 0;
+    let percentage = isAccountCreated ? 0.25 : 0;
     accountActions.forEach(accountAction => {
-      if (
-        accountAction.status === ActionStatus.DONE &&
-        AccountCreationActions.hasOwnProperty(accountAction.action)
-      ) {
+      const isDone = accountAction.status === ActionStatus.DONE;
+      const hasDefinedActionPercentage = AccountCreationActions.hasOwnProperty(
+        accountAction.action
+      );
+      if (isDone && hasDefinedActionPercentage) {
         percentage += AccountCreationActions[accountAction.action].percentage;
       }
     });
-    return Math.round(percentage);
+    return percentage;
   }
 }
 

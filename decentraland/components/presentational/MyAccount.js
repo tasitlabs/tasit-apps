@@ -13,11 +13,12 @@ export default function MyAccount({ progress, creationActions }) {
       <MyAccountProgress progress={progress} />
       <View style={styles.actionItemsContainer}>
         {creationActions.map(action => {
+          const { name, status } = action;
           return (
             <MyAccountCreationStatusItem
-              key={action.name}
-              name={action.name}
-              status={action.status}
+              key={name}
+              name={name}
+              status={status}
             />
           );
         })}

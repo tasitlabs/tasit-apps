@@ -1,5 +1,5 @@
 import AssetTypes from "@constants/AssetTypes";
-import ActionStatus from "../constants/ActionStatus";
+import ActionStatus from "@constants/ActionStatus";
 const { ESTATE, PARCEL } = AssetTypes;
 
 export const parcel = {

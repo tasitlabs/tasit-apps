@@ -19,18 +19,31 @@ export default function MyAccountCreationStatusItem({ name, status }) {
 }
 
 function renderIcon(status) {
+  const ICON_SIZE = 20;
   if (status === ActionStatus.DONE) {
     return (
-      <Ionicons name="md-checkmark" size={20} style={styles.actionStatusIcon} />
+      <Ionicons
+        name="md-checkmark"
+        size={ICON_SIZE}
+        style={styles.actionStatusIcon}
+      />
     );
   }
   if (status === ActionStatus.PENDING) {
     return (
-      <Ionicons name="md-clock" size={20} style={styles.actionStatusIcon} />
+      <Ionicons
+        name="md-clock"
+        size={ICON_SIZE}
+        style={styles.actionStatusIcon}
+      />
     );
   }
   return (
-    <Ionicons name="ios-close" size={20} style={styles.actionStatusIcon} />
+    <Ionicons
+      name="ios-close"
+      size={ICON_SIZE}
+      style={styles.actionStatusIcon}
+    />
   );
 }
 

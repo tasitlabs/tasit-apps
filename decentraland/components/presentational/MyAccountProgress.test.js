@@ -4,6 +4,9 @@ import MyAccountProgress from "./MyAccountProgress";
 
 describe("MyAccountProgress", () => {
   it("renders the component", async () => {
-    expect(shallow(<MyAccountProgress progress={0.5} />)).toMatchSnapshot();
+    const progress = 0.5;
+    expect(
+      shallow(<MyAccountProgress progress={progress} />)
+    ).toMatchSnapshot();
   });
 });

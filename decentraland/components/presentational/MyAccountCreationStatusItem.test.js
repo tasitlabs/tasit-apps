@@ -5,18 +5,20 @@ import MyAccountCreationStatusItem from "./MyAccountCreationStatusItem";
 
 describe("MyAccountCreationStatusItem", () => {
   it("renders the component with done status", async () => {
+    const name = "test";
     expect(
       shallow(
-        <MyAccountCreationStatusItem name="test" status={ActionStatus.DONE} />
+        <MyAccountCreationStatusItem name={name} status={ActionStatus.DONE} />
       )
     ).toMatchSnapshot();
   });
 
   it("renders the component with missing status", async () => {
+    const name = "test";
     expect(
       shallow(
         <MyAccountCreationStatusItem
-          name="test"
+          name={name}
           status={ActionStatus.MISSING}
         />
       )
@@ -24,10 +26,11 @@ describe("MyAccountCreationStatusItem", () => {
   });
 
   it("renders the component with pending status", async () => {
+    const name = "test";
     expect(
       shallow(
         <MyAccountCreationStatusItem
-          name="test"
+          name={name}
           status={ActionStatus.PENDING}
         />
       )

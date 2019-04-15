@@ -1,7 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyAccountProgress renders the component 1`] = `
-<Component>
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "flex-start",
+    }
+  }
+>
   <ProgressBar
     animated={true}
     animationConfig={
@@ -24,7 +34,7 @@ exports[`MyAccountProgress renders the component 1`] = `
     }
     unfilledColor="gray"
     useNativeDriver={false}
-    width={825.0000000000001}
+    width={757.5}
   />
   <Component
     style={
@@ -42,7 +52,7 @@ exports[`MyAccountProgress renders the component 1`] = `
       }
     >
       50
-      % completed
+      % complete
     </Component>
   </Component>
 </Component>

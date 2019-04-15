@@ -26,7 +26,7 @@ exports[`MyAccountScreen renders the component with account 1`] = `
       },
     ]
   }
-  progress={0}
+  progress={0.5}
 />
 `;
 
