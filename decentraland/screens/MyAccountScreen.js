@@ -23,6 +23,8 @@ export class MyAccountScreen extends React.Component {
         name: AccountCreationActions[action].name,
         action,
       };
+      // TODO: As soon as we store action status in redux, this logic will change
+      // transaction pending, confirmed once, confirmed many times, failed, etc.
       if (accountInfo.creationActions.hasOwnProperty(action)) {
         creationAction.status = ActionStatus.DONE;
       } else {
