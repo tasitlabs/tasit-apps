@@ -23,6 +23,7 @@ import { responsiveHeight } from "react-native-responsive-dimensions";
 const defaultNavigationOptions = {
   headerStyle: {
     backgroundColor: Colors.headerBackgroundColor,
+    shadowColor: "transparent",
     height: responsiveHeight(7),
   },
 };
