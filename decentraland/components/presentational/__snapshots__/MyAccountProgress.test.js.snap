@@ -51,7 +51,7 @@ exports[`MyAccountProgress renders the component 1`] = `
     progress={0.5}
     style={
       Object {
-        "marginTop": 133.4,
+        "marginTop": 13.34,
       }
     }
     unfilledColor="gray"

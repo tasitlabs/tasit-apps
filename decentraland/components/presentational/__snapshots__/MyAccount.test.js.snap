@@ -4,7 +4,7 @@ exports[`MyAccount renders the component 1`] = `
 <Component
   style={
     Object {
-      "alignItems": "center",
+      "alignItems": "flex-start",
       "backgroundColor": "white",
       "flex": 1,
       "flexDirection": "column",
@@ -19,9 +19,10 @@ exports[`MyAccount renders the component 1`] = `
     style={
       Object {
         "alignItems": "flex-start",
+        "flex": 6,
         "flexDirection": "column",
-        "justifyContent": "flex-start",
-        "marginTop": 133.4,
+        "justifyContent": "center",
+        "paddingLeft": 150,
       }
     }
   >
