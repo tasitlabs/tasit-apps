@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyAccount renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "flexDirection": "column",
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <MyAccountProgress
+    progress={0.5}
+  />
+  <Component
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "flexDirection": "column",
+        "justifyContent": "flex-start",
+        "marginTop": 133.4,
+      }
+    }
+  >
+    <MyAccountCreationStatusItem
+      key="Account created"
+      name="Account created"
+      status="done"
+    />
+    <MyAccountCreationStatusItem
+      key="ETH"
+      name="ETH"
+      status="pending"
+    />
+    <MyAccountCreationStatusItem
+      key="MANA"
+      name="MANA"
+      status="missing"
+    />
+  </Component>
+</Component>
+`;

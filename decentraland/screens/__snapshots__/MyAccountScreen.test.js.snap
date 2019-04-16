@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyAccountScreen renders the component with account 1`] = `
+<MyAccount
+  creationActions={
+    Array [
+      Object {
+        "action": null,
+        "name": "Account created",
+        "status": "done",
+      },
+      Object {
+        "action": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "status": "done",
+      },
+      Object {
+        "action": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "status": "missing",
+      },
+      Object {
+        "action": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "status": "missing",
+      },
+    ]
+  }
+  progress={0.5}
+/>
+`;
+
+exports[`MyAccountScreen renders the component without account 1`] = `
+<MyAccount
+  creationActions={
+    Array [
+      Object {
+        "action": null,
+        "name": "Account created",
+        "status": "missing",
+      },
+      Object {
+        "action": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "status": "missing",
+      },
+      Object {
+        "action": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "status": "missing",
+      },
+      Object {
+        "action": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "status": "missing",
+      },
+    ]
+  }
+  progress={0}
+/>
+`;

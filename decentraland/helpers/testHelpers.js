@@ -1,4 +1,5 @@
 import AssetTypes from "@constants/AssetTypes";
+import ActionStatus from "@constants/ActionStatus";
 const { ESTATE, PARCEL } = AssetTypes;
 
 export const parcel = {
@@ -34,6 +35,21 @@ export const anAction = {
     hash: "0x1234567890123456789012345678901234567890",
   }),
 };
+
+export const accountCreationActions = [
+  {
+    name: "Account created",
+    status: ActionStatus.DONE,
+  },
+  {
+    name: "ETH",
+    status: ActionStatus.PENDING,
+  },
+  {
+    name: "MANA",
+    status: ActionStatus.MISSING,
+  },
+];
 
 export default {
   estateForSale,
