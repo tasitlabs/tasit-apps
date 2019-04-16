@@ -49,11 +49,6 @@ exports[`MyAccountProgress renders the component 1`] = `
     indeterminate={false}
     indeterminateAnimationDuration={1000}
     progress={0.5}
-    style={
-      Object {
-        "marginTop": 0,
-      }
-    }
     unfilledColor="gray"
     useNativeDriver={false}
     width={750}
