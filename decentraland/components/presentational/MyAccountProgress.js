@@ -19,7 +19,6 @@ export function MyAccountProgress({ progress }) {
         height={responsiveHeight(1)}
         width={responsiveWidth(100)}
         borderRadius={0}
-        style={styles.progress}
       />
       <MyAccountProgressText progress={progress} />
     </View>
@@ -51,9 +50,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.backgroundColor,
     alignItems: "center",
     justifyContent: "flex-start",
-  },
-  progress: {
-    marginTop: responsiveHeight(0),
   },
   progressTextContainer: {
     flexDirection: "row",
