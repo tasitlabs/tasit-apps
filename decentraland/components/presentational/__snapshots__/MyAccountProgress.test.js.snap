@@ -36,24 +36,8 @@ exports[`MyAccountProgress renders the component 1`] = `
     useNativeDriver={false}
     width={757.5}
   />
-  <Component
-    style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Component
-      style={
-        Object {
-          "fontWeight": "800",
-        }
-      }
-    >
-      50
-      % complete
-    </Component>
-  </Component>
+  <MyAccountProgressText
+    progress={0.5}
+  />
 </Component>
 `;
