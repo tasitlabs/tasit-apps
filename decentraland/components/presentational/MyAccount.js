@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "@constants/Colors";
 import PropTypes from "prop-types";
-import { responsiveHeight } from "react-native-responsive-dimensions";
+import { responsiveWidth } from "react-native-responsive-dimensions";
 import MyAccountCreationStatusItem from "./MyAccountCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
 import MyAccountProgress from "./MyAccountProgress";
@@ -14,6 +14,7 @@ export default function MyAccount({ progress, creationActions }) {
       <View style={styles.actionItemsContainer}>
         {creationActions.map(action => {
           const { name, status } = action;
+
           return (
             <MyAccountCreationStatusItem
               key={name}
@@ -42,13 +43,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.backgroundColor,
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "flex-start",
   },
   actionItemsContainer: {
+    flex: 6,
     flexDirection: "column",
     alignItems: "flex-start",
-    justifyContent: "flex-start",
-    marginTop: responsiveHeight(10),
+    justifyContent: "center",
+    paddingLeft: responsiveWidth(20),
   },
 });

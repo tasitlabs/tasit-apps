@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   progress: {
-    marginTop: responsiveHeight(10),
+    marginTop: responsiveHeight(1),
   },
   progressTextContainer: {
     flexDirection: "row",
