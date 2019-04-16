@@ -8,7 +8,7 @@ import Colors from "@constants/Colors";
 import ProgressBar from "react-native-progress/Bar";
 import PropTypes from "prop-types";
 
-export default function MyAccountProgress({ progress }) {
+export function MyAccountProgress({ progress }) {
   return (
     <View style={styles.container}>
       <ProgressBar
@@ -62,3 +62,5 @@ const styles = StyleSheet.create({
     fontWeight: "800",
   },
 });
+
+export default MyAccountProgress;

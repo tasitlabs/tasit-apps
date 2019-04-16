@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MyAccountProgress MyAccountProgressText renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "fontWeight": "800",
+      }
+    }
+  >
+    50
+    % complete
+  </Component>
+</Component>
+`;
+
 exports[`MyAccountProgress renders the component 1`] = `
 <Component
   style={
