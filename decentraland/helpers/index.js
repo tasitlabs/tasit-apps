@@ -73,7 +73,7 @@ export const createAccount = async () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
   const account = Account.create();
-  await storeEphemeralAccount(account);
+  //await storeEphemeralAccount(account);
   return account;
 };
 

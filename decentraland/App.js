@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import decentralandApp from "./redux/reducers";
 import { setAccount, setMyAssetsList } from "./redux/actions";
+import applyMiddleware from "./redux/middlewares";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/current";
@@ -15,7 +16,7 @@ import { retrieveEphemeralAccount, retrieveMyAssets } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
 
-const store = createStore(decentralandApp);
+const store = createStore(decentralandApp, applyMiddleware);
 
 export default class App extends React.Component {
   state = {
