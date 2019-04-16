@@ -17,7 +17,8 @@ export function MyAccountProgress({ progress }) {
         borderWidth={0}
         unfilledColor={Colors.textColor}
         height={responsiveHeight(1)}
-        width={responsiveWidth(101)}
+        width={responsiveWidth(100)}
+        borderRadius={0}
         style={styles.progress}
       />
       <MyAccountProgressText progress={progress} />
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   progress: {
-    marginTop: responsiveHeight(10),
+    marginTop: responsiveHeight(0),
   },
   progressTextContainer: {
     flexDirection: "row",

@@ -42,7 +42,7 @@ exports[`MyAccountProgress renders the component 1`] = `
       }
     }
     animationType="spring"
-    borderRadius={4}
+    borderRadius={0}
     borderWidth={0}
     color="#2196f3"
     height={13.34}
@@ -51,12 +51,12 @@ exports[`MyAccountProgress renders the component 1`] = `
     progress={0.5}
     style={
       Object {
-        "marginTop": 133.4,
+        "marginTop": 0,
       }
     }
     unfilledColor="gray"
     useNativeDriver={false}
-    width={757.5}
+    width={750}
   />
   <MyAccountProgressText
     progress={0.5}
