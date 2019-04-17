@@ -6,7 +6,7 @@ import {
   APPEND_LAND_FOR_SALE_TO_LIST,
   PREPEND_LAND_FOR_SALE_TO_LIST,
   SET_ACCOUNT_CREATION_STATUS,
-  UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
+  UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS,
   SET_ACCOUNT_CREATION_ACTIONS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
   ADD_TO_MY_ASSETS_LIST,
@@ -38,10 +38,10 @@ function accountInfo(
       return { ...state, account };
     case SET_ACCOUNT_CREATION_STATUS:
       return { ...state, creationStatus };
-    case UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS: {
-      const { status, action } = creationStatusAction;
+    case UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS: {
+      const { status, actionId } = creationStatusAction;
       let { creationActions } = state;
-      creationActions = { ...creationActions, [status]: action };
+      creationActions = { ...creationActions, [status]: actionId };
       return { ...state, creationActions };
     }
     case SET_ACCOUNT_CREATION_ACTIONS: {

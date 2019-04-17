@@ -12,15 +12,15 @@ describe("EthereumSignUpScreen", () => {
   it("renders the component", async () => {
     const setAccount = () => {};
     const setAccountCreationStatus = () => {};
-    const updateActionForAccountCreationStatus = () => {};
+    const updateActionIdForAccountCreationStatus = () => {};
 
     expect(
       shallow(
         <EthereumSignUpScreen
           setAccount={setAccount}
           setAccountCreationStatus={setAccountCreationStatus}
-          updateActionForAccountCreationStatus={
-            updateActionForAccountCreationStatus
+          updateActionIdForAccountCreationStatus={
+            updateActionIdForAccountCreationStatus
           }
         />
       )
