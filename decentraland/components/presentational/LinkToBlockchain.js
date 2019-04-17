@@ -34,12 +34,15 @@ const _onPress = action => {
   else _openLinkInfo();
 };
 
-export default function LinkToBlockchain(props) {
-  const { action } = props;
+export default function LinkToBlockchain({ action }) {
   if (!action) return null;
 
+  const onPress = () => {
+    _onPress(action);
+  };
+
   return (
-    <Button transparent onPress={_onPress}>
+    <Button transparent onPress={onPress}>
       <Icon name="eye" />
     </Button>
   );
