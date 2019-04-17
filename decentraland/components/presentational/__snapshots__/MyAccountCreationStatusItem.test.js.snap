@@ -7,7 +7,7 @@ exports[`MyAccountCreationStatusItem renders the component with done status 1`] 
       "alignItems": "flex-start",
       "backgroundColor": "white",
       "flexDirection": "row",
-      "height": 133.4,
+      "height": 80.03999999999999,
       "justifyContent": "flex-start",
       "marginTop": 13.34,
     }
@@ -16,7 +16,7 @@ exports[`MyAccountCreationStatusItem renders the component with done status 1`] 
   <Icon
     allowFontScaling={false}
     name="md-checkmark"
-    size={20}
+    size={18}
     style={
       Object {
         "fontWeight": "800",
@@ -26,7 +26,7 @@ exports[`MyAccountCreationStatusItem renders the component with done status 1`] 
   <Component
     style={
       Object {
-        "fontSize": 16,
+        "fontSize": 21,
         "fontWeight": "800",
         "marginLeft": 37.5,
       }
@@ -44,7 +44,7 @@ exports[`MyAccountCreationStatusItem renders the component with missing status 1
       "alignItems": "flex-start",
       "backgroundColor": "white",
       "flexDirection": "row",
-      "height": 133.4,
+      "height": 80.03999999999999,
       "justifyContent": "flex-start",
       "marginTop": 13.34,
     }
@@ -53,7 +53,7 @@ exports[`MyAccountCreationStatusItem renders the component with missing status 1
   <Icon
     allowFontScaling={false}
     name="ios-close"
-    size={20}
+    size={30}
     style={
       Object {
         "fontWeight": "800",
@@ -63,7 +63,7 @@ exports[`MyAccountCreationStatusItem renders the component with missing status 1
   <Component
     style={
       Object {
-        "fontSize": 16,
+        "fontSize": 21,
         "fontWeight": "800",
         "marginLeft": 37.5,
       }
@@ -81,7 +81,7 @@ exports[`MyAccountCreationStatusItem renders the component with pending status 1
       "alignItems": "flex-start",
       "backgroundColor": "white",
       "flexDirection": "row",
-      "height": 133.4,
+      "height": 80.03999999999999,
       "justifyContent": "flex-start",
       "marginTop": 13.34,
     }
@@ -90,7 +90,7 @@ exports[`MyAccountCreationStatusItem renders the component with pending status 1
   <Icon
     allowFontScaling={false}
     name="md-clock"
-    size={20}
+    size={30}
     style={
       Object {
         "fontWeight": "800",
@@ -100,7 +100,7 @@ exports[`MyAccountCreationStatusItem renders the component with pending status 1
   <Component
     style={
       Object {
-        "fontSize": 16,
+        "fontSize": 21,
         "fontWeight": "800",
         "marginLeft": 37.5,
       }

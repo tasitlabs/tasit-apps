@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
   actionItemsContainer: {
-    flex: 6,
+    flex: 5,
     flexDirection: "column",
     alignItems: "flex-start",
-    justifyContent: "center",
-    paddingLeft: responsiveWidth(20),
+    justifyContent: "flex-start",
+    paddingLeft: responsiveWidth(12),
   },
 });

@@ -6,6 +6,7 @@ exports[`MyAccountProgress MyAccountProgressText renders the component 1`] = `
     Object {
       "alignItems": "center",
       "flexDirection": "row",
+      "marginTop": 13.34,
     }
   }
 >
