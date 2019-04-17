@@ -5,7 +5,6 @@ exports[`AssetName renders the component asset with name 1`] = `
   style={
     Object {
       "paddingTop": 13.34,
-      "width": 375,
     }
   }
 >
@@ -27,7 +26,6 @@ exports[`AssetName renders the component asset without name 1`] = `
   style={
     Object {
       "paddingTop": 13.34,
-      "width": 375,
     }
   }
 >

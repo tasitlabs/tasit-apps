@@ -23,8 +23,12 @@ export function LandForSaleInfo({ landForSale }) {
 
   return (
     <View style={styles.landInfoContainer}>
-      <AssetName asset={asset} />
-      <LandForSalePrice landForSale={landForSale} />
+      <View style={styles.nameContainer}>
+        <AssetName asset={asset} />
+      </View>
+      <View style={styles.priceContainer}>
+        <LandForSalePrice landForSale={landForSale} />
+      </View>
     </View>
   );
 }
@@ -68,6 +72,13 @@ const styles = StyleSheet.create({
   landPriceContainer: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  nameContainer: {
+    flex: 1,
+  },
+  priceContainer: {
+    flex: 1,
   },
   landPriceIcon: {
     marginLeft: responsiveWidth(1.5),

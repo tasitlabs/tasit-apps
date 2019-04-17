@@ -6,6 +6,7 @@ exports[`LandForSaleInfo LandForSalePrice renders the component 1`] = `
     Object {
       "alignItems": "center",
       "flexDirection": "row",
+      "justifyContent": "flex-end",
     }
   }
 >
@@ -52,30 +53,46 @@ exports[`LandForSaleInfo renders the component 1`] = `
     }
   }
 >
-  <AssetName
-    asset={
+  <Component
+    style={
       Object {
-        "id": "123",
-        "img": "https://api.decentraland.org/v1/estates/1/map.png",
-        "name": "Sample Estate",
-        "type": "ESTATE",
+        "flex": 1,
       }
     }
-  />
-  <LandForSalePrice
-    landForSale={
-      Object {
-        "asset": Object {
+  >
+    <AssetName
+      asset={
+        Object {
           "id": "123",
           "img": "https://api.decentraland.org/v1/estates/1/map.png",
           "name": "Sample Estate",
           "type": "ESTATE",
-        },
-        "id": "1",
-        "priceMana": 0,
-        "priceUSD": 0,
+        }
+      }
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flex": 1,
       }
     }
-  />
+  >
+    <LandForSalePrice
+      landForSale={
+        Object {
+          "asset": Object {
+            "id": "123",
+            "img": "https://api.decentraland.org/v1/estates/1/map.png",
+            "name": "Sample Estate",
+            "type": "ESTATE",
+          },
+          "id": "1",
+          "priceMana": 0,
+          "priceUSD": 0,
+        }
+      }
+    />
+  </Component>
 </Component>
 `;

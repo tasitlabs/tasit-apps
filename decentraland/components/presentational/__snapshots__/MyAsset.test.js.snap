@@ -18,9 +18,43 @@ exports[`MyAsset renders the component 1`] = `
       }
     }
   />
-  <Component>
-    Sample Parcel
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <AssetName
+        asset={
+          Object {
+            "id": "0123456789",
+            "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+            "name": "Sample Parcel",
+            "type": "PARCEL",
+          }
+        }
+      />
+    </Component>
+    <Component
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        }
+      }
+    >
+      <LinkToBlockchain />
+    </Component>
   </Component>
-  <LinkToBlockchain />
 </Component>
 `;
