@@ -5,13 +5,42 @@ import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 // Storage keys
 const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
 const MY_ASSETS_LIST = "MY_ASSETS_LIST";
+const EPHEMERAL_ACCOUNT_CREATION_STATUS = "EPHEMERAL_ACCOUNT_CREATION_STATUS";
+const EPHEMERAL_ACCOUNT_CREATION_ACTIONS = "EPHEMERAL_ACCOUNT_CREATION_ACTIONS";
 
-export const storeEphemeralAccount = async account => {
+export const storeAccountCreationActions = async creationActions => {
+  const strCreationActions = _toString(creationActions);
+  await _storeData(
+    EPHEMERAL_ACCOUNT_CREATION_ACTIONS,
+    strCreationActions,
+    false
+  );
+};
+
+export const retrieveAccountCreationActions = async () => {
+  const strCreationActions = await _retrieveData(
+    EPHEMERAL_ACCOUNT_CREATION_ACTIONS,
+    false
+  );
+  let creationActions = _fromString(strCreationActions);
+  return creationActions;
+};
+
+export const storeAccountCreationStatus = async status => {
+  await _storeData(EPHEMERAL_ACCOUNT_CREATION_STATUS, status, false);
+};
+
+export const retrieveAccountCreationStatus = async () => {
+  const status = await _retrieveData(EPHEMERAL_ACCOUNT_CREATION_STATUS, false);
+  return status;
+};
+
+export const storeAccount = async account => {
   const { privateKey } = account;
   await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, privateKey, true);
 };
 
-export const retrieveEphemeralAccount = async () => {
+export const retrieveAccount = async () => {
   let account = null;
 
   const privateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY, true);
@@ -80,8 +109,12 @@ const _retrieveData = async (key, securely) => {
 };
 
 export default {
-  storeEphemeralAccount,
-  retrieveEphemeralAccount,
+  storeAccount,
+  retrieveAccount,
   storeMyAssets,
   retrieveMyAssets,
+  storeAccountCreationStatus,
+  retrieveAccountCreationStatus,
+  storeAccountCreationActions,
+  retrieveAccountCreationActions,
 };

@@ -6,10 +6,6 @@ import ActionStatus from "../constants/ActionStatus";
 import PropTypes from "prop-types";
 
 export class MyAccountScreen extends React.Component {
-  static navigationOptions = {
-    title: "My account",
-  };
-
   render() {
     const { accountInfo } = this.props;
     const creationActions = [];

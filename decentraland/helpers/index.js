@@ -8,8 +8,6 @@ import {
 } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
-import { storeEphemeralAccount, retrieveEphemeralAccount } from "./storage";
-
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 
 const gnosisSafeOwnerPrivKey =
@@ -64,16 +62,10 @@ export const getContracts = () => {
   return contracts;
 };
 
-export const recoverAccount = async () => {
-  const account = await retrieveEphemeralAccount();
-  return account;
-};
-
 export const createAccount = async () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
   const account = Account.create();
-  await storeEphemeralAccount(account);
   return account;
 };
 
@@ -203,7 +195,6 @@ export default {
   fundAccountWithEthers,
   fundAccountWithMana,
   getContracts,
-  recoverAccount,
   createAccount,
   formatNumber,
   removeFromList,

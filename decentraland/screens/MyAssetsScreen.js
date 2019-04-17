@@ -6,7 +6,6 @@ import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
 import { listsAreEqual, getContracts } from "@helpers";
 import { generateAssetFromId } from "@helpers/decentraland";
-import { storeMyAssets } from "@helpers/storage";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
 export class MyAssetsScreen extends React.Component {
@@ -20,9 +19,7 @@ export class MyAssetsScreen extends React.Component {
         assetsFromState
       );
       if (shouldUpdate) {
-        // TODO: Maybe move these two set/store operations into a single function
         setMyAssetsList(assetsFromBlockchain);
-        storeMyAssets(assetsFromBlockchain);
       }
     }
   };

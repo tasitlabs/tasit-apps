@@ -6,16 +6,27 @@ import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import decentralandApp from "./redux/reducers";
-import { setAccount, setMyAssetsList } from "./redux/actions";
+import {
+  setAccount,
+  setMyAssetsList,
+  setAccountCreationStatus,
+  setAccountCreationActions,
+} from "./redux/actions";
+import applyMiddleware from "./redux/middlewares";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/current";
 import { checkBlockchain, showFatalError } from "@helpers";
-import { retrieveEphemeralAccount, retrieveMyAssets } from "@helpers/storage";
+import {
+  retrieveAccount,
+  retrieveMyAssets,
+  retrieveAccountCreationStatus,
+  retrieveAccountCreationActions,
+} from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
 
-const store = createStore(decentralandApp);
+const store = createStore(decentralandApp, applyMiddleware);
 
 export default class App extends React.Component {
   state = {
@@ -46,9 +57,15 @@ Is the config file correct?`;
     }
   }
 
-  async _loadAccount() {
-    const account = await retrieveEphemeralAccount();
-    if (account) store.dispatch(setAccount(account));
+  async _loadAccountInfo() {
+    const account = await retrieveAccount();
+    if (account) {
+      store.dispatch(setAccount(account));
+      const creationStatus = await retrieveAccountCreationStatus();
+      const creationActions = await retrieveAccountCreationActions();
+      store.dispatch(setAccountCreationStatus(creationStatus));
+      store.dispatch(setAccountCreationActions(creationActions));
+    }
   }
 
   async _loadMyAssets() {
@@ -80,10 +97,10 @@ Is the config file correct?`;
   _loadResourcesAsync = async () => {
     const setupSDK = this._setupTasitSDK();
     const loadFonts = this._loadFonts();
-    const loadAccount = this._loadAccount();
+    const loadAccountInfo = this._loadAccountInfo();
     const loadMyAssets = this._loadMyAssets();
 
-    return Promise.all([setupSDK, loadFonts, loadAccount, loadMyAssets]);
+    return Promise.all([setupSDK, loadFonts, loadAccountInfo, loadMyAssets]);
   };
 
   _handleLoadingError = error => {
