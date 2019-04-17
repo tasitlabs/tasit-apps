@@ -5,6 +5,7 @@ import {
   prependLandForSaleToList,
   removeMyAssetFromList,
   addToMyAssetsList,
+  setActionIdForMyAsset,
 } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
@@ -48,6 +49,7 @@ export class BuyLandScreen extends React.Component {
       prependLandForSaleToList,
       removeMyAssetFromList,
       addToMyAssetsList,
+      setActionIdForMyAsset,
     } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
@@ -74,7 +76,13 @@ export class BuyLandScreen extends React.Component {
     removeLandForSale(landForSale);
     addToMyAssetsList(asset);
 
-    _executeOrder(landForSale, account, onSuccess, onError);
+    _executeOrder(
+      landForSale,
+      account,
+      onSuccess,
+      onError,
+      setActionIdForMyAsset
+    );
     navigation.navigate("ListLandForSaleScreen");
   };
 
@@ -82,7 +90,8 @@ export class BuyLandScreen extends React.Component {
     sellOrder,
     account,
     afterSuccessfulExecution,
-    onError
+    onError,
+    setActionIdForMyAsset
   ) => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;
@@ -109,6 +118,11 @@ export class BuyLandScreen extends React.Component {
         `${fingerprint}`,
         gasParams
       );
+
+      const actionId = await action.getId();
+
+      // Assumes that the asset was already added to the MyLand list (Optimistic UI update)
+      setActionIdForMyAsset(assetId, actionId);
 
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
@@ -147,6 +161,7 @@ BuyLandScreen.propTypes = {
   prependLandForSaleToList: PropTypes.func.isRequired,
   removeMyAssetFromList: PropTypes.func.isRequired,
   addToMyAssetsList: PropTypes.func.isRequired,
+  setActionIdForMyAsset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -160,6 +175,7 @@ const mapDispatchToProps = {
   prependLandForSaleToList,
   addToMyAssetsList,
   removeMyAssetFromList,
+  setActionIdForMyAsset,
 };
 
 export default connect(
