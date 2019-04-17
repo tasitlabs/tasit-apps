@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   linkContainer: {
     flex: 1,
     flexDirection: "row",
-    //alignItems: "center",
     justifyContent: "flex-end",
   },
 });
