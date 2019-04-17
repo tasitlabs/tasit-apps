@@ -20,6 +20,7 @@ const onPriceInfo = () => {
 
 export function LandForSaleInfo({ landForSale }) {
   const { asset } = landForSale;
+  const { priceMana } = landForSale;
 
   return (
     <View style={styles.landInfoContainer}>
@@ -27,7 +28,7 @@ export function LandForSaleInfo({ landForSale }) {
         <AssetName asset={asset} />
       </View>
       <View style={styles.priceContainer}>
-        <LandForSalePrice landForSale={landForSale} />
+        <ManaPrice price={priceMana} />
       </View>
     </View>
   );
@@ -37,12 +38,9 @@ LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };
 
-export function LandForSalePrice({ landForSale }) {
-  const { priceMana } = landForSale;
-  const price = formatNumber(priceMana);
+export function ManaPrice({ price }) {
+  const formattedPrice = formatNumber(price);
 
-  // Note: Conversion to USD will be implemented on v0.2.0
-  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
   return (
     <View style={styles.landPriceContainer}>
       <View>
@@ -54,14 +52,14 @@ export function LandForSalePrice({ landForSale }) {
         </Button>
       </View>
       <View>
-        <Text style={styles.landPrice}>{price}</Text>
+        <Text style={styles.landPrice}>{formattedPrice}</Text>
       </View>
     </View>
   );
 }
 
-LandForSalePrice.propTypes = {
-  landForSale: PropTypes.object.isRequired,
+ManaPrice.propTypes = {
+  price: PropTypes.number.isRequired,
 };
 
 const styles = StyleSheet.create({
