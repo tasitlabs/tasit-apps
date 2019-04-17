@@ -10,10 +10,8 @@ import AssetName from "./AssetName";
 
 const { ESTATE, PARCEL } = AssetTypes;
 
-export default function MyAsset({ asset }) {
-  const { type, actionId } = asset;
-  let { name } = asset;
-  if (!name) name = "(No name for this one right now)";
+export function MyAsset({ asset }) {
+  const { type } = asset;
 
   return (
     <View style={styles.assetContainer}>
@@ -25,19 +23,30 @@ export default function MyAsset({ asset }) {
             return <Parcel parcel={asset} />;
         }
       })()}
-      <View style={styles.myAssetInfoContainer}>
-        <View style={styles.nameContainer}>
-          <AssetName asset={asset} />
-        </View>
-        <View style={styles.linkContainer}>
-          <LinkToBlockchain actionId={actionId} />
-        </View>
-      </View>
     </View>
   );
 }
 
 MyAsset.propTypes = {
+  asset: PropTypes.object.isRequired,
+};
+
+export function MyAssetInfo({ asset }) {
+  const { actionId } = asset;
+
+  return (
+    <View style={styles.myAssetInfoContainer}>
+      <View style={styles.nameContainer}>
+        <AssetName asset={asset} />
+      </View>
+      <View style={styles.linkContainer}>
+        <LinkToBlockchain actionId={actionId} />
+      </View>
+    </View>
+  );
+}
+
+MyAssetInfo.propTypes = {
   asset: PropTypes.object.isRequired,
 };
 
@@ -59,3 +68,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
 });
+
+export default MyAsset;
