@@ -62,9 +62,11 @@ Is the config file correct?`;
     if (account) {
       store.dispatch(setAccount(account));
       const creationStatus = await retrieveAccountCreationStatus();
+      if (creationStatus)
+        store.dispatch(setAccountCreationStatus(creationStatus));
       const creationActions = await retrieveAccountCreationActions();
-      store.dispatch(setAccountCreationStatus(creationStatus));
-      store.dispatch(setAccountCreationActions(creationActions));
+      if (creationActions)
+        store.dispatch(setAccountCreationActions(creationActions));
     }
   }
 
