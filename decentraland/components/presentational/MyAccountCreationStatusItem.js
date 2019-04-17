@@ -18,13 +18,15 @@ export default function MyAccountCreationStatusItem({ name, status }) {
   );
 }
 
+const ICON_SIZE = 30;
+const FONT_SIZE = (ICON_SIZE * 7) / 10;
+
 function renderIcon(status) {
-  const ICON_SIZE = 20;
   if (status === ActionStatus.DONE) {
     return (
       <Ionicons
         name="md-checkmark"
-        size={ICON_SIZE}
+        size={(ICON_SIZE * 3) / 5}
         style={styles.actionStatusIcon}
       />
     );
@@ -59,13 +61,13 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     marginTop: responsiveHeight(1),
-    height: responsiveHeight(10),
+    height: responsiveHeight(6),
   },
   actionStatusIcon: {
     fontWeight: "800",
   },
   actionText: {
-    fontSize: 16,
+    fontSize: FONT_SIZE,
     fontWeight: "800",
     marginLeft: responsiveWidth(5),
   },

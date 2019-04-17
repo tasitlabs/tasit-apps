@@ -19,10 +19,10 @@ exports[`MyAccount renders the component 1`] = `
     style={
       Object {
         "alignItems": "flex-start",
-        "flex": 6,
+        "flex": 5,
         "flexDirection": "column",
-        "justifyContent": "center",
-        "paddingLeft": 150,
+        "justifyContent": "flex-start",
+        "paddingLeft": 90,
       }
     }
   >
