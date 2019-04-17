@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import LinkToBlockchain from "./LinkToBlockchain";
-import { anTempAction } from "@helpers/testHelpers";
+import { anAction } from "@helpers/testHelpers";
 
 describe("LinkToBlockchain", () => {
   describe("renders the component", () => {
@@ -13,7 +13,7 @@ describe("LinkToBlockchain", () => {
     });
 
     it("valid action", async () => {
-      const actionId = await anTempAction.getId();
+      const actionId = await anAction.getId();
       expect(
         shallow(<LinkToBlockchain actionId={actionId} />)
       ).toMatchSnapshot();

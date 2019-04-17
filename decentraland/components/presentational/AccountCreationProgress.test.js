@@ -14,7 +14,7 @@ const {
   APPROVING_MARKETPLACE,
   READY_TO_USE,
 } = status;
-import { anTempAction } from "@helpers/testHelpers";
+import { anAction } from "@helpers/testHelpers";
 
 describe("AccountCreationProgress", () => {
   it("initial state - before start account setup", async () => {
@@ -37,7 +37,7 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for ETH funding", async () => {
     const status = FUNDING_WITH_ETH;
-    const actionId = await anTempAction.getId();
+    const actionId = await anAction.getId();
     const actions = { FUNDING_WITH_ETH: actionId };
 
     expect(
@@ -47,7 +47,7 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for MANA funding and marketplace approval", async () => {
     const status = FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE;
-    const actionId = await anTempAction.getId();
+    const actionId = await anAction.getId();
     const actions = {
       FUNDING_WITH_MANA: actionId,
       APPROVING_MARKETPLACE: actionId,
@@ -60,7 +60,7 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for MANA funding", async () => {
     const status = FUNDING_WITH_MANA;
-    const actionId = await anTempAction.getId();
+    const actionId = await anAction.getId();
     const actions = { FUNDING_WITH_MANA: actionId };
 
     expect(
@@ -70,7 +70,7 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for marketplace approval", async () => {
     const status = APPROVING_MARKETPLACE;
-    const actionId = await anTempAction.getId();
+    const actionId = await anAction.getId();
     const actions = { APPROVING_MARKETPLACE: actionId };
 
     expect(
@@ -104,7 +104,7 @@ describe("AccountCreationProgress", () => {
 
     it("with a message and with an action", async () => {
       const waitingMessage = "A waiting message.";
-      const actionId = await anTempAction.getId();
+      const actionId = await anAction.getId();
 
       expect(
         shallow(

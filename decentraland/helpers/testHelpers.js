@@ -37,15 +37,7 @@ export const parcelForSale = {
   asset: parcel,
 };
 
-// TODO: Remove
 export const anAction = {
-  getTransaction: () => ({
-    hash: "0x1234567890123456789012345678901234567890",
-  }),
-};
-
-// TODO: Rename to anAction
-export const anTempAction = {
   getId: async () => "0x1234567890123456789012345678901234567890",
 };
 
@@ -70,6 +62,5 @@ export default {
   parcel,
   estate,
   anAction,
-  anTempAction,
   estateWithoutName,
 };
