@@ -16,6 +16,13 @@ export const estate = {
   img: "https://api.decentraland.org/v1/estates/1/map.png",
 };
 
+export const estateWithoutName = {
+  type: ESTATE,
+  id: "321",
+  name: "",
+  img: "https://api.decentraland.org/v1/estates/1/map.png",
+};
+
 export const estateForSale = {
   id: "1",
   priceMana: 0,
@@ -64,4 +71,5 @@ export default {
   estate,
   anAction,
   anTempAction,
+  estateWithoutName,
 };
