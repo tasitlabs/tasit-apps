@@ -51,8 +51,9 @@ export class MyAssetsScreen extends React.Component {
         assetId,
         nftAddress
       );
+      //asset = { ...asset, actionId };
 
-      assets.push({ ...asset, actionId });
+      assets.push(asset);
     }
 
     return assets;

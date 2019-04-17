@@ -5,11 +5,12 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "./Estate";
 import Parcel from "./Parcel";
 import AssetTypes from "@constants/AssetTypes";
+import LinkToBlockchain from "./LinkToBlockchain";
 
 const { ESTATE, PARCEL } = AssetTypes;
 
 export default function MyAsset({ asset }) {
-  const { type } = asset;
+  const { type, actionId } = asset;
   let { name } = asset;
   if (!name) name = "(No name for this one right now)";
 
@@ -24,6 +25,7 @@ export default function MyAsset({ asset }) {
         }
       })()}
       <Text>{name}</Text>
+      <LinkToBlockchain actionId={actionId} />
     </View>
   );
 }
