@@ -19,14 +19,10 @@ const onPriceInfo = () => {
 
 export function LandForSaleInfo({ landForSale }) {
   const { asset } = landForSale;
-  let { name } = asset;
-  if (!name) name = "(No name for this one right now)";
 
   return (
     <View style={styles.landInfoContainer}>
-      <View style={styles.landNameContainer}>
-        <Text style={styles.landName}>{name}</Text>
-      </View>
+      <AssetName asset={asset} />
       <LandForSalePrice landForSale={landForSale} />
     </View>
   );
@@ -34,6 +30,20 @@ export function LandForSaleInfo({ landForSale }) {
 
 LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
+};
+
+export function AssetName({ name }) {
+  if (!name) name = "(No name for this one right now)";
+
+  return (
+    <View style={styles.landNameContainer}>
+      <Text style={styles.landName}>{name}</Text>
+    </View>
+  );
+}
+
+AssetName.propTypes = {
+  name: PropTypes.string,
 };
 
 export function LandForSalePrice({ landForSale }) {

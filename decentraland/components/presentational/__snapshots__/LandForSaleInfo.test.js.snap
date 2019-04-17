@@ -52,25 +52,16 @@ exports[`LandForSaleInfo renders the component 1`] = `
     }
   }
 >
-  <Component
-    style={
+  <AssetName
+    asset={
       Object {
-        "paddingTop": 13.34,
-        "width": 375,
+        "id": "123",
+        "img": "https://api.decentraland.org/v1/estates/1/map.png",
+        "name": "Sample Estate",
+        "type": "ESTATE",
       }
     }
-  >
-    <Component
-      style={
-        Object {
-          "color": "#2B2B2B",
-          "fontWeight": "bold",
-        }
-      }
-    >
-      Sample Estate
-    </Component>
-  </Component>
+  />
   <LandForSalePrice
     landForSale={
       Object {
