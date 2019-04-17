@@ -48,12 +48,12 @@ export function AccountCreationProgress({ status, actions }) {
 
   return statusToShow.map(status => {
     const waitingMessage = generateWaitingMessage(status);
-    const { [status]: action } = actions;
+    const { [status]: actionId } = actions;
     return (
       <ProgressMessageAndLink
         key={status}
         waitingMessage={waitingMessage}
-        action={action}
+        actionId={actionId}
       />
     );
   });
@@ -64,7 +64,7 @@ AccountCreationProgress.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
-export function ProgressMessageAndLink({ waitingMessage, action }) {
+export function ProgressMessageAndLink({ waitingMessage, actionId }) {
   return (
     <View style={styles.container}>
       <View style={styles.text}>
@@ -73,7 +73,7 @@ export function ProgressMessageAndLink({ waitingMessage, action }) {
         </Text>
       </View>
       <View>
-        <LinkToBlockchain action={action} />
+        <LinkToBlockchain actionId={actionId} />
       </View>
     </View>
   );
@@ -81,7 +81,7 @@ export function ProgressMessageAndLink({ waitingMessage, action }) {
 
 ProgressMessageAndLink.propTypes = {
   waitingMessage: PropTypes.string,
-  action: PropTypes.object,
+  actionId: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

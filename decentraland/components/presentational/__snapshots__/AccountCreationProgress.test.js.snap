@@ -26,11 +26,7 @@ exports[`AccountCreationProgress ProgressMessageAndLink with a message and with 
   </Component>
   <Component>
     <LinkToBlockchain
-      action={
-        Object {
-          "getTransaction": [Function],
-        }
-      }
+      actionId="0x1234567890123456789012345678901234567890"
     />
   </Component>
 </Component>
@@ -62,7 +58,7 @@ exports[`AccountCreationProgress ProgressMessageAndLink with a message and witho
   </Component>
   <Component>
     <LinkToBlockchain
-      action={null}
+      actionId={null}
     />
   </Component>
 </Component>
@@ -92,7 +88,7 @@ exports[`AccountCreationProgress ProgressMessageAndLink without a message nor ac
   </Component>
   <Component>
     <LinkToBlockchain
-      action={null}
+      actionId={null}
     />
   </Component>
 </Component>
@@ -104,11 +100,7 @@ exports[`AccountCreationProgress initial state - before start account setup 1`] 
 
 exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`] = `
 <ProgressMessageAndLink
-  action={
-    Object {
-      "getTransaction": [Function],
-    }
-  }
+  actionId="0x1234567890123456789012345678901234567890"
   key="FUNDING_WITH_ETH"
   waitingMessage="Funding account with ETH..."
 />
@@ -116,11 +108,7 @@ exports[`AccountCreationProgress waiting for setup - waiting for ETH funding 1`]
 
 exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`] = `
 <ProgressMessageAndLink
-  action={
-    Object {
-      "getTransaction": [Function],
-    }
-  }
+  actionId="0x1234567890123456789012345678901234567890"
   key="FUNDING_WITH_MANA"
   waitingMessage="Funding account with MANA..."
 />
@@ -129,20 +117,12 @@ exports[`AccountCreationProgress waiting for setup - waiting for MANA funding 1`
 exports[`AccountCreationProgress waiting for setup - waiting for MANA funding and marketplace approval 1`] = `
 Array [
   <ProgressMessageAndLink
-    action={
-      Object {
-        "getTransaction": [Function],
-      }
-    }
+    actionId="0x1234567890123456789012345678901234567890"
     key="FUNDING_WITH_MANA"
     waitingMessage="Funding account with MANA..."
   />,
   <ProgressMessageAndLink
-    action={
-      Object {
-        "getTransaction": [Function],
-      }
-    }
+    actionId="0x1234567890123456789012345678901234567890"
     key="APPROVING_MARKETPLACE"
     waitingMessage="Approving marketplace..."
   />,
@@ -158,11 +138,7 @@ exports[`AccountCreationProgress waiting for setup - waiting for account generat
 
 exports[`AccountCreationProgress waiting for setup - waiting for marketplace approval 1`] = `
 <ProgressMessageAndLink
-  action={
-    Object {
-      "getTransaction": [Function],
-    }
-  }
+  actionId="0x1234567890123456789012345678901234567890"
   key="APPROVING_MARKETPLACE"
   waitingMessage="Approving marketplace..."
 />
