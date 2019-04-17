@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   progressTextContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginTop: responsiveHeight(1),
   },
   progressText: {
     fontWeight: "800",
