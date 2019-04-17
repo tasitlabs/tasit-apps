@@ -43,7 +43,7 @@ export class MyAssetsScreen extends React.Component {
     const assets = [];
 
     for (let land of listOfLand) {
-      const { id: assetId, nftAddress } = land;
+      const { id: assetId, nftAddress, transactionHash: actionId } = land;
 
       let asset = generateAssetFromId(
         estateContract,
@@ -52,7 +52,7 @@ export class MyAssetsScreen extends React.Component {
         nftAddress
       );
 
-      assets.push(asset);
+      assets.push({ ...asset, actionId });
     }
 
     return assets;
