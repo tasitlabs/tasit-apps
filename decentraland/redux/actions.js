@@ -12,6 +12,7 @@ export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
 export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
 export const REMOVE_MY_ASSET_FROM_LIST = "REMOVE_MY_ASSET_FROM_LIST";
 export const SET_MY_ASSETS_LIST = "SET_MY_ASSETS_LIST";
+export const SET_ACTION_ID_FOR_MY_ASSET = "SET_ACTION_ID_FOR_MY_ASSET";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
@@ -62,4 +63,11 @@ export function removeMyAssetFromList(myAsset) {
 
 export function setMyAssetsList(myAssets) {
   return { type: SET_MY_ASSETS_LIST, myAssets };
+}
+
+export function setActionIdForMyAsset(myAssetId, actionId) {
+  return {
+    type: SET_ACTION_ID_FOR_MY_ASSET,
+    myAssetAndActionIds: { myAssetId, actionId },
+  };
 }

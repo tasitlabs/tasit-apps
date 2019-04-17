@@ -12,6 +12,7 @@ import {
   ADD_TO_MY_ASSETS_LIST,
   REMOVE_MY_ASSET_FROM_LIST,
   SET_MY_ASSETS_LIST,
+  SET_ACTION_ID_FOR_MY_ASSET,
 } from "./actions";
 import { removeFromList } from "@helpers";
 
@@ -82,7 +83,7 @@ function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
 }
 
 function myAssets(state = { list: [] }, action) {
-  const { type, myAsset, myAssets } = action;
+  const { type, myAsset, myAssets, myAssetAndActionIds } = action;
   switch (type) {
     case ADD_TO_MY_ASSETS_LIST:
       return { ...state, list: [myAsset, ...state.list] };
@@ -93,6 +94,15 @@ function myAssets(state = { list: [] }, action) {
     }
     case SET_MY_ASSETS_LIST: {
       const list = myAssets === null ? [] : myAssets;
+      return { ...state, list };
+    }
+    case SET_ACTION_ID_FOR_MY_ASSET: {
+      const { myAssetId: toUpdateId, actionId } = myAssetAndActionIds;
+      const { list: myAssets } = state;
+      const list = myAssets.map(asset => {
+        if (asset.id === toUpdateId) return { ...asset, actionId };
+        else return asset;
+      });
       return { ...state, list };
     }
     default:
