@@ -7,16 +7,18 @@ import {
   REMOVE_MY_ASSET_FROM_LIST,
   SET_MY_ASSETS_LIST,
 } from "./actions";
-import { storeEphemeralAccount } from "@helpers/storage";
+import { storeEphemeralAccount, storeMyAssets } from "@helpers/storage";
 
 const storer = store => next => async action => {
   const { type } = action;
   const result = next(action);
-  //const nextState = store.getState();
+  const nextState = store.getState();
+  const { accountInfo, myAssets } = nextState;
+  const { account } = accountInfo;
+  const { list: myAssetsList } = myAssets;
 
   switch (type) {
     case SET_ACCOUNT: {
-      const { account } = action;
       await storeEphemeralAccount(account);
       break;
     }
@@ -27,12 +29,15 @@ const storer = store => next => async action => {
       break;
     }
     case ADD_TO_MY_ASSETS_LIST: {
+      await storeMyAssets(myAssetsList);
       break;
     }
     case REMOVE_MY_ASSET_FROM_LIST: {
+      await storeMyAssets(myAssetsList);
       break;
     }
     case SET_MY_ASSETS_LIST: {
+      await storeMyAssets(myAssetsList);
       break;
     }
   }
