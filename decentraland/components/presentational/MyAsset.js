@@ -23,6 +23,7 @@ export function MyAsset({ asset }) {
             return <Parcel parcel={asset} />;
         }
       })()}
+      <MyAssetInfo asset={asset} />
     </View>
   );
 }

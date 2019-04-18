@@ -52,5 +52,15 @@ exports[`MyAsset renders the component 1`] = `
       }
     }
   />
+  <MyAssetInfo
+    asset={
+      Object {
+        "id": "0123456789",
+        "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+        "name": "Sample Parcel",
+        "type": "PARCEL",
+      }
+    }
+  />
 </Component>
 `;
