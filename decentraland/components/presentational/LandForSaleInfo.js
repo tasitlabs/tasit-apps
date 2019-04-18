@@ -19,13 +19,13 @@ const onPriceInfo = () => {
 };
 
 export function LandForSaleInfo({ landForSale }) {
-  const { asset } = landForSale;
-  const { priceMana } = landForSale;
+  const { priceMana, asset } = landForSale;
+  const { name } = asset;
 
   return (
     <View style={styles.landInfoContainer}>
       <View style={styles.nameContainer}>
-        <AssetName asset={asset} />
+        <AssetName name={name} />
       </View>
       <View style={styles.priceContainer}>
         <ManaPrice price={priceMana} />

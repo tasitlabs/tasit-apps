@@ -17,14 +17,7 @@ exports[`MyAsset MyAssetInfo renders the component 1`] = `
     }
   >
     <AssetName
-      asset={
-        Object {
-          "id": "0123456789",
-          "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
-          "name": "Sample Parcel",
-          "type": "PARCEL",
-        }
-      }
+      name="Sample Parcel"
     />
   </Component>
   <Component

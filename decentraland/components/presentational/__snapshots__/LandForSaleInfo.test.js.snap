@@ -61,14 +61,7 @@ exports[`LandForSaleInfo renders the component 1`] = `
     }
   >
     <AssetName
-      asset={
-        Object {
-          "id": "123",
-          "img": "https://api.decentraland.org/v1/estates/1/map.png",
-          "name": "Sample Estate",
-          "type": "ESTATE",
-        }
-      }
+      name="Sample Estate"
     />
   </Component>
   <Component

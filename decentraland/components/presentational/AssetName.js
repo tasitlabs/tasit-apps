@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import Colors from "@constants/Colors";
 
-export function AssetName({ asset }) {
-  let { name } = asset;
+export function AssetName({ name }) {
   if (!name) name = "(No name for this one right now)";
 
   return (
@@ -16,7 +15,7 @@ export function AssetName({ asset }) {
 }
 
 AssetName.propTypes = {
-  asset: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({

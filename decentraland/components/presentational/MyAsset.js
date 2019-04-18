@@ -32,12 +32,12 @@ MyAsset.propTypes = {
 };
 
 export function MyAssetInfo({ asset }) {
-  const { actionId } = asset;
+  const { actionId, name } = asset;
 
   return (
     <View style={styles.myAssetInfoContainer}>
       <View style={styles.nameContainer}>
-        <AssetName asset={asset} />
+        <AssetName name={name} />
       </View>
       <View style={styles.linkContainer}>
         <LinkToBlockchain actionId={actionId} />

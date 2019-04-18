@@ -6,13 +6,13 @@ import { parcel, estateWithoutName } from "@helpers/testHelpers";
 describe("AssetName", () => {
   describe("renders the component", () => {
     it("asset with name", async () => {
-      const asset = parcel;
-      expect(shallow(<AssetName asset={asset} />)).toMatchSnapshot();
+      const { name } = parcel;
+      expect(shallow(<AssetName name={name} />)).toMatchSnapshot();
     });
 
     it("asset without name", async () => {
-      const asset = estateWithoutName;
-      expect(shallow(<AssetName asset={asset} />)).toMatchSnapshot();
+      const { name } = estateWithoutName;
+      expect(shallow(<AssetName name={name} />)).toMatchSnapshot();
     });
   });
 });
