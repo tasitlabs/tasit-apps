@@ -43,16 +43,21 @@ export class MyAssetsScreen extends React.Component {
     const assets = [];
 
     for (let land of listOfLand) {
-      const { id: assetId, nftAddress } = land;
+      const generateAsset = async land => {
+        const { id: assetId, nftAddress, transactionHash: actionId } = land;
 
-      let asset = generateAssetFromId(
-        estateContract,
-        landContract,
-        assetId,
-        nftAddress
-      );
+        const asset = await generateAssetFromId(
+          estateContract,
+          landContract,
+          assetId,
+          nftAddress
+        );
 
-      assets.push(asset);
+        return { ...asset, actionId };
+      };
+
+      const assetPromise = generateAsset(land);
+      assets.push(assetPromise);
     }
 
     return assets;

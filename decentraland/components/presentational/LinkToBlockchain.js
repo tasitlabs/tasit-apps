@@ -5,12 +5,12 @@ import { Button, Icon } from "native-base";
 import {
   showError,
   openURL,
-  buildBlockchainUrlFromAction,
+  buildBlockchainUrlFromActionId,
   getNetworkName,
 } from "@helpers";
 
-const _openLinkOf = async action => {
-  const url = await buildBlockchainUrlFromAction(action);
+const _openLinkOf = async actionId => {
+  const url = buildBlockchainUrlFromActionId(actionId);
   try {
     await openURL(url);
   } catch (err) {
@@ -25,20 +25,20 @@ const _openLinkInfo = () => {
   Alert.alert(title, message, buttons);
 };
 
-const _onPress = action => {
+const _onPress = actionId => {
   const supportedNetworks = ["ropsten"];
   const networkName = getNetworkName();
   const isNetworkSupported = supportedNetworks.includes(networkName);
 
-  if (isNetworkSupported) _openLinkOf(action);
+  if (isNetworkSupported) _openLinkOf(actionId);
   else _openLinkInfo();
 };
 
-export default function LinkToBlockchain({ action }) {
-  if (!action) return null;
+export default function LinkToBlockchain({ actionId }) {
+  if (!actionId) return null;
 
   const onPress = () => {
-    _onPress(action);
+    _onPress(actionId);
   };
 
   return (
@@ -49,5 +49,5 @@ export default function LinkToBlockchain({ action }) {
 }
 
 LinkToBlockchain.propTypes = {
-  action: PropTypes.object,
+  actionId: PropTypes.string,
 };

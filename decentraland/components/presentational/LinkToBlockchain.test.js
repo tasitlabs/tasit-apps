@@ -6,13 +6,17 @@ import { anAction } from "@helpers/testHelpers";
 describe("LinkToBlockchain", () => {
   describe("renders the component", () => {
     it("null action", async () => {
-      const action = null;
-      expect(shallow(<LinkToBlockchain action={action} />)).toMatchSnapshot();
+      const actionId = null;
+      expect(
+        shallow(<LinkToBlockchain actionId={actionId} />)
+      ).toMatchSnapshot();
     });
 
     it("valid action", async () => {
-      const action = anAction;
-      expect(shallow(<LinkToBlockchain action={action} />)).toMatchSnapshot();
+      const actionId = await anAction.getId();
+      expect(
+        shallow(<LinkToBlockchain actionId={actionId} />)
+      ).toMatchSnapshot();
     });
   });
 });

@@ -37,7 +37,8 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for ETH funding", async () => {
     const status = FUNDING_WITH_ETH;
-    const actions = { FUNDING_WITH_ETH: anAction };
+    const actionId = await anAction.getId();
+    const actions = { FUNDING_WITH_ETH: actionId };
 
     expect(
       shallow(<AccountCreationProgress status={status} actions={actions} />)
@@ -46,9 +47,10 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for MANA funding and marketplace approval", async () => {
     const status = FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE;
+    const actionId = await anAction.getId();
     const actions = {
-      FUNDING_WITH_MANA: anAction,
-      APPROVING_MARKETPLACE: anAction,
+      FUNDING_WITH_MANA: actionId,
+      APPROVING_MARKETPLACE: actionId,
     };
 
     expect(
@@ -58,7 +60,8 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for MANA funding", async () => {
     const status = FUNDING_WITH_MANA;
-    const actions = { FUNDING_WITH_MANA: anAction };
+    const actionId = await anAction.getId();
+    const actions = { FUNDING_WITH_MANA: actionId };
 
     expect(
       shallow(<AccountCreationProgress status={status} actions={actions} />)
@@ -67,7 +70,8 @@ describe("AccountCreationProgress", () => {
 
   it("waiting for setup - waiting for marketplace approval", async () => {
     const status = APPROVING_MARKETPLACE;
-    const actions = { APPROVING_MARKETPLACE: anAction };
+    const actionId = await anAction.getId();
+    const actions = { APPROVING_MARKETPLACE: actionId };
 
     expect(
       shallow(<AccountCreationProgress status={status} actions={actions} />)
@@ -86,13 +90,13 @@ describe("AccountCreationProgress", () => {
   describe("ProgressMessageAndLink", () => {
     it("with a message and without an action", async () => {
       const waitingMessage = "A waiting message.";
-      const action = null;
+      const actionId = null;
 
       expect(
         shallow(
           <ProgressMessageAndLink
             waitingMessage={waitingMessage}
-            action={action}
+            actionId={actionId}
           />
         )
       ).toMatchSnapshot();
@@ -100,13 +104,13 @@ describe("AccountCreationProgress", () => {
 
     it("with a message and with an action", async () => {
       const waitingMessage = "A waiting message.";
-      const action = anAction;
+      const actionId = await anAction.getId();
 
       expect(
         shallow(
           <ProgressMessageAndLink
             waitingMessage={waitingMessage}
-            action={action}
+            actionId={actionId}
           />
         )
       ).toMatchSnapshot();
@@ -114,13 +118,13 @@ describe("AccountCreationProgress", () => {
 
     it("without a message nor action", async () => {
       const waitingMessage = null;
-      const action = null;
+      const actionId = null;
 
       expect(
         shallow(
           <ProgressMessageAndLink
             waitingMessage={waitingMessage}
-            action={action}
+            actionId={actionId}
           />
         )
       ).toMatchSnapshot();

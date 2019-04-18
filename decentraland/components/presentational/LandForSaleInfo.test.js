@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LandForSaleInfo, LandForSalePrice } from "./LandForSaleInfo";
+import { LandForSaleInfo, ManaPrice } from "./LandForSaleInfo";
 import { estateForSale } from "@helpers/testHelpers";
 
 describe("LandForSaleInfo", () => {
@@ -12,9 +12,8 @@ describe("LandForSaleInfo", () => {
 
   describe("LandForSalePrice", () => {
     it("renders the component", async () => {
-      expect(
-        shallow(<LandForSalePrice landForSale={estateForSale} />)
-      ).toMatchSnapshot();
+      const { priceMana } = estateForSale;
+      expect(shallow(<ManaPrice price={priceMana} />)).toMatchSnapshot();
     });
   });
 });

@@ -5,6 +5,7 @@ import {
   prependLandForSaleToList,
   removeMyAssetFromList,
   addToMyAssetsList,
+  setActionIdForMyAsset,
 } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
@@ -39,7 +40,7 @@ export class BuyLandScreen extends React.Component {
     navigation.navigate("OnboardingHomeScreen");
   };
 
-  _buy = landForSale => {
+  _buy = async landForSale => {
     const { props, _executeOrder } = this;
     const {
       navigation,
@@ -48,16 +49,21 @@ export class BuyLandScreen extends React.Component {
       prependLandForSaleToList,
       removeMyAssetFromList,
       addToMyAssetsList,
+      setActionIdForMyAsset,
     } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
-    const { type } = asset;
+    const { id: assetId, type } = asset;
 
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
 
     const typeDescription = type == ESTATE ? "Estate" : "Parcel";
 
-    const onSuccess = () => {
+    const onSuccess = async () => {
+      // TODO: This function should be called inside of the eventListener
+      // that catches the safeExecuteOrder successful event.
+      await action.waitForNonceToUpdate();
+
       showInfo(`${typeDescription} bought successfully.`);
     };
 
@@ -70,36 +76,34 @@ export class BuyLandScreen extends React.Component {
 
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
 
+    const action = await _executeOrder(landForSale, account, onError);
+
     // Optimistic UI update
     removeLandForSale(landForSale);
     addToMyAssetsList(asset);
 
-    _executeOrder(landForSale, account, onSuccess, onError);
     navigation.navigate("ListLandForSaleScreen");
+
+    const actionId = await action.getId();
+    setActionIdForMyAsset(assetId, actionId);
+
+    onSuccess();
   };
 
-  _executeOrder = async (
-    sellOrder,
-    account,
-    afterSuccessfulExecution,
-    onError
-  ) => {
+  _executeOrder = async (sellOrder, account, onError) => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;
       const { id: assetId, type } = asset;
       const contracts = getContracts();
       const { marketplaceContract, estateContract, landContract } = contracts;
 
-      let nftAddress;
-      let fingerprint;
-      if (type == ESTATE) {
-        nftAddress = estateContract.getAddress();
-        fingerprint = await estateContract.getFingerprint(assetId);
-      } else if (type == PARCEL) {
-        nftAddress = landContract.getAddress();
-        // LANDRegistry contract doesn't implement getFingerprint function
-        fingerprint = "0x";
-      }
+      const nftAddress =
+        type === ESTATE
+          ? estateContract.getAddress()
+          : landContract.getAddress();
+      // LANDRegistry contract doesn't implement getFingerprint function
+      const fingerprint =
+        type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
 
       marketplaceContract.setWallet(account);
       const action = marketplaceContract.safeExecuteOrder(
@@ -110,11 +114,7 @@ export class BuyLandScreen extends React.Component {
         gasParams
       );
 
-      // TODO: This function should be called inside of the eventListener
-      // that catches the safeExecuteOrder successful event.
-      await action.waitForNonceToUpdate();
-
-      afterSuccessfulExecution();
+      return action;
     } catch (error) {
       // Note: The current version isn't supporting `failing` events
       // See more:
@@ -147,6 +147,7 @@ BuyLandScreen.propTypes = {
   prependLandForSaleToList: PropTypes.func.isRequired,
   removeMyAssetFromList: PropTypes.func.isRequired,
   addToMyAssetsList: PropTypes.func.isRequired,
+  setActionIdForMyAsset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -160,6 +161,7 @@ const mapDispatchToProps = {
   prependLandForSaleToList,
   addToMyAssetsList,
   removeMyAssetFromList,
+  setActionIdForMyAsset,
 };
 
 export default connect(

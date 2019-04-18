@@ -1,7 +1,7 @@
 export const SET_ACCOUNT = "SET_ACCOUNT";
 export const SET_ACCOUNT_CREATION_STATUS = "SET_ACCOUNT_CREATION_STATUS";
-export const UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS =
-  "UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS";
+export const UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS =
+  "UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS";
 export const SET_ACCOUNT_CREATION_ACTIONS = "SET_ACCOUNT_CREATION_ACTIONS";
 export const SELECT_LAND_TO_BUY = "SELECT_LAND_TO_BUY";
 export const REMOVE_LAND_FOR_SALE = "REMOVE_LAND_FOR_SALE";
@@ -12,6 +12,7 @@ export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
 export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
 export const REMOVE_MY_ASSET_FROM_LIST = "REMOVE_MY_ASSET_FROM_LIST";
 export const SET_MY_ASSETS_LIST = "SET_MY_ASSETS_LIST";
+export const SET_ACTION_ID_FOR_MY_ASSET = "SET_ACTION_ID_FOR_MY_ASSET";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
@@ -21,10 +22,10 @@ export function setAccountCreationStatus(creationStatus) {
   return { type: SET_ACCOUNT_CREATION_STATUS, creationStatus };
 }
 
-export function updateActionForAccountCreationStatus(status, action) {
+export function updateActionIdForAccountCreationStatus(status, actionId) {
   return {
-    type: UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
-    creationStatusAction: { status, action },
+    type: UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS,
+    creationStatusAction: { status, actionId },
   };
 }
 
@@ -62,4 +63,11 @@ export function removeMyAssetFromList(myAsset) {
 
 export function setMyAssetsList(myAssets) {
   return { type: SET_MY_ASSETS_LIST, myAssets };
+}
+
+export function setActionIdForMyAsset(myAssetId, actionId) {
+  return {
+    type: SET_ACTION_ID_FOR_MY_ASSET,
+    myAssetAndActionIds: { myAssetId, actionId },
+  };
 }

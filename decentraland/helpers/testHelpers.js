@@ -16,24 +16,29 @@ export const estate = {
   img: "https://api.decentraland.org/v1/estates/1/map.png",
 };
 
+export const estateWithoutName = {
+  type: ESTATE,
+  id: "321",
+  name: "",
+  img: "https://api.decentraland.org/v1/estates/1/map.png",
+};
+
 export const estateForSale = {
   id: "1",
-  priceMana: 0,
+  priceMana: "0",
   priceUSD: 0,
   asset: estate,
 };
 
 export const parcelForSale = {
   id: "2",
-  priceMana: 0,
+  priceMana: "0",
   priceUSD: 0,
   asset: parcel,
 };
 
 export const anAction = {
-  getTransaction: () => ({
-    hash: "0x1234567890123456789012345678901234567890",
-  }),
+  getId: async () => "0x1234567890123456789012345678901234567890",
 };
 
 export const accountCreationActions = [
@@ -57,4 +62,5 @@ export default {
   parcel,
   estate,
   anAction,
+  estateWithoutName,
 };

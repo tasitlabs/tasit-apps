@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MyAsset MyAssetInfo renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <AssetName
+      name="Sample Parcel"
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "flex-end",
+      }
+    }
+  >
+    <LinkToBlockchain />
+  </Component>
+</Component>
+`;
+
 exports[`MyAsset renders the component 1`] = `
 <Component
   style={
@@ -18,8 +52,15 @@ exports[`MyAsset renders the component 1`] = `
       }
     }
   />
-  <Component>
-    Sample Parcel
-  </Component>
+  <MyAssetInfo
+    asset={
+      Object {
+        "id": "0123456789",
+        "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+        "name": "Sample Parcel",
+        "type": "PARCEL",
+      }
+    }
+  />
 </Component>
 `;

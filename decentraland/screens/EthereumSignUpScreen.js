@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import {
   setAccount,
   setAccountCreationStatus,
-  updateActionForAccountCreationStatus,
+  updateActionIdForAccountCreationStatus,
 } from "../redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 
@@ -33,7 +33,7 @@ export class EthereumSignUpScreen extends React.Component {
       const {
         setAccount,
         setAccountCreationStatus,
-        updateActionForAccountCreationStatus,
+        updateActionIdForAccountCreationStatus,
       } = this.props;
 
       // The pattern for each step is:
@@ -53,7 +53,8 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithEthers = async accountAddress => {
         const action = fundAccountWithEthers(accountAddress);
-        updateActionForAccountCreationStatus(FUNDING_WITH_ETH, action);
+        const actionId = await action.getId();
+        updateActionIdForAccountCreationStatus(FUNDING_WITH_ETH, actionId);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
@@ -61,7 +62,8 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithMana = async accountAddress => {
         const action = fundAccountWithMana(accountAddress);
-        updateActionForAccountCreationStatus(FUNDING_WITH_MANA, action);
+        const actionId = await action.getId();
+        updateActionIdForAccountCreationStatus(FUNDING_WITH_MANA, actionId);
         await action.waitForNonceToUpdate();
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
@@ -69,7 +71,8 @@ export class EthereumSignUpScreen extends React.Component {
 
       const approveMarketplace = async account => {
         const action = approveManaSpending(account);
-        updateActionForAccountCreationStatus(APPROVING_MARKETPLACE, action);
+        const actionId = await action.getId();
+        updateActionIdForAccountCreationStatus(APPROVING_MARKETPLACE, actionId);
         await action.waitForNonceToUpdate();
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
@@ -115,13 +118,13 @@ export class EthereumSignUpScreen extends React.Component {
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
   setAccountCreationStatus: PropTypes.func.isRequired,
-  updateActionForAccountCreationStatus: PropTypes.func.isRequired,
+  updateActionIdForAccountCreationStatus: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
-  updateActionForAccountCreationStatus,
+  updateActionIdForAccountCreationStatus,
 };
 
 export default connect(

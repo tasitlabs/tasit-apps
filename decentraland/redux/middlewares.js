@@ -7,6 +7,7 @@ import {
   ADD_TO_MY_ASSETS_LIST,
   REMOVE_MY_ASSET_FROM_LIST,
   SET_MY_ASSETS_LIST,
+  SET_ACTION_ID_FOR_MY_ASSET,
 } from "./actions";
 import {
   storeAccount,
@@ -49,6 +50,10 @@ const storer = store => next => async action => {
       break;
     }
     case SET_MY_ASSETS_LIST: {
+      await storeMyAssets(myAssetsList);
+      break;
+    }
+    case SET_ACTION_ID_FOR_MY_ASSET: {
       await storeMyAssets(myAssetsList);
       break;
     }

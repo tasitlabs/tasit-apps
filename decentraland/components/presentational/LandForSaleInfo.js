@@ -9,6 +9,7 @@ import {
 import Colors from "@constants/Colors";
 import { Button, Icon } from "native-base";
 import { formatNumber } from "@helpers";
+import AssetName from "./AssetName";
 
 const onPriceInfo = () => {
   const title = "";
@@ -18,16 +19,17 @@ const onPriceInfo = () => {
 };
 
 export function LandForSaleInfo({ landForSale }) {
-  const { asset } = landForSale;
-  let { name } = asset;
-  if (!name) name = "(No name for this one right now)";
+  const { priceMana, asset } = landForSale;
+  const { name } = asset;
 
   return (
     <View style={styles.landInfoContainer}>
-      <View style={styles.landNameContainer}>
-        <Text style={styles.landName}>{name}</Text>
+      <View style={styles.nameContainer}>
+        <AssetName name={name} />
       </View>
-      <LandForSalePrice landForSale={landForSale} />
+      <View style={styles.priceContainer}>
+        <ManaPrice price={priceMana} />
+      </View>
     </View>
   );
 }
@@ -36,12 +38,9 @@ LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };
 
-export function LandForSalePrice({ landForSale }) {
-  const { priceMana } = landForSale;
-  const price = formatNumber(priceMana);
+export function ManaPrice({ price }) {
+  const formattedPrice = formatNumber(price);
 
-  // Note: Conversion to USD will be implemented on v0.2.0
-  // <Text>{priceMana} MANA (~${landForSale.priceUSD})</Text>
   return (
     <View style={styles.landPriceContainer}>
       <View>
@@ -53,14 +52,14 @@ export function LandForSalePrice({ landForSale }) {
         </Button>
       </View>
       <View>
-        <Text style={styles.landPrice}>{price}</Text>
+        <Text style={styles.landPrice}>{formattedPrice}</Text>
       </View>
     </View>
   );
 }
 
-LandForSalePrice.propTypes = {
-  landForSale: PropTypes.object.isRequired,
+ManaPrice.propTypes = {
+  price: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -68,19 +67,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  // One alternate approach to consider here is if there were two containers
-  // that both flex to fill the size they're in following a 1:1 ratio.
-  landNameContainer: {
-    width: responsiveWidth(50),
-    paddingTop: responsiveHeight(1),
-  },
-  landName: {
-    color: Colors.assetInfoText,
-    fontWeight: "bold",
-  },
   landPriceContainer: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  nameContainer: {
+    flex: 1,
+  },
+  priceContainer: {
+    flex: 1,
   },
   landPriceIcon: {
     marginLeft: responsiveWidth(1.5),
