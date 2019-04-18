@@ -49,10 +49,11 @@ export class BuyLandScreen extends React.Component {
       prependLandForSaleToList,
       removeMyAssetFromList,
       addToMyAssetsList,
+      setActionIdForMyAsset,
     } = props;
     const { account } = accountInfo;
-    let { asset } = landForSale;
-    const { type } = asset;
+    const { asset } = landForSale;
+    const { id: assetId, type } = asset;
 
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
 
@@ -76,16 +77,17 @@ export class BuyLandScreen extends React.Component {
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
 
     const action = await _executeOrder(landForSale, account, onError);
-    const actionId = await action.getId();
-    asset = { ...asset, actionId };
 
     // Optimistic UI update
     removeLandForSale(landForSale);
     addToMyAssetsList(asset);
 
-    onSuccess();
-
     navigation.navigate("ListLandForSaleScreen");
+
+    const actionId = await action.getId();
+    setActionIdForMyAsset(assetId, actionId);
+
+    onSuccess();
   };
 
   _executeOrder = async (sellOrder, account, onError) => {
