@@ -72,7 +72,7 @@ exports[`LandForSaleInfo renders the component 1`] = `
     }
   >
     <ManaPrice
-      price={0}
+      price="0"
     />
   </Component>
 </Component>

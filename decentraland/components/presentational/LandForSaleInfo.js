@@ -59,7 +59,7 @@ export function ManaPrice({ price }) {
 }
 
 ManaPrice.propTypes = {
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({

@@ -30,7 +30,7 @@ exports[`LandForSaleListItem renders the component 1`] = `
             "type": "PARCEL",
           },
           "id": "2",
-          "priceMana": 0,
+          "priceMana": "0",
           "priceUSD": 0,
         }
       }

@@ -25,14 +25,14 @@ export const estateWithoutName = {
 
 export const estateForSale = {
   id: "1",
-  priceMana: 0,
+  priceMana: "0",
   priceUSD: 0,
   asset: estate,
 };
 
 export const parcelForSale = {
   id: "2",
-  priceMana: 0,
+  priceMana: "0",
   priceUSD: 0,
   asset: parcel,
 };

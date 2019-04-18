@@ -21,7 +21,7 @@ exports[`BuyLand initial state - before start account setup 1`] = `
           "type": "PARCEL",
         },
         "id": "2",
-        "priceMana": 0,
+        "priceMana": "0",
         "priceUSD": 0,
       }
     }

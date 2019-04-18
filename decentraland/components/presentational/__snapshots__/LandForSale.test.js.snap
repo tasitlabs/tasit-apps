@@ -28,7 +28,7 @@ exports[`LandForSale renders the component 1`] = `
           "type": "ESTATE",
         },
         "id": "1",
-        "priceMana": 0,
+        "priceMana": "0",
         "priceUSD": 0,
       }
     }
