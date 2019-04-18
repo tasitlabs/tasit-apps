@@ -9,12 +9,22 @@ import {
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
+import AccountCreationStatus from "@constants/AccountCreationStatus";
 
 const gnosisSafeOwnerPrivKey =
   "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
 const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
+const {
+  NOT_STARTED,
+  FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE,
+  FUNDING_WITH_MANA,
+  APPROVING_MARKETPLACE,
+  READY_TO_USE,
+} = AccountCreationStatus;
+const ZERO = 0;
 
 export const getNetworkName = () => {
   loadConfig();
@@ -178,6 +188,46 @@ export const openURL = async url => {
   }
 };
 
+export const restoreCreationStateOfAccountFromBlockchain = async account => {
+  const provider = ProviderFactory.getProvider();
+  const { address } = account;
+
+  const contracts = getContracts();
+  const { marketplaceContract, manaContract } = contracts;
+
+  const ethersBalance = await provider.getBalance(address);
+  const manaBalance = await manaContract.balanceOf(address);
+  const allowance = await manaContract.allowance(
+    address,
+    marketplaceContract.getAddress()
+  );
+
+  let creationStatus = NOT_STARTED;
+  let creationActions = {};
+
+  const accountCreated = account !== null;
+  const fundedWithEthers = `${ethersBalance}` !== `${ZERO}`;
+  const fundedWithMana = `${manaBalance}` !== `${ZERO}`;
+  const marketplaceWasApproved = `${allowance}` != `${ZERO}`;
+
+  if (accountCreated) {
+    creationStatus = FUNDING_WITH_ETH;
+    creationActions[FUNDING_WITH_ETH] = null;
+  }
+
+  if (fundedWithEthers) {
+    creationStatus = FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE;
+    creationActions[APPROVING_MARKETPLACE] = null;
+    creationActions[FUNDING_WITH_MANA] = null;
+  }
+
+  if (fundedWithMana && marketplaceWasApproved) {
+    creationStatus = READY_TO_USE;
+  }
+
+  return { creationStatus, creationActions };
+};
+
 export default {
   checkBlockchain,
   approveManaSpending,
@@ -196,4 +246,5 @@ export default {
   openURL,
   getNetworkName,
   buildBlockchainUrlFromActionId,
+  restoreCreationStateOfAccountFromBlockchain,
 };
