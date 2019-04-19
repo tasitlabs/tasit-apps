@@ -4,7 +4,7 @@ module.exports = function(api) {
   const presets = ["babel-preset-expo"];
   const plugins = [];
 
-  // Note: console.* should be removed from production app because performance issues
+  // Note: console.* should be removed from production app because of performance issues
   // See more: https://docs.expo.io/versions/latest/react-native/performance/#using-consolelog-statements
   if (environment !== "development") {
     plugins.push("transform-remove-console");
