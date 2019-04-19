@@ -9,7 +9,7 @@ import {
 import { MISSING, DONE } from "@constants/ActionStatus";
 import PropTypes from "prop-types";
 
-const StepsWithAction = [
+const creationSteps = [
   {
     creationStatus: FUNDING_WITH_ETH,
     name: "Funded with ETH",
@@ -33,31 +33,31 @@ export class MyAccountScreen extends React.Component {
     const { creationActions, account } = accountInfo;
     const isAccountCreated = account !== null;
 
-    const creationSteps = [];
-
-    creationSteps.push({
+    const accountStep = {
       name: "Account created",
       creationStatus: null,
       status: isAccountCreated ? DONE : MISSING,
       percentage: 0.25,
-    });
+    };
 
-    StepsWithAction.forEach(stepWithAction => {
-      const { name, creationStatus, percentage } = stepWithAction;
+    let creationStepsWithStatus = creationSteps.map(stepWithAction => {
+      const { creationStatus } = stepWithAction;
 
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
       const status = creationActions[creationStatus] ? DONE : MISSING;
 
-      const creationStep = { name, creationStatus, status, percentage };
+      const creationStep = { ...stepWithAction, status };
 
-      creationSteps.push(creationStep);
+      return creationStep;
     });
+
+    creationStepsWithStatus = [accountStep, ...creationStepsWithStatus];
 
     return (
       <MyAccount
-        progress={this._getPercentage(creationSteps)}
-        creationSteps={creationSteps}
+        progress={this._getPercentage(creationStepsWithStatus)}
+        creationSteps={creationStepsWithStatus}
       />
     );
   }
@@ -65,8 +65,7 @@ export class MyAccountScreen extends React.Component {
   _getPercentage(creationSteps) {
     const percentage = creationSteps
       .filter(step => step.status === DONE)
-      .map(step => step.percentage)
-      .reduce((total, stepPercentage) => total + stepPercentage, 0);
+      .reduce((total, step) => total + step.percentage, 0);
 
     return percentage;
   }
