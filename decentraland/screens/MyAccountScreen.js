@@ -15,29 +15,33 @@ export class MyAccountScreen extends React.Component {
 
     creationSteps.push({
       name: "Account created",
-      action: null,
+      creationStatus: null,
       status: isAccountCreated ? DONE : MISSING,
     });
 
     Object.keys(AccountCreationActions).forEach(creationStatus => {
-      const creationAction = {
-        name: AccountCreationActions[creationStatus].name,
-        action: creationStatus,
-      };
+      const name = AccountCreationActions[creationStatus].name;
+
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
-      if (creationActions.hasOwnProperty(creationStatus)) {
-        creationAction.status = DONE;
-      } else {
-        creationAction.status = MISSING;
-      }
-      creationSteps.push(creationAction);
+      const status = creationActions.hasOwnProperty(creationStatus)
+        ? DONE
+        : MISSING;
+
+      const creationStep = { name, creationStatus, status };
+      creationSteps.push(creationStep);
     });
 
     return (
       <MyAccount
         progress={this._getPercentage(isAccountCreated, creationSteps)}
-        creationActions={creationSteps}
+        creationActions={creationSteps.map(cs => {
+          return {
+            name: cs.name,
+            action: cs.creationStatus,
+            status: cs.status,
+          };
+        })}
       />
     );
   }
@@ -45,13 +49,13 @@ export class MyAccountScreen extends React.Component {
   _getPercentage(isAccountCreated, creationSteps) {
     let percentage = isAccountCreated ? 0.25 : 0;
     creationSteps.forEach(creationStep => {
-      const { status, action } = creationStep;
+      const { status, creationStatus } = creationStep;
       const isDone = status === DONE;
       const hasDefinedActionPercentage = AccountCreationActions.hasOwnProperty(
-        action
+        creationStatus
       );
       if (isDone && hasDefinedActionPercentage) {
-        percentage += AccountCreationActions[action].percentage;
+        percentage += AccountCreationActions[creationStatus].percentage;
       }
     });
     return percentage;
