@@ -5,7 +5,7 @@ exports[`MyAccountScreen renders the component with account 1`] = `
   creationSteps={
     Array [
       Object {
-        "creationStatus": null,
+        "creationStatus": "GENERATING_ACCOUNT",
         "name": "Account created",
         "percentage": 0.25,
         "status": "done",
@@ -39,7 +39,7 @@ exports[`MyAccountScreen renders the component without account 1`] = `
   creationSteps={
     Array [
       Object {
-        "creationStatus": null,
+        "creationStatus": "GENERATING_ACCOUNT",
         "name": "Account created",
         "percentage": 0.25,
         "status": "missing",

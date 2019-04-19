@@ -2,6 +2,7 @@ import React from "react";
 import MyAccount from "@presentational/MyAccount";
 import { connect } from "react-redux";
 import {
+  GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
@@ -35,7 +36,7 @@ export class MyAccountScreen extends React.Component {
 
     const accountStep = {
       name: "Account created",
-      creationStatus: null,
+      creationStatus: GENERATING_ACCOUNT,
       status: isAccountCreated ? DONE : MISSING,
       percentage: 0.25,
     };
