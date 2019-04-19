@@ -1,9 +1,28 @@
 import React from "react";
 import MyAccount from "@presentational/MyAccount";
 import { connect } from "react-redux";
-import AccountCreationActions from "@constants/AccountCreationActions";
+import {
+  FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA,
+  APPROVING_MARKETPLACE,
+} from "@constants/AccountCreationStatus";
 import { MISSING, DONE } from "@constants/ActionStatus";
 import PropTypes from "prop-types";
+
+const AccountCreationActions = {
+  [FUNDING_WITH_ETH]: {
+    name: "Funded with ETH",
+    percentage: 0.25,
+  },
+  [FUNDING_WITH_MANA]: {
+    name: "Funded with MANA tokens",
+    percentage: 0.25,
+  },
+  [APPROVING_MARKETPLACE]: {
+    name: "Linked to marketplace",
+    percentage: 0.25,
+  },
+};
 
 export class MyAccountScreen extends React.Component {
   render() {
@@ -49,17 +68,13 @@ export class MyAccountScreen extends React.Component {
   }
 
   _getPercentage(isAccountCreated, creationSteps) {
-    let percentage = 0;
+    let total = 0;
     creationSteps.forEach(creationStep => {
-      const { status, percentage: stepPercentage } = creationStep;
-
+      const { status, percentage } = creationStep;
       const isDone = status === DONE;
-
-      if (isDone) {
-        percentage += stepPercentage;
-      }
+      if (isDone) total += percentage;
     });
-    return percentage;
+    return total;
   }
 }
 
