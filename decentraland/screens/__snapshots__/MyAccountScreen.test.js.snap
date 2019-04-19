@@ -2,7 +2,7 @@
 
 exports[`MyAccountScreen renders the component with account 1`] = `
 <MyAccount
-  creationActions={
+  creationSteps={
     Array [
       Object {
         "action": null,
@@ -32,7 +32,7 @@ exports[`MyAccountScreen renders the component with account 1`] = `
 
 exports[`MyAccountScreen renders the component without account 1`] = `
 <MyAccount
-  creationActions={
+  creationSteps={
     Array [
       Object {
         "action": null,

@@ -56,7 +56,7 @@ export class MyAccountScreen extends React.Component {
     return (
       <MyAccount
         progress={this._getPercentage(isAccountCreated, creationSteps)}
-        creationActions={creationSteps.map(cs => {
+        creationSteps={creationSteps.map(cs => {
           return {
             name: cs.name,
             action: cs.creationStatus,

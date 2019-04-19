@@ -8,10 +8,7 @@ describe("MyAccount", () => {
     const progress = 0.5;
     expect(
       shallow(
-        <MyAccount
-          progress={progress}
-          creationActions={accountCreationActions}
-        />
+        <MyAccount progress={progress} creationSteps={accountCreationActions} />
       )
     ).toMatchSnapshot();
   });
