@@ -56,13 +56,13 @@ export class MyAccountScreen extends React.Component {
 
     return (
       <MyAccount
-        progress={this._getPercentage(isAccountCreated, creationSteps)}
+        progress={this._getPercentage(creationSteps)}
         creationSteps={creationSteps}
       />
     );
   }
 
-  _getPercentage(isAccountCreated, creationSteps) {
+  _getPercentage(creationSteps) {
     const percentage = creationSteps
       .filter(step => step.status === DONE)
       .map(step => step.percentage)
