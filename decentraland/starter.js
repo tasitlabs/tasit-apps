@@ -7,8 +7,8 @@ const {
   prepareAndLoadConfig,
 } = require("./helpers/starter");
 
-const startExpo = () => {
-  const process = exec("npx expo start -c");
+const startExpo = env => {
+  const process = exec(`BABEL_ENV=${env} npx expo start -c`);
   process.stdout.on("data", console.log);
   process.stderr.on("data", console.log);
 };
@@ -21,7 +21,7 @@ const start = async () => {
   const connectionOK = await checkBlockchain();
   if (connectionOK) {
     console.log("OK!");
-    startExpo();
+    startExpo(config);
   } else {
     showErrorMessage([
       `Failed to establish the connection to the blockchain.`,
