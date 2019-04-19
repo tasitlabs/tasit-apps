@@ -5,23 +5,27 @@ exports[`MyAccountScreen renders the component with account 1`] = `
   creationSteps={
     Array [
       Object {
-        "action": null,
+        "creationStatus": null,
         "name": "Account created",
+        "percentage": 0.25,
         "status": "done",
       },
       Object {
-        "action": "FUNDING_WITH_ETH",
+        "creationStatus": "FUNDING_WITH_ETH",
         "name": "Funded with ETH",
+        "percentage": 0.25,
         "status": "done",
       },
       Object {
-        "action": "FUNDING_WITH_MANA",
+        "creationStatus": "FUNDING_WITH_MANA",
         "name": "Funded with MANA tokens",
+        "percentage": 0.25,
         "status": "missing",
       },
       Object {
-        "action": "APPROVING_MARKETPLACE",
+        "creationStatus": "APPROVING_MARKETPLACE",
         "name": "Linked to marketplace",
+        "percentage": 0.25,
         "status": "missing",
       },
     ]
@@ -35,23 +39,27 @@ exports[`MyAccountScreen renders the component without account 1`] = `
   creationSteps={
     Array [
       Object {
-        "action": null,
+        "creationStatus": null,
         "name": "Account created",
+        "percentage": 0.25,
         "status": "missing",
       },
       Object {
-        "action": "FUNDING_WITH_ETH",
+        "creationStatus": "FUNDING_WITH_ETH",
         "name": "Funded with ETH",
+        "percentage": 0.25,
         "status": "missing",
       },
       Object {
-        "action": "FUNDING_WITH_MANA",
+        "creationStatus": "FUNDING_WITH_MANA",
         "name": "Funded with MANA tokens",
+        "percentage": 0.25,
         "status": "missing",
       },
       Object {
-        "action": "APPROVING_MARKETPLACE",
+        "creationStatus": "APPROVING_MARKETPLACE",
         "name": "Linked to marketplace",
+        "percentage": 0.25,
         "status": "missing",
       },
     ]

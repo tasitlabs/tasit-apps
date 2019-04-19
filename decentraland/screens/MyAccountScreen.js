@@ -50,31 +50,25 @@ export class MyAccountScreen extends React.Component {
       const status = creationActions[creationStatus] ? DONE : MISSING;
 
       const creationStep = { name, creationStatus, status, percentage };
+
       creationSteps.push(creationStep);
     });
 
     return (
       <MyAccount
         progress={this._getPercentage(isAccountCreated, creationSteps)}
-        creationSteps={creationSteps.map(cs => {
-          return {
-            name: cs.name,
-            action: cs.creationStatus,
-            status: cs.status,
-          };
-        })}
+        creationSteps={creationSteps}
       />
     );
   }
 
   _getPercentage(isAccountCreated, creationSteps) {
-    let total = 0;
-    creationSteps.forEach(creationStep => {
-      const { status, percentage } = creationStep;
-      const isDone = status === DONE;
-      if (isDone) total += percentage;
-    });
-    return total;
+    const percentage = creationSteps
+      .filter(step => step.status === DONE)
+      .map(step => step.percentage)
+      .reduce((total, stepPercentage) => total + stepPercentage, 0);
+
+    return percentage;
   }
 }
 
