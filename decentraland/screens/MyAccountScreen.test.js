@@ -1,11 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { MyAccountScreen } from "./MyAccountScreen";
-import AccountCreationStatus from "@constants/AccountCreationStatus";
+import {
+  FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA,
+  APPROVING_MARKETPLACE,
+} from "@constants/AccountCreationStatus";
 
 describe("MyAccountScreen", () => {
   describe("renders the component", () => {
-    it("without account", async () => {
+    it("initial state (without account)", async () => {
       expect(
         shallow(
           <MyAccountScreen
@@ -18,14 +22,46 @@ describe("MyAccountScreen", () => {
       ).toMatchSnapshot();
     });
 
-    it("with account", async () => {
+    it("funding with ethers", async () => {
       expect(
         shallow(
           <MyAccountScreen
             accountInfo={{
               account: {},
               creationActions: {
-                [AccountCreationStatus.FUNDING_WITH_ETH]: {},
+                [FUNDING_WITH_ETH]: {},
+              },
+            }}
+          />
+        )
+      ).toMatchSnapshot();
+    });
+
+    it("funding with ethers with null action (used when action is unknowed)", async () => {
+      expect(
+        shallow(
+          <MyAccountScreen
+            accountInfo={{
+              account: {},
+              creationActions: {
+                [FUNDING_WITH_ETH]: null,
+              },
+            }}
+          />
+        )
+      ).toMatchSnapshot();
+    });
+
+    it("funding with mana AND approving marketplace", async () => {
+      expect(
+        shallow(
+          <MyAccountScreen
+            accountInfo={{
+              account: {},
+              creationActions: {
+                [FUNDING_WITH_ETH]: {},
+                [FUNDING_WITH_MANA]: {},
+                [APPROVING_MARKETPLACE]: {},
               },
             }}
           />
