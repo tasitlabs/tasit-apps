@@ -44,10 +44,10 @@ const stepWasDone = (step, accountInfo) => {
   ];
 
   if (creationStatus === GENERATING_ACCOUNT) {
-    const isAccountCreated = account !== null;
+    const isAccountCreated = !!account;
     return isAccountCreated;
   } else if (statusWithAction.includes(creationStatus)) {
-    const hasAnAction = creationActions[creationStatus];
+    const hasAnAction = !!creationActions[creationStatus];
     return hasAnAction;
   }
 };
