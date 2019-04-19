@@ -53,7 +53,7 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 
 ##### Review the code
 
-[Here's the code](./demo) for the demo app. For now the [Decentraland by Tasit](./decentraland) app is temporarily also serving as the "demo" app. Soon we'll duplicate the minimal set of features from this app over in the `demo` dir and extract the generic parts into the `shared` dir and import them in this app.
+[Here's the code](./demo) for the demo app. For now the [Decentraland by Tasit](./decentraland) app is temporarily also serving as the "demo" app. Soon we'll duplicate the minimal set of features from this app over in the `demo` dir and extract the generic parts into the `shared` dir and import them in each app.
 
 ##### Features
 
