@@ -41,7 +41,7 @@ This app also shows off the major functionality of the [Tasit SDK](https://githu
 
 ##### Review the code
 
-We're building the Tasit Decentraland app in the [`decentraland` dir](./decentraland). Soon we'll move the generic parts over [to the `demo` folder](./demo).
+We're building the Tasit Decentraland app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
 
 ### Tasit Demo
 
@@ -76,7 +76,7 @@ In the long run, Tasit will stitch together components from multiple dapps into 
 
 ## Developers
 
-This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps
+This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps.
 
 These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
@@ -118,6 +118,8 @@ npx tasit-cli init my-app --nft
 ...to instantly create a standalone mobile dapp for CryptoKitties, Decentraland, etc.
 
 This app scaffold comes ready to submit for beta testing on iOS with Testflight and on Android with Google Play Beta track, so you can focus on the core features of your dapp like you would do on the web.
+
+We're building the Tasit CLI in the [`cli` dir](./cli). It's still a work in progress.
 
 ## Why are native dapps important?
 
