@@ -34,7 +34,7 @@ exports[`MyAccountScreen renders the component funding with ethers 1`] = `
 />
 `;
 
-exports[`MyAccountScreen renders the component funding with ethers with null action (used when action is unknowed) 1`] = `
+exports[`MyAccountScreen renders the component funding with ethers with null action (used when action is unknown) 1`] = `
 <MyAccount
   creationSteps={
     Array [
