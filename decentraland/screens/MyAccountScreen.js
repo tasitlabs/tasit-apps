@@ -9,20 +9,23 @@ import {
 import { MISSING, DONE } from "@constants/ActionStatus";
 import PropTypes from "prop-types";
 
-const StepsWithAction = {
-  [FUNDING_WITH_ETH]: {
+const StepsWithAction = [
+  {
+    creationStatus: FUNDING_WITH_ETH,
     name: "Funded with ETH",
     percentage: 0.25,
   },
-  [FUNDING_WITH_MANA]: {
+  {
+    creationStatus: FUNDING_WITH_MANA,
     name: "Funded with MANA tokens",
     percentage: 0.25,
   },
-  [APPROVING_MARKETPLACE]: {
+  {
+    creationStatus: APPROVING_MARKETPLACE,
     name: "Linked to marketplace",
     percentage: 0.25,
   },
-};
+];
 
 export class MyAccountScreen extends React.Component {
   render() {
@@ -39,9 +42,8 @@ export class MyAccountScreen extends React.Component {
       percentage: 0.25,
     });
 
-    Object.keys(StepsWithAction).forEach(creationStatus => {
-      const name = StepsWithAction[creationStatus].name;
-      const percentage = StepsWithAction[creationStatus].percentage;
+    StepsWithAction.forEach(stepWithAction => {
+      const { name, creationStatus, percentage } = stepWithAction;
 
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
