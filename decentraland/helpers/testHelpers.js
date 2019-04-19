@@ -1,5 +1,5 @@
 import AssetTypes from "@constants/AssetTypes";
-import { DONE, PENDING, MISSING } from "@constants/ActionStatus";
+import ActionStatus from "@constants/ActionStatus";
 const { ESTATE, PARCEL } = AssetTypes;
 
 export const parcel = {
@@ -41,18 +41,18 @@ export const anAction = {
   getId: async () => "0x1234567890123456789012345678901234567890",
 };
 
-export const accountCreationSteps = [
+export const accountCreationActions = [
   {
     name: "Account created",
-    status: DONE,
+    status: ActionStatus.DONE,
   },
   {
     name: "ETH",
-    status: PENDING,
+    status: ActionStatus.PENDING,
   },
   {
     name: "MANA",
-    status: MISSING,
+    status: ActionStatus.MISSING,
   },
 ];
 
@@ -63,5 +63,4 @@ export default {
   estate,
   anAction,
   estateWithoutName,
-  accountCreationSteps,
 };

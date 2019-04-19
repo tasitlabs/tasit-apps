@@ -7,13 +7,13 @@ import MyAccountCreationStatusItem from "./MyAccountCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
 import MyAccountProgress from "./MyAccountProgress";
 
-export default function MyAccount({ progress, creationSteps }) {
+export default function MyAccount({ progress, creationActions }) {
   return (
     <View style={styles.container}>
       <MyAccountProgress progress={progress} />
       <View style={styles.actionItemsContainer}>
-        {creationSteps.map(step => {
-          const { name, status } = step;
+        {creationActions.map(action => {
+          const { name, status } = action;
 
           return (
             <MyAccountCreationStatusItem
@@ -30,7 +30,7 @@ export default function MyAccount({ progress, creationSteps }) {
 
 MyAccount.propTypes = {
   progress: PropTypes.number,
-  creationSteps: PropTypes.arrayOf(
+  creationActions: PropTypes.arrayOf(
     PropTypes.shape({
       status: PropTypes.oneOf(Object.values(ActionStatus)),
       name: PropTypes.string,
