@@ -37,7 +37,7 @@ describe("MyAccountScreen", () => {
       ).toMatchSnapshot();
     });
 
-    it("funding with ethers with null action (used when action is unknowed)", async () => {
+    it("funding with ethers with null action (used when action is unknown)", async () => {
       expect(
         shallow(
           <MyAccountScreen
