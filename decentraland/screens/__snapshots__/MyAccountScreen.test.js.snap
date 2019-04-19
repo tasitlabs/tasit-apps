@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyAccountScreen renders the component with account 1`] = `
+exports[`MyAccountScreen renders the component funding with ethers 1`] = `
 <MyAccount
   creationSteps={
     Array [
@@ -34,7 +34,75 @@ exports[`MyAccountScreen renders the component with account 1`] = `
 />
 `;
 
-exports[`MyAccountScreen renders the component without account 1`] = `
+exports[`MyAccountScreen renders the component funding with ethers with null action (used when action is unknown) 1`] = `
+<MyAccount
+  creationSteps={
+    Array [
+      Object {
+        "creationStatus": "GENERATING_ACCOUNT",
+        "name": "Account created",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+      Object {
+        "creationStatus": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+    ]
+  }
+  progress={0.5}
+/>
+`;
+
+exports[`MyAccountScreen renders the component funding with mana AND approving marketplace 1`] = `
+<MyAccount
+  creationSteps={
+    Array [
+      Object {
+        "creationStatus": "GENERATING_ACCOUNT",
+        "name": "Account created",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "percentage": 0.25,
+        "status": "done",
+      },
+    ]
+  }
+  progress={1}
+/>
+`;
+
+exports[`MyAccountScreen renders the component initial state (without account) 1`] = `
 <MyAccount
   creationSteps={
     Array [
