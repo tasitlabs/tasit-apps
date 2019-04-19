@@ -6,7 +6,9 @@ module.exports = function(api) {
 
   // Note: console.* should be removed from production app because performance issues
   // See more: https://docs.expo.io/versions/latest/react-native/performance/#using-consolelog-statements
-  if (environment !== "development") plugins.push("transform-remove-console");
+  if (environment !== "development") {
+    plugins.push("transform-remove-console");
+  }
 
   return {
     presets,
