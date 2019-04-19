@@ -8,12 +8,14 @@ import PropTypes from "prop-types";
 export class MyAccountScreen extends React.Component {
   render() {
     const { accountInfo } = this.props;
-    const creationActions = [];
-    creationActions.push({
+    const creationSteps = [];
+
+    creationSteps.push({
       name: "Account created",
       action: null,
       status: !accountInfo.account ? MISSING : DONE,
     });
+
     Object.keys(AccountCreationActions).forEach(action => {
       const creationAction = {
         name: AccountCreationActions[action].name,
@@ -26,20 +28,20 @@ export class MyAccountScreen extends React.Component {
       } else {
         creationAction.status = MISSING;
       }
-      creationActions.push(creationAction);
+      creationSteps.push(creationAction);
     });
     const isAccountCreated = !!accountInfo.account;
     return (
       <MyAccount
-        progress={this._getPercentage(isAccountCreated, creationActions)}
-        creationActions={creationActions}
+        progress={this._getPercentage(isAccountCreated, creationSteps)}
+        creationActions={creationSteps}
       />
     );
   }
 
-  _getPercentage(isAccountCreated, accountActions) {
+  _getPercentage(isAccountCreated, creationSteps) {
     let percentage = isAccountCreated ? 0.25 : 0;
-    accountActions.forEach(accountAction => {
+    creationSteps.forEach(accountAction => {
       const isDone = accountAction.status === DONE;
       const hasDefinedActionPercentage = AccountCreationActions.hasOwnProperty(
         accountAction.action
