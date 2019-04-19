@@ -29,11 +29,11 @@ You might want to jump ahead to the "why" section to start:
 
 ## Tasit Apps
 
-### Tasit Decentraland
+### Decentraland by Tasit
 
-Our first production app is called `Tasit Decentraland`.
+Our first production app is called `Decentraland by Tasit`.
 
-[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Tasit Decentraland` lets you use that dapp on mobile.
+[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
 
 This is the first production Tasit NFT app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects.
 
@@ -41,7 +41,7 @@ This app also shows off the major functionality of the [Tasit SDK](https://githu
 
 ##### Review the code
 
-We're building the Tasit Decentraland app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
+We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
 
 ### Tasit Demo
 
@@ -53,7 +53,7 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 
 ##### Review the code
 
-[Here's the code](./demo) for the demo app. For now the [Tasit Decentraland](./decentraland) app is temporarily also serving as the "demo" app. Soon we'll move the generic, minimalist parts over to the `demo` dir.
+[Here's the code](./demo) for the demo app. For now the [Decentraland by Tasit](./decentraland) app is temporarily also serving as the "demo" app. Soon we'll duplicate the minimal set of features from this app over in the `demo` dir and extract the generic parts into the `shared` dir and import them in this app.
 
 ##### Features
 
@@ -65,9 +65,8 @@ The app is built using React Native, Expo, [React Navigation](https://reactnavig
 
 ## Other Tasit apps coming soon
 
-### Tasit Aragon
+### Aragon by Tasit
 
-Exact org project T.B.D.
 ([DAOs](https://blog.aragon.org/bringing-daos-back-aragon-monthly-92756cb65639/))
 
 ### The road ahead
