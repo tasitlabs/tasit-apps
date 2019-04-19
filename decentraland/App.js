@@ -16,7 +16,11 @@ import applyMiddleware from "./redux/middlewares";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/current";
-import { checkBlockchain, showFatalError } from "@helpers";
+import {
+  checkBlockchain,
+  showFatalError,
+  restoreCreationStateOfAccountFromBlockchain,
+} from "@helpers";
 import {
   retrieveAccount,
   retrieveMyAssets,
@@ -61,11 +65,23 @@ Is the config file correct?`;
     const account = await retrieveAccount();
     if (account) {
       store.dispatch(setAccount(account));
-      const creationStatus = await retrieveAccountCreationStatus();
-      if (creationStatus)
+      let creationStatus = await retrieveAccountCreationStatus();
+      let creationActions = await retrieveAccountCreationActions();
+
+      const isOldAccount =
+        account !== null && creationStatus === null && creationActions === null;
+
+      if (isOldAccount) {
+        ({
+          creationStatus,
+          creationActions,
+        } = await restoreCreationStateOfAccountFromBlockchain(account));
+      }
+
+      if (creationStatus !== null)
         store.dispatch(setAccountCreationStatus(creationStatus));
-      const creationActions = await retrieveAccountCreationActions();
-      if (creationActions)
+
+      if (creationActions !== null)
         store.dispatch(setAccountCreationActions(creationActions));
     }
   }
@@ -97,12 +113,20 @@ Is the config file correct?`;
 
   // More about AppLoading: https://docs.expo.io/versions/latest/sdk/app-loading/
   _loadResourcesAsync = async () => {
-    const setupSDK = this._setupTasitSDK();
     const loadFonts = this._loadFonts();
-    const loadAccountInfo = this._loadAccountInfo();
     const loadMyAssets = this._loadMyAssets();
 
-    return Promise.all([setupSDK, loadFonts, loadAccountInfo, loadMyAssets]);
+    // Note: _loadAccountInfo needs that TasitSDK is ready to use
+    const setupTasitSDKAndLoadAccountInfo = async () => {
+      await this._setupTasitSDK();
+      await this._loadAccountInfo();
+    };
+
+    return Promise.all([
+      setupTasitSDKAndLoadAccountInfo(),
+      loadFonts,
+      loadMyAssets,
+    ]);
   };
 
   _handleLoadingError = error => {

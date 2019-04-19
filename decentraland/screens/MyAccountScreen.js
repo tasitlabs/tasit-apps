@@ -1,53 +1,82 @@
 import React from "react";
 import MyAccount from "@presentational/MyAccount";
 import { connect } from "react-redux";
-import AccountCreationActions from "@constants/AccountCreationActions";
-import ActionStatus from "../constants/ActionStatus";
+import {
+  GENERATING_ACCOUNT,
+  FUNDING_WITH_ETH,
+  FUNDING_WITH_MANA,
+  APPROVING_MARKETPLACE,
+} from "@constants/AccountCreationStatus";
+import { MISSING, DONE } from "@constants/ActionStatus";
 import PropTypes from "prop-types";
+
+const creationSteps = [
+  {
+    name: "Account created",
+    creationStatus: GENERATING_ACCOUNT,
+    percentage: 0.25,
+  },
+  {
+    creationStatus: FUNDING_WITH_ETH,
+    name: "Funded with ETH",
+    percentage: 0.25,
+  },
+  {
+    creationStatus: FUNDING_WITH_MANA,
+    name: "Funded with MANA tokens",
+    percentage: 0.25,
+  },
+  {
+    creationStatus: APPROVING_MARKETPLACE,
+    name: "Linked to marketplace",
+    percentage: 0.25,
+  },
+];
+
+const stepWasDone = (step, accountInfo) => {
+  const { creationActions, account } = accountInfo;
+  const { creationStatus } = step;
+
+  const statusWithAction = [
+    FUNDING_WITH_ETH,
+    FUNDING_WITH_MANA,
+    APPROVING_MARKETPLACE,
+  ];
+
+  if (creationStatus === GENERATING_ACCOUNT) {
+    const isAccountCreated = account !== null;
+    return isAccountCreated;
+  } else if (statusWithAction.includes(creationStatus)) {
+    const hasAnAction = creationActions[creationStatus] !== undefined;
+    return hasAnAction;
+  }
+};
 
 export class MyAccountScreen extends React.Component {
   render() {
     const { accountInfo } = this.props;
-    const creationActions = [];
-    creationActions.push({
-      name: "Account created",
-      action: null,
-      status: !accountInfo.account ? ActionStatus.MISSING : ActionStatus.DONE,
-    });
-    Object.keys(AccountCreationActions).forEach(action => {
-      const creationAction = {
-        name: AccountCreationActions[action].name,
-        action,
-      };
+
+    const creationStepsWithStatus = creationSteps.map(step => {
+      const wasDone = stepWasDone(step, accountInfo);
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
-      if (accountInfo.creationActions.hasOwnProperty(action)) {
-        creationAction.status = ActionStatus.DONE;
-      } else {
-        creationAction.status = ActionStatus.MISSING;
-      }
-      creationActions.push(creationAction);
+      const status = wasDone ? DONE : MISSING;
+      return { ...step, status };
     });
-    const isAccountCreated = !!accountInfo.account;
+
     return (
       <MyAccount
-        progress={this._getPercentage(isAccountCreated, creationActions)}
-        creationActions={creationActions}
+        progress={this._getPercentage(creationStepsWithStatus)}
+        creationSteps={creationStepsWithStatus}
       />
     );
   }
 
-  _getPercentage(isAccountCreated, accountActions) {
-    let percentage = isAccountCreated ? 0.25 : 0;
-    accountActions.forEach(accountAction => {
-      const isDone = accountAction.status === ActionStatus.DONE;
-      const hasDefinedActionPercentage = AccountCreationActions.hasOwnProperty(
-        accountAction.action
-      );
-      if (isDone && hasDefinedActionPercentage) {
-        percentage += AccountCreationActions[accountAction.action].percentage;
-      }
-    });
+  _getPercentage(creationSteps) {
+    const percentage = creationSteps
+      .filter(step => step.status === DONE)
+      .reduce((total, step) => total + step.percentage, 0);
+
     return percentage;
   }
 }
