@@ -17,10 +17,12 @@ export class MyAccountScreen extends React.Component {
       name: "Account created",
       creationStatus: null,
       status: isAccountCreated ? DONE : MISSING,
+      percentage: 0.25,
     });
 
     Object.keys(AccountCreationActions).forEach(creationStatus => {
       const name = AccountCreationActions[creationStatus].name;
+      const percentage = AccountCreationActions[creationStatus].percentage;
 
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
@@ -28,7 +30,7 @@ export class MyAccountScreen extends React.Component {
         ? DONE
         : MISSING;
 
-      const creationStep = { name, creationStatus, status };
+      const creationStep = { name, creationStatus, status, percentage };
       creationSteps.push(creationStep);
     });
 
@@ -47,15 +49,14 @@ export class MyAccountScreen extends React.Component {
   }
 
   _getPercentage(isAccountCreated, creationSteps) {
-    let percentage = isAccountCreated ? 0.25 : 0;
+    let percentage = 0;
     creationSteps.forEach(creationStep => {
-      const { status, creationStatus } = creationStep;
+      const { status, percentage: stepPercentage } = creationStep;
+
       const isDone = status === DONE;
-      const hasDefinedActionPercentage = AccountCreationActions.hasOwnProperty(
-        creationStatus
-      );
-      if (isDone && hasDefinedActionPercentage) {
-        percentage += AccountCreationActions[creationStatus].percentage;
+
+      if (isDone) {
+        percentage += stepPercentage;
       }
     });
     return percentage;
