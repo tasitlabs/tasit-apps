@@ -1,6 +1,6 @@
-const DONE = "done";
-const MISSING = "missing";
-const PENDING = "pending";
+export const DONE = "done";
+export const MISSING = "missing";
+export const PENDING = "pending";
 
 export default {
   DONE,

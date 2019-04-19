@@ -2,7 +2,7 @@ import React from "react";
 import MyAccount from "@presentational/MyAccount";
 import { connect } from "react-redux";
 import AccountCreationActions from "@constants/AccountCreationActions";
-import ActionStatus from "../constants/ActionStatus";
+import { MISSING, DONE } from "@constants/ActionStatus";
 import PropTypes from "prop-types";
 
 export class MyAccountScreen extends React.Component {
@@ -12,7 +12,7 @@ export class MyAccountScreen extends React.Component {
     creationActions.push({
       name: "Account created",
       action: null,
-      status: !accountInfo.account ? ActionStatus.MISSING : ActionStatus.DONE,
+      status: !accountInfo.account ? MISSING : DONE,
     });
     Object.keys(AccountCreationActions).forEach(action => {
       const creationAction = {
@@ -22,9 +22,9 @@ export class MyAccountScreen extends React.Component {
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
       if (accountInfo.creationActions.hasOwnProperty(action)) {
-        creationAction.status = ActionStatus.DONE;
+        creationAction.status = DONE;
       } else {
-        creationAction.status = ActionStatus.MISSING;
+        creationAction.status = MISSING;
       }
       creationActions.push(creationAction);
     });
@@ -40,7 +40,7 @@ export class MyAccountScreen extends React.Component {
   _getPercentage(isAccountCreated, accountActions) {
     let percentage = isAccountCreated ? 0.25 : 0;
     accountActions.forEach(accountAction => {
-      const isDone = accountAction.status === ActionStatus.DONE;
+      const isDone = accountAction.status === DONE;
       const hasDefinedActionPercentage = AccountCreationActions.hasOwnProperty(
         accountAction.action
       );
