@@ -221,6 +221,14 @@ export const restoreCreationStateOfAccountFromBlockchain = async account => {
     creationActions[FUNDING_WITH_MANA] = null;
   }
 
+  if (fundedWithMana || !marketplaceWasApproved) {
+    creationStatus = APPROVING_MARKETPLACE;
+  }
+
+  if (!fundedWithMana || marketplaceWasApproved) {
+    creationStatus = FUNDING_WITH_MANA;
+  }
+
   if (fundedWithMana && marketplaceWasApproved) {
     creationStatus = READY_TO_USE;
   }
