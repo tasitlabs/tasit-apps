@@ -24,11 +24,18 @@ export default function BuyLand(props) {
   const onPress = waitingForAccountSetup ? () => {} : onBuy;
   const buttonDisabled = waitingForAccountSetup ? true : false;
 
+  const buttonTitle =
+    accountCreationStatus !== READY_TO_USE ? "Set up account" : "Buy";
+
   return (
     <View style={styles.container}>
       <LandForSale landForSale={landForSale} />
       <View style={styles.buttonView}>
-        <Button title="Buy" disabled={buttonDisabled} onPress={onPress} />
+        <Button
+          title={buttonTitle}
+          disabled={buttonDisabled}
+          onPress={onPress}
+        />
       </View>
       <AccountCreationProgress
         status={accountCreationStatus}
