@@ -7,15 +7,15 @@ const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
 const MY_ASSETS_LIST = "MY_ASSETS_LIST";
 const EPHEMERAL_ACCOUNT_CREATION_STATUS = "EPHEMERAL_ACCOUNT_CREATION_STATUS";
 const EPHEMERAL_ACCOUNT_CREATION_ACTIONS = "EPHEMERAL_ACCOUNT_CREATION_ACTIONS";
-const APP_IS_FIRST_USE = "APP_IS_FIRST_USE";
+const IS_FIRST_APP_USE = "IS_FIRST_APP_USE";
 
 export const storeIsFirstUse = async isFirstUse => {
   const strIsFirstUse = _toString(isFirstUse);
-  await _storeData(APP_IS_FIRST_USE, strIsFirstUse, false);
+  await _storeData(IS_FIRST_APP_USE, strIsFirstUse, false);
 };
 
 export const retrieveIsFirstUse = async () => {
-  const strIsFirstUse = await _retrieveData(APP_IS_FIRST_USE);
+  const strIsFirstUse = await _retrieveData(IS_FIRST_APP_USE);
   const isFirstUse = _fromString(strIsFirstUse);
   if (isFirstUse === null) return true;
   return isFirstUse;
