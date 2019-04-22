@@ -1,14 +1,14 @@
 import React from "react";
 import { shallow } from "enzyme";
 import ActionStatus from "../../constants/ActionStatus";
-import MyAccountCreationStatusItem from "./MyAccountCreationStatusItem";
+import MyProfileCreationStatusItem from "./MyProfileCreationStatusItem";
 
-describe("MyAccountCreationStatusItem", () => {
+describe("MyProfileCreationStatusItem", () => {
   it("renders the component with done status", async () => {
     const name = "test";
     expect(
       shallow(
-        <MyAccountCreationStatusItem name={name} status={ActionStatus.DONE} />
+        <MyProfileCreationStatusItem name={name} status={ActionStatus.DONE} />
       )
     ).toMatchSnapshot();
   });
@@ -17,7 +17,7 @@ describe("MyAccountCreationStatusItem", () => {
     const name = "test";
     expect(
       shallow(
-        <MyAccountCreationStatusItem
+        <MyProfileCreationStatusItem
           name={name}
           status={ActionStatus.MISSING}
         />
@@ -29,7 +29,7 @@ describe("MyAccountCreationStatusItem", () => {
     const name = "test";
     expect(
       shallow(
-        <MyAccountCreationStatusItem
+        <MyProfileCreationStatusItem
           name={name}
           status={ActionStatus.PENDING}
         />

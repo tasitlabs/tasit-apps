@@ -9,7 +9,7 @@ import {
 } from "react-native-responsive-dimensions";
 import ActionStatus from "@constants/ActionStatus";
 
-export default function MyAccountCreationStatusItem({ name, status }) {
+export default function MyProfileCreationStatusItem({ name, status }) {
   return (
     <View style={styles.container}>
       {renderIcon(status)}
@@ -49,7 +49,7 @@ function renderIcon(status) {
   );
 }
 
-MyAccountCreationStatusItem.propTypes = {
+MyProfileCreationStatusItem.propTypes = {
   name: PropTypes.string.isRequired,
   status: PropTypes.oneOf(Object.values(ActionStatus)).isRequired,
 };
