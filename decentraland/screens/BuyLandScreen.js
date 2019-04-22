@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { StackActions, NavigationActions } from "react-navigation";
+import { StackActions } from "react-navigation";
 import {
   removeLandForSale,
   prependLandForSaleToList,
