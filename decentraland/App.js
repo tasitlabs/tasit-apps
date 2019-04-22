@@ -26,7 +26,6 @@ import {
   retrieveMyAssets,
   retrieveAccountCreationStatus,
   retrieveAccountCreationActions,
-  storeAccount,
   storeIsFirstUse,
   retrieveIsFirstUse,
 } from "@helpers/storage";
