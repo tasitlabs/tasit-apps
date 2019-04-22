@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyAccount renders the component 1`] = `
+exports[`MyProfile renders the component 1`] = `
 <Component
   style={
     Object {
@@ -12,7 +12,7 @@ exports[`MyAccount renders the component 1`] = `
     }
   }
 >
-  <MyAccountProgress
+  <MyProfileProgress
     progress={0.5}
   />
   <Component
@@ -26,17 +26,17 @@ exports[`MyAccount renders the component 1`] = `
       }
     }
   >
-    <MyAccountCreationStatusItem
+    <MyProfileCreationStatusItem
       key="Account created"
       name="Account created"
       status="done"
     />
-    <MyAccountCreationStatusItem
+    <MyProfileCreationStatusItem
       key="ETH"
       name="ETH"
       status="pending"
     />
-    <MyAccountCreationStatusItem
+    <MyProfileCreationStatusItem
       key="MANA"
       name="MANA"
       status="missing"

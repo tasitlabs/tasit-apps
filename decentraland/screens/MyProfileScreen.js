@@ -1,5 +1,5 @@
 import React from "react";
-import MyAccount from "@presentational/MyAccount";
+import MyProfile from "@presentational/MyProfile";
 import { connect } from "react-redux";
 import {
   GENERATING_ACCOUNT,
@@ -52,7 +52,7 @@ const stepWasDone = (step, accountInfo) => {
   }
 };
 
-export class MyAccountScreen extends React.Component {
+export class MyProfileScreen extends React.Component {
   render() {
     const { accountInfo } = this.props;
 
@@ -65,7 +65,7 @@ export class MyAccountScreen extends React.Component {
     });
 
     return (
-      <MyAccount
+      <MyProfile
         progress={this._getPercentage(creationStepsWithStatus)}
         creationSteps={creationStepsWithStatus}
       />
@@ -81,7 +81,7 @@ export class MyAccountScreen extends React.Component {
   }
 }
 
-MyAccountScreen.propTypes = {
+MyProfileScreen.propTypes = {
   accountInfo: PropTypes.object,
 };
 
@@ -90,4 +90,4 @@ const mapStateToProps = state => {
   return { accountInfo };
 };
 
-export default connect(mapStateToProps)(MyAccountScreen);
+export default connect(mapStateToProps)(MyProfileScreen);

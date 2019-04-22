@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyAccountCreationStatusItem renders the component with done status 1`] = `
+exports[`MyProfileCreationStatusItem renders the component with done status 1`] = `
 <Component
   style={
     Object {
@@ -37,7 +37,7 @@ exports[`MyAccountCreationStatusItem renders the component with done status 1`] 
 </Component>
 `;
 
-exports[`MyAccountCreationStatusItem renders the component with missing status 1`] = `
+exports[`MyProfileCreationStatusItem renders the component with missing status 1`] = `
 <Component
   style={
     Object {
@@ -74,7 +74,7 @@ exports[`MyAccountCreationStatusItem renders the component with missing status 1
 </Component>
 `;
 
-exports[`MyAccountCreationStatusItem renders the component with pending status 1`] = `
+exports[`MyProfileCreationStatusItem renders the component with pending status 1`] = `
 <Component
   style={
     Object {

@@ -1,12 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MyAccountProgress, MyAccountProgressText } from "./MyAccountProgress";
+import { MyProfileProgress, MyProfileProgressText } from "./MyProfileProgress";
 
-describe("MyAccountProgress", () => {
+describe("MyProfileProgress", () => {
   it("renders the component", async () => {
     const progress = 0.5;
     expect(
-      shallow(<MyAccountProgress progress={progress} />)
+      shallow(<MyProfileProgress progress={progress} />)
     ).toMatchSnapshot();
   });
 
@@ -14,7 +14,7 @@ describe("MyAccountProgress", () => {
     it("renders the component", async () => {
       const progress = 0.5;
       expect(
-        shallow(<MyAccountProgressText progress={progress} />)
+        shallow(<MyProfileProgressText progress={progress} />)
       ).toMatchSnapshot();
     });
   });

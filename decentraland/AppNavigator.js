@@ -11,7 +11,7 @@ import {
 import ListLandForSaleScreen from "./screens/ListLandForSaleScreen";
 import BuyLandScreen from "./screens/BuyLandScreen";
 import OnboardingHomeScreen from "./screens/OnboardingHomeScreen";
-import MyAccountScreen from "./screens/MyAccountScreen";
+import MyProfileScreen from "./screens/MyProfileScreen";
 import EthereumQuestionScreen from "./screens/EthereumQuestionScreen";
 import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
 import EthereumSignInScreen from "./screens/EthereumSignInScreen";
@@ -94,15 +94,15 @@ const MyAssetsNavigator = createStackNavigator(
   }
 );
 
-const MyAccountNavigator = createStackNavigator(
+const MyProfileNavigator = createStackNavigator(
   {
-    MyAccountScreen: {
-      screen: MyAccountScreen,
+    MyProfileScreen: {
+      screen: MyProfileScreen,
       navigationOptions: headerWithMenuButton,
     },
   },
   {
-    initialRouteName: "MyAccountScreen",
+    initialRouteName: "MyProfileScreen",
     defaultNavigationOptions,
   }
 );
@@ -120,10 +120,10 @@ const MainDrawerNavigator = createDrawerNavigator({
       drawerLabel: "My land",
     },
   },
-  MyAccount: {
-    screen: MyAccountNavigator,
+  MyProfile: {
+    screen: MyProfileNavigator,
     navigationOptions: {
-      drawerLabel: "My account",
+      drawerLabel: "My profile",
     },
   },
 });

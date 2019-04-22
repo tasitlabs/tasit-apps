@@ -8,7 +8,7 @@ import Colors from "@constants/Colors";
 import ProgressBar from "react-native-progress/Bar";
 import PropTypes from "prop-types";
 
-export function MyAccountProgress({ progress }) {
+export function MyProfileProgress({ progress }) {
   return (
     <View style={styles.container}>
       <ProgressBar
@@ -20,16 +20,16 @@ export function MyAccountProgress({ progress }) {
         width={responsiveWidth(100)}
         borderRadius={0}
       />
-      <MyAccountProgressText progress={progress} />
+      <MyProfileProgressText progress={progress} />
     </View>
   );
 }
 
-MyAccountProgress.propTypes = {
+MyProfileProgress.propTypes = {
   progress: PropTypes.number,
 };
 
-export function MyAccountProgressText({ progress }) {
+export function MyProfileProgressText({ progress }) {
   const formattedProgress = Math.round(progress * 100);
 
   return (
@@ -39,7 +39,7 @@ export function MyAccountProgressText({ progress }) {
   );
 }
 
-MyAccountProgressText.propTypes = {
+MyProfileProgressText.propTypes = {
   progress: PropTypes.number,
 };
 
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyAccountProgress;
+export default MyProfileProgress;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyAccountScreen renders the component funding with ethers 1`] = `
-<MyAccount
+exports[`MyProfileScreen renders the component funding with ethers 1`] = `
+<MyProfile
   creationSteps={
     Array [
       Object {
@@ -34,8 +34,8 @@ exports[`MyAccountScreen renders the component funding with ethers 1`] = `
 />
 `;
 
-exports[`MyAccountScreen renders the component funding with ethers with null action (used when action is unknown) 1`] = `
-<MyAccount
+exports[`MyProfileScreen renders the component funding with ethers with null action (used when action is unknown) 1`] = `
+<MyProfile
   creationSteps={
     Array [
       Object {
@@ -68,8 +68,8 @@ exports[`MyAccountScreen renders the component funding with ethers with null act
 />
 `;
 
-exports[`MyAccountScreen renders the component funding with mana AND approving marketplace 1`] = `
-<MyAccount
+exports[`MyProfileScreen renders the component funding with mana AND approving marketplace 1`] = `
+<MyProfile
   creationSteps={
     Array [
       Object {
@@ -102,8 +102,8 @@ exports[`MyAccountScreen renders the component funding with mana AND approving m
 />
 `;
 
-exports[`MyAccountScreen renders the component initial state (without account) 1`] = `
-<MyAccount
+exports[`MyProfileScreen renders the component initial state (without account) 1`] = `
+<MyProfile
   creationSteps={
     Array [
       Object {

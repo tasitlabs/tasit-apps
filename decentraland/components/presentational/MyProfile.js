@@ -3,20 +3,20 @@ import { StyleSheet, View } from "react-native";
 import Colors from "@constants/Colors";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import MyAccountCreationStatusItem from "./MyAccountCreationStatusItem";
+import MyProfileCreationStatusItem from "./MyProfileCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
-import MyAccountProgress from "./MyAccountProgress";
+import MyProfileProgress from "./MyProfileProgress";
 
-export default function MyAccount({ progress, creationSteps }) {
+export default function MyProfile({ progress, creationSteps }) {
   return (
     <View style={styles.container}>
-      <MyAccountProgress progress={progress} />
+      <MyProfileProgress progress={progress} />
       <View style={styles.actionItemsContainer}>
         {creationSteps.map(action => {
           const { name, status } = action;
 
           return (
-            <MyAccountCreationStatusItem
+            <MyProfileCreationStatusItem
               key={name}
               name={name}
               status={status}
@@ -28,7 +28,7 @@ export default function MyAccount({ progress, creationSteps }) {
   );
 }
 
-MyAccount.propTypes = {
+MyProfile.propTypes = {
   progress: PropTypes.number,
   creationSteps: PropTypes.arrayOf(
     PropTypes.shape({
