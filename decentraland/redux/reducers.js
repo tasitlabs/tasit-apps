@@ -16,7 +16,7 @@ import {
   SET_ACTION_ID_FOR_MY_ASSET,
   UPDATE_MY_ASSET_STATUS,
 } from "./actions";
-import { removeFromList, updateListItem } from "@helpers";
+import { removeFromList, updateListItem, toListIfNot } from "@helpers";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
@@ -91,15 +91,20 @@ function myAssets(state = { list: [] }, action) {
     myAssets,
     myAssetAndActionIds,
     myAssetAndStatus,
+    itemOrList,
   } = action;
+
   switch (type) {
     case PREPEND_TO_MY_ASSETS_LIST:
       return { ...state, list: [myAsset, ...state.list] };
-    case APPEND_TO_MY_ASSETS_LIST:
-      return { ...state, list: [...state.list, myAsset] };
+    case APPEND_TO_MY_ASSETS_LIST: {
+      const toAppend = toListIfNot(itemOrList);
+      return { ...state, list: [...state.list, ...toAppend] };
+    }
     case REMOVE_FROM_MY_ASSETS_LIST: {
       const { list: myAssets } = state;
-      const list = removeFromList(myAssets, myAsset);
+      const toRemove = itemOrList;
+      const list = removeFromList(myAssets, toRemove);
       return { ...state, list };
     }
     case SET_MY_ASSETS_LIST: {
@@ -109,11 +114,8 @@ function myAssets(state = { list: [] }, action) {
     case SET_ACTION_ID_FOR_MY_ASSET: {
       const { myAssetId: toUpdateId, actionId } = myAssetAndActionIds;
       const { list: myAssets } = state;
-      // TODO: Use updateListItem
-      const list = myAssets.map(asset => {
-        if (asset.id === toUpdateId) return { ...asset, actionId };
-        else return asset;
-      });
+      const entriesToUpdate = { actionId };
+      const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
       return { ...state, list };
     }
     case UPDATE_MY_ASSET_STATUS: {

@@ -20,6 +20,8 @@ export class MyAssetsScreen extends React.Component {
     } = this.props;
     if (account) {
       const { address } = account;
+
+      // Note: If an stored asset hasn't a status, assuming 'bought'.
       const boughtAssets = assetsFromState
         .map(asset => (!asset.status ? { ...asset, status: BOUGHT } : asset))
         .filter(asset => asset.status === BOUGHT);
@@ -27,8 +29,8 @@ export class MyAssetsScreen extends React.Component {
       const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
-        boughtAssets.forEach(removeFromMyAssetsList);
-        assetsFromBlockchain.forEach(appendToMyAssetsList);
+        removeFromMyAssetsList(boughtAssets);
+        appendToMyAssetsList(assetsFromBlockchain);
       }
     }
   };

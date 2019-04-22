@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { StackActions, NavigationActions } from "react-navigation";
 import {
   removeLandForSale,
   prependLandForSaleToList,
@@ -88,6 +89,8 @@ export class BuyLandScreen extends React.Component {
     removeLandForSale(landForSale);
     prependToMyAssetsList({ ...asset, status: BUYING });
 
+    // Back to top of current Stack before navigate
+    navigation.dispatch(StackActions.popToTop());
     navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();

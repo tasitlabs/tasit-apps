@@ -160,8 +160,14 @@ export const formatNumber = number => {
   return formattedNumber;
 };
 
-export const removeFromList = (list, toRemove) =>
-  list.filter(e => e !== toRemove);
+export const toListIfNot = itemOrList =>
+  Array.isArray(itemOrList) ? itemOrList : [itemOrList];
+
+export const removeFromList = (list, toRemove) => {
+  const elementsToRemove = toListIfNot(toRemove);
+  const idsToRemove = elementsToRemove.map(e => e.id);
+  return list.filter(e => !idsToRemove.includes(e.id));
+};
 
 export const listsAreEqual = (first, second) => {
   if (first.length !== second.length) return false;
@@ -263,4 +269,5 @@ export default {
   buildBlockchainUrlFromActionId,
   restoreCreationStateOfAccountFromBlockchain,
   updateListItem,
+  toListIfNot,
 };

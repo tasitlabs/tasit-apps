@@ -59,12 +59,12 @@ export function prependToMyAssetsList(myAsset) {
   return { type: PREPEND_TO_MY_ASSETS_LIST, myAsset };
 }
 
-export function appendToMyAssetsList(myAsset) {
-  return { type: APPEND_TO_MY_ASSETS_LIST, myAsset };
+export function appendToMyAssetsList(itemOrList) {
+  return { type: APPEND_TO_MY_ASSETS_LIST, itemOrList };
 }
 
-export function removeFromMyAssetsList(myAsset) {
-  return { type: REMOVE_FROM_MY_ASSETS_LIST, myAsset };
+export function removeFromMyAssetsList(itemOrList) {
+  return { type: REMOVE_FROM_MY_ASSETS_LIST, itemOrList };
 }
 
 export function setMyAssetsList(myAssets) {
