@@ -3,12 +3,24 @@
 exports[`LinkToBlockchain renders the component null action 1`] = `""`;
 
 exports[`LinkToBlockchain renders the component valid action 1`] = `
-<Styled(Button)
+<TouchableOpacity
+  activeOpacity={0.2}
   onPress={[Function]}
-  transparent={true}
+  style={
+    Object {
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
 >
   <Styled(Icon)
     name="eye"
+    primary={true}
+    style={
+      Object {
+        "color": "#2196f3",
+      }
+    }
   />
-</Styled(Button)>
+</TouchableOpacity>
 `;
