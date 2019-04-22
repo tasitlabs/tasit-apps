@@ -85,50 +85,68 @@ function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
 }
 
 function myAssets(state = { list: [] }, action) {
-  const {
-    type,
-    myAsset,
-    myAssets,
-    myAssetAndActionIds,
-    myAssetAndStatus,
-    itemOrList,
-  } = action;
+  const { type } = action;
 
   switch (type) {
     case PREPEND_TO_MY_ASSETS_LIST:
-      return { ...state, list: [myAsset, ...state.list] };
-    case APPEND_TO_MY_ASSETS_LIST: {
-      const toAppend = toListIfNot(itemOrList);
-      return { ...state, list: [...state.list, ...toAppend] };
-    }
-    case REMOVE_FROM_MY_ASSETS_LIST: {
-      const { list: myAssets } = state;
-      const toRemove = itemOrList;
-      const list = removeFromList(myAssets, toRemove);
-      return { ...state, list };
-    }
-    case SET_MY_ASSETS_LIST: {
-      const list = myAssets === null ? [] : myAssets;
-      return { ...state, list };
-    }
-    case SET_ACTION_ID_FOR_MY_ASSET: {
-      const { myAssetId: toUpdateId, actionId } = myAssetAndActionIds;
-      const { list: myAssets } = state;
-      const entriesToUpdate = { actionId };
-      const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
-      return { ...state, list };
-    }
-    case UPDATE_MY_ASSET_STATUS: {
-      const { myAssetId: toUpdateId, status } = myAssetAndStatus;
-      const { list: myAssets } = state;
-      const entriesToUpdate = { status };
-      const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
-      return { ...state, list };
-    }
+      return prependToMyAssetsList(state, action);
+    case APPEND_TO_MY_ASSETS_LIST:
+      return appendToMyAssetsList(state, action);
+    case REMOVE_FROM_MY_ASSETS_LIST:
+      return removeFromMyAssetsList(state, action);
+    case SET_MY_ASSETS_LIST:
+      return setMyAssetsList(state, action);
+    case SET_ACTION_ID_FOR_MY_ASSET:
+      return setActionIdForMyAsset(state, action);
+    case UPDATE_MY_ASSET_STATUS:
+      return updateMyAssetStatus(state, action);
     default:
       return state;
   }
 }
+
+const prependToMyAssetsList = (state, action) => {
+  const { myAsset } = action;
+  return { ...state, list: [myAsset, ...state.list] };
+};
+
+const appendToMyAssetsList = (state, action) => {
+  const { itemOrList } = action;
+  const toAppend = toListIfNot(itemOrList);
+  return { ...state, list: [...state.list, ...toAppend] };
+};
+
+const removeFromMyAssetsList = (state, action) => {
+  const { itemOrList } = action;
+  const { list: myAssets } = state;
+  const toRemove = itemOrList;
+  const list = removeFromList(myAssets, toRemove);
+  return { ...state, list };
+};
+
+const setMyAssetsList = (state, action) => {
+  const { myAssets } = action;
+  const list = myAssets === null ? [] : myAssets;
+  return { ...state, list };
+};
+
+const setActionIdForMyAsset = (state, action) => {
+  const { myAssetAndActionIds } = action;
+  const { myAssetId: toUpdateId, actionId } = myAssetAndActionIds;
+  const { list: myAssets } = state;
+  const entriesToUpdate = { actionId };
+  const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
+  return { ...state, list };
+};
+
+const updateMyAssetStatus = (state, action) => {
+  const { myAssetAndStatus } = action;
+  const { myAssetId: toUpdateId, status } = myAssetAndStatus;
+  const { list: myAssets } = state;
+  const entriesToUpdate = { status };
+  const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
+  return { ...state, list };
+};
 
 const decentralandApp = combineReducers({
   accountInfo,
