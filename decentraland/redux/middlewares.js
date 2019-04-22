@@ -4,10 +4,12 @@ import {
   SET_ACCOUNT_CREATION_STATUS,
   UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
   SET_ACCOUNT_CREATION_ACTIONS,
-  ADD_TO_MY_ASSETS_LIST,
-  REMOVE_MY_ASSET_FROM_LIST,
+  PREPEND_TO_MY_ASSETS_LIST,
+  APPEND_TO_MY_ASSETS_LIST,
+  REMOVE_FROM_MY_ASSETS_LIST,
   SET_MY_ASSETS_LIST,
   SET_ACTION_ID_FOR_MY_ASSET,
+  UPDATE_MY_ASSET_STATUS,
 } from "./actions";
 import {
   storeAccount,
@@ -41,11 +43,15 @@ const storer = store => next => async action => {
       await storeAccountCreationActions(creationActions);
       break;
     }
-    case ADD_TO_MY_ASSETS_LIST: {
+    case PREPEND_TO_MY_ASSETS_LIST: {
       await storeMyAssets(myAssetsList);
       break;
     }
-    case REMOVE_MY_ASSET_FROM_LIST: {
+    case APPEND_TO_MY_ASSETS_LIST: {
+      await storeMyAssets(myAssetsList);
+      break;
+    }
+    case REMOVE_FROM_MY_ASSETS_LIST: {
       await storeMyAssets(myAssetsList);
       break;
     }
@@ -54,6 +60,10 @@ const storer = store => next => async action => {
       break;
     }
     case SET_ACTION_ID_FOR_MY_ASSET: {
+      await storeMyAssets(myAssetsList);
+      break;
+    }
+    case UPDATE_MY_ASSET_STATUS: {
       await storeMyAssets(myAssetsList);
       break;
     }

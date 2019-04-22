@@ -14,8 +14,8 @@ describe("BuyLandScreen", () => {
       };
       const navigation = () => {};
       const removeLandForSale = () => {};
-      const addToMyAssetsList = () => {};
-      const removeMyAssetFromList = () => {};
+      const prependToMyAssetsList = () => {};
+      const removeFromMyAssetsList = () => {};
       const prependLandForSaleToList = () => {};
       const setActionIdForMyAsset = () => {};
       const myAssets = [];
@@ -28,8 +28,8 @@ describe("BuyLandScreen", () => {
             myAssets={myAssets}
             selectedLandToBuy={estateForSale}
             removeLandForSale={removeLandForSale}
-            addToMyAssetsList={addToMyAssetsList}
-            removeMyAssetFromList={removeMyAssetFromList}
+            prependToMyAssetsList={prependToMyAssetsList}
+            removeFromMyAssetsList={removeFromMyAssetsList}
             prependLandForSaleToList={prependLandForSaleToList}
             setActionIdForMyAsset={setActionIdForMyAsset}
           />

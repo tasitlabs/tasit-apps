@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setMyAssetsList } from "../redux/actions";
+import { removeFromMyAssetsList, appendToMyAssetsList } from "../redux/actions";
 import PropTypes from "prop-types";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
@@ -12,16 +12,23 @@ const { BOUGHT } = MyAssetStatus;
 
 export class MyAssetsScreen extends React.Component {
   componentDidMount = async () => {
-    const { account, myAssets: assetsFromState, setMyAssetsList } = this.props;
+    const {
+      account,
+      myAssets: assetsFromState,
+      removeFromMyAssetsList,
+      appendToMyAssetsList,
+    } = this.props;
     if (account) {
       const { address } = account;
+      const boughtAssets = assetsFromState
+        .map(asset => (!asset.status ? { ...asset, status: BOUGHT } : asset))
+        .filter(asset => asset.status === BOUGHT);
+
       const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
-      const shouldUpdate = !listsAreEqual(
-        assetsFromBlockchain,
-        assetsFromState
-      );
+      const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
-        setMyAssetsList(assetsFromBlockchain);
+        boughtAssets.forEach(removeFromMyAssetsList);
+        assetsFromBlockchain.forEach(appendToMyAssetsList);
       }
     }
   };
@@ -92,7 +99,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  setMyAssetsList,
+  removeFromMyAssetsList,
+  appendToMyAssetsList,
 };
 
 export default connect(

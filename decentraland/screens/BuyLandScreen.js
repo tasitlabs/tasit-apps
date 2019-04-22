@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import {
   removeLandForSale,
   prependLandForSaleToList,
-  removeMyAssetFromList,
-  addToMyAssetsList,
+  removeFromMyAssetsList,
+  prependToMyAssetsList,
   setActionIdForMyAsset,
   updateMyAssetStatus,
 } from "../redux/actions";
@@ -50,8 +50,8 @@ export class BuyLandScreen extends React.Component {
       accountInfo,
       removeLandForSale,
       prependLandForSaleToList,
-      removeMyAssetFromList,
-      addToMyAssetsList,
+      removeFromMyAssetsList,
+      prependToMyAssetsList,
       setActionIdForMyAsset,
       updateMyAssetStatus,
     } = props;
@@ -76,7 +76,7 @@ export class BuyLandScreen extends React.Component {
     const onError = (assetForSale, message) => {
       const { asset } = assetForSale;
       showError(message);
-      removeMyAssetFromList(asset);
+      removeFromMyAssetsList(asset);
       prependLandForSaleToList(assetForSale);
     };
 
@@ -86,9 +86,9 @@ export class BuyLandScreen extends React.Component {
 
     // Optimistic UI update
     removeLandForSale(landForSale);
-    addToMyAssetsList({ ...asset, status: BUYING });
+    prependToMyAssetsList({ ...asset, status: BUYING });
 
-    navigation.navigate("ListLandForSaleScreen");
+    navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();
     setActionIdForMyAsset(assetId, actionId);
@@ -152,8 +152,8 @@ BuyLandScreen.propTypes = {
   myAssets: PropTypes.array.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
   prependLandForSaleToList: PropTypes.func.isRequired,
-  removeMyAssetFromList: PropTypes.func.isRequired,
-  addToMyAssetsList: PropTypes.func.isRequired,
+  removeFromMyAssetsList: PropTypes.func.isRequired,
+  prependToMyAssetsList: PropTypes.func.isRequired,
   setActionIdForMyAsset: PropTypes.func.isRequired,
   updateMyAssetStatus: PropTypes.func.isRequired,
 };
@@ -167,8 +167,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   removeLandForSale,
   prependLandForSaleToList,
-  addToMyAssetsList,
-  removeMyAssetFromList,
+  prependToMyAssetsList,
+  removeFromMyAssetsList,
   setActionIdForMyAsset,
   updateMyAssetStatus,
 };

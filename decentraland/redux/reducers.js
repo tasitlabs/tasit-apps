@@ -9,8 +9,9 @@ import {
   UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS,
   SET_ACCOUNT_CREATION_ACTIONS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
-  ADD_TO_MY_ASSETS_LIST,
-  REMOVE_MY_ASSET_FROM_LIST,
+  PREPEND_TO_MY_ASSETS_LIST,
+  APPEND_TO_MY_ASSETS_LIST,
+  REMOVE_FROM_MY_ASSETS_LIST,
   SET_MY_ASSETS_LIST,
   SET_ACTION_ID_FOR_MY_ASSET,
   UPDATE_MY_ASSET_STATUS,
@@ -92,9 +93,11 @@ function myAssets(state = { list: [] }, action) {
     myAssetAndStatus,
   } = action;
   switch (type) {
-    case ADD_TO_MY_ASSETS_LIST:
+    case PREPEND_TO_MY_ASSETS_LIST:
       return { ...state, list: [myAsset, ...state.list] };
-    case REMOVE_MY_ASSET_FROM_LIST: {
+    case APPEND_TO_MY_ASSETS_LIST:
+      return { ...state, list: [...state.list, myAsset] };
+    case REMOVE_FROM_MY_ASSETS_LIST: {
       const { list: myAssets } = state;
       const list = removeFromList(myAssets, myAsset);
       return { ...state, list };
