@@ -48,7 +48,7 @@ export const retrieveAccountCreationStatus = async () => {
 };
 
 export const storeAccount = async account => {
-  const { privateKey } = account;
+  const privateKey = account !== null ? account.privateKey : null;
   await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, privateKey, true);
 };
 

@@ -69,7 +69,8 @@ Is the config file correct?`;
     // On iOS environment, Secure Store data remains even after app uninstallation
     const isFirstUse = await retrieveIsFirstUse();
     if (isFirstUse) {
-      await storeAccount(null);
+      // TODO: Uncomment this when 'isFirstUse' flag is being set widely
+      //await storeAccount(null);
       await storeIsFirstUse(false);
     }
 
