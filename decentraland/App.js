@@ -26,6 +26,9 @@ import {
   retrieveMyAssets,
   retrieveAccountCreationStatus,
   retrieveAccountCreationActions,
+  storeAccount,
+  storeIsFirstUse,
+  retrieveIsFirstUse,
 } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
@@ -62,6 +65,14 @@ Is the config file correct?`;
   }
 
   async _loadAccountInfo() {
+    // Note: Forcing account removal after app uninstall
+    // On iOS environment, Secure Store data remains even after app uninstallation
+    const isFirstUse = await retrieveIsFirstUse();
+    if (isFirstUse) {
+      await storeAccount(null);
+      await storeIsFirstUse(false);
+    }
+
     const account = await retrieveAccount();
     if (account) {
       store.dispatch(setAccount(account));
