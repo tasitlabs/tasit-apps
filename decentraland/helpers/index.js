@@ -177,7 +177,7 @@ export const listsAreEqual = (first, second) => {
   );
 };
 
-// Update any list having id as key field
+// Update item from any list of objects having id as key field
 export const updateListItem = (list, toUpdateId, entriesToUpdate) => {
   return list.map(item => {
     return item.id === toUpdateId ? { ...item, ...entriesToUpdate } : item;
