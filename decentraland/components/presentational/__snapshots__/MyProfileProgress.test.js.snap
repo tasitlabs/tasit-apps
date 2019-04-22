@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyAccountProgress MyAccountProgressText renders the component 1`] = `
+exports[`MyProfileProgress MyAccountProgressText renders the component 1`] = `
 <Component
   style={
     Object {
@@ -23,7 +23,7 @@ exports[`MyAccountProgress MyAccountProgressText renders the component 1`] = `
 </Component>
 `;
 
-exports[`MyAccountProgress renders the component 1`] = `
+exports[`MyProfileProgress renders the component 1`] = `
 <Component
   style={
     Object {
@@ -54,7 +54,7 @@ exports[`MyAccountProgress renders the component 1`] = `
     useNativeDriver={false}
     width={750}
   />
-  <MyAccountProgressText
+  <MyProfileProgressText
     progress={0.5}
   />
 </Component>
