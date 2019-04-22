@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Alert } from "react-native";
-import { Button, Icon } from "native-base";
+import { StyleSheet, Alert, TouchableOpacity } from "react-native";
+import { Icon } from "native-base";
 import {
   showError,
   openURL,
   buildBlockchainUrlFromActionId,
   getNetworkName,
 } from "@helpers";
+import Colors from "@constants/Colors";
 
 const _openLinkOf = async actionId => {
   const url = buildBlockchainUrlFromActionId(actionId);
@@ -42,12 +43,22 @@ export default function LinkToBlockchain({ actionId }) {
   };
 
   return (
-    <Button transparent onPress={onPress}>
-      <Icon name="eye" />
-    </Button>
+    <TouchableOpacity onPress={onPress} style={styles.touchable}>
+      <Icon name="eye" primary style={styles.icon} />
+    </TouchableOpacity>
   );
 }
 
 LinkToBlockchain.propTypes = {
   actionId: PropTypes.string,
 };
+
+const styles = StyleSheet.create({
+  touchable: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  icon: {
+    color: Colors.linkColor,
+  },
+});
