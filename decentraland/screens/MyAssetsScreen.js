@@ -21,7 +21,7 @@ export class MyAssetsScreen extends React.Component {
     if (account) {
       const { address } = account;
 
-      // Note: If an stored asset hasn't a status, assuming 'bought'.
+      // Note: If a stored asset doesn't have a status, assuming 'bought'.
       const boughtAssets = assetsFromState
         .map(asset => (!asset.status ? { ...asset, status: BOUGHT } : asset))
         .filter(asset => asset.status === BOUGHT);
