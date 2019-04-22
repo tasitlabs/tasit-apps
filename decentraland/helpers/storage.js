@@ -7,6 +7,19 @@ const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
 const MY_ASSETS_LIST = "MY_ASSETS_LIST";
 const EPHEMERAL_ACCOUNT_CREATION_STATUS = "EPHEMERAL_ACCOUNT_CREATION_STATUS";
 const EPHEMERAL_ACCOUNT_CREATION_ACTIONS = "EPHEMERAL_ACCOUNT_CREATION_ACTIONS";
+const APP_IS_FIRST_USE = "APP_IS_FIRST_USE";
+
+export const storeIsFirstUse = async isFirstUse => {
+  const strIsFirstUse = _toString(isFirstUse);
+  await _storeData(APP_IS_FIRST_USE, strIsFirstUse, false);
+};
+
+export const retrieveIsFirstUse = async () => {
+  const strIsFirstUse = await _retrieveData(APP_IS_FIRST_USE);
+  const isFirstUse = _fromString(strIsFirstUse);
+  if (isFirstUse === null) return true;
+  return isFirstUse;
+};
 
 export const storeAccountCreationActions = async creationActions => {
   const strCreationActions = _toString(creationActions);
@@ -19,8 +32,7 @@ export const storeAccountCreationActions = async creationActions => {
 
 export const retrieveAccountCreationActions = async () => {
   const strCreationActions = await _retrieveData(
-    EPHEMERAL_ACCOUNT_CREATION_ACTIONS,
-    false
+    EPHEMERAL_ACCOUNT_CREATION_ACTIONS
   );
   let creationActions = _fromString(strCreationActions);
   return creationActions;
@@ -31,7 +43,7 @@ export const storeAccountCreationStatus = async status => {
 };
 
 export const retrieveAccountCreationStatus = async () => {
-  const status = await _retrieveData(EPHEMERAL_ACCOUNT_CREATION_STATUS, false);
+  const status = await _retrieveData(EPHEMERAL_ACCOUNT_CREATION_STATUS);
   return status;
 };
 
@@ -43,7 +55,7 @@ export const storeAccount = async account => {
 export const retrieveAccount = async () => {
   let account = null;
 
-  const privateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY, true);
+  const privateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY);
   if (privateKey != null) account = createFromPrivateKey(privateKey);
 
   return account;
@@ -55,7 +67,7 @@ export const storeMyAssets = async myAssets => {
 };
 
 export const retrieveMyAssets = async () => {
-  const strMyAssets = await _retrieveData(MY_ASSETS_LIST, false);
+  const strMyAssets = await _retrieveData(MY_ASSETS_LIST);
   let myAssets = _fromString(strMyAssets);
   if (!myAssets) myAssets = [];
   return myAssets;
@@ -93,18 +105,14 @@ const _storeData = async (key, value, securely) => {
   }
 };
 
-const _retrieveData = async (key, securely) => {
+const _retrieveData = async key => {
   try {
-    let value = null;
-
-    if (securely) value = await SecureStore.getItemAsync(key);
-    else value = await AsyncStorage.getItem(key);
+    let value = await AsyncStorage.getItem(key);
+    if (value === null) value = await SecureStore.getItemAsync(key);
 
     return value;
   } catch (error) {
-    throw Error(
-      `Unable to ${securely ? "securely" : ""} retrieve data from storage.`
-    );
+    throw Error(`Unable to retrieve data from storage.`);
   }
 };
 
@@ -117,4 +125,6 @@ export default {
   retrieveAccountCreationStatus,
   storeAccountCreationActions,
   retrieveAccountCreationActions,
+  storeIsFirstUse,
+  retrieveIsFirstUse,
 };
