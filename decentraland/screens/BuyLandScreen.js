@@ -6,12 +6,15 @@ import {
   removeMyAssetFromList,
   addToMyAssetsList,
   setActionIdForMyAsset,
+  updateMyAssetStatus,
 } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "@helpers";
 import AssetTypes from "@constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
+import MyAssetStatus from "@constants/MyAssetStatus";
+const { BUYING, BOUGHT } = MyAssetStatus;
 
 // TODO: Go deep on gas handling.
 // Without that, VM returns a revert error instead of out of gas error.
@@ -50,6 +53,7 @@ export class BuyLandScreen extends React.Component {
       removeMyAssetFromList,
       addToMyAssetsList,
       setActionIdForMyAsset,
+      updateMyAssetStatus,
     } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
@@ -63,6 +67,8 @@ export class BuyLandScreen extends React.Component {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForNonceToUpdate();
+
+      updateMyAssetStatus(assetId, BOUGHT);
 
       showInfo(`${typeDescription} bought successfully.`);
     };
@@ -80,7 +86,7 @@ export class BuyLandScreen extends React.Component {
 
     // Optimistic UI update
     removeLandForSale(landForSale);
-    addToMyAssetsList(asset);
+    addToMyAssetsList({ ...asset, status: BUYING });
 
     navigation.navigate("ListLandForSaleScreen");
 
@@ -101,6 +107,7 @@ export class BuyLandScreen extends React.Component {
         type === ESTATE
           ? estateContract.getAddress()
           : landContract.getAddress();
+
       // LANDRegistry contract doesn't implement getFingerprint function
       const fingerprint =
         type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
@@ -148,6 +155,7 @@ BuyLandScreen.propTypes = {
   removeMyAssetFromList: PropTypes.func.isRequired,
   addToMyAssetsList: PropTypes.func.isRequired,
   setActionIdForMyAsset: PropTypes.func.isRequired,
+  updateMyAssetStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -162,6 +170,7 @@ const mapDispatchToProps = {
   addToMyAssetsList,
   removeMyAssetFromList,
   setActionIdForMyAsset,
+  updateMyAssetStatus,
 };
 
 export default connect(

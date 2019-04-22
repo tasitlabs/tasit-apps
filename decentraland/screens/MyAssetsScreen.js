@@ -7,6 +7,8 @@ import MyAssetsListItem from "@presentational/MyAssetsListItem";
 import { listsAreEqual, getContracts } from "@helpers";
 import { generateAssetFromId } from "@helpers/decentraland";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+import MyAssetStatus from "@constants/MyAssetStatus";
+const { BOUGHT } = MyAssetStatus;
 
 export class MyAssetsScreen extends React.Component {
   componentDidMount = async () => {
@@ -45,6 +47,7 @@ export class MyAssetsScreen extends React.Component {
     for (let land of listOfLand) {
       const generateAsset = async land => {
         const { id: assetId, nftAddress, transactionHash: actionId } = land;
+        const status = BOUGHT;
 
         const asset = await generateAssetFromId(
           estateContract,
@@ -53,7 +56,7 @@ export class MyAssetsScreen extends React.Component {
           nftAddress
         );
 
-        return { ...asset, actionId };
+        return { ...asset, actionId, status };
       };
 
       const assetPromise = generateAsset(land);

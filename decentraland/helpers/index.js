@@ -171,6 +171,13 @@ export const listsAreEqual = (first, second) => {
   );
 };
 
+// Update any list having id as key field
+export const updateListItem = (list, toUpdateId, entriesToUpdate) => {
+  return list.map(item => {
+    return item.id === toUpdateId ? { ...item, ...entriesToUpdate } : item;
+  });
+};
+
 const loadConfig = () => {
   const tasitSdkConfig = require("../config/current.js");
   ConfigLoader.setConfig(tasitSdkConfig);
@@ -255,4 +262,5 @@ export default {
   getNetworkName,
   buildBlockchainUrlFromActionId,
   restoreCreationStateOfAccountFromBlockchain,
+  updateListItem,
 };
