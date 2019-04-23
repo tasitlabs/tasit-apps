@@ -8,6 +8,19 @@ const MY_ASSETS_LIST = "MY_ASSETS_LIST";
 const EPHEMERAL_ACCOUNT_CREATION_STATUS = "EPHEMERAL_ACCOUNT_CREATION_STATUS";
 const EPHEMERAL_ACCOUNT_CREATION_ACTIONS = "EPHEMERAL_ACCOUNT_CREATION_ACTIONS";
 const IS_FIRST_APP_USE = "IS_FIRST_APP_USE";
+const USER_ACTIONS = "USER_ACTIONS";
+
+export const storeUserActions = async userActions => {
+  const strUserActions = _toString(userActions);
+  await _storeData(USER_ACTIONS, strUserActions, false);
+};
+
+export const retrieveUserActions = async () => {
+  const strUserActions = await _retrieveData(USER_ACTIONS);
+  const userActions = _fromString(strUserActions);
+  if (userActions === null) return [];
+  return userActions;
+};
 
 export const storeIsFirstUse = async isFirstUse => {
   const strIsFirstUse = _toString(isFirstUse);
@@ -127,4 +140,6 @@ export default {
   retrieveAccountCreationActions,
   storeIsFirstUse,
   retrieveIsFirstUse,
+  retrieveUserActions,
+  storeUserActions,
 };

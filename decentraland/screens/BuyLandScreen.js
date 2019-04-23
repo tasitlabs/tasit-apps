@@ -6,16 +6,14 @@ import {
   prependLandForSaleToList,
   removeFromMyAssetsList,
   prependToMyAssetsList,
-  setActionIdForMyAsset,
-  updateMyAssetStatus,
+  addUserAction,
+  updateUserActionStatus,
 } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "@helpers";
-import AssetTypes from "@constants/AssetTypes";
-const { ESTATE, PARCEL } = AssetTypes;
-import MyAssetStatus from "@constants/MyAssetStatus";
-const { BUYING, BOUGHT } = MyAssetStatus;
+import { ESTATE, PARCEL } from "@constants/AssetTypes";
+import { PENDING, SUCCESSFUL } from "@constants/UserActionStatus";
 
 // TODO: Go deep on gas handling.
 // Without that, VM returns a revert error instead of out of gas error.
@@ -53,8 +51,8 @@ export class BuyLandScreen extends React.Component {
       prependLandForSaleToList,
       removeFromMyAssetsList,
       prependToMyAssetsList,
-      setActionIdForMyAsset,
-      updateMyAssetStatus,
+      addUserAction,
+      updateUserActionStatus,
     } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
@@ -68,8 +66,9 @@ export class BuyLandScreen extends React.Component {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForNonceToUpdate();
+      const actionId = await action.getId();
 
-      updateMyAssetStatus(assetId, BOUGHT);
+      updateUserActionStatus({ actionId, status: SUCCESSFUL });
 
       showInfo(`${typeDescription} bought successfully.`);
     };
@@ -87,14 +86,16 @@ export class BuyLandScreen extends React.Component {
 
     // Optimistic UI update
     removeLandForSale(landForSale);
-    prependToMyAssetsList({ ...asset, status: BUYING });
+    prependToMyAssetsList(asset);
 
     // Back to top of current Stack before navigate
     navigation.dispatch(StackActions.popToTop());
     navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();
-    setActionIdForMyAsset(assetId, actionId);
+    const userAction = { actionId, status: PENDING, assetId };
+
+    addUserAction(userAction);
 
     onSuccess();
   };
@@ -157,8 +158,8 @@ BuyLandScreen.propTypes = {
   prependLandForSaleToList: PropTypes.func.isRequired,
   removeFromMyAssetsList: PropTypes.func.isRequired,
   prependToMyAssetsList: PropTypes.func.isRequired,
-  setActionIdForMyAsset: PropTypes.func.isRequired,
-  updateMyAssetStatus: PropTypes.func.isRequired,
+  addUserAction: PropTypes.func.isRequired,
+  updateUserActionStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -172,8 +173,8 @@ const mapDispatchToProps = {
   prependLandForSaleToList,
   prependToMyAssetsList,
   removeFromMyAssetsList,
-  setActionIdForMyAsset,
-  updateMyAssetStatus,
+  addUserAction,
+  updateUserActionStatus,
 };
 
 export default connect(

@@ -13,8 +13,8 @@ import {
   APPEND_TO_MY_ASSETS_LIST,
   REMOVE_FROM_MY_ASSETS_LIST,
   SET_MY_ASSETS_LIST,
-  SET_ACTION_ID_FOR_MY_ASSET,
-  UPDATE_MY_ASSET_STATUS,
+  ADD_USER_ACTION,
+  UPDATE_USER_ACTION_STATUS,
 } from "./actions";
 import { removeFromList, updateListItem, toListIfNot } from "@helpers";
 
@@ -145,24 +145,6 @@ const setMyAssetsList = (state, action) => {
   return { ...state, list };
 };
 
-const setActionIdForMyAsset = (state, action) => {
-  const { myAssetAndActionIds } = action;
-  const { myAssetId: toUpdateId, actionId } = myAssetAndActionIds;
-  const { list: myAssets } = state;
-  const entriesToUpdate = { actionId };
-  const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
-  return { ...state, list };
-};
-
-const updateMyAssetStatus = (state, action) => {
-  const { myAssetAndStatus } = action;
-  const { myAssetId: toUpdateId, status } = myAssetAndStatus;
-  const { list: myAssets } = state;
-  const entriesToUpdate = { status };
-  const list = updateListItem(myAssets, toUpdateId, entriesToUpdate);
-  return { ...state, list };
-};
-
 const myAssets = createReducer(
   { list: [] },
   {
@@ -170,10 +152,30 @@ const myAssets = createReducer(
     [APPEND_TO_MY_ASSETS_LIST]: appendToMyAssetsList,
     [REMOVE_FROM_MY_ASSETS_LIST]: removeFromMyAssetsList,
     [SET_MY_ASSETS_LIST]: setMyAssetsList,
-    [SET_ACTION_ID_FOR_MY_ASSET]: setActionIdForMyAsset,
-    [UPDATE_MY_ASSET_STATUS]: updateMyAssetStatus,
   }
 );
+
+//
+// userActions reducer
+//
+const addUserAction = (state, action) => {
+  const { itemOrList } = action;
+  const toAppend = toListIfNot(itemOrList);
+  return [...state, ...toAppend];
+};
+
+const updateUserActionStatus = (state, action) => {
+  const { actionIdAndStatus } = action;
+  const { actionId: toUpdateId, status } = actionIdAndStatus;
+  const entriesToUpdate = { status };
+  const list = updateListItem(state, toUpdateId, entriesToUpdate);
+  return list;
+};
+
+const userActions = createReducer([], {
+  [ADD_USER_ACTION]: addUserAction,
+  [UPDATE_USER_ACTION_STATUS]: updateUserActionStatus,
+});
 
 //
 // All reducers
@@ -183,6 +185,7 @@ const decentralandApp = combineReducers({
   landToBuy,
   assetsForSale,
   myAssets,
+  userActions,
 });
 
 export default decentralandApp;

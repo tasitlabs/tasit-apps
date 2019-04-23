@@ -4,13 +4,11 @@ import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "./Estate";
 import Parcel from "./Parcel";
-import AssetTypes from "@constants/AssetTypes";
+import { ESTATE, PARCEL } from "@constants/AssetTypes";
 import LinkToBlockchain from "./LinkToBlockchain";
 import AssetName from "./AssetName";
 
-const { ESTATE, PARCEL } = AssetTypes;
-
-export function MyAsset({ asset }) {
+export function MyAsset({ asset, userAction }) {
   const { type } = asset;
 
   return (
@@ -23,17 +21,19 @@ export function MyAsset({ asset }) {
             return <Parcel parcel={asset} />;
         }
       })()}
-      <MyAssetInfo asset={asset} />
+      <MyAssetInfo asset={asset} userAction={userAction} />
     </View>
   );
 }
 
 MyAsset.propTypes = {
   asset: PropTypes.object.isRequired,
+  userAction: PropTypes.object.isRequired,
 };
 
-export function MyAssetInfo({ asset }) {
-  const { actionId, name } = asset;
+export function MyAssetInfo({ asset, userAction }) {
+  const { name } = asset;
+  const { actionId } = userAction;
 
   return (
     <View style={styles.myAssetInfoContainer}>
@@ -49,6 +49,7 @@ export function MyAssetInfo({ asset }) {
 
 MyAssetInfo.propTypes = {
   asset: PropTypes.object.isRequired,
+  userAction: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

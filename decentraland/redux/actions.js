@@ -13,8 +13,8 @@ export const PREPEND_TO_MY_ASSETS_LIST = "PREPEND_TO_MY_ASSETS_LIST";
 export const APPEND_TO_MY_ASSETS_LIST = "APPEND_TO_MY_ASSETS_LIST";
 export const REMOVE_FROM_MY_ASSETS_LIST = "REMOVE_FROM_MY_ASSETS_LIST";
 export const SET_MY_ASSETS_LIST = "SET_MY_ASSETS_LIST";
-export const SET_ACTION_ID_FOR_MY_ASSET = "SET_ACTION_ID_FOR_MY_ASSET";
-export const UPDATE_MY_ASSET_STATUS = "UPDATE_MY_ASSET_STATUS";
+export const ADD_USER_ACTION = "ADD_USER_ACTION";
+export const UPDATE_USER_ACTION_STATUS = "UPDATE_USER_ACTION_STATUS";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
@@ -71,16 +71,10 @@ export function setMyAssetsList(myAssets) {
   return { type: SET_MY_ASSETS_LIST, myAssets };
 }
 
-export function setActionIdForMyAsset(myAssetId, actionId) {
-  return {
-    type: SET_ACTION_ID_FOR_MY_ASSET,
-    myAssetAndActionIds: { myAssetId, actionId },
-  };
+export function addUserAction(itemOrList) {
+  return { type: ADD_USER_ACTION, itemOrList };
 }
 
-export function updateMyAssetStatus(myAssetId, status) {
-  return {
-    type: UPDATE_MY_ASSET_STATUS,
-    myAssetAndStatus: { myAssetId, status },
-  };
+export function updateUserActionStatus(actionIdAndStatus) {
+  return { type: UPDATE_USER_ACTION_STATUS, actionIdAndStatus };
 }

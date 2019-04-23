@@ -11,6 +11,7 @@ import {
   setMyAssetsList,
   setAccountCreationStatus,
   setAccountCreationActions,
+  addUserAction,
 } from "./redux/actions";
 import applyMiddleware from "./redux/middlewares";
 import { Action } from "tasit-sdk";
@@ -28,9 +29,11 @@ import {
   retrieveAccountCreationActions,
   storeIsFirstUse,
   retrieveIsFirstUse,
+  retrieveUserActions,
 } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
+import { SUCCESSFUL } from "@constants/UserActionStatus";
 
 const store = createStore(decentralandApp, applyMiddleware);
 
@@ -99,6 +102,21 @@ Is the config file correct?`;
 
   async _loadMyAssets() {
     const myAssets = await retrieveMyAssets();
+    const userActions = await retrieveUserActions();
+
+    // Handling with actions stored before
+    // the introduction of userAction state (<= 0.0.17)
+    myAssets.forEach(asset => {
+      const { id: assetId, actionId } = asset;
+      let userAction = userActions.find(action => action.assetId === assetId);
+
+      if (!userAction && !!actionId) {
+        userAction = { actionId, assetId, status: SUCCESSFUL };
+        userActions.push(userAction);
+      }
+    });
+
+    if (userActions) store.dispatch(addUserAction(userActions));
     if (myAssets) store.dispatch(setMyAssetsList(myAssets));
   }
 

@@ -1,5 +1,5 @@
-const ESTATE = "ESTATE";
-const PARCEL = "PARCEL";
+export const ESTATE = "ESTATE";
+export const PARCEL = "PARCEL";
 
 export default {
   ESTATE,
