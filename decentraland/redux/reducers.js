@@ -71,14 +71,14 @@ const accountInfo = createReducer(
 );
 
 //
-// selectedLandToBuy reducer
+// landToBuy reducer
 //
 const selectLandToBuy = (state, action) => {
   const { landForSale } = action;
   return landForSale;
 };
 
-const selectedLandToBuy = createReducer(null, {
+const landToBuy = createReducer(null, {
   [SELECT_LAND_TO_BUY]: selectLandToBuy,
 });
 
@@ -180,7 +180,7 @@ const myAssets = createReducer(
 //
 const decentralandApp = combineReducers({
   accountInfo,
-  selectedLandToBuy,
+  landToBuy,
   assetsForSale,
   myAssets,
 });

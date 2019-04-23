@@ -135,7 +135,7 @@ export class BuyLandScreen extends React.Component {
   };
 
   render() {
-    const { selectedLandToBuy: landForSale, accountInfo } = this.props;
+    const { landToBuy: landForSale, accountInfo } = this.props;
     const { creationStatus, creationActions } = accountInfo;
 
     return (
@@ -151,7 +151,7 @@ export class BuyLandScreen extends React.Component {
 
 BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
-  selectedLandToBuy: PropTypes.object.isRequired,
+  landToBuy: PropTypes.object.isRequired,
   myAssets: PropTypes.array.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
   prependLandForSaleToList: PropTypes.func.isRequired,
@@ -162,9 +162,9 @@ BuyLandScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { accountInfo, selectedLandToBuy, myAssets } = state;
+  const { accountInfo, landToBuy, myAssets } = state;
   const { list: myAssetsList } = myAssets;
-  return { accountInfo, selectedLandToBuy, myAssets: myAssetsList };
+  return { accountInfo, landToBuy, myAssets: myAssetsList };
 };
 
 const mapDispatchToProps = {
