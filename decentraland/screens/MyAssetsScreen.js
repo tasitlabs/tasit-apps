@@ -29,7 +29,14 @@ export class MyAssetsScreen extends React.Component {
       const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
+<<<<<<< HEAD
         this._logAssetsInconsistency(assetsFromBlockchain, boughtAssets);
+=======
+        // TODO: Add some UI indication that something unexpected happened
+        logWarn(
+          `Account's assets from blockchain aren't the same as the ones stored on the app.`
+        );
+>>>>>>> be85215bf97edb9c9ec4a201f2183f829b9f6a28
         removeFromMyAssetsList(boughtAssets);
         appendToMyAssetsList(assetsFromBlockchain);
       }
