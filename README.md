@@ -17,6 +17,10 @@ This entails a different, simpler onboarding flow in an environment without Meta
 
 Development of the Tasit apps is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative.
 
+This project is open-source and in need of additional funding to sustain work on it. If you're able to contribute, please consider sending ETH or DAI to our project's vault address:
+
+[0xd25def1db4f994e2800e438ebb29eae300d56151](https://etherscan.io/address/0xd25def1db4f994e2800e438ebb29eae300d56151)
+
 The Tasit apps are built with [the Tasit SDK](https://github.com/tasitlabs/TasitSDK), a JavaScript SDK that empowers developers to create their own native Ethereum dapps.
 
 _Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out today for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
