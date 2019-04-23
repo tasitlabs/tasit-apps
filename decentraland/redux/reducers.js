@@ -21,90 +21,105 @@ import { removeFromList, updateListItem, toListIfNot } from "@helpers";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
 
-function accountInfo(
-  state = {
+// Reducing boilerplate from reducers
+// Refs: https://redux.js.org/recipes/structuring-reducers/refactoring-reducer-example#reducing-boilerplate
+function createReducer(initialState, handlers) {
+  return function reducer(state = initialState, action) {
+    if (handlers.hasOwnProperty(action.type)) {
+      return handlers[action.type](state, action);
+    } else {
+      return state;
+    }
+  };
+}
+
+//
+// accountInfo reducer
+//
+const setAccount = (state, action) => {
+  const { account } = action;
+  return { ...state, account };
+};
+const setAccountCreationStatus = (state, action) => {
+  const { creationStatus } = action;
+  return { ...state, creationStatus };
+};
+const updateActionIdForAccountCreationStatus = (state, action) => {
+  const { creationStatusAction } = action;
+  const { status, actionId } = creationStatusAction;
+  let { creationActions } = state;
+  creationActions = { ...creationActions, [status]: actionId };
+  return { ...state, creationActions };
+};
+const setAccountCreationActions = (state, action) => {
+  const { creationActions } = action;
+  return { ...state, creationActions };
+};
+
+const accountInfo = createReducer(
+  {
     account: null,
     creationStatus: NOT_STARTED,
     creationActions: {},
   },
-  action
-) {
-  const {
-    type,
-    account,
-    creationStatus,
-    creationStatusAction,
-    creationActions,
-  } = action;
-  switch (type) {
-    case SET_ACCOUNT:
-      return { ...state, account };
-    case SET_ACCOUNT_CREATION_STATUS:
-      return { ...state, creationStatus };
-    case UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS: {
-      const { status, actionId } = creationStatusAction;
-      let { creationActions } = state;
-      creationActions = { ...creationActions, [status]: actionId };
-      return { ...state, creationActions };
-    }
-    case SET_ACCOUNT_CREATION_ACTIONS: {
-      return { ...state, creationActions };
-    }
-    default:
-      return state;
+  {
+    [SET_ACCOUNT]: setAccount,
+    [SET_ACCOUNT_CREATION_STATUS]: setAccountCreationStatus,
+    [UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS]: updateActionIdForAccountCreationStatus,
+    [SET_ACCOUNT_CREATION_ACTIONS]: setAccountCreationActions,
   }
-}
+);
 
-function selectedLandToBuy(state = null, action) {
-  const { type, landForSale } = action;
-  switch (type) {
-    case SELECT_LAND_TO_BUY:
-      return landForSale;
-    default:
-      return state;
+//
+// selectedLandToBuy reducer
+//
+const selectLandToBuy = (state, action) => {
+  const { landForSale } = action;
+  return landForSale;
+};
+
+const selectedLandToBuy = createReducer(null, {
+  [SELECT_LAND_TO_BUY]: selectLandToBuy,
+});
+
+//
+// assetsForSale reducer
+//
+const prependLandForSaleToList = (state, action) => {
+  const { landForSale } = action;
+  return { ...state, list: [landForSale, ...state.list] };
+};
+
+const appendLandForSaleToList = (state, action) => {
+  const { landForSale } = action;
+  return { ...state, list: [...state.list, landForSale] };
+};
+
+const removeLandForSale = (state, action) => {
+  const { landForSale } = action;
+  let { list: assetsForSale } = state;
+  const list = removeFromList(assetsForSale, landForSale);
+  return { ...state, list };
+};
+
+const setLoadingAssetsForSaleInProgress = (state, action) => {
+  const { loadingInProgress } = action;
+  return { ...state, loadingInProgress };
+};
+
+const assetsForSale = createReducer(
+  { list: [], loadingInProgress: true },
+  {
+    [PREPEND_LAND_FOR_SALE_TO_LIST]: prependLandForSaleToList,
+    [APPEND_LAND_FOR_SALE_TO_LIST]: appendLandForSaleToList,
+    [REMOVE_LAND_FOR_SALE]: removeLandForSale,
+    [SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS]: setLoadingAssetsForSaleInProgress,
   }
-}
+);
 
-function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
-  const { type, landForSale, loadingInProgress } = action;
-  switch (type) {
-    case PREPEND_LAND_FOR_SALE_TO_LIST:
-      return { ...state, list: [landForSale, ...state.list] };
-    case APPEND_LAND_FOR_SALE_TO_LIST:
-      return { ...state, list: [...state.list, landForSale] };
-    case REMOVE_LAND_FOR_SALE: {
-      let { list: assetsForSale } = state;
-      const list = removeFromList(assetsForSale, landForSale);
-      return { ...state, list };
-    }
-    case SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS:
-      return { ...state, loadingInProgress };
-    default:
-      return state;
-  }
-}
-
-function myAssets(state = { list: [] }, action) {
-  const { type } = action;
-
-  switch (type) {
-    case PREPEND_TO_MY_ASSETS_LIST:
-      return prependToMyAssetsList(state, action);
-    case APPEND_TO_MY_ASSETS_LIST:
-      return appendToMyAssetsList(state, action);
-    case REMOVE_FROM_MY_ASSETS_LIST:
-      return removeFromMyAssetsList(state, action);
-    case SET_MY_ASSETS_LIST:
-      return setMyAssetsList(state, action);
-    case SET_ACTION_ID_FOR_MY_ASSET:
-      return setActionIdForMyAsset(state, action);
-    case UPDATE_MY_ASSET_STATUS:
-      return updateMyAssetStatus(state, action);
-    default:
-      return state;
-  }
-}
-
+//
+// myAssets reducer
+//
 const prependToMyAssetsList = (state, action) => {
   const { myAsset } = action;
   return { ...state, list: [myAsset, ...state.list] };
@@ -148,6 +163,21 @@ const updateMyAssetStatus = (state, action) => {
   return { ...state, list };
 };
 
+const myAssets = createReducer(
+  { list: [] },
+  {
+    [PREPEND_TO_MY_ASSETS_LIST]: prependToMyAssetsList,
+    [APPEND_TO_MY_ASSETS_LIST]: appendToMyAssetsList,
+    [REMOVE_FROM_MY_ASSETS_LIST]: removeFromMyAssetsList,
+    [SET_MY_ASSETS_LIST]: setMyAssetsList,
+    [SET_ACTION_ID_FOR_MY_ASSET]: setActionIdForMyAsset,
+    [UPDATE_MY_ASSET_STATUS]: updateMyAssetStatus,
+  }
+);
+
+//
+// All all reducers
+//
 const decentralandApp = combineReducers({
   accountInfo,
   selectedLandToBuy,
