@@ -31,7 +31,7 @@ export class MyAssetsScreen extends React.Component {
       if (shouldUpdate) {
         // TODO: Add some UI indication that something unexpected happened
         logWarn(
-          `Accounts' assets from blockchain aren't the same as the stored on the app.`
+          `Account's assets from blockchain aren't the same as the ones stored on the app.`
         );
         removeFromMyAssetsList(boughtAssets);
         appendToMyAssetsList(assetsFromBlockchain);
