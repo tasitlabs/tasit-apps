@@ -29,14 +29,30 @@ export class MyAssetsScreen extends React.Component {
       const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
-        // TODO: Add some UI indication that something unexpected happened
-        logWarn(
-          `Accounts' assets from blockchain aren't the same as the stored on the app.`
-        );
+        this._logAssetsInconsistency(assetsFromBlockchain, boughtAssets);
         removeFromMyAssetsList(boughtAssets);
         appendToMyAssetsList(assetsFromBlockchain);
       }
     }
+  };
+
+  _logAssetsInconsistency = (fromBlockchain, fromState) => {
+    const fromBlockchainIds = fromBlockchain.map(asset => asset.id);
+    const fromStateIds = fromState.map(asset => asset.id);
+
+    const addedIds = fromBlockchainIds.filter(id => !fromStateIds.includes(id));
+    const removedIds = fromStateIds.filter(
+      id => !fromBlockchainIds.includes(id)
+    );
+
+    // TODO: Add some UI indication that something unexpected happened
+    logWarn(`Assets from blockchain aren't the same as the stored on the app.`);
+
+    if (addedIds.length > 0)
+      logWarn(`Some assets added to MyLandScreen. IDs: [${addedIds}]`);
+
+    if (removedIds.length > 0)
+      logWarn(`Some assets removed from MyLandScreen. IDs: [${removedIds}]`);
   };
 
   _getAssetsFromBlockchain = async address => {
