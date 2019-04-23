@@ -4,7 +4,7 @@ import { removeFromMyAssetsList, appendToMyAssetsList } from "../redux/actions";
 import PropTypes from "prop-types";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
-import { listsAreEqual, getContracts } from "@helpers";
+import { listsAreEqual, getContracts, logWarn } from "@helpers";
 import { generateAssetFromId } from "@helpers/decentraland";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 import MyAssetStatus from "@constants/MyAssetStatus";
@@ -29,6 +29,10 @@ export class MyAssetsScreen extends React.Component {
       const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
+        // TODO: Add some UI indication that something unexpected happened
+        logWarn(
+          `Accounts' assets from blockchain aren't the same as the stored on the app.`
+        );
         removeFromMyAssetsList(boughtAssets);
         appendToMyAssetsList(assetsFromBlockchain);
       }

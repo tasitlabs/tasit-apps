@@ -133,6 +133,7 @@ export const showFatalError = msg => console.error(msg);
 export const showError = msg => showToast(`ERROR: ${msg}`);
 export const showWarn = msg => showToast(`WARN: ${msg}`);
 export const showInfo = msg => showToast(`${msg}`);
+export const logWarn = msg => console.warn(msg);
 
 export const checkBlockchain = async () => {
   loadConfig();
@@ -257,6 +258,7 @@ export default {
   showError,
   showWarn,
   showInfo,
+  logWarn,
   fundAccountWithEthers,
   fundAccountWithMana,
   getContracts,
