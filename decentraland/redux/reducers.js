@@ -176,7 +176,7 @@ const myAssets = createReducer(
 );
 
 //
-// All all reducers
+// All reducers
 //
 const decentralandApp = combineReducers({
   accountInfo,
