@@ -33,7 +33,7 @@ MyAsset.propTypes = {
 
 export function MyAssetInfo({ asset, userAction }) {
   const { name } = asset;
-  const { actionId } = userAction;
+  const [actionId] = Object.keys(userAction);
 
   return (
     <View style={styles.myAssetInfoContainer}>

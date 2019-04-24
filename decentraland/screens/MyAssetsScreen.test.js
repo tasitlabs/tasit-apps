@@ -7,7 +7,7 @@ describe("ListLandForSaleScreen", () => {
   describe("renders the component", () => {
     it("without assets", async () => {
       const myAssets = [];
-      const userActions = [];
+      const userActions = {};
       expect(
         shallow(
           <MyAssetsScreen myAssets={myAssets} userActions={userActions} />
@@ -16,7 +16,7 @@ describe("ListLandForSaleScreen", () => {
     });
     it("with assets", async () => {
       const myAssets = [parcel];
-      const userActions = [parcelUserAction];
+      const userActions = { ...parcelUserAction };
       expect(
         shallow(
           <MyAssetsScreen myAssets={myAssets} userActions={userActions} />

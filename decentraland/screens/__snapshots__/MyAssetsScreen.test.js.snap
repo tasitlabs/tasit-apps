@@ -14,13 +14,12 @@ exports[`ListLandForSaleScreen renders the component with assets 1`] = `
   }
   renderItem={[Function]}
   userActions={
-    Array [
-      Object {
-        "actionId": "0x1234567890123456789012345678901234567890",
+    Object {
+      "0x1234567890123456789012345678901234567890": Object {
         "assetId": "0123456789",
         "status": "SUCCESSFUL",
       },
-    ]
+    }
   }
 />
 `;
@@ -29,6 +28,6 @@ exports[`ListLandForSaleScreen renders the component without assets 1`] = `
 <MyAssetsList
   myAssets={Array []}
   renderItem={[Function]}
-  userActions={Array []}
+  userActions={Object {}}
 />
 `;

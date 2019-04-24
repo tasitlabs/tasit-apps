@@ -102,7 +102,7 @@ Is the config file correct?`;
 
   async _loadMyAssets() {
     const myAssets = await retrieveMyAssets();
-    const userActions = await retrieveUserActions();
+    let userActions = await retrieveUserActions();
 
     // Handling with actions stored before
     // the introduction of userAction state (<= 0.0.17)
@@ -111,8 +111,8 @@ Is the config file correct?`;
       let userAction = userActions.find(action => action.assetId === assetId);
 
       if (!userAction && !!actionId) {
-        userAction = { actionId, assetId, status: SUCCESSFUL };
-        userActions.push(userAction);
+        userAction = { [actionId]: { assetId, status: SUCCESSFUL } };
+        userActions = { ...userActions, userAction };
       }
     });
 

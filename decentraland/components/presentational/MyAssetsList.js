@@ -14,8 +14,16 @@ export default class MyAssetsList extends React.PureComponent {
     const { myAssets, userActions, renderItem } = this.props;
     const { length: listAmount } = myAssets;
 
+    const flatUserActions = Object.entries(userActions).map(userAction => {
+      const actionId = userAction[0];
+      const userActionProps = userAction[1];
+      return { actionId, ...userActionProps };
+    });
+
     const dataList = myAssets.map(asset => {
-      let userAction = userActions.find(action => action.assetId === asset.id);
+      let userAction = flatUserActions.find(
+        action => action.assetId === asset.id
+      );
       return { asset, userAction };
     });
 
@@ -39,7 +47,7 @@ export default class MyAssetsList extends React.PureComponent {
 MyAssetsList.propTypes = {
   renderItem: PropTypes.func.isRequired,
   myAssets: PropTypes.array.isRequired,
-  userActions: PropTypes.array.isRequired,
+  userActions: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

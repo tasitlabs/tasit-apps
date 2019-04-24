@@ -46,10 +46,12 @@ export class MyAssetsScreen extends React.Component {
   _getAssetsAndActionsFromBlockchain = async address => {
     const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
 
-    const actionsFromBlockchain = assetsFromBlockchain.map(asset => {
+    let actionsFromBlockchain = {};
+
+    assetsFromBlockchain.forEach(asset => {
       const { actionId, id: assetId } = asset;
-      const status = SUCCESSFUL;
-      return { actionId, assetId, status };
+      const userAction = { [actionId]: { assetId, status: SUCCESSFUL } };
+      actionsFromBlockchain = { ...actionsFromBlockchain, userAction };
     });
 
     assetsFromBlockchain.forEach(asset => delete asset.actionId);
@@ -152,7 +154,7 @@ export class MyAssetsScreen extends React.Component {
 MyAssetsScreen.propTypes = {
   myAssets: PropTypes.array.isRequired,
   account: PropTypes.object,
-  userActions: PropTypes.array.isRequired,
+  userActions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => {

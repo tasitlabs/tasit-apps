@@ -93,7 +93,7 @@ export class BuyLandScreen extends React.Component {
     navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();
-    const userAction = { actionId, status: PENDING, assetId };
+    const userAction = { [actionId]: { status: PENDING, assetId } };
 
     addUserAction(userAction);
 
