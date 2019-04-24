@@ -8,7 +8,7 @@ import {
 import PropTypes from "prop-types";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
-import { listsAreEqual, getContracts, logInfo } from "@helpers";
+import { listsAreEqual, getContracts, logInfo, logWarn } from "@helpers";
 import { generateAssetFromId } from "@helpers/decentraland";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 import { SUCCESSFUL } from "@constants/UserActionStatus";
@@ -88,7 +88,7 @@ export class MyAssetsScreen extends React.Component {
       logInfo(`Some assets added to MyLandScreen. IDs: [${addedIds}]`);
 
     if (removedIds.length > 0)
-      logInfo(`Some assets removed from MyLandScreen. IDs: [${removedIds}]`);
+      logWarn(`Some assets removed from MyLandScreen. IDs: [${removedIds}]`);
   };
 
   _getAssetsFromBlockchain = async address => {
