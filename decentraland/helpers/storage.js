@@ -3,7 +3,7 @@
 import { SecureStore } from "expo";
 import { AsyncStorage } from "react-native";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
-import { logInfo } from "@helpers";
+import { logWarn } from "@helpers";
 
 // Storage keys
 const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";
@@ -134,12 +134,12 @@ const _clearData = async key => {
   try {
     await AsyncStorage.removeItem(key);
   } catch (error) {
-    logInfo(`Unable to delete data (key = ${key}) from storage.`);
+    logWarn(`Unable to delete data (key = ${key}) from storage.`);
   }
   try {
     await SecureStore.deleteItemAsync(key);
   } catch (error) {
-    logInfo(`Unable to delete data key = ${key} from secure storage.`);
+    logWarn(`Unable to delete data key = ${key} from secure storage.`);
   }
 };
 
