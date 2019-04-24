@@ -1,4 +1,6 @@
 // To be used for meta-tx
+// Also for contract-based accounts with signed messages
+// that will be bundled into tx with enough signatures
 export const BROADCASTED = "BROADCASTED";
 
 export const PENDING = "PENDING";
