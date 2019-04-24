@@ -47,7 +47,7 @@ export const retrieveAccountCreationActions = async () => {
   const strCreationActions = await _retrieveData(
     EPHEMERAL_ACCOUNT_CREATION_ACTIONS
   );
-  let creationActions = _fromString(strCreationActions);
+  const creationActions = _fromString(strCreationActions);
   return creationActions;
 };
 

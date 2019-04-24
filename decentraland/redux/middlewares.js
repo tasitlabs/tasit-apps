@@ -2,7 +2,7 @@ import { applyMiddleware } from "redux";
 import {
   SET_ACCOUNT,
   SET_ACCOUNT_CREATION_STATUS,
-  UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
+  UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS,
   SET_ACCOUNT_CREATION_ACTIONS,
   PREPEND_TO_MY_ASSETS_LIST,
   APPEND_TO_MY_ASSETS_LIST,
@@ -36,7 +36,7 @@ const storer = store => next => async action => {
       await storeAccountCreationStatus(creationStatus);
       break;
     }
-    case UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS: {
+    case UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS: {
       await storeAccountCreationActions(creationActions);
       break;
     }

@@ -113,7 +113,7 @@ Is the config file correct?`;
 
       if (!userAction && !!actionId) {
         userAction = { [actionId]: { assetId, status: SUCCESSFUL } };
-        userActions = { ...userActions, userAction };
+        userActions = { ...userActions, ...userAction };
       }
     });
 
