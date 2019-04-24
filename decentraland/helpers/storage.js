@@ -1,4 +1,4 @@
-// Note: If a data wasn't found, returning null instead of default state of the
+// Note: If a piece of data wasn't found, returning null instead of default state of the
 // property to avoid coupling with redux reducers
 import { SecureStore } from "expo";
 import { AsyncStorage } from "react-native";
