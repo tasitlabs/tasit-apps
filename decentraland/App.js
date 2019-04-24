@@ -62,16 +62,17 @@ Is the config file correct?`;
     }
   }
 
-  async _loadAccountInfo() {
+  async _checkIfIsFirstUse() {
     // Note: Forcing account removal after app uninstall
     // On iOS environment, Secure Store data remains even after app uninstallation
     const isFirstUse = await retrieveIsFirstUse();
     if (isFirstUse) {
       await clearAllStorage();
       await storeIsFirstUse(false);
-      return;
     }
+  }
 
+  async _loadAccountInfo() {
     const account = await retrieveAccount();
     const creationStatus = await retrieveAccountCreationStatus();
     const creationActions = await retrieveAccountCreationActions();
@@ -120,19 +121,16 @@ Is the config file correct?`;
   // More about AppLoading: https://docs.expo.io/versions/latest/sdk/app-loading/
   _loadResourcesAsync = async () => {
     const loadFonts = this._loadFonts();
-    const loadMyAssets = this._loadMyAssets();
+    const loadTasitSDK = this._setupTasitSDK();
 
-    // Note: _loadAccountInfo needs that TasitSDK is ready to use
-    const setupTasitSDKAndLoadAccountInfo = async () => {
-      await this._setupTasitSDK();
-      await this._loadAccountInfo();
+    const loadFromStorage = async () => {
+      await this._checkIfIsFirstUse();
+      const loadMyAssets = this._loadMyAssets();
+      const loadAccountInfo = this._loadAccountInfo();
+      return Promise.all([loadMyAssets, loadAccountInfo]);
     };
 
-    return Promise.all([
-      setupTasitSDKAndLoadAccountInfo(),
-      loadFonts,
-      loadMyAssets,
-    ]);
+    return Promise.all([loadFromStorage(), loadFonts, loadTasitSDK]);
   };
 
   _handleLoadingError = error => {
