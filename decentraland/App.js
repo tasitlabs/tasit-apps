@@ -108,7 +108,8 @@ Is the config file correct?`;
     // the introduction of userAction state (<= 0.0.17)
     myAssets.forEach(asset => {
       const { id: assetId, actionId } = asset;
-      let userAction = userActions.find(action => action.assetId === assetId);
+
+      let userAction = userActions[actionId];
 
       if (!userAction && !!actionId) {
         userAction = { [actionId]: { assetId, status: SUCCESSFUL } };

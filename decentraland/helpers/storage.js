@@ -18,7 +18,7 @@ export const storeUserActions = async userActions => {
 export const retrieveUserActions = async () => {
   const strUserActions = await _retrieveData(USER_ACTIONS);
   const userActions = _fromString(strUserActions);
-  if (userActions === null) return [];
+  if (userActions === null) return {};
   return userActions;
 };
 
