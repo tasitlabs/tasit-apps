@@ -1,3 +1,5 @@
+// Note: If a data wasn't found, returning null instead of default state of the
+// property to avoid coupling with redux reducers
 import { SecureStore } from "expo";
 import { AsyncStorage } from "react-native";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
@@ -10,6 +12,15 @@ const EPHEMERAL_ACCOUNT_CREATION_ACTIONS = "EPHEMERAL_ACCOUNT_CREATION_ACTIONS";
 const IS_FIRST_APP_USE = "IS_FIRST_APP_USE";
 const USER_ACTIONS = "USER_ACTIONS";
 
+export const clearAllStorage = async () => {
+  await _clearData(IS_FIRST_APP_USE);
+  await _clearData(EPHEMERAL_ACCOUNT_PRIV_KEY);
+  await _clearData(USER_ACTIONS);
+  await _clearData(EPHEMERAL_ACCOUNT_CREATION_ACTIONS);
+  await _clearData(EPHEMERAL_ACCOUNT_CREATION_STATUS);
+  await _clearData(MY_ASSETS_LIST);
+};
+
 export const storeUserActions = async userActions => {
   const strUserActions = _toString(userActions);
   await _storeData(USER_ACTIONS, strUserActions, false);
@@ -18,7 +29,6 @@ export const storeUserActions = async userActions => {
 export const retrieveUserActions = async () => {
   const strUserActions = await _retrieveData(USER_ACTIONS);
   const userActions = _fromString(strUserActions);
-  if (userActions === null) return {};
   return userActions;
 };
 
@@ -81,12 +91,13 @@ export const storeMyAssets = async myAssets => {
 
 export const retrieveMyAssets = async () => {
   const strMyAssets = await _retrieveData(MY_ASSETS_LIST);
-  let myAssets = _fromString(strMyAssets);
-  if (!myAssets) myAssets = [];
+  const myAssets = _fromString(strMyAssets);
   return myAssets;
 };
 
 const _toString = obj => {
+  if (obj === null) return null;
+
   try {
     return JSON.stringify(obj);
   } catch {
@@ -118,6 +129,15 @@ const _storeData = async (key, value, securely) => {
   }
 };
 
+const _clearData = async key => {
+  try {
+    await AsyncStorage.removeItem(key);
+    await SecureStore.deleteItemAsync(key);
+  } catch (error) {
+    throw Error(`Unable to delete data from storage.`);
+  }
+};
+
 const _retrieveData = async key => {
   try {
     let value = await AsyncStorage.getItem(key);
@@ -142,4 +162,5 @@ export default {
   retrieveIsFirstUse,
   retrieveUserActions,
   storeUserActions,
+  clearAllStorage,
 };
