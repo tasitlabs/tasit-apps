@@ -127,7 +127,7 @@ Is the config file correct?`;
       await this._checkIfIsFirstUse();
       const loadMyAssets = this._loadMyAssets();
       const loadAccountInfo = this._loadAccountInfo();
-      return Promise.all(loadMyAssets, loadAccountInfo);
+      return Promise.all([loadMyAssets, loadAccountInfo]);
     };
 
     return Promise.all([loadFromStorage(), loadFonts, loadTasitSDK]);
