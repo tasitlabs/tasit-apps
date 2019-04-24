@@ -65,7 +65,7 @@ Is the config file correct?`;
   async _checkIfIsFirstUse() {
     // Note: Forcing account removal after app uninstall
     // On iOS environment, Secure Store data remains even after app uninstallation
-    const isFirstUse = true; //await retrieveIsFirstUse();
+    const isFirstUse = await retrieveIsFirstUse();
     if (isFirstUse) {
       await clearAllStorage();
       await storeIsFirstUse(false);
