@@ -71,8 +71,8 @@ export function setMyAssetsList(myAssets) {
   return { type: SET_MY_ASSETS_LIST, myAssets };
 }
 
-export function addUserAction(itemOrList) {
-  return { type: ADD_USER_ACTION, itemOrList };
+export function addUserAction(userAction) {
+  return { type: ADD_USER_ACTION, userAction };
 }
 
 export function updateUserActionStatus(actionIdAndStatus) {

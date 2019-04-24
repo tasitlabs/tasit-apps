@@ -17,13 +17,10 @@ import applyMiddleware from "./redux/middlewares";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/current";
-import {
-  checkBlockchain,
-  showFatalError,
-  restoreCreationStateOfAccountFromBlockchain,
-} from "@helpers";
+import { checkBlockchain, showFatalError } from "@helpers";
 import {
   retrieveAccount,
+  clearAllStorage,
   retrieveMyAssets,
   retrieveAccountCreationStatus,
   retrieveAccountCreationActions,
@@ -33,7 +30,6 @@ import {
 } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
-import { SUCCESSFUL } from "@constants/UserActionStatus";
 
 const store = createStore(decentralandApp, applyMiddleware);
 
@@ -71,50 +67,31 @@ Is the config file correct?`;
     // On iOS environment, Secure Store data remains even after app uninstallation
     const isFirstUse = await retrieveIsFirstUse();
     if (isFirstUse) {
-      // TODO: Uncomment this when 'isFirstUse' flag is being set widely
-      //await storeAccount(null);
+      await clearAllStorage();
       await storeIsFirstUse(false);
+      return;
     }
 
     const account = await retrieveAccount();
+    const creationStatus = await retrieveAccountCreationStatus();
+    const creationActions = await retrieveAccountCreationActions();
+
     if (account) {
       store.dispatch(setAccount(account));
-      let creationStatus = await retrieveAccountCreationStatus();
-      let creationActions = await retrieveAccountCreationActions();
+    }
 
-      const isOldAccount =
-        account !== null && creationStatus === null && creationActions === null;
+    if (creationStatus) {
+      store.dispatch(setAccountCreationStatus(creationStatus));
+    }
 
-      if (isOldAccount) {
-        ({
-          creationStatus,
-          creationActions,
-        } = await restoreCreationStateOfAccountFromBlockchain(account));
-      }
-
-      if (creationStatus !== null)
-        store.dispatch(setAccountCreationStatus(creationStatus));
-
-      if (creationActions !== null)
-        store.dispatch(setAccountCreationActions(creationActions));
+    if (creationActions) {
+      store.dispatch(setAccountCreationActions(creationActions));
     }
   }
 
   async _loadMyAssets() {
     const myAssets = await retrieveMyAssets();
     const userActions = await retrieveUserActions();
-
-    // Handling with actions stored before
-    // the introduction of userAction state (<= 0.0.17)
-    myAssets.forEach(asset => {
-      const { id: assetId, actionId } = asset;
-      let userAction = userActions.find(action => action.assetId === assetId);
-
-      if (!userAction && !!actionId) {
-        userAction = { actionId, assetId, status: SUCCESSFUL };
-        userActions.push(userAction);
-      }
-    });
 
     if (userActions) store.dispatch(addUserAction(userActions));
     if (myAssets) store.dispatch(setMyAssetsList(myAssets));

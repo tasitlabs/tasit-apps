@@ -65,9 +65,10 @@ exports[`MyAsset renders the component 1`] = `
     }
     userAction={
       Object {
-        "actionId": "0x1234567890123456789012345678901234567890",
-        "assetId": "0123456789",
-        "status": "SUCCESSFUL",
+        "0x1234567890123456789012345678901234567890": Object {
+          "assetId": "0123456789",
+          "status": "SUCCESSFUL",
+        },
       }
     }
   />

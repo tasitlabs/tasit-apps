@@ -57,18 +57,20 @@ export const accountCreationSteps = [
 ];
 
 export const parcelUserAction = {
-  actionId: "0x1234567890123456789012345678901234567890",
-  assetId: "0123456789",
-  status: SUCCESSFUL,
+  ["0x1234567890123456789012345678901234567890"]: {
+    assetId: "0123456789",
+    status: SUCCESSFUL,
+  },
 };
 
 export const estateUserAction = {
-  actionId: "0x987654321098765432109876543210987654321",
-  assetId: "123",
-  status: SUCCESSFUL,
+  ["0x987654321098765432109876543210987654321"]: {
+    assetId: "123",
+    status: SUCCESSFUL,
+  },
 };
 
-export const userActions = [parcelUserAction, estateUserAction];
+export const userActions = { ...parcelUserAction, ...estateUserAction };
 
 export default {
   estateForSale,

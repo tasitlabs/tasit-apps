@@ -16,7 +16,7 @@ import {
   ADD_USER_ACTION,
   UPDATE_USER_ACTION_STATUS,
 } from "./actions";
-import { removeFromList, updateListItem, toListIfNot } from "@helpers";
+import { removeFromList, toListIfNot } from "@helpers";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
@@ -159,23 +159,28 @@ const myAssets = createReducer(
 // userActions reducer
 //
 const addUserAction = (state, action) => {
-  const { itemOrList } = action;
-  const toAppend = toListIfNot(itemOrList);
-  return [...state, ...toAppend];
+  const { userAction } = action;
+  return { ...state, ...userAction };
 };
 
 const updateUserActionStatus = (state, action) => {
   const { actionIdAndStatus } = action;
-  const { actionId: toUpdateId, status } = actionIdAndStatus;
-  const entriesToUpdate = { status };
-  const list = updateListItem(state, toUpdateId, entriesToUpdate);
-  return list;
+  const { actionId, status } = actionIdAndStatus;
+
+  let userActionProps = state[actionId];
+  if (!userActionProps) return state;
+
+  userActionProps = { ...userActionProps, status };
+  return { ...state, [actionId]: userActionProps };
 };
 
-const userActions = createReducer([], {
-  [ADD_USER_ACTION]: addUserAction,
-  [UPDATE_USER_ACTION_STATUS]: updateUserActionStatus,
-});
+const userActions = createReducer(
+  {},
+  {
+    [ADD_USER_ACTION]: addUserAction,
+    [UPDATE_USER_ACTION_STATUS]: updateUserActionStatus,
+  }
+);
 
 //
 // All reducers

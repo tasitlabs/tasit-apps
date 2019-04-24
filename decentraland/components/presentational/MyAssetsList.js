@@ -14,8 +14,19 @@ export default class MyAssetsList extends React.PureComponent {
     const { myAssets, userActions, renderItem } = this.props;
     const { length: listAmount } = myAssets;
 
+    // It's easy to look up action info from actionId
+    // But to get an action for a given asset (since the asset itself no longer has the actionId)
+    // a find is needed, to iterate over the userActions to get the one related to an asset,
+    // we used Object.entries to turn it into an array of arrays to help with this find
+    const flatUserActions = Object.entries(userActions).map(userAction => {
+      const [actionId, userActionProps] = userAction;
+      return { actionId, ...userActionProps };
+    });
+
     const dataList = myAssets.map(asset => {
-      let userAction = userActions.find(action => action.assetId === asset.id);
+      let userAction = flatUserActions.find(
+        action => action.assetId === asset.id
+      );
       return { asset, userAction };
     });
 
@@ -39,7 +50,7 @@ export default class MyAssetsList extends React.PureComponent {
 MyAssetsList.propTypes = {
   renderItem: PropTypes.func.isRequired,
   myAssets: PropTypes.array.isRequired,
-  userActions: PropTypes.array.isRequired,
+  userActions: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
