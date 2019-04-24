@@ -28,6 +28,13 @@ exports[`MyAssetsListItem renders the component 1`] = `
           "type": "PARCEL",
         }
       }
+      userAction={
+        Object {
+          "actionId": "0x1234567890123456789012345678901234567890",
+          "assetId": "0123456789",
+          "status": "SUCCESSFUL",
+        }
+      }
     />
   </Component>
 </TouchableHighlight>

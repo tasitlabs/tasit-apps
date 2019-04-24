@@ -1,31 +1,34 @@
 import React from "react";
 import { shallow } from "enzyme";
 import MyAssetsList from "./MyAssetsList";
-import { estate } from "@helpers/testHelpers";
+import { estate, userActions } from "@helpers/testHelpers";
 
 describe("MyAssetsList", () => {
   describe("renders the component", () => {
     const myAssetRenderer = () => {};
 
     it("without assets", async () => {
-      const myAssetsList = [];
+      const myAssets = [];
+
       expect(
         shallow(
           <MyAssetsList
-            myAssetsList={myAssetsList}
+            myAssets={myAssets}
             renderItem={myAssetRenderer}
+            userActions={userActions}
           />
         )
       ).toMatchSnapshot();
     });
 
     it("with assets", async () => {
-      const myAssetsList = [estate];
+      const myAssets = [estate];
       expect(
         shallow(
           <MyAssetsList
-            myAssetsList={myAssetsList}
+            myAssets={myAssets}
             renderItem={myAssetRenderer}
+            userActions={userActions}
           />
         )
       ).toMatchSnapshot();

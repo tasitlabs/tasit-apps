@@ -14,10 +14,11 @@ describe("BuyLandScreen", () => {
       };
       const navigation = () => {};
       const removeLandForSale = () => {};
-      const addToMyAssetsList = () => {};
-      const removeMyAssetFromList = () => {};
+      const prependToMyAssetsList = () => {};
+      const removeFromMyAssetsList = () => {};
       const prependLandForSaleToList = () => {};
-      const setActionIdForMyAsset = () => {};
+      const addUserAction = () => {};
+      const updateUserActionStatus = () => {};
       const myAssets = [];
 
       expect(
@@ -26,12 +27,13 @@ describe("BuyLandScreen", () => {
             navigation={navigation}
             accountInfo={accountInfo}
             myAssets={myAssets}
-            selectedLandToBuy={estateForSale}
+            landToBuy={estateForSale}
             removeLandForSale={removeLandForSale}
-            addToMyAssetsList={addToMyAssetsList}
-            removeMyAssetFromList={removeMyAssetFromList}
+            prependToMyAssetsList={prependToMyAssetsList}
+            removeFromMyAssetsList={removeFromMyAssetsList}
             prependLandForSaleToList={prependLandForSaleToList}
-            setActionIdForMyAsset={setActionIdForMyAsset}
+            addUserAction={addUserAction}
+            updateUserActionStatus={updateUserActionStatus}
           />
         )
       ).toMatchSnapshot();

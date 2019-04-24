@@ -15,7 +15,7 @@ module.exports = {
     "plugin:jest/recommended",
   ],
   rules: {
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-console": ["error", { allow: ["warn", "error", "info"] }],
     "react-native/no-raw-text": ["error", { skip: ["LargeText"] }],
     "react/prop-types": ["error", { ignore: ["navigation"] }],
     "prettier/prettier": "error",

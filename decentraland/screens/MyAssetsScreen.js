@@ -1,27 +1,94 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setMyAssetsList } from "../redux/actions";
+import {
+  removeFromMyAssetsList,
+  appendToMyAssetsList,
+  addUserAction,
+} from "../redux/actions";
 import PropTypes from "prop-types";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
-import { listsAreEqual, getContracts } from "@helpers";
+import { listsAreEqual, getContracts, logInfo } from "@helpers";
 import { generateAssetFromId } from "@helpers/decentraland";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+import { SUCCESSFUL } from "@constants/UserActionStatus";
 
 export class MyAssetsScreen extends React.Component {
   componentDidMount = async () => {
-    const { account, myAssets: assetsFromState, setMyAssetsList } = this.props;
+    const {
+      account,
+      removeFromMyAssetsList,
+      appendToMyAssetsList,
+      addUserAction,
+    } = this.props;
     if (account) {
       const { address } = account;
-      const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
-      const shouldUpdate = !listsAreEqual(
+
+      const boughtAssets = this._getBoughtAssetsFromState();
+
+      const {
         assetsFromBlockchain,
-        assetsFromState
-      );
+        actionsFromBlockchain,
+      } = await this.__getAssetsAndActionsFromBlockchain(address);
+
+      const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
-        setMyAssetsList(assetsFromBlockchain);
+        // TODO: Add some UI indication that something unexpected happened
+        this._logAssetsInconsistency(assetsFromBlockchain, boughtAssets);
+
+        removeFromMyAssetsList(boughtAssets);
+        appendToMyAssetsList(assetsFromBlockchain);
+        addUserAction(actionsFromBlockchain);
       }
     }
+  };
+
+  _getAssetsAndActionsFromBlockchain = async address => {
+    const assetsFromBlockchain = await this._getAssetsFromBlockchain(address);
+
+    const actionsFromBlockchain = assetsFromBlockchain.map(asset => {
+      const { actionId, id: assetId } = asset;
+      const status = SUCCESSFUL;
+      return { actionId, assetId, status };
+    });
+
+    assetsFromBlockchain.forEach(asset => delete asset.actionId);
+
+    return { assetsFromBlockchain, actionsFromBlockchain };
+  };
+
+  _getBoughtAssetsFromState = () => {
+    const { myAssets: assetsFromState, userActions } = this.props;
+
+    const boughtAssets = assetsFromState.filter(asset => {
+      const { id: assetId } = asset;
+      const assetAction = userActions.find(
+        action => action.assetId === assetId
+      );
+      return assetAction && assetAction.status === SUCCESSFUL;
+    });
+
+    return boughtAssets;
+  };
+
+  _logAssetsInconsistency = (fromBlockchain, fromState) => {
+    const fromBlockchainIds = fromBlockchain.map(asset => asset.id);
+    const fromStateIds = fromState.map(asset => asset.id);
+
+    const addedIds = fromBlockchainIds.filter(id => !fromStateIds.includes(id));
+    const removedIds = fromStateIds.filter(
+      id => !fromBlockchainIds.includes(id)
+    );
+
+    logInfo(
+      `Account's assets from blockchain aren't the same as the ones stored on the app.`
+    );
+
+    if (addedIds.length > 0)
+      logInfo(`Some assets added to MyLandScreen. IDs: [${addedIds}]`);
+
+    if (removedIds.length > 0)
+      logInfo(`Some assets removed from MyLandScreen. IDs: [${removedIds}]`);
   };
 
   _getAssetsFromBlockchain = async address => {
@@ -63,15 +130,21 @@ export class MyAssetsScreen extends React.Component {
     return assets;
   };
 
-  _renderItem = ({ item: asset }) => {
-    return <MyAssetsListItem asset={asset} />;
+  _renderItem = ({ item: assetAndUserAction }) => {
+    let { asset, userAction } = assetAndUserAction;
+    if (!userAction) userAction = {};
+    return <MyAssetsListItem asset={asset} userAction={userAction} />;
   };
 
   render() {
-    const { myAssets } = this.props;
+    const { myAssets, userActions } = this.props;
 
     return (
-      <MyAssetsList myAssetsList={myAssets} renderItem={this._renderItem} />
+      <MyAssetsList
+        myAssets={myAssets}
+        userActions={userActions}
+        renderItem={this._renderItem}
+      />
     );
   }
 }
@@ -79,17 +152,20 @@ export class MyAssetsScreen extends React.Component {
 MyAssetsScreen.propTypes = {
   myAssets: PropTypes.array.isRequired,
   account: PropTypes.object,
+  userActions: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { myAssets, accountInfo } = state;
+  const { myAssets, accountInfo, userActions } = state;
   const { account } = accountInfo;
   const { list: myAssetsList } = myAssets;
-  return { myAssets: myAssetsList, account };
+  return { myAssets: myAssetsList, account, userActions };
 };
 
 const mapDispatchToProps = {
-  setMyAssetsList,
+  removeFromMyAssetsList,
+  appendToMyAssetsList,
+  addUserAction,
 };
 
 export default connect(

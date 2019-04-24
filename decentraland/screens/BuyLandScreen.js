@@ -1,17 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
+import { StackActions } from "react-navigation";
 import {
   removeLandForSale,
   prependLandForSaleToList,
-  removeMyAssetFromList,
-  addToMyAssetsList,
-  setActionIdForMyAsset,
+  removeFromMyAssetsList,
+  prependToMyAssetsList,
+  addUserAction,
+  updateUserActionStatus,
 } from "../redux/actions";
 import BuyLand from "@presentational/BuyLand";
 import PropTypes from "prop-types";
 import { showError, showInfo, getContracts } from "@helpers";
-import AssetTypes from "@constants/AssetTypes";
-const { ESTATE, PARCEL } = AssetTypes;
+import { ESTATE, PARCEL } from "@constants/AssetTypes";
+import { PENDING, SUCCESSFUL } from "@constants/UserActionStatus";
 
 // TODO: Go deep on gas handling.
 // Without that, VM returns a revert error instead of out of gas error.
@@ -47,9 +49,10 @@ export class BuyLandScreen extends React.Component {
       accountInfo,
       removeLandForSale,
       prependLandForSaleToList,
-      removeMyAssetFromList,
-      addToMyAssetsList,
-      setActionIdForMyAsset,
+      removeFromMyAssetsList,
+      prependToMyAssetsList,
+      addUserAction,
+      updateUserActionStatus,
     } = props;
     const { account } = accountInfo;
     const { asset } = landForSale;
@@ -63,6 +66,9 @@ export class BuyLandScreen extends React.Component {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForNonceToUpdate();
+      const actionId = await action.getId();
+
+      updateUserActionStatus({ actionId, status: SUCCESSFUL });
 
       showInfo(`${typeDescription} bought successfully.`);
     };
@@ -70,7 +76,7 @@ export class BuyLandScreen extends React.Component {
     const onError = (assetForSale, message) => {
       const { asset } = assetForSale;
       showError(message);
-      removeMyAssetFromList(asset);
+      removeFromMyAssetsList(asset);
       prependLandForSaleToList(assetForSale);
     };
 
@@ -80,12 +86,16 @@ export class BuyLandScreen extends React.Component {
 
     // Optimistic UI update
     removeLandForSale(landForSale);
-    addToMyAssetsList(asset);
+    prependToMyAssetsList(asset);
 
-    navigation.navigate("ListLandForSaleScreen");
+    // Back to top of current Stack before navigate
+    navigation.dispatch(StackActions.popToTop());
+    navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();
-    setActionIdForMyAsset(assetId, actionId);
+    const userAction = { actionId, status: PENDING, assetId };
+
+    addUserAction(userAction);
 
     onSuccess();
   };
@@ -101,6 +111,7 @@ export class BuyLandScreen extends React.Component {
         type === ESTATE
           ? estateContract.getAddress()
           : landContract.getAddress();
+
       // LANDRegistry contract doesn't implement getFingerprint function
       const fingerprint =
         type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
@@ -125,7 +136,7 @@ export class BuyLandScreen extends React.Component {
   };
 
   render() {
-    const { selectedLandToBuy: landForSale, accountInfo } = this.props;
+    const { landToBuy: landForSale, accountInfo } = this.props;
     const { creationStatus, creationActions } = accountInfo;
 
     return (
@@ -141,27 +152,29 @@ export class BuyLandScreen extends React.Component {
 
 BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
-  selectedLandToBuy: PropTypes.object.isRequired,
+  landToBuy: PropTypes.object.isRequired,
   myAssets: PropTypes.array.isRequired,
   removeLandForSale: PropTypes.func.isRequired,
   prependLandForSaleToList: PropTypes.func.isRequired,
-  removeMyAssetFromList: PropTypes.func.isRequired,
-  addToMyAssetsList: PropTypes.func.isRequired,
-  setActionIdForMyAsset: PropTypes.func.isRequired,
+  removeFromMyAssetsList: PropTypes.func.isRequired,
+  prependToMyAssetsList: PropTypes.func.isRequired,
+  addUserAction: PropTypes.func.isRequired,
+  updateUserActionStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
-  const { accountInfo, selectedLandToBuy, myAssets } = state;
+  const { accountInfo, landToBuy, myAssets } = state;
   const { list: myAssetsList } = myAssets;
-  return { accountInfo, selectedLandToBuy, myAssets: myAssetsList };
+  return { accountInfo, landToBuy, myAssets: myAssetsList };
 };
 
 const mapDispatchToProps = {
   removeLandForSale,
   prependLandForSaleToList,
-  addToMyAssetsList,
-  removeMyAssetFromList,
-  setActionIdForMyAsset,
+  prependToMyAssetsList,
+  removeFromMyAssetsList,
+  addUserAction,
+  updateUserActionStatus,
 };
 
 export default connect(

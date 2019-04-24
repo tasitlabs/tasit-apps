@@ -134,6 +134,10 @@ export const showError = msg => showToast(`ERROR: ${msg}`);
 export const showWarn = msg => showToast(`WARN: ${msg}`);
 export const showInfo = msg => showToast(`${msg}`);
 
+export const logInfo = msg => console.info(msg);
+export const logWarn = msg => console.warn(msg);
+export const logError = msg => console.error(msg);
+
 export const checkBlockchain = async () => {
   loadConfig();
   const provider = ProviderFactory.getProvider();
@@ -160,8 +164,14 @@ export const formatNumber = number => {
   return formattedNumber;
 };
 
-export const removeFromList = (list, toRemove) =>
-  list.filter(e => e !== toRemove);
+export const toListIfNot = itemOrList =>
+  Array.isArray(itemOrList) ? itemOrList : [itemOrList];
+
+export const removeFromList = (list, toRemove) => {
+  const elementsToRemove = toListIfNot(toRemove);
+  const idsToRemove = elementsToRemove.map(e => e.id);
+  return list.filter(e => !idsToRemove.includes(e.id));
+};
 
 export const listsAreEqual = (first, second) => {
   if (first.length !== second.length) return false;
@@ -169,6 +179,13 @@ export const listsAreEqual = (first, second) => {
   return (
     first.every(e => second.includes(e)) && second.every(e => first.includes(e))
   );
+};
+
+// Update item from any list of objects having id as key field
+export const updateListItem = (list, toUpdateId, entriesToUpdate) => {
+  return list.map(item => {
+    return item.id === toUpdateId ? { ...item, ...entriesToUpdate } : item;
+  });
 };
 
 const loadConfig = () => {
@@ -244,6 +261,9 @@ export default {
   showError,
   showWarn,
   showInfo,
+  logInfo,
+  logWarn,
+  logError,
   fundAccountWithEthers,
   fundAccountWithMana,
   getContracts,
@@ -255,4 +275,6 @@ export default {
   getNetworkName,
   buildBlockchainUrlFromActionId,
   restoreCreationStateOfAccountFromBlockchain,
+  updateListItem,
+  toListIfNot,
 };

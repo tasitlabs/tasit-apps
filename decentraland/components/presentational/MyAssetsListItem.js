@@ -14,11 +14,11 @@ import MyAsset from "./MyAsset";
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
 export default class MyAssetsListItem extends React.PureComponent {
   render() {
-    const { asset } = this.props;
+    const { asset, userAction } = this.props;
     return (
       <TouchableHighlight>
         <View style={styles.row}>
-          <MyAsset asset={asset} />
+          <MyAsset asset={asset} userAction={userAction} />
         </View>
       </TouchableHighlight>
     );
@@ -27,6 +27,7 @@ export default class MyAssetsListItem extends React.PureComponent {
 
 MyAssetsListItem.propTypes = {
   asset: PropTypes.object.isRequired,
+  userAction: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

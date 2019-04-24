@@ -9,10 +9,12 @@ export const APPEND_LAND_FOR_SALE_TO_LIST = "APPEND_LAND_FOR_SALE_TO_LIST";
 export const PREPEND_LAND_FOR_SALE_TO_LIST = "PREPEND_LAND_FOR_SALE_TO_LIST";
 export const SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS =
   "SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS";
-export const ADD_TO_MY_ASSETS_LIST = "ADD_TO_MY_ASSETS_LIST";
-export const REMOVE_MY_ASSET_FROM_LIST = "REMOVE_MY_ASSET_FROM_LIST";
+export const PREPEND_TO_MY_ASSETS_LIST = "PREPEND_TO_MY_ASSETS_LIST";
+export const APPEND_TO_MY_ASSETS_LIST = "APPEND_TO_MY_ASSETS_LIST";
+export const REMOVE_FROM_MY_ASSETS_LIST = "REMOVE_FROM_MY_ASSETS_LIST";
 export const SET_MY_ASSETS_LIST = "SET_MY_ASSETS_LIST";
-export const SET_ACTION_ID_FOR_MY_ASSET = "SET_ACTION_ID_FOR_MY_ASSET";
+export const ADD_USER_ACTION = "ADD_USER_ACTION";
+export const UPDATE_USER_ACTION_STATUS = "UPDATE_USER_ACTION_STATUS";
 
 export function setAccount(account) {
   return { type: SET_ACCOUNT, account };
@@ -53,21 +55,26 @@ export function removeLandForSale(landForSale) {
   return { type: REMOVE_LAND_FOR_SALE, landForSale };
 }
 
-export function addToMyAssetsList(myAsset) {
-  return { type: ADD_TO_MY_ASSETS_LIST, myAsset };
+export function prependToMyAssetsList(myAsset) {
+  return { type: PREPEND_TO_MY_ASSETS_LIST, myAsset };
 }
 
-export function removeMyAssetFromList(myAsset) {
-  return { type: REMOVE_MY_ASSET_FROM_LIST, myAsset };
+export function appendToMyAssetsList(itemOrList) {
+  return { type: APPEND_TO_MY_ASSETS_LIST, itemOrList };
+}
+
+export function removeFromMyAssetsList(itemOrList) {
+  return { type: REMOVE_FROM_MY_ASSETS_LIST, itemOrList };
 }
 
 export function setMyAssetsList(myAssets) {
   return { type: SET_MY_ASSETS_LIST, myAssets };
 }
 
-export function setActionIdForMyAsset(myAssetId, actionId) {
-  return {
-    type: SET_ACTION_ID_FOR_MY_ASSET,
-    myAssetAndActionIds: { myAssetId, actionId },
-  };
+export function addUserAction(itemOrList) {
+  return { type: ADD_USER_ACTION, itemOrList };
+}
+
+export function updateUserActionStatus(actionIdAndStatus) {
+  return { type: UPDATE_USER_ACTION_STATUS, actionIdAndStatus };
 }

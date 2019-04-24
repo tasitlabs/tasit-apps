@@ -4,23 +4,26 @@ import {
   SET_ACCOUNT_CREATION_STATUS,
   UPDATE_ACTION_FOR_ACCOUNT_CREATION_STATUS,
   SET_ACCOUNT_CREATION_ACTIONS,
-  ADD_TO_MY_ASSETS_LIST,
-  REMOVE_MY_ASSET_FROM_LIST,
+  PREPEND_TO_MY_ASSETS_LIST,
+  APPEND_TO_MY_ASSETS_LIST,
+  REMOVE_FROM_MY_ASSETS_LIST,
   SET_MY_ASSETS_LIST,
-  SET_ACTION_ID_FOR_MY_ASSET,
+  ADD_USER_ACTION,
+  UPDATE_USER_ACTION_STATUS,
 } from "./actions";
 import {
   storeAccount,
   storeAccountCreationStatus,
   storeAccountCreationActions,
   storeMyAssets,
+  storeUserActions,
 } from "@helpers/storage";
 
 const storer = store => next => async action => {
   const { type } = action;
   const result = next(action);
   const nextState = store.getState();
-  const { accountInfo, myAssets } = nextState;
+  const { accountInfo, myAssets, userActions } = nextState;
   const { account, creationStatus, creationActions } = accountInfo;
   const { list: myAssetsList } = myAssets;
 
@@ -41,11 +44,15 @@ const storer = store => next => async action => {
       await storeAccountCreationActions(creationActions);
       break;
     }
-    case ADD_TO_MY_ASSETS_LIST: {
+    case PREPEND_TO_MY_ASSETS_LIST: {
       await storeMyAssets(myAssetsList);
       break;
     }
-    case REMOVE_MY_ASSET_FROM_LIST: {
+    case APPEND_TO_MY_ASSETS_LIST: {
+      await storeMyAssets(myAssetsList);
+      break;
+    }
+    case REMOVE_FROM_MY_ASSETS_LIST: {
       await storeMyAssets(myAssetsList);
       break;
     }
@@ -53,8 +60,12 @@ const storer = store => next => async action => {
       await storeMyAssets(myAssetsList);
       break;
     }
-    case SET_ACTION_ID_FOR_MY_ASSET: {
-      await storeMyAssets(myAssetsList);
+    case ADD_USER_ACTION: {
+      await storeUserActions(userActions);
+      break;
+    }
+    case UPDATE_USER_ACTION_STATUS: {
+      await storeUserActions(userActions);
       break;
     }
   }

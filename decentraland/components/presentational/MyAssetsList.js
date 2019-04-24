@@ -11,19 +11,26 @@ import LargeText from "@presentational/LargeText";
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
 export default class MyAssetsList extends React.PureComponent {
   render() {
-    const { myAssetsList, renderItem } = this.props;
-    const { length: listAmount } = myAssetsList;
+    const { myAssets, userActions, renderItem } = this.props;
+    const { length: listAmount } = myAssets;
+
+    const dataList = myAssets.map(asset => {
+      let userAction = userActions.find(action => action.assetId === asset.id);
+      return { asset, userAction };
+    });
+
     const withoutAssets = listAmount === 0;
+
     return withoutAssets ? (
       <View style={styles.emptyContainer}>
         <LargeText>{`You haven't bought any land yet.`}</LargeText>
       </View>
     ) : (
       <FlatList
-        data={myAssetsList}
+        data={dataList}
         style={styles.container}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.asset.id}
       />
     );
   }
@@ -31,7 +38,8 @@ export default class MyAssetsList extends React.PureComponent {
 
 MyAssetsList.propTypes = {
   renderItem: PropTypes.func.isRequired,
-  myAssetsList: PropTypes.array.isRequired,
+  myAssets: PropTypes.array.isRequired,
+  userActions: PropTypes.array.isRequired,
 };
 
 const styles = StyleSheet.create({

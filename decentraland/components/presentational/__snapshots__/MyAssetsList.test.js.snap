@@ -5,10 +5,17 @@ exports[`MyAssetsList renders the component with assets 1`] = `
   data={
     Array [
       Object {
-        "id": "123",
-        "img": "https://api.decentraland.org/v1/estates/1/map.png",
-        "name": "Sample Estate",
-        "type": "ESTATE",
+        "asset": Object {
+          "id": "123",
+          "img": "https://api.decentraland.org/v1/estates/1/map.png",
+          "name": "Sample Estate",
+          "type": "ESTATE",
+        },
+        "userAction": Object {
+          "actionId": "0x987654321098765432109876543210987654321",
+          "assetId": "123",
+          "status": "SUCCESSFUL",
+        },
       },
     ]
   }

@@ -9,112 +9,183 @@ import {
   UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS,
   SET_ACCOUNT_CREATION_ACTIONS,
   SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS,
-  ADD_TO_MY_ASSETS_LIST,
-  REMOVE_MY_ASSET_FROM_LIST,
+  PREPEND_TO_MY_ASSETS_LIST,
+  APPEND_TO_MY_ASSETS_LIST,
+  REMOVE_FROM_MY_ASSETS_LIST,
   SET_MY_ASSETS_LIST,
-  SET_ACTION_ID_FOR_MY_ASSET,
+  ADD_USER_ACTION,
+  UPDATE_USER_ACTION_STATUS,
 } from "./actions";
-import { removeFromList } from "@helpers";
+import { removeFromList, updateListItem, toListIfNot } from "@helpers";
 
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
 
-function accountInfo(
-  state = {
+// Reducing boilerplate from reducers
+// Refs: https://redux.js.org/recipes/structuring-reducers/refactoring-reducer-example#reducing-boilerplate
+function createReducer(initialState, handlers) {
+  return function reducer(state = initialState, action) {
+    if (handlers.hasOwnProperty(action.type)) {
+      return handlers[action.type](state, action);
+    } else {
+      return state;
+    }
+  };
+}
+
+//
+// accountInfo reducer
+//
+const setAccount = (state, action) => {
+  const { account } = action;
+  return { ...state, account };
+};
+const setAccountCreationStatus = (state, action) => {
+  const { creationStatus } = action;
+  return { ...state, creationStatus };
+};
+const updateActionIdForAccountCreationStatus = (state, action) => {
+  const { creationStatusAction } = action;
+  const { status, actionId } = creationStatusAction;
+  let { creationActions } = state;
+  creationActions = { ...creationActions, [status]: actionId };
+  return { ...state, creationActions };
+};
+const setAccountCreationActions = (state, action) => {
+  const { creationActions } = action;
+  return { ...state, creationActions };
+};
+
+const accountInfo = createReducer(
+  {
     account: null,
     creationStatus: NOT_STARTED,
     creationActions: {},
   },
-  action
-) {
-  const {
-    type,
-    account,
-    creationStatus,
-    creationStatusAction,
-    creationActions,
-  } = action;
-  switch (type) {
-    case SET_ACCOUNT:
-      return { ...state, account };
-    case SET_ACCOUNT_CREATION_STATUS:
-      return { ...state, creationStatus };
-    case UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS: {
-      const { status, actionId } = creationStatusAction;
-      let { creationActions } = state;
-      creationActions = { ...creationActions, [status]: actionId };
-      return { ...state, creationActions };
-    }
-    case SET_ACCOUNT_CREATION_ACTIONS: {
-      return { ...state, creationActions };
-    }
-    default:
-      return state;
+  {
+    [SET_ACCOUNT]: setAccount,
+    [SET_ACCOUNT_CREATION_STATUS]: setAccountCreationStatus,
+    [UPDATE_ACTION_ID_FOR_ACCOUNT_CREATION_STATUS]: updateActionIdForAccountCreationStatus,
+    [SET_ACCOUNT_CREATION_ACTIONS]: setAccountCreationActions,
   }
-}
+);
 
-function selectedLandToBuy(state = null, action) {
-  const { type, landForSale } = action;
-  switch (type) {
-    case SELECT_LAND_TO_BUY:
-      return landForSale;
-    default:
-      return state;
+//
+// landToBuy reducer
+//
+const selectLandToBuy = (state, action) => {
+  const { landForSale } = action;
+  return landForSale;
+};
+
+const landToBuy = createReducer(null, {
+  [SELECT_LAND_TO_BUY]: selectLandToBuy,
+});
+
+//
+// assetsForSale reducer
+//
+const prependLandForSaleToList = (state, action) => {
+  const { landForSale } = action;
+  return { ...state, list: [landForSale, ...state.list] };
+};
+
+const appendLandForSaleToList = (state, action) => {
+  const { landForSale } = action;
+  return { ...state, list: [...state.list, landForSale] };
+};
+
+const removeLandForSale = (state, action) => {
+  const { landForSale } = action;
+  let { list: assetsForSale } = state;
+  const list = removeFromList(assetsForSale, landForSale);
+  return { ...state, list };
+};
+
+const setLoadingAssetsForSaleInProgress = (state, action) => {
+  const { loadingInProgress } = action;
+  return { ...state, loadingInProgress };
+};
+
+const assetsForSale = createReducer(
+  { list: [], loadingInProgress: true },
+  {
+    [PREPEND_LAND_FOR_SALE_TO_LIST]: prependLandForSaleToList,
+    [APPEND_LAND_FOR_SALE_TO_LIST]: appendLandForSaleToList,
+    [REMOVE_LAND_FOR_SALE]: removeLandForSale,
+    [SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS]: setLoadingAssetsForSaleInProgress,
   }
-}
+);
 
-function assetsForSale(state = { list: [], loadingInProgress: true }, action) {
-  const { type, landForSale, loadingInProgress } = action;
-  switch (type) {
-    case PREPEND_LAND_FOR_SALE_TO_LIST:
-      return { ...state, list: [landForSale, ...state.list] };
-    case APPEND_LAND_FOR_SALE_TO_LIST:
-      return { ...state, list: [...state.list, landForSale] };
-    case REMOVE_LAND_FOR_SALE: {
-      let { list: assetsForSale } = state;
-      const list = removeFromList(assetsForSale, landForSale);
-      return { ...state, list };
-    }
-    case SET_LOADING_ASSETS_FOR_SALE_IN_PROGRESS:
-      return { ...state, loadingInProgress };
-    default:
-      return state;
+//
+// myAssets reducer
+//
+const prependToMyAssetsList = (state, action) => {
+  const { myAsset } = action;
+  return { ...state, list: [myAsset, ...state.list] };
+};
+
+const appendToMyAssetsList = (state, action) => {
+  const { itemOrList } = action;
+  const toAppend = toListIfNot(itemOrList);
+  return { ...state, list: [...state.list, ...toAppend] };
+};
+
+const removeFromMyAssetsList = (state, action) => {
+  const { itemOrList } = action;
+  const { list: myAssets } = state;
+  const toRemove = itemOrList;
+  const list = removeFromList(myAssets, toRemove);
+  return { ...state, list };
+};
+
+const setMyAssetsList = (state, action) => {
+  const { myAssets } = action;
+  const list = myAssets === null ? [] : myAssets;
+  return { ...state, list };
+};
+
+const myAssets = createReducer(
+  { list: [] },
+  {
+    [PREPEND_TO_MY_ASSETS_LIST]: prependToMyAssetsList,
+    [APPEND_TO_MY_ASSETS_LIST]: appendToMyAssetsList,
+    [REMOVE_FROM_MY_ASSETS_LIST]: removeFromMyAssetsList,
+    [SET_MY_ASSETS_LIST]: setMyAssetsList,
   }
-}
+);
 
-function myAssets(state = { list: [] }, action) {
-  const { type, myAsset, myAssets, myAssetAndActionIds } = action;
-  switch (type) {
-    case ADD_TO_MY_ASSETS_LIST:
-      return { ...state, list: [myAsset, ...state.list] };
-    case REMOVE_MY_ASSET_FROM_LIST: {
-      const { list: myAssets } = state;
-      const list = removeFromList(myAssets, myAsset);
-      return { ...state, list };
-    }
-    case SET_MY_ASSETS_LIST: {
-      const list = myAssets === null ? [] : myAssets;
-      return { ...state, list };
-    }
-    case SET_ACTION_ID_FOR_MY_ASSET: {
-      const { myAssetId: toUpdateId, actionId } = myAssetAndActionIds;
-      const { list: myAssets } = state;
-      const list = myAssets.map(asset => {
-        if (asset.id === toUpdateId) return { ...asset, actionId };
-        else return asset;
-      });
-      return { ...state, list };
-    }
-    default:
-      return state;
-  }
-}
+//
+// userActions reducer
+//
+const addUserAction = (state, action) => {
+  const { itemOrList } = action;
+  const toAppend = toListIfNot(itemOrList);
+  return [...state, ...toAppend];
+};
 
+const updateUserActionStatus = (state, action) => {
+  const { actionIdAndStatus } = action;
+  const { actionId: toUpdateId, status } = actionIdAndStatus;
+  const entriesToUpdate = { status };
+  const list = updateListItem(state, toUpdateId, entriesToUpdate);
+  return list;
+};
+
+const userActions = createReducer([], {
+  [ADD_USER_ACTION]: addUserAction,
+  [UPDATE_USER_ACTION_STATUS]: updateUserActionStatus,
+});
+
+//
+// All reducers
+//
 const decentralandApp = combineReducers({
   accountInfo,
-  selectedLandToBuy,
+  landToBuy,
   assetsForSale,
   myAssets,
+  userActions,
 });
 
 export default decentralandApp;
