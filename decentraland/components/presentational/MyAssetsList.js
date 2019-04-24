@@ -15,8 +15,7 @@ export default class MyAssetsList extends React.PureComponent {
     const { length: listAmount } = myAssets;
 
     const flatUserActions = Object.entries(userActions).map(userAction => {
-      const actionId = userAction[0];
-      const userActionProps = userAction[1];
+      const [actionId, userActionProps] = userAction;
       return { actionId, ...userActionProps };
     });
 
