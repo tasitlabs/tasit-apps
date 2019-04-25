@@ -12,9 +12,10 @@ exports[`MyAssetsList renders the component with assets 1`] = `
           "type": "ESTATE",
         },
         "userAction": Object {
-          "actionId": "0x987654321098765432109876543210987654321",
-          "assetId": "123",
-          "status": "SUCCESSFUL",
+          "0x987654321098765432109876543210987654321": Object {
+            "assetId": "123",
+            "status": "SUCCESSFUL",
+          },
         },
       },
     ]
