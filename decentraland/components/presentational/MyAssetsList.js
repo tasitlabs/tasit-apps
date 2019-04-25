@@ -24,9 +24,17 @@ export default class MyAssetsList extends React.PureComponent {
     });
 
     const dataList = myAssets.map(asset => {
-      let userAction = flatUserActions.find(
+      const flatUserAction = flatUserActions.find(
         action => action.assetId === asset.id
       );
+
+      let userAction;
+
+      if (flatUserAction) {
+        const { actionId } = flatUserAction;
+        userAction = { [actionId]: { ...userActions[actionId] } };
+      }
+
       return { asset, userAction };
     });
 
