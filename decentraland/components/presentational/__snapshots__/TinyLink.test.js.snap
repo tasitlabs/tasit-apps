@@ -10,7 +10,7 @@ exports[`TinyLink renders the component 1`] = `
       Object {
         "color": "#2196f3",
         "fontSize": 30.595932917809698,
-        "padding": 26.68,
+        "padding": 13.34,
         "textAlign": "center",
       }
     }

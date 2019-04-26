@@ -35,7 +35,7 @@ TinyLink.propTypes = {
 
 const styles = StyleSheet.create({
   text: {
-    padding: responsiveHeight(2),
+    padding: responsiveHeight(1),
     fontSize: responsiveFontSize(2),
     textAlign: "center",
     color: Colors.linkColor,
