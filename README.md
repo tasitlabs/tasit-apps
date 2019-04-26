@@ -140,7 +140,7 @@ We love getting feedback, so please feel free to reach out.
 
 - [tasit.io](https://tasit.io/)
 
-- [@TasitLabs](https://twitter.com/tasitlabs) on Twitter
+- [@TasitProject](https://twitter.com/TasitProject) on Twitter
 
 - [Telegram](https://t.me/tasitlabs)
 
