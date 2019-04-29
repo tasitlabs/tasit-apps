@@ -8,7 +8,7 @@ The Decentraland app is also serving as our first demo app for using the Tasit S
 
 The app is built using React Native, Expo, React Navigation, Prettier, Babel, and the Tasit SDK.
 
-##### Getting started
+### Getting started
 
 ```
 git clone https://github.com/tasitlabs/tasit.git
@@ -18,32 +18,42 @@ npm i
 npm start
 ```
 
-##### Screenshots
+### Screenshots
 
 <div align="left">
   <img src="./assets/screenshots/ListLand.png" width="200" />
 </div>
 
+---
+
 <div align="left">
   <img src="./assets/screenshots/BuyLand.png" width="200" />
 </div>
+
+---
 
 <div align="left">
   <img src="./assets/screenshots/StartSetup.png" width="200" />
 </div>
 
+---
+
 <div align="left">
   <img src="./assets/screenshots/PickUsername.png" width="200" />
 </div>
+
+---
 
 <div align="left">
   <img src="./assets/screenshots/MyProfile.png" width="200" />
 </div>
 
+---
+
 <div align="left">
   <img src="./assets/screenshots/MyLand.png" width="200" />
 </div>
 
-##### More info
+### More info
 
 [More info here!](https://github.com/tasitlabs/tasit)
