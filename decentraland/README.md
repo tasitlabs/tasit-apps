@@ -1,6 +1,6 @@
-# Tasit Decentraland
+# Decentraland by Tasit
 
-This folder is the home for the Tasit Decentraland app.
+This folder is the home for the Decentraland by Tasit app.
 
 You can use this app to buy parcels of Decentraland land from a standalone native mobile app.
 
@@ -17,6 +17,32 @@ cd decentraland
 npm i
 npm start
 ```
+
+##### Screenshots
+
+<div align="left">
+  <img src="/assets/screenshots/ListLand.png" width="200" />
+</div>
+
+<div align="left">
+  <img src="/assets/screenshots/BuyLand.png" width="200" />
+</div>
+
+<div align="left">
+  <img src="/assets/screenshots/StartSetup.png" width="200" />
+</div>
+
+<div align="left">
+  <img src="/assets/screenshots/PickUsername.png" width="200" />
+</div>
+
+<div align="left">
+  <img src="/assets/screenshots/MyProfile.png" width="200" />
+</div>
+
+<div align="left">
+  <img src="/assets/screenshots/MyLand.png" width="200" />
+</div>
 
 ##### More info
 
