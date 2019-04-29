@@ -4,19 +4,20 @@ exports[`MyProfileCreationStatusItem renders the component with done status 1`] 
 <Component
   style={
     Object {
-      "alignItems": "flex-start",
+      "alignItems": "center",
       "backgroundColor": "white",
       "flexDirection": "row",
-      "height": 80.03999999999999,
+      "flexWrap": "wrap",
       "justifyContent": "flex-start",
-      "marginTop": 13.34,
+      "marginTop": 26.68,
+      "width": 487.5,
     }
   }
 >
   <Icon
     allowFontScaling={false}
     name="md-checkmark"
-    size={18}
+    size={36.71511950137163}
     style={
       Object {
         "fontWeight": "800",
@@ -26,7 +27,7 @@ exports[`MyProfileCreationStatusItem renders the component with done status 1`] 
   <Component
     style={
       Object {
-        "fontSize": 21,
+        "fontSize": 42.83430608493357,
         "fontWeight": "800",
         "marginLeft": 37.5,
       }
@@ -41,19 +42,20 @@ exports[`MyProfileCreationStatusItem renders the component with missing status 1
 <Component
   style={
     Object {
-      "alignItems": "flex-start",
+      "alignItems": "center",
       "backgroundColor": "white",
       "flexDirection": "row",
-      "height": 80.03999999999999,
+      "flexWrap": "wrap",
       "justifyContent": "flex-start",
-      "marginTop": 13.34,
+      "marginTop": 26.68,
+      "width": 487.5,
     }
   }
 >
   <Icon
     allowFontScaling={false}
     name="ios-close"
-    size={30}
+    size={61.191865835619396}
     style={
       Object {
         "fontWeight": "800",
@@ -63,7 +65,7 @@ exports[`MyProfileCreationStatusItem renders the component with missing status 1
   <Component
     style={
       Object {
-        "fontSize": 21,
+        "fontSize": 42.83430608493357,
         "fontWeight": "800",
         "marginLeft": 37.5,
       }
@@ -78,19 +80,20 @@ exports[`MyProfileCreationStatusItem renders the component with pending status 1
 <Component
   style={
     Object {
-      "alignItems": "flex-start",
+      "alignItems": "center",
       "backgroundColor": "white",
       "flexDirection": "row",
-      "height": 80.03999999999999,
+      "flexWrap": "wrap",
       "justifyContent": "flex-start",
-      "marginTop": 13.34,
+      "marginTop": 26.68,
+      "width": 487.5,
     }
   }
 >
   <Icon
     allowFontScaling={false}
     name="md-clock"
-    size={30}
+    size={61.191865835619396}
     style={
       Object {
         "fontWeight": "800",
@@ -100,7 +103,7 @@ exports[`MyProfileCreationStatusItem renders the component with pending status 1
   <Component
     style={
       Object {
-        "fontSize": 21,
+        "fontSize": 42.83430608493357,
         "fontWeight": "800",
         "marginLeft": 37.5,
       }

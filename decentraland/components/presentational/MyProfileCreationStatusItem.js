@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import {
   responsiveHeight,
   responsiveWidth,
+  responsiveFontSize,
 } from "react-native-responsive-dimensions";
 import ActionStatus from "@constants/ActionStatus";
 
@@ -18,7 +19,7 @@ export default function MyProfileCreationStatusItem({ name, status }) {
   );
 }
 
-const ICON_SIZE = 30;
+const ICON_SIZE = responsiveFontSize(4);
 const FONT_SIZE = (ICON_SIZE * 7) / 10;
 
 function renderIcon(status) {
@@ -56,12 +57,13 @@ MyProfileCreationStatusItem.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
+    flexWrap: "wrap",
     flexDirection: "row",
     backgroundColor: Colors.backgroundColor,
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "flex-start",
-    marginTop: responsiveHeight(1),
-    height: responsiveHeight(6),
+    marginTop: responsiveHeight(2),
+    width: responsiveWidth(65),
   },
   actionStatusIcon: {
     fontWeight: "800",
