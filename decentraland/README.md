@@ -22,19 +22,13 @@ npm start
 
 <div align="left">
   <img src="./assets/screenshots/ListLand.png" width="200" />
-  <img src="./assets/screenshots/BuyLand.png" width="200" />
   <img src="./assets/screenshots/StartSetup.png" width="200" />
-</div>
-
-<div align="left">
   <img src="./assets/screenshots/PickUsername.png" width="200" />
 </div>
 
 <div align="left">
+  <img src="./assets/screenshots/BuyLand.png" width="200" />
   <img src="./assets/screenshots/MyProfile.png" width="200" />
-</div>
-
-<div align="left">
   <img src="./assets/screenshots/MyLand.png" width="200" />
 </div>
 
