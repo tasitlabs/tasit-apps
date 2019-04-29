@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     marginTop: responsiveHeight(2),
-    // height: responsiveHeight(FONT_SIZE),
     width: responsiveWidth(65),
   },
   actionStatusIcon: {
