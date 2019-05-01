@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EthereumSignIn renders the component 1`] = `
+<EthereumSignIn
+  onConnect={[Function]}
+/>
+`;

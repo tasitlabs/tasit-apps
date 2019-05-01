@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandForSaleInfo LandForSalePrice renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "flex-end",
+    }
+  }
+>
+  <Component>
+    <Styled(Button)
+      onPress={[Function]}
+      small={true}
+      transparent={true}
+    >
+      <Styled(Icon)
+        name="information-circle-outline"
+        style={
+          Object {
+            "marginLeft": 11.25,
+            "marginRight": 11.25,
+          }
+        }
+      />
+    </Styled(Button)>
+  </Component>
+  <Component>
+    <Component
+      style={
+        Object {
+          "color": "#2B2B2B",
+          "fontSize": 61.191865835619396,
+          "fontWeight": "bold",
+          "paddingTop": 5.336,
+        }
+      }
+    >
+      0
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`LandForSaleInfo renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <AssetName
+      name="Sample Estate"
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <ManaPrice
+      price="0"
+    />
+  </Component>
+</Component>
+`;

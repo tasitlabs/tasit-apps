@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders the component default button 1`] = `
+<Button
+  activeOpacity={1}
+  containerStyle={
+    Object {
+      "backgroundColor": "#2196f3",
+      "borderRadius": 3,
+      "overflow": "hidden",
+      "padding": 20.009999999999998,
+    }
+  }
+  onPress={[Function]}
+  style={
+    Object {
+      "color": "white",
+      "fontSize": 27.53633962602873,
+    }
+  }
+>
+  ENABLED BUTTON
+</Button>
+`;
+
+exports[`Button renders the component disabled button 1`] = `
+<Button
+  activeOpacity={1}
+  containerStyle={
+    Object {
+      "backgroundColor": "gray",
+      "borderRadius": 3,
+      "overflow": "hidden",
+      "padding": 20.009999999999998,
+    }
+  }
+  onPress={[Function]}
+  style={
+    Object {
+      "color": "white",
+      "fontSize": 27.53633962602873,
+    }
+  }
+>
+  DISABLED BUTTON
+</Button>
+`;

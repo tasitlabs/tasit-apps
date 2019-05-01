@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListLandForSaleScreen renders the component with assets 1`] = `
+<MyAssetsList
+  myAssets={
+    Array [
+      Object {
+        "id": "0123456789",
+        "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+        "name": "Sample Parcel",
+        "type": "PARCEL",
+      },
+    ]
+  }
+  renderItem={[Function]}
+  userActions={
+    Object {
+      "0x1234567890123456789012345678901234567890": Object {
+        "assetId": "0123456789",
+        "status": "SUCCESSFUL",
+      },
+    }
+  }
+/>
+`;
+
+exports[`ListLandForSaleScreen renders the component without assets 1`] = `
+<MyAssetsList
+  myAssets={Array []}
+  renderItem={[Function]}
+  userActions={Object {}}
+/>
+`;

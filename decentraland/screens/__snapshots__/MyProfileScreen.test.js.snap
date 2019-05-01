@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyProfileScreen renders the component funding with ethers 1`] = `
+<MyProfile
+  creationSteps={
+    Array [
+      Object {
+        "creationStatus": "GENERATING_ACCOUNT",
+        "name": "Account created",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+      Object {
+        "creationStatus": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+    ]
+  }
+  progress={0.5}
+/>
+`;
+
+exports[`MyProfileScreen renders the component funding with ethers with null action (used when action is unknown) 1`] = `
+<MyProfile
+  creationSteps={
+    Array [
+      Object {
+        "creationStatus": "GENERATING_ACCOUNT",
+        "name": "Account created",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+      Object {
+        "creationStatus": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+    ]
+  }
+  progress={0.5}
+/>
+`;
+
+exports[`MyProfileScreen renders the component funding with mana AND approving marketplace 1`] = `
+<MyProfile
+  creationSteps={
+    Array [
+      Object {
+        "creationStatus": "GENERATING_ACCOUNT",
+        "name": "Account created",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "percentage": 0.25,
+        "status": "done",
+      },
+      Object {
+        "creationStatus": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "percentage": 0.25,
+        "status": "done",
+      },
+    ]
+  }
+  progress={1}
+/>
+`;
+
+exports[`MyProfileScreen renders the component initial state (without account) 1`] = `
+<MyProfile
+  creationSteps={
+    Array [
+      Object {
+        "creationStatus": "GENERATING_ACCOUNT",
+        "name": "Account created",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_ETH",
+        "name": "Funded with ETH",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+      Object {
+        "creationStatus": "FUNDING_WITH_MANA",
+        "name": "Funded with MANA tokens",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+      Object {
+        "creationStatus": "APPROVING_MARKETPLACE",
+        "name": "Linked to marketplace",
+        "percentage": 0.25,
+        "status": "missing",
+      },
+    ]
+  }
+  progress={0}
+/>
+`;

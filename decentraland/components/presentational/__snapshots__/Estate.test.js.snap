@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Estate renders the component 1`] = `
+<Fragment>
+  <Component
+    source={
+      Object {
+        "uri": "https://api.decentraland.org/v1/estates/1/map.png",
+      }
+    }
+    style={
+      Object {
+        "height": 266.8,
+        "width": 712.5,
+      }
+    }
+  />
+</Fragment>
+`;
