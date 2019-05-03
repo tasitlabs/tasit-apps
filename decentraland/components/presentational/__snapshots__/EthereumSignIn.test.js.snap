@@ -24,7 +24,7 @@ exports[`EthereumSignIn renders the component 1`] = `
   >
     <Button
       onPress={[Function]}
-      title="Connect with WalletConnect"
+      title="Connect with wallet"
     />
   </Component>
 </Component>
