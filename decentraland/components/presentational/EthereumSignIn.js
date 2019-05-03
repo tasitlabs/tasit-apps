@@ -11,7 +11,7 @@ export default function EthereumSignIn(props) {
     <View style={styles.container}>
       <LargeText>{`Cool. Let's start by hooking this app with your wallet.`}</LargeText>
       <View style={styles.buttonView}>
-        <Button title="Connect with WalletConnect" onPress={props.onConnect} />
+        <Button title="Connect with wallet" onPress={props.onConnect} />
       </View>
     </View>
   );
