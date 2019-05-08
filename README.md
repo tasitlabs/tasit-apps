@@ -17,9 +17,9 @@ This entails a different, simpler onboarding flow in an environment without Meta
 
 Development of the Tasit apps is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative.
 
-This project is open-source and in need of additional funding to sustain work on it. If you're able to contribute, please consider sending ETH or DAI to our project's vault address:
+This project is open-source and in need of additional funding to sustain work on it. If you're able to contribute, please consider [supporting the project on Gitcoin Grants](https://gitcoin.co/grants/105/tasit-mobile-ethereum-dapps) or sending ETH or DAI to the Tasit project's vault address:
 
-[0xd25def1db4f994e2800e438ebb29eae300d56151](https://etherscan.io/address/0xd25def1db4f994e2800e438ebb29eae300d56151)
+`0xd25def1db4f994e2800e438ebb29eae300d56151` ([Etherscan](https://etherscan.io/address/0xd25def1db4f994e2800e438ebb29eae300d56151))
 
 The Tasit apps are built with [the Tasit SDK](https://github.com/tasitlabs/TasitSDK), a JavaScript SDK that empowers developers to create their own native Ethereum dapps.
 
