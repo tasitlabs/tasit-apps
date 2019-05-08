@@ -20,6 +20,7 @@ exports[`LandForSaleInfo LandForSalePrice renders the component 1`] = `
         name="information-circle-outline"
         style={
           Object {
+            "color": undefined,
             "marginLeft": 11.25,
             "marginRight": 11.25,
           }
@@ -31,7 +32,7 @@ exports[`LandForSaleInfo LandForSalePrice renders the component 1`] = `
     <Component
       style={
         Object {
-          "color": "#2B2B2B",
+          "color": "#CCCCCC",
           "fontSize": 61.191865835619396,
           "fontWeight": "bold",
           "paddingTop": 5.336,

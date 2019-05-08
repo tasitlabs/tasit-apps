@@ -11,7 +11,7 @@ exports[`AssetName renders the component asset with name 1`] = `
   <Component
     style={
       Object {
-        "color": "#2B2B2B",
+        "color": "#CCCCCC",
         "fontWeight": "bold",
       }
     }
@@ -32,7 +32,7 @@ exports[`AssetName renders the component asset without name 1`] = `
   <Component
     style={
       Object {
-        "color": "#2B2B2B",
+        "color": "#CCCCCC",
         "fontWeight": "bold",
       }
     }

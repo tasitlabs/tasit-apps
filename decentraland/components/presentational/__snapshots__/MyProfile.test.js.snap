@@ -5,7 +5,7 @@ exports[`MyProfile renders the component 1`] = `
   style={
     Object {
       "alignItems": "flex-start",
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flex": 1,
       "flexDirection": "column",
       "justifyContent": "flex-start",

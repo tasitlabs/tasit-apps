@@ -28,7 +28,7 @@ exports[`MyProfileProgress renders the component 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flex": 1,
       "flexDirection": "column",
       "justifyContent": "flex-start",
@@ -45,12 +45,12 @@ exports[`MyProfileProgress renders the component 1`] = `
     animationType="spring"
     borderRadius={0}
     borderWidth={0}
-    color="#2196f3"
+    color="#07FFC2"
     height={13.34}
     indeterminate={false}
     indeterminateAnimationDuration={1000}
     progress={0.5}
-    unfilledColor="gray"
+    unfilledColor="#CCCCCC"
     useNativeDriver={false}
     width={750}
   />

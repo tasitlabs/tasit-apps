@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   },
   actionText: {
     fontSize: FONT_SIZE,
+    color: Colors.textColor,
     fontWeight: "800",
     marginLeft: responsiveWidth(5),
   },

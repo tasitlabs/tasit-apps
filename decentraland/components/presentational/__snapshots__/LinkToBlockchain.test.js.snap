@@ -18,7 +18,7 @@ exports[`LinkToBlockchain renders the component valid action 1`] = `
     primary={true}
     style={
       Object {
-        "color": "#2196f3",
+        "color": "#07FFC2",
       }
     }
   />

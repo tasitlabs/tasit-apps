@@ -8,7 +8,7 @@ exports[`EthereumSignUp renders the component 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flex": 1,
       "justifyContent": "center",
     }
