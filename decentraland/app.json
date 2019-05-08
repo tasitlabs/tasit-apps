@@ -15,7 +15,8 @@
       "backgroundColor": "#ffffff"
     },
     "packagerOpts": {
-      "config": "rn-cli.config.js"
+      "projectRoots": "",
+      "config": "metro.config.js"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
