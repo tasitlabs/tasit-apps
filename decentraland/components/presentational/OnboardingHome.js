@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "./LargeText";
 import TinyLink from "./TinyLink";
-import Button from "./Button";
+import Button from "@shared-presentational/Button";
 import Colors from "@constants/Colors";
 
 export default function OnboardingHome(props) {

@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "./LargeText";
-import Button from "./Button";
+import Button from "@shared-presentational/Button";
 import Colors from "@constants/Colors";
 
 export default function EthereumQuestion(props) {

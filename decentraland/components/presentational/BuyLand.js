@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import PropTypes from "prop-types";
 import LandForSale from "./LandForSale";
-import Button from "./Button";
+import Button from "@shared-presentational/Button";
 import AccountCreationProgress from "./AccountCreationProgress";
 import Colors from "@constants/Colors";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
