@@ -2,7 +2,7 @@ import React from "react";
 import NavigationTestUtils from "react-navigation/NavigationTestUtils";
 import { shallow } from "enzyme";
 import EthereumSignUpForm from "./EthereumSignUpForm";
-import { TextInputField } from "./EthereumSignUpForm";
+import { UsernameTextInput } from "./EthereumSignUpForm";
 
 describe("EthereumSignUpForm", () => {
   jest.useFakeTimers();
@@ -28,12 +28,12 @@ describe("EthereumSignUpForm", () => {
     expect(onSignUp.mock.calls.length).toBe(1);
   });
 
-  describe("TextInputField", () => {
+  describe("UsernameTextInput", () => {
     it("renders the component", async () => {
       const handleUsername = () => {};
       expect(
         shallow(
-          <TextInputField username="test4" handleUsername={handleUsername} />
+          <UsernameTextInput username="test4" handleUsername={handleUsername} />
         )
       ).toMatchSnapshot();
     });

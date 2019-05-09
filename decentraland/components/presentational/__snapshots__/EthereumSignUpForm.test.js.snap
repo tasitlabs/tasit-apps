@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EthereumSignUpForm TextInputField renders the component 1`] = `
+exports[`EthereumSignUpForm UsernameTextInput renders the component 1`] = `
 <TextInput
   allowFontScaling={true}
   autoCapitalize="none"
@@ -41,7 +41,7 @@ exports[`EthereumSignUpForm renders the component 1`] = `
         }
       }
     >
-      <TextInputField
+      <UsernameTextInput
         handleUsername={[Function]}
         username=""
       />

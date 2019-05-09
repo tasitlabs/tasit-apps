@@ -25,7 +25,7 @@ export default class EthereumSignUpForm extends React.Component {
       <React.Fragment>
         <View style={styles.userRow}>
           <View style={styles.userInputView}>
-            <TextInputField
+            <UsernameTextInput
               handleUsername={this.handleUsername}
               username={this.state.username}
             />
@@ -39,7 +39,7 @@ export default class EthereumSignUpForm extends React.Component {
   }
 }
 
-export function TextInputField({ handleUsername, username }) {
+export function UsernameTextInput({ handleUsername, username }) {
   return (
     <TextInput
       autoCorrect={false}
@@ -55,7 +55,7 @@ export function TextInputField({ handleUsername, username }) {
   );
 }
 
-TextInputField.propTypes = {
+UsernameTextInput.propTypes = {
   handleUsername: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 };
