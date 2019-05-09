@@ -1,9 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LandForSaleList renders the component after having loaded an empty list 1`] = `
-<LargeText>
-  There isn't any land for sale right now.
-</LargeText>
+<Component
+  style={
+    Object {
+      "backgroundColor": "black",
+      "flex": 1,
+    }
+  }
+>
+  <LargeText>
+    There isn't any land for sale right now.
+  </LargeText>
+</Component>
 `;
 
 exports[`LandForSaleList renders the component when list is empty and the loading is in progress 1`] = `
@@ -20,7 +29,7 @@ exports[`LandForSaleList renders the component when list is empty and the loadin
   scrollEventThrottle={50}
   style={
     Object {
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flex": 1,
     }
   }

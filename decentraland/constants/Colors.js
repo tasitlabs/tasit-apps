@@ -1,20 +1,28 @@
 const WHITE = "white";
 const GRAY = "gray";
-const SECONDARY_APP_COLOR = GRAY;
-const APP_BLUE = "#2196f3";
-const TEXT_COLOR = SECONDARY_APP_COLOR;
+const GRAY_LIGHT = "#CCCCCC";
+const GRAY_UNKNOWN = "#868686";
+const GRAY_DARK = "#2B2B2B";
+const BLACK = "black";
+const TEXT_COLOR = GRAY_LIGHT;
+const MAIN_GREEN = "#07FFC2";
+const MAIN_PURPLE = "#714ADD";
 
 export default {
-  backgroundColor: WHITE,
+  backgroundColor: BLACK,
   textColor: TEXT_COLOR,
+  placeholderTextColor: GRAY,
   progressColor: TEXT_COLOR,
-  headerBackgroundColor: WHITE,
-  buttonColor: WHITE,
-  buttonBackground: APP_BLUE,
-  disabledButtonColor: WHITE,
+  headerBackgroundColor: BLACK,
+  buttonTextColor: BLACK,
+  buttonBackground: MAIN_GREEN,
+  disabledButtonTextColor: WHITE,
   disabledButtonBackground: GRAY,
-  loadingColor: APP_BLUE,
-  assetInfoText: "#2B2B2B",
-  assetInfoIcon: "#868686",
-  linkColor: APP_BLUE,
+  selection: MAIN_GREEN,
+  formBackground: GRAY_DARK,
+  icons: MAIN_PURPLE,
+  loadingColor: MAIN_GREEN,
+  assetInfoText: GRAY_LIGHT,
+  assetInfoIcon: GRAY_UNKNOWN,
+  linkColor: MAIN_GREEN,
 };

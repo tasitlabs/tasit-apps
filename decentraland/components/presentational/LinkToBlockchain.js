@@ -44,7 +44,7 @@ export default function LinkToBlockchain({ actionId }) {
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.touchable}>
-      <Icon name="eye" primary style={styles.icon} />
+      <Icon name="eye" style={styles.icon} />
     </TouchableOpacity>
   );
 }
@@ -53,6 +53,8 @@ LinkToBlockchain.propTypes = {
   actionId: PropTypes.string,
 };
 
+// TODO: Determine why the eye icon isn't showing up
+// after the color changes
 const styles = StyleSheet.create({
   touchable: {
     flexDirection: "column",

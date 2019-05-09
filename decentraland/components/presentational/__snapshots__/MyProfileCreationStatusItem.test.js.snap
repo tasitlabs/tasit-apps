@@ -5,7 +5,7 @@ exports[`MyProfileCreationStatusItem renders the component with done status 1`] 
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flexDirection": "row",
       "flexWrap": "wrap",
       "justifyContent": "flex-start",
@@ -20,6 +20,7 @@ exports[`MyProfileCreationStatusItem renders the component with done status 1`] 
     size={36.71511950137163}
     style={
       Object {
+        "color": "#714ADD",
         "fontWeight": "800",
       }
     }
@@ -27,6 +28,7 @@ exports[`MyProfileCreationStatusItem renders the component with done status 1`] 
   <Component
     style={
       Object {
+        "color": "#CCCCCC",
         "fontSize": 42.83430608493357,
         "fontWeight": "800",
         "marginLeft": 37.5,
@@ -43,7 +45,7 @@ exports[`MyProfileCreationStatusItem renders the component with missing status 1
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flexDirection": "row",
       "flexWrap": "wrap",
       "justifyContent": "flex-start",
@@ -58,6 +60,7 @@ exports[`MyProfileCreationStatusItem renders the component with missing status 1
     size={61.191865835619396}
     style={
       Object {
+        "color": "#714ADD",
         "fontWeight": "800",
       }
     }
@@ -65,6 +68,7 @@ exports[`MyProfileCreationStatusItem renders the component with missing status 1
   <Component
     style={
       Object {
+        "color": "#CCCCCC",
         "fontSize": 42.83430608493357,
         "fontWeight": "800",
         "marginLeft": 37.5,
@@ -81,7 +85,7 @@ exports[`MyProfileCreationStatusItem renders the component with pending status 1
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "white",
+      "backgroundColor": "black",
       "flexDirection": "row",
       "flexWrap": "wrap",
       "justifyContent": "flex-start",
@@ -96,6 +100,7 @@ exports[`MyProfileCreationStatusItem renders the component with pending status 1
     size={61.191865835619396}
     style={
       Object {
+        "color": "#714ADD",
         "fontWeight": "800",
       }
     }
@@ -103,6 +108,7 @@ exports[`MyProfileCreationStatusItem renders the component with pending status 1
   <Component
     style={
       Object {
+        "color": "#CCCCCC",
         "fontSize": 42.83430608493357,
         "fontWeight": "800",
         "marginLeft": 37.5,

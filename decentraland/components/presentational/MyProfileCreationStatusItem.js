@@ -67,9 +67,11 @@ const styles = StyleSheet.create({
   },
   actionStatusIcon: {
     fontWeight: "800",
+    color: Colors.icons,
   },
   actionText: {
     fontSize: FONT_SIZE,
+    color: Colors.textColor,
     fontWeight: "800",
     marginLeft: responsiveWidth(5),
   },

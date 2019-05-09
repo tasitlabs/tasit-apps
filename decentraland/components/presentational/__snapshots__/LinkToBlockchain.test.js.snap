@@ -15,10 +15,9 @@ exports[`LinkToBlockchain renders the component valid action 1`] = `
 >
   <Styled(Icon)
     name="eye"
-    primary={true}
     style={
       Object {
-        "color": "#2196f3",
+        "color": "#07FFC2",
       }
     }
   />
