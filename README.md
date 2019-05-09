@@ -43,25 +43,15 @@ You might want to jump ahead to the "why" section to start:
 
 ### Decentraland by Tasit
 
-##### Screenshots
-
 <div align="left">
   <img src="./decentraland/assets/screenshots/ListLand.png" width="200" />
   <img src="./decentraland/assets/screenshots/BuyLand.png" width="200" />
   <img src="./decentraland/assets/screenshots/MyLand.png" width="200" />
 </div>
 
-##### Description
+Our first production app is called `Decentraland by Tasit`. [Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
 
-Our first production app is called `Decentraland by Tasit`.
-
-[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
-
-This is the first Tasit app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects.
-
-This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
-
-##### Review the code
+This is the first Tasit app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects. This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
 
