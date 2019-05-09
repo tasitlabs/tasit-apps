@@ -30,10 +30,10 @@ describe("EthereumSignUpForm", () => {
 
   describe("UsernameTextInput", () => {
     it("renders the component", async () => {
-      const handleUsername = () => {};
+      const onChangeUsername = () => {};
       expect(
         shallow(
-          <UsernameTextInput username="test4" handleUsername={handleUsername} />
+          <UsernameTextInput username="test4" onChange={onChangeUsername} />
         )
       ).toMatchSnapshot();
     });

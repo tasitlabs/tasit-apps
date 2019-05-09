@@ -16,7 +16,7 @@ export default class EthereumSignUpForm extends React.Component {
     this.state = { username: "" };
   }
 
-  handleUsername = username => this.setState({ username });
+  onUsernameChange = username => this.setState({ username });
 
   render() {
     const { onSignUp } = this.props;
@@ -26,7 +26,7 @@ export default class EthereumSignUpForm extends React.Component {
         <View style={styles.userRow}>
           <View style={styles.userInputView}>
             <UsernameTextInput
-              handleUsername={this.handleUsername}
+              onChange={this.onUsernameChange}
               username={this.state.username}
             />
           </View>
@@ -39,13 +39,13 @@ export default class EthereumSignUpForm extends React.Component {
   }
 }
 
-export function UsernameTextInput({ handleUsername, username }) {
+export function UsernameTextInput({ onChange, username }) {
   return (
     <TextInput
       autoCorrect={false}
       autoCapitalize="none"
       style={styles.userInput}
-      onChangeText={handleUsername}
+      onChangeText={onChange}
       value={username}
       placeholder="username"
       placeholderTextColor={Colors.placeholderTextColor}
@@ -56,7 +56,7 @@ export function UsernameTextInput({ handleUsername, username }) {
 }
 
 UsernameTextInput.propTypes = {
-  handleUsername: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 };
 
