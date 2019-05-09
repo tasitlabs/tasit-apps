@@ -8,7 +8,18 @@ module.exports = {
   projectRoot: path.resolve(__dirname),
   // tell the builder to also look in the shared directory for imports
   watchFolders: [path.resolve(__dirname, "../shared")],
-
+  resolver: {
+    extraNodeModules: {
+      "react-native": path.resolve(
+        __dirname,
+        "../shared",
+        "node_modules/react-native"
+      ),
+      react: path.resolve(__dirname, "../shared", "node_modules/react"),
+    },
+  },
+  // It appears the getProjectRoots is no longer useful:
+  // https://github.com/facebook/metro/issues/7#issuecomment-430008657
   getProjectRoots() {
     var shared = path.join(__dirname, "../shared");
     console.log("shared", shared);
