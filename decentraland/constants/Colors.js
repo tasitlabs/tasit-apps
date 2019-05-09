@@ -4,7 +4,6 @@ const GRAY_LIGHT = "#CCCCCC";
 const GRAY_UNKNOWN = "#868686";
 const GRAY_DARK = "#2B2B2B";
 const BLACK = "black";
-const SECONDARY_APP_COLOR = GRAY;
 const TEXT_COLOR = GRAY_LIGHT;
 const MAIN_GREEN = "#07FFC2";
 const MAIN_PURPLE = "#714ADD";
