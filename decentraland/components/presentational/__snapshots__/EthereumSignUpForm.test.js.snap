@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EthereumSignUpForm TextInputField renders the component 1`] = `
+<TextInput
+  allowFontScaling={true}
+  autoCapitalize="none"
+  autoCorrect={false}
+  keyboardAppearance="dark"
+  onChangeText={[Function]}
+  placeholder="username"
+  placeholderTextColor="gray"
+  selectionColor="#07FFC2"
+  style={
+    Object {
+      "backgroundColor": "#2B2B2B",
+      "color": "#CCCCCC",
+      "fontSize": 45.89389937671454,
+      "justifyContent": "flex-start",
+      "width": 210.00000000000003,
+    }
+  }
+  underlineColorAndroid="transparent"
+  value="test4"
+/>
+`;
+
 exports[`EthereumSignUpForm renders the component 1`] = `
 <Fragment>
   <Component
@@ -17,26 +41,9 @@ exports[`EthereumSignUpForm renders the component 1`] = `
         }
       }
     >
-      <TextInput
-        allowFontScaling={true}
-        autoCapitalize="none"
-        autoCorrect={false}
-        keyboardAppearance="dark"
-        onChangeText={[Function]}
-        placeholder="username"
-        placeholderTextColor="gray"
-        selectionColor="#07FFC2"
-        style={
-          Object {
-            "backgroundColor": "#2B2B2B",
-            "color": "#CCCCCC",
-            "fontSize": 45.89389937671454,
-            "justifyContent": "flex-start",
-            "width": 210.00000000000003,
-          }
-        }
-        underlineColorAndroid="transparent"
-        value=""
+      <TextInputField
+        handleUsername={[Function]}
+        username=""
       />
     </Component>
   </Component>
