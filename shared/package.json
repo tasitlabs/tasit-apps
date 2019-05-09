@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Components needed for a mobile Ethereum dapp",
   "scripts": {
-    "test": "npx jest --maxWorkers=2"
+    "test": "npx jest --maxWorkers=2",
+    "pretest": "npm run lint",
+    "test:update": "npx jest -u --maxWorkers=2",
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --ignore-pattern '/native-base-theme/*'"
   },
   "private": true,
   "repository": {
