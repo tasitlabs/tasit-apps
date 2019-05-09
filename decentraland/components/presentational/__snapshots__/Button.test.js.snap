@@ -5,7 +5,7 @@ exports[`Button renders the component default button 1`] = `
   activeOpacity={1}
   containerStyle={
     Object {
-      "backgroundColor": "#2196f3",
+      "backgroundColor": "#07FFC2",
       "borderRadius": 3,
       "overflow": "hidden",
       "padding": 20.009999999999998,
@@ -14,7 +14,7 @@ exports[`Button renders the component default button 1`] = `
   onPress={[Function]}
   style={
     Object {
-      "color": "white",
+      "color": "black",
       "fontSize": 27.53633962602873,
     }
   }

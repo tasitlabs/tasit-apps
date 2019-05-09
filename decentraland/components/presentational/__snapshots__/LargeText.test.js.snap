@@ -4,7 +4,7 @@ exports[`LargeText renders the component 1`] = `
 <Component
   style={
     Object {
-      "color": "gray",
+      "color": "#CCCCCC",
       "fontSize": 61.191865835619396,
       "fontWeight": "bold",
       "padding": 26.68,

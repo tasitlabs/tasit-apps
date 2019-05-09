@@ -8,7 +8,7 @@ exports[`TinyLink renders the component 1`] = `
   <Component
     style={
       Object {
-        "color": "#2196f3",
+        "color": "#07FFC2",
         "fontSize": 30.595932917809698,
         "padding": 13.34,
         "textAlign": "center",

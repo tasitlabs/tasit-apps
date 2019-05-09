@@ -60,10 +60,10 @@ const containerStyles = StyleSheet.create({
 const buttonStyles = StyleSheet.create({
   disabled: {
     fontSize: responsiveFontSize(FONT_SIZE),
-    color: Colors.disabledButtonColor,
+    color: Colors.disabledButtonTextColor,
   },
   enabled: {
     fontSize: responsiveFontSize(FONT_SIZE),
-    color: Colors.buttonColor,
+    color: Colors.buttonTextColor,
   },
 });

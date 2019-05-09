@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   landPriceIcon: {
     marginLeft: responsiveWidth(1.5),
     marginRight: responsiveWidth(1.5),
+    color: Colors.linkColor,
   },
   landPrice: {
     fontSize: responsiveFontSize(4),

@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
+import Colors from "@constants/Colors";
 
 import {
   responsiveHeight,
@@ -15,6 +16,8 @@ export default class EthereumSignUpForm extends React.Component {
     this.state = { username: "" };
   }
 
+  onUsernameChange = username => this.setState({ username });
+
   render() {
     const { onSignUp } = this.props;
 
@@ -22,13 +25,9 @@ export default class EthereumSignUpForm extends React.Component {
       <React.Fragment>
         <View style={styles.userRow}>
           <View style={styles.userInputView}>
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize="none"
-              style={styles.userInput}
-              onChangeText={username => this.setState({ username })}
-              value={this.state.username}
-              placeholder="username"
+            <UsernameTextInput
+              onChange={this.onUsernameChange}
+              username={this.state.username}
             />
           </View>
         </View>
@@ -40,9 +39,32 @@ export default class EthereumSignUpForm extends React.Component {
   }
 }
 
+export function UsernameTextInput({ onChange, username }) {
+  return (
+    <TextInput
+      autoCorrect={false}
+      autoCapitalize="none"
+      style={styles.userInput}
+      onChangeText={onChange}
+      value={username}
+      placeholder="username"
+      placeholderTextColor={Colors.placeholderTextColor}
+      selectionColor={Colors.selection}
+      keyboardAppearance="dark"
+    />
+  );
+}
+
+UsernameTextInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+};
+
 EthereumSignUpForm.propTypes = {
   onSignUp: PropTypes.func.isRequired,
 };
+
+// TODO: Make the input box look a little nicer, maybe with a border
 
 const styles = StyleSheet.create({
   userRow: { flexDirection: "row" },
@@ -51,6 +73,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     width: responsiveWidth(28),
     fontSize: responsiveFontSize(3),
+    color: Colors.textColor,
+    backgroundColor: Colors.formBackground,
   },
   buttonView: {
     flexDirection: "row",

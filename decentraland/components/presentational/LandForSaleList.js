@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import Colors from "@constants/Colors";
 import LargeText from "@presentational/LargeText";
@@ -15,7 +15,9 @@ export default class LandForSaleList extends React.PureComponent {
     const { length: listAmount } = landForSaleList;
     const withoutAssetsForSale = !loadingInProgress && listAmount === 0;
     return withoutAssetsForSale ? (
-      <LargeText>{`There isn't any land for sale right now.`}</LargeText>
+      <View style={styles.container}>
+        <LargeText>{`There isn't any land for sale right now.`}</LargeText>
+      </View>
     ) : (
       <FlatList
         data={landForSaleList}

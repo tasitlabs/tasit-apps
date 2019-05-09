@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "test": "You probably want to run this from the subdir for a particular app",
+    "start": "You probably want to run this from the subdir for a particular app"
+  }
+}
