@@ -8,6 +8,7 @@ exports[`LinkToBlockchain renders the component valid action 1`] = `
   onPress={[Function]}
   style={
     Object {
+      "color": "#07FFC2",
       "flexDirection": "column",
       "justifyContent": "center",
     }
@@ -15,7 +16,6 @@ exports[`LinkToBlockchain renders the component valid action 1`] = `
 >
   <Styled(Icon)
     name="eye"
-    primary={true}
     style={
       Object {
         "color": "#07FFC2",

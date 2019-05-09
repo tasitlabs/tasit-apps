@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 import LinkToBlockchain from "./LinkToBlockchain";
 import { responsiveWidth } from "react-native-responsive-dimensions";
+import Colors from "@constants/Colors";
 
 const {
   NOT_STARTED,
@@ -67,8 +68,8 @@ AccountCreationProgress.propTypes = {
 export function ProgressMessageAndLink({ waitingMessage, actionId }) {
   return (
     <View style={styles.container}>
-      <View style={styles.text}>
-        <Text adjustsFontSizeToFit={true} numberOfLines={2}>
+      <View style={styles.textContainer}>
+        <Text style={styles.text} adjustsFontSizeToFit={true} numberOfLines={2}>
           {waitingMessage}
         </Text>
       </View>
@@ -90,8 +91,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text: {
+  textContainer: {
     maxWidth: responsiveWidth(80),
+  },
+  text: {
+    color: Colors.textColor,
   },
 });
 

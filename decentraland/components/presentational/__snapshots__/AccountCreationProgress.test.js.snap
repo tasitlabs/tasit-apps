@@ -20,6 +20,11 @@ exports[`AccountCreationProgress ProgressMessageAndLink with a message and with 
     <Component
       adjustsFontSizeToFit={true}
       numberOfLines={2}
+      style={
+        Object {
+          "color": "#CCCCCC",
+        }
+      }
     >
       A waiting message.
     </Component>
@@ -52,6 +57,11 @@ exports[`AccountCreationProgress ProgressMessageAndLink with a message and witho
     <Component
       adjustsFontSizeToFit={true}
       numberOfLines={2}
+      style={
+        Object {
+          "color": "#CCCCCC",
+        }
+      }
     >
       A waiting message.
     </Component>
@@ -84,6 +94,11 @@ exports[`AccountCreationProgress ProgressMessageAndLink without a message nor ac
     <Component
       adjustsFontSizeToFit={true}
       numberOfLines={2}
+      style={
+        Object {
+          "color": "#CCCCCC",
+        }
+      }
     />
   </Component>
   <Component>

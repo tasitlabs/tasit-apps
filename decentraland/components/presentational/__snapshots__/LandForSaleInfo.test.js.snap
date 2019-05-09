@@ -20,7 +20,7 @@ exports[`LandForSaleInfo LandForSalePrice renders the component 1`] = `
         name="information-circle-outline"
         style={
           Object {
-            "color": undefined,
+            "color": "#07FFC2",
             "marginLeft": 11.25,
             "marginRight": 11.25,
           }

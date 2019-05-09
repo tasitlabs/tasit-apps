@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontWeight: "800",
+    color: Colors.textColor,
   },
 });
 

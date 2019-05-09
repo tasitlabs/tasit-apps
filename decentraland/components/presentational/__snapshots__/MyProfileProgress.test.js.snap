@@ -13,6 +13,7 @@ exports[`MyProfileProgress MyAccountProgressText renders the component 1`] = `
   <Component
     style={
       Object {
+        "color": "#CCCCCC",
         "fontWeight": "800",
       }
     }

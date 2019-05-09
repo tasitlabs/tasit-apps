@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
+import Colors from "@constants/Colors";
 
 import {
   responsiveHeight,
@@ -29,6 +30,8 @@ export default class EthereumSignUpForm extends React.Component {
               onChangeText={username => this.setState({ username })}
               value={this.state.username}
               placeholder="username"
+              placeholderTextColor={Colors.placeholderTextColor}
+              selectionColor={Colors.selection}
             />
           </View>
         </View>
@@ -44,6 +47,8 @@ EthereumSignUpForm.propTypes = {
   onSignUp: PropTypes.func.isRequired,
 };
 
+// TODO: Make the input box look a little nicer, maybe with a border
+
 const styles = StyleSheet.create({
   userRow: { flexDirection: "row" },
   userInputView: { flex: 1, alignItems: "center" },
@@ -51,6 +56,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     width: responsiveWidth(28),
     fontSize: responsiveFontSize(3),
+    color: Colors.textColor,
+    backgroundColor: Colors.formBackground,
   },
   buttonView: {
     flexDirection: "row",
