@@ -32,6 +32,7 @@ export default class EthereumSignUpForm extends React.Component {
               placeholder="username"
               placeholderTextColor={Colors.placeholderTextColor}
               selectionColor={Colors.selection}
+              keyboardAppearance="dark"
             />
           </View>
         </View>

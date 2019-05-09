@@ -21,6 +21,7 @@ exports[`EthereumSignUpForm renders the component 1`] = `
         allowFontScaling={true}
         autoCapitalize="none"
         autoCorrect={false}
+        keyboardAppearance="dark"
         onChangeText={[Function]}
         placeholder="username"
         placeholderTextColor="gray"
