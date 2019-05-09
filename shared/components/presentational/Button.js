@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import RNButton from "react-native-button";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import PropTypes from "prop-types";
 import {
   responsiveHeight,

@@ -4,7 +4,7 @@ import {
   responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import PropTypes from "prop-types";
 
 export default function LargeText(props) {

@@ -5,7 +5,7 @@ import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "./LargeText";
 import TinyLink from "./TinyLink";
 import Button from "@shared-presentational/Button";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 
 export default function OnboardingHome(props) {
   const privacyPolicyText = `Tasit privacy policy`;

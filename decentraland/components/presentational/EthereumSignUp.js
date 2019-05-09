@@ -3,7 +3,7 @@ import { StyleSheet, KeyboardAvoidingView } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import { Header } from "react-navigation";
 import PropTypes from "prop-types";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import LargeText from "@presentational/LargeText";
 import EthereumSignUpForm from "@presentational/EthereumSignUpForm";
 

@@ -6,7 +6,7 @@ import {
   responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import { Button, Icon } from "native-base";
 import { formatNumber } from "@helpers";
 import AssetName from "./AssetName";

@@ -17,7 +17,7 @@ import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
 import EthereumSignInScreen from "./screens/EthereumSignInScreen";
 import MyAssetsScreen from "./screens/MyAssetsScreen";
 
-import Colors from "@constants/Colors.js";
+import Colors from "@shared-constants/Colors.js";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 
 const defaultNavigationOptions = {

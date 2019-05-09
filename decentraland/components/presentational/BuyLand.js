@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import LandForSale from "./LandForSale";
 import Button from "@shared-presentational/Button";
 import AccountCreationProgress from "./AccountCreationProgress";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 const { NOT_STARTED, READY_TO_USE } = AccountCreationStatus;
 

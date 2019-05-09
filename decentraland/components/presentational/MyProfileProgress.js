@@ -4,7 +4,7 @@ import {
 } from "react-native-responsive-dimensions";
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import ProgressBar from "react-native-progress/Bar";
 import PropTypes from "prop-types";
 

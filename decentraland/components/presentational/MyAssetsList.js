@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 import LargeText from "@presentational/LargeText";
 
 // Note: Changing to PureComponent for performance boost

@@ -8,7 +8,7 @@ import {
   buildBlockchainUrlFromActionId,
   getNetworkName,
 } from "@helpers";
-import Colors from "@constants/Colors";
+import Colors from "@shared-constants/Colors";
 
 const _openLinkOf = async actionId => {
   const url = buildBlockchainUrlFromActionId(actionId);
