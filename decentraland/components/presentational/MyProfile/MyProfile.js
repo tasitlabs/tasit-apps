@@ -3,9 +3,9 @@ import { StyleSheet, View } from "react-native";
 import Colors from "@constants/Colors";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import MyProfileCreationStatusItem from "./MyProfileCreationStatusItem";
+import MyProfileCreationStatusItem from "@presentational/MyProfileCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
-import MyProfileProgress from "./MyProfileProgress";
+import MyProfileProgress from "@presentational/MyProfileProgress";
 
 export default function MyProfile({ progress, creationSteps }) {
   return (

@@ -2,11 +2,11 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import Estate from "./Estate";
-import Parcel from "./Parcel";
+import Estate from "@presentational/Estate";
+import Parcel from "@presentational/Parcel";
 import { ESTATE, PARCEL } from "@constants/AssetTypes";
-import LinkToBlockchain from "./LinkToBlockchain";
-import AssetName from "./AssetName";
+import LinkToBlockchain from "@presentational/LinkToBlockchain";
+import AssetName from "@presentational/AssetName";
 
 export function MyAsset({ asset, userAction }) {
   const { type } = asset;

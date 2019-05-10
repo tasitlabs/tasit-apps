@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LinkToBlockchain from "./LinkToBlockchain";
+import LinkToBlockchain from "@presentational/LinkToBlockchain";
 import { anAction } from "@helpers/testHelpers";
 
 describe("LinkToBlockchain", () => {

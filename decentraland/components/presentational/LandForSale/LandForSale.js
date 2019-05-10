@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import Estate from "./Estate";
-import Parcel from "./Parcel";
-import LandForSaleInfo from "./LandForSaleInfo";
+import Estate from "@presentational/Estate";
+import Parcel from "@presentational/Parcel";
+import LandForSaleInfo from "@presentational/LandForSaleInfo";
 import AssetTypes from "@constants/AssetTypes";
 
 const { ESTATE, PARCEL } = AssetTypes;

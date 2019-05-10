@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import ActionStatus from "../../constants/ActionStatus";
-import MyProfileCreationStatusItem from "./MyProfileCreationStatusItem";
+import ActionStatus from "@constants/ActionStatus";
+import MyProfileCreationStatusItem from "@presentational/MyProfileCreationStatusItem";
 
 describe("MyProfileCreationStatusItem", () => {
   it("renders the component with done status", async () => {

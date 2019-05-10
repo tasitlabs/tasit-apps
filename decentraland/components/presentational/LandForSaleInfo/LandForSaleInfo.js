@@ -9,7 +9,7 @@ import {
 import Colors from "@constants/Colors";
 import { Button, Icon } from "native-base";
 import { formatNumber } from "@helpers";
-import AssetName from "./AssetName";
+import AssetName from "@presentational/AssetName";
 
 const onPriceInfo = () => {
   const title = "";

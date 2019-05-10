@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Estate from "./Estate";
+import Estate from "@presentational/Estate";
 import { estate } from "@helpers/testHelpers";
 
 describe("Estate", () => {

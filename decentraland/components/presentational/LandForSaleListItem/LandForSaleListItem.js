@@ -5,7 +5,7 @@ import {
   responsiveHeight,
   responsiveWidth,
 } from "react-native-responsive-dimensions";
-import LandForSale from "./LandForSale";
+import LandForSale from "@presentational/LandForSale";
 
 // Note: Changing to PureComponent for performance boost
 // It is possible to still using function component with React.memo HoC

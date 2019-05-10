@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PropTypes from "prop-types";
 import AccountCreationStatus from "@constants/AccountCreationStatus";
-import LinkToBlockchain from "./LinkToBlockchain";
+import LinkToBlockchain from "@presentational/LinkToBlockchain";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Colors from "@constants/Colors";
 

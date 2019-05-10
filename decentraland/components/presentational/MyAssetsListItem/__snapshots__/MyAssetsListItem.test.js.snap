@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyAssetsListItem renders the component 1`] = `
+<TouchableHighlight
+  activeOpacity={0.85}
+  delayPressOut={100}
+  underlayColor="black"
+>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "marginBottom": 13.34,
+        "paddingBottom": 40.019999999999996,
+        "paddingLeft": 22.5,
+        "paddingRight": 22.5,
+        "paddingTop": 40.019999999999996,
+      }
+    }
+  >
+    <MyAsset
+      asset={
+        Object {
+          "id": "0123456789",
+          "img": "https://api.decentraland.org/v1/parcels/0/0/map.png",
+          "name": "Sample Parcel",
+          "type": "PARCEL",
+        }
+      }
+      userAction={
+        Object {
+          "0x1234567890123456789012345678901234567890": Object {
+            "assetId": "0123456789",
+            "status": "SUCCESSFUL",
+          },
+        }
+      }
+    />
+  </Component>
+</TouchableHighlight>
+`;

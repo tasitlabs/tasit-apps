@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Parcel from "./Parcel";
+import Parcel from "@presentational/Parcel";
 
 describe("Parcel", () => {
   it("renders the component", async () => {

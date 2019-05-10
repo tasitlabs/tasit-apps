@@ -2,9 +2,9 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import LargeText from "./LargeText";
-import TinyLink from "./TinyLink";
-import Button from "./Button";
+import LargeText from "@presentational/LargeText";
+import TinyLink from "@presentational/TinyLink";
+import Button from "@presentational/Button";
 import Colors from "@constants/Colors";
 
 export default function OnboardingHome(props) {
@@ -13,7 +13,7 @@ export default function OnboardingHome(props) {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../../assets/images/icon.png")} />
+      <Image source={require("@images/icon.png")} />
       <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
       <View style={styles.buttonView}>
         <Button title="Get started" onPress={props.onPress} />
