@@ -5,6 +5,7 @@ exports[`EthereumSignUpForm UsernameTextInput renders the component 1`] = `
   allowFontScaling={true}
   autoCapitalize="none"
   autoCorrect={false}
+  autoFocus={true}
   keyboardAppearance="dark"
   onChangeText={[Function]}
   placeholder="username"
@@ -12,11 +13,11 @@ exports[`EthereumSignUpForm UsernameTextInput renders the component 1`] = `
   selectionColor="#07FFC2"
   style={
     Object {
-      "backgroundColor": "#2B2B2B",
+      "backgroundColor": "black",
       "color": "#CCCCCC",
       "fontSize": 45.89389937671454,
       "justifyContent": "flex-start",
-      "width": 210.00000000000003,
+      "width": 360,
     }
   }
   underlineColorAndroid="transparent"

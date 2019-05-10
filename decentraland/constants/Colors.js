@@ -19,7 +19,7 @@ export default {
   disabledButtonTextColor: WHITE,
   disabledButtonBackground: GRAY,
   selection: MAIN_GREEN,
-  formBackground: GRAY_DARK,
+  formBackground: BLACK,
   icons: MAIN_PURPLE,
   loadingColor: MAIN_GREEN,
   assetInfoText: GRAY_LIGHT,
