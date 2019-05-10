@@ -1,6 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MyAsset, MyAssetInfo } from "@presentational/MyAsset";
+import { MyAsset, MyAssetInfo } from "./MyAsset";
+// Not the @presentational version since it needs
+// the internal component
 import { parcel, parcelUserAction } from "@helpers/testHelpers";
 
 describe("MyAsset", () => {

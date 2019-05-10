@@ -3,7 +3,9 @@ import { shallow } from "enzyme";
 import {
   AccountCreationProgress,
   ProgressMessageAndLink,
-} from "@presentational/AccountCreationProgress";
+} from "./AccountCreationProgress";
+// Not the @presentational version since it needs
+// the internal component
 import status from "@constants/AccountCreationStatus";
 const {
   NOT_STARTED,

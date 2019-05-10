@@ -1,6 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LandForSaleInfo, ManaPrice } from "@presentational/LandForSaleInfo";
+import { LandForSaleInfo, ManaPrice } from "./LandForSaleInfo";
+// Not the @presentational version since it needs
+// the internal component
 import { estateForSale } from "@helpers/testHelpers";
 
 describe("LandForSaleInfo", () => {
