@@ -100,6 +100,7 @@ export const fundAccountWithEthers = accountAddress => {
   gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
   const action = gnosisSafeContract.transferEther(accountAddress, SMALL_AMOUNT);
+  console.info("Built the action to transfer ETH to ephemeral account");
   return action;
 };
 
