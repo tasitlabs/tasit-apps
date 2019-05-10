@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LandForSaleListItem from "./LandForSaleListItem";
+import LandForSaleListItem from "@presentational/LandForSaleListItem";
 import { parcelForSale } from "@helpers/testHelpers";
 
 describe("LandForSaleListItem", () => {

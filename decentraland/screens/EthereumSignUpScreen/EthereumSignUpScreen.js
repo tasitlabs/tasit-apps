@@ -5,7 +5,7 @@ import {
   setAccount,
   setAccountCreationStatus,
   updateActionIdForAccountCreationStatus,
-} from "../redux/actions";
+} from "@redux/actions";
 import EthereumSignUp from "@presentational/EthereumSignUp";
 
 import {

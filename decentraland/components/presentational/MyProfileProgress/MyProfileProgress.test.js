@@ -1,6 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MyProfileProgress, MyProfileProgressText } from "./MyProfileProgress";
+import {
+  MyProfileProgress,
+  MyProfileProgressText,
+} from "@presentational/MyProfileProgress";
 
 describe("MyProfileProgress", () => {
   it("renders the component", async () => {

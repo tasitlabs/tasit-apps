@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import {
   AccountCreationProgress,
   ProgressMessageAndLink,
-} from "./AccountCreationProgress";
+} from "@presentational/AccountCreationProgress";
 import status from "@constants/AccountCreationStatus";
 const {
   NOT_STARTED,

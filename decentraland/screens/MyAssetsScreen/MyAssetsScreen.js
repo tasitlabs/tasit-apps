@@ -4,7 +4,7 @@ import {
   removeFromMyAssetsList,
   appendToMyAssetsList,
   addUserAction,
-} from "../redux/actions";
+} from "@redux/actions";
 import PropTypes from "prop-types";
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";

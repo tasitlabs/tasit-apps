@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import MyProfile from "./MyProfile";
+import MyProfile from "@presentational/MyProfile";
 import { accountCreationSteps } from "@helpers/testHelpers";
 
 describe("MyProfile", () => {

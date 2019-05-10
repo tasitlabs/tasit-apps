@@ -4,7 +4,7 @@ import {
   appendLandForSaleToList,
   selectLandToBuy,
   setLoadingAssetsForSaleInProgress,
-} from "../redux/actions";
+} from "@redux/actions";
 import PropTypes from "prop-types";
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";

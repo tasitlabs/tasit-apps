@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import MyAssetsList from "./MyAssetsList";
+import MyAssetsList from "@presentational/MyAssetsList";
 import { estate, userActions } from "@helpers/testHelpers";
 
 describe("MyAssetsList", () => {
