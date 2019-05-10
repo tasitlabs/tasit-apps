@@ -5,15 +5,15 @@ import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import decentralandApp from "./redux/reducers";
+import decentralandApp from "@redux/reducers";
 import {
   setAccount,
   setMyAssetsList,
   setAccountCreationStatus,
   setAccountCreationActions,
   addUserAction,
-} from "./redux/actions";
-import applyMiddleware from "./redux/middlewares";
+} from "@redux/actions";
+import applyMiddleware from "@redux/middlewares";
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
 import tasitSdkConfig from "./config/current";

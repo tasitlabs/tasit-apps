@@ -31,33 +31,37 @@ You might want to jump ahead to the "why" section to start:
 
 - [Why are native dapps important?](#why-are-native-dapps-important)
 
-## Tasit Apps
+## Tasit apps
+
+### Simple onboarding
+
+<div align="left">
+  <img src="./shared/assets/screenshots/StartSetup.png" width="200" />
+  <img src="./shared/assets/screenshots/PickUsername.png" width="200" />
+  <img src="./shared/assets/screenshots/MyProfile.png" width="200" />
+</div>
 
 ### Decentraland by Tasit
 
-Our first production app is called `Decentraland by Tasit`.
+Our first production app is called `Decentraland by Tasit`. [Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
 
-[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
-
-This is the first production Tasit NFT app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects.
-
-This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
-
-##### Review the code
+This is the first Tasit app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects. This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
 
-### Tasit Demo
+<div align="left">
+  <img src="./decentraland/assets/screenshots/ListLand.png" width="200" />
+  <img src="./decentraland/assets/screenshots/BuyLand.png" width="200" />
+  <img src="./decentraland/assets/screenshots/MyLand.png" width="200" />
+</div>
 
-Our first demo app is called `Tasit Demo`.
+### Tasit demo app
 
-It's an app that shows off how easy it is to build a standalone native mobile app for Ethereum NFTs using the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+The Tasit demo app shows off how easy it is to build a standalone native mobile app for Ethereum using the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, Babel, and the Tasit SDK.
 
-##### Review the code
-
-[Here's the code](./demo) for the demo app. For now the [Decentraland by Tasit](./decentraland) app is temporarily also serving as the "demo" app. Soon we'll duplicate the minimal set of features from this app over in the `demo` dir and extract the generic parts into the `shared` dir and import them in each app.
+For now the [Decentraland by Tasit](./decentraland) app temporarily also is serving as the "demo" app. Soon we'll duplicate just the minimal set of features from this app over in the [`demo`](./demo) dir and extract the generic parts into the `shared` dir and import them in each app.
 
 ##### Features
 
