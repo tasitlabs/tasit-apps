@@ -32,12 +32,12 @@ LandForSaleListItem.propTypes = {
 
 const styles = StyleSheet.create({
   row: {
-    paddingTop: responsiveHeight(3),
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: responsiveHeight(1),
     paddingBottom: responsiveHeight(3),
     paddingLeft: responsiveWidth(3),
     paddingRight: responsiveWidth(3),
-    marginBottom: responsiveHeight(1),
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: responsiveHeight(3),
   },
 });

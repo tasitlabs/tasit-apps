@@ -155,6 +155,9 @@ MyAssetsScreen.propTypes = {
   myAssets: PropTypes.array.isRequired,
   account: PropTypes.object,
   userActions: PropTypes.object.isRequired,
+  removeFromMyAssetsList: PropTypes.func.isRequired,
+  appendToMyAssetsList: PropTypes.func.isRequired,
+  addUserAction: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {

@@ -21,7 +21,7 @@
     "pretest": "npm run lint",
     "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
-    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --ignore-pattern '/native-base-theme/*'"
+    "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --fix --ignore-pattern '/native-base-theme/*'"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.1",

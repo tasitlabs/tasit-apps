@@ -53,20 +53,20 @@ MyAssetInfo.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  myAssetInfoContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   assetContainer: {
     width: responsiveWidth(95),
-  },
-  nameContainer: {
-    flex: 1,
   },
   linkContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "flex-end",
+  },
+  myAssetInfoContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  nameContainer: {
+    flex: 1,
   },
 });
 

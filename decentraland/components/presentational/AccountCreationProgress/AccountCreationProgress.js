@@ -87,15 +87,15 @@ ProgressMessageAndLink.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
     alignItems: "center",
+    flexDirection: "row",
     justifyContent: "center",
-  },
-  textContainer: {
-    maxWidth: responsiveWidth(80),
   },
   text: {
     color: Colors.textColor,
+  },
+  textContainer: {
+    maxWidth: responsiveWidth(80),
   },
 });
 

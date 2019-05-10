@@ -30,9 +30,9 @@ EthereumSignUp.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.backgroundColor,
     alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
     justifyContent: "center",
   },
 });

@@ -43,27 +43,27 @@ Button.propTypes = {
 };
 
 const containerStyles = StyleSheet.create({
-  enabled: {
-    padding: responsiveHeight(BUTTON_HEIGHT),
-    overflow: "hidden",
-    borderRadius: 3,
-    backgroundColor: Colors.buttonBackground,
-  },
   disabled: {
-    padding: responsiveHeight(BUTTON_HEIGHT),
-    overflow: "hidden",
-    borderRadius: 3,
     backgroundColor: Colors.disabledButtonBackground,
+    borderRadius: 3,
+    overflow: "hidden",
+    padding: responsiveHeight(BUTTON_HEIGHT),
+  },
+  enabled: {
+    backgroundColor: Colors.buttonBackground,
+    borderRadius: 3,
+    overflow: "hidden",
+    padding: responsiveHeight(BUTTON_HEIGHT),
   },
 });
 
 const buttonStyles = StyleSheet.create({
   disabled: {
-    fontSize: responsiveFontSize(FONT_SIZE),
     color: Colors.disabledButtonTextColor,
+    fontSize: responsiveFontSize(FONT_SIZE),
   },
   enabled: {
-    fontSize: responsiveFontSize(FONT_SIZE),
     color: Colors.buttonTextColor,
+    fontSize: responsiveFontSize(FONT_SIZE),
   },
 });

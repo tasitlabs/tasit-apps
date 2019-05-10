@@ -12,13 +12,13 @@ export function MyProfileProgress({ progress }) {
   return (
     <View style={styles.container}>
       <ProgressBar
-        progress={progress}
-        color={Colors.loadingColor}
-        borderWidth={0}
-        unfilledColor={Colors.textColor}
-        height={responsiveHeight(1)}
-        width={responsiveWidth(100)}
         borderRadius={0}
+        borderWidth={0}
+        color={Colors.loadingColor}
+        height={responsiveHeight(1)}
+        progress={progress}
+        unfilledColor={Colors.textColor}
+        width={responsiveWidth(100)}
       />
       <MyProfileProgressText progress={progress} />
     </View>
@@ -45,20 +45,20 @@ MyProfileProgressText.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
     flex: 1,
     flexDirection: "column",
-    backgroundColor: Colors.backgroundColor,
-    alignItems: "center",
     justifyContent: "flex-start",
   },
-  progressTextContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: responsiveHeight(1),
-  },
   progressText: {
-    fontWeight: "800",
     color: Colors.textColor,
+    fontWeight: "800",
+  },
+  progressTextContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: responsiveHeight(1),
   },
 });
 

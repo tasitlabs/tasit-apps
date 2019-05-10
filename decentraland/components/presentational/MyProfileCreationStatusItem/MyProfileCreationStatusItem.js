@@ -56,23 +56,23 @@ MyProfileCreationStatusItem.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  actionStatusIcon: {
+    color: Colors.icons,
+    fontWeight: "800",
+  },
+  actionText: {
+    color: Colors.textColor,
+    fontSize: FONT_SIZE,
+    fontWeight: "800",
+    marginLeft: responsiveWidth(5),
+  },
   container: {
-    flexWrap: "wrap",
-    flexDirection: "row",
-    backgroundColor: Colors.backgroundColor,
     alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "flex-start",
     marginTop: responsiveHeight(2),
     width: responsiveWidth(65),
-  },
-  actionStatusIcon: {
-    fontWeight: "800",
-    color: Colors.icons,
-  },
-  actionText: {
-    fontSize: FONT_SIZE,
-    color: Colors.textColor,
-    fontWeight: "800",
-    marginLeft: responsiveWidth(5),
   },
 });

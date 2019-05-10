@@ -17,10 +17,10 @@ LargeText.propTypes = {
 
 const styles = StyleSheet.create({
   text: {
-    padding: responsiveHeight(2),
-    fontSize: responsiveFontSize(4),
-    textAlign: "center",
-    fontWeight: "bold",
     color: Colors.textColor,
+    fontSize: responsiveFontSize(4),
+    fontWeight: "bold",
+    padding: responsiveHeight(2),
+    textAlign: "center",
   },
 });
