@@ -30,19 +30,19 @@ OnboardingHome.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.backgroundColor,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   buttonView: {
     flexDirection: "row",
     marginTop: responsiveHeight(5),
   },
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
   privacyPolicyView: {
+    alignItems: "center",
     flexDirection: "row",
     marginTop: responsiveHeight(5),
-    alignItems: "center",
   },
 });

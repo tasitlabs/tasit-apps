@@ -19,12 +19,12 @@ AssetName.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  landNameContainer: {
-    paddingTop: responsiveHeight(1),
-  },
   landName: {
     color: Colors.assetInfoText,
     fontWeight: "bold",
+  },
+  landNameContainer: {
+    paddingTop: responsiveHeight(1),
   },
 });
 

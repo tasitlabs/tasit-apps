@@ -67,27 +67,27 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  landPrice: {
+    color: Colors.assetInfoText,
+    fontSize: responsiveFontSize(4),
+    fontWeight: "bold",
+    paddingTop: responsiveHeight(0.4),
+  },
   landPriceContainer: {
-    flexDirection: "row",
     alignItems: "center",
+    flexDirection: "row",
     justifyContent: "flex-end",
+  },
+  landPriceIcon: {
+    color: Colors.linkColor,
+    marginLeft: responsiveWidth(1.5),
+    marginRight: responsiveWidth(1.5),
   },
   nameContainer: {
     flex: 1,
   },
   priceContainer: {
     flex: 1,
-  },
-  landPriceIcon: {
-    marginLeft: responsiveWidth(1.5),
-    marginRight: responsiveWidth(1.5),
-    color: Colors.linkColor,
-  },
-  landPrice: {
-    fontSize: responsiveFontSize(4),
-    fontWeight: "bold",
-    color: Colors.assetInfoText,
-    paddingTop: responsiveHeight(0.4),
   },
 });
 

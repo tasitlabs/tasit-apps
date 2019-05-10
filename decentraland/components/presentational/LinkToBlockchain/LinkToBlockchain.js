@@ -56,11 +56,11 @@ LinkToBlockchain.propTypes = {
 // TODO: Determine why the eye icon isn't showing up
 // after the color changes
 const styles = StyleSheet.create({
+  icon: {
+    color: Colors.linkColor,
+  },
   touchable: {
     flexDirection: "column",
     justifyContent: "center",
-  },
-  icon: {
-    color: Colors.linkColor,
   },
 });

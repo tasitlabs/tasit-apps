@@ -67,17 +67,17 @@ EthereumSignUpForm.propTypes = {
 // TODO: Make the input box look a little nicer, maybe with a border
 
 const styles = StyleSheet.create({
-  userRow: { flexDirection: "row" },
-  userInputView: { flex: 1, alignItems: "center" },
-  userInput: {
-    justifyContent: "flex-start",
-    width: responsiveWidth(28),
-    fontSize: responsiveFontSize(3),
-    color: Colors.textColor,
-    backgroundColor: Colors.formBackground,
-  },
   buttonView: {
     flexDirection: "row",
     marginTop: responsiveHeight(5),
   },
+  userInput: {
+    backgroundColor: Colors.formBackground,
+    color: Colors.textColor,
+    fontSize: responsiveFontSize(3),
+    justifyContent: "flex-start",
+    width: responsiveWidth(28),
+  },
+  userInputView: { alignItems: "center", flex: 1 },
+  userRow: { flexDirection: "row" },
 });

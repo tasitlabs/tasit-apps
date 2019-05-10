@@ -22,7 +22,7 @@ Parcel.propTypes = {
 
 const styles = StyleSheet.create({
   landImage: {
-    width: responsiveWidth(95),
     height: responsiveHeight(20),
+    width: responsiveWidth(95),
   },
 });

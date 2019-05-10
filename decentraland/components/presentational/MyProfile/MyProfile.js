@@ -39,18 +39,18 @@ MyProfile.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: Colors.backgroundColor,
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-  },
   actionItemsContainer: {
     flex: 5,
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "flex-start",
     paddingLeft: responsiveWidth(12),
+  },
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: Colors.backgroundColor,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
   },
 });
