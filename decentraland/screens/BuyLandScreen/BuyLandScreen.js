@@ -84,7 +84,7 @@ export class BuyLandScreen extends React.Component {
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
 
     const action = await _executeOrder(landForSale, account, onError);
-    action.send();
+    await action.send();
 
     // Optimistic UI update
     removeLandForSale(landForSale);

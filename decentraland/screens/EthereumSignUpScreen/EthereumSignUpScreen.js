@@ -53,7 +53,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithEthers = async accountAddress => {
         const action = fundAccountWithEthers(accountAddress);
-        action.send();
+        await action.send();
         console.info("Sent the ETH transfer action");
         const actionId = await action.getId();
         console.info({ actionId });
@@ -69,7 +69,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithMana = async accountAddress => {
         const action = fundAccountWithMana(accountAddress);
-        action.send();
+        await action.send();
         const actionId = await action.getId();
         updateActionIdForAccountCreationStatus({
           status: FUNDING_WITH_MANA,
@@ -83,7 +83,7 @@ export class EthereumSignUpScreen extends React.Component {
 
       const approveMarketplace = async account => {
         const action = approveManaSpending(account);
-        action.send();
+        await action.send();
         const actionId = await action.getId();
         updateActionIdForAccountCreationStatus({
           status: APPROVING_MARKETPLACE,
