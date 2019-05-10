@@ -56,7 +56,7 @@ export class EthereumSignUpScreen extends React.Component {
         action.send();
         console.info("Sent the ETH transfer action");
         const actionId = await action.getId();
-        console.info({ actionID });
+        console.info({ actionId });
         updateActionIdForAccountCreationStatus({
           status: FUNDING_WITH_ETH,
           actionId,
