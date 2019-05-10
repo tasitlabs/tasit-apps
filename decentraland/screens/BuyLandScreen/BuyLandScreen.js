@@ -65,7 +65,8 @@ export class BuyLandScreen extends React.Component {
     const onSuccess = async () => {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
-      await action.waitForNonceToUpdate();
+      await action.waitForOneConfirmation();
+      // TODO: Change me to pub/sub style
       const actionId = await action.getId();
 
       updateUserActionStatus({ actionId, status: SUCCESSFUL });
@@ -116,7 +117,7 @@ export class BuyLandScreen extends React.Component {
       const fingerprint =
         type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
 
-      marketplaceContract.setWallet(account);
+      marketplaceContract.setAccount(account);
       const action = marketplaceContract.safeExecuteOrder(
         nftAddress,
         `${assetId}`,

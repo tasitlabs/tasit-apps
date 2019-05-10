@@ -87,7 +87,7 @@ export const approveManaSpending = fromAccount => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
-  manaContract.setWallet(fromAccount);
+  manaContract.setAccount(fromAccount);
 
   const action = manaContract.approve(toAddress, HALF_MILLION);
   return action;
@@ -96,7 +96,7 @@ export const approveManaSpending = fromAccount => {
 export const fundAccountWithEthers = accountAddress => {
   const contracts = getContracts();
   const { gnosisSafeContract } = contracts;
-  gnosisSafeContract.setWallet(gnosisSafeOwner);
+  gnosisSafeContract.setAccount(gnosisSafeOwner);
   gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
   const action = gnosisSafeContract.transferEther(accountAddress, SMALL_AMOUNT);
@@ -106,7 +106,7 @@ export const fundAccountWithEthers = accountAddress => {
 export const fundAccountWithMana = accountAddress => {
   const contracts = getContracts();
   const { manaContract, gnosisSafeContract } = contracts;
-  gnosisSafeContract.setWallet(gnosisSafeOwner);
+  gnosisSafeContract.setAccount(gnosisSafeOwner);
   gnosisSafeContract.setSigners([gnosisSafeOwner]);
 
   const action = gnosisSafeContract.transferERC20(

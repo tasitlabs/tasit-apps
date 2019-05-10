@@ -58,7 +58,8 @@ export class EthereumSignUpScreen extends React.Component {
           status: FUNDING_WITH_ETH,
           actionId,
         });
-        await action.waitForNonceToUpdate();
+        await action.waitForOneConfirmation();
+        // TODO: Change me to pub/sub style
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
       };
@@ -70,7 +71,8 @@ export class EthereumSignUpScreen extends React.Component {
           status: FUNDING_WITH_MANA,
           actionId,
         });
-        await action.waitForNonceToUpdate();
+        await action.waitForOneConfirmation();
+        // TODO: Change me to pub/sub style
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
       };
@@ -82,7 +84,8 @@ export class EthereumSignUpScreen extends React.Component {
           status: APPROVING_MARKETPLACE,
           actionId,
         });
-        await action.waitForNonceToUpdate();
+        await action.waitForOneConfirmation();
+        // TODO: Change me to pub/sub style
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
       };
