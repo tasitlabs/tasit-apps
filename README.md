@@ -109,7 +109,7 @@ Just run:
 
 ```
 npm install tasit-cli
-npx tasit-cli init my-app
+npx tasit init my-app
 cd my-app
 npm start
 ```
@@ -119,7 +119,7 @@ npm start
 Alternatively, for popular ERC standards like ERC-721 for NFTs, you can even run:
 
 ```
-npx tasit-cli init my-app --nft
+npx tasit init my-app --nft
 ```
 
 ...to instantly create a standalone mobile dapp for CryptoKitties, Decentraland, etc.
