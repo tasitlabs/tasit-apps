@@ -15,6 +15,7 @@ import { showError, showInfo, getContracts } from "@helpers";
 import { ESTATE, PARCEL } from "@constants/AssetTypes";
 import { PENDING, SUCCESSFUL } from "@constants/UserActionStatus";
 
+// TODO: Possibly delete gasParams from this file before merging
 // TODO: Go deep on gas handling.
 // Without that, VM returns a revert error instead of out of gas error.
 // See: https://github.com/tasitlabs/TasitSDK/issues/173
@@ -56,7 +57,7 @@ export class BuyLandScreen extends React.Component {
     } = props;
     const { account } = accountInfo;
     const { asset, id: landId } = landForSale;
-    console.log("landForSaleId", landId);
+    console.info("landForSaleId", landId);
     const { id: assetId, type } = asset;
 
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
@@ -70,7 +71,7 @@ export class BuyLandScreen extends React.Component {
       // TODO: Change me to pub/sub style
       const actionId = await action.getId();
 
-      console.log("actionId", actionId);
+      console.info("actionId", actionId);
 
       updateUserActionStatus({ actionId, status: SUCCESSFUL });
 
@@ -101,7 +102,7 @@ export class BuyLandScreen extends React.Component {
     // if that won't cause a disruptive re-render of the component
     await action.send();
 
-    console.log("action", action);
+    console.info("action", action);
 
     // Optimistic UI update
     removeLandForSale(landForSale);
@@ -112,7 +113,7 @@ export class BuyLandScreen extends React.Component {
     navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();
-    console.log({ actionId });
+    console.info({ actionId });
     const userAction = { [actionId]: { status: PENDING, assetId } };
 
     addUserAction(userAction);
@@ -137,12 +138,14 @@ export class BuyLandScreen extends React.Component {
         type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
 
       marketplaceContract.setAccount(account);
+
+      // TODO: Add extra param back in to reproduce the error
+      // state that we should handle better
       const action = marketplaceContract.safeExecuteOrder(
         nftAddress,
         `${assetId}`,
         `${priceInWei}`,
-        `${fingerprint}`,
-        gasParams
+        `${fingerprint}`
       );
 
       return action;
