@@ -19,10 +19,10 @@ import { PENDING, SUCCESSFUL } from "@constants/UserActionStatus";
 // TODO: Go deep on gas handling.
 // Without that, VM returns a revert error instead of out of gas error.
 // See: https://github.com/tasitlabs/TasitSDK/issues/173
-const gasParams = {
-  gasLimit: 7e6,
-  gasPrice: 1e9,
-};
+// const gasParams = {
+//   gasLimit: 7e6,
+//   gasPrice: 1e9,
+// };
 
 export class BuyLandScreen extends React.Component {
   _onBuy = landForSale => {
