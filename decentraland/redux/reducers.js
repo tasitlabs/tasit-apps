@@ -87,17 +87,31 @@ const landToBuy = createReducer(null, {
 //
 const prependLandForSaleToList = (state, action) => {
   const { landForSale } = action;
+  const { id } = landForSale;
+  let { list: assetsForSale } = state;
+  console.info("previous for sale list", assetsForSale);
+  console.info("prepend landForSale id", id);
+
+  // TODO: Consider having this function ensure that landForSale
+  // isn't already in the list before adding it
   return { ...state, list: [landForSale, ...state.list] };
 };
 
 const appendLandForSaleToList = (state, action) => {
   const { landForSale } = action;
+  const { id } = landForSale;
+  let { list: assetsForSale } = state;
+  // console.info("previous for sale list", assetsForSale);
+  console.info("append landForSale id", id);
   return { ...state, list: [...state.list, landForSale] };
 };
 
 const removeLandForSale = (state, action) => {
   const { landForSale } = action;
+  const { id } = landForSale;
+  console.info("remove landForSale id", id);
   let { list: assetsForSale } = state;
+  console.info("previous for sale list", assetsForSale);
   const list = removeFromList(assetsForSale, landForSale);
   return { ...state, list };
 };
@@ -122,19 +136,27 @@ const assetsForSale = createReducer(
 //
 const prependToMyAssetsList = (state, action) => {
   const { myAsset } = action;
+  const { list: myAssets } = state;
+  console.info("previous my assets list", myAssets);
+  console.info("prepend myAsset", myAsset);
   return { ...state, list: [myAsset, ...state.list] };
 };
 
 const appendToMyAssetsList = (state, action) => {
   const { itemOrList } = action;
+  const { list: myAssets } = state;
+  console.info("previous my assets list", myAssets);
   const toAppend = toListIfNot(itemOrList);
+  console.info("append myAsset item or list", toAppend);
   return { ...state, list: [...state.list, ...toAppend] };
 };
 
 const removeFromMyAssetsList = (state, action) => {
   const { itemOrList } = action;
   const { list: myAssets } = state;
+  console.info("previous my assets list", myAssets);
   const toRemove = itemOrList;
+  console.info("remove myAsset", toRemove);
   const list = removeFromList(myAssets, toRemove);
   return { ...state, list };
 };
