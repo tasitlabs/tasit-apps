@@ -10,6 +10,14 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.info("this.state.redirectData", this.state.redirectData);
+    const prefix = Linking.makeUrl("/");
+    console.info("app prefix", prefix);
+
+    const transactionDeepLink =
+      this.state.redirectData && this.state.redirectData.path === "transaction";
+    console.info("transactionDeepLink", transactionDeepLink);
+
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -19,8 +27,6 @@ export default class App extends React.Component {
         />
       );
     } else {
-      const prefix = this.state.redirectData;
-      console.log("prefix", prefix);
       return (
         <View style={styles.container}>
           {Platform.OS === "ios" && <StatusBar barStyle="default" />}
@@ -32,18 +38,23 @@ export default class App extends React.Component {
 
   _handleRedirect = event => {
     let data = Linking.parse(event.url);
-
+    console.info("App WAS already open - deep link with data", data);
     this.setState({ redirectData: data });
   };
 
   _getInitialUrl = async () => {
     const url = await Linking.getInitialURL();
-    console.log("App not already open - deep link with url", url);
-    let data = Linking.parse(url);
+    console.info("---");
+    console.info("Initial URL", url);
+    const data = Linking.parse(url);
+    console.info("App not already open - deep link with data", data);
     this.setState({ redirectData: data });
   };
 
   _loadResourcesAsync = async () => {
+    // TODO: Decide if we need to remove
+    // the linking listener somewhere
+    console.info("Adding deep linking listener");
     this._addLinkingListener();
     await this._getInitialUrl();
     return Promise.all([

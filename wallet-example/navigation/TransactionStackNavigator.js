@@ -8,7 +8,7 @@ import TransactionScreen from "../screens/TransactionScreen";
 const TransactionStackNavigator = createStackNavigator({
   Transaction: {
     screen: TransactionScreen,
-    path: "transaction"
+    path: "" // path /trasaction set in tab navigator
   }
 });
 

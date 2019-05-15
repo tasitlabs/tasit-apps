@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 export default class TransactionScreen extends React.Component {
   static navigationOptions = {
@@ -11,7 +11,11 @@ export default class TransactionScreen extends React.Component {
       /*TODO: Flesh out this screen with a mocked up transaction using
     the incoming data*/
     }
-    return <View style={styles.container}>{"Test"}</View>;
+    return (
+      <View style={styles.container}>
+        <Text>{"Test"}</Text>
+      </View>
+    );
   }
 }
 
