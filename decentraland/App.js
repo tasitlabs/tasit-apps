@@ -1,6 +1,11 @@
 import React from "react";
 import { YellowBox } from "react-native";
-import { AppLoading, Font, Linking } from "expo";
+import { AppLoading, Font } from "expo";
+
+// TODO: Configure linking for app startup like in
+// the wallet app
+// import { AppLoading, Font, Linking } from "expo";
+
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 

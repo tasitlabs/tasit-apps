@@ -21,11 +21,9 @@ export default class EthereumSignInScreen extends React.Component {
           playStoreId: "me.lyft.android",
         };
         await AppLink.maybeOpenURL(url, config);
-      } catch {
-        err => {
-          // handle error
-          console.log("Error", error);
-        };
+      } catch (error) {
+        // handle error
+        console.info("Error", error);
       }
     };
     return <EthereumSignIn onConnect={onConnect} />;
