@@ -6,9 +6,10 @@ import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 
 // TODO: Maybe move path here?
+
 const HomeStackNavigator = createStackNavigator({
   Home: {
-    Screen: HomeScreen,
+    screen: HomeScreen,
     path: ""
   }
 });

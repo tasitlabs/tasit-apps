@@ -4,12 +4,15 @@ import { createBottomTabNavigator } from "react-navigation";
 import HomeStackNavigator from "./HomeStackNavigator";
 import TransactionStackNavigator from "./TransactionStackNavigator";
 
-export default createBottomTabNavigator({
+const MainTabNavigator = createBottomTabNavigator({
   Home: {
-    Screen: HomeStackNavigator
+    screen: HomeStackNavigator,
+    path: ""
   },
   Transaction: {
-    Screen: TransactionStackNavigator,
+    screen: TransactionStackNavigator,
     path: "transaction"
   }
 });
+
+export default MainTabNavigator;
