@@ -1,11 +1,18 @@
 import React from "react";
 import EthereumSignIn from "@presentational/EthereumSignIn";
+import { Linking } from "expo";
 import AppLink from "react-native-app-link";
 
 export default class EthereumSignInScreen extends React.Component {
   render() {
     const onConnect = async () => {
       try {
+        // TODO: Change this to link to the example wallet app
+        let url = Linking.makeUrl("path/into/app", {
+          hello: "world",
+          goodbye: "now",
+        });
+
         // TODO: Change config to use test wallet app
         const config = {
           appName: "lyft",

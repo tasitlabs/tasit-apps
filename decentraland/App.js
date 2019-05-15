@@ -1,11 +1,13 @@
 import React from "react";
 import { YellowBox } from "react-native";
-import { AppLoading, Font } from "expo";
+import { AppLoading, Font, Linking } from "expo";
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
+
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import decentralandApp from "@redux/reducers";
+
 import {
   setAccount,
   setMyAssetsList,
@@ -14,9 +16,12 @@ import {
   addUserAction,
 } from "@redux/actions";
 import applyMiddleware from "@redux/middlewares";
+
 import { Action } from "tasit-sdk";
 const { ConfigLoader } = Action;
+
 import tasitSdkConfig from "./config/current";
+
 import { checkBlockchain, showFatalError } from "@helpers";
 import {
   retrieveAccount,
@@ -28,6 +33,7 @@ import {
   retrieveIsFirstUse,
   retrieveUserActions,
 } from "@helpers/storage";
+
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
 
