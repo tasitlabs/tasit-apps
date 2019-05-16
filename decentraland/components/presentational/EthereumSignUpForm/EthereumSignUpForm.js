@@ -43,6 +43,7 @@ export function UsernameTextInput({ onChange, username }) {
   return (
     <TextInput
       autoCorrect={false}
+      autoFocus={true}
       autoCapitalize="none"
       style={styles.userInput}
       onChangeText={onChange}
@@ -64,8 +65,6 @@ EthereumSignUpForm.propTypes = {
   onSignUp: PropTypes.func.isRequired,
 };
 
-// TODO: Make the input box look a little nicer, maybe with a border
-
 const styles = StyleSheet.create({
   buttonView: {
     flexDirection: "row",
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
     color: Colors.textColor,
     fontSize: responsiveFontSize(3),
     justifyContent: "flex-start",
-    width: responsiveWidth(28),
+    width: responsiveWidth(48),
   },
   userInputView: { alignItems: "center", flex: 1 },
   userRow: { flexDirection: "row" },

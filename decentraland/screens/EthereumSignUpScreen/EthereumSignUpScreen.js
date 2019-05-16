@@ -44,6 +44,7 @@ export class EthereumSignUpScreen extends React.Component {
       // 4. Change UI progress state on-screen
 
       const createAnAccount = async () => {
+        console.info("About to call createAccount");
         const account = await createAccount();
         showInfo(`Account generated`);
         setAccount(account);
@@ -53,36 +54,44 @@ export class EthereumSignUpScreen extends React.Component {
 
       const fundWithEthers = async accountAddress => {
         const action = fundAccountWithEthers(accountAddress);
+        await action.send();
+        console.info("Sent the ETH transfer action");
         const actionId = await action.getId();
+        console.info({ actionId });
         updateActionIdForAccountCreationStatus({
           status: FUNDING_WITH_ETH,
           actionId,
         });
-        await action.waitForNonceToUpdate();
+        await action.waitForOneConfirmation();
+        // TODO: Change me to pub/sub style
         showInfo(`Account funded with ETH`);
         setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
       };
 
       const fundWithMana = async accountAddress => {
         const action = fundAccountWithMana(accountAddress);
+        await action.send();
         const actionId = await action.getId();
         updateActionIdForAccountCreationStatus({
           status: FUNDING_WITH_MANA,
           actionId,
         });
-        await action.waitForNonceToUpdate();
+        await action.waitForOneConfirmation();
+        // TODO: Change me to pub/sub style
         showInfo(`Account funded with MANA`);
         setAccountCreationStatus(APPROVING_MARKETPLACE);
       };
 
       const approveMarketplace = async account => {
         const action = approveManaSpending(account);
+        await action.send();
         const actionId = await action.getId();
         updateActionIdForAccountCreationStatus({
           status: APPROVING_MARKETPLACE,
           actionId,
         });
-        await action.waitForNonceToUpdate();
+        await action.waitForOneConfirmation();
+        // TODO: Change me to pub/sub style
         showInfo(`Marketplace approved`);
         setAccountCreationStatus(FUNDING_WITH_MANA);
       };
