@@ -1,19 +1,27 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
-export default class TransactionScreen extends React.Component {
+import { connect } from "react-redux";
+import { addTransaction } from "@store/actions";
+
+export class TransactionScreen extends React.Component {
   static navigationOptions = {
     title: "Transaction"
   };
 
   render() {
-    {
-      /*TODO: Flesh out this screen with a mocked up transaction using
-    the incoming data*/
+    const { transactions } = this.props;
+    let transactionOneString = "placeholder";
+    try {
+      console.log("# of transactions", transactions.length);
+      const transactionOne = transactions[0];
+      transactionOneString = JSON.stringify(transactions);
+    } catch (error) {
+      console.info("error", error);
     }
     return (
       <View style={styles.container}>
-        <Text>{"Test"}</Text>
+        <Text>{transactionOneString}</Text>
       </View>
     );
   }
@@ -26,3 +34,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   }
 });
+
+const mapStateToProps = state => ({
+  transactions: state.transactions
+});
+
+export default connect(mapStateToProps)(TransactionScreen);

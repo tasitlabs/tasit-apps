@@ -3,6 +3,15 @@ import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { AppLoading, Asset, Font, Icon, Linking } from "expo";
 import AppNavigator from "./navigation/AppNavigator";
 
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+
+import rootReducer from "@store/reducers";
+
+import { addTransaction } from "@store/actions";
+
+const store = createStore(rootReducer);
+
 export default class App extends React.Component {
   state = {
     redirectData: null,
@@ -28,10 +37,12 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          <AppNavigator uriPrefix={prefix} />
-        </View>
+        <Provider store={store}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+            <AppNavigator uriPrefix={prefix} />
+          </View>
+        </Provider>
       );
     }
   }
@@ -39,6 +50,8 @@ export default class App extends React.Component {
   _handleRedirect = event => {
     let data = Linking.parse(event.url);
     console.info("App WAS already open - deep link with data", data);
+    const { queryParams } = data;
+    store.dispatch(addTransaction(queryParams));
     this.setState({ redirectData: data });
   };
 
@@ -47,6 +60,8 @@ export default class App extends React.Component {
     console.info("Initial URL", url);
     const data = Linking.parse(url);
     console.info("App not already open - deep link with data", data);
+    const { queryParams } = data;
+    store.dispatch(addTransaction(queryParams));
     this.setState({ redirectData: data });
   };
 

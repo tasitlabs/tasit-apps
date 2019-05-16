@@ -15,12 +15,14 @@
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-navigation": "^3.9.2"
+    "react-navigation": "^3.9.2",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
     "eslint": "^5.16.0",
-    "expo-cli": "^2.17.2",
+    "expo-cli": "^2.17.3",
     "jest-expo": "^32.0.0",
     "prettier": "^1.17.1"
   },
