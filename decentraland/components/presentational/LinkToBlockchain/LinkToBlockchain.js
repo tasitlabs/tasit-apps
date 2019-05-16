@@ -53,8 +53,6 @@ LinkToBlockchain.propTypes = {
   actionId: PropTypes.string,
 };
 
-// TODO: Determine why the eye icon isn't showing up
-// after the color changes
 const styles = StyleSheet.create({
   icon: {
     color: Colors.linkColor,
