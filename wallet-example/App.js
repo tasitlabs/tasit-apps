@@ -44,7 +44,6 @@ export default class App extends React.Component {
 
   _getInitialUrl = async () => {
     const url = await Linking.getInitialURL();
-    console.info("---");
     console.info("Initial URL", url);
     const data = Linking.parse(url);
     console.info("App not already open - deep link with data", data);
