@@ -15,14 +15,6 @@ import { showError, showInfo, getContracts } from "@helpers";
 import { ESTATE, PARCEL } from "@constants/AssetTypes";
 import { PENDING, SUCCESSFUL } from "@constants/UserActionStatus";
 
-// TODO: Go deep on gas handling.
-// Without that, VM returns a revert error instead of out of gas error.
-// See: https://github.com/tasitlabs/TasitSDK/issues/173
-const gasParams = {
-  gasLimit: 7e6,
-  gasPrice: 1e9,
-};
-
 export class BuyLandScreen extends React.Component {
   _onBuy = landForSale => {
     try {
@@ -55,7 +47,8 @@ export class BuyLandScreen extends React.Component {
       updateUserActionStatus,
     } = props;
     const { account } = accountInfo;
-    const { asset } = landForSale;
+    const { asset, id: landId } = landForSale;
+    console.info("landForSaleId", landId);
     const { id: assetId, type } = asset;
 
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
@@ -69,22 +62,38 @@ export class BuyLandScreen extends React.Component {
       // TODO: Change me to pub/sub style
       const actionId = await action.getId();
 
+      console.info("actionId", actionId);
+
       updateUserActionStatus({ actionId, status: SUCCESSFUL });
 
       showInfo(`${typeDescription} bought successfully.`);
     };
 
     const onError = (assetForSale, message) => {
+      console.info("onError triggered", message);
       const { asset } = assetForSale;
       showError(message);
+
       removeFromMyAssetsList(asset);
+      // TODO: We encountered an error state where the land for
+      // sale was still in the list, which means prepending it
+      // was redundant and triggering another error.
+      // Decide whether to have prependLandForSaleToList
+      // dedupe before prepending, or whether to ensure that even in
+      // error states the land has been removed before getting here
       prependLandForSaleToList(assetForSale);
     };
 
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
 
     const action = await _executeOrder(landForSale, account, onError);
+
+    // TODO: Possibly remove this await to ensure land for sale
+    // is optimistically removed, or remove the land before this line
+    // if that won't cause a disruptive re-render of the component
     await action.send();
+
+    console.info("action", action);
 
     // Optimistic UI update
     removeLandForSale(landForSale);
@@ -95,6 +104,7 @@ export class BuyLandScreen extends React.Component {
     navigation.navigate("MyAssetsScreen");
 
     const actionId = await action.getId();
+    console.info({ actionId });
     const userAction = { [actionId]: { status: PENDING, assetId } };
 
     addUserAction(userAction);
@@ -119,16 +129,19 @@ export class BuyLandScreen extends React.Component {
         type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
 
       marketplaceContract.setAccount(account);
+
+      // TODO: Add extra param back in to reproduce the error
+      // state that we should handle better
       const action = marketplaceContract.safeExecuteOrder(
         nftAddress,
         `${assetId}`,
         `${priceInWei}`,
-        `${fingerprint}`,
-        gasParams
+        `${fingerprint}`
       );
 
       return action;
     } catch (error) {
+      console.info("Caught error in _executeOrder");
       // Note: The current version isn't supporting `failing` events
       // See more:
       // https://github.com/tasitlabs/tasit/issues/151

@@ -75,6 +75,7 @@ export const getContracts = () => {
 export const createAccount = async () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
+  console.info("createAccount called");
   const account = Account.create();
   return account;
 };

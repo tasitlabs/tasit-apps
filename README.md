@@ -36,9 +36,9 @@ You might want to jump ahead to the "why" section to start:
 ### Simple onboarding
 
 <div align="left">
-  <img src="./shared/assets/screenshots/StartSetup.png" width="200" />
-  <img src="./shared/assets/screenshots/PickUsername.png" width="200" />
-  <img src="./shared/assets/screenshots/MyProfile.png" width="200" />
+  <img src="./docs/screenshots/StartSetup.png" width="200" />
+  <img src="./docs/screenshots/PickUsername.png" width="200" />
+  <img src="./docs/screenshots/MyProfile.png" width="200" />
 </div>
 
 ### Decentraland by Tasit
@@ -50,9 +50,9 @@ This is the first Tasit app - we plan to release one or two other similar 3rd-pa
 We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
 
 <div align="left">
-  <img src="./decentraland/assets/screenshots/ListLand.png" width="200" />
-  <img src="./decentraland/assets/screenshots/BuyLand.png" width="200" />
-  <img src="./decentraland/assets/screenshots/MyLand.png" width="200" />
+  <img src="./docs/screenshots/ListLand.png" width="200" />
+  <img src="./docs/screenshots/BuyLand.png" width="200" />
+  <img src="./docs/screenshots/MyLand.png" width="200" />
 </div>
 
 ### Tasit demo app
