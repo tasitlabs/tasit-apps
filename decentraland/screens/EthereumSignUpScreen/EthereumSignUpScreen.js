@@ -44,6 +44,7 @@ export class EthereumSignUpScreen extends React.Component {
       // 4. Change UI progress state on-screen
 
       const createAnAccount = async () => {
+        console.info("About to call createAccount");
         const account = await createAccount();
         showInfo(`Account generated`);
         setAccount(account);

@@ -65,8 +65,6 @@ EthereumSignUpForm.propTypes = {
   onSignUp: PropTypes.func.isRequired,
 };
 
-// TODO: Make the input box look a little nicer, maybe with a border
-
 const styles = StyleSheet.create({
   buttonView: {
     flexDirection: "row",

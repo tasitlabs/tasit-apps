@@ -83,7 +83,7 @@ export class ListLandForSaleScreen extends React.Component {
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
     // Get mana price using string to avoid imprecise rounding (i.e.: 57999.99999999999)
-    // TODO: Use TasitSDK Utils to dealing with BigNumbers (will be implemented on v0.2.0)
+    // TODO: Use TasitSDK Utils to deal with BigNumbers (will be implemented on v0.2.0)
     const priceManaInWei = `${priceInWei}`;
     const strPriceManaLength = priceManaInWei.length - 18;
     const strRoundedPriceMana = priceManaInWei.substring(0, strPriceManaLength);
