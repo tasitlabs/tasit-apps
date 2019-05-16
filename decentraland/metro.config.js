@@ -22,7 +22,7 @@ module.exports = {
   // https://github.com/facebook/metro/issues/7#issuecomment-430008657
   getProjectRoots() {
     var shared = path.join(__dirname, "../shared");
-    console.log("shared", shared);
+    // console.log("shared", shared);
     return [
       // Keep your project directory.
       __dirname,
