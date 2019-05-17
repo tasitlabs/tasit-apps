@@ -51,13 +51,15 @@ export default class App extends React.Component {
   _handleDeepLinkPayload = data => {
     const { queryParams, path } = data;
     if (!path) {
-      console.info("Empty deep link path");
-    } else {
-      console.info("Deep link path", path);
+      console.info("Home screen (empty) deep link path");
+      return; // returning early - leave function here
     }
-    if (path === "transaction") {
-      store.dispatch(addTransaction(queryParams));
+    if (path !== "transaction") {
+      console.info("??? Unknown deep link path - no screen transition");
+      return; // returning early - leave function here
     }
+    console.info("Transaction deep link");
+    store.dispatch(addTransaction(queryParams));
   };
 
   _getInitialUrl = async () => {
