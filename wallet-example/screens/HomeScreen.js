@@ -9,8 +9,11 @@ import {
   View
 } from "react-native";
 import { WebBrowser } from "expo";
+import Colors from "@constants/Colors";
 
 import { MonoText } from "../components/StyledText";
+
+/* eslint-disable react-native/no-raw-text */
 
 export class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -44,7 +47,7 @@ export class HomeScreen extends React.Component {
               style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
             >
               <MonoText style={styles.codeHighlightText}>
-                screens/HomeScreen.js
+                {"screens/HomeScreen.js"}
               </MonoText>
             </View>
 
@@ -120,22 +123,22 @@ export class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   codeHighlightContainer: {
-    backgroundColor: "rgba(0,0,0,0.05)",
+    backgroundColor: Colors.codeHighlightContainer,
     borderRadius: 3,
     paddingHorizontal: 4
   },
   codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)"
+    color: Colors.codeHighlightText
   },
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: Colors.background,
     flex: 1
   },
   contentContainer: {
     paddingTop: 30
   },
   developmentModeText: {
-    color: "rgba(0,0,0,0.4)",
+    color: Colors.developmentModeText,
     fontSize: 14,
     lineHeight: 19,
     marginBottom: 20,
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 50
   },
   getStartedText: {
-    color: "rgba(96,100,109, 1)",
+    color: Colors.getStartedText,
     fontSize: 17,
     lineHeight: 24,
     textAlign: "center"
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15
   },
   helpLinkText: {
-    color: "#2e78b7",
+    color: Colors.helpLinkText,
     fontSize: 14
   },
   homeScreenFilename: {
@@ -185,11 +188,11 @@ const styles = StyleSheet.create({
       }
     }),
     alignItems: "center",
-    backgroundColor: "#fbfbfb",
+    backgroundColor: Colors.backgroundColorHome,
     paddingVertical: 20
   },
   tabBarInfoText: {
-    color: "rgba(96,100,109, 1)",
+    color: Colors.tabBarInfoText,
     fontSize: 17,
     textAlign: "center"
   },

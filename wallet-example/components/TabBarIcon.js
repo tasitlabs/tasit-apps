@@ -2,8 +2,10 @@ import React from "react";
 import { Icon } from "expo";
 
 import Colors from "../constants/Colors";
+import PropTypes from "prop-types";
 
-export default class TabBarIcon extends React.Component {
+/* eslint-disable react-native/no-inline-styles */
+export class TabBarIcon extends React.Component {
   render() {
     return (
       <Icon.Ionicons
@@ -17,3 +19,11 @@ export default class TabBarIcon extends React.Component {
     );
   }
 }
+/* eslint-enable react-native/no-inline-styles */
+
+TabBarIcon.propTypes = {
+  name: PropTypes.string.isRequired,
+  focused: PropTypes.bool.isRequired
+};
+
+export default TabBarIcon;

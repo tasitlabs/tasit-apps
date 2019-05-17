@@ -25,5 +25,8 @@ module.exports = {
     react: {
       version: "16.5"
     }
+  },
+  globals: {
+    __DEV__: false
   }
 };

@@ -3,6 +3,10 @@ import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { AppLoading, Asset, Font, Icon, Linking } from "expo";
 import AppNavigator from "./navigation/AppNavigator";
 
+import PropTypes from "prop-types";
+
+import Colors from "@constants/Colors";
+
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
@@ -112,7 +116,11 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: Colors.background,
     flex: 1
   }
 });
+
+App.propTypes = {
+  skipLoadingScreen: PropTypes.bool
+};

@@ -1,6 +1,8 @@
 import React from "react";
 import { Text } from "react-native";
+import PropTypes from "prop-types";
 
+/* eslint-disable react-native/no-inline-styles */
 export class MonoText extends React.Component {
   render() {
     return (
@@ -11,3 +13,9 @@ export class MonoText extends React.Component {
     );
   }
 }
+
+/* eslint-enable react-native/no-inline-styles */
+
+MonoText.propTypes = {
+  style: PropTypes.object.isRequired
+};
