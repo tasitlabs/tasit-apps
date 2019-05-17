@@ -14,18 +14,8 @@ exports[`EthereumSignIn renders the component 1`] = `
   <LargeText>
     Cool. Let's start by hooking this app with your wallet.
   </LargeText>
-  <Component
-    style={
-      Object {
-        "flexDirection": "row",
-        "marginTop": 66.7,
-      }
-    }
-  >
-    <Button
-      onPress={[Function]}
-      title="Connect with wallet"
-    />
-  </Component>
+  <WalletButton
+    onConnect={[Function]}
+  />
 </Component>
 `;

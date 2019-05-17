@@ -15,6 +15,9 @@ exports[`MyProfile renders the component 1`] = `
   <MyProfileProgress
     progress={0.5}
   />
+  <WalletButton
+    onConnect={[Function]}
+  />
   <Component
     style={
       Object {
