@@ -17,5 +17,5 @@ export class MonoText extends React.Component {
 /* eslint-enable react-native/no-inline-styles */
 
 MonoText.propTypes = {
-  style: PropTypes.object.isRequired
+  style: PropTypes.object
 };
