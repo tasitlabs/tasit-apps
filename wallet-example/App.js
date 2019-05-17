@@ -19,13 +19,8 @@ export default class App extends React.Component {
   };
 
   render() {
-    console.info("this.state.redirectData", this.state.redirectData);
     const prefix = Linking.makeUrl("/");
-    console.info("app prefix", prefix);
-
-    const transactionDeepLink =
-      this.state.redirectData && this.state.redirectData.path === "transaction";
-    console.info("transactionDeepLink", transactionDeepLink);
+    // console.info("app prefix", prefix);
 
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
@@ -49,20 +44,27 @@ export default class App extends React.Component {
 
   _handleRedirect = event => {
     let data = Linking.parse(event.url);
-    console.info("App WAS already open - deep link with data", data);
-    const { queryParams } = data;
-    store.dispatch(addTransaction(queryParams));
-    this.setState({ redirectData: data });
+    console.info("** App WAS already open **");
+    this._handleDeepLinkPayload(data);
+  };
+
+  _handleDeepLinkPayload = data => {
+    const { queryParams, path } = data;
+    if (!path) {
+      console.info("Empty deep link path");
+    } else {
+      console.info("Deep link path", path);
+    }
+    if (path === "transaction") {
+      store.dispatch(addTransaction(queryParams));
+    }
   };
 
   _getInitialUrl = async () => {
     const url = await Linking.getInitialURL();
-    console.info("Initial URL", url);
     const data = Linking.parse(url);
-    console.info("App not already open - deep link with data", data);
-    const { queryParams } = data;
-    store.dispatch(addTransaction(queryParams));
-    this.setState({ redirectData: data });
+    console.info("App not already open");
+    this._handleDeepLinkPayload(data);
   };
 
   _loadResourcesAsync = async () => {

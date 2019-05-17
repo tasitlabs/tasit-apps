@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 import { connect } from "react-redux";
-import { addTransaction } from "@store/actions";
 
 export class TransactionScreen extends React.Component {
   static navigationOptions = {
@@ -11,17 +10,16 @@ export class TransactionScreen extends React.Component {
 
   render() {
     const { transactions } = this.props;
-    let transactionOneString = "placeholder";
+    let transactionsString = "placeholder";
     try {
       console.log("# of transactions", transactions.length);
-      const transactionOne = transactions[0];
-      transactionOneString = JSON.stringify(transactions);
+      transactionsString = JSON.stringify(transactions);
     } catch (error) {
       console.info("error", error);
     }
     return (
       <View style={styles.container}>
-        <Text>{transactionOneString}</Text>
+        <Text>{transactionsString}</Text>
       </View>
     );
   }

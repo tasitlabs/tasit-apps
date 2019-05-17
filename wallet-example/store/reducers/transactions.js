@@ -4,7 +4,7 @@ const transactions = (state = [], action) => {
       return [
         ...state,
         {
-          ...action,
+          ...action.data,
           completed: false
         }
       ];
