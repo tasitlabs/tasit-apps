@@ -6,7 +6,9 @@
     "ios": "npx expo start --ios",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --fix",
     "eject": "npx expo eject",
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "pretest": "npm run lint",
+    "test:update": "npx jest -u --maxWorkers=2",
+    "test": "npx jest --maxWorkers=2"
   },
   "jest": {
     "preset": "jest-expo"

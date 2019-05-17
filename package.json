@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "You probably want to run this from the subdir for a particular app",
+    "test": "cd decentraland && npm run test && cd .. && cd wallet-example && npm run test",
     "start": "You probably want to run this from the subdir for a particular app"
   }
 }
