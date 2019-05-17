@@ -1,6 +1,6 @@
 import React from "react";
 import EthereumSignIn from "@presentational/EthereumSignIn";
-import { Linking } from "expo";
+// import { Linking } from "expo";
 import AppLink from "react-native-app-link";
 
 export default class EthereumSignInScreen extends React.Component {
@@ -9,7 +9,7 @@ export default class EthereumSignInScreen extends React.Component {
       try {
         let url = "tasit-wallet-example://transaction?hello=world&goodbye=now";
 
-        console.log("Deep linking URL", url);
+        console.info("Deep linking URL", url);
 
         // TODO: Change config to use test wallet app
         const config = {
@@ -19,7 +19,7 @@ export default class EthereumSignInScreen extends React.Component {
           playStoreId: "me.lyft.android",
         };
 
-        console.log("App store config", config);
+        console.info("App store config", config);
 
         // TODO: Query for presence of the app using a separate function
         await AppLink.maybeOpenURL(url, config);

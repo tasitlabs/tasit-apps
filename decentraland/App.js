@@ -137,7 +137,7 @@ Is the config file correct?`;
   };
 
   _handleDeepLinkPayload = data => {
-    const { queryParams, path } = data;
+    const { path } = data;
     if (!path) {
       console.info("Home screen (empty) deep link path");
       return; // returning early - leave function here
