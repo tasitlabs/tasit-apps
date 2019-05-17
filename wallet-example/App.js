@@ -75,6 +75,7 @@ export default class App extends React.Component {
     console.info("Adding deep linking listener");
     this._addLinkingListener();
     await this._getInitialUrl();
+
     return Promise.all([
       Asset.loadAsync([
         require("./assets/images/robot-dev.png"),

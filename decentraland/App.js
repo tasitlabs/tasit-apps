@@ -1,13 +1,11 @@
 import React from "react";
 import { YellowBox } from "react-native";
-import { AppLoading, Font } from "expo";
-
-// TODO: Configure linking for app startup like in
-// the wallet app
-// import { AppLoading, Font, Linking } from "expo";
+import { AppLoading, Font, Linking } from "expo";
 
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
+
+import Paths from "@constants/Paths";
 
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -110,6 +108,9 @@ Is the config file correct?`;
   }
 
   render() {
+    const prefix = Linking.makeUrl("/");
+    // console.info("app prefix", prefix);
+
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -122,15 +123,52 @@ Is the config file correct?`;
       return (
         <Provider store={store}>
           <Root>
-            <AppNavigator />
+            <AppNavigator uriPrefix={prefix} />
           </Root>
         </Provider>
       );
     }
   }
 
+  _handleRedirect = event => {
+    let data = Linking.parse(event.url);
+    console.info("** App WAS already open **");
+    this._handleDeepLinkPayload(data);
+  };
+
+  _handleDeepLinkPayload = data => {
+    const { queryParams, path } = data;
+    if (!path) {
+      console.info("Home screen (empty) deep link path");
+      return; // returning early - leave function here
+    }
+    if (
+      path !== Paths.buyLand &&
+      path !== Paths.myProfile &&
+      path !== Paths.myAssets &&
+      path !== Paths.forSale
+    ) {
+      console.info("??? Unknown deep link path - no screen transition");
+      return; // returning early - leave function here
+    }
+    console.info("Known deep link", path);
+  };
+
+  _getInitialUrl = async () => {
+    const url = await Linking.getInitialURL();
+    const data = Linking.parse(url);
+    console.info("App not already open");
+    this._handleDeepLinkPayload(data);
+  };
+
   // More about AppLoading: https://docs.expo.io/versions/latest/sdk/app-loading/
   _loadResourcesAsync = async () => {
+    // TODO: Decide if we need to remove
+    // the linking listener somewhere
+    console.info("Adding deep linking listener");
+    this._addLinkingListener();
+    await this._getInitialUrl();
+
     const loadFonts = this._loadFonts();
     const loadTasitSDK = this._setupTasitSDK();
 
@@ -152,6 +190,14 @@ Is the config file correct?`;
 
   _handleFinishLoading = () => {
     this.setState({ isLoadingComplete: true });
+  };
+
+  _addLinkingListener = () => {
+    Linking.addEventListener("url", this._handleRedirect);
+  };
+
+  _removeLinkingListener = () => {
+    Linking.removeEventListener("url", this._handleRedirect);
   };
 }
 
