@@ -7,11 +7,9 @@ export default class EthereumSignInScreen extends React.Component {
   render() {
     const onConnect = async () => {
       try {
-        // TODO: Change this to link to the example wallet app
-        let url = Linking.makeUrl("path/into/app", {
-          hello: "world",
-          goodbye: "now",
-        });
+        let url = "tasit-wallet-example://transaction?hello=world&goodbye=now";
+
+        console.log("Deep linking URL", url);
 
         // TODO: Change config to use test wallet app
         const config = {
@@ -20,6 +18,10 @@ export default class EthereumSignInScreen extends React.Component {
           appStoreLocale: "us",
           playStoreId: "me.lyft.android",
         };
+
+        console.log("App store config", config);
+
+        // TODO: Query for presence of the app using a separate function
         await AppLink.maybeOpenURL(url, config);
       } catch (error) {
         // handle error
