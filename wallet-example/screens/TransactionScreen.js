@@ -42,11 +42,11 @@ export class TransactionScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: "#fff",
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    paddingTop: 15,
-    backgroundColor: "#fff"
+    paddingTop: 15
   }
 });
 
