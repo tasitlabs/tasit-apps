@@ -88,7 +88,7 @@ const landToBuy = createReducer(null, {
 const prependLandForSaleToList = (state, action) => {
   const { landForSale } = action;
   const { id } = landForSale;
-  let { list: assetsForSale } = state;
+  const { list: assetsForSale } = state;
   console.info("previous for sale list length", assetsForSale.length);
   console.info("prepend landForSale id", id);
 
@@ -100,7 +100,7 @@ const prependLandForSaleToList = (state, action) => {
 const appendLandForSaleToList = (state, action) => {
   const { landForSale } = action;
   const { id } = landForSale;
-  // let { list: assetsForSale } = state;
+  // const { list: assetsForSale } = state;
   // console.info("previous for sale list length", assetsForSale.length);
   console.info("append landForSale id", id);
   return { ...state, list: [...state.list, landForSale] };
@@ -110,7 +110,7 @@ const removeLandForSale = (state, action) => {
   const { landForSale } = action;
   const { id } = landForSale;
   console.info("remove landForSale id", id);
-  let { list: assetsForSale } = state;
+  const { list: assetsForSale } = state;
   console.info("previous for sale list length", assetsForSale.length);
   const list = removeFromList(assetsForSale, landForSale);
   return { ...state, list };

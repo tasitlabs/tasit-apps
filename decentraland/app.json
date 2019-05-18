@@ -9,6 +9,7 @@
     "version": "0.0.22",
     "orientation": "portrait",
     "icon": "./assets/images/TasitLogoFromSvgNoAlpha1024x1024.png",
+    "scheme": "tasit-decentraland",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
