@@ -3,5 +3,6 @@ node_modules/**/*
 npm-debug.*
 *.jks
 *.p12
+*.p8
 *.key
 *.mobileprovision
