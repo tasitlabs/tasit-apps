@@ -14,7 +14,7 @@ import AppLink from "react-native-app-link";
 export default function MyProfile({ progress, creationSteps }) {
   const onConnect = async () => {
     try {
-      let url = "tasit-wallet-example://transaction?hello=world&goodbye=now";
+      let url = "tasit-wallet://transaction?hello=world&goodbye=now";
 
       console.info("Deep linking URL", url);
 

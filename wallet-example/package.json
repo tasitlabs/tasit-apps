@@ -1,9 +1,12 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "version": "0.0.2",
   "scripts": {
     "start": "npx expo start -c",
     "android": "npx expo start --android",
     "ios": "npx expo start --ios",
+    "build:android": "npx expo build:android",
+    "build:ios": "npx expo build:ios",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,**/*.snap}' --fix",
     "eject": "npx expo eject",
     "pretest": "npm run lint",
@@ -12,6 +15,10 @@
   },
   "jest": {
     "preset": "jest-expo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tasitlabs/tasit.git"
   },
   "dependencies": {
     "expo": "^32.0.0",
@@ -36,5 +43,10 @@
     "prettier": "^1.17.1"
   },
   "private": true,
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Tasit Labs",
+  "bugs": {
+    "url": "https://github.com/tasitlabs/tasit/issues"
+  },
+  "homepage": "https://tasit.io"
 }
