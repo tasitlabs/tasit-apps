@@ -8,39 +8,14 @@ import ActionStatus from "@constants/ActionStatus";
 import MyProfileProgress from "@presentational/MyProfileProgress";
 import WalletButton from "@presentational/WalletButton";
 
-// import { Linking } from "expo";
-import AppLink from "react-native-app-link";
-
 export default function MyProfile({ progress, creationSteps }) {
-  const onConnect = async () => {
-    try {
-      let url = "tasit-wallet://transaction?hello=world&goodbye=now";
-
-      console.info("Deep linking URL", url);
-
-      // TODO: Change config to use test wallet app
-      const config = {
-        appName: "lyft",
-        appStoreId: "529379082",
-        appStoreLocale: "us",
-        playStoreId: "me.lyft.android",
-      };
-
-      console.info("App store config", config);
-
-      // TODO: Query for presence of the app using a separate function
-      await AppLink.maybeOpenURL(url, config);
-    } catch (error) {
-      // handle error
-      console.info("Error", error);
-    }
-  };
-
   return (
     <View style={styles.container}>
       <MyProfileProgress progress={progress} />
-      <WalletButton onConnect={onConnect} />
       <View style={styles.actionItemsContainer}>
+        <WalletButton appName="gnosis-safe-smart-wallet" scheme="gnosis-safe" />
+        <WalletButton appName="tasit-wallet" scheme="tasit-wallet" />
+
         {creationSteps.map(action => {
           const { name, status } = action;
 

@@ -4,7 +4,10 @@ import WalletButton from "@presentational/WalletButton";
 
 describe("WalletButton", () => {
   it("renders the component", async () => {
-    const onConnect = () => {};
-    expect(shallow(<WalletButton onConnect={onConnect} />)).toMatchSnapshot();
+    const appName = "testing";
+    const scheme = "test-scheme";
+    expect(
+      shallow(<WalletButton appName={appName} scheme={scheme} />)
+    ).toMatchSnapshot();
   });
 });
