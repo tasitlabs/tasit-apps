@@ -2,6 +2,7 @@
 
 exports[`App snapshot renders the loading screen 1`] = `null`;
 
+/* eslint-disable jest/no-large-snapshots */
 exports[`App snapshot renders the root without loading screen 1`] = `
 <View
   style={
@@ -485,3 +486,5 @@ exports[`App snapshot renders the root without loading screen 1`] = `
   </View>
 </View>
 `;
+
+/* eslint-enable jest/no-large-snapshots */

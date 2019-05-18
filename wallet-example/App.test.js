@@ -15,6 +15,7 @@ describe("App snapshot", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  // TODO: Switch to a shallow Enzyme render
   it("renders the root without loading screen", async () => {
     const tree = renderer.create(<App skipLoadingScreen />).toJSON();
     expect(tree).toMatchSnapshot();
