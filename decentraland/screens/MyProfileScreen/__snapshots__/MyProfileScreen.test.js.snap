@@ -30,6 +30,7 @@ exports[`MyProfileScreen renders the component funding with ethers 1`] = `
       },
     ]
   }
+  onClick={[Function]}
   progress={0.5}
 />
 `;
@@ -64,6 +65,7 @@ exports[`MyProfileScreen renders the component funding with ethers with null act
       },
     ]
   }
+  onClick={[Function]}
   progress={0.5}
 />
 `;
@@ -98,6 +100,7 @@ exports[`MyProfileScreen renders the component funding with mana AND approving m
       },
     ]
   }
+  onClick={[Function]}
   progress={1}
 />
 `;
@@ -132,6 +135,7 @@ exports[`MyProfileScreen renders the component initial state (without account) 1
       },
     ]
   }
+  onClick={[Function]}
   progress={0}
 />
 `;

@@ -4,29 +4,35 @@ import PropTypes from "prop-types";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import Button from "@presentational/Button";
 
-
 export default function WalletButton({ appSlug, appName, scheme }) {
   // console.info("appSlug", appSlug);
   // console.info("appName", appName);
   // console.info("scheme", scheme);
-  const openInStore = async ({ appName, appStoreId, appStoreLocale = 'us', playStoreId }) => {
+  const openInStore = async ({
+    appName,
+    appStoreId,
+    appStoreLocale = "us",
+    playStoreId,
+  }) => {
     try {
       // TODO: Pick scheme dynamically based on app name
       const url = `${scheme}://transaction?hello=world&goodbye=now`;
 
       console.info("Deep linking URL", url);
-      const supported = await Linking.canOpenURL(url)
+      const supported = await Linking.canOpenURL(url);
       if (!supported) {
-        console.log("Can't handle url: " + url);
+        console.info("Can't handle url: " + url);
       } else {
-        console.log("Able to handle url: " + url);
+        console.info("Able to handle url: " + url);
         // return Linking.openURL(url);
       }
     } catch (err) {
-      console.error('An error occurred', err));
+      console.info("An error occurred", err);
     }
-    if (Platform.OS === 'ios') {
-      Linking.openURL(`https://itunes.apple.com/${appStoreLocale}/app/${appName}/id${appStoreId}`);
+    if (Platform.OS === "ios") {
+      Linking.openURL(
+        `https://itunes.apple.com/${appStoreLocale}/app/${appName}/id${appStoreId}`
+      );
     } else {
       Linking.openURL(
         `https://play.google.com/store/apps/details?id=${playStoreId}`
@@ -35,7 +41,6 @@ export default function WalletButton({ appSlug, appName, scheme }) {
   };
   const onConnect = async () => {
     try {
-
       // TODO: Change config to use test wallet app
       const config = {
         appName: appSlug,

@@ -25,6 +25,7 @@ export default function MyProfile({ progress, creationSteps, onClick }) {
           );
         })}
       </View>
+      {/* TODO: Break this component up into a smaller snapshot */}
       <View style={styles.buttonContainer}>
         <Button title="Connect wallet" onPress={onClick} />
       </View>
@@ -33,7 +34,8 @@ export default function MyProfile({ progress, creationSteps, onClick }) {
 }
 
 MyProfile.propTypes = {
-  progress: PropTypes.number,
+  progress: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
   creationSteps: PropTypes.arrayOf(
     PropTypes.shape({
       status: PropTypes.oneOf(Object.values(ActionStatus)),

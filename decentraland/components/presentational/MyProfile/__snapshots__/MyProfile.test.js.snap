@@ -1,5 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+/* eslint-disable jest/no-large-snapshots */
 exports[`MyProfile renders the component 1`] = `
 <Component
   style={
@@ -15,20 +16,6 @@ exports[`MyProfile renders the component 1`] = `
   <MyProfileProgress
     progress={0.5}
   />
-  <Component
-    style={
-      Object {
-        "alignItems": "center",
-        "flex": 1,
-        "justifyContent": "center",
-      }
-    }
-  >
-    <Button
-      onPress={[Function]}
-      title="Connect wallet"
-    />
-  </Component>
   <Component
     style={
       Object {
@@ -54,6 +41,20 @@ exports[`MyProfile renders the component 1`] = `
       key="MANA"
       name="MANA"
       status="missing"
+    />
+  </Component>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      title="Connect wallet"
     />
   </Component>
 </Component>
