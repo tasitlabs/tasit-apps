@@ -18,6 +18,20 @@ exports[`MyProfile renders the component 1`] = `
   <Component
     style={
       Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Button
+      onPress={[Function]}
+      title="Connect wallet"
+    />
+  </Component>
+  <Component
+    style={
+      Object {
         "alignItems": "flex-start",
         "flex": 5,
         "flexDirection": "column",
@@ -26,14 +40,6 @@ exports[`MyProfile renders the component 1`] = `
       }
     }
   >
-    <WalletButton
-      appName="gnosis-safe-smart-wallet"
-      scheme="gnosis-safe"
-    />
-    <WalletButton
-      appName="tasit-wallet"
-      scheme="tasit-wallet"
-    />
     <MyProfileCreationStatusItem
       key="Account created"
       name="Account created"

@@ -6,16 +6,13 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 import MyProfileCreationStatusItem from "@presentational/MyProfileCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
 import MyProfileProgress from "@presentational/MyProfileProgress";
-import WalletButton from "@presentational/WalletButton";
+import Button from "@presentational/Button";
 
-export default function MyProfile({ progress, creationSteps }) {
+export default function MyProfile({ progress, creationSteps, onClick }) {
   return (
     <View style={styles.container}>
       <MyProfileProgress progress={progress} />
       <View style={styles.actionItemsContainer}>
-        <WalletButton appName="gnosis-safe-smart-wallet" scheme="gnosis-safe" />
-        <WalletButton appName="tasit-wallet" scheme="tasit-wallet" />
-
         {creationSteps.map(action => {
           const { name, status } = action;
 
@@ -27,6 +24,9 @@ export default function MyProfile({ progress, creationSteps }) {
             />
           );
         })}
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button title="Connect wallet" onPress={onClick} />
       </View>
     </View>
   );
@@ -49,6 +49,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     paddingLeft: responsiveWidth(12),
+  },
+  buttonContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
   container: {
     flex: 1,

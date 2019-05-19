@@ -25,6 +25,9 @@
       "buildNumber": "22",
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["tasit-wallet", "gnosis-safe"]
       }
     },
     "android": {

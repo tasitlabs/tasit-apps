@@ -56,6 +56,9 @@ export class MyProfileScreen extends React.Component {
   render() {
     const { accountInfo } = this.props;
 
+    const onClick = () =>
+      this.props.navigation.navigate("EthereumSignUpScreen");
+
     const creationStepsWithStatus = creationSteps.map(step => {
       const wasDone = stepWasDone(step, accountInfo);
       // TODO: As soon as we store action status in redux, this logic will change
@@ -68,6 +71,7 @@ export class MyProfileScreen extends React.Component {
       <MyProfile
         progress={this._getPercentage(creationStepsWithStatus)}
         creationSteps={creationStepsWithStatus}
+        onClick={onClick}
       />
     );
   }

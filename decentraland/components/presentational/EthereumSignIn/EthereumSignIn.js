@@ -8,8 +8,16 @@ export default function EthereumSignIn() {
   return (
     <View style={styles.container}>
       <LargeText>{`Cool. Let's start by hooking this app with your wallet.`}</LargeText>
-      <WalletButton appName="gnosis-safe-smart-wallet" scheme="gnosis-safe" />
-      <WalletButton appName="tasit-wallet" scheme="tasit-wallet" />
+      <WalletButton
+        appName="Gnosis Safe"
+        appSlug="gnosis-safe-smart-wallet"
+        scheme="gnosis-safe"
+      />
+      <WalletButton
+        appName="Tasit Wallet"
+        appSlug="tasit-wallet"
+        scheme="tasit-wallet"
+      />
     </View>
   );
 }

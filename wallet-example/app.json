@@ -24,6 +24,9 @@
       "buildNumber": "2",
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["tasit-decentraland"]
       }
     },
     "android": {
