@@ -57,7 +57,7 @@ export class MyProfileScreen extends React.Component {
     const { accountInfo } = this.props;
 
     const onClick = () =>
-      this.props.navigation.navigate("EthereumSignUpScreen");
+      this.props.navigation.navigate("EthereumSignInScreen");
 
     const creationStepsWithStatus = creationSteps.map(step => {
       const wasDone = stepWasDone(step, accountInfo);

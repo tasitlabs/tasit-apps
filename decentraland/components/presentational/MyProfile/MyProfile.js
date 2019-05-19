@@ -24,10 +24,10 @@ export default function MyProfile({ progress, creationSteps, onClick }) {
             />
           );
         })}
-      </View>
-      {/* TODO: Break this component up into a smaller snapshot */}
-      <View style={styles.buttonContainer}>
-        <Button title="Connect wallet" onPress={onClick} />
+        {/* TODO: Break this component up into a smaller snapshot */}
+        <View style={styles.buttonContainer}>
+          <Button title="Connect wallet" onPress={onClick} />
+        </View>
       </View>
     </View>
   );

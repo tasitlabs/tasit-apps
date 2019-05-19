@@ -19,6 +19,9 @@ export default function WalletButton({ appSlug, appName, scheme }) {
       const url = `${scheme}://transaction?hello=world&goodbye=now`;
 
       console.info("Deep linking URL", url);
+      // TODO: Move me outside of openInStore function
+      // Show something on the screen dynamically based on the results of this
+      // (that would need to happen outside of this component)
       const supported = await Linking.canOpenURL(url);
       if (!supported) {
         console.info("Can't handle url: " + url);
@@ -29,15 +32,15 @@ export default function WalletButton({ appSlug, appName, scheme }) {
     } catch (err) {
       console.info("An error occurred", err);
     }
+    let appStoreUrl;
     if (Platform.OS === "ios") {
-      Linking.openURL(
-        `https://itunes.apple.com/${appStoreLocale}/app/${appName}/id${appStoreId}`
-      );
+      appStoreUrl = `https://itunes.apple.com/${appStoreLocale}/app/${appName}/id${appStoreId}`;
+      Linking.openURL(appStoreUrl);
     } else {
-      Linking.openURL(
-        `https://play.google.com/store/apps/details?id=${playStoreId}`
-      );
+      appStoreUrl = `https://play.google.com/store/apps/details?id=${playStoreId}`;
+      Linking.openURL(appStoreUrl);
     }
+    console.info("app store url", appStoreUrl);
   };
   const onConnect = async () => {
     try {
