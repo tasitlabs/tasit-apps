@@ -6,40 +6,12 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 import MyProfileCreationStatusItem from "@presentational/MyProfileCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
 import MyProfileProgress from "@presentational/MyProfileProgress";
-import WalletButton from "@presentational/WalletButton";
+import Button from "@presentational/Button";
 
-// import { Linking } from "expo";
-import AppLink from "react-native-app-link";
-
-export default function MyProfile({ progress, creationSteps }) {
-  const onConnect = async () => {
-    try {
-      let url = "tasit-wallet://transaction?hello=world&goodbye=now";
-
-      console.info("Deep linking URL", url);
-
-      // TODO: Change config to use test wallet app
-      const config = {
-        appName: "lyft",
-        appStoreId: "529379082",
-        appStoreLocale: "us",
-        playStoreId: "me.lyft.android",
-      };
-
-      console.info("App store config", config);
-
-      // TODO: Query for presence of the app using a separate function
-      await AppLink.maybeOpenURL(url, config);
-    } catch (error) {
-      // handle error
-      console.info("Error", error);
-    }
-  };
-
+export default function MyProfile({ progress, creationSteps, onClick }) {
   return (
     <View style={styles.container}>
       <MyProfileProgress progress={progress} />
-      <WalletButton onConnect={onConnect} />
       <View style={styles.actionItemsContainer}>
         {creationSteps.map(action => {
           const { name, status } = action;
@@ -52,13 +24,18 @@ export default function MyProfile({ progress, creationSteps }) {
             />
           );
         })}
+        {/* TODO: Break this component up into a smaller snapshot */}
+        <View style={styles.buttonContainer}>
+          <Button title="Connect wallet" onPress={onClick} />
+        </View>
       </View>
     </View>
   );
 }
 
 MyProfile.propTypes = {
-  progress: PropTypes.number,
+  progress: PropTypes.number.isRequired,
+  onClick: PropTypes.func.isRequired,
   creationSteps: PropTypes.arrayOf(
     PropTypes.shape({
       status: PropTypes.oneOf(Object.values(ActionStatus)),
@@ -74,6 +51,11 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     paddingLeft: responsiveWidth(12),
+  },
+  buttonContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
   container: {
     flex: 1,

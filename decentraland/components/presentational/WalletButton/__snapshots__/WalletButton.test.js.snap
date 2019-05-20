@@ -11,7 +11,7 @@ exports[`WalletButton renders the component 1`] = `
 >
   <Button
     onPress={[Function]}
-    title="Connect with wallet"
+    title="Connect with testing"
   />
 </Component>
 `;
