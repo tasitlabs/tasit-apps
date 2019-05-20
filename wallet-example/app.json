@@ -5,7 +5,7 @@
     "privacy": "unlisted",
     "sdkVersion": "32.0.0",
     "platforms": ["ios", "android"],
-    "version": "0.0.2",
+    "version": "0.0.3",
     "orientation": "portrait",
     "icon": "./assets/images/TasitWalletExampleIcon1024.png",
     "scheme": "tasit-wallet",
@@ -21,7 +21,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "io.tasit.wallet",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "config": {
         "usesNonExemptEncryption": false
       },
@@ -32,7 +32,7 @@
     "android": {
       "package": "io.tasit.wallet",
       "permissions": [],
-      "versionCode": 2
+      "versionCode": 3
     }
   }
 }
