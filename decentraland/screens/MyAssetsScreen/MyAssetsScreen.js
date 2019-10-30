@@ -111,7 +111,8 @@ export class MyAssetsScreen extends React.Component {
     const listOfLand = await getLandOf(address);
     const assets = [];
 
-    for (let land of listOfLand) {
+    let land;
+    for (land of listOfLand) {
       const generateAsset = async land => {
         const { id: assetId, nftAddress, transactionHash: actionId } = land;
 

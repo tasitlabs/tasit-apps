@@ -50,7 +50,8 @@ export class ListLandForSaleScreen extends React.Component {
 
     // Showing only parcels for now because of all estates are with blank images
     const parcelsForSale = [];
-    for (let order of openSellOrders) {
+    let order;
+    for (order of openSellOrders) {
       const { nftAddress } = order;
       const isParcel = addressesAreEqual(nftAddress, landContract.getAddress());
       if (isParcel) parcelsForSale.push(order);
@@ -60,8 +61,9 @@ export class ListLandForSaleScreen extends React.Component {
     // Note: Getting only the first 10 assets for now
     // See more: https://github.com/tasitlabs/tasit/issues/155
     const listSize = 10;
-    for (let order of parcelsForSale.slice(0, listSize)) {
-      let assetForSalePromise = this._toAssetForSale(order);
+    let parcel;
+    for (parcel of parcelsForSale.slice(0, listSize)) {
+      let assetForSalePromise = this._toAssetForSale(parcel);
       assetsForSale.push(assetForSalePromise);
     }
 
