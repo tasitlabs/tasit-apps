@@ -152,6 +152,6 @@ We love getting feedback, so please feel free to reach out.
 
 - [Track the status of the project](https://github.com/orgs/tasitlabs/projects/1)
 
-- [Feature requests](https://tasit.canny.io/feature-requests)
+- [Feature requests](http://feedback.tasit.io/feature-requests)
 
 - [Medium](https://medium.com/tasit)
