@@ -1,6 +1,8 @@
 import React from "react";
 import { YellowBox } from "react-native";
-import { AppLoading, Font, Linking } from "expo";
+import { AppLoading, Linking } from "expo";
+
+import * as Font from 'expo-font';
 
 import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";

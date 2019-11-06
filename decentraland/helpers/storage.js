@@ -1,6 +1,6 @@
 // Note: If a piece of data wasn't found, returning null instead of default state of the
 // property to avoid coupling with redux reducers
-import { SecureStore } from "expo";
+import * as SecureStore from 'expo-secure-store';
 import { AsyncStorage } from "react-native";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
 import { logWarn } from "@helpers";
