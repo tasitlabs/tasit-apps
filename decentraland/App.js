@@ -2,9 +2,8 @@ import React from "react";
 import { YellowBox } from "react-native";
 import { AppLoading, Linking } from "expo";
 
-import * as Font from 'expo-font';
+import * as Font from "expo-font";
 
-import PropTypes from "prop-types";
 import AppNavigator from "./AppNavigator";
 
 import Paths from "@constants/Paths";
@@ -203,6 +202,7 @@ Is the config file correct?`;
   };
 }
 
+// TODO: Migrate me to TypeScript types
 App.propTypes = {
   skipLoadingScreen: PropTypes.bool,
 };

@@ -5,7 +5,7 @@ import {
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 import Colors from "@constants/Colors";
-import PropTypes from "prop-types";
+
 import { Button } from "native-base";
 import { openURL, showError } from "@helpers";
 
@@ -28,6 +28,7 @@ export default function TinyLink({ text, url }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 TinyLink.propTypes = {
   text: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,

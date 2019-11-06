@@ -6,7 +6,6 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Colors from "@constants/Colors";
 import ProgressBar from "react-native-progress/Bar";
-import PropTypes from "prop-types";
 
 export function MyProfileProgress({ progress }) {
   return (
@@ -25,6 +24,7 @@ export function MyProfileProgress({ progress }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 MyProfileProgress.propTypes = {
   progress: PropTypes.number,
 };
@@ -39,6 +39,7 @@ export function MyProfileProgressText({ progress }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 MyProfileProgressText.propTypes = {
   progress: PropTypes.number,
 };

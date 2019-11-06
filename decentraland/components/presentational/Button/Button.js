@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import RNButton from "react-native-button";
 import Colors from "@constants/Colors";
-import PropTypes from "prop-types";
+
 import {
   responsiveHeight,
   responsiveFontSize,
@@ -36,6 +36,7 @@ export default function Button(props) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,

@@ -10,7 +10,7 @@ import {
   updateUserActionStatus,
 } from "@redux/actions";
 import BuyLand from "@presentational/BuyLand";
-import PropTypes from "prop-types";
+
 import { showError, showInfo, getContracts } from "@helpers";
 import { ESTATE, PARCEL } from "@constants/AssetTypes";
 import { PENDING, SUCCESSFUL } from "@constants/UserActionStatus";
@@ -165,6 +165,7 @@ export class BuyLandScreen extends React.Component {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 BuyLandScreen.propTypes = {
   accountInfo: PropTypes.object,
   landToBuy: PropTypes.object.isRequired,

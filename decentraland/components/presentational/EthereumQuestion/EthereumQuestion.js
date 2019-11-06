@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import PropTypes from "prop-types";
+
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "@presentational/LargeText";
 import Button from "@presentational/Button";
@@ -20,6 +20,7 @@ export default function EthereumQuestion(props) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 EthereumQuestion.propTypes = {
   onSignUp: PropTypes.func.isRequired,
   onSignIn: PropTypes.func.isRequired,

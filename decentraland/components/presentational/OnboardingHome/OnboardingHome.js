@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
-import PropTypes from "prop-types";
+
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import LargeText from "@presentational/LargeText";
 import TinyLink from "@presentational/TinyLink";
@@ -25,6 +25,7 @@ export default function OnboardingHome(props) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 OnboardingHome.propTypes = {
   onPress: PropTypes.func.isRequired,
 };

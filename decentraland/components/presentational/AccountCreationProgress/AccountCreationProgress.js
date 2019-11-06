@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import PropTypes from "prop-types";
+
 import AccountCreationStatus from "@constants/AccountCreationStatus";
 import LinkToBlockchain from "@presentational/LinkToBlockchain";
 import { responsiveWidth } from "react-native-responsive-dimensions";
@@ -60,6 +60,7 @@ export function AccountCreationProgress({ status, actions }) {
   });
 }
 
+// TODO: Migrate me to TypeScript types
 AccountCreationProgress.propTypes = {
   status: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired,
@@ -80,6 +81,7 @@ export function ProgressMessageAndLink({ waitingMessage, actionId }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 ProgressMessageAndLink.propTypes = {
   waitingMessage: PropTypes.string,
   actionId: PropTypes.string,

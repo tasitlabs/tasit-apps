@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Platform, Linking } from "react-native";
-import PropTypes from "prop-types";
+
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import Button from "@presentational/Button";
 
@@ -68,6 +68,7 @@ export default function WalletButton({ appSlug, appName, scheme }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 WalletButton.propTypes = {
   appName: PropTypes.string.isRequired,
   appSlug: PropTypes.string.isRequired,

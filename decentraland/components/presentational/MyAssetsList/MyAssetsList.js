@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import PropTypes from "prop-types";
+
 import Colors from "@constants/Colors";
 import LargeText from "@presentational/LargeText";
 
@@ -55,6 +55,7 @@ export default class MyAssetsList extends React.PureComponent {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 MyAssetsList.propTypes = {
   renderItem: PropTypes.func.isRequired,
   myAssets: PropTypes.array.isRequired,

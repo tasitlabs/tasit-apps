@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import PropTypes from "prop-types";
+
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "@presentational/Estate";
 import Parcel from "@presentational/Parcel";
@@ -26,6 +26,7 @@ export function MyAsset({ asset, userAction }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 MyAsset.propTypes = {
   asset: PropTypes.object.isRequired,
   userAction: PropTypes.object.isRequired,
@@ -47,6 +48,7 @@ export function MyAssetInfo({ asset, userAction }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 MyAssetInfo.propTypes = {
   asset: PropTypes.object.isRequired,
   userAction: PropTypes.object.isRequired,

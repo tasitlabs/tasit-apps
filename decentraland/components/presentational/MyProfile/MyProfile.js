@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "@constants/Colors";
-import PropTypes from "prop-types";
+
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import MyProfileCreationStatusItem from "@presentational/MyProfileCreationStatusItem";
 import ActionStatus from "@constants/ActionStatus";
@@ -33,6 +33,7 @@ export default function MyProfile({ progress, creationSteps, onClick }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 MyProfile.propTypes = {
   progress: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,

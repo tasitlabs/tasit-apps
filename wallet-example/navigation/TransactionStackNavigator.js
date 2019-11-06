@@ -2,8 +2,6 @@ import React from "react";
 import { Platform } from "react-native";
 import { createStackNavigator } from "react-navigation";
 
-import PropTypes from "prop-types";
-
 import TabBarIcon from "../components/TabBarIcon";
 import TransactionScreen from "../screens/TransactionScreen";
 
@@ -32,6 +30,7 @@ TransactionStackNavigator.navigationOptions = {
   tabBarIcon: IconDisplay
 };
 
+// TODO: Migrate me to TypeScript types
 IconDisplay.propTypes = {
   focused: PropTypes.bool.isRequired
 };

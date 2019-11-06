@@ -2,8 +2,6 @@ import React from "react";
 import { Platform } from "react-native";
 import { createStackNavigator } from "react-navigation";
 
-import PropTypes from "prop-types";
-
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 
@@ -34,6 +32,7 @@ HomeStackNavigator.navigationOptions = {
   tabBarIcon: IconDisplay
 };
 
+// TODO: Migrate me to TypeScript types
 IconDisplay.propTypes = {
   focused: PropTypes.bool
 };

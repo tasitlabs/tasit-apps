@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
-import PropTypes from "prop-types";
+
 import {
   responsiveWidth,
   responsiveHeight,
@@ -16,6 +16,7 @@ export default function Parcel({ parcel }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 Parcel.propTypes = {
   parcel: PropTypes.object.isRequired,
 };

@@ -5,7 +5,7 @@ import {
   selectLandToBuy,
   setLoadingAssetsForSaleInProgress,
 } from "@redux/actions";
-import PropTypes from "prop-types";
+
 import LandForSaleList from "@presentational/LandForSaleList";
 import LandForSaleListItem from "@presentational/LandForSaleListItem";
 import { showError, showInfo, getContracts, addressesAreEqual } from "@helpers";
@@ -144,6 +144,7 @@ export class ListLandForSaleScreen extends React.Component {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 ListLandForSaleScreen.propTypes = {
   assetsForSale: PropTypes.object.isRequired,
   appendLandForSaleToList: PropTypes.func.isRequired,

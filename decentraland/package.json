@@ -28,7 +28,6 @@
     "expo": "^35.0.0",
     "intl": "^1.2.5",
     "native-base": "^2.13.8",
-    "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-button": "^2.4.0",
@@ -45,7 +44,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "babel-preset-expo": "^7.0.0",
+    "babel-preset-expo": "^7.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
@@ -61,7 +60,10 @@
     "jest-prop-type-error": "^1.1.0",
     "prettier": "^1.18.2",
     "react-dom": "16.8.3",
-    "yargs": "^14.2.0"
+    "yargs": "^14.2.0",
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.57.65",
+    "typescript": "^3.6.3"
   },
   "repository": {
     "type": "git",

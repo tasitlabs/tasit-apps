@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "@constants/Colors";
-import PropTypes from "prop-types";
+
 import { Ionicons } from "@expo/vector-icons";
 import {
   responsiveHeight,
@@ -50,6 +50,7 @@ function renderIcon(status) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 MyProfileCreationStatusItem.propTypes = {
   name: PropTypes.string.isRequired,
   status: PropTypes.oneOf(Object.values(ActionStatus)).isRequired,

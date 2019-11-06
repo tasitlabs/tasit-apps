@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import { connect } from "react-redux";
 import {
   setAccount,
@@ -133,6 +133,7 @@ export class EthereumSignUpScreen extends React.Component {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 EthereumSignUpScreen.propTypes = {
   setAccount: PropTypes.func.isRequired,
   setAccountCreationStatus: PropTypes.func.isRequired,

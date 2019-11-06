@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, StyleSheet } from "react-native";
-import PropTypes from "prop-types";
+
 import {
   responsiveWidth,
   responsiveHeight,
@@ -16,6 +16,7 @@ export default function Estate({ estate }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 Estate.propTypes = {
   estate: PropTypes.object.isRequired,
 };

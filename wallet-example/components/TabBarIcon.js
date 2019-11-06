@@ -1,8 +1,7 @@
 import React from "react";
-import * as Icon from '@expo/vector-icons';
+import * as Icon from "@expo/vector-icons";
 
 import Colors from "../constants/Colors";
-import PropTypes from "prop-types";
 
 /* eslint-disable react-native/no-inline-styles */
 export class TabBarIcon extends React.Component {
@@ -21,6 +20,7 @@ export class TabBarIcon extends React.Component {
 }
 /* eslint-enable react-native/no-inline-styles */
 
+// TODO: Migrate me to TypeScript types
 TabBarIcon.propTypes = {
   name: PropTypes.string.isRequired,
   focused: PropTypes.bool.isRequired

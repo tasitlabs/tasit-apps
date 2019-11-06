@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import PropTypes from "prop-types";
+
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Estate from "@presentational/Estate";
 import Parcel from "@presentational/Parcel";
@@ -28,6 +28,7 @@ export default function LandForSale({ landForSale }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 LandForSale.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };

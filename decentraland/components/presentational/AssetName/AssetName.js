@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import PropTypes from "prop-types";
+
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import Colors from "@constants/Colors";
 
@@ -14,6 +14,7 @@ export function AssetName({ name }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 AssetName.propTypes = {
   name: PropTypes.string.isRequired,
 };

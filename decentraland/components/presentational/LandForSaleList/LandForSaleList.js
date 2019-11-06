@@ -1,6 +1,6 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import PropTypes from "prop-types";
+
 import Colors from "@constants/Colors";
 import LargeText from "@presentational/LargeText";
 
@@ -29,6 +29,7 @@ export default class LandForSaleList extends React.PureComponent {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 LandForSaleList.propTypes = {
   loadingInProgress: PropTypes.bool.isRequired,
   renderItem: PropTypes.func.isRequired,

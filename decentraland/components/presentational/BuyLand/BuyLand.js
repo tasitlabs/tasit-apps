@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import PropTypes from "prop-types";
+
 import LandForSale from "@presentational/LandForSale";
 import Button from "@presentational/Button";
 import AccountCreationProgress from "@presentational/AccountCreationProgress";
@@ -45,6 +45,7 @@ export default function BuyLand(props) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 BuyLand.propTypes = {
   landForSale: PropTypes.object.isRequired,
   onBuy: PropTypes.func.isRequired,

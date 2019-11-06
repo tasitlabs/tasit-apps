@@ -7,7 +7,7 @@ import {
   responsiveWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import PropTypes from "prop-types";
+
 import Button from "@presentational/Button";
 
 export default class EthereumSignUpForm extends React.Component {
@@ -56,11 +56,13 @@ export function UsernameTextInput({ onChange, username }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 UsernameTextInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired,
 };
 
+// TODO: Migrate me to TypeScript types
 EthereumSignUpForm.propTypes = {
   onSignUp: PropTypes.func.isRequired,
 };

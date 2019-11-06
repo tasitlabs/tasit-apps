@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+
 import Colors from "@constants/Colors";
 
 export class TransactionScreen extends React.Component {
@@ -55,6 +55,7 @@ const mapStateToProps = state => ({
   transactions: state.transactions
 });
 
+// TODO: Migrate me to TypeScript types
 TransactionScreen.propTypes = {
   transactions: PropTypes.array.isRequired
 };

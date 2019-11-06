@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import { StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { Icon } from "native-base";
 import {
@@ -49,6 +49,7 @@ export default function LinkToBlockchain({ actionId }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 LinkToBlockchain.propTypes = {
   actionId: PropTypes.string,
 };

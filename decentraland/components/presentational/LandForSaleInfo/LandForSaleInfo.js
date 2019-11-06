@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Alert } from "react-native";
-import PropTypes from "prop-types";
+
 import {
   responsiveWidth,
   responsiveHeight,
@@ -34,6 +34,7 @@ export function LandForSaleInfo({ landForSale }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 LandForSaleInfo.propTypes = {
   landForSale: PropTypes.object.isRequired,
 };
@@ -58,6 +59,7 @@ export function ManaPrice({ price }) {
   );
 }
 
+// TODO: Migrate me to TypeScript types
 ManaPrice.propTypes = {
   price: PropTypes.string.isRequired,
 };

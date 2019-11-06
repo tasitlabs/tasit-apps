@@ -5,7 +5,7 @@ import {
   appendToMyAssetsList,
   addUserAction,
 } from "@redux/actions";
-import PropTypes from "prop-types";
+
 import MyAssetsList from "@presentational/MyAssetsList";
 import MyAssetsListItem from "@presentational/MyAssetsListItem";
 import { listsAreEqual, getContracts, logInfo, logWarn } from "@helpers";
@@ -152,6 +152,7 @@ export class MyAssetsScreen extends React.Component {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 MyAssetsScreen.propTypes = {
   myAssets: PropTypes.array.isRequired,
   account: PropTypes.object,

@@ -8,7 +8,6 @@ import {
   APPROVING_MARKETPLACE,
 } from "@constants/AccountCreationStatus";
 import { MISSING, DONE } from "@constants/ActionStatus";
-import PropTypes from "prop-types";
 
 const creationSteps = [
   {
@@ -85,6 +84,7 @@ export class MyProfileScreen extends React.Component {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 MyProfileScreen.propTypes = {
   accountInfo: PropTypes.object,
 };

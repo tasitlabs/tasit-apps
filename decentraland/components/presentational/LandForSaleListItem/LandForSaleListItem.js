@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableHighlight } from "react-native";
-import PropTypes from "prop-types";
+
 import {
   responsiveHeight,
   responsiveWidth,
@@ -25,6 +25,7 @@ export default class LandForSaleListItem extends React.PureComponent {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 LandForSaleListItem.propTypes = {
   onPress: PropTypes.func.isRequired,
   landForSale: PropTypes.object.isRequired,

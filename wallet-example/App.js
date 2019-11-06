@@ -1,12 +1,10 @@
 import React from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { AppLoading, Linking } from "expo";
-import * as Icon from '@expo/vector-icons';
-import * as Font from 'expo-font';
-import { Asset } from 'expo-asset';
+import * as Icon from "@expo/vector-icons";
+import * as Font from "expo-font";
+import { Asset } from "expo-asset";
 import AppNavigator from "./navigation/AppNavigator";
-
-import PropTypes from "prop-types";
 
 import Colors from "@constants/Colors";
 
@@ -124,6 +122,7 @@ const styles = StyleSheet.create({
   }
 });
 
+// TODO: Migrate me to TypeScript types
 App.propTypes = {
   skipLoadingScreen: PropTypes.bool
 };

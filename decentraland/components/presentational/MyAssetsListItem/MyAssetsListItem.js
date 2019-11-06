@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableHighlight } from "react-native";
-import PropTypes from "prop-types";
+
 import {
   responsiveHeight,
   responsiveWidth,
@@ -25,6 +25,7 @@ export default class MyAssetsListItem extends React.PureComponent {
   }
 }
 
+// TODO: Migrate me to TypeScript types
 MyAssetsListItem.propTypes = {
   asset: PropTypes.object.isRequired,
   userAction: PropTypes.object.isRequired,
