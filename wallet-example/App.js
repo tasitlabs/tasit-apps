@@ -1,6 +1,9 @@
 import React from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
-import { AppLoading, Asset, Font, Icon, Linking } from "expo";
+import { AppLoading, Linking } from "expo";
+import * as Icon from '@expo/vector-icons';
+import * as Font from 'expo-font';
+import { Asset } from 'expo-asset';
 import AppNavigator from "./navigation/AppNavigator";
 
 import PropTypes from "prop-types";
