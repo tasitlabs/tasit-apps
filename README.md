@@ -4,7 +4,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/tasitlabs/tasit.svg)](https://greenkeeper.io/)
 
 <div align="left">
-  <img src="/docs/images/TasitLogoGrayscale.png" width="200" />
+  <img src="/docs/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
 </div>
 
 ## What is Tasit?
@@ -17,9 +17,9 @@ This entails a different, simpler onboarding flow in an environment without Meta
 
 Development of the Tasit apps is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative.
 
-This project is open-source and in need of additional funding to sustain work on it. If you're able to contribute, please consider sending ETH or DAI to our project's vault address:
+This project is open-source and in need of additional funding to sustain work on it. If you're able to contribute, please consider [supporting the project on Gitcoin Grants](https://gitcoin.co/grants/105/tasit-mobile-ethereum-dapps) or sending ETH or DAI to the Tasit project's vault address:
 
-[0xd25def1db4f994e2800e438ebb29eae300d56151](https://etherscan.io/address/0xd25def1db4f994e2800e438ebb29eae300d56151)
+`0xd25def1db4f994e2800e438ebb29eae300d56151` ([Etherscan](https://etherscan.io/address/0xd25def1db4f994e2800e438ebb29eae300d56151))
 
 The Tasit apps are built with [the Tasit SDK](https://github.com/tasitlabs/TasitSDK), a JavaScript SDK that empowers developers to create their own native Ethereum dapps.
 
@@ -31,33 +31,37 @@ You might want to jump ahead to the "why" section to start:
 
 - [Why are native dapps important?](#why-are-native-dapps-important)
 
-## Tasit Apps
+## Tasit apps
+
+### Simple onboarding
+
+<div align="left">
+  <img src="./docs/screenshots/StartSetup.png" width="200" />
+  <img src="./docs/screenshots/PickUsername.png" width="200" />
+  <img src="./docs/screenshots/MyProfile.png" width="200" />
+</div>
 
 ### Decentraland by Tasit
 
-Our first production app is called `Decentraland by Tasit`.
+Our first production app is called `Decentraland by Tasit`. [Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
 
-[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
-
-This is the first production Tasit NFT app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects.
-
-This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
-
-##### Review the code
+This is the first Tasit app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects. This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
 
-### Tasit Demo
+<div align="left">
+  <img src="./docs/screenshots/ListLand.png" width="200" />
+  <img src="./docs/screenshots/BuyLand.png" width="200" />
+  <img src="./docs/screenshots/MyLand.png" width="200" />
+</div>
 
-Our first demo app is called `Tasit Demo`.
+### Tasit demo app
 
-It's an app that shows off how easy it is to build a standalone native mobile app for Ethereum NFTs using the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+The Tasit demo app shows off how easy it is to build a standalone native mobile app for Ethereum using the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
 
 The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, Babel, and the Tasit SDK.
 
-##### Review the code
-
-[Here's the code](./demo) for the demo app. For now the [Decentraland by Tasit](./decentraland) app is temporarily also serving as the "demo" app. Soon we'll duplicate the minimal set of features from this app over in the `demo` dir and extract the generic parts into the `shared` dir and import them in each app.
+For now the [Decentraland by Tasit](./decentraland) app temporarily also is serving as the "demo" app. Soon we'll duplicate just the minimal set of features from this app over in the [`demo`](./demo) dir and extract the generic parts into the `shared` dir and import them in each app.
 
 ##### Features
 
@@ -105,7 +109,7 @@ Just run:
 
 ```
 npm install tasit-cli
-npx tasit-cli init my-app
+npx tasit init my-app
 cd my-app
 npm start
 ```
@@ -115,7 +119,7 @@ npm start
 Alternatively, for popular ERC standards like ERC-721 for NFTs, you can even run:
 
 ```
-npx tasit-cli init my-app --nft
+npx tasit init my-app --nft
 ```
 
 ...to instantly create a standalone mobile dapp for CryptoKitties, Decentraland, etc.
@@ -148,6 +152,6 @@ We love getting feedback, so please feel free to reach out.
 
 - [Track the status of the project](https://github.com/orgs/tasitlabs/projects/1)
 
-- [Feature requests](https://tasit.canny.io/feature-requests)
+- [Feature requests](http://feedback.tasit.io/feature-requests)
 
 - [Medium](https://medium.com/tasit)

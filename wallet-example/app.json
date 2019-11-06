@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Tasit Wallet",
+    "slug": "tasit-wallet-example",
+    "privacy": "unlisted",
+    "sdkVersion": "32.0.0",
+    "platforms": ["ios", "android"],
+    "version": "0.0.3",
+    "orientation": "portrait",
+    "icon": "./assets/images/TasitWalletExampleIcon1024.png",
+    "scheme": "tasit-wallet",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#07FFC2"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "io.tasit.wallet",
+      "buildNumber": "3",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["tasit-decentraland"]
+      }
+    },
+    "android": {
+      "package": "io.tasit.wallet",
+      "permissions": [],
+      "versionCode": 3
+    }
+  }
+}

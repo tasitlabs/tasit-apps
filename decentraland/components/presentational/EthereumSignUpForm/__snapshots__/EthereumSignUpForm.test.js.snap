@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EthereumSignUpForm UsernameTextInput renders the component 1`] = `
+<TextInput
+  allowFontScaling={true}
+  autoCapitalize="none"
+  autoCorrect={false}
+  autoFocus={true}
+  keyboardAppearance="dark"
+  onChangeText={[Function]}
+  placeholder="username"
+  placeholderTextColor="gray"
+  selectionColor="#07FFC2"
+  style={
+    Object {
+      "backgroundColor": "black",
+      "color": "#CCCCCC",
+      "fontSize": 45.89389937671454,
+      "justifyContent": "flex-start",
+      "width": 360,
+    }
+  }
+  underlineColorAndroid="transparent"
+  value="test4"
+/>
+`;
+
+exports[`EthereumSignUpForm renders the component 1`] = `
+<Fragment>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+        }
+      }
+    >
+      <UsernameTextInput
+        onChange={[Function]}
+        username=""
+      />
+    </Component>
+  </Component>
+  <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "marginTop": 66.7,
+      }
+    }
+  >
+    <Button
+      onPress={[MockFunction]}
+      title="Continue"
+    />
+  </Component>
+</Fragment>
+`;

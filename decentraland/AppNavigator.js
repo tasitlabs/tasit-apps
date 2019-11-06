@@ -17,6 +17,7 @@ import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
 import EthereumSignInScreen from "./screens/EthereumSignInScreen";
 import MyAssetsScreen from "./screens/MyAssetsScreen";
 
+import Paths from "@constants/Paths.js";
 import Colors from "@constants/Colors.js";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 
@@ -52,10 +53,12 @@ const AssetsForSaleNavigator = createStackNavigator(
   {
     ListLandForSaleScreen: {
       screen: ListLandForSaleScreen,
+      path: Paths.forSale,
       navigationOptions: headerWithMenuButton,
     },
     BuyLandScreen: {
       screen: BuyLandScreen,
+      path: Paths.buyLand, // TODO: won't work without params
       navigationOptions: headerWithBackButton,
     },
     OnboardingHomeScreen: {
@@ -110,18 +113,21 @@ const MyProfileNavigator = createStackNavigator(
 const MainDrawerNavigator = createDrawerNavigator({
   AssetsForSale: {
     screen: AssetsForSaleNavigator,
+    path: "",
     navigationOptions: {
       drawerLabel: "Land for sale",
     },
   },
   MyAssets: {
     screen: MyAssetsNavigator,
+    path: Paths.myAssets,
     navigationOptions: {
       drawerLabel: "My land",
     },
   },
   MyProfile: {
     screen: MyProfileNavigator,
+    path: Paths.myProfile,
     navigationOptions: {
       drawerLabel: "My profile",
     },

@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  build_decentraland:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.13
@@ -20,22 +20,65 @@ jobs:
           command: "sudo npm install -g npm@latest"
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - dependency-cache-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - dependency-cache-
+      # - restore_cache:
+      #     keys:
+      #       - dependency-cache-{{ checksum "package.json" }}
+      #       # fallback to using the latest cache if no exact match is found
+      #       - dependency-cache-
 
       - run:
           name: npm install
           command: npm install
 
-      - save_cache:
-          paths:
-            - ./node_modules
-          key: dependency-cache-{{ checksum "package.json" }}
+      # - save_cache:
+      #     paths:
+      #       - ./node_modules
+      #     key: dependency-cache-{{ checksum "package.json" }}
 
       # run tests!
       - run:
           name: test
           command: npm test
+
+  build_wallet_example:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.13
+
+    working_directory: ~/tasit/wallet-example
+
+    steps:
+      - checkout:
+          path: ~/tasit
+
+      - run:
+          name: update-npm
+          command: "sudo npm install -g npm@latest"
+
+      # Download and cache dependencies
+      # - restore_cache:
+      #     keys:
+      #       - dependency-cache-{{ checksum "package.json" }}
+      #       # fallback to using the latest cache if no exact match is found
+      #       - dependency-cache-
+
+      - run:
+          name: npm install
+          command: npm install
+
+      # - save_cache:
+      #     paths:
+      #       - ./node_modules
+      #     key: dependency-cache-{{ checksum "package.json" }}
+
+      # run tests!
+      - run:
+          name: test
+          command: npm test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build_decentraland
+      - build_wallet_example

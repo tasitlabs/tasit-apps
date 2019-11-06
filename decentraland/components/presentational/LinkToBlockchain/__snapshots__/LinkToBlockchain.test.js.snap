@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkToBlockchain renders the component null action 1`] = `""`;
+
+exports[`LinkToBlockchain renders the component valid action 1`] = `
+<TouchableOpacity
+  activeOpacity={0.2}
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "column",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Styled(Icon)
+    name="eye"
+    style={
+      Object {
+        "color": "#07FFC2",
+      }
+    }
+  />
+</TouchableOpacity>
+`;

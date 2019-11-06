@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalletButton renders the component 1`] = `
+<Component
+  style={
+    Object {
+      "flexDirection": "row",
+      "marginTop": 66.7,
+    }
+  }
+>
+  <Button
+    onPress={[Function]}
+    title="Connect with testing"
+  />
+</Component>
+`;
