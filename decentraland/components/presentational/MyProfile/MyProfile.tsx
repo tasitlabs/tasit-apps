@@ -38,7 +38,7 @@ interface CreationStepObject {
 
 interface MyProfileProps {
   progress: number;
-  onClick: any; // TODO: Convert to function type
+  onClick: (...args: any[]) => any;
   creationSteps: CreationStepObject[];
 }
 

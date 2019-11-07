@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LandForSaleList renders the component after having loaded an empty list 1`] = `
-<Component
+<View
   style={
     Object {
       "backgroundColor": "black",
@@ -12,7 +12,7 @@ exports[`LandForSaleList renders the component after having loaded an empty list
   <LargeText>
     There isn't any land for sale right now.
   </LargeText>
-</Component>
+</View>
 `;
 
 exports[`LandForSaleList renders the component when list is empty and the loading is in progress 1`] = `
@@ -25,6 +25,7 @@ exports[`LandForSaleList renders the component when list is empty and the loadin
   maxToRenderPerBatch={10}
   numColumns={1}
   onEndReachedThreshold={2}
+  removeClippedSubviews={false}
   renderItem={[Function]}
   scrollEventThrottle={50}
   style={

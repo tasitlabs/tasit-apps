@@ -32,7 +32,7 @@ export default class MyAssetsListItem extends React.PureComponent<
   MyAssetsListItemProps,
   {}
 > {
-  render() {
+  render(): JSX.Element {
     const { asset, userAction } = this.props;
     return (
       <TouchableHighlight>

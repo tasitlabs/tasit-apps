@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 interface OnboardingHomeProps {
-  onPress: any; // TODO: Change to a function type
+  onPress: (...args: any[]) => any;
 }
 
 const OnboardingHome: React.SFC<OnboardingHomeProps> = props => {

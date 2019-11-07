@@ -9,7 +9,7 @@ import {
 
 describe("MyProfileScreen", () => {
   describe("renders the component", () => {
-    it("initial state (without account)", async () => {
+    it("initial state (without account)", () => {
       expect(
         shallow(
           <MyProfileScreen
@@ -22,7 +22,7 @@ describe("MyProfileScreen", () => {
       ).toMatchSnapshot();
     });
 
-    it("funding with ethers", async () => {
+    it("funding with ethers", () => {
       expect(
         shallow(
           <MyProfileScreen
@@ -37,7 +37,7 @@ describe("MyProfileScreen", () => {
       ).toMatchSnapshot();
     });
 
-    it("funding with ethers with null action (used when action is unknown)", async () => {
+    it("funding with ethers with null action (used when action is unknown)", () => {
       expect(
         shallow(
           <MyProfileScreen
@@ -52,7 +52,7 @@ describe("MyProfileScreen", () => {
       ).toMatchSnapshot();
     });
 
-    it("funding with mana AND approving marketplace", async () => {
+    it("funding with mana AND approving marketplace", () => {
       expect(
         shallow(
           <MyProfileScreen

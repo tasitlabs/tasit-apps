@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import EthereumQuestion from "../EthereumQuestion";
 
 describe("EthereumQuestion", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const onSignUp = () => {};
     const onSignIn = () => {};
 

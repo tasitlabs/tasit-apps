@@ -28,7 +28,7 @@ describe("AccountCreationProgress", () => {
     ).toMatchSnapshot();
   });
 
-  it("waiting for setup - waiting for account generation", async () => {
+  it("waiting for setup - waiting for account generation", () => {
     const status = GENERATING_ACCOUNT;
     const actions = {};
 
@@ -80,7 +80,7 @@ describe("AccountCreationProgress", () => {
     ).toMatchSnapshot();
   });
 
-  it("final state - account ready", async () => {
+  it("final state - account ready", () => {
     const status = READY_TO_USE;
     const actions = {};
 
@@ -90,7 +90,7 @@ describe("AccountCreationProgress", () => {
   });
 
   describe("ProgressMessageAndLink", () => {
-    it("with a message and without an action", async () => {
+    it("with a message and without an action", () => {
       const waitingMessage = "A waiting message.";
       const actionId = null;
 
@@ -118,7 +118,7 @@ describe("AccountCreationProgress", () => {
       ).toMatchSnapshot();
     });
 
-    it("without a message nor action", async () => {
+    it("without a message nor action", () => {
       const waitingMessage = null;
       const actionId = null;
 

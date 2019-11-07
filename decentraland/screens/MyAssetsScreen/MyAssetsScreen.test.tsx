@@ -9,7 +9,7 @@ describe("ListLandForSaleScreen", () => {
     const appendToMyAssetsList = () => {};
     const addUserAction = () => {};
 
-    it("without assets", async () => {
+    it("without assets", () => {
       const myAssets = [];
       const userActions = {};
       expect(
@@ -24,7 +24,7 @@ describe("ListLandForSaleScreen", () => {
         )
       ).toMatchSnapshot();
     });
-    it("with assets", async () => {
+    it("with assets", () => {
       const myAssets = [parcel];
       const userActions = { ...parcelUserAction };
       expect(

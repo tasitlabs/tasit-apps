@@ -26,6 +26,12 @@ module.exports = {
     "react/prop-types": ["off"],
     "prettier/prettier": "error",
     "jest/no-large-snapshots": ["error", { maxSize: 50 }],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        allowTypedFunctionExpressions: true,
+      },
+    ],
   },
   settings: {
     react: {

@@ -4,7 +4,7 @@ import LandForSaleListItem from "../LandForSaleListItem";
 import { parcelForSale } from "../../../helpers/testHelpers";
 
 describe("LandForSaleListItem", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const onPress = () => {};
     expect(
       shallow(

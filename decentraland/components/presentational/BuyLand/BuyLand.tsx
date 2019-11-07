@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 interface BuyLandProps {
   landForSale: object;
-  onBuy: any; // TODO: Change to function type
+  onBuy: (...args: any[]) => any;
   accountCreationStatus: string;
   accountCreationActions: object;
 }

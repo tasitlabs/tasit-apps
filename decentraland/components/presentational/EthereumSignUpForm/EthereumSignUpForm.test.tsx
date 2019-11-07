@@ -29,7 +29,7 @@ describe("EthereumSignUpForm", () => {
   });
 
   describe("UsernameTextInput", () => {
-    it("renders the component", async () => {
+    it("renders the component", () => {
       const onChangeUsername = () => {};
       expect(
         shallow(

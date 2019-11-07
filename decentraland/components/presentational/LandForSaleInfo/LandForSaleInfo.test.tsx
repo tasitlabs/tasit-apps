@@ -6,14 +6,14 @@ import { LandForSaleInfo, ManaPrice } from "./LandForSaleInfo";
 import { estateForSale } from "../../../helpers/testHelpers";
 
 describe("LandForSaleInfo", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     expect(
       shallow(<LandForSaleInfo landForSale={estateForSale} />)
     ).toMatchSnapshot();
   });
 
   describe("LandForSalePrice", () => {
-    it("renders the component", async () => {
+    it("renders the component", () => {
       const { priceMana } = estateForSale;
       expect(shallow(<ManaPrice price={priceMana} />)).toMatchSnapshot();
     });

@@ -4,7 +4,7 @@ import ActionStatus from "../../../constants/ActionStatus";
 import MyProfileCreationStatusItem from "../MyProfileCreationStatusItem";
 
 describe("MyProfileCreationStatusItem", () => {
-  it("renders the component with done status", async () => {
+  it("renders the component with done status", () => {
     const name = "test";
     expect(
       shallow(
@@ -13,7 +13,7 @@ describe("MyProfileCreationStatusItem", () => {
     ).toMatchSnapshot();
   });
 
-  it("renders the component with missing status", async () => {
+  it("renders the component with missing status", () => {
     const name = "test";
     expect(
       shallow(
@@ -25,7 +25,7 @@ describe("MyProfileCreationStatusItem", () => {
     ).toMatchSnapshot();
   });
 
-  it("renders the component with pending status", async () => {
+  it("renders the component with pending status", () => {
     const name = "test";
     expect(
       shallow(

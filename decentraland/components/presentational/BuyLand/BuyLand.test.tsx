@@ -6,7 +6,7 @@ import AccountCreationStatus from "../../../constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
 
 describe("BuyLand", () => {
-  it("initial state - before start account setup", async () => {
+  it("initial state - before start account setup", () => {
     const landForSale = parcelForSale;
     const onBuy = () => {};
     const accountCreationStatus = NOT_STARTED;

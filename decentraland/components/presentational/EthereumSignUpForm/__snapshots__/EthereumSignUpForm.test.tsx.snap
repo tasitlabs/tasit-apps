@@ -10,6 +10,7 @@ exports[`EthereumSignUpForm UsernameTextInput renders the component 1`] = `
   onChangeText={[Function]}
   placeholder="username"
   placeholderTextColor="gray"
+  rejectResponderTermination={true}
   selectionColor="#07FFC2"
   style={
     Object {
@@ -27,14 +28,14 @@ exports[`EthereumSignUpForm UsernameTextInput renders the component 1`] = `
 
 exports[`EthereumSignUpForm renders the component 1`] = `
 <Fragment>
-  <Component
+  <View
     style={
       Object {
         "flexDirection": "row",
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -46,9 +47,9 @@ exports[`EthereumSignUpForm renders the component 1`] = `
         onChange={[Function]}
         username=""
       />
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Object {
         "flexDirection": "row",
@@ -60,6 +61,6 @@ exports[`EthereumSignUpForm renders the component 1`] = `
       onPress={[MockFunction]}
       title="Continue"
     />
-  </Component>
+  </View>
 </Fragment>
 `;

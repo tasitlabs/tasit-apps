@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Estate renders the component 1`] = `
+exports[`Parcel renders the component 1`] = `
 <Fragment>
-  <Component
+  <Image
     source={
       Object {
-        "uri": "https://api.decentraland.org/v1/estates/1/map.png",
+        "uri": "https://decentraland.org/images/logo-65f7b27caf.png",
       }
     }
     style={

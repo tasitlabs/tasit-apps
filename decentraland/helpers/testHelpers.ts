@@ -1,6 +1,6 @@
-import { ESTATE, PARCEL } from "@constants/AssetTypes";
-import { DONE, PENDING, MISSING } from "@constants/ActionStatus";
-import { SUCCESSFUL } from "@constants/UserActionStatus";
+import { ESTATE, PARCEL } from "../constants/AssetTypes";
+import { DONE, PENDING, MISSING } from "../constants/ActionStatus";
+import { SUCCESSFUL } from "../constants/UserActionStatus";
 
 export const parcel = {
   type: PARCEL,

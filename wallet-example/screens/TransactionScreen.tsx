@@ -22,7 +22,7 @@ export class TransactionScreen extends React.Component<
   TransactionScreenProps,
   {}
 > {
-  render() {
+  render(): JSX.Element {
     const { transactions } = this.props;
     console.info("# of transactions", transactions.length);
     const latestTx = transactions[transactions.length - 1];

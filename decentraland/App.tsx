@@ -45,10 +45,12 @@ export default class App extends React.Component<{}, AppState> {
   state = {
     isLoadingComplete: false,
   };
-  async componentDidMount() {
+
+  componentDidMount() {
     // Ignoring setting timer warnings on the app UI
     YellowBox.ignoreWarnings(["Setting a timer"]);
   }
+
   // Refs: https://docs.nativebase.io/docs/GetStarted.html
   async _loadFonts() {
     await Font.loadAsync({
@@ -95,7 +97,7 @@ Is the config file correct?`;
     if (userActions) store.dispatch(addUserAction(userActions));
     if (myAssets) store.dispatch(setMyAssetsList(myAssets));
   }
-  render() {
+  render(): JSX.Element {
     const prefix = Linking.makeUrl("/");
     // console.info("app prefix", prefix);
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {

@@ -4,6 +4,13 @@ import { StyleSheet, View, Platform, Linking } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import Button from "../Button";
 
+const styles = StyleSheet.create({
+  buttonView: {
+    flexDirection: "row",
+    marginTop: responsiveHeight(5),
+  },
+});
+
 interface WalletButton {
   appName: string;
   appSlug: string;
@@ -77,12 +84,5 @@ const WalletButton: React.SFC<WalletButton> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonView: {
-    flexDirection: "row",
-    marginTop: responsiveHeight(5),
-  },
-});
 
 export default WalletButton;

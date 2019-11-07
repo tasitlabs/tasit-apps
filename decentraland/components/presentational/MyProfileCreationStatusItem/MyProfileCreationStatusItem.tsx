@@ -10,6 +10,9 @@ import {
 } from "react-native-responsive-dimensions";
 import ActionStatus from "../../../types/ActionStatus";
 
+const ICON_SIZE = responsiveFontSize(4);
+const FONT_SIZE = (ICON_SIZE * 7) / 10;
+
 const styles = StyleSheet.create({
   actionStatusIcon: {
     color: Colors.icons,
@@ -31,25 +34,6 @@ const styles = StyleSheet.create({
     width: responsiveWidth(65),
   },
 });
-
-interface MyProfileCreationStatusItemProps {
-  name: string;
-  status: ActionStatus;
-}
-
-const MyProfileCreationStatusItem: React.SFC<
-  MyProfileCreationStatusItemProps
-> = ({ name, status }) => {
-  return (
-    <View style={styles.container}>
-      {renderIcon(status)}
-      <Text style={styles.actionText}>{name}</Text>
-    </View>
-  );
-};
-
-const ICON_SIZE = responsiveFontSize(4);
-const FONT_SIZE = (ICON_SIZE * 7) / 10;
 
 function renderIcon(status) {
   if (status === ActionStatus.DONE) {
@@ -78,5 +62,21 @@ function renderIcon(status) {
     />
   );
 }
+
+interface MyProfileCreationStatusItemProps {
+  name: string;
+  status: ActionStatus;
+}
+
+const MyProfileCreationStatusItem: React.SFC<
+  MyProfileCreationStatusItemProps
+> = ({ name, status }) => {
+  return (
+    <View style={styles.container}>
+      {renderIcon(status)}
+      <Text style={styles.actionText}>{name}</Text>
+    </View>
+  );
+};
 
 export default MyProfileCreationStatusItem;

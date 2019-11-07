@@ -121,7 +121,7 @@ export class EthereumSignUpScreen extends React.Component<
     });
     this.props.navigation.navigate("BuyLandScreen");
   };
-  render() {
+  render(): JSX.Element {
     return <EthereumSignUp onSignUp={this._onSignUp} />;
   }
 }

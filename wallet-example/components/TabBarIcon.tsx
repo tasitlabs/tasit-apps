@@ -9,7 +9,7 @@ interface TabBarIconProps {
 }
 
 export class TabBarIcon extends React.Component<TabBarIconProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <Icon.Ionicons
         name={this.props.name}

@@ -32,6 +32,11 @@ const {
 
 const ZERO = 0;
 
+const loadConfig = () => {
+  const tasitSdkConfig = require("../config/current.js");
+  ConfigLoader.setConfig(tasitSdkConfig);
+};
+
 export const getNetworkName = () => {
   loadConfig();
   const provider = ProviderFactory.getProvider();
@@ -200,11 +205,6 @@ export const updateListItem = (list, toUpdateId, entriesToUpdate) => {
   return list.map(item => {
     return item.id === toUpdateId ? { ...item, ...entriesToUpdate } : item;
   });
-};
-
-const loadConfig = () => {
-  const tasitSdkConfig = require("../config/current.js");
-  ConfigLoader.setConfig(tasitSdkConfig);
 };
 
 export const openURL = async url => {

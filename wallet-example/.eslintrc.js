@@ -25,7 +25,13 @@ module.exports = {
     "react-native/no-raw-text": ["error", { skip: ["LargeText"] }],
     "react/prop-types": ["off"],
     "prettier/prettier": "error",
-    "jest/no-large-snapshots": ["error", { maxSize: 50 }]
+    "jest/no-large-snapshots": ["error", { maxSize: 50 }],
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        allowTypedFunctionExpressions: true
+      }
+    ]
   },
   settings: {
     react: {

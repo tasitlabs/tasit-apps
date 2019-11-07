@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
 });
 
 interface EthereumQuestionProps {
-  onSignUp: any; // TODO: Change me to a function type
-  onSignIn: any; // TODO: Change me to a function type
+  onSignUp: (...args: any[]) => any;
+  onSignIn: (...args: any[]) => any;
 }
 
 const EthereumQuestion: React.SFC<EthereumQuestionProps> = props => {

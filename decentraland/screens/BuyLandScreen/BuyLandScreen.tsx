@@ -157,7 +157,7 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     }
   };
 
-  render() {
+  render(): JSX.Element {
     const { landToBuy: landForSale, accountInfo } = this.props;
     const { creationStatus, creationActions } = accountInfo;
     return (

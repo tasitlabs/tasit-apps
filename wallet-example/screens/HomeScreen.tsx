@@ -107,7 +107,7 @@ type HomeScreenProps = {
 
 /* eslint-disable react-native/no-raw-text */
 export class HomeScreen extends React.Component<HomeScreenProps, {}> {
-  render() {
+  render(): JSX.Element {
     return (
       <View style={styles.container}>
         <ScrollView

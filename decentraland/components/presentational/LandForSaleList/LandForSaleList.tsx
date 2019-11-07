@@ -25,7 +25,7 @@ export default class LandForSaleList extends React.PureComponent<
   LandForSaleListProps,
   {}
 > {
-  render() {
+  render(): JSX.Element {
     const { landForSaleList, renderItem, loadingInProgress } = this.props;
     const { length: listAmount } = landForSaleList;
     const withoutAssetsForSale = !loadingInProgress && listAmount === 0;

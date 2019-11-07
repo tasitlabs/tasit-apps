@@ -7,10 +7,16 @@ const CONSOLE_FG_RED = "\x1b[31m";
 const CONSOLE_RESET = "\x1b[0m";
 
 // Note: Copied from helpers/index.js because this file should be ES5
+
+// TODO: Research why this file needed to be ES5 and whether there's
+// a way around it
+
 //import { checkBlockchain } from "./helpers";
+
 const { Action } = require("tasit-sdk");
 const { ConfigLoader } = Action;
 const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
+
 const checkBlockchain = async () => {
   const provider = ProviderFactory.getProvider();
   try {

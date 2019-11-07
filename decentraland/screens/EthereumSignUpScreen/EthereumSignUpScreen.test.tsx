@@ -9,7 +9,7 @@ describe("EthereumSignUpScreen", () => {
     NavigationTestUtils.resetInternalState();
   });
 
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const setAccount = () => {};
     const setAccountCreationStatus = () => {};
     const updateActionIdForAccountCreationStatus = () => {};

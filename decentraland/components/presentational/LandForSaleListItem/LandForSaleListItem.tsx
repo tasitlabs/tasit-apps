@@ -29,7 +29,7 @@ type LandForSaleListItemProps = {
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
 export default class LandForSaleListItem extends React.PureComponent<{}, {}> {
-  render() {
+  render(): JSX.Element {
     const { onPress, landForSale } = this.props;
     return (
       <TouchableHighlight onPress={onPress}>

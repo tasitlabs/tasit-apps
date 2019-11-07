@@ -7,7 +7,7 @@ describe("MyAssetsList", () => {
   describe("renders the component", () => {
     const myAssetRenderer = () => {};
 
-    it("without assets", async () => {
+    it("without assets", () => {
       const myAssets = [];
 
       expect(
@@ -21,7 +21,7 @@ describe("MyAssetsList", () => {
       ).toMatchSnapshot();
     });
 
-    it("with assets", async () => {
+    it("with assets", () => {
       const myAssets = [estate];
       expect(
         shallow(

@@ -30,7 +30,7 @@ export default class App extends React.Component<{}, AppState> {
     redirectData: null,
     isLoadingComplete: false
   };
-  render() {
+  render(): JSX.Element {
     const prefix = Linking.makeUrl("/");
     // console.info("app prefix", prefix);
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {

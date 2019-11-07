@@ -6,7 +6,7 @@ import { MyProfileProgress, MyProfileProgressText } from "./MyProfileProgress";
 // the internal component
 
 describe("MyProfileProgress", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const progress = 0.5;
     expect(
       shallow(<MyProfileProgress progress={progress} />)
@@ -14,7 +14,7 @@ describe("MyProfileProgress", () => {
   });
 
   describe("MyAccountProgressText", () => {
-    it("renders the component", async () => {
+    it("renders the component", () => {
       const progress = 0.5;
       expect(
         shallow(<MyProfileProgressText progress={progress} />)

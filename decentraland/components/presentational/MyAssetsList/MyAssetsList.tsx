@@ -28,7 +28,7 @@ type MyAssetsListProps = {
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
 export default class MyAssetsList extends React.PureComponent<{}, {}> {
-  render() {
+  render(): JSX.Element {
     const { myAssets, userActions, renderItem } = this.props;
     const { length: listAmount } = myAssets;
     // It's easy to look up action info from actionId

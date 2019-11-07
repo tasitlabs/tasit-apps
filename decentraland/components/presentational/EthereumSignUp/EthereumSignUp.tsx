@@ -23,7 +23,7 @@ export default class EthereumSignUp extends React.Component<
   EthereumSignUpProps,
   {}
 > {
-  render() {
+  render(): JSX.Element {
     const OFFSET = responsiveHeight(3);
     const { onSignUp } = this.props;
     return (

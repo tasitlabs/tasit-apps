@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyProfileProgress MyAccountProgressText renders the component 1`] = `
-<Component
+<View
   style={
     Object {
       "alignItems": "center",
@@ -10,7 +10,7 @@ exports[`MyProfileProgress MyAccountProgressText renders the component 1`] = `
     }
   }
 >
-  <Component
+  <Text
     style={
       Object {
         "color": "#CCCCCC",
@@ -20,12 +20,12 @@ exports[`MyProfileProgress MyAccountProgressText renders the component 1`] = `
   >
     50
     % complete
-  </Component>
-</Component>
+  </Text>
+</View>
 `;
 
 exports[`MyProfileProgress renders the component 1`] = `
-<Component
+<View
   style={
     Object {
       "alignItems": "center",
@@ -58,5 +58,5 @@ exports[`MyProfileProgress renders the component 1`] = `
   <MyProfileProgressText
     progress={0.5}
   />
-</Component>
+</View>
 `;

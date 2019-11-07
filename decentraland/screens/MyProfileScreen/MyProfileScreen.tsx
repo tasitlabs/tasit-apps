@@ -1,13 +1,16 @@
 import React from "react";
 import MyProfile from "../../components/presentational/MyProfile";
 import { connect } from "react-redux";
+
 import {
   GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
 } from "../../constants/AccountCreationStatus";
+
 import { MISSING, DONE } from "../../constants/ActionStatus";
+
 const creationSteps = [
   {
     name: "Account created",
@@ -30,7 +33,8 @@ const creationSteps = [
     percentage: 0.25,
   },
 ];
-const stepWasDone = (step, accountInfo) => {
+
+const stepWasDone = (step, accountInfo): boolean => {
   const { creationActions, account } = accountInfo;
   const { creationStatus } = step;
   const statusWithAction = [
@@ -46,14 +50,19 @@ const stepWasDone = (step, accountInfo) => {
     return hasAnAction;
   }
 };
+
 type MyProfileScreenProps = {
   accountInfo?: object;
+  navigation: any;
 };
+
 export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
-  render() {
+  render(): JSX.Element {
     const { accountInfo } = this.props;
-    const onClick = () =>
+
+    const onClick = (): object =>
       this.props.navigation.navigate("EthereumSignInScreen");
+
     const creationStepsWithStatus = creationSteps.map(step => {
       const wasDone = stepWasDone(step, accountInfo);
       // TODO: As soon as we store action status in redux, this logic will change
@@ -61,6 +70,7 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
       const status = wasDone ? DONE : MISSING;
       return { ...step, status };
     });
+
     return (
       <MyProfile
         progress={this._getPercentage(creationStepsWithStatus)}
@@ -69,15 +79,18 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
       />
     );
   }
-  _getPercentage(creationSteps) {
+
+  _getPercentage(creationSteps): number {
     const percentage = creationSteps
       .filter(step => step.status === DONE)
       .reduce((total, step) => total + step.percentage, 0);
     return percentage;
   }
 }
+
 const mapStateToProps = state => {
   const { accountInfo } = state;
   return { accountInfo };
 };
+
 export default connect(mapStateToProps)(MyProfileScreen);

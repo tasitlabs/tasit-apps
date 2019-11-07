@@ -6,7 +6,7 @@ import { MyAsset, MyAssetInfo } from "./MyAsset";
 import { parcel, parcelUserAction } from "../../../helpers/testHelpers";
 
 describe("MyAsset", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const asset = parcel;
     const userAction = parcelUserAction;
 
@@ -16,7 +16,7 @@ describe("MyAsset", () => {
   });
 
   describe("MyAssetInfo", () => {
-    it("renders the component", async () => {
+    it("renders the component", () => {
       const asset = parcel;
       const userAction = parcelUserAction;
 

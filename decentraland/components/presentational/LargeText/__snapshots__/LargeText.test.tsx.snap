@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LargeText renders the component 1`] = `
-<Component
+<Text
   style={
     Object {
       "color": "#CCCCCC",

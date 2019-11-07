@@ -7,7 +7,7 @@ const { READY_TO_USE } = AccountCreationStatus;
 
 describe("BuyLandScreen", () => {
   describe("renders the component", () => {
-    it("", async () => {
+    it("", () => {
       const accountInfo = {
         creationStatus: READY_TO_USE,
         creationActions: {},

@@ -16,12 +16,20 @@ import {
 import { generateAssetFromId } from "../../helpers/decentraland";
 import { Root } from "native-base";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+
+interface AssetsForSale {
+  list: any;
+  loadingInProgress: boolean;
+}
+
 type ListLandForSaleScreenProps = {
-  assetsForSale: object;
+  assetsForSale: AssetsForSale;
   appendLandForSaleToList: (...args: any[]) => any;
   selectLandToBuy: (...args: any[]) => any;
   setLoadingAssetsForSaleInProgress: (...args: any[]) => any;
+  navigation: any;
 };
+
 export class ListLandForSaleScreen extends React.Component<
   ListLandForSaleScreenProps,
   {}
@@ -47,8 +55,9 @@ export class ListLandForSaleScreen extends React.Component<
       showError(err);
     }
   };
+
   // Note: Returns a list of Promises
-  _getAllAssetsForSale = async () => {
+  _getAllAssetsForSale = async (): Promise<Promise<any>[]> => {
     const decentralandUtils = new DecentralandUtils();
     const { getAllAssetsForSale: getAllOpenSellOrders } = decentralandUtils;
     const openSellOrders = await getAllOpenSellOrders();
@@ -57,11 +66,13 @@ export class ListLandForSaleScreen extends React.Component<
     // Showing only parcels for now because of all estates are with blank images
     const parcelsForSale = [];
     let order;
+
     for (order of openSellOrders) {
       const { nftAddress } = order;
       const isParcel = addressesAreEqual(nftAddress, landContract.getAddress());
       if (isParcel) parcelsForSale.push(order);
     }
+
     const assetsForSale = [];
     // Note: Getting only the first 10 assets for now
     // See more: https://github.com/tasitlabs/tasit/issues/155
@@ -73,7 +84,8 @@ export class ListLandForSaleScreen extends React.Component<
     }
     return assetsForSale;
   };
-  _toAssetForSale = async sellOrder => {
+
+  _toAssetForSale = async (sellOrder): Promise<object> => {
     const contracts = getContracts();
     const { estateContract, landContract } = contracts;
     const {
@@ -92,13 +104,16 @@ export class ListLandForSaleScreen extends React.Component<
     const strPriceManaLength = priceManaInWei.length - 18;
     const strRoundedPriceMana = priceManaInWei.substring(0, strPriceManaLength);
     const priceMana = strRoundedPriceMana;
-    const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
+
+    const priceUSD = (Number(priceMana) / manaPerUsd).toFixed(2);
+
     const asset = await generateAssetFromId(
       estateContract,
       landContract,
       assetId,
       nftAddress
     );
+
     const assetForSale = {
       id,
       priceManaInWei,
@@ -110,7 +125,8 @@ export class ListLandForSaleScreen extends React.Component<
     };
     return assetForSale;
   };
-  _renderItem = ({ item: landForSale }) => {
+
+  _renderItem = ({ item: landForSale }): JSX.Element => {
     const { navigation, selectLandToBuy } = this.props;
     const handlePress = () => {
       selectLandToBuy(landForSale);
@@ -120,7 +136,8 @@ export class ListLandForSaleScreen extends React.Component<
       <LandForSaleListItem landForSale={landForSale} onPress={handlePress} />
     );
   };
-  render() {
+
+  render(): JSX.Element {
     const { assetsForSale } = this.props;
     const { list, loadingInProgress } = assetsForSale;
     // Note: The initial route component from react-navigation

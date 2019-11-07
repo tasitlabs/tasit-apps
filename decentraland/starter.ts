@@ -1,6 +1,7 @@
 /* eslint no-console: "off" */
 const { exec } = require("child_process");
 const { argv } = require("yargs");
+
 const {
   checkBlockchain,
   showErrorMessage,
