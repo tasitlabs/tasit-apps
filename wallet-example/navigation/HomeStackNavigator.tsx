@@ -10,7 +10,10 @@ const HomeStackNavigator = createStackNavigator({
     path: ""
   }
 });
-export function IconDisplay({ focused }) {
+type IconDisplayProps = {
+  focused?: boolean;
+};
+export const IconDisplay: React.SFC<IconDisplayProps> = ({ focused }) => {
   return (
     <TabBarIcon
       focused={focused}
@@ -21,13 +24,9 @@ export function IconDisplay({ focused }) {
       }
     />
   );
-}
+};
 HomeStackNavigator.navigationOptions = {
   tabBarLabel: "Home",
   tabBarIcon: IconDisplay
 };
-// TODO: Migrate me to TypeScript types
-// IconDisplay.propTypes = {
-//   focused: PropTypes.bool
-// };
 export default HomeStackNavigator;

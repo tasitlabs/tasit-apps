@@ -3,7 +3,10 @@ import { StyleSheet, View, Text } from "react-native";
 import { connect } from "react-redux";
 import Colors from "../constants/Colors";
 type TransactionScreenProps = {
-  title?: any
+  title?: any;
+};
+type TransactionScreenProps = {
+  transactions: any[];
 };
 export class TransactionScreen extends React.Component<
   TransactionScreenProps,
@@ -51,8 +54,4 @@ const styles = StyleSheet.create({
 const mapStateToProps = state => ({
   transactions: state.transactions
 });
-// TODO: Migrate me to TypeScript types
-// TransactionScreen.propTypes = {
-//   transactions: PropTypes.array.isRequired
-// };
 export default connect(mapStateToProps)(TransactionScreen);
