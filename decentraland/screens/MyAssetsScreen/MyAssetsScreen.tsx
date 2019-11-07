@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   removeFromMyAssetsList,
   appendToMyAssetsList,
-  addUserAction
+  addUserAction,
 } from "../../redux/actions";
 import MyAssetsList from "../../components/presentational/MyAssetsList";
 import MyAssetsListItem from "../../components/presentational/MyAssetsListItem";
@@ -12,12 +12,12 @@ import { generateAssetFromId } from "../../helpers/decentraland";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 import { SUCCESSFUL } from "../../constants/UserActionStatus";
 type MyAssetsScreenProps = {
-  myAssets: any[],
-  account?: object,
-  userActions: object,
-  removeFromMyAssetsList: (...args: any[]) => any,
-  appendToMyAssetsList: (...args: any[]) => any,
-  addUserAction: (...args: any[]) => any
+  myAssets: any[];
+  account?: object;
+  userActions: object;
+  removeFromMyAssetsList: (...args: any[]) => any;
+  appendToMyAssetsList: (...args: any[]) => any;
+  addUserAction: (...args: any[]) => any;
 };
 export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
   componentDidMount = async () => {
@@ -25,14 +25,14 @@ export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
       account,
       removeFromMyAssetsList,
       appendToMyAssetsList,
-      addUserAction
+      addUserAction,
     } = this.props;
     if (account) {
       const { address } = account;
       const boughtAssets = this._getBoughtAssetsFromState();
       const {
         assetsFromBlockchain,
-        actionsFromBlockchain
+        actionsFromBlockchain,
       } = await this.__getAssetsAndActionsFromBlockchain(address);
       const shouldUpdate = !listsAreEqual(assetsFromBlockchain, boughtAssets);
       if (shouldUpdate) {
@@ -137,6 +137,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   removeFromMyAssetsList,
   appendToMyAssetsList,
-  addUserAction
+  addUserAction,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(MyAssetsScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyAssetsScreen);

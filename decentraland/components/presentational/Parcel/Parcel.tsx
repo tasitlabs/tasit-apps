@@ -15,7 +15,7 @@ interface ParcelProps {
 }
 
 const Parcel: React.SFC<ParcelProps> = ({ parcel }) => {
-  let { img } = parcel;
+  const { img } = parcel;
 
   return (
     <React.Fragment>

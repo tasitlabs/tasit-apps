@@ -2,12 +2,12 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { connect } from "react-redux";
 import Colors from "../constants/Colors";
+
 type TransactionScreenProps = {
   title?: any;
-};
-type TransactionScreenProps = {
   transactions: any[];
 };
+
 export class TransactionScreen extends React.Component<
   TransactionScreenProps,
   {}

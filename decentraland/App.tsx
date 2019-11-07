@@ -12,7 +12,7 @@ import {
   setMyAssetsList,
   setAccountCreationStatus,
   setAccountCreationActions,
-  addUserAction
+  addUserAction,
 } from "@redux/actions";
 import applyMiddleware from "@redux/middlewares";
 import { Action } from "tasit-sdk";
@@ -27,23 +27,23 @@ import {
   retrieveAccountCreationActions,
   storeIsFirstUse,
   retrieveIsFirstUse,
-  retrieveUserActions
+  retrieveUserActions,
 } from "@helpers/storage";
 import { Ionicons } from "@expo/vector-icons";
 import { Root } from "native-base";
 const store = createStore(decentralandApp, applyMiddleware);
 type AppProps = {
-  skipLoadingScreen?: boolean
+  skipLoadingScreen?: boolean;
 };
 type AppState = {
-  isLoadingComplete: boolean
+  isLoadingComplete: boolean;
 };
 type AppState = {
-  isLoadingComplete: boolean
+  isLoadingComplete: boolean;
 };
 export default class App extends React.Component<{}, AppState> {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
   };
   async componentDidMount() {
     // Ignoring setting timer warnings on the app UI
@@ -54,7 +54,7 @@ export default class App extends React.Component<{}, AppState> {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      ...Ionicons.font
+      ...Ionicons.font,
     });
   }
   async _setupTasitSDK() {
@@ -117,7 +117,7 @@ Is the config file correct?`;
     }
   }
   _handleRedirect = event => {
-    let data = Linking.parse(event.url);
+    const data = Linking.parse(event.url);
     console.info("** App WAS already open **");
     this._handleDeepLinkPayload(data);
   };

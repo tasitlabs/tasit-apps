@@ -222,7 +222,7 @@ export const restoreCreationStateOfAccountFromBlockchain = async account => {
   );
 
   let creationStatus = NOT_STARTED;
-  let creationActions = {};
+  const creationActions = {};
 
   const accountCreated = account !== null;
   const fundedWithEthers = `${ethersBalance}` !== `${ZERO}`;

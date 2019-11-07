@@ -1,11 +1,14 @@
 module.exports = {
-  parser: "babel-eslint",
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: "./tsconfig.json",
+  },
   env: {
     browser: true,
     es6: true,
     node: true,
   },
-  plugins: ["react", "prettier", "react-native", "jest"],
+  plugins: ["react", "prettier", "react-native", "jest", "@typescript-eslint"],
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -13,6 +16,9 @@ module.exports = {
     "prettier",
     "prettier/react",
     "plugin:jest/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
   ],
   rules: {
     "no-console": ["error", { allow: ["warn", "error", "info"] }],
@@ -23,7 +29,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: "16.5",
+      version: "16.8",
     },
   },
   globals: {

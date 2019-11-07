@@ -15,7 +15,7 @@ interface EstateProps {
 }
 
 const Estate: React.SFC<EstateProps> = ({ estate }) => {
-  let { img } = estate;
+  const { img } = estate;
 
   return (
     <React.Fragment>

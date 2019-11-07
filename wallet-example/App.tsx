@@ -46,7 +46,7 @@ export default class App extends React.Component<{}, AppState> {
     }
   }
   _handleRedirect = event => {
-    let data = Linking.parse(event.url);
+    const data = Linking.parse(event.url);
     console.info("** App WAS already open **");
     this._handleDeepLinkPayload(data);
   };

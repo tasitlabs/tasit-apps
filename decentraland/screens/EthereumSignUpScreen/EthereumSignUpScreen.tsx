@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   setAccount,
   setAccountCreationStatus,
-  updateActionIdForAccountCreationStatus
+  updateActionIdForAccountCreationStatus,
 } from "../../redux/actions";
 import EthereumSignUp from "../../components/presentational/EthereumSignUp";
 import {
@@ -12,7 +12,7 @@ import {
   showError,
   fundAccountWithEthers,
   fundAccountWithMana,
-  createAccount
+  createAccount,
 } from "../../helpers";
 import AccountCreationStatus from "../../constants/AccountCreationStatus";
 const {
@@ -21,12 +21,12 @@ const {
   FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
-  READY_TO_USE
+  READY_TO_USE,
 } = AccountCreationStatus;
 type EthereumSignUpScreenProps = {
-  setAccount: (...args: any[]) => any,
-  setAccountCreationStatus: (...args: any[]) => any,
-  updateActionIdForAccountCreationStatus: (...args: any[]) => any
+  setAccount: (...args: any[]) => any;
+  setAccountCreationStatus: (...args: any[]) => any;
+  updateActionIdForAccountCreationStatus: (...args: any[]) => any;
 };
 export class EthereumSignUpScreen extends React.Component<
   EthereumSignUpScreenProps,
@@ -37,7 +37,7 @@ export class EthereumSignUpScreen extends React.Component<
       const {
         setAccount,
         setAccountCreationStatus,
-        updateActionIdForAccountCreationStatus
+        updateActionIdForAccountCreationStatus,
       } = this.props;
       // The pattern for each step is:
       // 1. alert with good info as soon as it's true
@@ -61,7 +61,7 @@ export class EthereumSignUpScreen extends React.Component<
         console.info({ actionId });
         updateActionIdForAccountCreationStatus({
           status: FUNDING_WITH_ETH,
-          actionId
+          actionId,
         });
         await action.waitForOneConfirmation();
         // TODO: Change me to pub/sub style
@@ -74,7 +74,7 @@ export class EthereumSignUpScreen extends React.Component<
         const actionId = await action.getId();
         updateActionIdForAccountCreationStatus({
           status: FUNDING_WITH_MANA,
-          actionId
+          actionId,
         });
         await action.waitForOneConfirmation();
         // TODO: Change me to pub/sub style
@@ -87,7 +87,7 @@ export class EthereumSignUpScreen extends React.Component<
         const actionId = await action.getId();
         updateActionIdForAccountCreationStatus({
           status: APPROVING_MARKETPLACE,
-          actionId
+          actionId,
         });
         await action.waitForOneConfirmation();
         // TODO: Change me to pub/sub style
@@ -102,7 +102,7 @@ export class EthereumSignUpScreen extends React.Component<
       await fundWithEthers(accountAddress);
       await Promise.all([
         fundWithMana(accountAddress),
-        approveMarketplace(account)
+        approveMarketplace(account),
       ]);
       showInfo(`Now you can buy land!`);
       setAccountCreationStatus(READY_TO_USE);
@@ -128,6 +128,9 @@ export class EthereumSignUpScreen extends React.Component<
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
-  updateActionIdForAccountCreationStatus
+  updateActionIdForAccountCreationStatus,
 };
-export default connect(null, mapDispatchToProps)(EthereumSignUpScreen);
+export default connect(
+  null,
+  mapDispatchToProps
+)(EthereumSignUpScreen);

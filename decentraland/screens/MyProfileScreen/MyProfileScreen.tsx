@@ -5,30 +5,30 @@ import {
   GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
   FUNDING_WITH_MANA,
-  APPROVING_MARKETPLACE
+  APPROVING_MARKETPLACE,
 } from "../../constants/AccountCreationStatus";
 import { MISSING, DONE } from "../../constants/ActionStatus";
 const creationSteps = [
   {
     name: "Account created",
     creationStatus: GENERATING_ACCOUNT,
-    percentage: 0.25
+    percentage: 0.25,
   },
   {
     creationStatus: FUNDING_WITH_ETH,
     name: "Funded with ETH",
-    percentage: 0.25
+    percentage: 0.25,
   },
   {
     creationStatus: FUNDING_WITH_MANA,
     name: "Funded with MANA tokens",
-    percentage: 0.25
+    percentage: 0.25,
   },
   {
     creationStatus: APPROVING_MARKETPLACE,
     name: "Linked to marketplace",
-    percentage: 0.25
-  }
+    percentage: 0.25,
+  },
 ];
 const stepWasDone = (step, accountInfo) => {
   const { creationActions, account } = accountInfo;
@@ -36,7 +36,7 @@ const stepWasDone = (step, accountInfo) => {
   const statusWithAction = [
     FUNDING_WITH_ETH,
     FUNDING_WITH_MANA,
-    APPROVING_MARKETPLACE
+    APPROVING_MARKETPLACE,
   ];
   if (creationStatus === GENERATING_ACCOUNT) {
     const isAccountCreated = account !== null;
@@ -47,7 +47,7 @@ const stepWasDone = (step, accountInfo) => {
   }
 };
 type MyProfileScreenProps = {
-  accountInfo?: object
+  accountInfo?: object;
 };
 export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
   render() {

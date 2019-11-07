@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
   appendLandForSaleToList,
   selectLandToBuy,
-  setLoadingAssetsForSaleInProgress
+  setLoadingAssetsForSaleInProgress,
 } from "../../redux/actions";
 import LandForSaleList from "../../components/presentational/LandForSaleList";
 import LandForSaleListItem from "../../components/presentational/LandForSaleListItem";
@@ -11,16 +11,16 @@ import {
   showError,
   showInfo,
   getContracts,
-  addressesAreEqual
+  addressesAreEqual,
 } from "../../helpers";
 import { generateAssetFromId } from "../../helpers/decentraland";
 import { Root } from "native-base";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 type ListLandForSaleScreenProps = {
-  assetsForSale: object,
-  appendLandForSaleToList: (...args: any[]) => any,
-  selectLandToBuy: (...args: any[]) => any,
-  setLoadingAssetsForSaleInProgress: (...args: any[]) => any
+  assetsForSale: object;
+  appendLandForSaleToList: (...args: any[]) => any;
+  selectLandToBuy: (...args: any[]) => any;
+  setLoadingAssetsForSaleInProgress: (...args: any[]) => any;
 };
 export class ListLandForSaleScreen extends React.Component<
   ListLandForSaleScreenProps,
@@ -29,13 +29,13 @@ export class ListLandForSaleScreen extends React.Component<
   componentDidMount = async () => {
     const {
       appendLandForSaleToList,
-      setLoadingAssetsForSaleInProgress
+      setLoadingAssetsForSaleInProgress,
     } = this.props;
     try {
       showInfo("Loading land for sale...");
       const assetsForSale = await this._getAllAssetsForSale();
       const loadingAssetsOnScreen = assetsForSale.map(promise => {
-        let loadAssetOnScreen = async () => {
+        const loadAssetOnScreen = async () => {
           const assetForSale = await promise;
           appendLandForSaleToList(assetForSale);
         };
@@ -68,7 +68,7 @@ export class ListLandForSaleScreen extends React.Component<
     const listSize = 10;
     let parcel;
     for (parcel of parcelsForSale.slice(0, listSize)) {
-      let assetForSalePromise = this._toAssetForSale(parcel);
+      const assetForSalePromise = this._toAssetForSale(parcel);
       assetsForSale.push(assetForSalePromise);
     }
     return assetsForSale;
@@ -82,7 +82,7 @@ export class ListLandForSaleScreen extends React.Component<
       assetId,
       seller,
       priceInWei,
-      expiresAt
+      expiresAt,
     } = sellOrder;
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
@@ -106,7 +106,7 @@ export class ListLandForSaleScreen extends React.Component<
       priceUSD,
       seller,
       expiresAt,
-      asset
+      asset,
     };
     return assetForSale;
   };
@@ -145,8 +145,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   appendLandForSaleToList,
   setLoadingAssetsForSaleInProgress,
-  selectLandToBuy
+  selectLandToBuy,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ListLandForSaleScreen
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListLandForSaleScreen);
