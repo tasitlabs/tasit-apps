@@ -2,11 +2,26 @@ import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import Colors from "../../../constants/Colors";
 import LargeText from "../LargeText";
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+  },
+  emptyContainer: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
 type MyAssetsListProps = {
   renderItem: (...args: any[]) => any;
   myAssets: any[];
   userActions: object;
 };
+
 // Note: Changing to PureComponent for performance boost
 // It is possible to still use function component with React.memo HoC
 // See more:
@@ -50,15 +65,3 @@ export default class MyAssetsList extends React.PureComponent<{}, {}> {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-  },
-  emptyContainer: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-});

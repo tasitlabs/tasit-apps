@@ -13,6 +13,13 @@ import { addTransaction } from "./store/actions";
 
 const store = createStore(rootReducer);
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.background,
+    flex: 1
+  }
+});
+
 type AppState = {
   redirectData: null;
   isLoadingComplete: boolean;
@@ -104,9 +111,3 @@ export default class App extends React.Component<{}, AppState> {
     Linking.removeEventListener("url", this._handleRedirect);
   };
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.background,
-    flex: 1
-  }
-});

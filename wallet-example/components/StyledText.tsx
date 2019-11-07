@@ -6,13 +6,8 @@ interface MonoTextProps {
 }
 
 /* eslint-disable react-native/no-inline-styles */
-export class MonoText extends React.Component<MonoTextProps> {
-  render() {
-    return (
-      <Text
-        {...this.props}
-        style={[this.props.style, { fontFamily: "space-mono" }]}
-      />
-    );
-  }
-}
+export const MonoText: React.SFC<MonoTextProps> = props => {
+  return (
+    <Text {...props} style={[props.style, { fontFamily: "space-mono" }]} />
+  );
+};

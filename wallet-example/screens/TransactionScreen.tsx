@@ -3,6 +3,16 @@ import { StyleSheet, View, Text } from "react-native";
 import { connect } from "react-redux";
 import Colors from "../constants/Colors";
 
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.background,
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: 15
+  }
+});
+
 type TransactionScreenProps = {
   title?: any;
   transactions: any[];
@@ -42,15 +52,7 @@ export class TransactionScreen extends React.Component<
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.background,
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: 15
-  }
-});
+
 const mapStateToProps = state => ({
   transactions: state.transactions
 });

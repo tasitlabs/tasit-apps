@@ -36,6 +36,20 @@ const generateWaitingMessage = status => {
   return "";
 };
 
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  text: {
+    color: Colors.textColor,
+  },
+  textContainer: {
+    maxWidth: responsiveWidth(80),
+  },
+});
+
 interface AccountCreationProgressProps {
   status: string;
   actions: object;
@@ -90,19 +104,5 @@ export const ProgressMessageAndLink: React.SFC<ProgressMessageAndLinkProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  text: {
-    color: Colors.textColor,
-  },
-  textContainer: {
-    maxWidth: responsiveWidth(80),
-  },
-});
 
 export default AccountCreationProgress;

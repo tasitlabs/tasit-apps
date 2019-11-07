@@ -45,6 +45,22 @@ export default class EthereumSignUpForm extends React.Component<
   }
 }
 
+const styles = StyleSheet.create({
+  buttonView: {
+    flexDirection: "row",
+    marginTop: responsiveHeight(5),
+  },
+  userInput: {
+    backgroundColor: Colors.formBackground,
+    color: Colors.textColor,
+    fontSize: responsiveFontSize(3),
+    justifyContent: "flex-start",
+    width: responsiveWidth(48),
+  },
+  userInputView: { alignItems: "center", flex: 1 },
+  userRow: { flexDirection: "row" },
+});
+
 interface UsernameTextInputProps {
   onChange: any; // TODO: Change me to a function type
   username: string;
@@ -69,19 +85,3 @@ export const UsernameTextInput: React.SFC<UsernameTextInputProps> = ({
     />
   );
 };
-
-const styles = StyleSheet.create({
-  buttonView: {
-    flexDirection: "row",
-    marginTop: responsiveHeight(5),
-  },
-  userInput: {
-    backgroundColor: Colors.formBackground,
-    color: Colors.textColor,
-    fontSize: responsiveFontSize(3),
-    justifyContent: "flex-start",
-    width: responsiveWidth(48),
-  },
-  userInputView: { alignItems: "center", flex: 1 },
-  userRow: { flexDirection: "row" },
-});

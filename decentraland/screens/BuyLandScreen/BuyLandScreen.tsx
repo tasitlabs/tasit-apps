@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { StackActions } from "react-navigation";
+
 import {
   removeLandForSale,
   prependLandForSaleToList,
@@ -9,13 +10,24 @@ import {
   addUserAction,
   updateUserActionStatus,
 } from "../../redux/actions";
+
 import BuyLand from "../../components/presentational/BuyLand";
+
 import { showError, showInfo, getContracts } from "../../helpers";
+
 import { ESTATE, PARCEL } from "../../constants/AssetTypes";
 import { PENDING, SUCCESSFUL } from "../../constants/UserActionStatus";
+
+interface AccountInfoObject {
+  account: any;
+  creationStatus: string;
+  creationActions: any[];
+}
+
 type BuyLandScreenProps = {
-  accountInfo?: object;
+  accountInfo?: AccountInfoObject;
   landToBuy: object;
+  navigation: any;
   myAssets: any[];
   removeLandForSale: (...args: any[]) => any;
   prependLandForSaleToList: (...args: any[]) => any;
@@ -24,7 +36,8 @@ type BuyLandScreenProps = {
   addUserAction: (...args: any[]) => any;
   updateUserActionStatus: (...args: any[]) => any;
 };
-export class BuyLandScreen extends React.Component<{}, {}> {
+
+export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
   _onBuy = landForSale => {
     try {
       const { accountInfo } = this.props;
@@ -35,10 +48,12 @@ export class BuyLandScreen extends React.Component<{}, {}> {
       showError(err);
     }
   };
+
   _setupAccount = () => {
     const { navigation } = this.props;
     navigation.navigate("OnboardingHomeScreen");
   };
+
   _buy = async landForSale => {
     const { props, _executeOrder } = this;
     const {
@@ -51,22 +66,15 @@ export class BuyLandScreen extends React.Component<{}, {}> {
       addUserAction,
       updateUserActionStatus,
     } = props;
+
     const { account } = accountInfo;
     const { asset, id: landId } = landForSale;
+
     console.info("landForSaleId", landId);
     const { id: assetId, type } = asset;
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
     const typeDescription = type == ESTATE ? "Estate" : "Parcel";
-    const onSuccess = async () => {
-      // TODO: This function should be called inside of the eventListener
-      // that catches the safeExecuteOrder successful event.
-      await action.waitForOneConfirmation();
-      // TODO: Change me to pub/sub style
-      const actionId = await action.getId();
-      console.info("actionId", actionId);
-      updateUserActionStatus({ actionId, status: SUCCESSFUL });
-      showInfo(`${typeDescription} bought successfully.`);
-    };
+
     const onError = (assetForSale, message) => {
       console.info("onError triggered", message);
       const { asset } = assetForSale;
@@ -80,25 +88,42 @@ export class BuyLandScreen extends React.Component<{}, {}> {
       // error states the land has been removed before getting here
       prependLandForSaleToList(assetForSale);
     };
+
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
     const action = await _executeOrder(landForSale, account, onError);
+
+    const onSuccess = async () => {
+      // TODO: This function should be called inside of the eventListener
+      // that catches the safeExecuteOrder successful event.
+      await action.waitForOneConfirmation();
+      // TODO: Change me to pub/sub style
+      const actionId = await action.getId();
+      console.info("actionId", actionId);
+      updateUserActionStatus({ actionId, status: SUCCESSFUL });
+      showInfo(`${typeDescription} bought successfully.`);
+    };
+
     // TODO: Possibly remove this await to ensure land for sale
     // is optimistically removed, or remove the land before this line
     // if that won't cause a disruptive re-render of the component
     await action.send();
+
     console.info("action", action);
     // Optimistic UI update
     removeLandForSale(landForSale);
     prependToMyAssetsList(asset);
+
     // Back to top of current Stack before navigate
     navigation.dispatch(StackActions.popToTop());
     navigation.navigate("MyAssetsScreen");
+
     const actionId = await action.getId();
     console.info({ actionId });
     const userAction = { [actionId]: { status: PENDING, assetId } };
     addUserAction(userAction);
     onSuccess();
   };
+
   _executeOrder = async (sellOrder, account, onError) => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;
@@ -131,6 +156,7 @@ export class BuyLandScreen extends React.Component<{}, {}> {
       onError(sellOrder, error.message);
     }
   };
+
   render() {
     const { landToBuy: landForSale, accountInfo } = this.props;
     const { creationStatus, creationActions } = accountInfo;
@@ -144,11 +170,13 @@ export class BuyLandScreen extends React.Component<{}, {}> {
     );
   }
 }
+
 const mapStateToProps = state => {
   const { accountInfo, landToBuy, myAssets } = state;
   const { list: myAssetsList } = myAssets;
   return { accountInfo, landToBuy, myAssets: myAssetsList };
 };
+
 const mapDispatchToProps = {
   removeLandForSale,
   prependLandForSaleToList,
@@ -157,6 +185,7 @@ const mapDispatchToProps = {
   addUserAction,
   updateUserActionStatus,
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

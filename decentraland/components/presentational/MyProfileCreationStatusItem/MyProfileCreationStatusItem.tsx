@@ -10,6 +10,28 @@ import {
 } from "react-native-responsive-dimensions";
 import ActionStatus from "../../../types/ActionStatus";
 
+const styles = StyleSheet.create({
+  actionStatusIcon: {
+    color: Colors.icons,
+    fontWeight: "800",
+  },
+  actionText: {
+    color: Colors.textColor,
+    fontSize: FONT_SIZE,
+    fontWeight: "800",
+    marginLeft: responsiveWidth(5),
+  },
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "flex-start",
+    marginTop: responsiveHeight(2),
+    width: responsiveWidth(65),
+  },
+});
+
 interface MyProfileCreationStatusItemProps {
   name: string;
   status: ActionStatus;
@@ -56,27 +78,5 @@ function renderIcon(status) {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  actionStatusIcon: {
-    color: Colors.icons,
-    fontWeight: "800",
-  },
-  actionText: {
-    color: Colors.textColor,
-    fontSize: FONT_SIZE,
-    fontWeight: "800",
-    marginLeft: responsiveWidth(5),
-  },
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
-    marginTop: responsiveHeight(2),
-    width: responsiveWidth(65),
-  },
-});
 
 export default MyProfileCreationStatusItem;

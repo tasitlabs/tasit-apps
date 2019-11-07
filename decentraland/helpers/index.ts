@@ -1,21 +1,26 @@
 import { Platform, Linking } from "react-native";
 import { Toast } from "native-base";
+
 import {
   Account,
   Action,
   ContractBasedAccount,
   TasitContracts,
 } from "tasit-sdk";
+
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
-import AccountCreationStatus from "@constants/AccountCreationStatus";
+import AccountCreationStatus from "../constants/AccountCreationStatus";
 
+// Not a key controlling any funds or contracts on mainnet, of course:
 const gnosisSafeOwnerPrivKey =
   "0x633a290bcdabb9075c5a4b3885c69ce64b4b0e6079eb929abb2ac9427c49733b";
+
 const gnosisSafeOwner = createFromPrivateKey(gnosisSafeOwnerPrivKey);
 const SMALL_AMOUNT = `${5e16}`; // 0.05
 const HALF_MILLION = "500000000000000000000000";
+
 const {
   NOT_STARTED,
   FUNDING_WITH_ETH,
@@ -24,6 +29,7 @@ const {
   APPROVING_MARKETPLACE,
   READY_TO_USE,
 } = AccountCreationStatus;
+
 const ZERO = 0;
 
 export const getNetworkName = () => {
@@ -43,6 +49,7 @@ export const getContracts = () => {
     Marketplace,
     GnosisSafe: GnosisSafeInfo,
   } = TasitContracts[networkName];
+
   const { address: MANA_ADDRESS } = MANAToken;
   const { address: LAND_ADDRESS } = LANDProxy;
   const { address: ESTATE_ADDRESS } = EstateRegistry;
@@ -76,15 +83,20 @@ export const createAccount = async () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
   console.info("createAccount called");
+
+  // Note that we aren't awaiting anything in this async
+  // function
+  // TODO: Think more about this based on how Account.create
+  // works in the Tasit SDK
   const account = Account.create();
   return account;
 };
 
-export const addressesAreEqual = (address1, address2) => {
+export const addressesAreEqual = (address1, address2): boolean => {
   return address1.toUpperCase() === address2.toUpperCase();
 };
 
-export const approveManaSpending = fromAccount => {
+export const approveManaSpending = (fromAccount): object => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
@@ -94,7 +106,7 @@ export const approveManaSpending = fromAccount => {
   return action;
 };
 
-export const fundAccountWithEthers = accountAddress => {
+export const fundAccountWithEthers = (accountAddress): object => {
   const contracts = getContracts();
   const { gnosisSafeContract } = contracts;
   gnosisSafeContract.setAccount(gnosisSafeOwner);
@@ -105,7 +117,7 @@ export const fundAccountWithEthers = accountAddress => {
   return action;
 };
 
-export const fundAccountWithMana = accountAddress => {
+export const fundAccountWithMana = (accountAddress): object => {
   const contracts = getContracts();
   const { manaContract, gnosisSafeContract } = contracts;
   gnosisSafeContract.setAccount(gnosisSafeOwner);
@@ -120,7 +132,7 @@ export const fundAccountWithMana = accountAddress => {
 };
 
 // Note: This could live inside of the Action class as `buildLink()` function
-export const buildBlockchainUrlFromActionId = actionId => {
+export const buildBlockchainUrlFromActionId = (actionId): string => {
   const networkName = getNetworkName();
   const transactionHash = actionId;
   const url = `https://${networkName}.etherscan.io/tx/${transactionHash}`;
@@ -140,7 +152,7 @@ export const logInfo = msg => console.info(msg);
 export const logWarn = msg => console.warn(msg);
 export const logError = msg => console.error(msg);
 
-export const checkBlockchain = async () => {
+export const checkBlockchain = async (): Promise<boolean> => {
   loadConfig();
   const provider = ProviderFactory.getProvider();
   try {
@@ -153,7 +165,7 @@ export const checkBlockchain = async () => {
 
 // Note: `toLocaleString` doesn't work on Android
 // See more: https://github.com/facebook/react-native/issues/19410#issuecomment-434232762
-export const formatNumber = number => {
+export const formatNumber = (number): string => {
   if (Platform.OS === "android") {
     // only android needs polyfill
     require("intl");
@@ -175,7 +187,7 @@ export const removeFromList = (list, toRemove) => {
   return list.filter(e => !idsToRemove.includes(e.id));
 };
 
-export const listsAreEqual = (first, second) => {
+export const listsAreEqual = (first, second): boolean => {
   if (first.length !== second.length) return false;
 
   return (

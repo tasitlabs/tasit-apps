@@ -5,9 +5,20 @@ import { Header } from "react-navigation";
 import Colors from "../../../constants/Colors";
 import LargeText from "../LargeText";
 import EthereumSignUpForm from "../EthereumSignUpForm";
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
 type EthereumSignUpProps = {
   onSignUp: (...args: any[]) => any;
 };
+
 export default class EthereumSignUp extends React.Component<
   EthereumSignUpProps,
   {}
@@ -27,11 +38,3 @@ export default class EthereumSignUp extends React.Component<
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-});

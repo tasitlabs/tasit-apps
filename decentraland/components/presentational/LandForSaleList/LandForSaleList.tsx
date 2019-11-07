@@ -2,11 +2,20 @@ import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import Colors from "../../../constants/Colors";
 import LargeText from "../LargeText";
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+  },
+});
+
 type LandForSaleListProps = {
   loadingInProgress: boolean;
   renderItem: (...args: any[]) => any;
   landForSaleList: any[];
 };
+
 // Note: Changing to PureComponent for performance boost
 // It is possible to still using function component with React.memo HoC
 // See more:
@@ -34,9 +43,3 @@ export default class LandForSaleList extends React.PureComponent<
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-  },
-});

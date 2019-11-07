@@ -35,6 +35,16 @@ const _onPress = actionId => {
   else _openLinkInfo();
 };
 
+const styles = StyleSheet.create({
+  icon: {
+    color: Colors.linkColor,
+  },
+  touchable: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+});
+
 interface LinkToBlockchainProps {
   actionId: string;
 }
@@ -52,15 +62,5 @@ const LinkToBlockchain: React.SFC<LinkToBlockchainProps> = ({ actionId }) => {
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  icon: {
-    color: Colors.linkColor,
-  },
-  touchable: {
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-});
 
 export default LinkToBlockchain;

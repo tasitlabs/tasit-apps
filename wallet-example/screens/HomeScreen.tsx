@@ -11,9 +11,100 @@ import {
 import * as WebBrowser from "expo-web-browser";
 import Colors from "../constants/Colors";
 import { MonoText } from "../components/StyledText";
+
+const styles = StyleSheet.create({
+  codeHighlightContainer: {
+    backgroundColor: Colors.codeHighlightContainer,
+    borderRadius: 3,
+    paddingHorizontal: 4
+  },
+  codeHighlightText: {
+    color: Colors.codeHighlightText
+  },
+  container: {
+    backgroundColor: Colors.background,
+    flex: 1
+  },
+  contentContainer: {
+    paddingTop: 30
+  },
+  developmentModeText: {
+    color: Colors.developmentModeText,
+    fontSize: 14,
+    lineHeight: 19,
+    marginBottom: 20,
+    textAlign: "center"
+  },
+  getStartedContainer: {
+    alignItems: "center",
+    marginHorizontal: 50
+  },
+  getStartedText: {
+    color: Colors.getStartedText,
+    fontSize: 17,
+    lineHeight: 24,
+    textAlign: "center"
+  },
+  helpContainer: {
+    alignItems: "center",
+    marginTop: 15
+  },
+  helpLink: {
+    paddingVertical: 15
+  },
+  helpLinkText: {
+    color: Colors.helpLinkText,
+    fontSize: 14
+  },
+  homeScreenFilename: {
+    marginVertical: 7
+  },
+  navigationFilename: {
+    marginTop: 5
+  },
+  tabBarInfoContainer: {
+    bottom: 0,
+    left: 0,
+    position: "absolute",
+    right: 0,
+    ...Platform.select({
+      ios: {
+        shadowColor: "black",
+        shadowOffset: { height: -3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3
+      },
+      android: {
+        elevation: 20
+      }
+    }),
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColorHome,
+    paddingVertical: 20
+  },
+  tabBarInfoText: {
+    color: Colors.tabBarInfoText,
+    fontSize: 17,
+    textAlign: "center"
+  },
+  welcomeContainer: {
+    alignItems: "center",
+    marginBottom: 20,
+    marginTop: 10
+  },
+  welcomeImage: {
+    height: 80,
+    marginLeft: -10,
+    marginTop: 3,
+    resizeMode: "contain",
+    width: 100
+  }
+});
+
 type HomeScreenProps = {
   header?: any;
 };
+
 /* eslint-disable react-native/no-raw-text */
 export class HomeScreen extends React.Component<HomeScreenProps, {}> {
   render() {
@@ -112,92 +203,5 @@ export class HomeScreen extends React.Component<HomeScreenProps, {}> {
     );
   };
 }
-const styles = StyleSheet.create({
-  codeHighlightContainer: {
-    backgroundColor: Colors.codeHighlightContainer,
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  codeHighlightText: {
-    color: Colors.codeHighlightText
-  },
-  container: {
-    backgroundColor: Colors.background,
-    flex: 1
-  },
-  contentContainer: {
-    paddingTop: 30
-  },
-  developmentModeText: {
-    color: Colors.developmentModeText,
-    fontSize: 14,
-    lineHeight: 19,
-    marginBottom: 20,
-    textAlign: "center"
-  },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50
-  },
-  getStartedText: {
-    color: Colors.getStartedText,
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: "center"
-  },
-  helpContainer: {
-    alignItems: "center",
-    marginTop: 15
-  },
-  helpLink: {
-    paddingVertical: 15
-  },
-  helpLinkText: {
-    color: Colors.helpLinkText,
-    fontSize: 14
-  },
-  homeScreenFilename: {
-    marginVertical: 7
-  },
-  navigationFilename: {
-    marginTop: 5
-  },
-  tabBarInfoContainer: {
-    bottom: 0,
-    left: 0,
-    position: "absolute",
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColorHome,
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    color: Colors.tabBarInfoText,
-    fontSize: 17,
-    textAlign: "center"
-  },
-  welcomeContainer: {
-    alignItems: "center",
-    marginBottom: 20,
-    marginTop: 10
-  },
-  welcomeImage: {
-    height: 80,
-    marginLeft: -10,
-    marginTop: 3,
-    resizeMode: "contain",
-    width: 100
-  }
-});
+
 export default HomeScreen;

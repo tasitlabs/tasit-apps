@@ -5,10 +5,24 @@ import {
   responsiveWidth,
 } from "react-native-responsive-dimensions";
 import MyAsset from "../MyAsset";
+
+const styles = StyleSheet.create({
+  row: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: responsiveHeight(1),
+    paddingBottom: responsiveHeight(3),
+    paddingLeft: responsiveWidth(3),
+    paddingRight: responsiveWidth(3),
+    paddingTop: responsiveHeight(3),
+  },
+});
+
 type MyAssetsListItemProps = {
   asset: object;
   userAction: object;
 };
+
 // Note: Changing to PureComponent for performance boost
 // It is possible to still using function component with React.memo HoC
 // See more:
@@ -29,14 +43,3 @@ export default class MyAssetsListItem extends React.PureComponent<
     );
   }
 }
-const styles = StyleSheet.create({
-  row: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: responsiveHeight(1),
-    paddingBottom: responsiveHeight(3),
-    paddingLeft: responsiveWidth(3),
-    paddingRight: responsiveWidth(3),
-    paddingTop: responsiveHeight(3),
-  },
-});

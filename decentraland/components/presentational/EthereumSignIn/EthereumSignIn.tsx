@@ -4,6 +4,15 @@ import LargeText from "../LargeText";
 import WalletButton from "../WalletButton";
 import Colors from "../../../constants/Colors";
 
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
 export default function EthereumSignIn() {
   return (
     <View style={styles.container}>
@@ -21,12 +30,3 @@ export default function EthereumSignIn() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-});

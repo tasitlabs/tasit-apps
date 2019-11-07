@@ -36,22 +36,22 @@ function createReducer(initialState, handlers) {
 //
 // accountInfo reducer
 //
-const setAccount = (state, action) => {
+const setAccount = (state, action): object => {
   const { account } = action;
   return { ...state, account };
 };
-const setAccountCreationStatus = (state, action) => {
+const setAccountCreationStatus = (state, action): object => {
   const { creationStatus } = action;
   return { ...state, creationStatus };
 };
-const updateActionIdForAccountCreationStatus = (state, action) => {
+const updateActionIdForAccountCreationStatus = (state, action): object => {
   const { creationStatusAction } = action;
   const { status, actionId } = creationStatusAction;
   let { creationActions } = state;
   creationActions = { ...creationActions, [status]: actionId };
   return { ...state, creationActions };
 };
-const setAccountCreationActions = (state, action) => {
+const setAccountCreationActions = (state, action): object => {
   const { creationActions } = action;
   return { ...state, creationActions };
 };
@@ -73,7 +73,7 @@ const accountInfo = createReducer(
 //
 // landToBuy reducer
 //
-const selectLandToBuy = (state, action) => {
+const selectLandToBuy = (state, action): object => {
   const { landForSale } = action;
   return landForSale;
 };
@@ -85,7 +85,7 @@ const landToBuy = createReducer(null, {
 //
 // assetsForSale reducer
 //
-const prependLandForSaleToList = (state, action) => {
+const prependLandForSaleToList = (state, action): object => {
   const { landForSale } = action;
   const { id } = landForSale;
   const { list: assetsForSale } = state;
@@ -97,7 +97,7 @@ const prependLandForSaleToList = (state, action) => {
   return { ...state, list: [landForSale, ...state.list] };
 };
 
-const appendLandForSaleToList = (state, action) => {
+const appendLandForSaleToList = (state, action): object => {
   const { landForSale } = action;
   const { id } = landForSale;
   // const { list: assetsForSale } = state;
@@ -106,7 +106,7 @@ const appendLandForSaleToList = (state, action) => {
   return { ...state, list: [...state.list, landForSale] };
 };
 
-const removeLandForSale = (state, action) => {
+const removeLandForSale = (state, action): object => {
   const { landForSale } = action;
   const { id } = landForSale;
   console.info("remove landForSale id", id);
@@ -116,7 +116,7 @@ const removeLandForSale = (state, action) => {
   return { ...state, list };
 };
 
-const setLoadingAssetsForSaleInProgress = (state, action) => {
+const setLoadingAssetsForSaleInProgress = (state, action): object => {
   const { loadingInProgress } = action;
   return { ...state, loadingInProgress };
 };
@@ -134,7 +134,7 @@ const assetsForSale = createReducer(
 //
 // myAssets reducer
 //
-const prependToMyAssetsList = (state, action) => {
+const prependToMyAssetsList = (state, action): object => {
   const { myAsset } = action;
   const { list: myAssets } = state;
   console.info("previous my assets list", myAssets);
@@ -142,7 +142,7 @@ const prependToMyAssetsList = (state, action) => {
   return { ...state, list: [myAsset, ...state.list] };
 };
 
-const appendToMyAssetsList = (state, action) => {
+const appendToMyAssetsList = (state, action): object => {
   const { itemOrList } = action;
   const { list: myAssets } = state;
   console.info("previous my assets list", myAssets);
@@ -151,7 +151,7 @@ const appendToMyAssetsList = (state, action) => {
   return { ...state, list: [...state.list, ...toAppend] };
 };
 
-const removeFromMyAssetsList = (state, action) => {
+const removeFromMyAssetsList = (state, action): object => {
   const { itemOrList } = action;
   const { list: myAssets } = state;
   console.info("previous my assets list", myAssets);
@@ -161,7 +161,7 @@ const removeFromMyAssetsList = (state, action) => {
   return { ...state, list };
 };
 
-const setMyAssetsList = (state, action) => {
+const setMyAssetsList = (state, action): object => {
   const { myAssets } = action;
   const list = myAssets === null ? [] : myAssets;
   return { ...state, list };
@@ -180,12 +180,12 @@ const myAssets = createReducer(
 //
 // userActions reducer
 //
-const addUserAction = (state, action) => {
+const addUserAction = (state, action): object => {
   const { userAction } = action;
   return { ...state, ...userAction };
 };
 
-const updateUserActionStatus = (state, action) => {
+const updateUserActionStatus = (state, action): object => {
   const { actionIdAndStatus } = action;
   const { actionId, status } = actionIdAndStatus;
 

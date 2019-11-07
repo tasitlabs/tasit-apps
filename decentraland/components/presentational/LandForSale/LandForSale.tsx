@@ -9,6 +9,12 @@ import AssetTypes from "../../../constants/AssetTypes";
 
 const { ESTATE, PARCEL } = AssetTypes;
 
+const styles = StyleSheet.create({
+  landContainer: {
+    width: responsiveWidth(95),
+  },
+});
+
 interface LandForSaleObjectProps {
   asset: any;
 }
@@ -35,11 +41,5 @@ const LandForSale: React.SFC<LandForSaleProps> = ({ landForSale }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  landContainer: {
-    width: responsiveWidth(95),
-  },
-});
 
 export default LandForSale;

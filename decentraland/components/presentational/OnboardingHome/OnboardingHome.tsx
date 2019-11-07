@@ -7,6 +7,24 @@ import TinyLink from "../TinyLink";
 import Button from "../Button";
 import Colors from "../../../constants/Colors";
 
+const styles = StyleSheet.create({
+  buttonView: {
+    flexDirection: "row",
+    marginTop: responsiveHeight(5),
+  },
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+  privacyPolicyView: {
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: responsiveHeight(5),
+  },
+});
+
 interface OnboardingHomeProps {
   onPress: any; // TODO: Change to a function type
 }
@@ -29,21 +47,4 @@ const OnboardingHome: React.SFC<OnboardingHomeProps> = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  buttonView: {
-    flexDirection: "row",
-    marginTop: responsiveHeight(5),
-  },
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-  privacyPolicyView: {
-    alignItems: "center",
-    flexDirection: "row",
-    marginTop: responsiveHeight(5),
-  },
-});
 export default OnboardingHome;
