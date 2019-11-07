@@ -1,7 +1,6 @@
 import React from "react";
-import EthereumQuestion from "@presentational/EthereumQuestion";
-
-export default class EthereumQuestionScreen extends React.Component {
+import EthereumQuestion from "../../components/presentational/EthereumQuestion";
+export default class EthereumQuestionScreen extends React.Component<{}, {}> {
   render() {
     return (
       <EthereumQuestion

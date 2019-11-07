@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import EthereumSignIn from "@presentational/EthereumSignIn";
+import EthereumSignIn from "../EthereumSignIn";
 
 describe("EthereumSignIn", () => {
   it("renders the component", async () => {

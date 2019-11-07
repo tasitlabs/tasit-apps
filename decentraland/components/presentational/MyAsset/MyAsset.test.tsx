@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import { MyAsset, MyAssetInfo } from "./MyAsset";
 // Not the @presentational version since it needs
 // the internal component
-import { parcel, parcelUserAction } from "@helpers/testHelpers";
+import { parcel, parcelUserAction } from "../../../helpers/testHelpers";
 
 describe("MyAsset", () => {
   it("renders the component", async () => {

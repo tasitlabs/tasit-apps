@@ -6,7 +6,7 @@ import {
 } from "./AccountCreationProgress";
 // Not the @presentational version since it needs
 // the internal component
-import status from "@constants/AccountCreationStatus";
+import status from "../../../constants/AccountCreationStatus";
 const {
   NOT_STARTED,
   GENERATING_ACCOUNT,
@@ -16,7 +16,7 @@ const {
   APPROVING_MARKETPLACE,
   READY_TO_USE,
 } = status;
-import { anAction } from "@helpers/testHelpers";
+import { anAction } from "../../../helpers/testHelpers";
 
 describe("AccountCreationProgress", () => {
   it("initial state - before start account setup", async () => {

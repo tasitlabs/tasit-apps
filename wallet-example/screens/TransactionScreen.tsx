@@ -1,15 +1,14 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-
 import { connect } from "react-redux";
-
-import Colors from "@constants/Colors";
-
-export class TransactionScreen extends React.Component {
-  static navigationOptions = {
-    title: "Transaction"
-  };
-
+import Colors from "../constants/Colors";
+type TransactionScreenProps = {
+  title?: any
+};
+export class TransactionScreen extends React.Component<
+  TransactionScreenProps,
+  {}
+> {
   render() {
     const { transactions } = this.props;
     console.info("# of transactions", transactions.length);
@@ -40,7 +39,6 @@ export class TransactionScreen extends React.Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -50,14 +48,11 @@ const styles = StyleSheet.create({
     paddingTop: 15
   }
 });
-
 const mapStateToProps = state => ({
   transactions: state.transactions
 });
-
 // TODO: Migrate me to TypeScript types
-TransactionScreen.propTypes = {
-  transactions: PropTypes.array.isRequired
-};
-
+// TransactionScreen.propTypes = {
+//   transactions: PropTypes.array.isRequired
+// };
 export default connect(mapStateToProps)(TransactionScreen);

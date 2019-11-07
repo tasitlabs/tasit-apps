@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
 import { Ionicons } from "@expo/vector-icons";
 import {
@@ -8,16 +8,23 @@ import {
   responsiveWidth,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import ActionStatus from "@constants/ActionStatus";
+import ActionStatus from "../../../types/ActionStatus";
 
-export default function MyProfileCreationStatusItem({ name, status }) {
+interface MyProfileCreationStatusItemProps {
+  name: string;
+  status: ActionStatus;
+}
+
+const MyProfileCreationStatusItem: React.SFC<
+  MyProfileCreationStatusItemProps
+> = ({ name, status }) => {
   return (
     <View style={styles.container}>
       {renderIcon(status)}
       <Text style={styles.actionText}>{name}</Text>
     </View>
   );
-}
+};
 
 const ICON_SIZE = responsiveFontSize(4);
 const FONT_SIZE = (ICON_SIZE * 7) / 10;
@@ -50,12 +57,6 @@ function renderIcon(status) {
   );
 }
 
-// TODO: Migrate me to TypeScript types
-MyProfileCreationStatusItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(Object.values(ActionStatus)).isRequired,
-};
-
 const styles = StyleSheet.create({
   actionStatusIcon: {
     color: Colors.icons,
@@ -77,3 +78,5 @@ const styles = StyleSheet.create({
     width: responsiveWidth(65),
   },
 });
+
+export default MyProfileCreationStatusItem;

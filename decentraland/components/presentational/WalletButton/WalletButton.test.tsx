@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import WalletButton from "@presentational/WalletButton";
+import WalletButton from "../WalletButton";
 
 describe("WalletButton", () => {
   it("renders the component", async () => {

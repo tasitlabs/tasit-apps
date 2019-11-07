@@ -1,14 +1,30 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import MyProfileCreationStatusItem from "@presentational/MyProfileCreationStatusItem";
-import ActionStatus from "@constants/ActionStatus";
-import MyProfileProgress from "@presentational/MyProfileProgress";
-import Button from "@presentational/Button";
+import MyProfileCreationStatusItem from "../MyProfileCreationStatusItem";
+import MyProfileProgress from "../MyProfileProgress";
+import Button from "../Button";
 
-export default function MyProfile({ progress, creationSteps, onClick }) {
+import ActionStatus from "../../../types/ActionStatus";
+
+interface CreationStepObject {
+  status: ActionStatus;
+  name: string;
+}
+
+interface MyProfileProps {
+  progress: number;
+  onClick: any; // TODO: Convert to function type
+  creationSteps: CreationStepObject[];
+}
+
+const MyProfile: React.SFC<MyProfileProps> = ({
+  progress,
+  creationSteps,
+  onClick,
+}) => {
   return (
     <View style={styles.container}>
       <MyProfileProgress progress={progress} />
@@ -31,18 +47,6 @@ export default function MyProfile({ progress, creationSteps, onClick }) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-MyProfile.propTypes = {
-  progress: PropTypes.number.isRequired,
-  onClick: PropTypes.func.isRequired,
-  creationSteps: PropTypes.arrayOf(
-    PropTypes.shape({
-      status: PropTypes.oneOf(Object.values(ActionStatus)),
-      name: PropTypes.string,
-    })
-  ),
 };
 
 const styles = StyleSheet.create({
@@ -66,3 +70,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
   },
 });
+
+export default MyProfile;

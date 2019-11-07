@@ -2,13 +2,22 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import Estate from "@presentational/Estate";
-import Parcel from "@presentational/Parcel";
-import { ESTATE, PARCEL } from "@constants/AssetTypes";
-import LinkToBlockchain from "@presentational/LinkToBlockchain";
-import AssetName from "@presentational/AssetName";
+import Estate from "../Estate";
+import Parcel from "../Parcel";
+import { ESTATE, PARCEL } from "../../../constants/AssetTypes";
+import LinkToBlockchain from "../LinkToBlockchain";
+import AssetName from "../AssetName";
 
-export function MyAsset({ asset, userAction }) {
+interface AssetObjectProps {
+  type: string;
+}
+
+interface MyAssetProps {
+  asset: AssetObjectProps;
+  userAction: object;
+}
+
+export const MyAsset: React.SFC<MyAssetProps> = ({ asset, userAction }) => {
   const { type } = asset;
 
   return (
@@ -24,15 +33,21 @@ export function MyAsset({ asset, userAction }) {
       <MyAssetInfo asset={asset} userAction={userAction} />
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-MyAsset.propTypes = {
-  asset: PropTypes.object.isRequired,
-  userAction: PropTypes.object.isRequired,
 };
 
-export function MyAssetInfo({ asset, userAction }) {
+interface AssetObjectInMyAssetInfoProps {
+  name: string;
+}
+
+interface MyAssetInfoProps {
+  asset: AssetObjectInMyAssetInfoProps;
+  userAction: object;
+}
+
+export const MyAssetInfo: React.SFC<MyAssetInfoProps> = ({
+  asset,
+  userAction,
+}) => {
   const { name } = asset;
   const [actionId] = Object.keys(userAction);
 
@@ -46,12 +61,6 @@ export function MyAssetInfo({ asset, userAction }) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-MyAssetInfo.propTypes = {
-  asset: PropTypes.object.isRequired,
-  userAction: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

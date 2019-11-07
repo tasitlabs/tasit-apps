@@ -6,7 +6,15 @@ import {
   responsiveHeight,
 } from "react-native-responsive-dimensions";
 
-export default function Estate({ estate }) {
+interface EstateObjectProps {
+  img: any;
+}
+
+interface EstateProps {
+  estate: EstateObjectProps;
+}
+
+const Estate: React.SFC<EstateProps> = ({ estate }) => {
   let { img } = estate;
 
   return (
@@ -14,11 +22,6 @@ export default function Estate({ estate }) {
       <Image style={styles.landImage} source={{ uri: img }} />
     </React.Fragment>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-Estate.propTypes = {
-  estate: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -27,3 +30,5 @@ const styles = StyleSheet.create({
     width: responsiveWidth(95),
   },
 });
+
+export default Estate;

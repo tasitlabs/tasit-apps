@@ -6,7 +6,15 @@ import {
   responsiveHeight,
 } from "react-native-responsive-dimensions";
 
-export default function Parcel({ parcel }) {
+interface ParcelObjectProps {
+  img: any;
+}
+
+interface ParcelProps {
+  parcel: ParcelObjectProps;
+}
+
+const Parcel: React.SFC<ParcelProps> = ({ parcel }) => {
   let { img } = parcel;
 
   return (
@@ -14,11 +22,6 @@ export default function Parcel({ parcel }) {
       <Image style={styles.landImage} source={{ uri: img }} />
     </React.Fragment>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-Parcel.propTypes = {
-  parcel: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -27,3 +30,5 @@ const styles = StyleSheet.create({
     width: responsiveWidth(95),
   },
 });
+
+export default Parcel;

@@ -5,7 +5,7 @@ import {
   FUNDING_WITH_ETH,
   FUNDING_WITH_MANA,
   APPROVING_MARKETPLACE,
-} from "@constants/AccountCreationStatus";
+} from "../../constants/AccountCreationStatus";
 
 describe("MyProfileScreen", () => {
   describe("renders the component", () => {

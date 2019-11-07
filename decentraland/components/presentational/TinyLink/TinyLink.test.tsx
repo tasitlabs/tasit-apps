@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import TinyLink from "@presentational/TinyLink";
+import TinyLink from "../TinyLink";
 
 describe("TinyLink", () => {
   it("renders the component", async () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LinkToBlockchain from "@presentational/LinkToBlockchain";
-import { anAction } from "@helpers/testHelpers";
+import LinkToBlockchain from "../LinkToBlockchain";
+import { anAction } from "../../../helpers/testHelpers";
 
 describe("LinkToBlockchain", () => {
   describe("renders the component", () => {

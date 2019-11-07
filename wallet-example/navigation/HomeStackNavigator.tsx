@@ -1,19 +1,15 @@
 import React from "react";
 import { Platform } from "react-native";
-import { createStackNavigator } from "react-navigation";
-
+import { createStackNavigator } from "react-navigation-stack";
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-
 // TODO: Maybe move path here?
-
 const HomeStackNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
     path: ""
   }
 });
-
 export function IconDisplay({ focused }) {
   return (
     <TabBarIcon
@@ -26,15 +22,12 @@ export function IconDisplay({ focused }) {
     />
   );
 }
-
 HomeStackNavigator.navigationOptions = {
   tabBarLabel: "Home",
   tabBarIcon: IconDisplay
 };
-
 // TODO: Migrate me to TypeScript types
-IconDisplay.propTypes = {
-  focused: PropTypes.bool
-};
-
+// IconDisplay.propTypes = {
+//   focused: PropTypes.bool
+// };
 export default HomeStackNavigator;

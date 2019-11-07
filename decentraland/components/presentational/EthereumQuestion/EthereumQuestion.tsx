@@ -2,11 +2,16 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import LargeText from "@presentational/LargeText";
-import Button from "@presentational/Button";
-import Colors from "@constants/Colors";
+import LargeText from "../LargeText";
+import Button from "../Button";
+import Colors from "../../../constants/Colors";
 
-export default function EthereumQuestion(props) {
+interface EthereumQuestionProps {
+  onSignUp: any; // TODO: Change me to a function type
+  onSignIn: any; // TODO: Change me to a function type
+}
+
+const EthereumQuestion: React.SFC<EthereumQuestionProps> = props => {
   return (
     <View style={styles.container}>
       <LargeText>{`Are you new to Ethereum?`}</LargeText>
@@ -18,12 +23,6 @@ export default function EthereumQuestion(props) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-EthereumQuestion.propTypes = {
-  onSignUp: PropTypes.func.isRequired,
-  onSignIn: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -38,3 +37,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default EthereumQuestion;

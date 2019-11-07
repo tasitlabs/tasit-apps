@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import LargeText from "@presentational/LargeText";
-import WalletButton from "@presentational/WalletButton";
-import Colors from "@constants/Colors";
+import LargeText from "../LargeText";
+import WalletButton from "../WalletButton";
+import Colors from "../../../constants/Colors";
 
 export default function EthereumSignIn() {
   return (

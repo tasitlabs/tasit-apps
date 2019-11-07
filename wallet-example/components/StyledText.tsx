@@ -1,8 +1,12 @@
 import React from "react";
 import { Text } from "react-native";
 
+interface MonoTextProps {
+  style: string;
+}
+
 /* eslint-disable react-native/no-inline-styles */
-export class MonoText extends React.Component {
+export class MonoText extends React.Component<MonoTextProps> {
   render() {
     return (
       <Text
@@ -12,10 +16,3 @@ export class MonoText extends React.Component {
     );
   }
 }
-
-/* eslint-enable react-native/no-inline-styles */
-
-// TODO: Migrate me to TypeScript types
-MonoText.propTypes = {
-  style: PropTypes.object
-};

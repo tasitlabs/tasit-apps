@@ -2,9 +2,19 @@ import React from "react";
 import { StyleSheet, View, Platform, Linking } from "react-native";
 
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import Button from "@presentational/Button";
+import Button from "../Button";
 
-export default function WalletButton({ appSlug, appName, scheme }) {
+interface WalletButton {
+  appName: string;
+  appSlug: string;
+  scheme: string;
+}
+
+const WalletButton: React.SFC<WalletButton> = ({
+  appSlug,
+  appName,
+  scheme,
+}) => {
   // console.info("appSlug", appSlug);
   // console.info("appName", appName);
   // console.info("scheme", scheme);
@@ -66,13 +76,6 @@ export default function WalletButton({ appSlug, appName, scheme }) {
       <Button title={`Connect with ${appName}`} onPress={onConnect} />
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-WalletButton.propTypes = {
-  appName: PropTypes.string.isRequired,
-  appSlug: PropTypes.string.isRequired,
-  scheme: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -81,3 +84,5 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(5),
   },
 });
+
+export default WalletButton;

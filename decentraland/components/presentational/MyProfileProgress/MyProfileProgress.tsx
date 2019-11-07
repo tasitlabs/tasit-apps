@@ -4,10 +4,16 @@ import {
 } from "react-native-responsive-dimensions";
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 import ProgressBar from "react-native-progress/Bar";
 
-export function MyProfileProgress({ progress }) {
+interface MyProfileProgressProps {
+  progress: number;
+}
+
+export const MyProfileProgress: React.SFC<MyProfileProgressProps> = ({
+  progress,
+}) => {
   return (
     <View style={styles.container}>
       <ProgressBar
@@ -22,14 +28,15 @@ export function MyProfileProgress({ progress }) {
       <MyProfileProgressText progress={progress} />
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-MyProfileProgress.propTypes = {
-  progress: PropTypes.number,
 };
 
-export function MyProfileProgressText({ progress }) {
+interface MyProfileProgressTextProps {
+  progress: number;
+}
+
+export const MyProfileProgressText: React.SFC<MyProfileProgressTextProps> = ({
+  progress,
+}) => {
   const formattedProgress = Math.round(progress * 100);
 
   return (
@@ -37,11 +44,6 @@ export function MyProfileProgressText({ progress }) {
       <Text style={styles.progressText}>{formattedProgress}% complete</Text>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-MyProfileProgressText.propTypes = {
-  progress: PropTypes.number,
 };
 
 const styles = StyleSheet.create({

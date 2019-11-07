@@ -2,14 +2,21 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 
-import LandForSale from "@presentational/LandForSale";
-import Button from "@presentational/Button";
-import AccountCreationProgress from "@presentational/AccountCreationProgress";
-import Colors from "@constants/Colors";
-import AccountCreationStatus from "@constants/AccountCreationStatus";
+import LandForSale from "../LandForSale";
+import Button from "../Button";
+import AccountCreationProgress from "../AccountCreationProgress";
+import Colors from "../../../constants/Colors";
+import AccountCreationStatus from "../../../constants/AccountCreationStatus";
 const { NOT_STARTED, READY_TO_USE } = AccountCreationStatus;
 
-export default function BuyLand(props) {
+interface BuyLandProps {
+  landForSale: object;
+  onBuy: any; // TODO: Change to function type
+  accountCreationStatus: string;
+  accountCreationActions: object;
+}
+
+const BuyLand: React.SFC<BuyLandProps> = props => {
   const {
     landForSale,
     onBuy,
@@ -43,14 +50,6 @@ export default function BuyLand(props) {
       />
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-BuyLand.propTypes = {
-  landForSale: PropTypes.object.isRequired,
-  onBuy: PropTypes.func.isRequired,
-  accountCreationStatus: PropTypes.string.isRequired,
-  accountCreationActions: PropTypes.object,
 };
 
 const styles = StyleSheet.create({
@@ -65,3 +64,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default BuyLand;

@@ -2,12 +2,16 @@ import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import LargeText from "@presentational/LargeText";
-import TinyLink from "@presentational/TinyLink";
-import Button from "@presentational/Button";
-import Colors from "@constants/Colors";
+import LargeText from "../LargeText";
+import TinyLink from "../TinyLink";
+import Button from "../Button";
+import Colors from "../../../constants/Colors";
 
-export default function OnboardingHome(props) {
+interface OnboardingHomeProps {
+  onPress: any; // TODO: Change to a function type
+}
+
+const OnboardingHome: React.SFC<OnboardingHomeProps> = props => {
   const privacyPolicyText = `Tasit privacy policy`;
   const privacyPolicyUrl = `https://privacy.tasit.io/`;
 
@@ -23,11 +27,6 @@ export default function OnboardingHome(props) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-OnboardingHome.propTypes = {
-  onPress: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -47,3 +46,4 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(5),
   },
 });
+export default OnboardingHome;

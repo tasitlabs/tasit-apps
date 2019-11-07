@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import EthereumQuestion from "@presentational/EthereumQuestion";
+import EthereumQuestion from "../EthereumQuestion";
 
 describe("EthereumQuestion", () => {
   it("renders the component", async () => {

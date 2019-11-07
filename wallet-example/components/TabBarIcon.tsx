@@ -1,10 +1,15 @@
 import React from "react";
 import * as Icon from "@expo/vector-icons";
-
 import Colors from "../constants/Colors";
 
 /* eslint-disable react-native/no-inline-styles */
-export class TabBarIcon extends React.Component {
+
+interface TabBarIconProps {
+  name: string;
+  focused: boolean;
+}
+
+export class TabBarIcon extends React.Component<TabBarIconProps> {
   render() {
     return (
       <Icon.Ionicons
@@ -19,11 +24,9 @@ export class TabBarIcon extends React.Component {
   }
 }
 /* eslint-enable react-native/no-inline-styles */
-
 // TODO: Migrate me to TypeScript types
-TabBarIcon.propTypes = {
-  name: PropTypes.string.isRequired,
-  focused: PropTypes.bool.isRequired
-};
-
+// TabBarIcon.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   focused: PropTypes.bool.isRequired
+// };
 export default TabBarIcon;

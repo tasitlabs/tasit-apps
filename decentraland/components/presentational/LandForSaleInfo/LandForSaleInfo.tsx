@@ -6,10 +6,10 @@ import {
   responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 import { Button, Icon } from "native-base";
-import { formatNumber } from "@helpers";
-import AssetName from "@presentational/AssetName";
+import { formatNumber } from "../../../helpers";
+import AssetName from "../AssetName";
 
 const onPriceInfo = () => {
   const title = "";
@@ -18,7 +18,18 @@ const onPriceInfo = () => {
   Alert.alert(title, message, buttons);
 };
 
-export function LandForSaleInfo({ landForSale }) {
+interface LandForSaleInfoObjectProps {
+  priceMana: number;
+  asset: any;
+}
+
+interface LandForSaleInfoProps {
+  landForSale: LandForSaleInfoObjectProps;
+}
+
+export const LandForSaleInfo: React.SFC<LandForSaleInfoProps> = ({
+  landForSale,
+}) => {
   const { priceMana, asset } = landForSale;
   const { name } = asset;
 
@@ -32,14 +43,13 @@ export function LandForSaleInfo({ landForSale }) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-LandForSaleInfo.propTypes = {
-  landForSale: PropTypes.object.isRequired,
 };
 
-export function ManaPrice({ price }) {
+interface ManaPriceProps {
+  price: string;
+}
+
+export const ManaPrice: React.SFC<ManaPriceProps> = ({ price }) => {
   const formattedPrice = formatNumber(price);
 
   return (
@@ -57,11 +67,6 @@ export function ManaPrice({ price }) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-ManaPrice.propTypes = {
-  price: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({

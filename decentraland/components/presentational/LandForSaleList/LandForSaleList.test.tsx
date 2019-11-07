@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LandForSaleList from "@presentational/LandForSaleList";
+import LandForSaleList from "../LandForSaleList";
 
 describe("LandForSaleList", () => {
   describe("renders the component", () => {

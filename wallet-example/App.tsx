@@ -6,14 +6,14 @@ import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import AppNavigator from "./navigation/AppNavigator";
 
-import Colors from "@constants/Colors";
+import Colors from "./constants/Colors";
 
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import rootReducer from "@store/reducers";
+import rootReducer from "./store/reducers";
 
-import { addTransaction } from "@store/actions";
+import { addTransaction } from "./store/actions";
 
 const store = createStore(rootReducer);
 
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
 });
 
 // TODO: Migrate me to TypeScript types
-App.propTypes = {
-  skipLoadingScreen: PropTypes.bool
-};
+// App.propTypes = {
+//   skipLoadingScreen: PropTypes.bool
+// };

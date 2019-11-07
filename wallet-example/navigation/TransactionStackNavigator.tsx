@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
 import TabBarIcon from "../components/TabBarIcon";
 import TransactionScreen from "../screens/TransactionScreen";
@@ -31,8 +31,8 @@ TransactionStackNavigator.navigationOptions = {
 };
 
 // TODO: Migrate me to TypeScript types
-IconDisplay.propTypes = {
-  focused: PropTypes.bool.isRequired
-};
+// IconDisplay.propTypes = {
+//   focused: PropTypes.bool.isRequired
+// };
 
 export default TransactionStackNavigator;

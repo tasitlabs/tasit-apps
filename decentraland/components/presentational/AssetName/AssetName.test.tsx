@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import AssetName from "@presentational/AssetName";
-import { parcel, estateWithoutName } from "@helpers/testHelpers";
+import AssetName from "../AssetName";
+import { parcel, estateWithoutName } from "../../../helpers/testHelpers";
 
 describe("AssetName", () => {
   describe("renders the component", () => {

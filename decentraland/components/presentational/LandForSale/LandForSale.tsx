@@ -2,14 +2,22 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import Estate from "@presentational/Estate";
-import Parcel from "@presentational/Parcel";
-import LandForSaleInfo from "@presentational/LandForSaleInfo";
-import AssetTypes from "@constants/AssetTypes";
+import Estate from "../Estate";
+import Parcel from "../Parcel";
+import LandForSaleInfo from "../LandForSaleInfo";
+import AssetTypes from "../../../constants/AssetTypes";
 
 const { ESTATE, PARCEL } = AssetTypes;
 
-export default function LandForSale({ landForSale }) {
+interface LandForSaleObjectProps {
+  asset: any;
+}
+
+interface LandForSaleProps {
+  landForSale: LandForSaleObjectProps;
+}
+
+const LandForSale: React.SFC<LandForSaleProps> = ({ landForSale }) => {
   const { asset } = landForSale;
   const { type } = asset;
 
@@ -26,11 +34,6 @@ export default function LandForSale({ landForSale }) {
       <LandForSaleInfo landForSale={landForSale} />
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-LandForSale.propTypes = {
-  landForSale: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -38,3 +41,5 @@ const styles = StyleSheet.create({
     width: responsiveWidth(95),
   },
 });
+
+export default LandForSale;

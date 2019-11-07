@@ -7,8 +7,8 @@ import {
   openURL,
   buildBlockchainUrlFromActionId,
   getNetworkName,
-} from "@helpers";
-import Colors from "@constants/Colors";
+} from "../../../helpers";
+import Colors from "../../../constants/Colors";
 
 const _openLinkOf = async actionId => {
   const url = buildBlockchainUrlFromActionId(actionId);
@@ -35,7 +35,11 @@ const _onPress = actionId => {
   else _openLinkInfo();
 };
 
-export default function LinkToBlockchain({ actionId }) {
+interface LinkToBlockchainProps {
+  actionId: string;
+}
+
+const LinkToBlockchain: React.SFC<LinkToBlockchainProps> = ({ actionId }) => {
   if (!actionId) return null;
 
   const onPress = () => {
@@ -47,11 +51,6 @@ export default function LinkToBlockchain({ actionId }) {
       <Icon name="eye" style={styles.icon} />
     </TouchableOpacity>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-LinkToBlockchain.propTypes = {
-  actionId: PropTypes.string,
 };
 
 const styles = StyleSheet.create({
@@ -63,3 +62,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default LinkToBlockchain;

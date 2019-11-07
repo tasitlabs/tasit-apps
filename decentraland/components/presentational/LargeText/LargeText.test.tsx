@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import LargeText from "@presentational/LargeText";
+import LargeText from "../LargeText";
 
 describe("LargeText", () => {
   it("renders the component", async () => {

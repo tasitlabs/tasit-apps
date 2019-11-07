@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
-import AccountCreationStatus from "@constants/AccountCreationStatus";
-import LinkToBlockchain from "@presentational/LinkToBlockchain";
+import AccountCreationStatus from "../../../constants/AccountCreationStatus";
+import LinkToBlockchain from "../LinkToBlockchain";
 import { responsiveWidth } from "react-native-responsive-dimensions";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
 const {
   NOT_STARTED,
@@ -36,7 +36,15 @@ const generateWaitingMessage = status => {
   return "";
 };
 
-export function AccountCreationProgress({ status, actions }) {
+interface AccountCreationProgressProps {
+  status: string;
+  actions: object;
+}
+
+const AccountCreationProgress: React.SFC<AccountCreationProgressProps> = ({
+  status,
+  actions,
+}) => {
   const waitingForAccountSetup =
     status !== NOT_STARTED && status !== READY_TO_USE;
 
@@ -58,15 +66,17 @@ export function AccountCreationProgress({ status, actions }) {
       />
     );
   });
-}
-
-// TODO: Migrate me to TypeScript types
-AccountCreationProgress.propTypes = {
-  status: PropTypes.string.isRequired,
-  actions: PropTypes.object.isRequired,
 };
 
-export function ProgressMessageAndLink({ waitingMessage, actionId }) {
+interface ProgressMessageAndLinkProps {
+  waitingMessage: string;
+  actionId: string;
+}
+
+export const ProgressMessageAndLink: React.SFC<ProgressMessageAndLinkProps> = ({
+  waitingMessage,
+  actionId,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -79,12 +89,6 @@ export function ProgressMessageAndLink({ waitingMessage, actionId }) {
       </View>
     </View>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-ProgressMessageAndLink.propTypes = {
-  waitingMessage: PropTypes.string,
-  actionId: PropTypes.string,
 };
 
 const styles = StyleSheet.create({

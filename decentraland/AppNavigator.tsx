@@ -2,11 +2,9 @@ import React from "react";
 
 import { Button, Icon } from "native-base";
 
-import {
-  createStackNavigator,
-  createDrawerNavigator,
-  createAppContainer,
-} from "react-navigation";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createDrawerNavigator } from "react-navigation-drawer";
 
 import ListLandForSaleScreen from "./screens/ListLandForSaleScreen";
 import BuyLandScreen from "./screens/BuyLandScreen";

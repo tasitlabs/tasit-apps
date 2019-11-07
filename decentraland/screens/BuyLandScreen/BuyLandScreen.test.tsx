@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { BuyLandScreen } from "./BuyLandScreen";
-import { estateForSale } from "@helpers/testHelpers";
-import AccountCreationStatus from "@constants/AccountCreationStatus";
+import { estateForSale } from "../../helpers/testHelpers";
+import AccountCreationStatus from "../../constants/AccountCreationStatus";
 const { READY_TO_USE } = AccountCreationStatus;
 
 describe("BuyLandScreen", () => {

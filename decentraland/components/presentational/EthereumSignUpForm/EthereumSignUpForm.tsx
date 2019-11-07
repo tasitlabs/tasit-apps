@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
 import {
   responsiveHeight,
@@ -8,9 +8,15 @@ import {
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 
-import Button from "@presentational/Button";
+import Button from "../Button";
 
-export default class EthereumSignUpForm extends React.Component {
+interface EthereumSignUpFormProps {
+  onSignUp: any; // TODO: Change me to a function type
+}
+
+export default class EthereumSignUpForm extends React.Component<
+  EthereumSignUpFormProps
+> {
   constructor(props) {
     super(props);
     this.state = { username: "" };
@@ -39,7 +45,15 @@ export default class EthereumSignUpForm extends React.Component {
   }
 }
 
-export function UsernameTextInput({ onChange, username }) {
+interface UsernameTextInputProps {
+  onChange: any; // TODO: Change me to a function type
+  username: string;
+}
+
+export const UsernameTextInput: React.SFC<UsernameTextInputProps> = ({
+  onChange,
+  username,
+}) => {
   return (
     <TextInput
       autoCorrect={false}
@@ -54,17 +68,6 @@ export function UsernameTextInput({ onChange, username }) {
       keyboardAppearance="dark"
     />
   );
-}
-
-// TODO: Migrate me to TypeScript types
-UsernameTextInput.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-};
-
-// TODO: Migrate me to TypeScript types
-EthereumSignUpForm.propTypes = {
-  onSignUp: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({

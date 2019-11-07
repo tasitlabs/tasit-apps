@@ -3,26 +3,37 @@ import { connect } from "react-redux";
 import {
   appendLandForSaleToList,
   selectLandToBuy,
-  setLoadingAssetsForSaleInProgress,
-} from "@redux/actions";
-
-import LandForSaleList from "@presentational/LandForSaleList";
-import LandForSaleListItem from "@presentational/LandForSaleListItem";
-import { showError, showInfo, getContracts, addressesAreEqual } from "@helpers";
-import { generateAssetFromId } from "@helpers/decentraland";
+  setLoadingAssetsForSaleInProgress
+} from "../../redux/actions";
+import LandForSaleList from "../../components/presentational/LandForSaleList";
+import LandForSaleListItem from "../../components/presentational/LandForSaleListItem";
+import {
+  showError,
+  showInfo,
+  getContracts,
+  addressesAreEqual
+} from "../../helpers";
+import { generateAssetFromId } from "../../helpers/decentraland";
 import { Root } from "native-base";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
-
-export class ListLandForSaleScreen extends React.Component {
+type ListLandForSaleScreenProps = {
+  assetsForSale: object,
+  appendLandForSaleToList: (...args: any[]) => any,
+  selectLandToBuy: (...args: any[]) => any,
+  setLoadingAssetsForSaleInProgress: (...args: any[]) => any
+};
+export class ListLandForSaleScreen extends React.Component<
+  ListLandForSaleScreenProps,
+  {}
+> {
   componentDidMount = async () => {
     const {
       appendLandForSaleToList,
-      setLoadingAssetsForSaleInProgress,
+      setLoadingAssetsForSaleInProgress
     } = this.props;
     try {
       showInfo("Loading land for sale...");
       const assetsForSale = await this._getAllAssetsForSale();
-
       const loadingAssetsOnScreen = assetsForSale.map(promise => {
         let loadAssetOnScreen = async () => {
           const assetForSale = await promise;
@@ -30,24 +41,19 @@ export class ListLandForSaleScreen extends React.Component {
         };
         return loadAssetOnScreen();
       });
-
       await Promise.all([...loadingAssetsOnScreen]);
       setLoadingAssetsForSaleInProgress(false);
     } catch (err) {
       showError(err);
     }
   };
-
   // Note: Returns a list of Promises
   _getAllAssetsForSale = async () => {
     const decentralandUtils = new DecentralandUtils();
     const { getAllAssetsForSale: getAllOpenSellOrders } = decentralandUtils;
-
     const openSellOrders = await getAllOpenSellOrders();
-
     const contracts = getContracts();
     const { landContract } = contracts;
-
     // Showing only parcels for now because of all estates are with blank images
     const parcelsForSale = [];
     let order;
@@ -56,7 +62,6 @@ export class ListLandForSaleScreen extends React.Component {
       const isParcel = addressesAreEqual(nftAddress, landContract.getAddress());
       if (isParcel) parcelsForSale.push(order);
     }
-
     const assetsForSale = [];
     // Note: Getting only the first 10 assets for now
     // See more: https://github.com/tasitlabs/tasit/issues/155
@@ -66,10 +71,8 @@ export class ListLandForSaleScreen extends React.Component {
       let assetForSalePromise = this._toAssetForSale(parcel);
       assetsForSale.push(assetForSalePromise);
     }
-
     return assetsForSale;
   };
-
   _toAssetForSale = async sellOrder => {
     const contracts = getContracts();
     const { estateContract, landContract } = contracts;
@@ -79,9 +82,8 @@ export class ListLandForSaleScreen extends React.Component {
       assetId,
       seller,
       priceInWei,
-      expiresAt,
+      expiresAt
     } = sellOrder;
-
     // Note: Conversion to USD will be implemented on v0.2.0
     const manaPerUsd = 30;
     // Get mana price using string to avoid imprecise rounding (i.e.: 57999.99999999999)
@@ -91,14 +93,12 @@ export class ListLandForSaleScreen extends React.Component {
     const strRoundedPriceMana = priceManaInWei.substring(0, strPriceManaLength);
     const priceMana = strRoundedPriceMana;
     const priceUSD = Number(priceMana / manaPerUsd).toFixed(2);
-
     const asset = await generateAssetFromId(
       estateContract,
       landContract,
       assetId,
       nftAddress
     );
-
     const assetForSale = {
       id,
       priceManaInWei,
@@ -106,28 +106,23 @@ export class ListLandForSaleScreen extends React.Component {
       priceUSD,
       seller,
       expiresAt,
-      asset,
+      asset
     };
-
     return assetForSale;
   };
-
   _renderItem = ({ item: landForSale }) => {
     const { navigation, selectLandToBuy } = this.props;
     const handlePress = () => {
       selectLandToBuy(landForSale);
       navigation.navigate("BuyLandScreen");
     };
-
     return (
       <LandForSaleListItem landForSale={landForSale} onPress={handlePress} />
     );
   };
-
   render() {
     const { assetsForSale } = this.props;
     const { list, loadingInProgress } = assetsForSale;
-
     // Note: The initial route component from react-navigation
     // Should add the NativaBase `Root` component.
     // See more: https://github.com/tasitlabs/tasit/pull/237#issuecomment-479124236
@@ -143,27 +138,15 @@ export class ListLandForSaleScreen extends React.Component {
     );
   }
 }
-
-// TODO: Migrate me to TypeScript types
-ListLandForSaleScreen.propTypes = {
-  assetsForSale: PropTypes.object.isRequired,
-  appendLandForSaleToList: PropTypes.func.isRequired,
-  selectLandToBuy: PropTypes.func.isRequired,
-  setLoadingAssetsForSaleInProgress: PropTypes.func.isRequired,
-};
-
 const mapStateToProps = state => {
   const { assetsForSale } = state;
   return { assetsForSale };
 };
-
 const mapDispatchToProps = {
   appendLandForSaleToList,
   setLoadingAssetsForSaleInProgress,
-  selectLandToBuy,
+  selectLandToBuy
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListLandForSaleScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ListLandForSaleScreen
+);

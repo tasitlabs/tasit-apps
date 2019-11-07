@@ -4,15 +4,14 @@ import {
   responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
-export default function LargeText(props) {
-  return <Text style={styles.text}>{props.children}</Text>;
+interface LargeTextProps {
+  children: string;
 }
 
-// TODO: Migrate me to TypeScript types
-LargeText.propTypes = {
-  children: PropTypes.string.isRequired,
+const LargeText: React.SFC<LargeTextProps> = props => {
+  return <Text style={styles.text}>{props.children}</Text>;
 };
 
 const styles = StyleSheet.create({
@@ -24,3 +23,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default LargeText;

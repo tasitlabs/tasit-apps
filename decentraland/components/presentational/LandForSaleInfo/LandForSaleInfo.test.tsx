@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import { LandForSaleInfo, ManaPrice } from "./LandForSaleInfo";
 // Not the @presentational version since it needs
 // the internal component
-import { estateForSale } from "@helpers/testHelpers";
+import { estateForSale } from "../../../helpers/testHelpers";
 
 describe("LandForSaleInfo", () => {
   it("renders the component", async () => {

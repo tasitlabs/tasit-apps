@@ -8,25 +8,18 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
-import * as WebBrowser from 'expo-web-browser';
-import Colors from "@constants/Colors";
-
+import * as WebBrowser from "expo-web-browser";
+import Colors from "../constants/Colors";
 import { MonoText } from "../components/StyledText";
-
+type HomeScreenProps = {
+  header?: any
+};
 /* eslint-disable react-native/no-raw-text */
-
-export class HomeScreen extends React.Component {
-  static navigationOptions = {
-    header: null
-  };
-
+export class HomeScreen extends React.Component<HomeScreenProps, {}> {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-        >
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
               source={
@@ -43,12 +36,8 @@ export class HomeScreen extends React.Component {
 
             <Text style={styles.getStartedText}>Get started by opening</Text>
 
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-            >
-              <MonoText style={styles.codeHighlightText}>
-                {"screens/HomeScreen.js"}
-              </MonoText>
+            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+              <MonoText style={styles.codeHighlightText}>{"screens/HomeScreen.js"}</MonoText>
             </View>
 
             <Text style={styles.getStartedText}>
@@ -57,25 +46,16 @@ export class HomeScreen extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <TouchableOpacity
-              onPress={this._handleHelpPress}
-              style={styles.helpLink}
-            >
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
-              </Text>
+            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
+              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
+          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}
-          >
+          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
             <MonoText style={styles.codeHighlightText}>
               navigation/MainTabNavigator.js
             </MonoText>
@@ -84,7 +64,6 @@ export class HomeScreen extends React.Component {
       </View>
     );
   }
-
   _maybeRenderDevelopmentModeWarning() {
     if (__DEV__) {
       const learnMoreButton = (
@@ -92,11 +71,10 @@ export class HomeScreen extends React.Component {
           Learn more
         </Text>
       );
-
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use
-          useful development tools. {learnMoreButton}
+          Development mode is enabled, your app will be slower but you can use useful
+          development tools. {learnMoreButton}
         </Text>
       );
     } else {
@@ -107,20 +85,17 @@ export class HomeScreen extends React.Component {
       );
     }
   }
-
   _handleLearnMorePress = () => {
     WebBrowser.openBrowserAsync(
       "https://docs.expo.io/versions/latest/guides/development-mode"
     );
   };
-
   _handleHelpPress = () => {
     WebBrowser.openBrowserAsync(
       "https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes"
     );
   };
 }
-
 const styles = StyleSheet.create({
   codeHighlightContainer: {
     backgroundColor: Colors.codeHighlightContainer,
@@ -209,5 +184,4 @@ const styles = StyleSheet.create({
     width: 100
   }
 });
-
 export default HomeScreen;

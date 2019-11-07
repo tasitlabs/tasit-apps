@@ -1,15 +1,21 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-
-import Colors from "@constants/Colors";
-import LargeText from "@presentational/LargeText";
-
+import Colors from "../../../constants/Colors";
+import LargeText from "../LargeText";
+type LandForSaleListProps = {
+  loadingInProgress: boolean;
+  renderItem: (...args: any[]) => any;
+  landForSaleList: any[];
+};
 // Note: Changing to PureComponent for performance boost
 // It is possible to still using function component with React.memo HoC
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class LandForSaleList extends React.PureComponent {
+export default class LandForSaleList extends React.PureComponent<
+  LandForSaleListProps,
+  {}
+> {
   render() {
     const { landForSaleList, renderItem, loadingInProgress } = this.props;
     const { length: listAmount } = landForSaleList;
@@ -28,14 +34,6 @@ export default class LandForSaleList extends React.PureComponent {
     );
   }
 }
-
-// TODO: Migrate me to TypeScript types
-LandForSaleList.propTypes = {
-  loadingInProgress: PropTypes.bool.isRequired,
-  renderItem: PropTypes.func.isRequired,
-  landForSaleList: PropTypes.array.isRequired,
-};
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.backgroundColor,

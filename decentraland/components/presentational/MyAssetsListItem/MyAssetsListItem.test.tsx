@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import MyAssetsListItem from "@presentational/MyAssetsListItem";
-import { parcel, parcelUserAction } from "@helpers/testHelpers";
+import MyAssetsListItem from "../MyAssetsListItem";
+import { parcel, parcelUserAction } from "../../../helpers/testHelpers";
 
 describe("MyAssetsListItem", () => {
   it("renders the component", async () => {

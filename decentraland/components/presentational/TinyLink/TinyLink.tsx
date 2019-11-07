@@ -4,10 +4,10 @@ import {
   responsiveHeight,
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
 import { Button } from "native-base";
-import { openURL, showError } from "@helpers";
+import { openURL, showError } from "../../../helpers";
 
 const openLink = async url => {
   try {
@@ -17,7 +17,12 @@ const openLink = async url => {
   }
 };
 
-export default function TinyLink({ text, url }) {
+interface TinyLinkProps {
+  text: string;
+  url: string;
+}
+
+const TinyLink: React.SFC<TinyLinkProps> = ({ text, url }) => {
   const onPress = () => {
     openLink(url);
   };
@@ -26,12 +31,6 @@ export default function TinyLink({ text, url }) {
       <Text style={styles.text}>{text}</Text>
     </Button>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-TinyLink.propTypes = {
-  text: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -42,3 +41,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default TinyLink;

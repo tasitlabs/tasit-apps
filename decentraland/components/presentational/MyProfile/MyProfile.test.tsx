@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import MyProfile from "@presentational/MyProfile";
-import { accountCreationSteps } from "@helpers/testHelpers";
+import MyProfile from "../MyProfile";
+import { accountCreationSteps } from "../../../helpers/testHelpers";
 
 describe("MyProfile", () => {
   it("renders the component", async () => {

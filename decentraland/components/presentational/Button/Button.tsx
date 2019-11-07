@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import RNButton from "react-native-button";
-import Colors from "@constants/Colors";
+import Colors from "../../../constants/Colors";
 
 import {
   responsiveHeight,
@@ -14,7 +14,14 @@ const BUTTON_HEIGHT = 1.5;
 
 // TODO: Change to NativeBase button component
 // https://github.com/tasitlabs/tasit/issues/204
-export default function Button(props) {
+
+interface ButtonProps {
+  title: string;
+  onPress: any; // TODO: Change to a function type
+  disabled?: boolean;
+}
+
+const Button: React.SFC<ButtonProps> = props => {
   let { title, onPress, disabled } = props;
   if (disabled === undefined) disabled = false;
 
@@ -34,13 +41,6 @@ export default function Button(props) {
       {title}
     </RNButton>
   );
-}
-
-// TODO: Migrate me to TypeScript types
-Button.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  disabled: PropTypes.bool,
 };
 
 const containerStyles = StyleSheet.create({
@@ -68,3 +68,5 @@ const buttonStyles = StyleSheet.create({
     fontSize: responsiveFontSize(FONT_SIZE),
   },
 });
+
+export default Button;
