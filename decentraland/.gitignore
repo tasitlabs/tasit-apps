@@ -11,3 +11,5 @@ config/current.js
 *.orig.*
 web-build/
 web-report/
+
+config/current.ts

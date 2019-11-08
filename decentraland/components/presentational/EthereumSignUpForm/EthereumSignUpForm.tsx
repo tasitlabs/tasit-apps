@@ -38,7 +38,7 @@ export default class EthereumSignUpForm extends React.Component<
     this.state = { username: "" };
   }
 
-  onUsernameChange = username => this.setState({ username });
+  onUsernameChange = (username): void => this.setState({ username });
 
   render(): JSX.Element {
     const { onSignUp } = this.props;

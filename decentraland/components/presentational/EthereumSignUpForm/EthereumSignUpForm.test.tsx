@@ -30,7 +30,7 @@ describe("EthereumSignUpForm", () => {
 
   describe("UsernameTextInput", () => {
     it("renders the component", () => {
-      const onChangeUsername = () => {};
+      const onChangeUsername = (): void => {};
       expect(
         shallow(
           <UsernameTextInput username="test4" onChange={onChangeUsername} />

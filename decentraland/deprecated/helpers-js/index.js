@@ -1,3 +1,6 @@
+// TODO: Delete this whole js dir if running helpers with ts-node or importing
+// them as ES6 modules where appropriate works properly
+
 import { Platform, Linking } from "react-native";
 import { Toast } from "native-base";
 
@@ -33,7 +36,7 @@ const {
 const ZERO = 0;
 
 const loadConfig = (): void => {
-  const tasitSdkConfig = require("../config/current");
+  const tasitSdkConfig = require("../config/current.js");
   ConfigLoader.setConfig(tasitSdkConfig);
 };
 
@@ -176,13 +179,7 @@ export const logInfo = (msg): void => console.info(msg);
 export const logWarn = (msg): void => console.warn(msg);
 export const logError = (msg): void => console.error(msg);
 
-// Note: The root starter.ts script is not using this version
-// of the checkBlockchain function, for ECMAScript version reasons
-// The React Native app itself still is using this version, though
-// TODO: Debug this further and remove the unneeded version / merge them
-
 export const checkBlockchain = async (): Promise<boolean> => {
-  logInfo("Checking blockchain");
   loadConfig();
   const provider = ProviderFactory.getProvider();
   try {
@@ -198,8 +195,8 @@ export const checkBlockchain = async (): Promise<boolean> => {
 export const formatNumber = (number): string => {
   if (Platform.OS === "android") {
     // only android needs polyfill
-    import("intl");
-    import("intl/locale-data/jsonp/en-US");
+    require("intl");
+    require("intl/locale-data/jsonp/en-US");
   }
 
   // TODO: Handle internationalization for other regions

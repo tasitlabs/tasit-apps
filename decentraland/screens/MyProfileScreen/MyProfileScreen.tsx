@@ -9,7 +9,7 @@ import {
   APPROVING_MARKETPLACE,
 } from "../../constants/AccountCreationStatus";
 
-import { MISSING, DONE } from "../../constants/ActionStatus";
+import ActionStatus from "../../types/ActionStatus";
 
 const creationSteps = [
   {
@@ -51,9 +51,11 @@ const stepWasDone = (step, accountInfo): boolean => {
   }
 };
 
+import { NavigationStackProp } from "react-navigation-stack";
+
 type MyProfileScreenProps = {
   accountInfo?: object;
-  navigation: any;
+  navigation: NavigationStackProp;
 };
 
 export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
@@ -67,7 +69,7 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
       const wasDone = stepWasDone(step, accountInfo);
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
-      const status = wasDone ? DONE : MISSING;
+      const status = wasDone ? ActionStatus.DONE : ActionStatus.MISSING;
       return { ...step, status };
     });
 
@@ -82,7 +84,7 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
 
   _getPercentage(creationSteps): number {
     const percentage = creationSteps
-      .filter(step => step.status === DONE)
+      .filter(step => step.status === ActionStatus.DONE)
       .reduce((total, step) => total + step.percentage, 0);
     return percentage;
   }

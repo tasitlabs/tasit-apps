@@ -21,22 +21,27 @@ interface AssetObject {
   id: string;
 }
 
+interface UserActionObject {
+  assetId: string;
+  status: string;
+}
+
 interface AssetsAndActionsObject {
   assetsFromBlockchain: AssetObject[];
-  actionsFromBlockchain: object[];
+  actionsFromBlockchain: object;
 }
 
 type MyAssetsScreenProps = {
-  myAssets: any[];
+  myAssets: AssetObject[];
   account?: AccountObject;
-  userActions: any;
+  userActions: UserActionObject[];
   removeFromMyAssetsList: (...args: any[]) => any;
   appendToMyAssetsList: (...args: any[]) => any;
   addUserAction: (...args: any[]) => any;
 };
 
 export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
-  componentDidMount = async () => {
+  componentDidMount = async (): Promise<void> => {
     const {
       account,
       removeFromMyAssetsList,
@@ -81,7 +86,8 @@ export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
 
   _getBoughtAssetsFromState = (): object[] => {
     const { myAssets: assetsFromState, userActions } = this.props;
-    const boughtAssets = assetsFromState.filter(asset => {
+
+    const boughtAssets = assetsFromState.filter((asset): boolean => {
       const { id: assetId } = asset;
       const assetAction = userActions.find(
         action => action.assetId === assetId
@@ -115,7 +121,7 @@ export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
   };
 
   // Note: Returns a list of Promises
-  _getAssetsOf = async (address): Promise<Promise<any>[]> => {
+  _getAssetsOf = async (address): Promise<Promise<AssetObject>[]> => {
     const decentralandUtils = new DecentralandUtils();
     const { getAssetsOf: getLandOf } = decentralandUtils;
     const contracts = getContracts();

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function EthereumSignIn() {
+const EthereumSignIn: React.SFC = () => {
   return (
     <View style={styles.container}>
       <LargeText>{`Cool. Let's start by hooking this app with your wallet.`}</LargeText>
@@ -29,4 +29,6 @@ export default function EthereumSignIn() {
       />
     </View>
   );
-}
+};
+
+export default EthereumSignIn;

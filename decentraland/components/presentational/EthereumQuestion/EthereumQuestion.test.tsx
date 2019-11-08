@@ -4,8 +4,8 @@ import EthereumQuestion from "../EthereumQuestion";
 
 describe("EthereumQuestion", () => {
   it("renders the component", () => {
-    const onSignUp = () => {};
-    const onSignIn = () => {};
+    const onSignUp = (): void => {};
+    const onSignIn = (): void => {};
 
     expect(
       shallow(<EthereumQuestion onSignUp={onSignUp} onSignIn={onSignIn} />)

@@ -16,7 +16,7 @@ const {
   READY_TO_USE,
 } = AccountCreationStatus;
 
-const generateWaitingMessage = status => {
+const generateWaitingMessage = (status): string => {
   switch (status) {
     case NOT_STARTED:
       break;

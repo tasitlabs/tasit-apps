@@ -15,8 +15,8 @@ import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
 import EthereumSignInScreen from "./screens/EthereumSignInScreen";
 import MyAssetsScreen from "./screens/MyAssetsScreen";
 
-import Paths from "@constants/Paths.js";
-import Colors from "@constants/Colors.js";
+import Paths from "./constants/Paths";
+import Colors from "./constants/Colors";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 
 const defaultNavigationOptions = {
@@ -27,20 +27,20 @@ const defaultNavigationOptions = {
   },
 };
 
-const headerWithMenuButton = ({ navigation }) => {
+const headerWithMenuButton = ({ navigation }): object => {
   return {
     headerLeft: (
-      <Button transparent onPress={() => navigation.toggleDrawer()}>
+      <Button transparent onPress={(): void => navigation.toggleDrawer()}>
         <Icon name="menu" />
       </Button>
     ),
   };
 };
 
-const headerWithBackButton = ({ navigation }) => {
+const headerWithBackButton = ({ navigation }): object => {
   return {
     headerLeft: (
-      <Button transparent onPress={() => navigation.goBack()}>
+      <Button transparent onPress={(): void => navigation.goBack()}>
         <Icon name="md-arrow-back" />
       </Button>
     ),

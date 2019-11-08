@@ -52,7 +52,7 @@ const Button: React.SFC<ButtonProps> = props => {
   const { onPress } = props;
   if (disabled === undefined) disabled = false;
 
-  const onPressHandler = disabled ? () => {} : onPress;
+  const onPressHandler = disabled ? (): void => {} : onPress;
 
   title = title.toUpperCase();
 

@@ -4,7 +4,9 @@ import LandForSaleList from "../LandForSaleList";
 
 describe("LandForSaleList", () => {
   describe("renders the component", () => {
-    const landForSaleRenderer = () => {};
+    const landForSaleRenderer = (): JSX.Element => {
+      return <></>;
+    };
 
     it("when list is empty and the loading is in progress", () => {
       const landForSaleList = [];

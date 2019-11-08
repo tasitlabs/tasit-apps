@@ -24,10 +24,12 @@ interface AccountInfoObject {
   creationActions: any[];
 }
 
+import { NavigationStackProp } from "react-navigation-stack";
+
 type BuyLandScreenProps = {
   accountInfo?: AccountInfoObject;
   landToBuy: object;
-  navigation: any;
+  navigation: NavigationStackProp;
   myAssets: any[];
   removeLandForSale: (...args: any[]) => any;
   prependLandForSaleToList: (...args: any[]) => any;
@@ -38,7 +40,7 @@ type BuyLandScreenProps = {
 };
 
 export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
-  _onBuy = landForSale => {
+  _onBuy = (landForSale): void => {
     try {
       const { accountInfo } = this.props;
       const { account } = accountInfo;
@@ -49,12 +51,12 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     }
   };
 
-  _setupAccount = () => {
+  _setupAccount = (): void => {
     const { navigation } = this.props;
     navigation.navigate("OnboardingHomeScreen");
   };
 
-  _buy = async landForSale => {
+  _buy = async (landForSale): Promise<void> => {
     const { props, _executeOrder } = this;
     const {
       navigation,
@@ -75,7 +77,7 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
     const typeDescription = type == ESTATE ? "Estate" : "Parcel";
 
-    const onError = (assetForSale, message) => {
+    const onError = (assetForSale, message): void => {
       console.info("onError triggered", message);
       const { asset } = assetForSale;
       showError(message);
@@ -92,7 +94,7 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
     const action = await _executeOrder(landForSale, account, onError);
 
-    const onSuccess = async () => {
+    const onSuccess = async (): Promise<void> => {
       // TODO: This function should be called inside of the eventListener
       // that catches the safeExecuteOrder successful event.
       await action.waitForOneConfirmation();
@@ -124,28 +126,32 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     onSuccess();
   };
 
-  _executeOrder = async (sellOrder, account, onError) => {
+  _executeOrder = async (sellOrder, account, onError): Promise<object> => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;
       const { id: assetId, type } = asset;
       const contracts = getContracts();
       const { marketplaceContract, estateContract, landContract } = contracts;
+
       const nftAddress =
         type === ESTATE
           ? estateContract.getAddress()
           : landContract.getAddress();
+
       // LANDRegistry contract doesn't implement getFingerprint function
       const fingerprint =
         type === ESTATE ? await estateContract.getFingerprint(assetId) : "0x";
       marketplaceContract.setAccount(account);
       // TODO: Add extra param back in to reproduce the error
       // state that we should handle better
+
       const action = marketplaceContract.safeExecuteOrder(
         nftAddress,
         `${assetId}`,
         `${priceInWei}`,
         `${fingerprint}`
       );
+
       return action;
     } catch (error) {
       console.info("Caught error in _executeOrder");
@@ -163,7 +169,7 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     return (
       <BuyLand
         landForSale={landForSale}
-        onBuy={() => this._onBuy(landForSale)}
+        onBuy={(): void => this._onBuy(landForSale)}
         accountCreationStatus={creationStatus}
         accountCreationActions={creationActions}
       />

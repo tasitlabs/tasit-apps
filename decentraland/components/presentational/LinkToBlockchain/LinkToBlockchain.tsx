@@ -10,7 +10,7 @@ import {
 } from "../../../helpers";
 import Colors from "../../../constants/Colors";
 
-const _openLinkOf = async actionId => {
+const _openLinkOf = async (actionId): void => {
   const url = buildBlockchainUrlFromActionId(actionId);
   try {
     await openURL(url);
@@ -19,14 +19,14 @@ const _openLinkOf = async actionId => {
   }
 };
 
-const _openLinkInfo = () => {
+const _openLinkInfo = (): void => {
   const title = "";
   const message = `Shows the action details on the real chains.`;
   const buttons = [{ text: "Okay" }];
   Alert.alert(title, message, buttons);
 };
 
-const _onPress = actionId => {
+const _onPress = (actionId): void => {
   const supportedNetworks = ["ropsten"];
   const networkName = getNetworkName();
   const isNetworkSupported = supportedNetworks.includes(networkName);
@@ -52,7 +52,7 @@ interface LinkToBlockchainProps {
 const LinkToBlockchain: React.SFC<LinkToBlockchainProps> = ({ actionId }) => {
   if (!actionId) return null;
 
-  const onPress = () => {
+  const onPress = (): void => {
     _onPress(actionId);
   };
 

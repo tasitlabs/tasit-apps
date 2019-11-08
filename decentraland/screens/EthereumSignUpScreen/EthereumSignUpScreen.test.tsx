@@ -10,9 +10,9 @@ describe("EthereumSignUpScreen", () => {
   });
 
   it("renders the component", () => {
-    const setAccount = () => {};
-    const setAccountCreationStatus = () => {};
-    const updateActionIdForAccountCreationStatus = () => {};
+    const setAccount = (): void => {};
+    const setAccountCreationStatus = (): void => {};
+    const updateActionIdForAccountCreationStatus = (): void => {};
 
     expect(
       shallow(

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const openLink = async url => {
+const openLink = async (url): Promise<void> => {
   try {
     await openURL(url);
   } catch (err) {
@@ -32,9 +32,10 @@ interface TinyLinkProps {
 }
 
 const TinyLink: React.SFC<TinyLinkProps> = ({ text, url }) => {
-  const onPress = () => {
+  const onPress = (): void => {
     openLink(url);
   };
+
   return (
     <Button transparent onPress={onPress}>
       <Text style={styles.text}>{text}</Text>

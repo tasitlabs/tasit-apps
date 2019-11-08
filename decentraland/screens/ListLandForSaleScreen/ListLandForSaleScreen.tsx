@@ -17,6 +17,8 @@ import { generateAssetFromId } from "../../helpers/decentraland";
 import { Root } from "native-base";
 import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
 
+import { NavigationStackProp } from "react-navigation-stack";
+
 interface AssetsForSale {
   list: any;
   loadingInProgress: boolean;
@@ -27,14 +29,14 @@ type ListLandForSaleScreenProps = {
   appendLandForSaleToList: (...args: any[]) => any;
   selectLandToBuy: (...args: any[]) => any;
   setLoadingAssetsForSaleInProgress: (...args: any[]) => any;
-  navigation: any;
+  navigation: NavigationStackProp;
 };
 
 export class ListLandForSaleScreen extends React.Component<
   ListLandForSaleScreenProps,
   {}
 > {
-  componentDidMount = async () => {
+  componentDidMount = async (): Promise<void> => {
     const {
       appendLandForSaleToList,
       setLoadingAssetsForSaleInProgress,
@@ -42,8 +44,9 @@ export class ListLandForSaleScreen extends React.Component<
     try {
       showInfo("Loading land for sale...");
       const assetsForSale = await this._getAllAssetsForSale();
+
       const loadingAssetsOnScreen = assetsForSale.map(promise => {
-        const loadAssetOnScreen = async () => {
+        const loadAssetOnScreen = async (): Promise<void> => {
           const assetForSale = await promise;
           appendLandForSaleToList(assetForSale);
         };
@@ -128,10 +131,12 @@ export class ListLandForSaleScreen extends React.Component<
 
   _renderItem = ({ item: landForSale }): JSX.Element => {
     const { navigation, selectLandToBuy } = this.props;
-    const handlePress = () => {
+
+    const handlePress = (): void => {
       selectLandToBuy(landForSale);
       navigation.navigate("BuyLandScreen");
     };
+
     return (
       <LandForSaleListItem landForSale={landForSale} onPress={handlePress} />
     );

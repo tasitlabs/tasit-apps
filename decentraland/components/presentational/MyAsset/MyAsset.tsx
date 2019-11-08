@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
 
 interface AssetObjectProps {
   type: string;
+  img: any;
+  name: string;
 }
 
 interface MyAssetProps {
@@ -40,7 +42,7 @@ export const MyAsset: React.SFC<MyAssetProps> = ({ asset, userAction }) => {
 
   return (
     <View style={styles.assetContainer}>
-      {(() => {
+      {((): JSX.Element => {
         switch (type) {
           case ESTATE:
             return <Estate estate={asset} />;

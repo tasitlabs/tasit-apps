@@ -4,7 +4,7 @@ import OnboardingHome from "../OnboardingHome";
 
 describe("OnboardingHome", () => {
   it("renders the component", () => {
-    const onPress = () => {};
+    const onPress = (): void => {};
     expect(shallow(<OnboardingHome onPress={onPress} />)).toMatchSnapshot();
   });
 });

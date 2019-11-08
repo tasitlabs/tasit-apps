@@ -4,7 +4,7 @@ import Button from "../Button";
 
 describe("Button", () => {
   describe("renders the component", () => {
-    const onPress = () => {};
+    const onPress = (): void => {};
 
     it("default button", () => {
       expect(

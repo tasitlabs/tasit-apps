@@ -1,53 +1,38 @@
 /* eslint no-console: "off" */
-
 const fs = require("fs");
 const util = require("util");
-
 const promiseCopyFile = util.promisify(fs.copyFile);
 const promiseAccessFile = util.promisify(fs.access);
 const CONSOLE_FG_RED = "\x1b[31m";
 const CONSOLE_RESET = "\x1b[0m";
 
-// Note from js version of this file:
-// Copied from helpers/index.js because this file should be ES5
+// Note: Copied from helpers/index.js because this file should be ES5
 
 // TODO: Research why this file needed to be ES5 and whether there's
 // a way around it
 
 //import { checkBlockchain } from "./helpers";
 
-const TasitSDK = require("tasit-sdk");
-
-const { Action } = TasitSDK;
+const { Action } = require("tasit-sdk");
 const { ConfigLoader } = Action;
-console.log({ ConfigLoader });
-// import { ProviderFactory } from "tasit-action/dist/ProviderFactory";
-
 const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
-console.log({ ProviderFactory });
-// import { ProviderFactory } from "tasit-action/dist/ProviderFactory";
 
-export const checkBlockchain = async (): Promise<boolean> => {
-  console.log("About to check blockchain");
+const checkBlockchain = async (): Promise<boolean> => {
+  const provider = ProviderFactory.getProvider();
   try {
-    const provider = ProviderFactory.getProvider();
-    console.log({ provider });
     await provider.getBlockNumber();
   } catch (err) {
-    console.log(err);
     return false;
   }
   return true;
 };
 
 const loadConfig = (): void => {
-  console.log("Loading config");
-  const tasitSdkConfig = require("../config/current");
-  console.log({ tasitSdkConfig });
+  const tasitSdkConfig = require("../config/current.js");
   ConfigLoader.setConfig(tasitSdkConfig);
 };
 
-export const fileExists = async (path): Promise<boolean> => {
+const fileExists = async (path): Promise<boolean> => {
   try {
     await promiseAccessFile(path, fs.F_OK);
   } catch (err) {
@@ -56,11 +41,11 @@ export const fileExists = async (path): Promise<boolean> => {
   return true;
 };
 
-export const copyFile = async (source, destination): Promise<void> => {
+const copyFile = async (source, destination): Promise<void> => {
   await promiseCopyFile(source, destination);
 };
 
-export const showErrorMessage = (message): void => {
+const showErrorMessage = (message): void => {
   console.log(CONSOLE_FG_RED);
   if (Array.isArray(message)) message.forEach(line => console.log(line));
   else console.log(message);
@@ -68,8 +53,8 @@ export const showErrorMessage = (message): void => {
 };
 
 const prepareConfig = async (config): Promise<void> => {
-  const source = `./config/${config}.ts`;
-  const destination = "./config/current.ts";
+  const source = `./config/${config}.js`;
+  const destination = "./config/current.js";
 
   const sourceExists = await fileExists(source);
   if (!sourceExists) {
@@ -86,7 +71,17 @@ const prepareConfig = async (config): Promise<void> => {
   }
 };
 
-export const prepareAndLoadConfig = async (config): Promise<void> => {
+const prepareAndLoadConfig = async (config): Promise<void> => {
   await prepareConfig(config);
   loadConfig();
+};
+
+// TODO: Figure out ES3 vs. ES6 vs. TypeScript syntax here with the module.exports
+
+module.exports = {
+  checkBlockchain,
+  fileExists,
+  showErrorMessage,
+  copyFile,
+  prepareAndLoadConfig,
 };

@@ -16,15 +16,15 @@ import {
   ADD_USER_ACTION,
   UPDATE_USER_ACTION_STATUS,
 } from "./actions";
-import { removeFromList, toListIfNot } from "@helpers";
+import { removeFromList, toListIfNot } from "../helpers";
 
-import AccountCreationStatus from "@constants/AccountCreationStatus";
+import AccountCreationStatus from "../constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
 
 // Reducing boilerplate from reducers
 // Refs: https://redux.js.org/recipes/structuring-reducers/refactoring-reducer-example#reducing-boilerplate
 function createReducer(initialState, handlers) {
-  return function reducer(state = initialState, action) {
+  return function reducer(state = initialState, action): object {
     if (Object.prototype.hasOwnProperty.call(handlers, action.type)) {
       return handlers[action.type](state, action);
     } else {

@@ -1,9 +1,12 @@
 import React from "react";
 import OnboardingHome from "../../components/presentational/OnboardingHome";
 
+import { NavigationStackProp } from "react-navigation-stack";
+
 interface OnboardingHomeScreenProps {
-  navigation: any;
+  navigation: NavigationStackProp;
 }
+
 export default class OnboardingHomeScreen extends React.Component<
   OnboardingHomeScreenProps,
   {}

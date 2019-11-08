@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function renderIcon(status) {
+function renderIcon(status): JSX.Element {
   if (status === ActionStatus.DONE) {
     return (
       <Ionicons

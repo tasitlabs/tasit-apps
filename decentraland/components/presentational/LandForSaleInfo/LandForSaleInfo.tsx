@@ -11,7 +11,7 @@ import { Button, Icon } from "native-base";
 import { formatNumber } from "../../../helpers";
 import AssetName from "../AssetName";
 
-const onPriceInfo = () => {
+const onPriceInfo = (): void => {
   const title = "";
   const message = `MANA is Decentraland’s cryptocurrency token. You can use MANA to buy LAND parcels.`;
   const buttons = [{ text: "Okay" }];

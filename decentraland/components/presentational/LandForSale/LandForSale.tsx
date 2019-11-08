@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 
 interface LandForSaleObjectProps {
   asset: any;
+  priceMana: number;
 }
 
 interface LandForSaleProps {
@@ -29,7 +30,7 @@ const LandForSale: React.SFC<LandForSaleProps> = ({ landForSale }) => {
 
   return (
     <View style={styles.landContainer}>
-      {(() => {
+      {((): JSX.Element => {
         switch (type) {
           case ESTATE:
             return <Estate estate={asset} />;

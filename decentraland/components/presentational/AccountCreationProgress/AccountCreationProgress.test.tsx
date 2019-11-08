@@ -19,7 +19,7 @@ const {
 import { anAction } from "../../../helpers/testHelpers";
 
 describe("AccountCreationProgress", () => {
-  it("initial state - before start account setup", async () => {
+  it("initial state - before start account setup", () => {
     const status = NOT_STARTED;
     const actions = {};
 

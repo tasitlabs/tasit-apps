@@ -27,10 +27,14 @@ type MyAssetsListProps = {
 // See more:
 // https://reactjs.org/docs/react-api.html#reactpurecomponent
 // https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class MyAssetsList extends React.PureComponent<{}, {}> {
-  render(): JSX.Element {
+export default class MyAssetsList extends React.PureComponent<
+  MyAssetsListProps,
+  {}
+> {
+  render(): boolean | JSX.Element {
     const { myAssets, userActions, renderItem } = this.props;
     const { length: listAmount } = myAssets;
+
     // It's easy to look up action info from actionId
     // But to get an action for a given asset (since the asset itself no longer has the actionId)
     // a find is needed, to iterate over the userActions to get the one related to an asset,
@@ -39,6 +43,7 @@ export default class MyAssetsList extends React.PureComponent<{}, {}> {
       const [actionId, userActionProps] = userAction;
       return { actionId, ...userActionProps };
     });
+
     const dataList = myAssets.map(asset => {
       const flatUserAction = flatUserActions.find(
         action => action.assetId === asset.id
@@ -50,7 +55,9 @@ export default class MyAssetsList extends React.PureComponent<{}, {}> {
       }
       return { asset, userAction };
     });
+
     const withoutAssets = listAmount === 0;
+
     return withoutAssets ? (
       <View style={styles.emptyContainer}>
         <LargeText>{`You haven't bought any land yet.`}</LargeText>
@@ -60,7 +67,7 @@ export default class MyAssetsList extends React.PureComponent<{}, {}> {
         data={dataList}
         style={styles.container}
         renderItem={renderItem}
-        keyExtractor={item => item.asset.id}
+        keyExtractor={(item): string => item.asset.id}
       />
     );
   }

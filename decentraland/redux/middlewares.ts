@@ -1,4 +1,5 @@
 import { applyMiddleware } from "redux";
+
 import {
   SET_ACCOUNT,
   SET_ACCOUNT_CREATION_STATUS,
@@ -11,15 +12,16 @@ import {
   ADD_USER_ACTION,
   UPDATE_USER_ACTION_STATUS,
 } from "./actions";
+
 import {
   storeAccount,
   storeAccountCreationStatus,
   storeAccountCreationActions,
   storeMyAssets,
   storeUserActions,
-} from "@helpers/storage";
+} from "../helpers/storage";
 
-const storer = store => next => async action => {
+const storer = store => next => async (action): object => {
   const { type } = action;
   const result = next(action);
   const nextState = store.getState();

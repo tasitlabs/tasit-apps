@@ -32,6 +32,7 @@ module.exports = {
         allowTypedFunctionExpressions: true,
       },
     ],
+    "@typescript-eslint/ban-ts-ignore": ["warn"],
   },
   settings: {
     react: {

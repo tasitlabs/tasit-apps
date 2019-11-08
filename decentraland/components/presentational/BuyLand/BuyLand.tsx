@@ -41,7 +41,7 @@ const BuyLand: React.SFC<BuyLandProps> = props => {
     accountCreationStatus !== NOT_STARTED &&
     accountCreationStatus !== READY_TO_USE;
 
-  const onPress = waitingForAccountSetup ? () => {} : onBuy;
+  const onPress = waitingForAccountSetup ? (): void => {} : onBuy;
   const buttonDisabled = waitingForAccountSetup ? true : false;
 
   const buttonTitle =

@@ -3,7 +3,7 @@
 import * as SecureStore from "expo-secure-store";
 import { AsyncStorage } from "react-native";
 import { createFromPrivateKey } from "tasit-account/dist/testHelpers/helpers";
-import { logWarn } from ".";
+import { logWarn } from "@helpers";
 
 // Storage keys
 const EPHEMERAL_ACCOUNT_PRIV_KEY = "EPHEMERAL_ACCOUNT_PRIV_KEY";

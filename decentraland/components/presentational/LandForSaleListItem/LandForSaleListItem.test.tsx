@@ -5,7 +5,7 @@ import { parcelForSale } from "../../../helpers/testHelpers";
 
 describe("LandForSaleListItem", () => {
   it("renders the component", () => {
-    const onPress = () => {};
+    const onPress = (): void => {};
     expect(
       shallow(
         <LandForSaleListItem landForSale={parcelForSale} onPress={onPress} />

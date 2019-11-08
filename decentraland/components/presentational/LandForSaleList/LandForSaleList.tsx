@@ -38,7 +38,7 @@ export default class LandForSaleList extends React.PureComponent<
         data={landForSaleList}
         style={styles.container}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item): string => item.id}
       />
     );
   }
