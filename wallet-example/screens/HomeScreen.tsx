@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 });
 
 type HomeScreenProps = {
-  header?: any;
+  header?: object;
 };
 
 /* eslint-disable react-native/no-raw-text */
@@ -171,7 +171,8 @@ export class HomeScreen extends React.Component<HomeScreenProps, {}> {
       </View>
     );
   }
-  _maybeRenderDevelopmentModeWarning() {
+
+  _maybeRenderDevelopmentModeWarning(): JSX.Element {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
@@ -192,12 +193,14 @@ export class HomeScreen extends React.Component<HomeScreenProps, {}> {
       );
     }
   }
-  _handleLearnMorePress = () => {
+
+  _handleLearnMorePress = (): void => {
     WebBrowser.openBrowserAsync(
       "https://docs.expo.io/versions/latest/guides/development-mode"
     );
   };
-  _handleHelpPress = () => {
+
+  _handleHelpPress = (): void => {
     WebBrowser.openBrowserAsync(
       "https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes"
     );

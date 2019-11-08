@@ -60,7 +60,7 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
   render(): JSX.Element {
     const { accountInfo } = this.props;
 
-    const onClick = (): object =>
+    const onClick = (): void =>
       this.props.navigation.navigate("EthereumSignInScreen");
 
     const creationStepsWithStatus = creationSteps.map(step => {
@@ -88,7 +88,7 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state): object => {
   const { accountInfo } = state;
   return { accountInfo };
 };

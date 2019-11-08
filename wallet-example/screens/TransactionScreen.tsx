@@ -13,9 +13,15 @@ const styles = StyleSheet.create({
   }
 });
 
+interface TransactionObject {
+  to: string;
+  from: string;
+  amount: number;
+}
+
 type TransactionScreenProps = {
-  title?: any;
-  transactions: any[];
+  title?: string;
+  transactions: TransactionObject[];
 };
 
 export class TransactionScreen extends React.Component<
@@ -53,7 +59,8 @@ export class TransactionScreen extends React.Component<
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state): object => ({
   transactions: state.transactions
 });
+
 export default connect(mapStateToProps)(TransactionScreen);

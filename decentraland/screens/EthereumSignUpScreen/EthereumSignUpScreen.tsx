@@ -110,7 +110,7 @@ export class EthereumSignUpScreen extends React.Component<
       showError(error);
     }
   };
-  _onSignUp = () => {
+  _onSignUp = (): void => {
     const { setAccountCreationStatus } = this.props;
     setAccountCreationStatus(GENERATING_ACCOUNT);
     // Note: A trick to force `_onboarding()` function to running async

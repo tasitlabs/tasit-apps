@@ -39,6 +39,7 @@ module.exports = {
     }
   },
   globals: {
-    react: true
+    react: true,
+    __DEV__: "readonly"
   }
 };

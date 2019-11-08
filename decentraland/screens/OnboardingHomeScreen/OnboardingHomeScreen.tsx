@@ -11,7 +11,9 @@ export default class OnboardingHomeScreen extends React.Component<
   render(): JSX.Element {
     return (
       <OnboardingHome
-        onPress={() => this.props.navigation.navigate("EthereumQuestionScreen")}
+        onPress={(): void =>
+          this.props.navigation.navigate("EthereumQuestionScreen")
+        }
       />
     );
   }

@@ -155,15 +155,17 @@ export class ListLandForSaleScreen extends React.Component<
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state): object => {
   const { assetsForSale } = state;
   return { assetsForSale };
 };
+
 const mapDispatchToProps = {
   appendLandForSaleToList,
   setLoadingAssetsForSaleInProgress,
   selectLandToBuy,
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

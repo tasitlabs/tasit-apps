@@ -160,7 +160,7 @@ export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state): object => {
   const { myAssets, accountInfo, userActions } = state;
   const { account } = accountInfo;
   const { list: myAssetsList } = myAssets;

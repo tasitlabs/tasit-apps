@@ -171,7 +171,7 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state): object => {
   const { accountInfo, landToBuy, myAssets } = state;
   const { list: myAssetsList } = myAssets;
   return { accountInfo, landToBuy, myAssets: myAssetsList };
