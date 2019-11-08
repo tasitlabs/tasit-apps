@@ -6,6 +6,13 @@ import {
   responsiveHeight,
 } from "react-native-responsive-dimensions";
 
+const styles = StyleSheet.create({
+  landImage: {
+    height: responsiveHeight(20),
+    width: responsiveWidth(95),
+  },
+});
+
 interface EstateObjectProps {
   img: any;
 }
@@ -15,7 +22,7 @@ interface EstateProps {
 }
 
 const Estate: React.SFC<EstateProps> = ({ estate }) => {
-  let { img } = estate;
+  const { img } = estate;
 
   return (
     <React.Fragment>
@@ -23,12 +30,5 @@ const Estate: React.SFC<EstateProps> = ({ estate }) => {
     </React.Fragment>
   );
 };
-
-const styles = StyleSheet.create({
-  landImage: {
-    height: responsiveHeight(20),
-    width: responsiveWidth(95),
-  },
-});
 
 export default Estate;

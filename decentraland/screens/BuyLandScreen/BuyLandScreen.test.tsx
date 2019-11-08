@@ -7,18 +7,18 @@ const { READY_TO_USE } = AccountCreationStatus;
 
 describe("BuyLandScreen", () => {
   describe("renders the component", () => {
-    it("", async () => {
+    it("", () => {
       const accountInfo = {
         creationStatus: READY_TO_USE,
         creationActions: {},
       };
-      const navigation = () => {};
-      const removeLandForSale = () => {};
-      const prependToMyAssetsList = () => {};
-      const removeFromMyAssetsList = () => {};
-      const prependLandForSaleToList = () => {};
-      const addUserAction = () => {};
-      const updateUserActionStatus = () => {};
+      const navigation = (): void => {};
+      const removeLandForSale = (): void => {};
+      const prependToMyAssetsList = (): void => {};
+      const removeFromMyAssetsList = (): void => {};
+      const prependLandForSaleToList = (): void => {};
+      const addUserAction = (): void => {};
+      const updateUserActionStatus = (): void => {};
       const myAssets = [];
 
       expect(

@@ -2,17 +2,33 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { connect } from "react-redux";
 import Colors from "../constants/Colors";
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.background,
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: 15
+  }
+});
+
+interface TransactionObject {
+  to: string;
+  from: string;
+  amount: number;
+}
+
 type TransactionScreenProps = {
-  title?: any;
+  title?: string;
+  transactions: TransactionObject[];
 };
-type TransactionScreenProps = {
-  transactions: any[];
-};
+
 export class TransactionScreen extends React.Component<
   TransactionScreenProps,
   {}
 > {
-  render() {
+  render(): JSX.Element {
     const { transactions } = this.props;
     console.info("# of transactions", transactions.length);
     const latestTx = transactions[transactions.length - 1];
@@ -42,16 +58,9 @@ export class TransactionScreen extends React.Component<
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.background,
-    flex: 1,
-    justifyContent: "center",
-    paddingTop: 15
-  }
-});
-const mapStateToProps = state => ({
+
+const mapStateToProps = (state): object => ({
   transactions: state.transactions
 });
+
 export default connect(mapStateToProps)(TransactionScreen);

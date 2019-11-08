@@ -9,6 +9,28 @@ import Button from "../Button";
 
 import ActionStatus from "../../../types/ActionStatus";
 
+const styles = StyleSheet.create({
+  actionItemsContainer: {
+    flex: 5,
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    paddingLeft: responsiveWidth(12),
+  },
+  buttonContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: Colors.backgroundColor,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+  },
+});
+
 interface CreationStepObject {
   status: ActionStatus;
   name: string;
@@ -16,7 +38,7 @@ interface CreationStepObject {
 
 interface MyProfileProps {
   progress: number;
-  onClick: any; // TODO: Convert to function type
+  onClick: (...args: any[]) => any;
   creationSteps: CreationStepObject[];
 }
 
@@ -48,27 +70,5 @@ const MyProfile: React.SFC<MyProfileProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  actionItemsContainer: {
-    flex: 5,
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    paddingLeft: responsiveWidth(12),
-  },
-  buttonContainer: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "center",
-  },
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    backgroundColor: Colors.backgroundColor,
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-  },
-});
 
 export default MyProfile;

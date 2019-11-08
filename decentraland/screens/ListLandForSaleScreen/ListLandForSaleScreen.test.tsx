@@ -7,11 +7,13 @@ describe("ListLandForSaleScreen", () => {
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
   });
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const assetsForSale = { list: [], loadingInProgress: true };
-    const appendLandForSaleToList = () => {};
-    const selectLandToBuy = () => {};
-    const setLoadingAssetsForSaleInProgress = () => {};
+
+    const appendLandForSaleToList = (): void => {};
+    const selectLandToBuy = (): void => {};
+    const setLoadingAssetsForSaleInProgress = (): void => {};
+
     expect(
       shallow(
         <ListLandForSaleScreen

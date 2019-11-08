@@ -4,15 +4,15 @@ import Button from "../Button";
 
 describe("Button", () => {
   describe("renders the component", () => {
-    const onPress = () => {};
+    const onPress = (): void => {};
 
-    it("default button", async () => {
+    it("default button", () => {
       expect(
         shallow(<Button title="Enabled button" onPress={onPress} />)
       ).toMatchSnapshot();
     });
 
-    it("disabled button", async () => {
+    it("disabled button", () => {
       const disabled = true;
       expect(
         shallow(

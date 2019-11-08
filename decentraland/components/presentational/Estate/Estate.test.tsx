@@ -4,7 +4,7 @@ import Estate from "../Estate";
 import { estate } from "../../../helpers/testHelpers";
 
 describe("Estate", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     expect(shallow(<Estate estate={estate} />)).toMatchSnapshot();
   });
 });

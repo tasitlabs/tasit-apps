@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import Parcel from "../Parcel";
 
 describe("Parcel", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const parcel = {
       id: 123,
       name: "Not found",

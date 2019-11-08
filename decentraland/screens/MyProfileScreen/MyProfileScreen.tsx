@@ -1,42 +1,46 @@
 import React from "react";
 import MyProfile from "../../components/presentational/MyProfile";
 import { connect } from "react-redux";
+
 import {
   GENERATING_ACCOUNT,
   FUNDING_WITH_ETH,
   FUNDING_WITH_MANA,
-  APPROVING_MARKETPLACE
+  APPROVING_MARKETPLACE,
 } from "../../constants/AccountCreationStatus";
-import { MISSING, DONE } from "../../constants/ActionStatus";
+
+import ActionStatus from "../../types/ActionStatus";
+
 const creationSteps = [
   {
     name: "Account created",
     creationStatus: GENERATING_ACCOUNT,
-    percentage: 0.25
+    percentage: 0.25,
   },
   {
     creationStatus: FUNDING_WITH_ETH,
     name: "Funded with ETH",
-    percentage: 0.25
+    percentage: 0.25,
   },
   {
     creationStatus: FUNDING_WITH_MANA,
     name: "Funded with MANA tokens",
-    percentage: 0.25
+    percentage: 0.25,
   },
   {
     creationStatus: APPROVING_MARKETPLACE,
     name: "Linked to marketplace",
-    percentage: 0.25
-  }
+    percentage: 0.25,
+  },
 ];
-const stepWasDone = (step, accountInfo) => {
+
+const stepWasDone = (step, accountInfo): boolean => {
   const { creationActions, account } = accountInfo;
   const { creationStatus } = step;
   const statusWithAction = [
     FUNDING_WITH_ETH,
     FUNDING_WITH_MANA,
-    APPROVING_MARKETPLACE
+    APPROVING_MARKETPLACE,
   ];
   if (creationStatus === GENERATING_ACCOUNT) {
     const isAccountCreated = account !== null;
@@ -46,21 +50,29 @@ const stepWasDone = (step, accountInfo) => {
     return hasAnAction;
   }
 };
+
+import { NavigationStackProp } from "react-navigation-stack";
+
 type MyProfileScreenProps = {
-  accountInfo?: object
+  accountInfo?: object;
+  navigation: NavigationStackProp;
 };
+
 export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
-  render() {
+  render(): JSX.Element {
     const { accountInfo } = this.props;
-    const onClick = () =>
+
+    const onClick = (): void =>
       this.props.navigation.navigate("EthereumSignInScreen");
+
     const creationStepsWithStatus = creationSteps.map(step => {
       const wasDone = stepWasDone(step, accountInfo);
       // TODO: As soon as we store action status in redux, this logic will change
       // transaction pending, confirmed once, confirmed many times, failed, etc.
-      const status = wasDone ? DONE : MISSING;
+      const status = wasDone ? ActionStatus.DONE : ActionStatus.MISSING;
       return { ...step, status };
     });
+
     return (
       <MyProfile
         progress={this._getPercentage(creationStepsWithStatus)}
@@ -69,15 +81,18 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
       />
     );
   }
-  _getPercentage(creationSteps) {
+
+  _getPercentage(creationSteps): number {
     const percentage = creationSteps
-      .filter(step => step.status === DONE)
+      .filter(step => step.status === ActionStatus.DONE)
       .reduce((total, step) => total + step.percentage, 0);
     return percentage;
   }
 }
-const mapStateToProps = state => {
+
+const mapStateToProps = (state): object => {
   const { accountInfo } = state;
   return { accountInfo };
 };
+
 export default connect(mapStateToProps)(MyProfileScreen);

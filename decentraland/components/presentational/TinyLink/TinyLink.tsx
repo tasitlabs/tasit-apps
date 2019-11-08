@@ -9,7 +9,16 @@ import Colors from "../../../constants/Colors";
 import { Button } from "native-base";
 import { openURL, showError } from "../../../helpers";
 
-const openLink = async url => {
+const styles = StyleSheet.create({
+  text: {
+    color: Colors.linkColor,
+    fontSize: responsiveFontSize(2),
+    padding: responsiveHeight(1),
+    textAlign: "center",
+  },
+});
+
+const openLink = async (url): Promise<void> => {
   try {
     await openURL(url);
   } catch (err) {
@@ -23,23 +32,15 @@ interface TinyLinkProps {
 }
 
 const TinyLink: React.SFC<TinyLinkProps> = ({ text, url }) => {
-  const onPress = () => {
+  const onPress = (): void => {
     openLink(url);
   };
+
   return (
     <Button transparent onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
     </Button>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    color: Colors.linkColor,
-    fontSize: responsiveFontSize(2),
-    padding: responsiveHeight(1),
-    textAlign: "center",
-  },
-});
 
 export default TinyLink;

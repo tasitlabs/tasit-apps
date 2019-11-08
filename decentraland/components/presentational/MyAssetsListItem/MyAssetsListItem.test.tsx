@@ -4,7 +4,7 @@ import MyAssetsListItem from "../MyAssetsListItem";
 import { parcel, parcelUserAction } from "../../../helpers/testHelpers";
 
 describe("MyAssetsListItem", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const asset = parcel;
     const userAction = parcelUserAction;
     expect(

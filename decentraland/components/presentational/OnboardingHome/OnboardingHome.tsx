@@ -7,28 +7,6 @@ import TinyLink from "../TinyLink";
 import Button from "../Button";
 import Colors from "../../../constants/Colors";
 
-interface OnboardingHomeProps {
-  onPress: any; // TODO: Change to a function type
-}
-
-const OnboardingHome: React.SFC<OnboardingHomeProps> = props => {
-  const privacyPolicyText = `Tasit privacy policy`;
-  const privacyPolicyUrl = `https://privacy.tasit.io/`;
-
-  return (
-    <View style={styles.container}>
-      <Image source={require("@images/icon.png")} />
-      <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
-      <View style={styles.buttonView}>
-        <Button title="Get started" onPress={props.onPress} />
-      </View>
-      <View style={styles.privacyPolicyView}>
-        <TinyLink url={privacyPolicyUrl} text={privacyPolicyText} />
-      </View>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   buttonView: {
     flexDirection: "row",
@@ -46,4 +24,27 @@ const styles = StyleSheet.create({
     marginTop: responsiveHeight(5),
   },
 });
+
+interface OnboardingHomeProps {
+  onPress: (...args: any[]) => any;
+}
+
+const OnboardingHome: React.SFC<OnboardingHomeProps> = props => {
+  const privacyPolicyText = `Tasit privacy policy`;
+  const privacyPolicyUrl = `https://privacy.tasit.io/`;
+
+  return (
+    <View style={styles.container}>
+      <Image source={require("../../../assets/images/icon.png")} />
+      <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
+      <View style={styles.buttonView}>
+        <Button title="Get started" onPress={props.onPress} />
+      </View>
+      <View style={styles.privacyPolicyView}>
+        <TinyLink url={privacyPolicyUrl} text={privacyPolicyText} />
+      </View>
+    </View>
+  );
+};
+
 export default OnboardingHome;

@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import WalletButton from "../WalletButton";
 
 describe("WalletButton", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const appName = "testing";
     const scheme = "test-scheme";
     const appSlug = "test-slug";

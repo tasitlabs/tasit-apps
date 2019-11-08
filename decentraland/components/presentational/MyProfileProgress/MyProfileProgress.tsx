@@ -7,6 +7,25 @@ import React from "react";
 import Colors from "../../../constants/Colors";
 import ProgressBar from "react-native-progress/Bar";
 
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+  },
+  progressText: {
+    color: Colors.textColor,
+    fontWeight: "800",
+  },
+  progressTextContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    marginTop: responsiveHeight(1),
+  },
+});
+
 interface MyProfileProgressProps {
   progress: number;
 }
@@ -45,24 +64,5 @@ export const MyProfileProgressText: React.SFC<MyProfileProgressTextProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-  },
-  progressText: {
-    color: Colors.textColor,
-    fontWeight: "800",
-  },
-  progressTextContainer: {
-    alignItems: "center",
-    flexDirection: "row",
-    marginTop: responsiveHeight(1),
-  },
-});
 
 export default MyProfileProgress;

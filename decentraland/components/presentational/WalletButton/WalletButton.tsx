@@ -4,6 +4,13 @@ import { StyleSheet, View, Platform, Linking } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
 import Button from "../Button";
 
+const styles = StyleSheet.create({
+  buttonView: {
+    flexDirection: "row",
+    marginTop: responsiveHeight(5),
+  },
+});
+
 interface WalletButton {
   appName: string;
   appSlug: string;
@@ -18,12 +25,13 @@ const WalletButton: React.SFC<WalletButton> = ({
   // console.info("appSlug", appSlug);
   // console.info("appName", appName);
   // console.info("scheme", scheme);
+
   const openInStore = async ({
     appName,
     appStoreId,
     appStoreLocale = "us",
     playStoreId,
-  }) => {
+  }): Promise<void> => {
     try {
       // TODO: Pick scheme dynamically based on app name
       const url = `${scheme}://transaction?hello=world&goodbye=now`;
@@ -52,7 +60,8 @@ const WalletButton: React.SFC<WalletButton> = ({
     }
     console.info("app store url", appStoreUrl);
   };
-  const onConnect = async () => {
+
+  const onConnect = async (): Promise<void> => {
     try {
       // TODO: Change config to use test wallet app
       const config = {
@@ -71,18 +80,12 @@ const WalletButton: React.SFC<WalletButton> = ({
       console.info("Error", error);
     }
   };
+
   return (
     <View style={styles.buttonView}>
       <Button title={`Connect with ${appName}`} onPress={onConnect} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonView: {
-    flexDirection: "row",
-    marginTop: responsiveHeight(5),
-  },
-});
 
 export default WalletButton;

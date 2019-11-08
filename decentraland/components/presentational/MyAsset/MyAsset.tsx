@@ -8,8 +8,28 @@ import { ESTATE, PARCEL } from "../../../constants/AssetTypes";
 import LinkToBlockchain from "../LinkToBlockchain";
 import AssetName from "../AssetName";
 
+const styles = StyleSheet.create({
+  assetContainer: {
+    width: responsiveWidth(95),
+  },
+  linkContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  myAssetInfoContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  nameContainer: {
+    flex: 1,
+  },
+});
+
 interface AssetObjectProps {
   type: string;
+  img: any;
+  name: string;
 }
 
 interface MyAssetProps {
@@ -22,7 +42,7 @@ export const MyAsset: React.SFC<MyAssetProps> = ({ asset, userAction }) => {
 
   return (
     <View style={styles.assetContainer}>
-      {(() => {
+      {((): JSX.Element => {
         switch (type) {
           case ESTATE:
             return <Estate estate={asset} />;
@@ -62,23 +82,5 @@ export const MyAssetInfo: React.SFC<MyAssetInfoProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  assetContainer: {
-    width: responsiveWidth(95),
-  },
-  linkContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-  },
-  myAssetInfoContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  nameContainer: {
-    flex: 1,
-  },
-});
 
 export default MyAsset;

@@ -4,9 +4,11 @@ import LandForSaleList from "../LandForSaleList";
 
 describe("LandForSaleList", () => {
   describe("renders the component", () => {
-    const landForSaleRenderer = () => {};
+    const landForSaleRenderer = (): JSX.Element => {
+      return <></>;
+    };
 
-    it("when list is empty and the loading is in progress", async () => {
+    it("when list is empty and the loading is in progress", () => {
       const landForSaleList = [];
       const loadingInProgress = true;
       expect(
@@ -20,7 +22,7 @@ describe("LandForSaleList", () => {
       ).toMatchSnapshot();
     });
 
-    it("after having loaded an empty list", async () => {
+    it("after having loaded an empty list", () => {
       const landForSaleList = [];
       const loadingInProgress = false;
       expect(

@@ -4,9 +4,9 @@ import MyProfile from "../MyProfile";
 import { accountCreationSteps } from "../../../helpers/testHelpers";
 
 describe("MyProfile", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     const progress = 0.5;
-    const onClick = () => {};
+    const onClick = (): void => {};
     expect(
       shallow(
         <MyProfile

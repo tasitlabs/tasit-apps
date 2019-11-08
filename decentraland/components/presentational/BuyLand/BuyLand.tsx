@@ -9,9 +9,22 @@ import Colors from "../../../constants/Colors";
 import AccountCreationStatus from "../../../constants/AccountCreationStatus";
 const { NOT_STARTED, READY_TO_USE } = AccountCreationStatus;
 
+const styles = StyleSheet.create({
+  buttonView: {
+    flexDirection: "row",
+    marginTop: responsiveHeight(5),
+  },
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
 interface BuyLandProps {
   landForSale: object;
-  onBuy: any; // TODO: Change to function type
+  onBuy: (...args: any[]) => any;
   accountCreationStatus: string;
   accountCreationActions: object;
 }
@@ -28,7 +41,7 @@ const BuyLand: React.SFC<BuyLandProps> = props => {
     accountCreationStatus !== NOT_STARTED &&
     accountCreationStatus !== READY_TO_USE;
 
-  const onPress = waitingForAccountSetup ? () => {} : onBuy;
+  const onPress = waitingForAccountSetup ? (): void => {} : onBuy;
   const buttonDisabled = waitingForAccountSetup ? true : false;
 
   const buttonTitle =
@@ -51,18 +64,5 @@ const BuyLand: React.SFC<BuyLandProps> = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonView: {
-    flexDirection: "row",
-    marginTop: responsiveHeight(5),
-  },
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-});
 
 export default BuyLand;

@@ -13,6 +13,13 @@ import { addTransaction } from "./store/actions";
 
 const store = createStore(rootReducer);
 
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Colors.background,
+    flex: 1
+  }
+});
+
 type AppState = {
   redirectData: null;
   isLoadingComplete: boolean;
@@ -23,7 +30,8 @@ export default class App extends React.Component<{}, AppState> {
     redirectData: null,
     isLoadingComplete: false
   };
-  render() {
+
+  render(): JSX.Element {
     const prefix = Linking.makeUrl("/");
     // console.info("app prefix", prefix);
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
@@ -45,12 +53,14 @@ export default class App extends React.Component<{}, AppState> {
       );
     }
   }
-  _handleRedirect = event => {
-    let data = Linking.parse(event.url);
+
+  _handleRedirect = (event): void => {
+    const data = Linking.parse(event.url);
     console.info("** App WAS already open **");
     this._handleDeepLinkPayload(data);
   };
-  _handleDeepLinkPayload = data => {
+
+  _handleDeepLinkPayload = (data): void => {
     const { queryParams, path } = data;
     if (!path) {
       console.info("Home screen (empty) deep link path");
@@ -63,13 +73,15 @@ export default class App extends React.Component<{}, AppState> {
     console.info("Transaction deep link");
     store.dispatch(addTransaction(queryParams));
   };
-  _getInitialUrl = async () => {
+
+  _getInitialUrl = async (): Promise<void> => {
     const url = await Linking.getInitialURL();
     const data = Linking.parse(url);
     console.info("App not already open");
     this._handleDeepLinkPayload(data);
   };
-  _loadResourcesAsync = async () => {
+
+  _loadResourcesAsync = async (): Promise<any> => {
     // TODO: Decide if we need to remove
     // the linking listener somewhere
     console.info("Adding deep linking listener");
@@ -89,24 +101,22 @@ export default class App extends React.Component<{}, AppState> {
       })
     ]);
   };
-  _handleLoadingError = error => {
+
+  _handleLoadingError = (error): void => {
     // In this case, you might want to report the error to your error
     // reporting service, for example Sentry
     console.warn(error);
   };
-  _handleFinishLoading = () => {
+
+  _handleFinishLoading = (): void => {
     this.setState({ isLoadingComplete: true });
   };
-  _addLinkingListener = () => {
+
+  _addLinkingListener = (): void => {
     Linking.addEventListener("url", this._handleRedirect);
   };
-  _removeLinkingListener = () => {
+
+  _removeLinkingListener = (): void => {
     Linking.removeEventListener("url", this._handleRedirect);
   };
 }
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: Colors.background,
-    flex: 1
-  }
-});

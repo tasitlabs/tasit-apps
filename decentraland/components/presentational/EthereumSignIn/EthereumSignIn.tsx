@@ -4,7 +4,16 @@ import LargeText from "../LargeText";
 import WalletButton from "../WalletButton";
 import Colors from "../../../constants/Colors";
 
-export default function EthereumSignIn() {
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
+const EthereumSignIn: React.SFC = () => {
   return (
     <View style={styles.container}>
       <LargeText>{`Cool. Let's start by hooking this app with your wallet.`}</LargeText>
@@ -20,13 +29,6 @@ export default function EthereumSignIn() {
       />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-});
+export default EthereumSignIn;

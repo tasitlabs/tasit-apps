@@ -10,10 +10,6 @@ interface LargeTextProps {
   children: string;
 }
 
-const LargeText: React.SFC<LargeTextProps> = props => {
-  return <Text style={styles.text}>{props.children}</Text>;
-};
-
 const styles = StyleSheet.create({
   text: {
     color: Colors.textColor,
@@ -23,5 +19,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+const LargeText: React.SFC<LargeTextProps> = props => {
+  return <Text style={styles.text}>{props.children}</Text>;
+};
 
 export default LargeText;

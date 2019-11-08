@@ -9,7 +9,7 @@ describe("EthereumQuestionScreen", () => {
     NavigationTestUtils.resetInternalState();
   });
 
-  it("renders the component", async () => {
+  it("renders the component", () => {
     expect(shallow(<EthereumQuestionScreen />)).toMatchSnapshot();
   });
 });

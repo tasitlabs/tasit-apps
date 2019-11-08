@@ -6,9 +6,22 @@ import LargeText from "../LargeText";
 import Button from "../Button";
 import Colors from "../../../constants/Colors";
 
+const styles = StyleSheet.create({
+  buttonView: {
+    flexDirection: "row",
+    marginTop: responsiveHeight(4),
+  },
+  container: {
+    alignItems: "center",
+    backgroundColor: Colors.backgroundColor,
+    flex: 1,
+    justifyContent: "center",
+  },
+});
+
 interface EthereumQuestionProps {
-  onSignUp: any; // TODO: Change me to a function type
-  onSignIn: any; // TODO: Change me to a function type
+  onSignUp: (...args: any[]) => any;
+  onSignIn: (...args: any[]) => any;
 }
 
 const EthereumQuestion: React.SFC<EthereumQuestionProps> = props => {
@@ -24,18 +37,5 @@ const EthereumQuestion: React.SFC<EthereumQuestionProps> = props => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonView: {
-    flexDirection: "row",
-    marginTop: responsiveHeight(4),
-  },
-  container: {
-    alignItems: "center",
-    backgroundColor: Colors.backgroundColor,
-    flex: 1,
-    justifyContent: "center",
-  },
-});
 
 export default EthereumQuestion;

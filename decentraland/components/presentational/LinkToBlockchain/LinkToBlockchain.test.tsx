@@ -5,7 +5,7 @@ import { anAction } from "../../../helpers/testHelpers";
 
 describe("LinkToBlockchain", () => {
   describe("renders the component", () => {
-    it("null action", async () => {
+    it("null action", () => {
       const actionId = null;
       expect(
         shallow(<LinkToBlockchain actionId={actionId} />)

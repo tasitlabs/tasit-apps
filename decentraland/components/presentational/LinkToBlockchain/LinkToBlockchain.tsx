@@ -10,7 +10,7 @@ import {
 } from "../../../helpers";
 import Colors from "../../../constants/Colors";
 
-const _openLinkOf = async actionId => {
+const _openLinkOf = async (actionId): void => {
   const url = buildBlockchainUrlFromActionId(actionId);
   try {
     await openURL(url);
@@ -19,38 +19,20 @@ const _openLinkOf = async actionId => {
   }
 };
 
-const _openLinkInfo = () => {
+const _openLinkInfo = (): void => {
   const title = "";
   const message = `Shows the action details on the real chains.`;
   const buttons = [{ text: "Okay" }];
   Alert.alert(title, message, buttons);
 };
 
-const _onPress = actionId => {
+const _onPress = (actionId): void => {
   const supportedNetworks = ["ropsten"];
   const networkName = getNetworkName();
   const isNetworkSupported = supportedNetworks.includes(networkName);
 
   if (isNetworkSupported) _openLinkOf(actionId);
   else _openLinkInfo();
-};
-
-interface LinkToBlockchainProps {
-  actionId: string;
-}
-
-const LinkToBlockchain: React.SFC<LinkToBlockchainProps> = ({ actionId }) => {
-  if (!actionId) return null;
-
-  const onPress = () => {
-    _onPress(actionId);
-  };
-
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.touchable}>
-      <Icon name="eye" style={styles.icon} />
-    </TouchableOpacity>
-  );
 };
 
 const styles = StyleSheet.create({
@@ -62,5 +44,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+interface LinkToBlockchainProps {
+  actionId: string;
+}
+
+const LinkToBlockchain: React.SFC<LinkToBlockchainProps> = ({ actionId }) => {
+  if (!actionId) return null;
+
+  const onPress = (): void => {
+    _onPress(actionId);
+  };
+
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.touchable}>
+      <Icon name="eye" style={styles.icon} />
+    </TouchableOpacity>
+  );
+};
 
 export default LinkToBlockchain;

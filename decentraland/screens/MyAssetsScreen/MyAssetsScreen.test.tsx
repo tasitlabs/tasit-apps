@@ -5,11 +5,11 @@ import { parcel, parcelUserAction } from "../../helpers/testHelpers";
 
 describe("ListLandForSaleScreen", () => {
   describe("renders the component", () => {
-    const removeFromMyAssetsList = () => {};
-    const appendToMyAssetsList = () => {};
-    const addUserAction = () => {};
+    const removeFromMyAssetsList = (): void => {};
+    const appendToMyAssetsList = (): void => {};
+    const addUserAction = (): void => {};
 
-    it("without assets", async () => {
+    it("without assets", () => {
       const myAssets = [];
       const userActions = {};
       expect(
@@ -24,7 +24,7 @@ describe("ListLandForSaleScreen", () => {
         )
       ).toMatchSnapshot();
     });
-    it("with assets", async () => {
+    it("with assets", () => {
       const myAssets = [parcel];
       const userActions = { ...parcelUserAction };
       expect(

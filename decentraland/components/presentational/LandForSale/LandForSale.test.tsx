@@ -4,7 +4,7 @@ import LandForSale from "../LandForSale";
 import { estateForSale } from "../../../helpers/testHelpers";
 
 describe("LandForSale", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     expect(
       shallow(<LandForSale landForSale={estateForSale} />)
     ).toMatchSnapshot();

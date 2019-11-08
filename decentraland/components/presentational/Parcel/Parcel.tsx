@@ -6,6 +6,13 @@ import {
   responsiveHeight,
 } from "react-native-responsive-dimensions";
 
+const styles = StyleSheet.create({
+  landImage: {
+    height: responsiveHeight(20),
+    width: responsiveWidth(95),
+  },
+});
+
 interface ParcelObjectProps {
   img: any;
 }
@@ -15,7 +22,7 @@ interface ParcelProps {
 }
 
 const Parcel: React.SFC<ParcelProps> = ({ parcel }) => {
-  let { img } = parcel;
+  const { img } = parcel;
 
   return (
     <React.Fragment>
@@ -23,12 +30,5 @@ const Parcel: React.SFC<ParcelProps> = ({ parcel }) => {
     </React.Fragment>
   );
 };
-
-const styles = StyleSheet.create({
-  landImage: {
-    height: responsiveHeight(20),
-    width: responsiveWidth(95),
-  },
-});
 
 export default Parcel;

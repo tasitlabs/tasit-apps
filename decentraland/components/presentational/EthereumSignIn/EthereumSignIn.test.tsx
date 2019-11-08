@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import EthereumSignIn from "../EthereumSignIn";
 
 describe("EthereumSignIn", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     expect(shallow(<EthereumSignIn />)).toMatchSnapshot();
   });
 });

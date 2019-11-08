@@ -10,13 +10,13 @@ describe("App snapshot", () => {
     NavigationTestUtils.resetInternalState();
   });
 
-  it("renders the loading screen", async () => {
+  it("renders the loading screen", () => {
     const tree = renderer.create(<App />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   // TODO: Switch to a shallow Enzyme render
-  it("renders the root without loading screen", async () => {
+  it("renders the root without loading screen", () => {
     const tree = renderer.create(<App skipLoadingScreen />).toJSON();
     expect(tree).toMatchSnapshot();
   });

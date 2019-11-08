@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import LargeText from "../LargeText";
 
 describe("LargeText", () => {
-  it("renders the component", async () => {
+  it("renders the component", () => {
     expect(shallow(<LargeText>{""}</LargeText>)).toMatchSnapshot();
   });
 });

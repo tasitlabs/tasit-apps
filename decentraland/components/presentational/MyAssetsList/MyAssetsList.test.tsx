@@ -5,9 +5,11 @@ import { estate, userActions } from "../../../helpers/testHelpers";
 
 describe("MyAssetsList", () => {
   describe("renders the component", () => {
-    const myAssetRenderer = () => {};
+    // TODO: Determine if this needs to return
+    // JSX.Element and valid minimal JSX for this test suite to work
+    const myAssetRenderer = (): void => {};
 
-    it("without assets", async () => {
+    it("without assets", () => {
       const myAssets = [];
 
       expect(
@@ -21,7 +23,7 @@ describe("MyAssetsList", () => {
       ).toMatchSnapshot();
     });
 
-    it("with assets", async () => {
+    it("with assets", () => {
       const myAssets = [estate];
       expect(
         shallow(

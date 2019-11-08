@@ -1,4 +1,4 @@
-const transactions = (state = [], action) => {
+const transactions = (state = [], action): object => {
   switch (action.type) {
     case "NEW_TRANSACTION":
       return [

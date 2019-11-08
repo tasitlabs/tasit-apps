@@ -1,11 +1,7 @@
-const DONE = "done";
-const MISSING = "missing";
-const PENDING = "pending";
-
 enum ActionStatus {
-  DONE,
-  MISSING,
-  PENDING,
+  DONE = "done",
+  MISSING = "missing",
+  PENDING = "pending",
 }
 
 export default ActionStatus;
