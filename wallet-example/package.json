@@ -12,8 +12,8 @@
     "pretest": "npm run lint",
     "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
-    "upgrade:preview": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated'",
-    "upgrade:run": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated'"
+    "upgrade:preview": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'",
+    "upgrade:run": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'"
   },
   "jest": {
     "preset": "jest-expo"
