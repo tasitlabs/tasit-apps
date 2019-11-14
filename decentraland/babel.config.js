@@ -1,7 +1,4 @@
-// TODO: Decide whether to run the TypeScript enabled linting on this file
-// or not. Also decide if it should be .ts or .js
-
-module.exports = function(api): object {
+module.exports = function(api) {
   const environment = api.env();
   api.cache(true);
   const presets = ["babel-preset-expo"];
