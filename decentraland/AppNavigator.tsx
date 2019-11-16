@@ -13,6 +13,7 @@ import MyProfileScreen from "./screens/MyProfileScreen";
 import EthereumQuestionScreen from "./screens/EthereumQuestionScreen";
 import EthereumSignUpScreen from "./screens/EthereumSignUpScreen";
 import EthereumSignInScreen from "./screens/EthereumSignInScreen";
+import EthereumUpgradeSecurityScreen from "./screens/EthereumUpgradeSecurityScreen";
 import MyAssetsScreen from "./screens/MyAssetsScreen";
 
 import Paths from "./constants/Paths";
@@ -73,6 +74,10 @@ const AssetsForSaleNavigator = createStackNavigator(
     },
     EthereumSignInScreen: {
       screen: EthereumSignInScreen,
+      navigationOptions: headerWithBackButton,
+    },
+    EthereumUpgradeSecurityScreen: {
+      screen: EthereumUpgradeSecurityScreen,
       navigationOptions: headerWithBackButton,
     },
   },

@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { Account } from "tasit-sdk";
+
 import {
   setAccount,
   setAccountCreationStatus,
@@ -15,8 +17,10 @@ import {
   showError,
   fundAccountWithEthers,
   fundAccountWithMana,
-  createAccount,
 } from "../../helpers";
+
+import { ActionObject } from "../../types/ActionObject";
+import { AccountObject } from "../../types/AccountObject";
 
 import AccountCreationStatus from "../../constants/AccountCreationStatus";
 
@@ -56,14 +60,23 @@ export class EthereumSignUpScreen extends React.Component<
       //    later if applicable
       // 4. Change UI progress state on-screen
       // const createAnAccount = async (): Promise<object> => {
-      const createAnAccount = (): object => {
+
+      // const createAnAccount = (): AccountObject => {
+      const createAnAccountAsync = async (): Promise<AccountObject> => {
         console.info("About to call createAccount");
 
-        // TODO: Modify Account.create() such that it can be used directly
-        // here rather than via a helper
-        const account = createAccount();
-        // const account = await createAccountAsync();
+        // Note: The timeout for account creation is about ~20 secs.
+        // See more: https://github.com/tasitlabs/tasit/issues/42
+
+        // Note that we aren't awaiting this function anymore
+        // TODO: Think more about this based on how Account.create
+        // works in the Tasit SDK
+        // Note: This is where we tweak whether account creation is blocking or not
+
+        // const account = Account.create();
+        const account = await Account.create();
         // TODO: Decide on sync vs. async function for account creation
+
         showInfo(`Account generated`);
         setAccount(account);
         setAccountCreationStatus(FUNDING_WITH_ETH);
@@ -71,7 +84,9 @@ export class EthereumSignUpScreen extends React.Component<
       };
 
       const fundWithEthers = async (accountAddress): Promise<void> => {
-        const action = fundAccountWithEthers(accountAddress);
+        const action: ActionObject = fundAccountWithEthers(accountAddress);
+
+        // TODO: Type this action object
         await action.send();
         console.info("Sent the ETH transfer action");
         const actionId = await action.getId();
@@ -121,8 +136,8 @@ export class EthereumSignUpScreen extends React.Component<
 
       // TODO: Consider switching back to await-style with the underlying
       // async call chain here to get the old behavior back
-      // const account = await createAnAccount();
-      const account = createAnAccount();
+      // const account = createAnAccount();
+      const account: AccountObject = await createAnAccountAsync();
 
       const { address: accountAddress } = account;
       await fundWithEthers(accountAddress);
@@ -137,7 +152,7 @@ export class EthereumSignUpScreen extends React.Component<
     }
   };
 
-  _onSignUp = (): void => {
+  _onUsernameSubmit = (): void => {
     const { setAccountCreationStatus } = this.props;
     setAccountCreationStatus(GENERATING_ACCOUNT);
 
@@ -152,7 +167,7 @@ export class EthereumSignUpScreen extends React.Component<
   };
 
   render(): JSX.Element {
-    return <EthereumSignUp onSignUp={this._onSignUp} />;
+    return <EthereumSignUp onUsernameSubmit={this._onUsernameSubmit} />;
   }
 }
 const mapDispatchToProps = {
@@ -160,7 +175,4 @@ const mapDispatchToProps = {
   setAccountCreationStatus,
   updateActionIdForAccountCreationStatus,
 };
-export default connect(
-  null,
-  mapDispatchToProps
-)(EthereumSignUpScreen);
+export default connect(null, mapDispatchToProps)(EthereumSignUpScreen);

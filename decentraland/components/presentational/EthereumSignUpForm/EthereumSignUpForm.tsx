@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 interface EthereumSignUpFormProps {
-  onSignUp: (...args: any[]) => any;
+  onUsernameSubmit: (...args: any[]) => any;
 }
 
 export default class EthereumSignUpForm extends React.Component<
@@ -41,7 +41,7 @@ export default class EthereumSignUpForm extends React.Component<
   onUsernameChange = (username): void => this.setState({ username });
 
   render(): JSX.Element {
-    const { onSignUp } = this.props;
+    const { onUsernameSubmit } = this.props;
 
     return (
       <React.Fragment>
@@ -54,7 +54,7 @@ export default class EthereumSignUpForm extends React.Component<
           </View>
         </View>
         <View style={styles.buttonView}>
-          <Button title="Continue" onPress={onSignUp} />
+          <Button title="Continue" onPress={onUsernameSubmit} />
         </View>
       </React.Fragment>
     );

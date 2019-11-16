@@ -4,10 +4,7 @@ import { addressesAreEqual } from "../helpers";
 import AssetTypes from "../constants/AssetTypes";
 const { ESTATE, PARCEL } = AssetTypes;
 
-const _generateParcelFromId = async (
-  landContract,
-  parcelId
-): Promise<object> => {
+const _generateParcelFromId = async (landContract, parcelId) => {
   const id = `${parcelId}`;
   const type = PARCEL;
   const namePromise = landContract.tokenMetadata(id);
@@ -20,10 +17,7 @@ const _generateParcelFromId = async (
   return parcel;
 };
 
-const _generateEstateFromId = async (
-  estateContract,
-  estateId
-): Promise<object> => {
+const _generateEstateFromId = async (estateContract, estateId) => {
   const id = `${estateId}`;
   const type = ESTATE;
   const name = await estateContract.getMetadata(id);
@@ -51,7 +45,7 @@ export const generateAssetFromId = async (
   landContract,
   assetId,
   nftAddress
-): Promise<object> => {
+) => {
   const type = _getType(nftAddress, landContract, estateContract);
   let asset;
 

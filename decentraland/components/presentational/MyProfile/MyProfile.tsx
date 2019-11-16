@@ -38,14 +38,16 @@ interface CreationStepObject {
 
 interface MyProfileProps {
   progress: number;
-  onClick: (...args: any[]) => any;
+  onConnectClick: (...args: any[]) => any;
+  onUpgradeSecurityClick: (...args: any[]) => any;
   creationSteps: CreationStepObject[];
 }
 
 const MyProfile: React.SFC<MyProfileProps> = ({
   progress,
   creationSteps,
-  onClick,
+  onConnectClick,
+  onUpgradeSecurityClick,
 }) => {
   return (
     <View style={styles.container}>
@@ -64,7 +66,8 @@ const MyProfile: React.SFC<MyProfileProps> = ({
         })}
         {/* TODO: Break this component up into a smaller snapshot */}
         <View style={styles.buttonContainer}>
-          <Button title="Connect wallet" onPress={onClick} />
+          <Button title="Move funds" onPress={onConnectClick} />
+          <Button title="Upgrade security" onPress={onUpgradeSecurityClick} />
         </View>
       </View>
     </View>

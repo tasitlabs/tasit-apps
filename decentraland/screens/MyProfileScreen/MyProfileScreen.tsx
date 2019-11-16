@@ -62,8 +62,11 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
   render(): JSX.Element {
     const { accountInfo } = this.props;
 
-    const onClick = (): void =>
+    const onConnectClick = (): boolean =>
       this.props.navigation.navigate("EthereumSignInScreen");
+
+    const onUpgradeSecurityClick = (): boolean =>
+      this.props.navigation.navigate("EthereumUpgradeSecurityScreen");
 
     const creationStepsWithStatus = creationSteps.map(step => {
       const wasDone = stepWasDone(step, accountInfo);
@@ -77,7 +80,8 @@ export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
       <MyProfile
         progress={this._getPercentage(creationStepsWithStatus)}
         creationSteps={creationStepsWithStatus}
-        onClick={onClick}
+        onConnectClick={onConnectClick}
+        onUpgradeSecurityClick={onUpgradeSecurityClick}
       />
     );
   }

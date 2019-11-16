@@ -23,7 +23,7 @@
     "test": "npx jest --maxWorkers=2",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx,*.ts,**/*.ts,*.tsx,**/*.tsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,*.ts,**/*.ts,*.tsx,**/*.tsx,**/*.snap}' --fix --ignore-pattern '/native-base-theme/*'",
     "upgrade": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'",
-    "upgrade:run": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'"
+    "upgrade:write": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.6",
@@ -35,7 +35,7 @@
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-button": "^2.4.0",
-    "react-native-progress": "^4.0.1",
+    "react-native-progress": "^4.0.2",
     "react-native-reanimated": "^1.2.0",
     "react-native-responsive-dimensions": "^3.0.0",
     "react-navigation": "^4.0.10",
@@ -49,6 +49,7 @@
     "react-native-appearance": "~0.1.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.22",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
@@ -72,7 +73,8 @@
     "npm-check-updates": "^3.2.1",
     "prettier": "^1.19.1",
     "react-dom": "16.8.3",
-    "ts-node": "^8.5.0",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
     "typescript": "^3.7.2",
     "yargs": "^14.2.0"
   },
@@ -93,7 +95,14 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)?$": "ts-jest"
+    }
   },
   "keywords": [
     "dapp",
