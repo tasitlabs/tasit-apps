@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import { Text } from "react-native";
 
-interface EthereumUpgradeSecurityProps {}
+// interface EthereumUpgradeSecurityProps {}
 
-const EthereumUpgradeSecurity: React.SFC<EthereumUpgradeSecurityProps> = () => {
+const EthereumUpgradeSecurity: React.SFC<{}> = () => {
   const [isDeployed, setIsDeployed] = useState(null);
 
   useEffect(() => {

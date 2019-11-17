@@ -15,10 +15,37 @@ export const REMOVE_FROM_MY_ASSETS_LIST = "REMOVE_FROM_MY_ASSETS_LIST";
 export const SET_MY_ASSETS_LIST = "SET_MY_ASSETS_LIST";
 export const ADD_USER_ACTION = "ADD_USER_ACTION";
 export const UPDATE_USER_ACTION_STATUS = "UPDATE_USER_ACTION_STATUS";
-export function setAccount(account): object {
+
+interface Action {
+  type: string;
+}
+
+interface SetAccountAction extends Action {
+  account: object;
+}
+
+interface SetAccountCreationStatusAction extends Action {
+  creationStatus: string;
+}
+
+interface SetAccountCreationActionsAction extends Action {
+  creationActions: any[];
+}
+
+interface AddUserActionAction extends Action {
+  userAction: object;
+}
+
+interface SetMyAssetsListAction extends Action {
+  myAssets: object[];
+}
+
+export function setAccount(account): SetAccountAction {
   return { type: SET_ACCOUNT, account };
 }
-export function setAccountCreationStatus(creationStatus): object {
+export function setAccountCreationStatus(
+  creationStatus
+): SetAccountCreationStatusAction {
   return { type: SET_ACCOUNT_CREATION_STATUS, creationStatus };
 }
 export function updateActionIdForAccountCreationStatus(
@@ -29,7 +56,9 @@ export function updateActionIdForAccountCreationStatus(
     creationStatusAction,
   };
 }
-export function setAccountCreationActions(creationActions): object {
+export function setAccountCreationActions(
+  creationActions
+): SetAccountCreationActionsAction {
   return { type: SET_ACCOUNT_CREATION_ACTIONS, creationActions };
 }
 export function selectLandToBuy(landForSale): object {
@@ -56,10 +85,10 @@ export function appendToMyAssetsList(itemOrList): object {
 export function removeFromMyAssetsList(itemOrList): object {
   return { type: REMOVE_FROM_MY_ASSETS_LIST, itemOrList };
 }
-export function setMyAssetsList(myAssets): object {
+export function setMyAssetsList(myAssets): SetMyAssetsListAction {
   return { type: SET_MY_ASSETS_LIST, myAssets };
 }
-export function addUserAction(userAction): object {
+export function addUserAction(userAction): AddUserActionAction {
   return { type: ADD_USER_ACTION, userAction };
 }
 export function updateUserActionStatus(actionIdAndStatus): object {

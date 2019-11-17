@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 type EthereumSignUpProps = {
-  onUsernameSubmit: (...args: any[]) => any;
+  onUsernameSubmit: () => void;
 };
 
 export default class EthereumSignUp extends React.Component<

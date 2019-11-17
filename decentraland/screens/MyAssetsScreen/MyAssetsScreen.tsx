@@ -35,9 +35,9 @@ type MyAssetsScreenProps = {
   myAssets: AssetObject[];
   account?: AccountObject;
   userActions: UserActionObject[];
-  removeFromMyAssetsList: (...args: any[]) => any;
-  appendToMyAssetsList: (...args: any[]) => any;
-  addUserAction: (...args: any[]) => any;
+  removeFromMyAssetsList: (assetOrAssetsToRemove: object | object[]) => object;
+  appendToMyAssetsList: (assetOrAssetsToRemove: object | object[]) => object;
+  addUserAction: (userAction: object) => object;
 };
 
 export class MyAssetsScreen extends React.Component<MyAssetsScreenProps, {}> {
@@ -177,7 +177,4 @@ const mapDispatchToProps = {
   appendToMyAssetsList,
   addUserAction,
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MyAssetsScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(MyAssetsScreen);

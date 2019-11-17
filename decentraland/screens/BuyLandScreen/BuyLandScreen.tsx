@@ -33,9 +33,9 @@ type BuyLandScreenProps = {
   myAssets: any[];
   removeLandForSale: (...args: any[]) => any;
   prependLandForSaleToList: (...args: any[]) => any;
-  removeFromMyAssetsList: (...args: any[]) => any;
+  removeFromMyAssetsList: (assetOrAssetsToRemove: object | object[]) => object;
   prependToMyAssetsList: (...args: any[]) => any;
-  addUserAction: (...args: any[]) => any;
+  addUserAction: (userAction: object) => object;
   updateUserActionStatus: (...args: any[]) => any;
 };
 
