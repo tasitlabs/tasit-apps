@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, KeyboardAvoidingView } from "react-native";
 import { responsiveHeight } from "react-native-responsive-dimensions";
-import { Header } from "react-navigation";
+import { Header } from "react-navigation-stack";
 import Colors from "../../../constants/Colors";
 import LargeText from "../LargeText";
 import EthereumSignUpForm from "../EthereumSignUpForm";
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 type EthereumSignUpProps = {
-  onSignUp: (...args: any[]) => any;
+  onUsernameSubmit: (...args: any[]) => any;
 };
 
 export default class EthereumSignUp extends React.Component<
@@ -25,7 +25,7 @@ export default class EthereumSignUp extends React.Component<
 > {
   render(): JSX.Element {
     const OFFSET = responsiveHeight(3);
-    const { onSignUp } = this.props;
+    const { onUsernameSubmit } = this.props;
     return (
       <KeyboardAvoidingView
         keyboardVerticalOffset={Header.HEIGHT + OFFSET}
@@ -33,7 +33,7 @@ export default class EthereumSignUp extends React.Component<
         behavior="padding"
       >
         <LargeText>{`Cool. Let's start by picking your Tasit username.`}</LargeText>
-        <EthereumSignUpForm onSignUp={onSignUp} />
+        <EthereumSignUpForm onUsernameSubmit={onUsernameSubmit} />
       </KeyboardAvoidingView>
     );
   }

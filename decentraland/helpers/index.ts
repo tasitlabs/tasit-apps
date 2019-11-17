@@ -1,12 +1,7 @@
 import { Platform, Linking } from "react-native";
 import { Toast } from "native-base";
 
-import {
-  Account,
-  Action,
-  ContractBasedAccount,
-  TasitContracts,
-} from "tasit-sdk";
+import { Action, ContractBasedAccount, TasitContracts } from "tasit-sdk";
 
 const { ConfigLoader } = Action;
 import ProviderFactory from "tasit-action/dist/ProviderFactory";
@@ -45,10 +40,27 @@ export const getNetworkName = (): string => {
   return networkName;
 };
 
+interface MarketplaceContractObject {
+  getAddress: any; // TODO: Change me to a function type
+}
+
+interface ManaContractObject {
+  setAccount: any; // TODO: Change me to a function type
+  approve: any; // TODO: Change me to a function type
+}
+
+interface GnosisSafeContractObject {
+  setAccount: any; // TODO: Change me to a function type
+  setSigners: any; // TODO: Change me to a function type
+  transferEthere: any; // TODO: Change me to a function type
+}
+
+import { ActionObject } from "../types/ActionObject";
+
 interface Contracts {
-  marketplaceContract: object;
-  manaContract: object;
-  gnosisSafeContract: object;
+  marketplaceContract: MarketplaceContractObject;
+  manaContract: ManaContractObject;
+  gnosisSafeContract: GnosisSafeContractObject;
 }
 
 export const getContracts = (): Contracts => {
@@ -90,37 +102,11 @@ export const getContracts = (): Contracts => {
   return contracts;
 };
 
-// Note that we aren't awaiting anything in this used-to-be async
-// function. createAccountAsync is the async function below
-// TODO: Think more about this based on how Account.create
-// works in the Tasit SDK
-// Note: This is where we tweak whether account creation is blocking or not
-
-export const createAccount = (): object => {
-  // Note: The timeout for account creation is about ~20 secs.
-  // See more: https://github.com/tasitlabs/tasit/issues/42
-  console.info("createAccount called");
-
-  // TODO: Think more about this based on how Account.create
-  // works in the Tasit SDK
-  const account = Account.create();
-  return account;
-};
-
-export const createAccountAsync = async (): Promise<object> => {
-  // Note: The timeout for account creation is about ~20 secs.
-  // See more: https://github.com/tasitlabs/tasit/issues/42
-  console.info("createAccountAsync called");
-
-  const account = await Account.create();
-  return account;
-};
-
 export const addressesAreEqual = (address1, address2): boolean => {
   return address1.toUpperCase() === address2.toUpperCase();
 };
 
-export const approveManaSpending = (fromAccount): object => {
+export const approveManaSpending = (fromAccount): ActionObject => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
@@ -130,7 +116,7 @@ export const approveManaSpending = (fromAccount): object => {
   return action;
 };
 
-export const fundAccountWithEthers = (accountAddress): object => {
+export const fundAccountWithEthers = (accountAddress): ActionObject => {
   const contracts = getContracts();
   const { gnosisSafeContract } = contracts;
   gnosisSafeContract.setAccount(gnosisSafeOwner);
@@ -141,7 +127,7 @@ export const fundAccountWithEthers = (accountAddress): object => {
   return action;
 };
 
-export const fundAccountWithMana = (accountAddress): object => {
+export const fundAccountWithMana = (accountAddress): ActionObject => {
   const contracts = getContracts();
   const { manaContract, gnosisSafeContract } = contracts;
   gnosisSafeContract.setAccount(gnosisSafeOwner);
@@ -308,7 +294,6 @@ export default {
   fundAccountWithEthers,
   fundAccountWithMana,
   getContracts,
-  createAccount,
   formatNumber,
   removeFromList,
   listsAreEqual,

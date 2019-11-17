@@ -17,7 +17,7 @@ const { Action } = require("tasit-sdk");
 const { ConfigLoader } = Action;
 const { ProviderFactory } = require("tasit-action/dist/ProviderFactory");
 
-const checkBlockchain = async (): Promise<boolean> => {
+const checkBlockchain = async () => {
   const provider = ProviderFactory.getProvider();
   try {
     await provider.getBlockNumber();
@@ -27,12 +27,12 @@ const checkBlockchain = async (): Promise<boolean> => {
   return true;
 };
 
-const loadConfig = (): void => {
+const loadConfig = () => {
   const tasitSdkConfig = require("../config/current.js");
   ConfigLoader.setConfig(tasitSdkConfig);
 };
 
-const fileExists = async (path): Promise<boolean> => {
+const fileExists = async path => {
   try {
     await promiseAccessFile(path, fs.F_OK);
   } catch (err) {
@@ -41,18 +41,18 @@ const fileExists = async (path): Promise<boolean> => {
   return true;
 };
 
-const copyFile = async (source, destination): Promise<void> => {
+const copyFile = async (source, destination) => {
   await promiseCopyFile(source, destination);
 };
 
-const showErrorMessage = (message): void => {
+const showErrorMessage = message => {
   console.log(CONSOLE_FG_RED);
   if (Array.isArray(message)) message.forEach(line => console.log(line));
   else console.log(message);
   console.log(CONSOLE_RESET);
 };
 
-const prepareConfig = async (config): Promise<void> => {
+const prepareConfig = async config => {
   const source = `./config/${config}.js`;
   const destination = "./config/current.js";
 
@@ -71,7 +71,7 @@ const prepareConfig = async (config): Promise<void> => {
   }
 };
 
-const prepareAndLoadConfig = async (config): Promise<void> => {
+const prepareAndLoadConfig = async config => {
   await prepareConfig(config);
   loadConfig();
 };

@@ -10,13 +10,13 @@ const {
   prepareAndLoadConfig,
 } = require("./helpers/starter");
 
-const startExpo = (env): void => {
+const startExpo = env => {
   const process = exec(`BABEL_ENV=${env} npx expo start -c`);
   process.stdout.on("data", console.log);
   process.stderr.on("data", console.log);
 };
 
-const start = async (): Promise<void> => {
+const start = async () => {
   const { config } = argv;
   await prepareAndLoadConfig(config);
   console.log(`Checking the connection to the blockchain...`);

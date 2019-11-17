@@ -6,11 +6,13 @@ import { accountCreationSteps } from "../../../helpers/testHelpers";
 describe("MyProfile", () => {
   it("renders the component", () => {
     const progress = 0.5;
-    const onClick = (): void => {};
+    const onConnectClick = (): void => {};
+    const onUpgradeSecurityClick = (): void => {};
     expect(
       shallow(
         <MyProfile
-          onClick={onClick}
+          onConnectClick={onConnectClick}
+          onUpgradeSecurityClick={onUpgradeSecurityClick}
           progress={progress}
           creationSteps={accountCreationSteps}
         />

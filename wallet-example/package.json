@@ -12,11 +12,18 @@
     "pretest": "npm run lint",
     "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
-    "upgrade:preview": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'",
-    "upgrade:run": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'"
+    "upgrade": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'",
+    "upgrade:write": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)?$": "ts-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -37,24 +44,26 @@
     "redux": "^4.0.4"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.23",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.22",
-    "@typescript-eslint/eslint-plugin": "^2.6.1",
-    "@typescript-eslint/parser": "^2.6.1",
+    "@typescript-eslint/eslint-plugin": "^2.7.0",
+    "@typescript-eslint/parser": "^2.7.0",
     "babel-eslint": "^10.0.3",
     "babel-preset-expo": "^7.1.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
-    "eslint-plugin-jest": "^23.0.2",
+    "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-native": "^3.8.1",
-    "expo-cli": "^3.4.1",
+    "expo-cli": "^3.7.1",
     "jest": "^24.9.0",
     "jest-expo": "^35.0.0",
-    "npm-check-updates": "^3.2.0",
-    "prettier": "^1.18.2",
-    "ts-node": "^8.4.1",
+    "npm-check-updates": "^3.2.1",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   },
   "private": true,

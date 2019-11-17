@@ -37,7 +37,7 @@ export const parcelForSale = {
   asset: parcel,
 };
 
-function getIdAsync(): Promise<string> {
+function getIdAsync() {
   return new Promise((resolve, reject) => {
     process.nextTick(() =>
       resolve("0x1234567890123456789012345678901234567890")
@@ -46,7 +46,7 @@ function getIdAsync(): Promise<string> {
 }
 
 export const anAction = {
-  getId: async (): Promise<string> => {
+  getId: async () => {
     return await getIdAsync();
   },
 };

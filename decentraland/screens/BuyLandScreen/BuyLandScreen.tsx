@@ -192,7 +192,4 @@ const mapDispatchToProps = {
   updateUserActionStatus,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BuyLandScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(BuyLandScreen);

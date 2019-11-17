@@ -99,7 +99,7 @@ export const getContracts = (): Contracts => {
 // works in the Tasit SDK
 // Note: This is where we tweak whether account creation is blocking or not
 
-export const createAccount = (): object => {
+export const createAccount = () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
   console.info("createAccount called");
@@ -110,7 +110,7 @@ export const createAccount = (): object => {
   return account;
 };
 
-export const createAccountAsync = async (): Promise<object> => {
+export const createAccountAsync = async () => {
   // Note: The timeout for account creation is about ~20 secs.
   // See more: https://github.com/tasitlabs/tasit/issues/42
   console.info("createAccountAsync called");
@@ -119,11 +119,11 @@ export const createAccountAsync = async (): Promise<object> => {
   return account;
 };
 
-export const addressesAreEqual = (address1, address2): boolean => {
+export const addressesAreEqual = (address1, address2) => {
   return address1.toUpperCase() === address2.toUpperCase();
 };
 
-export const approveManaSpending = (fromAccount): object => {
+export const approveManaSpending = fromAccount => {
   const contracts = getContracts();
   const { manaContract, marketplaceContract } = contracts;
   const toAddress = marketplaceContract.getAddress();
@@ -133,7 +133,7 @@ export const approveManaSpending = (fromAccount): object => {
   return action;
 };
 
-export const fundAccountWithEthers = (accountAddress): object => {
+export const fundAccountWithEthers = accountAddress => {
   const contracts = getContracts();
   const { gnosisSafeContract } = contracts;
   gnosisSafeContract.setAccount(gnosisSafeOwner);
@@ -144,7 +144,7 @@ export const fundAccountWithEthers = (accountAddress): object => {
   return action;
 };
 
-export const fundAccountWithMana = (accountAddress): object => {
+export const fundAccountWithMana = accountAddress => {
   const contracts = getContracts();
   const { manaContract, gnosisSafeContract } = contracts;
   gnosisSafeContract.setAccount(gnosisSafeOwner);
@@ -159,7 +159,7 @@ export const fundAccountWithMana = (accountAddress): object => {
 };
 
 // Note: This could live inside of the Action class as `buildLink()` function
-export const buildBlockchainUrlFromActionId = (actionId): string => {
+export const buildBlockchainUrlFromActionId = actionId => {
   const networkName = getNetworkName();
   const transactionHash = actionId;
   const url = `https://${networkName}.etherscan.io/tx/${transactionHash}`;
@@ -179,7 +179,7 @@ export const logInfo = (msg): void => console.info(msg);
 export const logWarn = (msg): void => console.warn(msg);
 export const logError = (msg): void => console.error(msg);
 
-export const checkBlockchain = async (): Promise<boolean> => {
+export const checkBlockchain = async () => {
   loadConfig();
   const provider = ProviderFactory.getProvider();
   try {
@@ -192,7 +192,7 @@ export const checkBlockchain = async (): Promise<boolean> => {
 
 // Note: `toLocaleString` doesn't work on Android
 // See more: https://github.com/facebook/react-native/issues/19410#issuecomment-434232762
-export const formatNumber = (number): string => {
+export const formatNumber = number => {
   if (Platform.OS === "android") {
     // only android needs polyfill
     require("intl");
@@ -205,16 +205,16 @@ export const formatNumber = (number): string => {
   return formattedNumber;
 };
 
-export const toListIfNot = (itemOrList): object[] =>
+export const toListIfNot = itemOrList =>
   Array.isArray(itemOrList) ? itemOrList : [itemOrList];
 
-export const removeFromList = (list, toRemove): object[] => {
+export const removeFromList = (list, toRemove) => {
   const elementsToRemove = toListIfNot(toRemove);
   const idsToRemove = elementsToRemove.map(e => e.id);
   return list.filter(e => !idsToRemove.includes(e.id));
 };
 
-export const listsAreEqual = (first, second): boolean => {
+export const listsAreEqual = (first, second) => {
   if (first.length !== second.length) return false;
 
   return (
@@ -223,13 +223,13 @@ export const listsAreEqual = (first, second): boolean => {
 };
 
 // Update item from any list of objects having id as key field
-export const updateListItem = (list, toUpdateId, entriesToUpdate): object[] => {
+export const updateListItem = (list, toUpdateId, entriesToUpdate) => {
   return list.map(item => {
     return item.id === toUpdateId ? { ...item, ...entriesToUpdate } : item;
   });
 };
 
-export const openURL = async (url): Promise<void> => {
+export const openURL = async url => {
   const supported = await Linking.canOpenURL(url);
 
   if (!supported) throw Error(`Can't handle url: ${url}`);
@@ -241,13 +241,11 @@ export const openURL = async (url): Promise<void> => {
   }
 };
 
-export const restoreCreationStateOfAccountFromBlockchain = async (
-  account
-): Promise<object> => {
+export const restoreCreationStateOfAccountFromBlockchain = async account => {
   const provider = ProviderFactory.getProvider();
   const { address } = account;
 
-  const contracts: Contracts = getContracts();
+  const contracts = getContracts();
   const { marketplaceContract, manaContract } = contracts;
 
   const ethersBalance = await provider.getBalance(address);

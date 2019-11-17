@@ -26,7 +26,7 @@ const _clearData = async (key): Promise<any> => {
   }
 };
 
-export const clearAllStorage = async (): Promise<void> => {
+export const clearAllStorage = async () => {
   await _clearData(IS_FIRST_APP_USE);
   await _clearData(EPHEMERAL_ACCOUNT_PRIV_KEY);
   await _clearData(USER_ACTIONS);
@@ -35,7 +35,7 @@ export const clearAllStorage = async (): Promise<void> => {
   await _clearData(MY_ASSETS_LIST);
 };
 
-const _toString = (obj): string => {
+const _toString = obj => {
   if (obj === null) return null;
 
   try {
@@ -45,7 +45,7 @@ const _toString = (obj): string => {
   }
 };
 
-const _fromString = (string): any => {
+const _fromString = string => {
   try {
     return JSON.parse(string);
   } catch {
@@ -54,7 +54,7 @@ const _fromString = (string): any => {
 };
 
 // Note: the value should be a string
-const _storeData = async (key, value, securely): Promise<any> => {
+const _storeData = async (key, value, securely) => {
   try {
     if (securely) {
       // More about options:
@@ -69,12 +69,12 @@ const _storeData = async (key, value, securely): Promise<any> => {
   }
 };
 
-export const storeUserActions = async (userActions): Promise<any> => {
+export const storeUserActions = async userActions => {
   const strUserActions = _toString(userActions);
   await _storeData(USER_ACTIONS, strUserActions, false);
 };
 
-const _retrieveData = async (key): Promise<any> => {
+const _retrieveData = async key => {
   try {
     let value = await AsyncStorage.getItem(key);
     if (value === null) value = await SecureStore.getItemAsync(key);
@@ -85,27 +85,25 @@ const _retrieveData = async (key): Promise<any> => {
   }
 };
 
-export const retrieveUserActions = async (): Promise<object> => {
+export const retrieveUserActions = async () => {
   const strUserActions = await _retrieveData(USER_ACTIONS);
   const userActions = _fromString(strUserActions);
   return userActions;
 };
 
-export const storeIsFirstUse = async (isFirstUse): Promise<any> => {
+export const storeIsFirstUse = async isFirstUse => {
   const strIsFirstUse = _toString(isFirstUse);
   await _storeData(IS_FIRST_APP_USE, strIsFirstUse, false);
 };
 
-export const retrieveIsFirstUse = async (): Promise<boolean> => {
+export const retrieveIsFirstUse = async () => {
   const strIsFirstUse = await _retrieveData(IS_FIRST_APP_USE);
   const isFirstUse = _fromString(strIsFirstUse);
   if (isFirstUse === null) return true;
   return isFirstUse;
 };
 
-export const storeAccountCreationActions = async (
-  creationActions
-): Promise<any> => {
+export const storeAccountCreationActions = async creationActions => {
   const strCreationActions = _toString(creationActions);
   await _storeData(
     EPHEMERAL_ACCOUNT_CREATION_ACTIONS,
@@ -114,7 +112,7 @@ export const storeAccountCreationActions = async (
   );
 };
 
-export const retrieveAccountCreationActions = async (): Promise<object[]> => {
+export const retrieveAccountCreationActions = async () => {
   const strCreationActions = await _retrieveData(
     EPHEMERAL_ACCOUNT_CREATION_ACTIONS
   );
@@ -122,21 +120,21 @@ export const retrieveAccountCreationActions = async (): Promise<object[]> => {
   return creationActions;
 };
 
-export const storeAccountCreationStatus = async (status): Promise<any> => {
+export const storeAccountCreationStatus = async status => {
   await _storeData(EPHEMERAL_ACCOUNT_CREATION_STATUS, status, false);
 };
 
-export const retrieveAccountCreationStatus = async (): Promise<string> => {
+export const retrieveAccountCreationStatus = async () => {
   const status = await _retrieveData(EPHEMERAL_ACCOUNT_CREATION_STATUS);
   return status;
 };
 
-export const storeAccount = async (account): Promise<any> => {
+export const storeAccount = async account => {
   const privateKey = account !== null ? account.privateKey : null;
   await _storeData(EPHEMERAL_ACCOUNT_PRIV_KEY, privateKey, true);
 };
 
-export const retrieveAccount = async (): Promise<object> => {
+export const retrieveAccount = async () => {
   let account = null;
 
   const privateKey = await _retrieveData(EPHEMERAL_ACCOUNT_PRIV_KEY);
@@ -145,12 +143,12 @@ export const retrieveAccount = async (): Promise<object> => {
   return account;
 };
 
-export const storeMyAssets = async (myAssets): Promise<any> => {
+export const storeMyAssets = async myAssets => {
   const strMyAssets = _toString(myAssets);
   await _storeData(MY_ASSETS_LIST, strMyAssets, false);
 };
 
-export const retrieveMyAssets = async (): Promise<object[]> => {
+export const retrieveMyAssets = async () => {
   const strMyAssets = await _retrieveData(MY_ASSETS_LIST);
   const myAssets = _fromString(strMyAssets);
   return myAssets;
