@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TextInput } from "react-native";
 import Colors from "../../../constants/Colors";
 
@@ -27,39 +27,29 @@ const styles = StyleSheet.create({
 });
 
 interface EthereumSignUpFormProps {
-  onUsernameSubmit: (...args: any[]) => any;
+  onUsernameSubmit: () => void;
 }
 
-export default class EthereumSignUpForm extends React.Component<
-  EthereumSignUpFormProps
-> {
-  constructor(props) {
-    super(props);
-    this.state = { username: "" };
-  }
+function EthereumSignUpForm(props: EthereumSignUpFormProps) {
+  const [username, setUsername] = useState("");
 
-  onUsernameChange = (username): void => this.setState({ username });
+  const { onUsernameSubmit } = this.props;
 
-  render(): JSX.Element {
-    const { onUsernameSubmit } = this.props;
-
-    return (
-      <React.Fragment>
-        <View style={styles.userRow}>
-          <View style={styles.userInputView}>
-            <UsernameTextInput
-              onChange={this.onUsernameChange}
-              username={this.state.username}
-            />
-          </View>
+  return (
+    <React.Fragment>
+      <View style={styles.userRow}>
+        <View style={styles.userInputView}>
+          <UsernameTextInput onChange={setUsername} username={username} />
         </View>
-        <View style={styles.buttonView}>
-          <Button title="Continue" onPress={onUsernameSubmit} />
-        </View>
-      </React.Fragment>
-    );
-  }
+      </View>
+      <View style={styles.buttonView}>
+        <Button title="Continue" onPress={onUsernameSubmit} />
+      </View>
+    </React.Fragment>
+  );
 }
+
+export default EthereumSignUpForm;
 
 interface UsernameTextInputProps {
   onChange: (...args: any[]) => any;

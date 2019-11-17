@@ -1,4 +1,4 @@
-starter.js
 babel.config.js
-helpers-js/*
-config-js/*
+deprecated/starter.js
+deprecated/helpers-js/
+deprecated/config-js/
