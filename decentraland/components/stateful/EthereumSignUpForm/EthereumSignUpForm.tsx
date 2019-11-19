@@ -8,7 +8,7 @@ import {
   responsiveFontSize,
 } from "react-native-responsive-dimensions";
 
-import Button from "../Button";
+import Button from "../../presentational/Button";
 
 const styles = StyleSheet.create({
   buttonView: {

@@ -8,6 +8,8 @@ import { ESTATE, PARCEL } from "../../../constants/AssetTypes";
 import LinkToBlockchain from "../LinkToBlockchain";
 import AssetName from "../AssetName";
 
+import AssetObjectProps from "../../../types/AssetObjectProps";
+
 const styles = StyleSheet.create({
   assetContainer: {
     width: responsiveWidth(95),
@@ -26,37 +28,30 @@ const styles = StyleSheet.create({
   },
 });
 
-interface AssetObjectProps {
-  type: string;
-  img: any;
-  name: string;
-}
-
 interface MyAssetProps {
   asset: AssetObjectProps;
   userAction: object;
 }
 
-export const MyAsset: React.FunctionComponent<MyAssetProps> = ({
-  asset,
-  userAction,
-}) => {
-  const { type } = asset;
+export const MyAsset: React.FunctionComponent<MyAssetProps> = React.memo(
+  ({ asset, userAction }) => {
+    const { type } = asset;
 
-  return (
-    <View style={styles.assetContainer}>
-      {((): JSX.Element => {
-        switch (type) {
-          case ESTATE:
-            return <Estate estate={asset} />;
-          case PARCEL:
-            return <Parcel parcel={asset} />;
-        }
-      })()}
-      <MyAssetInfo asset={asset} userAction={userAction} />
-    </View>
-  );
-};
+    return (
+      <View style={styles.assetContainer}>
+        {((): JSX.Element => {
+          switch (type) {
+            case ESTATE:
+              return <Estate estate={asset} />;
+            case PARCEL:
+              return <Parcel parcel={asset} />;
+          }
+        })()}
+        <MyAssetInfo asset={asset} userAction={userAction} />
+      </View>
+    );
+  }
+);
 
 interface AssetObjectInMyAssetInfoProps {
   name: string;
@@ -67,23 +62,22 @@ interface MyAssetInfoProps {
   userAction: object;
 }
 
-export const MyAssetInfo: React.FunctionComponent<MyAssetInfoProps> = ({
-  asset,
-  userAction,
-}) => {
-  const { name } = asset;
-  const [actionId] = Object.keys(userAction);
+export const MyAssetInfo: React.FunctionComponent<MyAssetInfoProps> = React.memo(
+  ({ asset, userAction }) => {
+    const { name } = asset;
+    const [actionId] = Object.keys(userAction);
 
-  return (
-    <View style={styles.myAssetInfoContainer}>
-      <View style={styles.nameContainer}>
-        <AssetName name={name} />
+    return (
+      <View style={styles.myAssetInfoContainer}>
+        <View style={styles.nameContainer}>
+          <AssetName name={name} />
+        </View>
+        <View style={styles.linkContainer}>
+          <LinkToBlockchain actionId={actionId} />
+        </View>
       </View>
-      <View style={styles.linkContainer}>
-        <LinkToBlockchain actionId={actionId} />
-      </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 export default MyAsset;

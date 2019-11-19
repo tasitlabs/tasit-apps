@@ -132,6 +132,12 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
   };
 
   const _renderItem = ({ item: landForSale, navigation }): JSX.Element => {
+    // TODO: Consider moving this handlePress function directly into the
+    // LandForSaleListItem component. No clear reason a callback is needed
+    // to modify this screen, and there's no reason to do dependency injection
+    // to override a default for a general LandForSaleListItem. This is
+    // all it's used for.
+
     const handlePress = (): void => {
       selectLandToBuy(landForSale);
       navigation.navigate("BuyLandScreen");

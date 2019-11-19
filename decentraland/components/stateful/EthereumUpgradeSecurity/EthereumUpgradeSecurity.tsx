@@ -4,7 +4,10 @@ import { Text } from "react-native";
 
 // interface EthereumUpgradeSecurityProps {}
 
-import CenteredAlert from "../CenteredAlert";
+import CenteredAlert from "../../presentational/CenteredAlert";
+
+// TODO: Decide whether to use redux rather than useState here, and also
+// whether either way it's the job of the screen that contains this component
 
 const EthereumUpgradeSecurity: React.FunctionComponent<{}> = () => {
   const [isDeployed, setIsDeployed] = useState(null);

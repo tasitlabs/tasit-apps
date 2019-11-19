@@ -6,6 +6,8 @@ import {
 } from "react-native-responsive-dimensions";
 import LandForSale from "../LandForSale";
 
+import LandForSaleObjectProps from "../../../types/LandForSaleObjectProps";
+
 const styles = StyleSheet.create({
   row: {
     alignItems: "center",
@@ -20,23 +22,19 @@ const styles = StyleSheet.create({
 
 type LandForSaleListItemProps = {
   onPress: (...args: any[]) => any;
-  landForSale: object;
+  landForSale: LandForSaleObjectProps;
 };
 
-// Back before we moved to hooks, this was a pure component
-// rather than a function component for performance reasons
-// See LandforSaleList component for suggested next steps
-const LandForSaleListItem: React.FunctionComponent<LandForSaleListItemProps> = ({
-  onPress,
-  landForSale,
-}) => {
-  return (
-    <TouchableHighlight onPress={onPress}>
-      <View style={styles.row}>
-        <LandForSale landForSale={landForSale} />
-      </View>
-    </TouchableHighlight>
-  );
-};
+const LandForSaleListItem: React.FunctionComponent<LandForSaleListItemProps> = React.memo(
+  ({ onPress, landForSale }) => {
+    return (
+      <TouchableHighlight onPress={onPress}>
+        <View style={styles.row}>
+          <LandForSale landForSale={landForSale} />
+        </View>
+      </TouchableHighlight>
+    );
+  }
+);
 
 export default LandForSaleListItem;

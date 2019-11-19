@@ -47,7 +47,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button: React.FunctionComponent<ButtonProps> = props => {
+const Button: React.FunctionComponent<ButtonProps> = React.memo(props => {
   let { title, disabled } = props;
   const { onPress } = props;
   if (disabled === undefined) disabled = false;
@@ -68,6 +68,6 @@ const Button: React.FunctionComponent<ButtonProps> = props => {
       {title}
     </RNButton>
   );
-};
+});
 
 export default Button;

@@ -30,39 +30,39 @@ interface MyProfileProgressProps {
   progress: number;
 }
 
-export const MyProfileProgress: React.FunctionComponent<MyProfileProgressProps> = ({
-  progress,
-}) => {
-  return (
-    <View style={styles.container}>
-      <ProgressBar
-        borderRadius={0}
-        borderWidth={0}
-        color={Colors.loadingColor}
-        height={responsiveHeight(1)}
-        progress={progress}
-        unfilledColor={Colors.textColor}
-        width={responsiveWidth(100)}
-      />
-      <MyProfileProgressText progress={progress} />
-    </View>
-  );
-};
+export const MyProfileProgress: React.FunctionComponent<MyProfileProgressProps> = React.memo(
+  ({ progress }) => {
+    return (
+      <View style={styles.container}>
+        <ProgressBar
+          borderRadius={0}
+          borderWidth={0}
+          color={Colors.loadingColor}
+          height={responsiveHeight(1)}
+          progress={progress}
+          unfilledColor={Colors.textColor}
+          width={responsiveWidth(100)}
+        />
+        <MyProfileProgressText progress={progress} />
+      </View>
+    );
+  }
+);
 
 interface MyProfileProgressTextProps {
   progress: number;
 }
 
-export const MyProfileProgressText: React.FunctionComponent<MyProfileProgressTextProps> = ({
-  progress,
-}) => {
-  const formattedProgress = Math.round(progress * 100);
+export const MyProfileProgressText: React.FunctionComponent<MyProfileProgressTextProps> = React.memo(
+  ({ progress }) => {
+    const formattedProgress = Math.round(progress * 100);
 
-  return (
-    <View style={styles.progressTextContainer}>
-      <Text style={styles.progressText}>{formattedProgress}% complete</Text>
-    </View>
-  );
-};
+    return (
+      <View style={styles.progressTextContainer}>
+        <Text style={styles.progressText}>{formattedProgress}% complete</Text>
+      </View>
+    );
+  }
+);
 
 export default MyProfileProgress;

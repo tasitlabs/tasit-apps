@@ -1,6 +1,6 @@
 import React from "react";
 
-import EthereumUpgradeSecurity from "../../components/presentational/EthereumUpgradeSecurity";
+import EthereumUpgradeSecurity from "../../components/stateful/EthereumUpgradeSecurity";
 
 interface EthereumUpgradeSecurityScreenProps {}
 

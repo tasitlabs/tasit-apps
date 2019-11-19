@@ -29,22 +29,24 @@ interface OnboardingHomeProps {
   onPress: (...args: any[]) => any;
 }
 
-const OnboardingHome: React.FunctionComponent<OnboardingHomeProps> = props => {
-  const privacyPolicyText = `Tasit privacy policy`;
-  const privacyPolicyUrl = `https://privacy.tasit.io/`;
+const OnboardingHome: React.FunctionComponent<OnboardingHomeProps> = React.memo(
+  props => {
+    const privacyPolicyText = `Tasit privacy policy`;
+    const privacyPolicyUrl = `https://privacy.tasit.io/`;
 
-  return (
-    <View style={styles.container}>
-      <Image source={require("../../../assets/images/icon.png")} />
-      <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
-      <View style={styles.buttonView}>
-        <Button title="Get started" onPress={props.onPress} />
+    return (
+      <View style={styles.container}>
+        <Image source={require("../../../assets/images/icon.png")} />
+        <LargeText>{`Let's get you set up with a secure way to store this land!`}</LargeText>
+        <View style={styles.buttonView}>
+          <Button title="Get started" onPress={props.onPress} />
+        </View>
+        <View style={styles.privacyPolicyView}>
+          <TinyLink url={privacyPolicyUrl} text={privacyPolicyText} />
+        </View>
       </View>
-      <View style={styles.privacyPolicyView}>
-        <TinyLink url={privacyPolicyUrl} text={privacyPolicyText} />
-      </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 export default OnboardingHome;

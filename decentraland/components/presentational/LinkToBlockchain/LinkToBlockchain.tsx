@@ -49,20 +49,20 @@ interface LinkToBlockchainProps {
   actionId: string;
 }
 
-const LinkToBlockchain: React.FunctionComponent<LinkToBlockchainProps> = ({
-  actionId,
-}) => {
-  if (!actionId) return null;
+const LinkToBlockchain: React.FunctionComponent<LinkToBlockchainProps> = React.memo(
+  ({ actionId }) => {
+    if (!actionId) return null;
 
-  const onPress = (): void => {
-    _onPress(actionId);
-  };
+    const onPress = (): void => {
+      _onPress(actionId);
+    };
 
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.touchable}>
-      <Icon name="eye" style={styles.icon} />
-    </TouchableOpacity>
-  );
-};
+    return (
+      <TouchableOpacity onPress={onPress} style={styles.touchable}>
+        <Icon name="eye" style={styles.icon} />
+      </TouchableOpacity>
+    );
+  }
+);
 
 export default LinkToBlockchain;

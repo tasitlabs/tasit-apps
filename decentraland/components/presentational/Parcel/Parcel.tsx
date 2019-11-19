@@ -21,14 +21,16 @@ interface ParcelProps {
   parcel: ParcelObjectProps;
 }
 
-const Parcel: React.FunctionComponent<ParcelProps> = ({ parcel }) => {
-  const { img } = parcel;
+const Parcel: React.FunctionComponent<ParcelProps> = React.memo(
+  ({ parcel }) => {
+    const { img } = parcel;
 
-  return (
-    <React.Fragment>
-      <Image style={styles.landImage} source={{ uri: img }} />
-    </React.Fragment>
-  );
-};
+    return (
+      <React.Fragment>
+        <Image style={styles.landImage} source={{ uri: img }} />
+      </React.Fragment>
+    );
+  }
+);
 
 export default Parcel;

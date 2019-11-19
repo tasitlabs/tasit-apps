@@ -24,18 +24,20 @@ interface EthereumQuestionProps {
   onSignIn: (...args: any[]) => any;
 }
 
-const EthereumQuestion: React.FunctionComponent<EthereumQuestionProps> = props => {
-  return (
-    <View style={styles.container}>
-      <LargeText>{`Are you new to Ethereum?`}</LargeText>
-      <View style={styles.buttonView}>
-        <Button title="Yep" onPress={props.onSignUp} />
+const EthereumQuestion: React.FunctionComponent<EthereumQuestionProps> = React.memo(
+  props => {
+    return (
+      <View style={styles.container}>
+        <LargeText>{`Are you new to Ethereum?`}</LargeText>
+        <View style={styles.buttonView}>
+          <Button title="Yep" onPress={props.onSignUp} />
+        </View>
+        <View style={styles.buttonView}>
+          <Button title="Nope" onPress={props.onSignIn} />
+        </View>
       </View>
-      <View style={styles.buttonView}>
-        <Button title="Nope" onPress={props.onSignIn} />
-      </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 export default EthereumQuestion;

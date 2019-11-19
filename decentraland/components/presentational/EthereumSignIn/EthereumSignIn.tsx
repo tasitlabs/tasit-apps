@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const EthereumSignIn: React.FunctionComponent = () => {
+const EthereumSignIn: React.FunctionComponent = React.memo(() => {
   return (
     <View style={styles.container}>
       <LargeText>{`Cool. Let's start by hooking this app with your wallet.`}</LargeText>
@@ -29,6 +29,6 @@ const EthereumSignIn: React.FunctionComponent = () => {
       />
     </View>
   );
-};
+});
 
 export default EthereumSignIn;

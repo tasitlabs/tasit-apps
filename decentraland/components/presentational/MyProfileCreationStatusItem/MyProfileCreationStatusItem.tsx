@@ -68,16 +68,15 @@ interface MyProfileCreationStatusItemProps {
   status: ActionStatus;
 }
 
-const MyProfileCreationStatusItem: React.FunctionComponent<MyProfileCreationStatusItemProps> = ({
-  name,
-  status,
-}) => {
-  return (
-    <View style={styles.container}>
-      {renderIcon(status)}
-      <Text style={styles.actionText}>{name}</Text>
-    </View>
-  );
-};
+const MyProfileCreationStatusItem: React.FunctionComponent<MyProfileCreationStatusItemProps> = React.memo(
+  ({ name, status }) => {
+    return (
+      <View style={styles.container}>
+        {renderIcon(status)}
+        <Text style={styles.actionText}>{name}</Text>
+      </View>
+    );
+  }
+);
 
 export default MyProfileCreationStatusItem;

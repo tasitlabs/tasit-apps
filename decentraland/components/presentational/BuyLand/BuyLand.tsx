@@ -29,7 +29,7 @@ interface BuyLandProps {
   accountCreationActions: object;
 }
 
-const BuyLand: React.FunctionComponent<BuyLandProps> = props => {
+const BuyLand: React.FunctionComponent<BuyLandProps> = React.memo(props => {
   const {
     landForSale,
     onBuy,
@@ -63,6 +63,6 @@ const BuyLand: React.FunctionComponent<BuyLandProps> = props => {
       />
     </View>
   );
-};
+});
 
 export default BuyLand;
