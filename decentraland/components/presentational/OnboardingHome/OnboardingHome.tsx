@@ -29,7 +29,7 @@ interface OnboardingHomeProps {
   onPress: (...args: any[]) => any;
 }
 
-const OnboardingHome: React.SFC<OnboardingHomeProps> = props => {
+const OnboardingHome: React.FunctionComponent<OnboardingHomeProps> = props => {
   const privacyPolicyText = `Tasit privacy policy`;
   const privacyPolicyUrl = `https://privacy.tasit.io/`;
 

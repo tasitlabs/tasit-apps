@@ -49,7 +49,9 @@ interface LinkToBlockchainProps {
   actionId: string;
 }
 
-const LinkToBlockchain: React.SFC<LinkToBlockchainProps> = ({ actionId }) => {
+const LinkToBlockchain: React.FunctionComponent<LinkToBlockchainProps> = ({
+  actionId,
+}) => {
   if (!actionId) return null;
 
   const onPress = (): void => {

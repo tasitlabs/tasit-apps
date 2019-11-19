@@ -30,7 +30,7 @@ interface MyProfileProgressProps {
   progress: number;
 }
 
-export const MyProfileProgress: React.SFC<MyProfileProgressProps> = ({
+export const MyProfileProgress: React.FunctionComponent<MyProfileProgressProps> = ({
   progress,
 }) => {
   return (
@@ -53,7 +53,7 @@ interface MyProfileProgressTextProps {
   progress: number;
 }
 
-export const MyProfileProgressText: React.SFC<MyProfileProgressTextProps> = ({
+export const MyProfileProgressText: React.FunctionComponent<MyProfileProgressTextProps> = ({
   progress,
 }) => {
   const formattedProgress = Math.round(progress * 100);

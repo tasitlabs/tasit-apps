@@ -43,7 +43,7 @@ interface MyProfileProps {
   creationSteps: CreationStepObject[];
 }
 
-const MyProfile: React.SFC<MyProfileProps> = ({
+const MyProfile: React.FunctionComponent<MyProfileProps> = ({
   progress,
   creationSteps,
   onConnectClick,

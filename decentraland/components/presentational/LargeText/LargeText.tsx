@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LargeText: React.SFC<LargeTextProps> = props => {
+const LargeText: React.FunctionComponent<LargeTextProps> = props => {
   return <Text style={styles.text}>{props.children}</Text>;
 };
 

@@ -39,36 +39,33 @@ type BuyLandScreenProps = {
   updateUserActionStatus: (...args: any[]) => any;
 };
 
-export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
-  _onBuy = (landForSale): void => {
+export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
+  landToBuy: landForSale,
+  accountInfo,
+  navigation,
+  accountInfo,
+  removeLandForSale,
+  prependLandForSaleToList,
+  removeFromMyAssetsList,
+  prependToMyAssetsList,
+  addUserAction,
+  updateUserActionStatus,
+}) => {
+  const _onBuy = (landForSale): void => {
     try {
-      const { accountInfo } = this.props;
       const { account } = accountInfo;
-      if (!account) this._setupAccount();
-      else this._buy(landForSale);
+      if (!account) _setupAccount();
+      else _buy(landForSale);
     } catch (err) {
       showError(err);
     }
   };
 
-  _setupAccount = (): void => {
-    const { navigation } = this.props;
+  const _setupAccount = (): void => {
     navigation.navigate("OnboardingHomeScreen");
   };
 
-  _buy = async (landForSale): Promise<void> => {
-    const { props, _executeOrder } = this;
-    const {
-      navigation,
-      accountInfo,
-      removeLandForSale,
-      prependLandForSaleToList,
-      removeFromMyAssetsList,
-      prependToMyAssetsList,
-      addUserAction,
-      updateUserActionStatus,
-    } = props;
-
+  const _buy = async (landForSale): Promise<void> => {
     const { account } = accountInfo;
     const { asset, id: landId } = landForSale;
 
@@ -126,7 +123,11 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     onSuccess();
   };
 
-  _executeOrder = async (sellOrder, account, onError): Promise<object> => {
+  const _executeOrder = async (
+    sellOrder,
+    account,
+    onError
+  ): Promise<object> => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;
       const { id: assetId, type } = asset;
@@ -163,19 +164,16 @@ export class BuyLandScreen extends React.Component<BuyLandScreenProps, {}> {
     }
   };
 
-  render(): JSX.Element {
-    const { landToBuy: landForSale, accountInfo } = this.props;
-    const { creationStatus, creationActions } = accountInfo;
-    return (
-      <BuyLand
-        landForSale={landForSale}
-        onBuy={(): void => this._onBuy(landForSale)}
-        accountCreationStatus={creationStatus}
-        accountCreationActions={creationActions}
-      />
-    );
-  }
-}
+  const { creationStatus, creationActions } = accountInfo;
+  return (
+    <BuyLand
+      landForSale={landForSale}
+      onBuy={(): void => _onBuy(landForSale)}
+      accountCreationStatus={creationStatus}
+      accountCreationActions={creationActions}
+    />
+  );
+};
 
 const mapStateToProps = (state): object => {
   const { accountInfo, landToBuy, myAssets } = state;

@@ -19,22 +19,20 @@ type EthereumSignUpProps = {
   onUsernameSubmit: () => void;
 };
 
-export default class EthereumSignUp extends React.Component<
-  EthereumSignUpProps,
-  {}
-> {
-  render(): JSX.Element {
-    const OFFSET = responsiveHeight(3);
-    const { onUsernameSubmit } = this.props;
-    return (
-      <KeyboardAvoidingView
-        keyboardVerticalOffset={Header.HEIGHT + OFFSET}
-        style={styles.container}
-        behavior="padding"
-      >
-        <LargeText>{`Cool. Let's start by picking your Tasit username.`}</LargeText>
-        <EthereumSignUpForm onUsernameSubmit={onUsernameSubmit} />
-      </KeyboardAvoidingView>
-    );
-  }
-}
+const EthereumSignUp: React.FunctionComponent<EthereumSignUpProps> = ({
+  onUsernameSubmit,
+}) => {
+  const OFFSET = responsiveHeight(3);
+  return (
+    <KeyboardAvoidingView
+      keyboardVerticalOffset={Header.HEIGHT + OFFSET}
+      style={styles.container}
+      behavior="padding"
+    >
+      <LargeText>{`Cool. Let's start by picking your Tasit username.`}</LargeText>
+      <EthereumSignUpForm onUsernameSubmit={onUsernameSubmit} />
+    </KeyboardAvoidingView>
+  );
+};
+
+export default EthereumSignUp;

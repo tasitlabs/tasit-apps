@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   appendLandForSaleToList,
@@ -32,35 +32,37 @@ type ListLandForSaleScreenProps = {
   navigation: NavigationStackProp;
 };
 
-export class ListLandForSaleScreen extends React.Component<
-  ListLandForSaleScreenProps,
-  {}
-> {
-  componentDidMount = async (): Promise<void> => {
-    const {
-      appendLandForSaleToList,
-      setLoadingAssetsForSaleInProgress,
-    } = this.props;
-    try {
-      showInfo("Loading land for sale...");
-      const assetsForSale = await this._getAllAssetsForSale();
+// Note: This screen fetches data
+export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScreenProps> = ({
+  appendLandForSaleToList,
+  setLoadingAssetsForSaleInProgress,
+  assetsForSale,
+  selectLandToBuy,
+}) => {
+  useEffect(() => {
+    const effectFunction = async (): Promise<void> => {
+      try {
+        showInfo("Loading land for sale...");
+        const assetsForSale = await _getAllAssetsForSale();
 
-      const loadingAssetsOnScreen = assetsForSale.map(promise => {
-        const loadAssetOnScreen = async (): Promise<void> => {
-          const assetForSale = await promise;
-          appendLandForSaleToList(assetForSale);
-        };
-        return loadAssetOnScreen();
-      });
-      await Promise.all([...loadingAssetsOnScreen]);
-      setLoadingAssetsForSaleInProgress(false);
-    } catch (err) {
-      showError(err);
-    }
-  };
+        const loadingAssetsOnScreen = assetsForSale.map(promise => {
+          const loadAssetOnScreen = async (): Promise<void> => {
+            const assetForSale = await promise;
+            appendLandForSaleToList(assetForSale);
+          };
+          return loadAssetOnScreen();
+        });
+        await Promise.all([...loadingAssetsOnScreen]);
+        setLoadingAssetsForSaleInProgress(false);
+      } catch (err) {
+        showError(err);
+      }
+    };
+    effectFunction();
+  });
 
   // Note: Returns a list of Promises
-  _getAllAssetsForSale = async (): Promise<Promise<any>[]> => {
+  const _getAllAssetsForSale = async (): Promise<Promise<any>[]> => {
     const decentralandUtils = new DecentralandUtils();
     const { getAllAssetsForSale: getAllOpenSellOrders } = decentralandUtils;
     const openSellOrders = await getAllOpenSellOrders();
@@ -82,13 +84,13 @@ export class ListLandForSaleScreen extends React.Component<
     const listSize = 10;
     let parcel;
     for (parcel of parcelsForSale.slice(0, listSize)) {
-      const assetForSalePromise = this._toAssetForSale(parcel);
+      const assetForSalePromise = _toAssetForSale(parcel);
       assetsForSale.push(assetForSalePromise);
     }
     return assetsForSale;
   };
 
-  _toAssetForSale = async (sellOrder): Promise<object> => {
+  const _toAssetForSale = async (sellOrder): Promise<object> => {
     const contracts = getContracts();
     const { estateContract, landContract } = contracts;
     const {
@@ -129,9 +131,7 @@ export class ListLandForSaleScreen extends React.Component<
     return assetForSale;
   };
 
-  _renderItem = ({ item: landForSale }): JSX.Element => {
-    const { navigation, selectLandToBuy } = this.props;
-
+  const _renderItem = ({ item: landForSale, navigation }): JSX.Element => {
     const handlePress = (): void => {
       selectLandToBuy(landForSale);
       navigation.navigate("BuyLandScreen");
@@ -142,24 +142,22 @@ export class ListLandForSaleScreen extends React.Component<
     );
   };
 
-  render(): JSX.Element {
-    const { assetsForSale } = this.props;
-    const { list, loadingInProgress } = assetsForSale;
-    // Note: The initial route component from react-navigation
-    // Should add the NativaBase `Root` component.
-    // See more: https://github.com/tasitlabs/tasit/pull/237#issuecomment-479124236
-    // Tech debt: Move from here to the App.js component.
-    return (
-      <Root>
-        <LandForSaleList
-          landForSaleList={list}
-          renderItem={this._renderItem}
-          loadingInProgress={loadingInProgress}
-        />
-      </Root>
-    );
-  }
-}
+  const { list, loadingInProgress } = assetsForSale;
+  // Note: The initial route component from react-navigation
+  // Should add the NativaBase `Root` component.
+  // See more: https://github.com/tasitlabs/tasit/pull/237#issuecomment-479124236
+  // Tech debt: Move from here to the App.js component.
+  return (
+    <Root>
+      <LandForSaleList
+        landForSaleList={list}
+        renderItem={_renderItem}
+        loadingInProgress={loadingInProgress}
+      />
+    </Root>
+  );
+};
+
 const mapStateToProps = (state): object => {
   const { assetsForSale } = state;
   return { assetsForSale };

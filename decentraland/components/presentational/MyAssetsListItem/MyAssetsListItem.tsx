@@ -23,23 +23,20 @@ type MyAssetsListItemProps = {
   userAction: object;
 };
 
-// Note: Changing to PureComponent for performance boost
-// It is possible to still using function component with React.memo HoC
-// See more:
-// https://reactjs.org/docs/react-api.html#reactpurecomponent
-// https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class MyAssetsListItem extends React.PureComponent<
-  MyAssetsListItemProps,
-  {}
-> {
-  render(): JSX.Element {
-    const { asset, userAction } = this.props;
-    return (
-      <TouchableHighlight>
-        <View style={styles.row}>
-          <MyAsset asset={asset} userAction={userAction} />
-        </View>
-      </TouchableHighlight>
-    );
-  }
-}
+// Back before we moved to hooks, this was a pure component
+// rather than a function component for performance reasons
+// See LandforSaleList component for suggested next steps
+const MyAssetsListItem: React.FunctionComponent<MyAssetsListItemProps> = ({
+  asset,
+  userAction,
+}) => {
+  return (
+    <TouchableHighlight>
+      <View style={styles.row}>
+        <MyAsset asset={asset} userAction={userAction} />
+      </View>
+    </TouchableHighlight>
+  );
+};
+
+export default MyAssetsListItem;

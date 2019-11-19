@@ -58,41 +58,40 @@ type MyProfileScreenProps = {
   navigation: NavigationStackProp;
 };
 
-export class MyProfileScreen extends React.Component<MyProfileScreenProps, {}> {
-  render(): JSX.Element {
-    const { accountInfo } = this.props;
-
-    const onConnectClick = (): boolean =>
-      this.props.navigation.navigate("EthereumSignInScreen");
-
-    const onUpgradeSecurityClick = (): boolean =>
-      this.props.navigation.navigate("EthereumUpgradeSecurityScreen");
-
-    const creationStepsWithStatus = creationSteps.map(step => {
-      const wasDone = stepWasDone(step, accountInfo);
-      // TODO: As soon as we store action status in redux, this logic will change
-      // transaction pending, confirmed once, confirmed many times, failed, etc.
-      const status = wasDone ? ActionStatus.DONE : ActionStatus.MISSING;
-      return { ...step, status };
-    });
-
-    return (
-      <MyProfile
-        progress={this._getPercentage(creationStepsWithStatus)}
-        creationSteps={creationStepsWithStatus}
-        onConnectClick={onConnectClick}
-        onUpgradeSecurityClick={onUpgradeSecurityClick}
-      />
-    );
-  }
-
-  _getPercentage(creationSteps): number {
-    const percentage = creationSteps
-      .filter(step => step.status === ActionStatus.DONE)
-      .reduce((total, step) => total + step.percentage, 0);
-    return percentage;
-  }
+function _getPercentage(creationSteps): number {
+  const percentage = creationSteps
+    .filter(step => step.status === ActionStatus.DONE)
+    .reduce((total, step) => total + step.percentage, 0);
+  return percentage;
 }
+
+export const MyProfileScreen: React.FunctionComponent<MyProfileScreenProps> = ({
+  accountInfo,
+  navigation,
+}) => {
+  const onConnectClick = (): boolean =>
+    navigation.navigate("EthereumSignInScreen");
+
+  const onUpgradeSecurityClick = (): boolean =>
+    navigation.navigate("EthereumUpgradeSecurityScreen");
+
+  const creationStepsWithStatus = creationSteps.map(step => {
+    const wasDone = stepWasDone(step, accountInfo);
+    // TODO: As soon as we store action status in redux, this logic will change
+    // transaction pending, confirmed once, confirmed many times, failed, etc.
+    const status = wasDone ? ActionStatus.DONE : ActionStatus.MISSING;
+    return { ...step, status };
+  });
+
+  return (
+    <MyProfile
+      progress={_getPercentage(creationStepsWithStatus)}
+      creationSteps={creationStepsWithStatus}
+      onConnectClick={onConnectClick}
+      onUpgradeSecurityClick={onUpgradeSecurityClick}
+    />
+  );
+};
 
 const mapStateToProps = (state): object => {
   const { accountInfo } = state;

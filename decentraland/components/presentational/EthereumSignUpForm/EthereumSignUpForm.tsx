@@ -30,10 +30,10 @@ interface EthereumSignUpFormProps {
   onUsernameSubmit: () => void;
 }
 
-function EthereumSignUpForm(props: EthereumSignUpFormProps) {
+const EthereumSignUpForm: React.FunctionComponent<EthereumSignUpFormProps> = ({
+  onUsernameSubmit,
+}) => {
   const [username, setUsername] = useState("");
-
-  const { onUsernameSubmit } = this.props;
 
   return (
     <React.Fragment>
@@ -47,7 +47,7 @@ function EthereumSignUpForm(props: EthereumSignUpFormProps) {
       </View>
     </React.Fragment>
   );
-}
+};
 
 export default EthereumSignUpForm;
 
@@ -56,7 +56,7 @@ interface UsernameTextInputProps {
   username: string;
 }
 
-export const UsernameTextInput: React.SFC<UsernameTextInputProps> = ({
+export const UsernameTextInput: React.FunctionComponent<UsernameTextInputProps> = ({
   onChange,
   username,
 }) => {

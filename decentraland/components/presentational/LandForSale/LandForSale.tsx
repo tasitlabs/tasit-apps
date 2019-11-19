@@ -24,7 +24,9 @@ interface LandForSaleProps {
   landForSale: LandForSaleObjectProps;
 }
 
-const LandForSale: React.SFC<LandForSaleProps> = ({ landForSale }) => {
+const LandForSale: React.FunctionComponent<LandForSaleProps> = ({
+  landForSale,
+}) => {
   const { asset } = landForSale;
   const { type } = asset;
 

@@ -31,7 +31,7 @@ interface TinyLinkProps {
   url: string;
 }
 
-const TinyLink: React.SFC<TinyLinkProps> = ({ text, url }) => {
+const TinyLink: React.FunctionComponent<TinyLinkProps> = ({ text, url }) => {
   const onPress = (): void => {
     openLink(url);
   };
