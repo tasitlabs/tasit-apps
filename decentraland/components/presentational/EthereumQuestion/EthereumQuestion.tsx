@@ -24,7 +24,7 @@ interface EthereumQuestionProps {
   onSignIn: (...args: any[]) => any;
 }
 
-const EthereumQuestion: React.SFC<EthereumQuestionProps> = props => {
+const EthereumQuestion: React.FunctionComponent<EthereumQuestionProps> = props => {
   return (
     <View style={styles.container}>
       <LargeText>{`Are you new to Ethereum?`}</LargeText>

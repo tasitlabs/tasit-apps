@@ -7,20 +7,15 @@ type EthereumQuestionScreenProps = {
   navigation: NavigationStackProp;
 };
 
-export default class EthereumQuestionScreen extends React.Component<
-  EthereumQuestionScreenProps,
-  {}
-> {
-  render(): JSX.Element {
-    return (
-      <EthereumQuestion
-        onSignUp={(): boolean =>
-          this.props.navigation.navigate("EthereumSignUpScreen")
-        }
-        onSignIn={(): boolean =>
-          this.props.navigation.navigate("EthereumSignInScreen")
-        }
-      />
-    );
-  }
-}
+const EthereumQuestionScreen: React.FunctionComponent<EthereumQuestionScreenProps> = ({
+  navigation,
+}) => {
+  return (
+    <EthereumQuestion
+      onSignUp={(): boolean => navigation.navigate("EthereumSignUpScreen")}
+      onSignIn={(): boolean => navigation.navigate("EthereumSignInScreen")}
+    />
+  );
+};
+
+export default EthereumQuestionScreen;

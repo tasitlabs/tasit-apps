@@ -23,20 +23,20 @@ type LandForSaleListItemProps = {
   landForSale: object;
 };
 
-// Note: Changing to PureComponent for performance boost
-// It is possible to still using function component with React.memo HoC
-// See more:
-// https://reactjs.org/docs/react-api.html#reactpurecomponent
-// https://medium.com/groww-engineering/stateless-component-vs-pure-component-d2af88a1200b
-export default class LandForSaleListItem extends React.PureComponent<{}, {}> {
-  render(): JSX.Element {
-    const { onPress, landForSale } = this.props;
-    return (
-      <TouchableHighlight onPress={onPress}>
-        <View style={styles.row}>
-          <LandForSale landForSale={landForSale} />
-        </View>
-      </TouchableHighlight>
-    );
-  }
-}
+// Back before we moved to hooks, this was a pure component
+// rather than a function component for performance reasons
+// See LandforSaleList component for suggested next steps
+const LandForSaleListItem: React.FunctionComponent<LandForSaleListItemProps> = ({
+  onPress,
+  landForSale,
+}) => {
+  return (
+    <TouchableHighlight onPress={onPress}>
+      <View style={styles.row}>
+        <LandForSale landForSale={landForSale} />
+      </View>
+    </TouchableHighlight>
+  );
+};
+
+export default LandForSaleListItem;

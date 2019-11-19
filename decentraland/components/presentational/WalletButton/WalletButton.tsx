@@ -17,7 +17,7 @@ interface WalletButton {
   scheme: string;
 }
 
-const WalletButton: React.SFC<WalletButton> = ({
+const WalletButton: React.FunctionComponent<WalletButton> = ({
   appSlug,
   appName,
   scheme,

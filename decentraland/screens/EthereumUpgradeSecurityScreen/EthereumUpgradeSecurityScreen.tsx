@@ -4,7 +4,7 @@ import EthereumUpgradeSecurity from "../../components/presentational/EthereumUpg
 
 interface EthereumUpgradeSecurityScreenProps {}
 
-const EthereumUpgradeSecurityScreen: React.SFC<EthereumUpgradeSecurityScreenProps> = props => {
+const EthereumUpgradeSecurityScreen: React.FunctionComponent<EthereumUpgradeSecurityScreenProps> = props => {
   return <EthereumUpgradeSecurity />;
 };
 

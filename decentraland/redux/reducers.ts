@@ -40,10 +40,12 @@ const setAccount = (state, action): object => {
   const { account } = action;
   return { ...state, account };
 };
+
 const setAccountCreationStatus = (state, action): object => {
   const { creationStatus } = action;
   return { ...state, creationStatus };
 };
+
 const updateActionIdForAccountCreationStatus = (state, action): object => {
   const { creationStatusAction } = action;
   const { status, actionId } = creationStatusAction;

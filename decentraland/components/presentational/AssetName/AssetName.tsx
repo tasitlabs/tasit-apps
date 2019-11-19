@@ -17,7 +17,9 @@ type AssetNameProps = {
   name: string;
 };
 
-export const AssetName: React.SFC<AssetNameProps> = ({ name }) => {
+export const AssetName: React.FunctionComponent<AssetNameProps> = ({
+  name,
+}) => {
   if (!name) name = "(No name for this one right now)";
   return (
     <View style={styles.landNameContainer}>

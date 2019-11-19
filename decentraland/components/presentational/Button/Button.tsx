@@ -47,7 +47,7 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button: React.SFC<ButtonProps> = props => {
+const Button: React.FunctionComponent<ButtonProps> = props => {
   let { title, disabled } = props;
   const { onPress } = props;
   if (disabled === undefined) disabled = false;

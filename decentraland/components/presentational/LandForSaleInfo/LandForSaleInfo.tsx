@@ -56,7 +56,7 @@ interface LandForSaleInfoProps {
   landForSale: LandForSaleInfoObjectProps;
 }
 
-export const LandForSaleInfo: React.SFC<LandForSaleInfoProps> = ({
+export const LandForSaleInfo: React.FunctionComponent<LandForSaleInfoProps> = ({
   landForSale,
 }) => {
   const { priceMana, asset } = landForSale;
@@ -78,7 +78,9 @@ interface ManaPriceProps {
   price: string;
 }
 
-export const ManaPrice: React.SFC<ManaPriceProps> = ({ price }) => {
+export const ManaPrice: React.FunctionComponent<ManaPriceProps> = ({
+  price,
+}) => {
   const formattedPrice = formatNumber(price);
 
   return (

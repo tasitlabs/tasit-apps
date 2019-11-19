@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 import AccountCreationStatus from "../../../constants/AccountCreationStatus";
+import { AccountCreationStatusType } from "../../../types/AccountCreationStatus";
 import LinkToBlockchain from "../LinkToBlockchain";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Colors from "../../../constants/Colors";
@@ -50,12 +51,16 @@ const styles = StyleSheet.create({
   },
 });
 
+type AccountCreationActionObject = {
+  [key in AccountCreationStatusType]: string;
+};
+
 interface AccountCreationProgressProps {
   status: string;
-  actions: object;
+  actions: AccountCreationActionObject;
 }
 
-const AccountCreationProgress: React.SFC<AccountCreationProgressProps> = ({
+const AccountCreationProgress: React.FunctionComponent<AccountCreationProgressProps> = ({
   status,
   actions,
 }) => {
@@ -87,7 +92,7 @@ interface ProgressMessageAndLinkProps {
   actionId: string;
 }
 
-export const ProgressMessageAndLink: React.SFC<ProgressMessageAndLinkProps> = ({
+export const ProgressMessageAndLink: React.FunctionComponent<ProgressMessageAndLinkProps> = ({
   waitingMessage,
   actionId,
 }) => {

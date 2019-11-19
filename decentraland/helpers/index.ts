@@ -40,9 +40,20 @@ export const getNetworkName = (): string => {
   return networkName;
 };
 
-interface MarketplaceContractObject {
+interface GetAddressContract {
   getAddress: any; // TODO: Change me to a function type
 }
+
+interface MarketplaceContractObject extends GetAddressContract {
+  setAccount: any; // TODO: Change me to a function type
+  safeExecuteOrder: any; // TODO: Change me to a function type
+}
+
+interface EstateContractObject extends GetAddressContract {
+  getFingerprint: any; // TODO: Change me to a function type
+}
+
+interface LandContractObject extends GetAddressContract {}
 
 interface ManaContractObject {
   setAccount: any; // TODO: Change me to a function type
@@ -61,6 +72,8 @@ interface Contracts {
   marketplaceContract: MarketplaceContractObject;
   manaContract: ManaContractObject;
   gnosisSafeContract: GnosisSafeContractObject;
+  estateContract: EstateContractObject;
+  landContract: LandContractObject;
 }
 
 export const getContracts = (): Contracts => {

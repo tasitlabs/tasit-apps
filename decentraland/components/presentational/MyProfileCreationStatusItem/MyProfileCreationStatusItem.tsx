@@ -68,7 +68,7 @@ interface MyProfileCreationStatusItemProps {
   status: ActionStatus;
 }
 
-const MyProfileCreationStatusItem: React.SFC<MyProfileCreationStatusItemProps> = ({
+const MyProfileCreationStatusItem: React.FunctionComponent<MyProfileCreationStatusItemProps> = ({
   name,
   status,
 }) => {

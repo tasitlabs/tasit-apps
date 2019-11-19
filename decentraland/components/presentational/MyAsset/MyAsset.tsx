@@ -37,7 +37,10 @@ interface MyAssetProps {
   userAction: object;
 }
 
-export const MyAsset: React.SFC<MyAssetProps> = ({ asset, userAction }) => {
+export const MyAsset: React.FunctionComponent<MyAssetProps> = ({
+  asset,
+  userAction,
+}) => {
   const { type } = asset;
 
   return (
@@ -64,7 +67,7 @@ interface MyAssetInfoProps {
   userAction: object;
 }
 
-export const MyAssetInfo: React.SFC<MyAssetInfoProps> = ({
+export const MyAssetInfo: React.FunctionComponent<MyAssetInfoProps> = ({
   asset,
   userAction,
 }) => {

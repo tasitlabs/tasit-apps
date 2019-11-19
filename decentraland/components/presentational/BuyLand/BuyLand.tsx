@@ -29,7 +29,7 @@ interface BuyLandProps {
   accountCreationActions: object;
 }
 
-const BuyLand: React.SFC<BuyLandProps> = props => {
+const BuyLand: React.FunctionComponent<BuyLandProps> = props => {
   const {
     landForSale,
     onBuy,

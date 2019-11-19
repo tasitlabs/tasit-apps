@@ -4,7 +4,9 @@ import { Text } from "react-native";
 
 // interface EthereumUpgradeSecurityProps {}
 
-const EthereumUpgradeSecurity: React.SFC<{}> = () => {
+import CenteredAlert from "../CenteredAlert";
+
+const EthereumUpgradeSecurity: React.FunctionComponent<{}> = () => {
   const [isDeployed, setIsDeployed] = useState(null);
 
   useEffect(() => {
@@ -22,9 +24,13 @@ const EthereumUpgradeSecurity: React.SFC<{}> = () => {
   });
 
   if (isDeployed === null) {
-    return <Text>Loading...</Text>;
+    return <CenteredAlert text="Loading..." />;
   }
-  return isDeployed ? <Text>Deployed</Text> : <Text>Not yet deployed</Text>;
+  return isDeployed ? (
+    <CenteredAlert text="Deployed" />
+  ) : (
+    <CenteredAlert text="Not yet deployed" />
+  );
 };
 
 export default EthereumUpgradeSecurity;

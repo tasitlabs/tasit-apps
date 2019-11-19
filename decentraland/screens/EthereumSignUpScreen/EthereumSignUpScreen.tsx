@@ -42,17 +42,14 @@ type EthereumSignUpScreenProps = {
   navigation: NavigationStackProp;
 };
 
-export class EthereumSignUpScreen extends React.Component<
-  EthereumSignUpScreenProps,
-  {}
-> {
-  _onboarding = async (): Promise<void> => {
+export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenProps> = ({
+  setAccount,
+  setAccountCreationStatus,
+  updateActionIdForAccountCreationStatus,
+  navigation,
+}) => {
+  const _onboarding = async (): Promise<void> => {
     try {
-      const {
-        setAccount,
-        setAccountCreationStatus,
-        updateActionIdForAccountCreationStatus,
-      } = this.props;
       // The pattern for each step is:
       // 1. alert with good info as soon as it's true
       // 2. update app state with action in progress if applicable
@@ -152,27 +149,26 @@ export class EthereumSignUpScreen extends React.Component<
     }
   };
 
-  _onUsernameSubmit = (): void => {
-    const { setAccountCreationStatus } = this.props;
+  const _onUsernameSubmit = (): void => {
     setAccountCreationStatus(GENERATING_ACCOUNT);
 
     // Note: A trick to force `_onboarding()` function to running async
     (async (): Promise<void> => {})().then((): void => {
       // Should run async but isn't when calling Account.create() or createFromPrivateKey()
       // See more: https://github.com/tasitlabs/tasit/issues/42#issuecomment-462534793
-      this._onboarding();
+      _onboarding();
     });
 
-    this.props.navigation.navigate("BuyLandScreen");
+    navigation.navigate("BuyLandScreen");
   };
 
-  render(): JSX.Element {
-    return <EthereumSignUp onUsernameSubmit={this._onUsernameSubmit} />;
-  }
-}
+  return <EthereumSignUp onUsernameSubmit={_onUsernameSubmit} />;
+};
+
 const mapDispatchToProps = {
   setAccount,
   setAccountCreationStatus,
   updateActionIdForAccountCreationStatus,
 };
+
 export default connect(null, mapDispatchToProps)(EthereumSignUpScreen);

@@ -7,17 +7,14 @@ interface OnboardingHomeScreenProps {
   navigation: NavigationStackProp;
 }
 
-export default class OnboardingHomeScreen extends React.Component<
-  OnboardingHomeScreenProps,
-  {}
-> {
-  render(): JSX.Element {
-    return (
-      <OnboardingHome
-        onPress={(): boolean =>
-          this.props.navigation.navigate("EthereumQuestionScreen")
-        }
-      />
-    );
-  }
-}
+const OnboardingHomeScreen: React.FunctionComponent<OnboardingHomeScreenProps> = ({
+  navigation,
+}) => {
+  return (
+    <OnboardingHome
+      onPress={(): boolean => navigation.navigate("EthereumQuestionScreen")}
+    />
+  );
+};
+
+export default OnboardingHomeScreen;
