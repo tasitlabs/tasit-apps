@@ -76,7 +76,7 @@
     "ts-jest": "^24.1.0",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2",
-    "yargs": "^14.2.0"
+    "yargs": "^15.0.2"
   },
   "repository": {
     "type": "git",
