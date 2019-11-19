@@ -16,14 +16,14 @@ type CenteredAlertProps = {
   text: string;
 };
 
-const CenteredAlert: React.FunctionComponent<CenteredAlertProps> = ({
-  text,
-}) => {
-  return (
-    <View style={styles.emptyContainer}>
-      <LargeText>{text}</LargeText>
-    </View>
-  );
-};
+const CenteredAlert: React.FunctionComponent<CenteredAlertProps> = React.memo(
+  ({ text }) => {
+    return (
+      <View style={styles.emptyContainer}>
+        <LargeText>{text}</LargeText>
+      </View>
+    );
+  }
+);
 
 export default CenteredAlert;

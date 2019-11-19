@@ -20,8 +20,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const LargeText: React.FunctionComponent<LargeTextProps> = props => {
+// TODO: Think about implications of using React.memo
+// with props.children, given the shallow comparison that is done
+// to determine whether to rerender
+const LargeText: React.FunctionComponent<LargeTextProps> = React.memo(props => {
   return <Text style={styles.text}>{props.children}</Text>;
-};
+});
 
 export default LargeText;

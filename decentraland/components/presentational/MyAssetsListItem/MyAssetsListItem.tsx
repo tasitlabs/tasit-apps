@@ -6,6 +6,8 @@ import {
 } from "react-native-responsive-dimensions";
 import MyAsset from "../MyAsset";
 
+import AssetObjectProps from "../../../types/AssetObjectProps";
+
 const styles = StyleSheet.create({
   row: {
     alignItems: "center",
@@ -19,24 +21,20 @@ const styles = StyleSheet.create({
 });
 
 type MyAssetsListItemProps = {
-  asset: object;
+  asset: AssetObjectProps;
   userAction: object;
 };
 
-// Back before we moved to hooks, this was a pure component
-// rather than a function component for performance reasons
-// See LandforSaleList component for suggested next steps
-const MyAssetsListItem: React.FunctionComponent<MyAssetsListItemProps> = ({
-  asset,
-  userAction,
-}) => {
-  return (
-    <TouchableHighlight>
-      <View style={styles.row}>
-        <MyAsset asset={asset} userAction={userAction} />
-      </View>
-    </TouchableHighlight>
-  );
-};
+const MyAssetsListItem: React.FunctionComponent<MyAssetsListItemProps> = React.memo(
+  ({ asset, userAction }) => {
+    return (
+      <TouchableHighlight>
+        <View style={styles.row}>
+          <MyAsset asset={asset} userAction={userAction} />
+        </View>
+      </TouchableHighlight>
+    );
+  }
+);
 
 export default MyAssetsListItem;

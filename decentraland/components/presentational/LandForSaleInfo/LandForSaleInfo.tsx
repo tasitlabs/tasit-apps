@@ -11,6 +11,8 @@ import { Button, Icon } from "native-base";
 import { formatNumber } from "../../../helpers";
 import AssetName from "../AssetName";
 
+import AssetNameProps from "../../../types/AssetNameProps";
+
 const onPriceInfo = (): void => {
   const title = "";
   const message = `MANA is Decentraland’s cryptocurrency token. You can use MANA to buy LAND parcels.`;
@@ -49,55 +51,55 @@ const styles = StyleSheet.create({
 
 interface LandForSaleInfoObjectProps {
   priceMana: number;
-  asset: any;
+  asset: AssetNameProps;
 }
 
 interface LandForSaleInfoProps {
   landForSale: LandForSaleInfoObjectProps;
 }
 
-export const LandForSaleInfo: React.FunctionComponent<LandForSaleInfoProps> = ({
-  landForSale,
-}) => {
-  const { priceMana, asset } = landForSale;
-  const { name } = asset;
+export const LandForSaleInfo: React.FunctionComponent<LandForSaleInfoProps> = React.memo(
+  ({ landForSale }) => {
+    const { priceMana, asset } = landForSale;
+    const { name } = asset;
 
-  return (
-    <View style={styles.landInfoContainer}>
-      <View style={styles.nameContainer}>
-        <AssetName name={name} />
+    return (
+      <View style={styles.landInfoContainer}>
+        <View style={styles.nameContainer}>
+          <AssetName name={name} />
+        </View>
+        <View style={styles.priceContainer}>
+          <ManaPrice price={priceMana} />
+        </View>
       </View>
-      <View style={styles.priceContainer}>
-        <ManaPrice price={priceMana} />
-      </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 interface ManaPriceProps {
   price: string;
 }
 
-export const ManaPrice: React.FunctionComponent<ManaPriceProps> = ({
-  price,
-}) => {
-  const formattedPrice = formatNumber(price);
+export const ManaPrice: React.FunctionComponent<ManaPriceProps> = React.memo(
+  ({ price }) => {
+    const formattedPrice = formatNumber(price);
 
-  return (
-    <View style={styles.landPriceContainer}>
-      <View>
-        <Button small transparent onPress={onPriceInfo}>
-          <Icon
-            name="information-circle-outline"
-            style={styles.landPriceIcon}
-          />
-        </Button>
+    return (
+      <View style={styles.landPriceContainer}>
+        <View>
+          <Button small transparent onPress={onPriceInfo}>
+            <Icon
+              name="information-circle-outline"
+              style={styles.landPriceIcon}
+            />
+          </Button>
+        </View>
+        <View>
+          <Text style={styles.landPrice}>{formattedPrice}</Text>
+        </View>
       </View>
-      <View>
-        <Text style={styles.landPrice}>{formattedPrice}</Text>
-      </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 export default LandForSaleInfo;

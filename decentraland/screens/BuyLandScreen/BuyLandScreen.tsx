@@ -43,7 +43,6 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
   landToBuy: landForSale,
   accountInfo,
   navigation,
-  accountInfo,
   removeLandForSale,
   prependLandForSaleToList,
   removeFromMyAssetsList,

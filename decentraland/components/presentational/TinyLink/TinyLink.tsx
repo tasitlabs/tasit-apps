@@ -31,16 +31,18 @@ interface TinyLinkProps {
   url: string;
 }
 
-const TinyLink: React.FunctionComponent<TinyLinkProps> = ({ text, url }) => {
-  const onPress = (): void => {
-    openLink(url);
-  };
+const TinyLink: React.FunctionComponent<TinyLinkProps> = React.memo(
+  ({ text, url }) => {
+    const onPress = (): void => {
+      openLink(url);
+    };
 
-  return (
-    <Button transparent onPress={onPress}>
-      <Text style={styles.text}>{text}</Text>
-    </Button>
-  );
-};
+    return (
+      <Button transparent onPress={onPress}>
+        <Text style={styles.text}>{text}</Text>
+      </Button>
+    );
+  }
+);
 
 export default TinyLink;

@@ -159,7 +159,7 @@ export const MyAssetsScreen: React.FunctionComponent<MyAssetsScreenProps> = ({
 
   return (
     <MyAssetsList
-      myAssets={myAssets}
+      myAssets={assetsFromState}
       userActions={userActions}
       renderItem={_renderItem}
     />

@@ -21,14 +21,16 @@ interface EstateProps {
   estate: EstateObjectProps;
 }
 
-const Estate: React.FunctionComponent<EstateProps> = ({ estate }) => {
-  const { img } = estate;
+const Estate: React.FunctionComponent<EstateProps> = React.memo(
+  ({ estate }) => {
+    const { img } = estate;
 
-  return (
-    <React.Fragment>
-      <Image style={styles.landImage} source={{ uri: img }} />
-    </React.Fragment>
-  );
-};
+    return (
+      <React.Fragment>
+        <Image style={styles.landImage} source={{ uri: img }} />
+      </React.Fragment>
+    );
+  }
+);
 
 export default Estate;
