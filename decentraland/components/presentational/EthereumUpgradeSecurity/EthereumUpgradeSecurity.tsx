@@ -27,7 +27,7 @@ const EthereumUpgradeSecurity: React.FunctionComponent<{}> = () => {
     return <CenteredAlert text="Loading..." />;
   }
   return isDeployed ? (
-    <Text>Deployed</Text>
+    <CenteredAlert text="Deployed" />
   ) : (
     <CenteredAlert text="Not yet deployed" />
   );
