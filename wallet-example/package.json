@@ -30,7 +30,7 @@
     "url": "git+https://github.com/tasitlabs/tasit.git"
   },
   "dependencies": {
-    "expo": "^35.0.1",
+    "expo": "^36.0.0",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-appearance": "~0.1.0",
