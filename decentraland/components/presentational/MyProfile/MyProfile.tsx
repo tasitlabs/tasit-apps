@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "../../../constants/Colors";
 
-import { responsiveWidth } from "react-native-responsive-dimensions";
+import { responsiveHeight } from "react-native-responsive-dimensions";
 import MyProfileCreationStatusItem from "../MyProfileCreationStatusItem";
 import MyProfileProgress from "../MyProfileProgress";
 import Button from "../Button";
@@ -11,23 +11,25 @@ import ActionStatus from "../../../types/ActionStatus";
 
 const styles = StyleSheet.create({
   actionItemsContainer: {
-    flex: 5,
-    flexDirection: "column",
-    alignItems: "flex-start",
+    flex: 1,
+    // flexDirection: "column",
+    // alignItems: "flex-start",
     justifyContent: "flex-start",
-    paddingLeft: responsiveWidth(12),
+    // paddingLeft: responsiveWidth(12),
+    paddingBottom: responsiveHeight(3),
   },
   buttonContainer: {
-    alignItems: "center",
     flex: 1,
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    // justifyContent: "center",
   },
   container: {
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.backgroundColor,
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
@@ -41,12 +43,14 @@ interface MyProfileProps {
   onConnectClick: (...args: any[]) => any;
   onUpgradeSecurityClick: (...args: any[]) => any;
   creationSteps: CreationStepObject[];
+  securityLabel: string;
 }
 
 const MyProfile: React.FunctionComponent<MyProfileProps> = ({
   progress,
   creationSteps,
   onConnectClick,
+  securityLabel,
   onUpgradeSecurityClick,
 }) => {
   return (
@@ -64,11 +68,11 @@ const MyProfile: React.FunctionComponent<MyProfileProps> = ({
             />
           );
         })}
-        {/* TODO: Break this component up into a smaller snapshot */}
-        <View style={styles.buttonContainer}>
-          <Button title="Move funds" onPress={onConnectClick} />
-          <Button title="Upgrade security" onPress={onUpgradeSecurityClick} />
-        </View>
+      </View>
+      {/* TODO: Break this component up into a smaller snapshot */}
+      <View style={styles.buttonContainer}>
+        <Button title="Move funds" onPress={onConnectClick} />
+        <Button title={securityLabel} onPress={onUpgradeSecurityClick} />
       </View>
     </View>
   );

@@ -104,7 +104,7 @@ export const ProgressMessageAndLink: React.FunctionComponent<ProgressMessageAndL
         </Text>
       </View>
       <View>
-        <LinkToBlockchain actionId={actionId} />
+        <LinkToBlockchain actionId={actionId} type="action" />
       </View>
     </View>
   );

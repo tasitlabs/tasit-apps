@@ -8,14 +8,14 @@ describe("LinkToBlockchain", () => {
     it("null action", () => {
       const actionId = null;
       expect(
-        shallow(<LinkToBlockchain actionId={actionId} />)
+        shallow(<LinkToBlockchain actionId={actionId} type="action" />)
       ).toMatchSnapshot();
     });
 
     it("valid action", async () => {
       const actionId = await anAction.getId();
       expect(
-        shallow(<LinkToBlockchain actionId={actionId} />)
+        shallow(<LinkToBlockchain actionId={actionId} type="action" />)
       ).toMatchSnapshot();
     });
   });

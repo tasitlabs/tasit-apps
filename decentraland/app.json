@@ -4,7 +4,7 @@
     "description": "An app for buying Decentraland land using the Tasit SDK",
     "slug": "tasit-decentraland",
     "privacy": "unlisted",
-    "sdkVersion": "35.0.0",
+    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android"

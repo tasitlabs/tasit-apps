@@ -6,7 +6,7 @@ import {
   checkBlockchain,
   showErrorMessage,
   prepareAndLoadConfig,
-} from "./helpers/starter";
+} from "./scripts/starter";
 
 const startExpo = (env): void => {
   const { exec } = childProcess;
@@ -39,7 +39,7 @@ const start = async (): Promise<void> => {
       `Failed to establish the connection to the blockchain.`,
       `Is the 'config/${config}.ts' file correct?\n`,
       `If you are starting one of Tasit apps in dev environment, `,
-      "Use: 'npm run prepare:blockchain' from TasitSDK project.",
+      "Use: 'npm start' from TasitSDK project.",
       "That script will start local blockchain and will deploy the smart contracts.",
     ]);
   }

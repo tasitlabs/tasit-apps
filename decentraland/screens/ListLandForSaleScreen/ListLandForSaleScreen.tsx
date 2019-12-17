@@ -15,7 +15,8 @@ import {
 } from "../../helpers";
 import { generateAssetFromId } from "../../helpers/decentraland";
 import { Root } from "native-base";
-import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+// import DecentralandUtils from "tasit-sdk/dist/helpers/DecentralandUtils";
+import DecentralandUtils from "tasit-sdk/src/helpers/DecentralandUtils";
 
 import { NavigationStackProp } from "react-navigation-stack";
 
@@ -39,30 +40,44 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
   assetsForSale,
   selectLandToBuy,
 }) => {
+  const count = 1;
   useEffect(() => {
     const effectFunction = async (): Promise<void> => {
       try {
         showInfo("Loading land for sale...");
         const assetsForSale = await _getAllAssetsForSale();
 
-        const loadingAssetsOnScreen = assetsForSale.map(promise => {
-          const loadAssetOnScreen = async (): Promise<void> => {
-            const assetForSale = await promise;
-            appendLandForSaleToList(assetForSale);
-          };
-          return loadAssetOnScreen();
-        });
-        await Promise.all([...loadingAssetsOnScreen]);
+        // TODO: Reenable loading of assets after updating Tasit SDK
+        // for Rinkeby support with DecentralandUtils
+        // Still can keep enabled for local ganache-cli development, though
+
+        // ---
+        // const loadingAssetsOnScreen = assetsForSale.map(promise => {
+        //   const loadAssetOnScreen = async (): Promise<void> => {
+        //     const assetForSale = await promise;
+        //     appendLandForSaleToList(assetForSale);
+        //   };
+        //   return loadAssetOnScreen();
+        // });
+        // await Promise.all([...loadingAssetsOnScreen]);
+
+        // ---
+
         setLoadingAssetsForSaleInProgress(false);
       } catch (err) {
+        console.log(err);
         showError(err);
       }
     };
     effectFunction();
-  });
+    // TODO: Using a hardcoded count is a hack for now: Pick a better
+    // strategy for when to redo the fetch
+  }, [count]);
 
   // Note: Returns a list of Promises
   const _getAllAssetsForSale = async (): Promise<Promise<any>[]> => {
+    // TODO: Update Tasit SDK so that DecentralandUtils will support
+    // Rinkeby
     const decentralandUtils = new DecentralandUtils();
     const { getAllAssetsForSale: getAllOpenSellOrders } = decentralandUtils;
     const openSellOrders = await getAllOpenSellOrders();
@@ -70,7 +85,7 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
     const { landContract } = contracts;
     // Showing only parcels for now because of all estates are with blank images
     const parcelsForSale = [];
-    let order;
+    let order: { nftAddress: any };
 
     for (order of openSellOrders) {
       const { nftAddress } = order;
@@ -82,7 +97,7 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
     // Note: Getting only the first 10 assets for now
     // See more: https://github.com/tasitlabs/tasit/issues/155
     const listSize = 10;
-    let parcel;
+    let parcel: any;
     for (parcel of parcelsForSale.slice(0, listSize)) {
       const assetForSalePromise = _toAssetForSale(parcel);
       assetsForSale.push(assetForSalePromise);
@@ -90,7 +105,14 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
     return assetsForSale;
   };
 
-  const _toAssetForSale = async (sellOrder): Promise<object> => {
+  const _toAssetForSale = async (sellOrder: {
+    id: any;
+    nftAddress: any;
+    assetId: any;
+    seller: any;
+    priceInWei: any;
+    expiresAt: any;
+  }): Promise<object> => {
     const contracts = getContracts();
     const { estateContract, landContract } = contracts;
     const {
@@ -164,7 +186,7 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
   );
 };
 
-const mapStateToProps = (state): object => {
+const mapStateToProps = (state: { assetsForSale: any }): object => {
   const { assetsForSale } = state;
   return { assetsForSale };
 };
