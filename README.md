@@ -146,6 +146,8 @@ We love getting feedback, so please feel free to reach out.
 
 - [@TasitProject](https://twitter.com/TasitProject) on Twitter
 
+- [Discord](https://discordapp.com/invite/bRp4QKq)
+
 - [Telegram](https://t.me/tasitproject)
 
 - [Email](mailto:founders@tasit.io)
