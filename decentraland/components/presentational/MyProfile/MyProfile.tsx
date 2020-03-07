@@ -2,7 +2,10 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Colors from "../../../constants/Colors";
 
-import { responsiveWidth } from "react-native-responsive-dimensions";
+import {
+  responsiveWidth,
+  responsiveHeight,
+} from "react-native-responsive-dimensions";
 import MyProfileCreationStatusItem from "../MyProfileCreationStatusItem";
 import MyProfileProgress from "../MyProfileProgress";
 import Button from "../Button";
@@ -13,12 +16,11 @@ const styles = StyleSheet.create({
   actionItemsContainer: {
     flex: 5,
     flexDirection: "column",
-    alignItems: "flex-start",
     justifyContent: "flex-start",
-    paddingLeft: responsiveWidth(12),
   },
   buttonContainer: {
     alignItems: "center",
+    alignSelf: "center",
     flex: 1,
     justifyContent: "center",
   },
@@ -26,8 +28,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.backgroundColor,
-    alignItems: "flex-start",
     justifyContent: "flex-start",
+  },
+  creationSteps: {
+    alignSelf: "flex-start",
+    paddingLeft: responsiveWidth(12),
+  },
+  firstButton: {
+    marginBottom: responsiveHeight(1),
   },
 });
 
@@ -53,21 +61,28 @@ const MyProfile: React.FunctionComponent<MyProfileProps> = ({
     <View style={styles.container}>
       <MyProfileProgress progress={progress} />
       <View style={styles.actionItemsContainer}>
-        {creationSteps.map(action => {
-          const { name, status } = action;
+        <View style={styles.creationSteps}>
+          {creationSteps.map(action => {
+            const { name, status } = action;
 
-          return (
-            <MyProfileCreationStatusItem
-              key={name}
-              name={name}
-              status={status}
-            />
-          );
-        })}
+            return (
+              <MyProfileCreationStatusItem
+                key={name}
+                name={name}
+                status={status}
+              />
+            );
+          })}
+        </View>
+
         {/* TODO: Break this component up into a smaller snapshot */}
         <View style={styles.buttonContainer}>
-          <Button title="Move funds" onPress={onConnectClick} />
-          <Button title="Upgrade security" onPress={onUpgradeSecurityClick} />
+          <View style={styles.firstButton}>
+            <Button title="Move funds" onPress={onConnectClick} />
+          </View>
+          <View>
+            <Button title="Upgrade security" onPress={onUpgradeSecurityClick} />
+          </View>
         </View>
       </View>
     </View>
