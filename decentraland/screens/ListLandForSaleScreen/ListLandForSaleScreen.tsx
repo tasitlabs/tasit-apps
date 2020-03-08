@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { GlobalState } from "../../types/GlobalState";
+
 import {
   appendLandForSaleToList,
   selectLandToBuy,
@@ -24,21 +27,19 @@ interface AssetsForSale {
   loadingInProgress: boolean;
 }
 
-type ListLandForSaleScreenProps = {
+interface SelectedState {
   assetsForSale: AssetsForSale;
-  appendLandForSaleToList: (...args: any[]) => any;
-  selectLandToBuy: (...args: any[]) => any;
-  setLoadingAssetsForSaleInProgress: (...args: any[]) => any;
-  navigation: NavigationStackProp;
-};
+}
 
 // Note: This screen fetches data
-export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScreenProps> = ({
-  appendLandForSaleToList,
-  setLoadingAssetsForSaleInProgress,
-  assetsForSale,
-  selectLandToBuy,
-}) => {
+export const ListLandForSaleScreen: React.FunctionComponent = () => {
+  const dispatch = useDispatch();
+
+  const { assetsForSale } = useSelector<GlobalState, SelectedState>(state => {
+    const { assetsForSale } = state;
+    return { assetsForSale };
+  });
+
   useEffect(() => {
     const effectFunction = async (): Promise<void> => {
       try {
@@ -48,12 +49,12 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
         const loadingAssetsOnScreen = assetsForSale.map(promise => {
           const loadAssetOnScreen = async (): Promise<void> => {
             const assetForSale = await promise;
-            appendLandForSaleToList(assetForSale);
+            dispatch(appendLandForSaleToList(assetForSale));
           };
           return loadAssetOnScreen();
         });
         await Promise.all([...loadingAssetsOnScreen]);
-        setLoadingAssetsForSaleInProgress(false);
+        dispatch(setLoadingAssetsForSaleInProgress(false));
       } catch (err) {
         showError(err);
       }
@@ -139,7 +140,7 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
     // all it's used for.
 
     const handlePress = (): void => {
-      selectLandToBuy(landForSale);
+      dispatch(selectLandToBuy(landForSale));
       navigation.navigate("BuyLandScreen");
     };
 
@@ -164,18 +165,4 @@ export const ListLandForSaleScreen: React.FunctionComponent<ListLandForSaleScree
   );
 };
 
-const mapStateToProps = (state): object => {
-  const { assetsForSale } = state;
-  return { assetsForSale };
-};
-
-const mapDispatchToProps = {
-  appendLandForSaleToList,
-  setLoadingAssetsForSaleInProgress,
-  selectLandToBuy,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListLandForSaleScreen);
+export default ListLandForSaleScreen;
