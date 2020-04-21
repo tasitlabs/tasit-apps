@@ -1,9 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
 
 import AccountCreationStatus from "../../../constants/AccountCreationStatus";
 import { AccountCreationStatusType } from "../../../types/AccountCreationStatus";
 import LinkToBlockchain from "../LinkToBlockchain";
+import LargeText from "../LargeText";
 import { responsiveWidth } from "react-native-responsive-dimensions";
 import Colors from "../../../constants/Colors";
 
@@ -42,9 +43,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-  },
-  text: {
-    color: Colors.textColor,
   },
   textContainer: {
     maxWidth: responsiveWidth(80),
@@ -99,9 +97,8 @@ export const ProgressMessageAndLink: React.FunctionComponent<ProgressMessageAndL
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.text} adjustsFontSizeToFit={true} numberOfLines={2}>
-          {waitingMessage}
-        </Text>
+        <ActivityIndicator color={Colors.loadingColor} size="large" />
+        <LargeText>{waitingMessage}</LargeText>
       </View>
       <View>
         <LinkToBlockchain actionId={actionId} />
