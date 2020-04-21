@@ -275,7 +275,7 @@ const showToast = (msg: string): void =>
 
 export const showFatalError = (msg: string): void => console.error(msg);
 export const showError = (msg: string): void => showToast(`ERROR: ${msg}`);
-export const showWarn = (msg: any): void => showToast(`WARN: ${msg}`);
+export const showWarn = (msg: string): void => showToast(`WARN: ${msg}`);
 export const showInfo = (msg: string): void => showToast(`${msg}`);
 
 export const logInfo = (msg: string): void => console.info(msg);
