@@ -1,7 +1,6 @@
 # Tasit
 
 [![CircleCI](https://circleci.com/gh/tasitlabs/tasit.svg?style=svg)](https://circleci.com/gh/tasitlabs/tasit)
-[![Greenkeeper badge](https://badges.greenkeeper.io/tasitlabs/tasit.svg)](https://greenkeeper.io/)
 
 <div align="left">
   <img src="/docs/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
@@ -130,11 +129,11 @@ We're building the Tasit CLI in the [`cli` dir](./cli). It's still a work in pro
 
 ## Why are native dapps important?
 
-A major obstacle preventing the mainstream adoption of dapps is the clunky and confusing UX of today's dapps - typically happening within a mobile dapp browser (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-the-users-perspective)).
+A major obstacle preventing the mainstream adoption of dapps is the clunky and confusing UX of today's dapps - typically happening within a mobile dapp browser (more on that [here](https://docs.tasit.io/docs/why#why-from-the-users-perspective)).
 
 The focus for the Tasit products is on providing simple, third-party clients for popular dapps. The Tasit apps will provide delightful UX and simpler onboarding for the dapp and in some cases extra features too.
 
-From a developer's perspective, a lack of tooling means a great deal of grunt setup work is required with every project, slowing down product development and taking valuable time and focus way from business logic (more on that [here](https://github.com/tasitlabs/TasitSDK#why-from-a-developers--ethereum-enthusiasts-perspective)).
+From a developer's perspective, a lack of tooling means a great deal of grunt setup work is required with every project, slowing down product development and taking valuable time and focus way from business logic (more on that [here](https://docs.tasit.io/docs/why#why-from-a-developers--ethereum-enthusiasts-perspective)).
 
 Through the two-pronged approach with the Tasit native apps and the Tasit SDK, we hope to achieve the aim of mainstream Ethereum dapp adoption by making the experience significantly smoother and more enjoyable for both users and builders.
 
@@ -146,7 +145,9 @@ We love getting feedback, so please feel free to reach out.
 
 - [@TasitProject](https://twitter.com/TasitProject) on Twitter
 
-- [Telegram](https://t.me/tasitlabs)
+- [Discord](https://discordapp.com/invite/bRp4QKq)
+
+- [Telegram](https://t.me/tasitproject)
 
 - [Email](mailto:founders@tasit.io)
 

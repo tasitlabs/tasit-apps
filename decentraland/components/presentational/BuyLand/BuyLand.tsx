@@ -50,6 +50,10 @@ const BuyLand: React.FunctionComponent<BuyLandProps> = React.memo(props => {
   return (
     <View style={styles.container}>
       <LandForSale landForSale={landForSale} />
+      <AccountCreationProgress
+        status={accountCreationStatus}
+        actions={accountCreationActions}
+      />
       <View style={styles.buttonView}>
         <Button
           title={buttonTitle}
@@ -57,10 +61,6 @@ const BuyLand: React.FunctionComponent<BuyLandProps> = React.memo(props => {
           onPress={onPress}
         />
       </View>
-      <AccountCreationProgress
-        status={accountCreationStatus}
-        actions={accountCreationActions}
-      />
     </View>
   );
 });
