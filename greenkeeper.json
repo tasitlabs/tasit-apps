@@ -1,8 +1,0 @@
-{
-  "groups": {
-    "default": {
-      "packages": ["decentraland/package.json", "wallet-example/package.json"]
-    }
-  },
-  "ignore": ["react", "@types/react", "react-dom", "react-native", "react-navigation", "jest-expo", "react-redux", "react-native-gesture-handler", "react-native-reanimated", "react-native-appearance"]
-}
