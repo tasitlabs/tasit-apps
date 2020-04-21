@@ -29,6 +29,7 @@ interface AccountInfoObject {
 interface SelectedState {
   accountInfo: AccountInfoObject;
   landToBuy: any;
+  myAssets: any[];
 }
 
 import { NavigationStackProp } from "react-navigation-stack";
