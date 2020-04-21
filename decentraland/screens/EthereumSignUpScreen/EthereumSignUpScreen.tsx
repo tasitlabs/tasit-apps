@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { Account } from "tasit-sdk";
 
@@ -36,20 +36,16 @@ const {
 } = AccountCreationStatus;
 
 type EthereumSignUpScreenProps = {
-  setAccount: (...args: any[]) => any;
-  setAccountCreationStatus: (...args: any[]) => any;
-  updateActionIdForAccountCreationStatus: (...args: any[]) => any;
   navigation: NavigationStackProp;
   landToBuy: any;
 };
 
 export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenProps> = ({
-  setAccount,
-  setAccountCreationStatus,
-  updateActionIdForAccountCreationStatus,
   navigation,
   landToBuy,
 }) => {
+  const dispatch = useDispatch();
+
   const _onboarding = async (): Promise<void> => {
     try {
       // The pattern for each step is:
@@ -77,8 +73,8 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         // TODO: Decide on sync vs. async function for account creation
 
         showInfo(`Account generated`);
-        setAccount(account);
-        setAccountCreationStatus(FUNDING_WITH_ETH);
+        dispatch(setAccount(account));
+        dispatch(setAccountCreationStatus(FUNDING_WITH_ETH));
         return account;
       };
 
@@ -90,28 +86,34 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         console.info("Sent the ETH transfer action");
         const actionId = action.getId();
         console.info({ actionId });
-        updateActionIdForAccountCreationStatus({
-          status: FUNDING_WITH_ETH,
-          actionId,
-        });
+        dispatch(
+          updateActionIdForAccountCreationStatus({
+            status: FUNDING_WITH_ETH,
+            actionId,
+          })
+        );
         await action.waitForOneConfirmation();
         // TODO: Change me to pub/sub style
         showInfo(`Account funded with ETH`);
-        setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE);
+        dispatch(
+          setAccountCreationStatus(FUNDING_WITH_MANA_AND_APPROVING_MARKETPLACE)
+        );
       };
 
       const fundWithMana = async (accountAddress: string): Promise<void> => {
         const action = fundAccountWithMana(accountAddress);
         await action.send();
         const actionId = action.getId();
-        updateActionIdForAccountCreationStatus({
-          status: FUNDING_WITH_MANA,
-          actionId,
-        });
+        dispatch(
+          updateActionIdForAccountCreationStatus({
+            status: FUNDING_WITH_MANA,
+            actionId,
+          })
+        );
         await action.waitForOneConfirmation();
         // TODO: Change me to pub/sub style
         showInfo(`Account funded with MANA`);
-        setAccountCreationStatus(APPROVING_MARKETPLACE);
+        dispatch(setAccountCreationStatus(APPROVING_MARKETPLACE));
       };
 
       const approveMarketplace = async (
@@ -120,15 +122,17 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         const action = approveManaSpending(account);
         await action.send();
         const actionId = action.getId();
-        updateActionIdForAccountCreationStatus({
-          status: APPROVING_MARKETPLACE,
-          actionId,
-        });
+        dispatch(
+          updateActionIdForAccountCreationStatus({
+            status: APPROVING_MARKETPLACE,
+            actionId,
+          })
+        );
 
         await action.waitForOneConfirmation();
         // TODO: Change me to pub/sub style
         showInfo(`Marketplace approved`);
-        setAccountCreationStatus(FUNDING_WITH_MANA);
+        dispatch(setAccountCreationStatus(FUNDING_WITH_MANA));
       };
 
       ///
@@ -149,14 +153,14 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
       landToBuy
         ? showInfo(`Now you can buy land!`)
         : showInfo(`Your account is set up now!`);
-      setAccountCreationStatus(READY_TO_USE);
+      dispatch(setAccountCreationStatus(READY_TO_USE));
     } catch (error) {
       showError(error);
     }
   };
 
   const _onUsernameSubmit = (): void => {
-    setAccountCreationStatus(GENERATING_ACCOUNT);
+    dispatch(setAccountCreationStatus(GENERATING_ACCOUNT));
 
     // Note: A trick to force `_onboarding()` function to running async
     (async (): Promise<void> => {})().then((): void => {
@@ -173,18 +177,4 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
   return <EthereumSignUp onUsernameSubmit={_onUsernameSubmit} />;
 };
 
-const mapStateToProps = (state: { landToBuy: any }): object => {
-  const { landToBuy } = state;
-  return { landToBuy };
-};
-
-const mapDispatchToProps = {
-  setAccount,
-  setAccountCreationStatus,
-  updateActionIdForAccountCreationStatus,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EthereumSignUpScreen);
+export default EthereumSignUpScreen;

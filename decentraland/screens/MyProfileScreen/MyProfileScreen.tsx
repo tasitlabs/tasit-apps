@@ -1,6 +1,8 @@
 import React from "react";
 import MyProfile from "../../components/presentational/MyProfile";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+
+import { GlobalState } from "../../types/GlobalState";
 
 import {
   GENERATING_ACCOUNT,
@@ -62,7 +64,6 @@ interface AccountInfo {
 }
 
 type MyProfileScreenProps = {
-  accountInfo?: AccountInfo;
   navigation: NavigationStackProp;
 };
 
@@ -86,9 +87,10 @@ function _getPercentage(
 }
 
 export const MyProfileScreen: React.FunctionComponent<MyProfileScreenProps> = ({
-  accountInfo,
   navigation,
 }) => {
+  const { accountInfo } = useSelector<GlobalState, GlobalState>(state => state);
+
   const onConnectClick = (): boolean =>
     navigation.navigate("EthereumSignInScreen");
 
@@ -118,9 +120,4 @@ export const MyProfileScreen: React.FunctionComponent<MyProfileScreenProps> = ({
   );
 };
 
-const mapStateToProps = (state: { accountInfo: any }): object => {
-  const { accountInfo } = state;
-  return { accountInfo };
-};
-
-export default connect(mapStateToProps)(MyProfileScreen);
+export default MyProfileScreen;

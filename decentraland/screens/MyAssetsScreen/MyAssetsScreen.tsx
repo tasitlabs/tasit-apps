@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { GlobalState } from "../../types/GlobalState";
+
 import {
   removeFromMyAssetsList,
   appendToMyAssetsList,
@@ -31,24 +34,26 @@ interface AssetsAndActionsObject {
   actionsFromBlockchain: object;
 }
 
-type MyAssetsScreenProps = {
+interface SelectedState {
   myAssets: AssetObject[];
   account?: AccountObject;
   userActions: UserActionObject[];
-  removeFromMyAssetsList: (assetOrAssetsToRemove: object | object[]) => object;
-  appendToMyAssetsList: (assetOrAssetsToRemove: object | object[]) => object;
-  addUserAction: (userAction: object) => object;
-};
+}
 
 // Note: This screen fetches data
-export const MyAssetsScreen: React.FunctionComponent<MyAssetsScreenProps> = ({
-  account,
-  removeFromMyAssetsList,
-  appendToMyAssetsList,
-  addUserAction,
-  myAssets: assetsFromState,
-  userActions,
-}) => {
+export const MyAssetsScreen: React.FunctionComponent = () => {
+  const dispatch = useDispatch();
+
+  const { myAssets: assetsFromState, account, userActions } = useSelector<
+    GlobalState,
+    SelectedState
+  >(state => {
+    const { myAssets, accountInfo, userActions } = state;
+    const { account } = accountInfo;
+    const { list: myAssetsList } = myAssets;
+    return { myAssets: myAssetsList, account, userActions };
+  });
+
   useEffect(() => {
     const useEffectFunction = async (): Promise<void> => {
       if (account) {
@@ -64,9 +69,9 @@ export const MyAssetsScreen: React.FunctionComponent<MyAssetsScreenProps> = ({
         if (shouldUpdate) {
           // TODO: Add some UI indication that something unexpected happened
           _logAssetsInconsistency(assetsFromBlockchain, boughtAssets);
-          removeFromMyAssetsList(boughtAssets);
-          appendToMyAssetsList(assetsFromBlockchain);
-          addUserAction(actionsFromBlockchain);
+          dispatch(removeFromMyAssetsList(boughtAssets));
+          dispatch(appendToMyAssetsList(assetsFromBlockchain));
+          dispatch(addUserAction(actionsFromBlockchain));
         }
       }
     };
@@ -166,15 +171,4 @@ export const MyAssetsScreen: React.FunctionComponent<MyAssetsScreenProps> = ({
   );
 };
 
-const mapStateToProps = (state): object => {
-  const { myAssets, accountInfo, userActions } = state;
-  const { account } = accountInfo;
-  const { list: myAssetsList } = myAssets;
-  return { myAssets: myAssetsList, account, userActions };
-};
-const mapDispatchToProps = {
-  removeFromMyAssetsList,
-  appendToMyAssetsList,
-  addUserAction,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(MyAssetsScreen);
+export default MyAssetsScreen;
