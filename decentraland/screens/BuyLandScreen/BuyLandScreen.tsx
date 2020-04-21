@@ -1,6 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StackActions } from "react-navigation";
+
+import { GlobalState } from "../../types/GlobalState";
 
 import {
   removeLandForSale,
@@ -24,32 +26,32 @@ interface AccountInfoObject {
   creationActions: any[];
 }
 
+interface SelectedState {
+  accountInfo: AccountInfoObject;
+  landToBuy: any;
+  myAssets: any[];
+}
+
 import { NavigationStackProp } from "react-navigation-stack";
 
 type BuyLandScreenProps = {
-  accountInfo?: AccountInfoObject;
-  landToBuy: object;
   navigation: NavigationStackProp;
-  myAssets: any[];
-  removeLandForSale: (...args: any[]) => any;
-  prependLandForSaleToList: (...args: any[]) => any;
-  removeFromMyAssetsList: (assetOrAssetsToRemove: object | object[]) => object;
-  prependToMyAssetsList: (...args: any[]) => any;
-  addUserAction: (userAction: object) => object;
-  updateUserActionStatus: (...args: any[]) => any;
 };
 
 export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
-  landToBuy: landForSale,
-  accountInfo,
   navigation,
-  removeLandForSale,
-  prependLandForSaleToList,
-  removeFromMyAssetsList,
-  prependToMyAssetsList,
-  addUserAction,
-  updateUserActionStatus,
 }) => {
+  const dispatch = useDispatch();
+
+  const { accountInfo, landToBuy: landForSale } = useSelector<
+    GlobalState,
+    SelectedState
+  >(state => {
+    const { accountInfo, landToBuy, myAssets } = state;
+    const { list: myAssetsList } = myAssets;
+    return { accountInfo, landToBuy, myAssets: myAssetsList };
+  });
+
   const _onBuy = (landForSale): void => {
     try {
       const { account } = accountInfo;
@@ -77,14 +79,14 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
       console.info("onError triggered", message);
       const { asset } = assetForSale;
       showError(message);
-      removeFromMyAssetsList(asset);
+      dispatch(removeFromMyAssetsList(asset));
       // TODO: We encountered an error state where the land for
       // sale was still in the list, which means prepending it
       // was redundant and triggering another error.
       // Decide whether to have prependLandForSaleToList
       // dedupe before prepending, or whether to ensure that even in
       // error states the land has been removed before getting here
-      prependLandForSaleToList(assetForSale);
+      dispatch(prependLandForSaleToList(assetForSale));
     };
 
     showInfo(`Buying the ${typeDescription.toLowerCase()}...`);
@@ -97,7 +99,7 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
       // TODO: Change me to pub/sub style
       const actionId = await action.getId();
       console.info("actionId", actionId);
-      updateUserActionStatus({ actionId, status: SUCCESSFUL });
+      dispatch(updateUserActionStatus({ actionId, status: SUCCESSFUL }));
       showInfo(`${typeDescription} bought successfully.`);
     };
 
@@ -108,8 +110,8 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
 
     console.info("action", action);
     // Optimistic UI update
-    removeLandForSale(landForSale);
-    prependToMyAssetsList(asset);
+    dispatch(removeLandForSale(landForSale));
+    dispatch(prependToMyAssetsList(asset));
 
     // Back to top of current Stack before navigate
     navigation.dispatch(StackActions.popToTop());
@@ -118,7 +120,7 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
     const actionId = await action.getId();
     console.info({ actionId });
     const userAction = { [actionId]: { status: PENDING, assetId } };
-    addUserAction(userAction);
+    dispatch(addUserAction(userAction));
     onSuccess();
   };
 
@@ -174,19 +176,4 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
   );
 };
 
-const mapStateToProps = (state): object => {
-  const { accountInfo, landToBuy, myAssets } = state;
-  const { list: myAssetsList } = myAssets;
-  return { accountInfo, landToBuy, myAssets: myAssetsList };
-};
-
-const mapDispatchToProps = {
-  removeLandForSale,
-  prependLandForSaleToList,
-  prependToMyAssetsList,
-  removeFromMyAssetsList,
-  addUserAction,
-  updateUserActionStatus,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BuyLandScreen);
+export default BuyLandScreen;
