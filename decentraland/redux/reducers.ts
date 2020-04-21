@@ -16,7 +16,7 @@ import {
   ADD_USER_ACTION,
   UPDATE_USER_ACTION_STATUS,
 } from "./actions";
-import { removeFromList, toListIfNot } from "../helpers";
+import { removeFromList, isInList, toListIfNot } from "../helpers";
 
 import AccountCreationStatus from "../constants/AccountCreationStatus";
 const { NOT_STARTED } = AccountCreationStatus;
@@ -36,24 +36,33 @@ function createReducer(initialState, handlers) {
 //
 // accountInfo reducer
 //
-const setAccount = (state, action): object => {
+const setAccount = (state: {}, action: { account: any }): object => {
   const { account } = action;
   return { ...state, account };
 };
 
-const setAccountCreationStatus = (state, action): object => {
+const setAccountCreationStatus = (
+  state: {},
+  action: { creationStatus: any }
+): object => {
   const { creationStatus } = action;
   return { ...state, creationStatus };
 };
 
-const updateActionIdForAccountCreationStatus = (state, action): object => {
+const updateActionIdForAccountCreationStatus = (
+  state: { creationActions?: any },
+  action: { creationStatusAction: any }
+): object => {
   const { creationStatusAction } = action;
   const { status, actionId } = creationStatusAction;
   let { creationActions } = state;
   creationActions = { ...creationActions, [status]: actionId };
   return { ...state, creationActions };
 };
-const setAccountCreationActions = (state, action): object => {
+const setAccountCreationActions = (
+  state: {},
+  action: { creationActions: any }
+): object => {
   const { creationActions } = action;
   return { ...state, creationActions };
 };
@@ -75,7 +84,7 @@ const accountInfo = createReducer(
 //
 // landToBuy reducer
 //
-const selectLandToBuy = (state, action): object => {
+const selectLandToBuy = (state: any, action: { landForSale: any }): object => {
   const { landForSale } = action;
   return landForSale;
 };
@@ -87,7 +96,10 @@ const landToBuy = createReducer(null, {
 //
 // assetsForSale reducer
 //
-const prependLandForSaleToList = (state, action): object => {
+const prependLandForSaleToList = (
+  state: { list?: any },
+  action: { landForSale: any }
+): object => {
   const { landForSale } = action;
   const { id } = landForSale;
   const { list: assetsForSale } = state;
@@ -99,16 +111,37 @@ const prependLandForSaleToList = (state, action): object => {
   return { ...state, list: [landForSale, ...state.list] };
 };
 
-const appendLandForSaleToList = (state, action): object => {
+const appendLandForSaleToList = (
+  state: { list?: any },
+  action: { landForSale: any }
+): object => {
   const { landForSale } = action;
   const { id } = landForSale;
   // const { list: assetsForSale } = state;
   // console.info("previous for sale list length", assetsForSale.length);
   console.info("append landForSale id", id);
+  // Note: Having list be an object enforces unique keys
+  // TODO: Have it be an object elsewhere OR
+  // make sure the list is purged so we couldn't get to the state
+  // with duplicate keys in an array
+  // in the first place
+  // Only ran into issues here when the effect to trigger this
+  // was being called on every mount rather than just
+  // when it needed to be
+  // if (isInList(state.list, landForSale)) {
+  //   // console.log("Already in list")
+  //   return { ...state }
+  // } else {
+
   return { ...state, list: [...state.list, landForSale] };
+  // return { ...state, list: { ...state.list, landForSale } };
+  // }
 };
 
-const removeLandForSale = (state, action): object => {
+const removeLandForSale = (
+  state: { list?: any },
+  action: { landForSale: any }
+): object => {
   const { landForSale } = action;
   const { id } = landForSale;
   console.info("remove landForSale id", id);
@@ -118,7 +151,10 @@ const removeLandForSale = (state, action): object => {
   return { ...state, list };
 };
 
-const setLoadingAssetsForSaleInProgress = (state, action): object => {
+const setLoadingAssetsForSaleInProgress = (
+  state: {},
+  action: { loadingInProgress: any }
+): object => {
   const { loadingInProgress } = action;
   return { ...state, loadingInProgress };
 };
@@ -136,7 +172,10 @@ const assetsForSale = createReducer(
 //
 // myAssets reducer
 //
-const prependToMyAssetsList = (state, action): object => {
+const prependToMyAssetsList = (
+  state: { list?: any },
+  action: { myAsset: any }
+): object => {
   const { myAsset } = action;
   const { list: myAssets } = state;
   console.info("previous my assets list", myAssets);
@@ -144,7 +183,10 @@ const prependToMyAssetsList = (state, action): object => {
   return { ...state, list: [myAsset, ...state.list] };
 };
 
-const appendToMyAssetsList = (state, action): object => {
+const appendToMyAssetsList = (
+  state: { list?: any },
+  action: { itemOrList: any }
+): object => {
   const { itemOrList } = action;
   const { list: myAssets } = state;
   console.info("previous my assets list", myAssets);
@@ -153,7 +195,10 @@ const appendToMyAssetsList = (state, action): object => {
   return { ...state, list: [...state.list, ...toAppend] };
 };
 
-const removeFromMyAssetsList = (state, action): object => {
+const removeFromMyAssetsList = (
+  state: { list?: any },
+  action: { itemOrList: any }
+): object => {
   const { itemOrList } = action;
   const { list: myAssets } = state;
   console.info("previous my assets list", myAssets);
@@ -163,7 +208,7 @@ const removeFromMyAssetsList = (state, action): object => {
   return { ...state, list };
 };
 
-const setMyAssetsList = (state, action): object => {
+const setMyAssetsList = (state: {}, action: { myAssets: any }): object => {
   const { myAssets } = action;
   const list = myAssets === null ? [] : myAssets;
   return { ...state, list };
@@ -182,12 +227,15 @@ const myAssets = createReducer(
 //
 // userActions reducer
 //
-const addUserAction = (state, action): object => {
+const addUserAction = (state: {}, action: { userAction: any }): object => {
   const { userAction } = action;
   return { ...state, ...userAction };
 };
 
-const updateUserActionStatus = (state, action): object => {
+const updateUserActionStatus = (
+  state: object,
+  action: { actionIdAndStatus: any }
+): object => {
   const { actionIdAndStatus } = action;
   const { actionId, status } = actionIdAndStatus;
 

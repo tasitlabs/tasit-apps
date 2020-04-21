@@ -13,3 +13,4 @@ web-build/
 web-report/
 
 config/current.ts
+.watchman-cookie*

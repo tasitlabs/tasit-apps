@@ -13,7 +13,7 @@
     "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
     "upgrade": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'",
-    "upgrade:write": "npx ncu -u -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance'"
+    "upgrade:write": "npm run upgrade -- -u"
   },
   "jest": {
     "preset": "jest-expo",

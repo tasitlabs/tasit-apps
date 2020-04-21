@@ -38,6 +38,11 @@ type BuyLandScreenProps = {
   navigation: NavigationStackProp;
 };
 
+interface LandForSale {
+  asset: any;
+  id: any;
+}
+
 export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
   navigation,
 }) => {
@@ -52,7 +57,7 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
     return { accountInfo, landToBuy, myAssets: myAssetsList };
   });
 
-  const _onBuy = (landForSale): void => {
+  const _onBuy = (landForSale: LandForSale): void => {
     try {
       const { account } = accountInfo;
       if (!account) _setupAccount();
@@ -66,7 +71,7 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
     navigation.navigate("OnboardingHomeScreen");
   };
 
-  const _buy = async (landForSale): Promise<void> => {
+  const _buy = async (landForSale: LandForSale): Promise<void> => {
     const { account } = accountInfo;
     const { asset, id: landId } = landForSale;
 
@@ -75,7 +80,7 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
     if (type !== ESTATE && type !== PARCEL) showError(`Unknown asset.`);
     const typeDescription = type == ESTATE ? "Estate" : "Parcel";
 
-    const onError = (assetForSale, message): void => {
+    const onError = (assetForSale: { asset: any }, message: string): void => {
       console.info("onError triggered", message);
       const { asset } = assetForSale;
       showError(message);
@@ -125,9 +130,12 @@ export const BuyLandScreen: React.FunctionComponent<BuyLandScreenProps> = ({
   };
 
   const _executeOrder = async (
-    sellOrder,
-    account,
-    onError
+    sellOrder: { priceManaInWei: any; asset: any },
+    account: any,
+    onError: {
+      (assetForSale: any, message: any): void;
+      (arg0: any, arg1: any): void;
+    }
   ): Promise<object> => {
     try {
       const { priceManaInWei: priceInWei, asset } = sellOrder;

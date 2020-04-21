@@ -14,21 +14,25 @@ import ActionStatus from "../../../types/ActionStatus";
 
 const styles = StyleSheet.create({
   actionItemsContainer: {
-    flex: 5,
-    flexDirection: "column",
+    flex: 1,
+    // flexDirection: "column",
     justifyContent: "flex-start",
-  },
+    paddingBottom: responsiveHeight(3),
+      },
   buttonContainer: {
     alignItems: "center",
     alignSelf: "center",
     flex: 1,
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    // justifyContent: "center",
   },
   container: {
     flex: 1,
     flexDirection: "column",
     backgroundColor: Colors.backgroundColor,
-    justifyContent: "flex-start",
+    alignItems: "center",
+    justifyContent: "center",
   },
   creationSteps: {
     alignSelf: "flex-start",
@@ -49,12 +53,14 @@ interface MyProfileProps {
   onConnectClick: (...args: any[]) => any;
   onUpgradeSecurityClick: (...args: any[]) => any;
   creationSteps: CreationStepObject[];
+  securityLabel: string;
 }
 
 const MyProfile: React.FunctionComponent<MyProfileProps> = ({
   progress,
   creationSteps,
   onConnectClick,
+  securityLabel,
   onUpgradeSecurityClick,
 }) => {
   return (

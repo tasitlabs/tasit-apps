@@ -73,7 +73,7 @@ export const MyAssetInfo: React.FunctionComponent<MyAssetInfoProps> = React.memo
           <AssetName name={name} />
         </View>
         <View style={styles.linkContainer}>
-          <LinkToBlockchain actionId={actionId} />
+          <LinkToBlockchain actionId={actionId} type="action" />
         </View>
       </View>
     );

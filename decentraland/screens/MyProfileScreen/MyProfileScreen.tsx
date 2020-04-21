@@ -36,7 +36,10 @@ const creationSteps = [
   },
 ];
 
-const stepWasDone = (step, accountInfo): boolean => {
+const stepWasDone = (
+  step: { name?: string; creationStatus: any; percentage?: number },
+  accountInfo: AccountInfo
+): boolean => {
   const { creationActions, account } = accountInfo;
   const { creationStatus } = step;
   const statusWithAction = [
@@ -55,14 +58,31 @@ const stepWasDone = (step, accountInfo): boolean => {
 
 import { NavigationStackProp } from "react-navigation-stack";
 
+interface AccountInfo {
+  account: string;
+  creationActions: any;
+}
+
 type MyProfileScreenProps = {
   navigation: NavigationStackProp;
 };
 
-function _getPercentage(creationSteps): number {
+function _getPercentage(
+  creationSteps: {
+    status: ActionStatus;
+    name: string;
+    creationStatus: string;
+    percentage: number;
+  }[]
+): number {
   const percentage = creationSteps
-    .filter(step => step.status === ActionStatus.DONE)
-    .reduce((total, step) => total + step.percentage, 0);
+    .filter(
+      (step: { status: ActionStatus }) => step.status === ActionStatus.DONE
+    )
+    .reduce(
+      (total: number, step: { percentage: number }) => total + step.percentage,
+      0
+    );
   return percentage;
 }
 
@@ -74,8 +94,12 @@ export const MyProfileScreen: React.FunctionComponent<MyProfileScreenProps> = ({
   const onConnectClick = (): boolean =>
     navigation.navigate("EthereumSignInScreen");
 
+  const { account } = accountInfo;
+
   const onUpgradeSecurityClick = (): boolean =>
-    navigation.navigate("EthereumUpgradeSecurityScreen");
+    account
+      ? navigation.navigate("EthereumUpgradeSecurityScreen")
+      : navigation.navigate("OnboardingHomeScreen");
 
   const creationStepsWithStatus = creationSteps.map(step => {
     const wasDone = stepWasDone(step, accountInfo);
@@ -91,6 +115,7 @@ export const MyProfileScreen: React.FunctionComponent<MyProfileScreenProps> = ({
       creationSteps={creationStepsWithStatus}
       onConnectClick={onConnectClick}
       onUpgradeSecurityClick={onUpgradeSecurityClick}
+      securityLabel={account ? "Upgrade security more" : "Upgrade security"}
     />
   );
 };

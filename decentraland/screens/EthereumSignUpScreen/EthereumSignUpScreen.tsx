@@ -37,10 +37,12 @@ const {
 
 type EthereumSignUpScreenProps = {
   navigation: NavigationStackProp;
+  landToBuy: any;
 };
 
 export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenProps> = ({
   navigation,
+  landToBuy,
 }) => {
   const dispatch = useDispatch();
 
@@ -82,7 +84,7 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         // TODO: Type this action object
         await action.send();
         console.info("Sent the ETH transfer action");
-        const actionId = await action.getId();
+        const actionId = action.getId();
         console.info({ actionId });
         dispatch(
           updateActionIdForAccountCreationStatus({
@@ -98,10 +100,10 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         );
       };
 
-      const fundWithMana = async (accountAddress): Promise<void> => {
+      const fundWithMana = async (accountAddress: string): Promise<void> => {
         const action = fundAccountWithMana(accountAddress);
         await action.send();
-        const actionId = await action.getId();
+        const actionId = action.getId();
         dispatch(
           updateActionIdForAccountCreationStatus({
             status: FUNDING_WITH_MANA,
@@ -114,10 +116,12 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         dispatch(setAccountCreationStatus(APPROVING_MARKETPLACE));
       };
 
-      const approveMarketplace = async (account): Promise<void> => {
+      const approveMarketplace = async (
+        account: AccountObject
+      ): Promise<void> => {
         const action = approveManaSpending(account);
         await action.send();
-        const actionId = await action.getId();
+        const actionId = action.getId();
         dispatch(
           updateActionIdForAccountCreationStatus({
             status: APPROVING_MARKETPLACE,
@@ -146,7 +150,9 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
         fundWithMana(accountAddress),
         approveMarketplace(account),
       ]);
-      showInfo(`Now you can buy land!`);
+      landToBuy
+        ? showInfo(`Now you can buy land!`)
+        : showInfo(`Your account is set up now!`);
       dispatch(setAccountCreationStatus(READY_TO_USE));
     } catch (error) {
       showError(error);
@@ -163,7 +169,9 @@ export const EthereumSignUpScreen: React.FunctionComponent<EthereumSignUpScreenP
       _onboarding();
     });
 
-    navigation.navigate("BuyLandScreen");
+    landToBuy
+      ? navigation.navigate("BuyLandScreen")
+      : navigation.navigate("MyProfileScreen");
   };
 
   return <EthereumSignUp onUsernameSubmit={_onUsernameSubmit} />;
