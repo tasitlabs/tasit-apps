@@ -7,3 +7,10 @@ npm-debug.*
 *.key
 *.mobileprovision
 config/current.js
+
+*.orig.*
+web-build/
+web-report/
+
+config/current.ts
+.watchman-cookie*
