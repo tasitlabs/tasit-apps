@@ -7,7 +7,7 @@ jobs:
   build_decentraland:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.13
+      - image: circleci/node:10.16
 
     working_directory: ~/tasit/decentraland
 
@@ -43,7 +43,7 @@ jobs:
   build_wallet_example:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.13
+      - image: circleci/node:10.16
 
     working_directory: ~/tasit/wallet-example
 
