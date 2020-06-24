@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "Decentraland",
+    "description": "An app for buying Decentraland land using the Tasit SDK",
+    "slug": "tasit-decentraland",
+    "privacy": "unlisted",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "0.0.24",
+    "orientation": "portrait",
+    "icon": "./assets/images/TasitLogoFromSvgNoAlpha1024x1024.png",
+    "scheme": "tasit-decentraland",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "io.tasit.decentraland",
+      "buildNumber": "24",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "tasit-wallet",
+          "gnosis-safe"
+        ]
+      }
+    },
+    "android": {
+      "package": "io.tasit.decentraland",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/TasitLogoFromSvgTransparent1024x1024.png"
+      },
+      "icon": "./assets/images/TasitLogoFromSvgTransparentAndOpaque1024x1024.png",
+      "permissions": [],
+      "versionCode": 24
+    }
+  }
+}
