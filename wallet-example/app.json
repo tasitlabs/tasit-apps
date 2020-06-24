@@ -3,7 +3,6 @@
     "name": "Tasit Wallet",
     "slug": "tasit-wallet-example",
     "privacy": "unlisted",
-    "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
       "android"
