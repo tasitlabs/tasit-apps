@@ -1,34 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Account from "@tasit/account";
-// import { useAccount, AccountOptions } from "@tasit/hooks";
+// import Account from "@tasit/account";
+import { useAccount, AccountOptions } from "@tasit/hooks";
 import * as Random from 'expo-random';
 // ...
 
 export default function App() {
-  useEffect(() => {
-    async function makeAccount() {
-      const randomBytes = await Random.getRandomBytesAsync(16);
 
-      // Using Account
-      const account = Account.createUsingRandomness(randomBytes);
-      console.log({ account })
-      const { address: accountAddress, privateKey } = account;
-      console.log({ accountAddress });
-      console.log({ privateKey });
+  ///
+  // Option 1: Use vanilla React hooks + @tasit/account
+  ///
+
+  // useEffect(() => {
+  //   async function makeAccount() {
+  //     const randomBytes = await Random.getRandomBytesAsync(16);
+
+  //     const account = Account.createUsingRandomness(randomBytes);
+  //     console.log({ account })
+  //     const { address: accountAddress, privateKey } = account;
+  //     console.log({ accountAddress });
+  //     console.log({ privateKey });
       
-      // // Using useAccount hook
-      // const options: AccountOptions = {
-      //   randomBytes
-      // }
-      // const [address, addressDefined] = useAccount(options);
+  //   }
+  //   makeAccount();
+  // }, []); // Just run this once
+
+  ///
+  // Option 2: Use the useAccount hook from @tasit/hooks
+  ///
+
+  // Note: If your app has a single data store like redux or if it uses
+  // Apollo which internally has a single data store, then you could use
+  // a useReducer hook (in the case of redux) or a useMutation hook
+  // (in the case of Apollo) rather than using useState here.
+  const [randomBytes, setRandomBytes] = useState(new Uint8Array());
+  const [randomBytesGenerated, setRandomBytesGenerated] = useState(false);
+
+  useEffect(() => {
+    async function makeRandomBytes() {
+      const randomBytes = await Random.getRandomBytesAsync(16);
+      setRandomBytes(randomBytes);
+      setRandomBytesGenerated(true);      
     }
-    makeAccount();
-  }, []); // Our effect doesn't use any variables in the component scope
+    makeRandomBytes();
+  }, []); // Just run this once
+
+  const accountOptions: AccountOptions = {
+    randomBytes,
+    randomBytesGenerated
+  };
+  const [address, addressDefined] = useAccount(accountOptions);
 
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Text>{addressDefined ? "Ready" : "Not ready"} Open up App.tsx to start working on your app! {address}</Text>
     </View>
   );
 }
