@@ -38,22 +38,23 @@ export default function App() {
 
   useEffect(() => {
     async function makeRandomBytes() {
-      const randomBytes = await Random.getRandomBytesAsync(16);
+      const randomBytes = await Random.getRandomBytesAsync(3);
+      console.log('randomBytes generated');
       setRandomBytes(randomBytes);
       setRandomBytesGenerated(true);      
     }
     makeRandomBytes();
   }, []); // Just run this once
 
-  const accountOptions: AccountOptions = {
+  const [address, addressDefined] = useAccount({
     randomBytes,
     randomBytesGenerated
-  };
-  const [address, addressDefined] = useAccount(accountOptions);
+  });
 
   return (
     <View style={styles.container}>
-      <Text>{addressDefined ? "Ready" : "Not ready"} Open up App.tsx to start working on your app! {address}</Text>
+      <Text>{addressDefined ? "Ready" : "Not ready"}</Text>
+      <Text>{address}</Text>
     </View>
   );
 }

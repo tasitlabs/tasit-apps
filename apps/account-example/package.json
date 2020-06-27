@@ -2,13 +2,14 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "npx expo start -c",
-    "android": "npx expo start --android",
-    "ios": "npx expo start --ios",
-    "web": "npx expo start --web",
+    "android": "npx expo start -c --android",
+    "ios": "npx expo start -c --ios",
+    "web": "npx expo start -c --web",
     "eject": "npx expo eject"
   },
   "dependencies": {
     "@tasit/account": "0.0.21",
+    "@tasit/hooks": "0.0.21",
     "expo": "^38.0.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
@@ -22,7 +23,7 @@
     "@types/react": "~16.9.41",
     "@types/react-native": "~0.62.13",
     "babel-preset-expo": "^8.2.3",
-    "expo-cli": "^3.21.10",
+    "expo-cli": "^3.21.13",
     "typescript": "~3.9.5"
   },
   "private": true
