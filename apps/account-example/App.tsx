@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 // import Account from "@tasit/account";
 import { useAccount, AccountOptions } from "@tasit/hooks";
-import * as Random from 'expo-random';
+import * as Random from "expo-random";
 // ...
 
 export default function App() {
-
   ///
   // Option 1: Use vanilla React hooks + @tasit/account
   ///
@@ -20,7 +19,7 @@ export default function App() {
   //     const { address: accountAddress, privateKey } = account;
   //     console.log({ accountAddress });
   //     console.log({ privateKey });
-      
+
   //   }
   //   makeAccount();
   // }, []); // Just run this once
@@ -36,34 +35,36 @@ export default function App() {
   const [randomBytes, setRandomBytes] = useState(new Uint8Array());
   // const [randomBytesGenerated, setRandomBytesGenerated] = useState(false);
 
-  console.log("New render")
-  console.log({ randomBytes })
-  console.log("randomBytes.length")
-  console.log(randomBytes.length)
+  console.log("New render");
+  console.log({ randomBytes });
+  console.log("randomBytes.length");
+  console.log(randomBytes.length);
 
   useEffect(() => {
     let isMounted = true;
     async function makeRandomBytes() {
-      const randomBytesThatWereGenerated = await Random.getRandomBytesAsync(3);
+      const randomBytesThatWereGenerated = await Random.getRandomBytesAsync(16);
       if (isMounted) {
-        console.log('randomBytes generated');
+        console.log("randomBytes generated");
         setRandomBytes(randomBytesThatWereGenerated);
-      }   
+      }
     }
     makeRandomBytes();
-    return () => { isMounted = false };
+    return () => {
+      isMounted = false;
+    };
   }, []); // Just run this once
 
-  const randomBytesGenerated = randomBytes.length !== 0
+  const randomBytesGenerated = randomBytes.length !== 0;
 
   const [address] = useAccount({
     randomBytes,
-    randomBytesGenerated
+    randomBytesGenerated,
   });
 
-  console.log({ address })
+  console.log({ address });
 
-  const addressDefined = address !== ""
+  const addressDefined = address !== "";
 
   return (
     <View style={styles.container}>
@@ -77,8 +78,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

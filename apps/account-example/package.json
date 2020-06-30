@@ -7,25 +7,33 @@
     "web": "npx expo start -c --web",
     "eject": "npx expo eject",
     "update": "npx ncu -x 'react, react-dom, react-native-web, @types/react-native, @babel/core'",
-    "update:write": "npm run update -- -u"
+    "update:write": "npm run update -- -u",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx}' --quiet --fix"
   },
   "dependencies": {
-    "@tasit/hooks": "0.0.21",
-    "expo": "^38.0.0",
+    "expo": "^38.0.4",
+    "expo-random": "~8.2.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-screens": "~2.9.0",
-    "react-native-web": "~0.11.7",
-    "expo-random": "~8.2.1"
+    "react-native-web": "~0.11.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@types/react": "~16.9.41",
     "@types/react-native": "~0.62.13",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
     "babel-preset-expo": "^8.2.3",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.2",
+    "eslint-plugin-react-hooks": "^4.0.5",
     "expo-cli": "^3.21.13",
     "npm-check-updates": "^7.0.1",
+    "prettier": "^2.0.5",
     "typescript": "~3.9.5"
   },
   "private": true
