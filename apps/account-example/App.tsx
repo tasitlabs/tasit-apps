@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 // import Account from "@tasit/account";
-import { useAccount, AccountOptions } from "@tasit/hooks";
+import useAccount from "@tasit/hooks";
+// import { useAccount, AccountOptions } from "@tasit/hooks";
 import * as Random from "expo-random";
 // ...
 
@@ -57,7 +58,7 @@ export default function App() {
 
   const randomBytesGenerated = randomBytes.length !== 0;
 
-  const [address] = useAccount({
+  const address = useAccount({
     randomBytes,
     randomBytesGenerated,
   });

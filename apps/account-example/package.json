@@ -11,6 +11,8 @@
     "lint": "eslint '**/*.{js,jsx,ts,tsx}' --quiet --fix"
   },
   "dependencies": {
+    "@tasit/account": "0.0.24",
+    "@tasit/hooks": "0.0.24",
     "expo": "^38.0.4",
     "expo-random": "~8.2.1",
     "react": "16.11.0",

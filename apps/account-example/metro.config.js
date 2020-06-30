@@ -1,7 +1,7 @@
-// https://medium.com/@dushyant_db/how-to-import-files-from-outside-of-root-directory-with-react-native-metro-bundler-18207a348427
-// const path = require('path');
+// // https://medium.com/@dushyant_db/how-to-import-files-from-outside-of-root-directory-with-react-native-metro-bundler-18207a348427
+// // Enable these settings when you want to use the one on the local machine
 
-// Enable these when you want to use the one on the local machine
+// const path = require('path');
 
 // const extraNodeModules = {
 //   "@tasit/hooks": path.resolve(__dirname + "/../../../tasit-sdk/packages/hooks"),
