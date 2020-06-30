@@ -2,7 +2,7 @@
 
 This app shows how to use `@tasit/hooks` to generate a new account for the user.
 
-![Account example screenshot](/assets/ScreenShots.png?raw=true "Account example screenshot")
+![Account example screenshot](assets/ScreenShot.png?raw=true "Account example screenshot")
 
 ## Local development
 
