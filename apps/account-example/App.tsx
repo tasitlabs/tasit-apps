@@ -34,26 +34,41 @@ export default function App() {
   // a useReducer hook (in the case of redux) or a useMutation hook
   // (in the case of Apollo) rather than using useState here.
   const [randomBytes, setRandomBytes] = useState(new Uint8Array());
-  const [randomBytesGenerated, setRandomBytesGenerated] = useState(false);
+  // const [randomBytesGenerated, setRandomBytesGenerated] = useState(false);
+
+  console.log("New render")
+  console.log({ randomBytes })
+  console.log("randomBytes.length")
+  console.log(randomBytes.length)
 
   useEffect(() => {
+    let isMounted = true;
     async function makeRandomBytes() {
-      const randomBytes = await Random.getRandomBytesAsync(3);
-      console.log('randomBytes generated');
-      setRandomBytes(randomBytes);
-      setRandomBytesGenerated(true);      
+      const randomBytesThatWereGenerated = await Random.getRandomBytesAsync(3);
+      if (isMounted) {
+        console.log('randomBytes generated');
+        setRandomBytes(randomBytesThatWereGenerated);
+      }   
     }
     makeRandomBytes();
+    return () => { isMounted = false };
   }, []); // Just run this once
 
-  const [address, addressDefined] = useAccount({
+  const randomBytesGenerated = randomBytes.length !== 0
+
+  const [address] = useAccount({
     randomBytes,
     randomBytesGenerated
   });
 
+  console.log({ address })
+
+  const addressDefined = address !== ""
+
   return (
     <View style={styles.container}>
       <Text>{addressDefined ? "Ready" : "Not ready"}</Text>
+      <Text>{randomBytesGenerated ? "Generated" : "Not generated"}</Text>
       <Text>{address}</Text>
     </View>
   );

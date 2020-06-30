@@ -5,10 +5,11 @@
     "android": "npx expo start -c --android",
     "ios": "npx expo start -c --ios",
     "web": "npx expo start -c --web",
-    "eject": "npx expo eject"
+    "eject": "npx expo eject",
+    "update": "npx ncu -x 'react, react-dom, react-native-web, @types/react-native, @babel/core'",
+    "update:write": "npm run update -- -u"
   },
   "dependencies": {
-    "@tasit/account": "0.0.21",
     "@tasit/hooks": "0.0.21",
     "expo": "^38.0.0",
     "react": "16.11.0",
@@ -24,6 +25,7 @@
     "@types/react-native": "~0.62.13",
     "babel-preset-expo": "^8.2.3",
     "expo-cli": "^3.21.13",
+    "npm-check-updates": "^7.0.1",
     "typescript": "~3.9.5"
   },
   "private": true
