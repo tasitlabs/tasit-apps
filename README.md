@@ -12,20 +12,6 @@
   <img src="./assets/screenshots/MyProfile.png" width="200" />
 </div>
 
-### Decentraland Market powered by Tasit
-
-[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland Market` lets you use the marketplace for Decentraland as a dapp on mobile.
-
-This app also shows off the major functionality of [Tasit](https://github.com/tasitlabs/tasit-sdk).
-
-We're building the "Decentraland Market by Tasit" app in the [`decentraland` dir](./apps/decentraland).
-
-<div align="left">
-  <img src="./assets/screenshots/ListLand.png" width="200" />
-  <img src="./assets/screenshots/BuyLand.png" width="200" />
-  <img src="./assets/screenshots/MyLand.png" width="200" />
-</div>
-
 ### Tasit account example
 
 A minimal TypeScript + Expo app demonstrating using `@tasit/account` via `@tasit/hooks`
@@ -35,14 +21,6 @@ A minimal TypeScript + Expo app demonstrating using `@tasit/account` via `@tasit
 The Tasit account example app shows off how easy it is to build a standalone native mobile app for Ethereum using [Tasit](https://github.com/tasitlabs/tasit-sdk).
 
 The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, TypeScript, and Tasit.
-
-##### Features
-
-> - Ephemeral account and private key generation
-> - Uses a simple ERC721 abstraction from Tasit for reading and writing data and reacting to events
-> - A working demo of onboarding with a few things still hardcoded for users who already have funds stored
-> - A working demo of onboarding for users new to Ethereum
-> - Minimal proof-of-concept app ready to ship to TestFlight for iOS using a testnet
 
 ### What is Tasit?
 
@@ -69,16 +47,27 @@ For more info, please visit our website:
 ##### Running an app from this repo locally
 
 ```
-git clone https://github.com/tasitlabs/tasit.git
-cd tasit
+git clone https://github.com/tasitlabs/tasit-apps.git
+cd tasit-apps
 cd demo
 npm install
 npm start
 ```
 
-##### [Automatic scaffolding using the Tasit CLI](https://docs.tasit.io/docs/other-features#automatic-scaffolding-using-the-tasit-cli)
+### Decentraland Market powered by Tasit
 
-##### [Why are native dapps important?](https://docs.tasit.io/docs/why)
+[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland Market` lets you use the marketplace for Decentraland as a dapp on mobile.
+
+This app also shows off the major functionality of [Tasit](https://github.com/tasitlabs/tasit-sdk).
+
+We're building the "Decentraland Market by Tasit" app in the [`decentraland` dir](./apps/decentraland).
+
+<div align="left">
+  <img src="./assets/screenshots/ListLand.png" width="200" />
+  <img src="./assets/screenshots/BuyLand.png" width="200" />
+  <img src="./assets/screenshots/MyLand.png" width="200" />
+</div>
+
 
 ### Contact us
 
