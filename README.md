@@ -1,15 +1,15 @@
 # Tasit apps
 
 <div align="left">
-  <img src="/docs/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
+  <img src="/assets/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
 </div>
 
 ### Simple onboarding
 
 <div align="left">
-  <img src="./docs/screenshots/StartSetup.png" width="200" />
-  <img src="./docs/screenshots/PickUsername.png" width="200" />
-  <img src="./docs/screenshots/MyProfile.png" width="200" />
+  <img src="./assets/screenshots/StartSetup.png" width="200" />
+  <img src="./assets/screenshots/PickUsername.png" width="200" />
+  <img src="./assets/screenshots/MyProfile.png" width="200" />
 </div>
 
 ### Decentraland Market powered by Tasit
@@ -21,9 +21,9 @@ This app also shows off the major functionality of [Tasit](https://github.com/ta
 We're building the "Decentraland Market by Tasit" app in the [`decentraland` dir](./apps/decentraland).
 
 <div align="left">
-  <img src="./docs/screenshots/ListLand.png" width="200" />
-  <img src="./docs/screenshots/BuyLand.png" width="200" />
-  <img src="./docs/screenshots/MyLand.png" width="200" />
+  <img src="./assets/screenshots/ListLand.png" width="200" />
+  <img src="./assets/screenshots/BuyLand.png" width="200" />
+  <img src="./assets/screenshots/MyLand.png" width="200" />
 </div>
 
 ### Tasit account example
