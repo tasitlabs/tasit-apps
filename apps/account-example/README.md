@@ -1,10 +1,14 @@
 # Account example
 
-This app shows how to use `@tasit/hooks` to generate a new account for the user.
+This app shows how you can use [`@tasit/hooks`](https://npm.im/@tasit/hooks) (or the hooks feature in `tasit` package) to generate a new account for the user.
 
 ![Account example screenshot](assets/ScreenShot.png?raw=true "Account example screenshot")
 
-## Local development
+## Try the app
+
+Just run `npm start`, `npm run ios`, or `npm run android` to start the app.
+
+## Local development of this app along with local versions of the `tasit` packages
 
 Note: When you want to use the local version of of a `@tasit/bla` lib in an local Expo app like this one while developing, [enable some of the settings in this metro config](./metro.config.js).
 
