@@ -1,10 +1,8 @@
-# Tasit
+# Tasit apps
 
 <div align="left">
   <img src="/docs/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
 </div>
-
-## Tasit apps
 
 ### Simple onboarding
 
@@ -14,13 +12,13 @@
   <img src="./docs/screenshots/MyProfile.png" width="200" />
 </div>
 
-### Decentraland by Tasit
+### Decentraland Market powered by Tasit
 
-Our first production app is called `Decentraland by Tasit`. [Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland by Tasit` lets you use that dapp on mobile.
+[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland Market` lets you use the marketplace for Decentraland as a dapp on mobile.
 
-This is the first Tasit app - we plan to release one or two other similar 3rd-party apps for other popular Ethereum projects. This app also shows off the major functionality of the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+This app also shows off the major functionality of [Tasit](https://github.com/tasitlabs/tasit-sdk).
 
-We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./decentraland). Soon we'll move the minimal feature set over [to the `demo` folder](./demo) and the shared components to the [`shared` dir](./shared).
+We're building the "Decentraland Market by Tasit" app in the [`decentraland` dir](./apps/decentraland).
 
 <div align="left">
   <img src="./docs/screenshots/ListLand.png" width="200" />
@@ -28,31 +26,33 @@ We're building the "Decentraland by Tasit" app in the [`decentraland` dir](./dec
   <img src="./docs/screenshots/MyLand.png" width="200" />
 </div>
 
-### Tasit demo app
+### Tasit account example
 
-The Tasit demo app shows off how easy it is to build a standalone native mobile app for Ethereum using the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+A minimal TypeScript + Expo app demonstrating using `@tasit/account` via `@tasit/hooks`
 
-The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, Babel, and the Tasit SDK.
+[`account-example`](./apps/account-example)
 
-For now the [Decentraland by Tasit](./decentraland) app temporarily also is serving as the "demo" app. Soon we'll duplicate just the minimal set of features from this app over in the [`demo`](./demo) dir and extract the generic parts into the `shared` dir and import them in each app.
+The Tasit account example app shows off how easy it is to build a standalone native mobile app for Ethereum using [Tasit](https://github.com/tasitlabs/tasit-sdk).
+
+The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, TypeScript, and Tasit.
 
 ##### Features
 
 > - Ephemeral account and private key generation
-> - Uses a simple ERC721 abstraction from the Tasit SDK for reading and writing data and reacting to events
+> - Uses a simple ERC721 abstraction from Tasit for reading and writing data and reacting to events
 > - A working demo of onboarding with a few things still hardcoded for users who already have funds stored
 > - A working demo of onboarding for users new to Ethereum
 > - Minimal proof-of-concept app ready to ship to TestFlight for iOS using a testnet
 
 ### What is Tasit?
 
-Tasit is a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps as easily as their other favorite apps without needing to know the technical detail that Ethereum is involved.
+The Tasit demo apps are a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps as easily as their other favorite apps without needing to know the technical detail that Ethereum is involved.
 
 Unlike with dapp browsers where you use multiple dapps as mobile web apps from within one app, you can use each of the Tasit dapps via its own standalone native mobile app.
 
 This entails a different, simpler onboarding flow in an environment without MetaMask. The user is in control of their private keys, but much of this happens "automagically" behind the scenes.
 
-The Tasit apps are built with [the Tasit SDK](https://github.com/tasitlabs/TasitSDK), a JavaScript SDK that empowers developers to create their own native Ethereum dapps.
+The Tasit apps are built with [Tasit](https://github.com/tasitlabs/tasit-sdk), a JavaScript / TypeScript SDK that lets developers create their own native Ethereum dapps.
 
 _Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out or use them as a reference for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
 
@@ -60,7 +60,7 @@ _Disclaimer:_ The alpha versions of these apps are under active development. We 
 
 This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps.
 
-These apps all use the [Tasit SDK](https://github.com/tasitlabs/TasitSDK).
+These apps all use [Tasit](https://github.com/tasitlabs/tasit-sdk).
 
 For more info, please visit our website:
 
@@ -97,7 +97,7 @@ Please feel free to reach out.
 
 ### Open-source funding
 
-Development of the Tasit SDK is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative and by the [Ethereum Foundation](https://ethereum.foundation/) through the [ecosystem support program](https://esp.ethereum.foundation).
+Development of Tasit is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative and by the [Ethereum Foundation](https://ethereum.foundation/) through the [ecosystem support program](https://esp.ethereum.foundation).
 
 This project is open-source and in need of additional funding to sustain work on it. If you're able to contribute, please consider [supporting the project on Gitcoin Grants](https://gitcoin.co/grants/183/tasit-native-mobile-ethereum-dapps) or sending ETH or DAI to the Tasit project's contract address:
 
