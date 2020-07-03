@@ -4,7 +4,11 @@ This app shows how to use the React hooks functionality from `tasit` to generate
 
 ![Account example screenshot](assets/ScreenShot.png?raw=true "Account example screenshot")
 
-## Local development
+## Try the app
+
+Just run `npm start`, `npm run ios`, or `npm run android` to start the app.
+
+## Local development of this app along with local versions of the `tasit` packages
 
 Note: When you want to use the local version of the parent package, `tasit`, or a local version of a `@tasit/[package_name]` lib in an local Expo app like this one while developing, [enable some of the settings in this metro config](./metro.config.js).
 
