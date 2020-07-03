@@ -11,7 +11,6 @@
     "lint": "eslint '**/*.{js,jsx,ts,tsx}' --quiet --fix"
   },
   "dependencies": {
-    "@tasit/account": "0.0.27",
     "@tasit/hooks": "0.0.27",
     "expo": "^38.0.4",
     "expo-random": "~8.2.1",
@@ -19,7 +18,8 @@
     "react-dom": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-screens": "~2.9.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "tasit": "0.0.27"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

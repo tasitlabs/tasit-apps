@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+
+// Option 1
 // import Account from "@tasit/account";
+
+// Option 2
 import useAccount from "@tasit/hooks";
-// import { useAccount, AccountOptions } from "@tasit/hooks";
+
+// Option 3
+// import tasit from "tasit";
+// const { hooks } = tasit;
+// const { useAccount } = hooks;
+
 import * as Random from "expo-random";
 // ...
 
