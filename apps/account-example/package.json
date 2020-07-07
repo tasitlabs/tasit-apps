@@ -18,7 +18,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.11.7",
-    "tasit": "0.0.28"
+    "tasit": "0.0.29"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
