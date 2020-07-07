@@ -24,8 +24,8 @@
     "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx,*.ts,**/*.ts,*.tsx,**/*.tsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,*.ts,**/*.ts,*.tsx,**/*.tsx,**/*.snap}' --fix --ignore-pattern '/native-base-theme/*'",
-    "upgrade": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance, react-navigation-tabs, react-navigation-drawer, react-navigation-stack, @types/react-native, ts-jest'",
-    "upgrade:write": "npm run upgrade -- -u"
+    "update": "npx ncu -x 'react, react-dom, @types/react, react-navigation, jest-expo, react-native, react-native-gesture-handler, react-native-reanimated, react-native-appearance, react-navigation-tabs, react-navigation-drawer, react-navigation-stack, @types/react-native, ts-jest'",
+    "update:write": "npm run update -- -u"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -71,7 +71,6 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-native": "^3.8.1",
-    "expo-cli": "^3.21.11",
     "jest": "^24.9.0",
     "jest-expo": "^38.0.0",
     "jest-prop-type-error": "^1.1.0",
