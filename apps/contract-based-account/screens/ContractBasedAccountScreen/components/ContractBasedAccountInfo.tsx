@@ -6,7 +6,11 @@ import Colors from "../../../shared/constants/Colors";
 import { MonoText } from "../../../shared/components/StyledText";
 import { Text, View } from "../../../shared/components/Themed";
 
-export default function ContractBasedAccountInfo({ address }: { address: string }) {
+export default function ContractBasedAccountInfo({
+  address,
+}: {
+  address: string;
+}) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
@@ -25,15 +29,15 @@ export default function ContractBasedAccountInfo({ address }: { address: string 
         >
           <MonoText>{address}</MonoText>
         </View>
-
       </View>
 
       <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={handleEtherscanPress} style={styles.helpLink}>
+        <TouchableOpacity
+          onPress={handleEtherscanPress}
+          style={styles.helpLink}
+        >
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            {
-              "View contract address on Etherscan"
-            }
+            {"View contract address on Etherscan"}
           </Text>
         </TouchableOpacity>
       </View>

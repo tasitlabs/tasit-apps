@@ -25,15 +25,15 @@ export default function AccountInfo({ address }: { address: string }) {
         >
           <MonoText>{address}</MonoText>
         </View>
-
       </View>
 
       <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={() => handleEtherscanPress(address)} style={styles.helpLink}>
+        <TouchableOpacity
+          onPress={() => handleEtherscanPress(address)}
+          style={styles.helpLink}
+        >
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            {
-              "View address on Etherscan"
-            }
+            {"View address on Etherscan"}
           </Text>
         </TouchableOpacity>
       </View>
@@ -42,9 +42,7 @@ export default function AccountInfo({ address }: { address: string }) {
 }
 
 function handleEtherscanPress(address: string) {
-  WebBrowser.openBrowserAsync(
-    `https://etherscan.io/address/${address}`
-  );
+  WebBrowser.openBrowserAsync(`https://etherscan.io/address/${address}`);
 }
 
 const styles = StyleSheet.create({

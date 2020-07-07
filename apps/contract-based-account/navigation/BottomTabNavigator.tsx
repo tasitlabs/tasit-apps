@@ -7,7 +7,11 @@ import Colors from "../shared/constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import AccountScreen from "../screens/AccountScreen";
 import ContractBasedAccountScreen from "../screens/ContractBasedAccountScreen";
-import { BottomTabParamList, AccountParamList, ContractBasedAccountParamList } from "../types";
+import {
+  BottomTabParamList,
+  AccountParamList,
+  ContractBasedAccountParamList,
+} from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

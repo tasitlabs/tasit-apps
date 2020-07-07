@@ -10,7 +10,6 @@ const { useAccount } = hooks;
 import * as Random from "expo-random";
 
 export default function AccountScreen() {
-
   const [randomBytes, setRandomBytes] = useState(new Uint8Array());
   const [isLoadingBytes, setIsLoadingBytes] = useState(false);
 
@@ -41,7 +40,7 @@ export default function AccountScreen() {
   const addressDefined = address !== "";
 
   if (isLoadingBytes) {
-    return <Text style={styles.title}>Loading...</Text>
+    return <Text style={styles.title}>Loading...</Text>;
   }
 
   return (
