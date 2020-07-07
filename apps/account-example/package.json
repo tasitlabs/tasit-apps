@@ -1,17 +1,17 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "npx expo start -c",
-    "android": "npx expo start -c --android",
-    "ios": "npx expo start -c --ios",
-    "web": "npx expo start -c --web",
-    "eject": "npx expo eject",
+    "start": "expo start -c",
+    "android": "expo start -c --android",
+    "ios": "expo start -c --ios",
+    "web": "expo start -c --web",
+    "eject": "expo eject",
     "update": "npx ncu -x 'react, react-dom, react-native-web, @types/react-native, @babel/core'",
     "update:write": "npm run update -- -u",
     "lint": "eslint '**/*.{js,jsx,ts,tsx}' --quiet --fix"
   },
   "dependencies": {
-    "expo": "^38.0.0",
+    "expo": "^38.0.8",
     "expo-random": "~8.2.1",
     "react": "16.11.0",
     "react-dom": "16.11.0",
@@ -34,7 +34,7 @@
     "eslint-plugin-react-hooks": "^4.0.5",
     "npm-check-updates": "^7.0.1",
     "prettier": "^2.0.5",
-    "typescript": "~3.9.5"
+    "typescript": "~3.9.6"
   },
   "private": true
 }

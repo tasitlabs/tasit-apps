@@ -2,13 +2,13 @@
   "main": "node_modules/expo/AppEntry.js",
   "version": "0.0.3",
   "scripts": {
-    "start": "npx expo start -c",
-    "android": "npx expo start --android",
-    "ios": "npx expo start --ios",
-    "build:android": "npx expo build:android",
-    "build:ios": "npx expo build:ios",
+    "start": "expo start -c",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "build:android": "expo build:android",
+    "build:ios": "expo build:ios",
     "lint": "npx prettier --write '{*.js,**/*.js,*.jsx,**/*.jsx,*.ts,**/*.ts,*.tsx,**/*.tsx}' && npx eslint '{*.js,**/*.js,*.jsx,**/*.jsx,*.ts,**/*.ts,*.tsx,**/*.tsx,**/*.snap}' --fix",
-    "eject": "npx expo eject",
+    "eject": "expo eject",
     "pretest": "npm run lint",
     "test:update": "npx jest -u --maxWorkers=2",
     "test": "npx jest --maxWorkers=2",
@@ -30,7 +30,7 @@
     "url": "git+https://github.com/tasitlabs/tasit.git"
   },
   "dependencies": {
-    "expo": "^38.0.0",
+    "expo": "^38.0.8",
     "react": "16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.0.tar.gz",
     "react-native-appearance": "~0.3.3",
@@ -63,7 +63,7 @@
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.1",
     "ts-node": "^8.10.2",
-    "typescript": "~3.9.5"
+    "typescript": "~3.9.6"
   },
   "private": true,
   "license": "MIT",

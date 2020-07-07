@@ -11,7 +11,7 @@ The app is built using React Native, Expo, React Navigation, Prettier, Babel, an
 ### Getting started
 
 ```
-git clone https://github.com/tasitlabs/tasit.git
+git clone https://github.com/tasitlabs/tasit-apps.git
 cd tasit
 cd decentraland
 npm i

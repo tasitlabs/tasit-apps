@@ -12,7 +12,7 @@ const startExpo = (env): void => {
   const { exec } = childProcess;
   // TODO: Add support for running expo start with the ios flag via
   // an arg for this script
-  const process = exec(`BABEL_ENV=${env} npx expo start -c`);
+  const process = exec(`BABEL_ENV=${env} expo start -c`);
 
   process.stdout.on("data", (data): any => {
     const { log } = console;
