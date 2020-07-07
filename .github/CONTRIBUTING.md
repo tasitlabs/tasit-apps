@@ -60,3 +60,15 @@ Once that's done, you're ready to create a PR (a pull request).
 GitHub has some good guides on how to create a PR. When you create one, you'll be prompted to fill out our pull request template.
 
 When a PR is opened from your feature branch, CircleCI will automatically run the linting script and the test suite to make sure that everything will still work if we merge your changes into the develop branch of the main repo on GitHub.
+
+### Local development of an app along with local versions of the `tasit` packages
+
+Note: When you want to use the local version of the parent package, `tasit`, or a local version of a `@tasit/[package_name]` lib in an local Expo app like this one while developing, [enable some of the settings in this metro config](./metro.config.js).
+
+To make sure two versions of React aren't found, follow these instructions:
+
+Your bundler might “see” two Reacts — one in the application folder and one in your library folder. One possible fix is to run `npm link ../../../tasit-apps/apps/[APP_NAME]/node_modules/react` from the lib dir, `tasit-sdk/packages/[PACKAGE_NAME]`. This should make the library use the application’s React copy.
+
+Note that depending on what dir your local app and the library are in, the number of `..`'s is likely to change.
+
+(Source: [This page in the React docs](https://reactjs.org/warnings/invalid-hook-call-warning.html) towards the bottom)
