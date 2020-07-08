@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "account-example",
-    "slug": "account-example",
+    "name": "in-dapp-account",
+    "slug": "in-dapp-account",
     "platforms": [
       "ios",
       "android",

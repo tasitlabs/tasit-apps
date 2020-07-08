@@ -11,7 +11,7 @@ The app is built using React Native, Expo, React Navigation, Prettier, Babel, an
 ### Getting started
 
 ```
-git clone https://github.com/tasitlabs/tasit.git
+git clone https://github.com/tasitlabs/tasit-apps.git
 cd tasit
 cd decentraland
 npm i
@@ -21,15 +21,13 @@ npm start
 ### Screenshots
 
 <div align="left">
-  <img src="../docs/screenshots/ListLand.png" width="200" />
-  <img src="../docs/screenshots/StartSetup.png" width="200" />
-  <img src="../docs/screenshots/PickUsername.png" width="200" />
+  <img src="./../../assets/screenshots/ListLand.png" width="200" />
+  <img src="./../../assets/screenshots/BuyLand.png" width="200" />
 </div>
 
 <div align="left">
-  <img src="../docs/screenshots/BuyLand.png" width="200" />
-  <img src="../docs/screenshots/MyProfile.png" width="200" />
-  <img src="../docs/screenshots/MyLand.png" width="200" />
+  <img src="./../../assets/screenshots/StartSetup.png" width="200" />
+  <img src="./../../assets/screenshots/PickUsername.png" width="200" />
 </div>
 
 ### More info

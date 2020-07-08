@@ -1,71 +1,77 @@
 # Tasit apps
 
 <div align="left">
-  <img src="/assets/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
+  <img src="./assets/images/TasitLogoFromSvgTransparentAndOpaqueColor1024x1024.png" width="200" />
 </div>
 
-### Simple onboarding
+The Tasit apps show off how easy it is to build a standalone native mobile app for Ethereum using [Tasit](https://github.com/tasitlabs/tasit-sdk).
+
+The apps generally are built with React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, and TypeScript. And Tasit, but hopefully that was clear by now.
+
+_Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out or use them as a reference for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
+
+## Simple onboarding
 
 <div align="left">
   <img src="./assets/screenshots/StartSetup.png" width="200" />
   <img src="./assets/screenshots/PickUsername.png" width="200" />
-  <img src="./assets/screenshots/MyProfile.png" width="200" />
 </div>
 
-### Tasit account example
+## Example apps
 
-A minimal TypeScript + Expo app demonstrating using `@tasit/account` via `@tasit/hooks`
+#### In-dapp account app
 
-[`account-example`](./apps/account-example)
+A minimal TypeScript + Expo app demonstrating generating an in-dapp account for the user with `tasit`.
 
-The Tasit account example app shows off how easy it is to build a standalone native mobile app for Ethereum using [Tasit](https://github.com/tasitlabs/tasit-sdk).
+[`In-dapp account app code`](./apps/in-dapp-account)
 
-The app is built using React Native, Expo, [React Navigation](https://reactnavigation.org/), Prettier, TypeScript, and Tasit.
+#### Contract-based account app
 
-### What is Tasit?
+A minimal TypeScript + Expo app demonstrating generating an contract-based account for the user that allows for account recovery with `tasit`.
 
-The Tasit demo apps are a suite of native mobile apps for mainstream users that lets them use popular Ethereum dapps as easily as their other favorite apps without needing to know the technical detail that Ethereum is involved.
+[`Contract-based account app code`](./apps/contract-based-account)
 
-Unlike with dapp browsers where you use multiple dapps as mobile web apps from within one app, you can use each of the Tasit dapps via its own standalone native mobile app.
+## Why / how?
+
+The goal is to build production-grade apps for mainstream users that let them get the benefits of Ethereum easily. They shouldn't need to know the technical detail that Ethereum is involved.
+
+Unlike with dapp browsers where you use multiple dapps as mobile web apps from within one app, you can use each of a Tasit-powered dapp via its own standalone native mobile app.
 
 This entails a different, simpler onboarding flow in an environment without MetaMask. The user is in control of their private keys, but much of this happens "automagically" behind the scenes.
 
-The Tasit apps are built with [Tasit](https://github.com/tasitlabs/tasit-sdk), a JavaScript / TypeScript SDK that lets developers create their own native Ethereum dapps.
+These apps are built with [Tasit](https://github.com/tasitlabs/tasit-sdk), a JavaScript / TypeScript SDK that lets developers create their own native Ethereum dapps.
 
-_Disclaimer:_ The alpha versions of these apps are under active development. We encourage you to try them out or use them as a reference for hackathons, etc., but they're not ready for anything involving real funds on mainnet. If you'd prefer to wait for a more battle-tested release, please watch this repo with the `Releases only` setting and/or sign up to be notified about our releases on the [tasit.io](https://tasit.io) website.
-
-### Developers
+## Developers
 
 This is a monorepo for all of the open-source Tasit 3rd-party mobile apps for Ethereum dapps.
 
 These apps all use [Tasit](https://github.com/tasitlabs/tasit-sdk).
 
-For more info, please visit our website:
+For more info, check out our docs:
 
-[tasit.io](https://tasit.io/)
+[docs.tasit.io](https://docs.tasit.io/)
 
 ##### Running an app from this repo locally
 
 ```
 git clone https://github.com/tasitlabs/tasit-apps.git
 cd tasit-apps
-cd demo
+cd contract-based-account
 npm install
 npm start
 ```
 
-### Decentraland Market powered by Tasit
+## Legacy apps
 
-[Decentraland](https://decentraland.org/) is a dapp using [unique tokens / NFTs](http://erc721.org/). `Decentraland Market` lets you use the marketplace for Decentraland as a dapp on mobile.
+#### Decentraland Market powered by Tasit
 
-This app also shows off the major functionality of [Tasit](https://github.com/tasitlabs/tasit-sdk).
+[Decentraland Market](https://decentraland.org/) is a dapp using unique tokens / NFTs. `Decentraland Market` lets you use the marketplace for Decentraland as a dapp on mobile.
 
-We're building the "Decentraland Market by Tasit" app in the [`decentraland` dir](./apps/decentraland).
+[`Decentraland Market` app code](./apps/decentraland)
 
 <div align="left">
   <img src="./assets/screenshots/ListLand.png" width="200" />
   <img src="./assets/screenshots/BuyLand.png" width="200" />
-  <img src="./assets/screenshots/MyLand.png" width="200" />
 </div>
 
 
