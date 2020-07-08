@@ -48,7 +48,7 @@ module.exports = {
   resolver: {
     extraNodeModules: new Proxy(extraNodeModules, {
       get: (target, name) =>
-        //redirects dependencies referenced from common/ to local node_modules
+        //redirects dependencies referenced from other dir to local node_modules
         name in target
           ? target[name]
           : path.join(process.cwd(), `node_modules/${name}`),

@@ -10,7 +10,10 @@ const { useAccount } = hooks;
 import useRandomBytes from "../../hooks/useRandomBytes";
 
 export default function AccountScreen(): JSX.Element {
-  const { randomBytes, isLoading: isLoadingBytes } = useRandomBytes(16);
+  const {
+    randomBytes,
+    // isLoading: isLoadingBytes
+  } = useRandomBytes(16);
   const randomBytesGenerated = randomBytes.length !== 0;
 
   const address = useAccount({
@@ -22,10 +25,15 @@ export default function AccountScreen(): JSX.Element {
 
   const addressDefined: boolean = address !== "";
 
-  if (isLoadingBytes) {
+  console.log({
+    randomBytes,
+    // isLoadingBytes
+  });
+
+  if (!randomBytesGenerated) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Loading</Text>
+        <Text style={styles.title}>Loading bytes</Text>
       </View>
     );
   }

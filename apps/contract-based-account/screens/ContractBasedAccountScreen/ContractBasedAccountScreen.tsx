@@ -9,14 +9,29 @@ const { useGnosisSafe } = hooks;
 
 import useRandomBytes from "../../hooks/useRandomBytes";
 
-export default function ContractBasedAccountScreen(): JSX.Element {
-  const { randomBytes, isLoading: isLoadingBytes } = useRandomBytes(16);
+// const BASE_URL = "https://safe-relay.rinkeby.gnosis.io/"; // Rinkeby
+const BASE_URL = "https://safe-relay.staging.gnosisdev.com/api"; // Mainnet staging
 
-  const { address, hasError, isLoading: isLoadingSafe } = useGnosisSafe(
+export default function ContractBasedAccountScreen(): JSX.Element {
+  const {
+    randomBytes,
+    // isLoading: isLoadingBytes
+  } = useRandomBytes(5);
+
+  const isLoadingBytes = randomBytes.length === 0;
+
+  const {
+    address,
+    hasError,
+    // isLoading: isLoadingSafe
+  } = useGnosisSafe(
     ["0x80F8f3629b58b0b2873c6424cDe17540F645df16"], // TODO: Use address from the other screen
     1,
-    randomBytes
+    randomBytes,
+    BASE_URL
   );
+
+  const isLoadingSafe = address === "";
 
   if (isLoadingBytes) {
     return (
@@ -29,6 +44,13 @@ export default function ContractBasedAccountScreen(): JSX.Element {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Loading Gnosis Safe</Text>
+      </View>
+    );
+  }
+  if (hasError) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Error</Text>
       </View>
     );
   }
