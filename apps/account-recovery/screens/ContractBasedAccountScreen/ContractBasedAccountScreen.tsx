@@ -12,8 +12,7 @@ import { AccountContext } from "../../context/AccountContext";
 
 import useRandomBytes from "../../hooks/useRandomBytes";
 
-// const BASE_URL = "https://safe-relay.rinkeby.gnosis.io/"; // Rinkeby
-const BASE_URL = "https://safe-relay.staging.gnosisdev.com/api"; // Mainnet staging
+import Constants from 'expo-constants';
 
 export default function ContractBasedAccountScreen(): JSX.Element {
   const {
@@ -21,9 +20,12 @@ export default function ContractBasedAccountScreen(): JSX.Element {
     // isLoading: isLoadingBytes
   } = useRandomBytes(5);
 
-  const [account] = useContext(AccountContext);
+  const { account } = useContext(AccountContext);
 
   const isLoadingBytes = randomBytes.length === 0;
+
+  const { baseURL } = Constants.manifest.extra
+  console.log({ baseURL });
 
   const {
     address,
@@ -33,7 +35,7 @@ export default function ContractBasedAccountScreen(): JSX.Element {
     [account], // TODO: Use address from the other screen
     1,
     randomBytes,
-    BASE_URL
+    baseURL
   );
 
   const isLoadingSafe = address === "";

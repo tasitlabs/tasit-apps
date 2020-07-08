@@ -5,7 +5,7 @@ import React, { useState, createContext } from "react";
 // Create Context Object
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 // export const AccountContext = createContext(["", () => {}]);
-export const AccountContext = createContext([""]);
+export const AccountContext = createContext({ account: "", setAccount: (_account: string) => {}});
 
 // Create a provider for components to consume and subscribe to changes
 export const AccountContextProvider = (props: any): JSX.Element => {
@@ -13,7 +13,7 @@ export const AccountContextProvider = (props: any): JSX.Element => {
   const [account, setAccount] = useState<any>("");
 
   return (
-    <AccountContext.Provider value={[account, setAccount]}>
+    <AccountContext.Provider value={{account, setAccount}}>
       {props.children}
     </AccountContext.Provider>
   );
