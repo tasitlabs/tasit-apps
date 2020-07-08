@@ -6,7 +6,7 @@ Open your terminal
 
 Next you'll "clone" the code from GitHub.
 
-`git clone https://github.com/tasitlabs/tasit.git`
+`git clone https://github.com/tasitlabs/tasit-apps.git`
 
 `cd tasit`
 
@@ -16,13 +16,13 @@ For this project, `develop` is the name of the default branch for the project. T
 
 The `tasit` repo (the one you're looking at now) contains the code for our React Native mobile apps. There are multiple apps within this repo. It's a "monorepo" (feel free google this term for more info). That means that in other repos you may have seen for React Native / Expo projects, you would have been able to run `npm start` directly from the root directory to start an app. That's not the case here - you need to `cd` into a subdirectory for the app you'd like to run locally. We do this so it's more straightforward to extract out shared components used in multiple apps for use by the `Tasit CLI`, which autogenerates the scaffolding for an app using these common components.
 
-The "middleware" code for interacting with the Ethereum blockchain that you can use from within a React Native app is over in a different GitHub repo called [`TasitSDK`](https://github.com/tasitlabs/TasitSDK). The apps in this repo all use that SDK.
+The "middleware" code for interacting with the Ethereum blockchain that you can use from within a React Native app is over in a different GitHub repo called [`Tasit`](https://github.com/tasitlabs/tasit-sdk). The apps in this repo all use that package.
 
 ### How to set up the local environment
 
 You'll need to install the npm packages for one of the apps in this project before you can test it out. The code for those npm packages isn't in this repo - just the name and version of the packages that we use. Those are specified in the `package.json` file for each app. `cd` into `demo` or `decentraland` to see what we mean.
 
-Unlike in the TasitSDK repo, as of right now there's no single command you can run from the root directory to bootstrap all the projects. `cd` into the `decentraland` directory than then run `npm install` (or `npm i` for short). This will install any code needed to run the app as well as any code you'll need during development on your local machine to work on the app.
+Unlike in the tasit-sdk repo, as of right now there's no single command you can run from the root directory to bootstrap all the projects. `cd` into the `decentraland` directory than then run `npm install` (or `npm i` for short). This will install any code needed to run the app as well as any code you'll need during development on your local machine to work on the app.
 
 Note: If you've already used node and npm before and plan to work on multiple projects, we recommend using [nvm](https://github.com/creationix/nvm) to keep multiple versions on your machine. If you're just getting started with node and npm, that is probably overkill.
 
@@ -63,7 +63,7 @@ When a PR is opened from your feature branch, CircleCI will automatically run th
 
 ### Local development of an app along with local versions of the `tasit` packages
 
-Note: When you want to use the local version of the parent package, `tasit`, or a local version of a `@tasit/[package_name]` lib in an local Expo app like this one while developing, [enable some of the settings in this metro config](./metro.config.js).
+Note: When you want to use the local version of the parent package, `tasit`, or a local version of a `@tasit/[PACKAGE_NAME]` lib in an local Expo app like this one while developing, [enable some of the settings in this metro config](./metro.config.js).
 
 To make sure two versions of React aren't found, follow these instructions:
 
