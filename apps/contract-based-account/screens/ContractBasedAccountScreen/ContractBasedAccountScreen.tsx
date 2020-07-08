@@ -1,11 +1,14 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 
 import ContractBasedAccountInfo from "./components/ContractBasedAccountInfo";
+import AccountInfo from "../AccountScreen/components/AccountInfo";
 import { Text, View } from "../../shared/components/Themed";
 
 import { hooks } from "tasit";
 const { useGnosisSafe } = hooks;
+
+import { AccountContext } from "../../context/AccountContext";
 
 import useRandomBytes from "../../hooks/useRandomBytes";
 
@@ -18,6 +21,8 @@ export default function ContractBasedAccountScreen(): JSX.Element {
     // isLoading: isLoadingBytes
   } = useRandomBytes(5);
 
+  const [account] = useContext(AccountContext);
+
   const isLoadingBytes = randomBytes.length === 0;
 
   const {
@@ -25,7 +30,7 @@ export default function ContractBasedAccountScreen(): JSX.Element {
     hasError,
     // isLoading: isLoadingSafe
   } = useGnosisSafe(
-    ["0x80F8f3629b58b0b2873c6424cDe17540F645df16"], // TODO: Use address from the other screen
+    [account], // TODO: Use address from the other screen
     1,
     randomBytes,
     BASE_URL
@@ -62,6 +67,7 @@ export default function ContractBasedAccountScreen(): JSX.Element {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
+      <AccountInfo address={account} />
       <ContractBasedAccountInfo address={address} />
     </View>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 
 import AccountInfo from "./components/AccountInfo";
@@ -6,6 +6,8 @@ import { Text, View } from "../../shared/components/Themed";
 
 import { hooks } from "tasit";
 const { useAccount } = hooks;
+
+import { AccountContext } from "../../context/AccountContext";
 
 import useRandomBytes from "../../hooks/useRandomBytes";
 
@@ -16,10 +18,14 @@ export default function AccountScreen(): JSX.Element {
   } = useRandomBytes(16);
   const randomBytesGenerated = randomBytes.length !== 0;
 
+  const [, setAccount] = useContext(AccountContext);
+
   const address = useAccount({
     randomBytes,
     randomBytesGenerated,
   });
+
+  setAccount(address);
 
   // TODO: Put the address in React context for use on other screens
 
