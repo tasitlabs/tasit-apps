@@ -14,7 +14,7 @@ For this project, `develop` is the name of the default branch for the project. T
 
 ### Overview of architecture of the Tasit project
 
-The `tasit` repo (the one you're looking at now) contains the code for our React Native mobile apps. There are multiple apps within this repo. It's a "monorepo" (feel free google this term for more info). That means that in other repos you may have seen for React Native / Expo projects, you would have been able to run `npm start` directly from the root directory to start an app. That's not the case here - you need to `cd` into a subdirectory for the app you'd like to run locally. We do this so it's more straightforward to extract out shared components used in multiple apps for use by the `Tasit CLI`, which autogenerates the scaffolding for an app using these common components.
+The `tasit-apps` repo (the one you're looking at now) contains the code for our React Native mobile apps. There are multiple apps within this repo. It's a "monorepo" (feel free google this term for more info). That means that in other repos you may have seen for React Native / Expo projects, you would have been able to run `npm start` directly from the root directory to start an app. That's not the case here - you need to `cd` into a subdirectory for the app you'd like to run locally. We do this so it's more straightforward to extract out shared components used in multiple apps for use by the `Tasit CLI`, which autogenerates the scaffolding for an app using these common components.
 
 The "middleware" code for interacting with the Ethereum blockchain that you can use from within a React Native app is over in a different GitHub repo called [`Tasit`](https://github.com/tasitlabs/tasit-sdk). The apps in this repo all use that package.
 
