@@ -1,4 +1,5 @@
 {
+  "exclude": ["metro.config.js"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
@@ -7,6 +8,15 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "tasit": ["node_modules/tasit"],
+      "tasit/*": ["node_modules/tasit/*"],
+      "@tasit/hooks": ["node_modules/@tasit/hooks"],
+      "@tasit/hooks/*": ["node_modules/@tasit/hooks/*"],
+      "@tasit/contract-based-account": ["node_modules/@tasit/contract-based-account"],
+      "@tasit/contract-based-account/*": ["node_modules/@tasit/contract-based-account/*"]
+    }
   }
 }

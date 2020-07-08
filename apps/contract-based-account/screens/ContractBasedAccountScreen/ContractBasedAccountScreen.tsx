@@ -1,13 +1,64 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 
 import ContractBasedAccountInfo from "./components/ContractBasedAccountInfo";
+import AccountInfo from "../AccountScreen/components/AccountInfo";
 import { Text, View } from "../../shared/components/Themed";
 
 import { hooks } from "tasit";
 const { useGnosisSafe } = hooks;
 
-export default function ContractBasedAccountScreen() {
+import { AccountContext } from "../../context/AccountContext";
+
+import useRandomBytes from "../../hooks/useRandomBytes";
+
+// const BASE_URL = "https://safe-relay.rinkeby.gnosis.io/"; // Rinkeby
+const BASE_URL = "https://safe-relay.staging.gnosisdev.com/api"; // Mainnet staging
+
+export default function ContractBasedAccountScreen(): JSX.Element {
+  const {
+    randomBytes,
+    // isLoading: isLoadingBytes
+  } = useRandomBytes(5);
+
+  const [account] = useContext(AccountContext);
+
+  const isLoadingBytes = randomBytes.length === 0;
+
+  const {
+    address,
+    hasError,
+    // isLoading: isLoadingSafe
+  } = useGnosisSafe(
+    [account], // TODO: Use address from the other screen
+    1,
+    randomBytes,
+    BASE_URL
+  );
+
+  const isLoadingSafe = address === "";
+
+  if (isLoadingBytes) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Loading random bytes</Text>
+      </View>
+    );
+  }
+  if (isLoadingSafe) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Loading Gnosis Safe</Text>
+      </View>
+    );
+  }
+  if (hasError) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Error</Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Contract-based account</Text>
@@ -16,7 +67,8 @@ export default function ContractBasedAccountScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <ContractBasedAccountInfo address="{feature coming soon}" />
+      <AccountInfo address={account} />
+      <ContractBasedAccountInfo address={address} />
     </View>
   );
 }

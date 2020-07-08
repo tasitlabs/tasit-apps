@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet } from "react-native";
 
 import AccountInfo from "./components/AccountInfo";
@@ -7,40 +7,49 @@ import { Text, View } from "../../shared/components/Themed";
 import { hooks } from "tasit";
 const { useAccount } = hooks;
 
-import * as Random from "expo-random";
+import { AccountContext } from "../../context/AccountContext";
 
-export default function AccountScreen() {
-  const [randomBytes, setRandomBytes] = useState(new Uint8Array());
-  const [isLoadingBytes, setIsLoadingBytes] = useState(false);
+import useRandomBytes from "../../hooks/useRandomBytes";
 
-  useEffect(() => {
-    let isMounted = true;
-    setIsLoadingBytes(true);
-    async function makeRandomBytes() {
-      const randomBytesThatWereGenerated = await Random.getRandomBytesAsync(16);
-      setIsLoadingBytes(false);
-      if (isMounted) {
-        console.log("randomBytes generated");
-        setRandomBytes(randomBytesThatWereGenerated);
-      }
-    }
-    makeRandomBytes();
-    return () => {
-      isMounted = false;
-    };
-  }, []); // Just run this once
-
+export default function AccountScreen(): JSX.Element {
+  const {
+    randomBytes,
+    // isLoading: isLoadingBytes
+  } = useRandomBytes(16);
   const randomBytesGenerated = randomBytes.length !== 0;
+
+  const [, setAccount] = useContext(AccountContext);
 
   const address = useAccount({
     randomBytes,
     randomBytesGenerated,
   });
 
-  const addressDefined = address !== "";
+  setAccount(address);
 
-  if (isLoadingBytes) {
-    return <Text style={styles.title}>Loading...</Text>;
+  // TODO: Put the address in React context for use on other screens
+
+  const addressDefined: boolean = address !== "";
+
+  console.log({
+    randomBytes,
+    // isLoadingBytes
+  });
+
+  if (!randomBytesGenerated) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Loading bytes</Text>
+      </View>
+    );
+  }
+
+  if (!addressDefined) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Address undefined</Text>
+      </View>
+    );
   }
 
   return (
