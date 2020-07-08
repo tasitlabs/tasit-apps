@@ -19,17 +19,17 @@ _Disclaimer:_ The alpha versions of these apps are under active development. We 
 
 ## Example apps
 
+#### Account recovery app
+
+A minimal TypeScript + Expo + Tasit app demonstrating generating an contract-based account for the user that allows for account recovery.
+
+[`Code`](./apps/account-recovery)
+
 #### In-dapp account app
 
-A minimal TypeScript + Expo app demonstrating generating an in-dapp account for the user with `tasit`.
+A minimal TypeScript + Expo + Tasit app demonstrating generating an in-dapp account for the user.
 
-[`In-dapp account app code`](./apps/in-dapp-account)
-
-#### Contract-based account app
-
-A minimal TypeScript + Expo app demonstrating generating an contract-based account for the user that allows for account recovery with `tasit`.
-
-[`Contract-based account app code`](./apps/contract-based-account)
+[`Code`](./apps/in-dapp-account)
 
 ## Why / how?
 
@@ -51,12 +51,13 @@ For more info, check out our docs:
 
 [docs.tasit.io](https://docs.tasit.io/)
 
-##### Running an app from this repo locally
+#### Running an app from this repo locally
 
 ```
 git clone https://github.com/tasitlabs/tasit-apps.git
 cd tasit-apps
-cd contract-based-account
+cd apps
+cd [APP_NAME]
 npm install
 npm start
 ```
@@ -67,7 +68,7 @@ npm start
 
 [Decentraland Market](https://decentraland.org/) is a dapp using unique tokens / NFTs. `Decentraland Market` lets you use the marketplace for Decentraland as a dapp on mobile.
 
-[`Decentraland Market` app code](./apps/decentraland)
+[Code](./apps/decentraland)
 
 <div align="left">
   <img src="./assets/screenshots/ListLand.png" width="200" />
@@ -75,7 +76,7 @@ npm start
 </div>
 
 
-### Contact us
+## Contact us
 
 Please feel free to reach out.
 
@@ -90,7 +91,7 @@ Please feel free to reach out.
    | 🗺️  Roadmap  | [github.com/orgs/tasitlabs/projects/1](https://github.com/orgs/tasitlabs/projects/1) |
    | 💡  Feature requests  | [feedback.tasit.io/feature-requests](http://feedback.tasit.io/feature-requests) |
 
-### Open-source funding
+## Open-source funding
 
 Development of Tasit is supported in part by [Gnosis](https://github.com/gnosis/) through their [GECO](https://github.com/gnosis/GECO) grant initiative and by the [Ethereum Foundation](https://ethereum.foundation/) through the [ecosystem support program](https://esp.ethereum.foundation).
 
