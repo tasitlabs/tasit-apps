@@ -18,7 +18,7 @@ export default function AccountScreen(): JSX.Element {
   } = useRandomBytes(16);
   const randomBytesGenerated = randomBytes.length !== 0;
 
-  const [, setAccount] = useContext(AccountContext);
+  const { setAccount } = useContext(AccountContext);
 
   const address = useAccount({
     randomBytes,
@@ -31,10 +31,10 @@ export default function AccountScreen(): JSX.Element {
 
   const addressDefined: boolean = address !== "";
 
-  console.log({
-    randomBytes,
-    // isLoadingBytes
-  });
+  // console.log({
+  //   randomBytes,
+  //   // isLoadingBytes
+  // });
 
   if (!randomBytesGenerated) {
     return (

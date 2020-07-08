@@ -12,10 +12,10 @@ export default function useRandomBytes(amount: number): RandomBytesResult {
   // const [isLoading, setIsLoading] = useState(false);
   const randomBytesUndefined = randomBytes.length === 0;
 
-  console.log({
-    randomBytes,
-    // isLoading
-  });
+  // console.log({
+  //   randomBytes,
+  //   // isLoading
+  // });
 
   useEffect(() => {
     let isMounted = true;
