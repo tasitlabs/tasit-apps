@@ -7,7 +7,31 @@ import { Text, View } from "../../shared/components/Themed";
 import { hooks } from "tasit";
 const { useGnosisSafe } = hooks;
 
-export default function ContractBasedAccountScreen() {
+import useRandomBytes from "../../hooks/useRandomBytes";
+
+export default function ContractBasedAccountScreen(): JSX.Element {
+  const { randomBytes, isLoading: isLoadingBytes } = useRandomBytes(16);
+
+  const { address, hasError, isLoading: isLoadingSafe } = useGnosisSafe(
+    ["0x80F8f3629b58b0b2873c6424cDe17540F645df16"], // TODO: Use address from the other screen
+    1,
+    randomBytes
+  );
+
+  if (isLoadingBytes) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Loading random bytes</Text>
+      </View>
+    );
+  }
+  if (isLoadingSafe) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Loading Gnosis Safe</Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Contract-based account</Text>
@@ -16,7 +40,7 @@ export default function ContractBasedAccountScreen() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <ContractBasedAccountInfo address="{feature coming soon}" />
+      <ContractBasedAccountInfo address={address} />
     </View>
   );
 }
