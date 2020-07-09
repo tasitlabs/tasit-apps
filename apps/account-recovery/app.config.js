@@ -2,7 +2,7 @@ import 'dotenv-flow/config';
 
 export default () => {
   return {
-    name: "account-recovery",
+    name: "Account Recovery",
     description: "This app shows how you can use contract-based account functionality from tasit to set up account recovery for the user.",
     slug: "account-recovery",
     version: "0.0.30",
@@ -22,7 +22,13 @@ export default () => {
       "**/*"
     ],
     ios: {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "io.tasit.account-recovery",
+      "buildNumber": "0.0.30"
+    },
+    android: {
+      "package": "io.tasit.account-recovery",
+      "versionCode": 30
     },
     web: {
       "favicon": "./assets/images/TasitFavicon.png"
