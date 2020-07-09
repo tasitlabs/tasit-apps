@@ -23,11 +23,11 @@ export default () => {
     ],
     ios: {
       "supportsTablet": true,
-      "bundleIdentifier": "io.tasit.account-recovery",
+      "bundleIdentifier": "io.tasit.accountrecovery",
       "buildNumber": "0.0.30"
     },
     android: {
-      "package": "io.tasit.account-recovery",
+      "package": "io.tasit.accountrecovery",
       "versionCode": 30
     },
     web: {
