@@ -4,16 +4,16 @@
 #
 version: 2
 jobs:
-  build_decentraland:
+  build_account_recovery:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.16
+      - image: circleci/node:12.18
 
-    working_directory: ~/tasit/decentraland
+    working_directory: ~/tasit-apps/apps/account-recovery
 
     steps:
       - checkout:
-          path: ~/tasit
+          path: ~/tasit-apps
 
       - run:
           name: update-npm
@@ -35,21 +35,24 @@ jobs:
       #       - ./node_modules
       #     key: dependency-cache-{{ checksum "package.json" }}
 
-      # run tests!
+      - run:
+        name: lint
+        command: npm run lint
+
       - run:
           name: test
           command: npm test
 
-  build_wallet_example:
+  build_in_dapp_account:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10.16
+      - image: circleci/node:12.18
 
-    working_directory: ~/tasit/wallet-example
+    working_directory: ~/tasit-apps/apps/wallet-deep-linking
 
     steps:
       - checkout:
-          path: ~/tasit
+          path: ~/tasit-apps
 
       - run:
           name: update-npm
@@ -71,7 +74,10 @@ jobs:
       #       - ./node_modules
       #     key: dependency-cache-{{ checksum "package.json" }}
 
-      # run tests!
+      - run:
+        name: lint
+        command: npm run lint
+
       - run:
           name: test
           command: npm test
@@ -80,5 +86,5 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build_decentraland
-      - build_wallet_example
+      - build_account_recovery
+      - build_in_dapp_account
