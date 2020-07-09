@@ -36,8 +36,8 @@ jobs:
       #     key: dependency-cache-{{ checksum "package.json" }}
 
       - run:
-        name: lint
-        command: npm run lint
+          name: lint
+          command: npm run lint
 
       - run:
           name: test
@@ -75,8 +75,8 @@ jobs:
       #     key: dependency-cache-{{ checksum "package.json" }}
 
       - run:
-        name: lint
-        command: npm run lint
+          name: lint
+          command: npm run lint
 
       - run:
           name: test
