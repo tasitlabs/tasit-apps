@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tasit Wallet",
-    "slug": "tasit-wallet-example",
+    "slug": "wallet-deep-linking",
     "privacy": "unlisted",
     "platforms": [
       "ios",
@@ -10,7 +10,7 @@
     "version": "0.0.4",
     "orientation": "portrait",
     "icon": "./assets/images/TasitWalletExampleIcon1024.png",
-    "scheme": "tasit-wallet",
+    "scheme": "wallet-deep-linking",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -31,7 +31,7 @@
       },
       "infoPlist": {
         "LSApplicationQueriesSchemes": [
-          "tasit-decentraland"
+          "wallet-deep-linking"
         ]
       }
     },
