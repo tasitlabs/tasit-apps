@@ -12,7 +12,7 @@ import { AccountContext } from "../../context/AccountContext";
 
 import useRandomBytes from "../../hooks/useRandomBytes";
 
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 
 export default function ContractBasedAccountScreen(): JSX.Element {
   const {
@@ -24,7 +24,7 @@ export default function ContractBasedAccountScreen(): JSX.Element {
 
   const isLoadingBytes = randomBytes.length === 0;
 
-  const { baseURL } = Constants.manifest.extra
+  const { baseURL } = Constants.manifest.extra;
   console.log({ baseURL });
 
   const {
