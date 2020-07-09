@@ -1,0 +1,28 @@
+name: Expo Publish
+on:
+  push:
+    branches:
+      - develop
+
+defaults:
+  run:
+    working-directory: ./apps/account-recovery
+
+jobs:
+  publish:
+    name: Install and publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-packager: npm
+          expo-version: 3.x
+          expo-username: tasit
+          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+          expo-cache: true
+      - run: npm install
+      - run: expo publish
