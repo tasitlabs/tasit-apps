@@ -42,7 +42,7 @@
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.11.7",
-    "tasit": "0.0.30"
+    "tasit": "0.0.32"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -60,7 +60,7 @@
     "jest-expo": "~38.0.0",
     "npm-check-updates": "^7.0.1",
     "prettier": "^2.0.5",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^16.11.0",
     "typescript": "~3.9.5"
   },
   "private": true
