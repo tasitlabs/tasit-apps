@@ -33,7 +33,7 @@ export default function ContractBasedAccountInfo({
 
       <View style={styles.helpContainer}>
         <TouchableOpacity
-          onPress={handleEtherscanPress}
+          onPress={() => handleEtherscanPress(address)}
           style={styles.helpLink}
         >
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
@@ -45,9 +45,9 @@ export default function ContractBasedAccountInfo({
   );
 }
 
-function handleEtherscanPress() {
+function handleEtherscanPress(address: string) {
   WebBrowser.openBrowserAsync(
-    `https://etherscan.io/` // TODO: Add contract address
+    `https://etherscan.io/address/${address}` // TODO: Add contract address
   );
 }
 
