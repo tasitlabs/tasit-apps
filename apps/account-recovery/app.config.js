@@ -7,7 +7,7 @@ export default () => {
     slug: "account-recovery",
     version: "0.0.30",
     orientation: "portrait",
-    privayc: "public", // ensures that this shows up at https://expo.io/@tasit/
+    privacy: "public", // ensures that this shows up at https://expo.io/@tasit/
     icon: "./assets/images/TasitAccountRecovery1024.png",
     scheme: "account-recovery",
     userInterfaceStyle: "automatic",
