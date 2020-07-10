@@ -42,7 +42,7 @@
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.11.7",
-    "tasit": "0.0.32"
+    "tasit": "0.0.33"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
