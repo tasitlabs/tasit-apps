@@ -6,7 +6,7 @@ Try the app out at [expo.io/@tasit/account-recovery](https://expo.io/@tasit/acco
 
 <!-- TODO: Add a signup link for a TestFlight beta -->
 
-### Screenshots
+### App video
+_~18 seconds long_
 
-![](docs/images/AccountTab.png)
-![](docs/images/ContractBasedAccountTab.png)
+![](docs/images/AccountRecoverySmall.gif)
