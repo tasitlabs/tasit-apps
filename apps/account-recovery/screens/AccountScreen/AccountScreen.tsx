@@ -47,7 +47,7 @@ export default function AccountScreen(): JSX.Element {
   if (!addressDefined) {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Address undefined</Text>
+        <Text style={styles.title}>Generating account</Text>
       </View>
     );
   }

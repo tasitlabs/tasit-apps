@@ -9,6 +9,8 @@
     "test": "jest --watchAll",
     "build:ios": "expo build:ios",
     "upload:ios": "expo upload:ios",
+    "build:android": "expo build:android",
+    "upload:android": "expo upload:android",
     "lint": "eslint '*/**/*.{js,ts,jsx,tsx}' --quiet --fix",
     "update": "npx ncu -x '@expo/vector-icons, expo-linking, react, react-dom, react-native-gesture-handler, react-native-web, @babel/core, @types/react, @types/react-native, babel-preset-expo, jest-expo, typescript'",
     "update:write": "npm run update -- -u"
