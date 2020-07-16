@@ -25,4 +25,4 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
       - run: npm install
-      - run: expo publish
+      - run: NODE_ENV=production expo publish

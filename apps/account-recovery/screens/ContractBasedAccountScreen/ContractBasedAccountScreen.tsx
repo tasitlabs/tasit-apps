@@ -8,9 +8,9 @@ import { Text, View } from "../../shared/components/Themed";
 import { hooks } from "tasit";
 const { useGnosisSafe } = hooks;
 
-import { AccountContext } from "../../context/AccountContext";
+import { AccountContext } from "../../shared/context/AccountContext";
 
-import useRandomBytes from "../../hooks/useRandomBytes";
+import useRandomBytes from "../../shared/hooks/useRandomBytes";
 
 import Constants from "expo-constants";
 
@@ -24,7 +24,9 @@ export default function ContractBasedAccountScreen(): JSX.Element {
 
   const isLoadingBytes = randomBytes.length === 0;
 
-  const { baseURL } = Constants.manifest.extra;
+  const { manifest } = Constants;
+  const { extra } = manifest;
+  const { baseURL } = extra;
   console.log({ baseURL });
 
   const {
