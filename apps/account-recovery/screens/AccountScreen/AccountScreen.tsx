@@ -7,9 +7,9 @@ import { Text, View } from "../../shared/components/Themed";
 import { hooks } from "tasit";
 const { useAccount } = hooks;
 
-import { AccountContext } from "../../context/AccountContext";
+import { AccountContext } from "../../shared/context/AccountContext";
 
-import useRandomBytes from "../../hooks/useRandomBytes";
+import useRandomBytes from "../../shared/hooks/useRandomBytes";
 
 export default function AccountScreen(): JSX.Element {
   const {

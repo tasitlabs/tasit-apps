@@ -37,6 +37,7 @@ export default () => {
     // env vars from .env files are passed through to the app here
     extra: {
       baseURL: process.env.BASE_URL,
+      network: process.env.NETWORK,
     },
   }
 }
