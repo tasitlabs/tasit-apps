@@ -7,7 +7,7 @@
     "ios:production": "NODE_ENV=production expo start --ios --no-dev --minify",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "./node_modules/jest/bin/jest.js --watchAll",
+    "test": "./node_modules/jest/bin/jest.js",
     "build:ios": "NODE_ENV=production expo build:ios",
     "upload:ios": "NODE_ENV=production expo upload:ios",
     "build:android": "NODE_ENV=production expo build:android",
