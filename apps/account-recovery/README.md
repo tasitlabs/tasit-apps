@@ -2,10 +2,17 @@
 
 This app shows how you can use contract-based account functionality from `tasit` to set up account recovery for the user.
 
-Try the app out at [expo.io/@tasit/account-recovery](https://expo.io/@tasit/account-recovery).
+### Try it with Expo
+Try the app out without downloading it:
 
-Download the app for iOS through TestFlight:
-https://testflight.apple.com/join/nBR0C6Cr
+[expo.io/@tasit/account-recovery](https://expo.io/@tasit/account-recovery)
+
+### Download the native app
+##### iOS
+[Sign up as a beta tester](https://testflight.apple.com/join/nBR0C6Cr)
+
+##### Android
+[Sign up as a beta tester](https://play.google.com/apps/testing/io.tasit.accountrecovery)
 
 <!-- TODO: Add a signup link for a TestFlight beta -->
 
