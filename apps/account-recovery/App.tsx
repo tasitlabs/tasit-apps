@@ -10,6 +10,8 @@ import { AccountContextProvider } from "./shared/context/AccountContext";
 
 import Constants from "expo-constants";
 
+import { Alert } from "react-native";
+
 export default function App(): JSX.Element | null {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
@@ -19,7 +21,10 @@ export default function App(): JSX.Element | null {
   const { network } = extra;
   console.log({ network });
 
-
+  // Alert.alert(
+  //   "Network",
+  //   network
+  // );
 
   if (!isLoadingComplete) {
     return null;
