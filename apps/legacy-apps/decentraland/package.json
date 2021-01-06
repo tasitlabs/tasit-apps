@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "ethers": "^4.0.47",
     "expo": "^38.0.8",
     "expo-font": "~8.2.1",
